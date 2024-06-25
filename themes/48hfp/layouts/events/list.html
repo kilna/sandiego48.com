@@ -1,0 +1,24 @@
+{{ partial "header.html" . }}
+
+<h1>{{ .Title }}</h1>
+
+{{ .Content }}
+
+{{ range.Data.Pages }}
+<article class="post-snippet">
+  <h3>
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  </h3>
+  {{ $start_time := time.AsTime .Params.event_start }}
+  {{ $end_time := time.AsTime .Params.event_end}}
+  <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $start_time }}">
+    {{ time.Format "January 2, 2006 3:04 PM" $start_time }}
+  </time> - 
+  <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $end_time }}">
+    {{ time.Format "January 2, 2006 3:04 PM" $end_time }}
+  </time>
+  {{- if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end -}}
+</article>
+{{ end }}
+
+{{ partial "footer.html" . }}

@@ -1,0 +1,25 @@
+{{- $bg := resources.Get "images/skyline.jpg" -}}
+<header class="site-header pure-g" style="background-image: url('{{ $bg.RelPermalink }}')">
+  <div class="site-logo pure-u-1 pure-u-md-1-4">
+    {{- $image := resources.Get "images/48hfp_site_logo.png" -}}
+    <a href="{{ .Site.BaseURL }}"><img class="pure-img" src="{{ $image.RelPermalink }}" alt="logo"/></a>
+  </div>
+  <div class="site-main pure-u-1 pure-u-md-3-4">
+    <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+    <div class="site-menu">
+      <div id="countdown-reg" class="countdown">
+        In <span id="reg-timer">days</span> registration goes up by $20
+      </div>
+      <script>setCountdown("July 3, 2024 00:00 PDT","reg-timer","countdown-reg")</script>
+      <div id="countdown-kickoff" class="countdown">
+        Only <span id="kickoff-timer">days</span> until competition kickoff!
+      </div>
+      <script>setCountdown("July 12, 2024 19:00 PDT","kickoff-timer","countdown-kickoff")</script>
+      <nav>
+      {{- range.Site.Menus.main -}}
+      <a href="{{ .URL }}" class="{{ .Params.class | default "" }}">{{ .Name }}</a>
+      {{- end -}}
+      </nav>
+    </div>
+</div>
+</header>

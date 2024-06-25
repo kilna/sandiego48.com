@@ -1,0 +1,43 @@
+baseURL: https://sd48hfp.com/
+languageCode: en-us
+title: San Diego 48 Hour Film Project
+theme: 48hfp
+
+params:
+  facebook_group: sandiego48hfp
+  facebook_page: sd48hfp
+  twitter: sd48hfp
+  instagram: sd48hfp
+  tiktok: sd48hfp
+  threads: sd48hfp
+  discord_server: San Diego 48 Hour Film Project
+  discord_server_invite: https://discord.gg/hMMTY5PSXD
+  
+menus:
+  main:
+#  - identifier: news
+#    name: News
+#    url: /news
+#    weight: 1
+  - identifier: events
+    name: Events
+    url: /events
+    weight: 2
+#  - identifier: faqs
+#    name: FAQs
+#    url: /faqs
+#    weight: 3
+#  - identifier: press
+#    name: Press
+#    url: /press
+#    weight: 4
+  - identifier: subscribe
+    name: Subscribe to Newsletter
+    url: https://forms.zohopublic.com/48hfphq/form/NewsletterSignUp/formperma/SwcmmxHeXBD-6Lzl3UUbhWEmLT0M9hVCqDX5dIiTbr8
+    weight: 5
+  - identifier: register
+    name: Register a Team
+    url: https://www.48hourfilm.com/team-registration
+    weight: 6
+    params:
+      class: highlight

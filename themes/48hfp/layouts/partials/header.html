@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{{ $bg := resources.Get "images/background.png" }}
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+
+  {{ $icon := resources.Get "images/icon.png" }}
+  <link rel="icon" type="image/png" href="{{ $icon.RelPermalink }}"/>
+
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+  
+  <!--
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="/js/parallax.min.js"></script>
+  -->
+  <script src="/js/countdown.js"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+
+  {{ with .OutputFormats.Get "rss" -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ end -}}
+
+</head>
+
+<body>
+
+{{ partial "nav.html" . }}
+
+<main class="content">
