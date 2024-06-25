@@ -18,8 +18,8 @@ params:
   calendarlink_url: https://calendarlink.com/event/NOaLN
 ---
 The [San Diego 48 Hour Film Project](/) will be having its annual open auditions
-at the Terrage Garden Room at the Handlery Hotel in Mission Valley this
-Saturday, July 29 2024.
+at the Terrace Garden Room at the Handlery Hotel in Mission Valley this
+Saturday, June 29 2024.
 
 ## If you are acting talent...
 
@@ -38,7 +38,7 @@ to repeat one of the lines of their monologue in that tone.
 ## About the competition
 
 The 48 Hour Film Project is the longest running and most popular timed
-film-making competition. Amateur and proffessional teams around the world
+film-making competition. Amateur and professional teams around the world
 make movies in a weekend, which are later given a premier in a real cinema.
 San Diego's competition takes place July 12-14, 2024.
 

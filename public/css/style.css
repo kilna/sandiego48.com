@@ -21,7 +21,7 @@
 * {
   margin: 0;
   padding: 0;
-  // See https://stackoverflow.com/questions/24914511/why-is-l-box-breaking-purecss-io-grids
+  /* See https://stackoverflow.com/questions/24914511/why-is-l-box-breaking-purecss-io-grids */
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -67,9 +67,10 @@ a:hover {
   color: var(--48-purple);
 }
 
-html, button, input, select, textarea,
-.pure-g [class *= "pure-u"] {
+/*
+html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 }
+*/
 
 .site-header {
   display: flex;
