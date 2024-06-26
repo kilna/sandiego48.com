@@ -12,7 +12,9 @@ params:
   threads: sd48hfp
   discord_server: San Diego 48 Hour Film Project
   discord_server_invite: https://discord.gg/hMMTY5PSXD
-  
+  copyright: Cine Diego LLC
+  copyright_url: https://cinediego.com
+
 menus:
   main:
 #  - identifier: news
