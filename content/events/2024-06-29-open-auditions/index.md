@@ -10,7 +10,7 @@ params:
   event_start: 2024-06-29T10:30:00-07:00
   event_end: 2024-06-29T13:00:00-07:00
   location_name: Handlery Hotel
-  location_details: Terrace Garden Room
+  location_details: Tower Room
   location_url: https://www.handlery.com/
   location_address: 950 Hotel Circle North, San Diego, CA 92108
   location_map_url: https://maps.app.goo.gl/JdGPqGn2uafPPstK8
@@ -18,8 +18,8 @@ params:
   calendarlink_url: https://calendarlink.com/event/NOaLN
 ---
 The [San Diego 48 Hour Film Project](/) will be having its annual open auditions
-at the Terrace Garden Room at the Handlery Hotel in Mission Valley this
-Saturday, June 29 2024.
+at the Tower Room at the Handlery Hotel in Mission Valley this Saturday,
+June 29 2024.
 
 ## If you are acting talent...
 
