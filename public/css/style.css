@@ -72,6 +72,15 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 }
 */
 
+iframe[src*="https://www.youtube.com/embed/"] {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16 !important;
+    margin: .5em;
+    padding: .5em;
+}
+
 .site-header {
   display: flex;
   background-color: var(--48-purple-dark);
@@ -85,6 +94,12 @@ header {
   padding: 1em;
   position: relative;
   min-height: 5em;
+}
+
+@media all and (max-width: 768px) {
+  header h1 {
+    display: None;
+  }
 }
 
 .site-logo img {
@@ -104,6 +119,13 @@ header {
 
 .site-main h1 a {
   text-decoration: none;
+}
+
+@media all and (max-width: 768px) {
+  .site-menu {
+    display: block;
+    text-align: center;
+  }
 }
 
 .site-menu a {
@@ -128,6 +150,12 @@ header {
                 1px -1px 1px var(--48-white),
                -1px  1px 1px var(--48-white),
                 1px  1px 1px var(--48-white);
+}
+
+@media all and (max-width: 768px) {
+  .site-menu a {
+    display: block;
+  }
 }
 
 @keyframes highlight {
@@ -175,7 +203,20 @@ header {
 }
 
 .index-copy {
-  padding: 0 2rem 0 0;
+  padding: 0 0 0 1rem;
+}
+.index-video {
+  padding: 0 1rem 0 0;
+}
+
+@media all and (max-width: 768px) {
+  .index-copy {
+    padding: 0;
+  }
+  .index-video {
+    padding: 0;
+  }
+
 }
 
 .footnote {
@@ -246,12 +287,13 @@ header {
   float: right;
   padding: 0;
   margin-left: 1em;
-  max-width: 50vw;
+  max-width: 35vw;
   text-align: center;
 }
 
 .float-right img {
-  max-width: 45vw;
+  width: inherit;
+  max-width: 30vw;
   border-radius: .75rem;
 }
 
@@ -284,6 +326,11 @@ header {
 
 .infoblock a {
   color: var(--48-black);
+}
+
+.infoblock hr {
+  margin-top: 2em;
+  margin-bottom: 1em;
 }
 
 .infoblock .buttons {
@@ -338,22 +385,31 @@ footer nav.social a {
   text-decoration: none;
 }
 
+@media all and (max-width: 768px) {
+  footer nav.social a {
+    display: block;
+  }
+}
+
 .clear {
   clear: both;
 }
 
+.event img {
+  width: 30vw;
+  float: left;
+  margin: 1em;
+}
+
 @media all and (max-width: 768px) {
-  header h1 {
-    display: None;
-  }
-  .site-menu {
+  .event img {
+    width: 70vw;
     display: block;
     text-align: center;
+    float: none;
+    clear: both;
+    margin: .5em;
   }
-  .site-menu a {
-    display: block;
-  }
-  footer nav.social a {
-    display: block;
-  } 
 }
+
+

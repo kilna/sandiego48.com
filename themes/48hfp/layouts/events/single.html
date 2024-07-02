@@ -4,17 +4,22 @@
 
 <div class="float-right">
   <div class="infoblock">
+  {{ if .Params.location_logo -}}
+    {{ if .Params.location_url }}<a href="{{ .Params.location_url }}">{{ end -}}
+    <img src="{{ .Params.location_logo }}"/>
+    {{ if .Params.location_url }}</a>{{ end -}}
+  {{ end -}}
   {{ if .Params.location_name -}}
     <h3>
     {{ if .Params.location_url -}}
       <a href="{{ .Params.location_url }}">{{ .Params.location_name }}</a>
     {{ else -}}
       {{ .Params.location_name }}
-    {{ end -}} 
+    {{ end -}}
     </h3>
     {{ if .Params.location_details -}}
-      <p>{{ .Params.location_details }}</p>    
-    {{ end -}} 
+      <p>{{ .Params.location_details }}</p>
+    {{ end -}}
   {{ end -}}
   {{ if .Params.location_address -}}
     <p>
@@ -64,16 +69,24 @@
       Add to Calendar
     </a>
   {{ end -}}
+  {{ if .Params.location_socials -}}
+  <hr/>
+  <p>{{ .Params.location_name }} social media:</p>
+  {{ range .Params.location_socials -}}
+    <a href="{{ .url }}" class="button">{{ .name }}</a>
+  {{ end -}}
+  {{ end -}}
+</div>
 </div>
 </div>
 
+<div class="event">
 {{ if .Params.image -}}
 {{- $img := .Resources.Get .Params.image -}}
 <img src="{{ $img.RelPermalink }}"/>
 {{ end -}}
 
+{{ .Content }}
 </div>
-
-{{ .Content }} 
 
 {{ partial "footer.html" . }}

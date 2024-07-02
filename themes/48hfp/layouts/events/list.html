@@ -9,13 +9,17 @@
   <h3>
     <a href="{{ .RelPermalink }}">{{ .Title }}</a>
   </h3>
-  {{ $start_time := time.AsTime .Params.event_start }}
-  {{ $end_time := time.AsTime .Params.event_end}}
+  {{ $start_time := time.AsTime .Params.event_start -}}
+  {{ $end_time := time.AsTime .Params.event_end -}}
   <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $start_time }}">
-    {{ time.Format "January 2, 2006 3:04 PM" $start_time }}
-  </time> - 
+    {{ time.Format "Mon January 2, 2006 3:04 PM" $start_time }}
+  </time> -
   <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $end_time }}">
-    {{ time.Format "January 2, 2006 3:04 PM" $end_time }}
+    {{ if compare.Eq $start_time.Day $end_time.Day -}}
+      {{ time.Format "3:04 PM" $end_time }}
+    {{ else -}}
+      <br/>{{ time.Format "Mon January 2, 2006 3:04 PM" $end_time }}
+    {{ end -}}
   </time>
   {{- if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end -}}
 </article>
