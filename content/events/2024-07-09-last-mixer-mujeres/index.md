@@ -1,10 +1,9 @@
 ---
-title: Last Chance Mixer
+title: Last Chance Mixer - Mujeres Brew House, Barrio Logan
 summary: >
   The last 48 Hour Film Project mixer / meet & greet of the 2024 competition
-  year at Mujeres Brew House, Barrio Logan
+  year
 date: 2024-07-01T23:00:00-07:00
-publishDate: 2024-07-01T23:00:00-07:00
 draft: false
 params:
   image: image.png
