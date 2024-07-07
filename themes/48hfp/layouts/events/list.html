@@ -4,24 +4,36 @@
 
 {{ .Content }}
 
-{{ range.Data.Pages }}
-<article class="post-snippet">
+{{ range.Data.Pages -}}
+{{ $start_time := time.AsTime .Params.event_start -}}
+{{ $end_time := time.AsTime .Params.event_end -}}
+<article class="post-snippet{{ if (gt time.Now $end_time) }} expired{{ end }}">
+  <div class="thumb{{ if not .Params.image }} hide-small{{ end }}">
+  {{ if .Params.image -}}
+  {{- $thumb := (.Resources.Get .Params.image).Fit "300x300" -}}
+  {{ with $thumb }}
+  <a href="{{ .RelPermalink }}"><img src="{{ .RelPermalink }}"/></a>
+  {{ end -}}
+  {{ else -}}
+  {{- end -}}
+  </div>
+  
   <h3>
     <a href="{{ .RelPermalink }}">{{ .Title }}</a>
   </h3>
-  {{ $start_time := time.AsTime .Params.event_start -}}
-  {{ $end_time := time.AsTime .Params.event_end -}}
+  <div class="timespan">
   <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $start_time }}">
-    {{ time.Format "Mon January 2, 2006 3:04 PM" $start_time }}
+    {{- time.Format "Mon January 2, 2006 3:04 PM" $start_time -}}
   </time> -
   <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $end_time }}">
-    {{ if compare.Eq $start_time.Day $end_time.Day -}}
-      {{ time.Format "3:04 PM" $end_time }}
+    {{- if compare.Eq $start_time.Day $end_time.Day -}}
+      {{ time.Format "3:04 PM" $end_time -}}
     {{ else -}}
-      <br/>{{ time.Format "Mon January 2, 2006 3:04 PM" $end_time }}
-    {{ end -}}
+      <br/>{{ time.Format "Mon January 2, 2006 3:04 PM" $end_time -}}
+    {{ end }}
   </time>
-  {{- if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end -}}
+  </div>
+  {{ if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end }}
 </article>
 {{ end }}
 

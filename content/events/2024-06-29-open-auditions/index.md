@@ -4,6 +4,7 @@ summary: >
   An open audition for prospective 48 Hour Film Project actors, and teams that
   are casting acting talent
 date: 2024-06-24T00:06:23-07:00
+publishDate: 2024-06-24T00:06:23-07:00
 draft: false
 params:
   image: image.png
@@ -43,3 +44,4 @@ make movies in a weekend, which are later given a premier in a real cinema.
 San Diego's competition takes place July 12-14, 2024.
 
 [Find out more about the 48](/)
+
