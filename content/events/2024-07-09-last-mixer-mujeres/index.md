@@ -24,6 +24,7 @@ params:
   facebook_event_url: https://www.facebook.com/events/1477287686510725/
   calendarlink_url: https://calendarlink.com/event/2rm1m
 ---
+
 Our last Mixer / Meet & Greet event will be just south of Downtown in Barrio
 Logan.  Cast, crew, and helpers have one more opportunity to find and form
 teams before kickoff; existing teams can network to discover more talent.

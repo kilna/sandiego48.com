@@ -18,6 +18,7 @@ params:
   facebook_event_url: https://www.facebook.com/events/999669305140157/
   calendarlink_url: https://calendarlink.com/event/NOaLN
 ---
+
 The [San Diego 48 Hour Film Project](/) will be having its annual open auditions
 at the Tower Room at the Handlery Hotel in Mission Valley this Saturday,
 June 29 2024.
