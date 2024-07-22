@@ -22,6 +22,14 @@
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
+    <loc>http://localhost:1313/go/</loc>
+  </url><url>
+    <loc>http://localhost:1313/go/newsletter/</loc>
+  </url><url>
     <loc>http://localhost:1313/tags/</loc>
+  </url><url>
+    <loc>http://localhost:1313/go/team-tickets/</loc>
+  </url><url>
+    <loc>http://localhost:1313/go/tickets/</loc>
   </url>
 </urlset>
