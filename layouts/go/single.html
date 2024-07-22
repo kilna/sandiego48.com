@@ -1,0 +1,12 @@
+<html>
+<head>
+<title>{{ .Params.title }}</title>
+<meta http-equiv="refresh" content="0; url={{ .Params.redirect_url }}">
+<script>
+location.href = '{{ .Params.redirect_url }}';
+</script>
+</head>
+<body>
+<p>Forwarding to <a href="{{ .Params.redirect_url }}">{{ .Params.redirect_url }}</a></p>
+</body>
+</html>
