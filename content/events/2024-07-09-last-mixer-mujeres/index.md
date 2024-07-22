@@ -24,7 +24,6 @@ params:
   facebook_event_url: https://www.facebook.com/events/1477287686510725/
   calendarlink_url: https://calendarlink.com/event/2rm1m
 ---
-
 Our last Mixer / Meet & Greet event will be just south of Downtown in Barrio
 Logan.  Cast, crew, and helpers have one more opportunity to find and form
 teams before kickoff; existing teams can network to discover more talent.
@@ -34,7 +33,7 @@ on Tuesday July 9, at
 and don’t forget that
 [team registration for the San Diego 48 Hour Film Project](https://48hourfilm.com/sandiego)
 is still open until the day of the competition.
- 
+
 ## About the competition
 
 The 48 Hour Film Project is the longest running and most popular timed

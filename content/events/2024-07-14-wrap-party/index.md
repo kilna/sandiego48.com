@@ -19,7 +19,6 @@ params:
   facebook_event_url: https://www.facebook.com/events/994392428681762
   calendarlink_url: ""
 ---
-
 Celebrate the completion of your film with your team, and tell war stories to
 your fellow film makers over food and drink. Join us at Novo Brazil in Mission
 Valley when you've submitted your film on Sunday, July 14th.
