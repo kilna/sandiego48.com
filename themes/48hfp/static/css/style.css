@@ -198,6 +198,7 @@ header {
 }
 
 .site-menu .notice {
+  
   padding: .5em;
   color: var(--48-yellow);
   font-weight: 600;
