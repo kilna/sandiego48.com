@@ -2,6 +2,7 @@
   --48-black:            #000000;
   --48-white:            #ffffff;
   --48-nearwhite:        #f0f0f0;
+  --48-yellow:           #ffff00;
   --48-orange:           #eab32c;
   --48-orange-trans:     #eab32c40;
   --48-orange-dark:      #e5b12f;
@@ -194,6 +195,17 @@ header {
   text-align: center;
   font-weight: 400;
   font-size: .75em;
+}
+
+.site-menu .notice {
+  padding: .5em;
+  color: var(--48-yellow);
+  font-weight: 600;
+  font-size: 1em;
+  text-shadow: -1px -1px 1px var(--48-black),
+                1px -1px 1px var(--48-black),
+               -1px  1px 1px var(--48-black),
+                1px  1px 1px var(--48-black);
 }
 
 .content {
