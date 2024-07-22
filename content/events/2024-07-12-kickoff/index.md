@@ -23,7 +23,7 @@ params:
 This event is the start for the San Diego 48 Hour Film Project weekend! Join us
 at NTC Park in Liberty Station on Friday the 12th of July at 5pm to start your
 filmmaking adventure.
-
+ 
 There will be a food truck, [Taco Love](https://www.tacolovemobilecatering.com/)
 where you can get... delicious tacos!
 
@@ -48,4 +48,3 @@ film-making competition. Amateur and professional teams around the world
 make movies in a weekend, which are later given a premier in a real cinema.
 
 [Find out more about the 48](/)
-

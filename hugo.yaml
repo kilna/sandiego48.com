@@ -31,14 +31,10 @@ menus:
 #    weight: 4
   - identifier: subscribe
     name: Subscribe to Newsletter
-    url: https://forms.zohopublic.com/48hfphq/form/NewsletterSignUp/formperma/SwcmmxHeXBD-6Lzl3UUbhWEmLT0M9hVCqDX5dIiTbr8
-    weight: 5
-  - identifier: tickets
-    name: Buy Tickets
-    url: /go/tickets
-    weight: 6
+    url: /go/newsletter
     params:
-      class: highlight
+      target: _blank
+    weight: 5
 #  - identifier: register
 #    name: Register a Team
 #    url: https://www.48hourfilm.com/team-registration
@@ -48,5 +44,12 @@ menus:
   - identifier: events
     name: Events
     url: /events
+    weight: 7
+  - identifier: tickets
+    name: Buy Tickets
+    url: /go/tickets
     weight: 10
+    params:
+      class: highlight
+      target: _blank
 

@@ -33,7 +33,7 @@ on Tuesday July 9, at
 and don’t forget that
 [team registration for the San Diego 48 Hour Film Project](https://48hourfilm.com/sandiego)
 is still open until the day of the competition.
-
+ 
 ## About the competition
 
 The 48 Hour Film Project is the longest running and most popular timed
