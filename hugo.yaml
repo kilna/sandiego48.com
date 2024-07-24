@@ -41,10 +41,10 @@ menus:
 #    weight: 6
 #    params:
 #      class: highlight
-#  - identifier: events
-#    name: Events
-#    url: /events
-#    weight: 7
+  - identifier: events
+    name: Events
+    url: /events
+    weight: 7
   - identifier: tickets
     name: Buy Tickets
     #url: https://www.tixtree.com/o/san-diego-48-hour-film-project
