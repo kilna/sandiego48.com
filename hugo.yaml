@@ -31,7 +31,7 @@ menus:
 #    weight: 4
   - identifier: subscribe
     name: Subscribe to Newsletter
-    url: /go/newsletter
+    url: https://docs.google.com/forms/d/e/1FAIpQLSepWKiTLeQ9LFIqAfBc7G6DxmpUX66W3Ah4aUTVQbB-2vqHug/viewform
     params:
       target: _blank
     weight: 5
@@ -47,7 +47,7 @@ menus:
     weight: 7
   - identifier: tickets
     name: Buy Tickets
-    url: /go/tickets
+    url: https://www.tixtree.com/o/san-diego-48-hour-film-project
     weight: 10
     params:
       class: highlight
