@@ -1,4 +1,3 @@
-baseURL: https://sandiego48.com
 languageCode: en-us
 title: San Diego 48 Hour Film Project
 theme: 48hfp
@@ -32,6 +31,7 @@ menus:
   - identifier: subscribe
     name: Subscribe to Newsletter
     url: https://docs.google.com/forms/d/e/1FAIpQLSepWKiTLeQ9LFIqAfBc7G6DxmpUX66W3Ah4aUTVQbB-2vqHug/viewform
+    # url: /go/newsletter
     params:
       target: _blank
     weight: 5
@@ -41,13 +41,14 @@ menus:
 #    weight: 6
 #    params:
 #      class: highlight
-  - identifier: events
-    name: Events
-    url: /events
-    weight: 7
+#  - identifier: events
+#    name: Events
+#    url: /events
+#    weight: 7
   - identifier: tickets
     name: Buy Tickets
     url: https://www.tixtree.com/o/san-diego-48-hour-film-project
+    #url: /go/tickets
     weight: 10
     params:
       class: highlight
