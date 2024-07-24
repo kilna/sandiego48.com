@@ -11,11 +11,20 @@
     <loc>http://localhost:1313/events/2024-07-12-kickoff/</loc>
     <lastmod>2024-07-02T23:00:00-07:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2024-07-02T23:30:00-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/events/2024-07-12-kickoff/</loc>
+    <lastmod>2024-07-02T23:00:00-07:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/events/2024-07-09-last-mixer-mujeres/</loc>
     <lastmod>2024-07-01T23:00:00-07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/events/2024-06-29-open-auditions/</loc>
     <lastmod>2024-06-24T00:06:23-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/events/2024-07-12-kickoff/</loc>
+    <lastmod>2024-07-02T23:00:00-07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/events/2024-07-14-wrap-party/</loc>
     <lastmod>2024-07-02T23:30:00-07:00</lastmod>
@@ -25,6 +34,10 @@
     <loc>http://localhost:1313/go/</loc>
   </url><url>
     <loc>http://localhost:1313/go/newsletter/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+  </url><url>
+    <loc>http://localhost:1313/go/team-tickets/</loc>
   </url><url>
     <loc>http://localhost:1313/go/tickets/</loc>
   </url><url>
