@@ -2,24 +2,21 @@
 
 shopt -s globstar
 
+rm -rf public/*
+
 files=()
-for file in **/*.md **/*.html; do
-  if [[ "$file" != public/* ]]; then
-    files=("${files[@]}" "$file")
+for file in content/**/*.md content/**/*.html; do
+  files=("${files[@]}" "$file")
+done
+
+for file in "${files[@]}"; do
+  if [[ " $@ " == *' -x '* ]]; then
+    # Remove trailing newlines
+    sed -i ':a;/^\n*$/{$d;N;};/\n$/ba' "$file"
+  else
+    # Add trailing newline
+    (echo; echo) >>"$file"
   fi
 done
 
-set -x
-
-for file in "${files[@]}"; do
-  git mv "$file" "$file.mv"
-done
-
-git commit -m 'Rename files to kick hugo'
-
-for file in "${files[@]}"; do
-  git mv "$file.mv" "$file"
-done
-
-git commit -m 'Rename files back'
-
+hugo --forceSyncStatic --cleanDestinationDir
