@@ -2,10 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://sd48hfp.com/events/2024-07-14-wrap-party/</loc>
+    <lastmod>2024-07-02T23:30:00-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://sd48hfp.com/events/</loc>
+    <lastmod>2024-07-02T23:30:00-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://sd48hfp.com/</loc>
+    <lastmod>2024-07-02T23:30:00-07:00</lastmod>
+  </url><url>
+    <loc>https://sd48hfp.com/events/2024-07-12-kickoff/</loc>
+    <lastmod>2024-07-02T23:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://sd48hfp.com/events/2024-07-09-last-mixer-mujeres/</loc>
+    <lastmod>2024-07-01T23:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://sd48hfp.com/events/2024-06-29-open-auditions/</loc>
+    <lastmod>2024-06-24T00:06:23-07:00</lastmod>
+  </url><url>
+    <loc>https://sd48hfp.com/categories/</loc>
+  </url><url>
+    <loc>https://sd48hfp.com/go/</loc>
+  </url><url>
+    <loc>https://sd48hfp.com/go/newsletter/</loc>
+  </url><url>
+    <loc>https://sd48hfp.com/tags/</loc>
+  </url><url>
+    <loc>https://sd48hfp.com/go/team-tickets/</loc>
+  </url><url>
+    <loc>https://sd48hfp.com/go/tickets/</loc>
   </url>
 </urlset>
