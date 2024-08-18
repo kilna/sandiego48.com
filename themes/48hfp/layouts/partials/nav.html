@@ -7,24 +7,16 @@
   <div class="site-main pure-u-1 pure-u-md-3-4">
     <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
     <div class="site-menu">
-      <!--
-      <div id="countdown-reg" class="countdown">
-        In <span id="reg-timer">days</span> regular registration ends, goes up by $20
+      <div id="countdown-bestof" class="countdown">
+        Only <span id="bestof-timer">days</span> until the Best of 2024 Screening and Awards Gala
       </div>
-      <script>setCountdown("July 7, 2024 00:00 PDT","reg-timer","countdown-reg")</script>
-      <div id="countdown-kickoff" class="countdown">
-        Only <span id="kickoff-timer">days</span> until competition kickoff!
-      </div>
-      <script>setCountdown("July 12, 2024 19:00 PDT","kickoff-timer","countdown-kickoff")</script>
-      -->
+      <script>setCountdown("August 24, 2024 19:00 PDT","bestof-timer","countdown-bestof")</script>
       <nav>
       {{ range.Site.Menus.main -}} 
       <a href="{{ .URL }}" class="{{ .Params.class | default "" }}" target="{{ .Params.target | default "_self" }}">{{ .Name }}</a>
       {{- end }}
       <div class="notice">
-      Tickets now on sale NOW ⇧<br/>
-      Premiere screenings August 7-8<br/>
-      Best of San Diego Gala August 24
+      Tickets for the Best of 2024 Screening and Awards Gala are on sale NOW ⇧<br/>
       </div>
       </nav>
     </div>
