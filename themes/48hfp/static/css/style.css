@@ -38,7 +38,7 @@ body {
   margin: 0 auto;
   font-family: "League Spartan", sans-serif;
   font-weight: 200;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   min-height: 100vh;
   max-width: 100vw;
 }
@@ -458,6 +458,7 @@ footer nav.social a {
     float: none;
   }
 }
+
 @media all and (max-width: 768px) {
   .event img {
     width: 70vw;
@@ -477,5 +478,11 @@ footer nav.social a {
   .hide-small {
     display: none;
     visibility: hidden;
+  }
+}
+
+@media all and (max-width: 768px) {
+  body {
+    font-size: 1rem;
   }
 }
