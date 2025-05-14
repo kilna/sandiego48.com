@@ -27,7 +27,7 @@ params:
 ---
 Come join us for our first Mixer / Meet & Greet event of 2025 in Miramar, at Ballast Point Brewing Company.
 
-Whether you are in front of the camera or behind it... cast, crew, and helpers of all kind have an opportunity to find and form teams before kickoff. Have a team already? Then this is an opportunity to network, to discover more talent, or simply hang out with like-minded 48ers and potential-48ers!
+Whether you are in front of the camera or behind it... cast, crew, and helpers of all kinds have an opportunity to find and form teams before kickoff. Have a team already? Then this is an opportunity to network, to discover more talent, or simply hang out with like-minded 48ers and potential-48ers!
 
 Even if you’re only curious about film-making, we'd love to see you from 6-9pm on Tuesday May 20th, at [Ballast Point](https://www.ballastpoint.com/location/miramar).
 
