@@ -4,7 +4,7 @@
 <article class="post-snippet{{ if (gt time.Now $end_time) }} expired{{ end }}">
   <div class="thumb{{ if not .Params.image }} hide-small{{ end }}">
   {{ with .Resources.Get .Params.image -}}
-    {{ $thumb := .Fit "300x300" -}}
+    {{ $thumb := .Resize "300x" -}}
     {{ with $thumb }}
       <a href="{{ .RelPermalink }}"><img src="{{ .RelPermalink }}" /></a>
     {{ end -}}
