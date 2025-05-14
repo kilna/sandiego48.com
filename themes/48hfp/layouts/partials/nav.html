@@ -7,19 +7,20 @@
   <div class="site-main pure-u-1 pure-u-md-3-4">
     <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
     <div class="site-menu">
+      <!--
       <div id="countdown-reg" class="countdown">
         Only <span id="reg-timer">days</span> until registration opens.
       </div>
       <script>setCountdown("June 9, 2025 00:00 PDT","reg-timer","countdown-reg")</script>
       <nav>
+      -->
       {{ range.Site.Menus.main -}} 
       <a href="{{ .URL }}" class="{{ .Params.class | default "" }}" target="{{ .Params.target | default "_self" }}">{{ .Name }}</a>
       {{- end }}
-      <!--
       <div class="notice">
-      Tickets for the Best of 2024 Screening and Awards Gala are on sale NOW ⇧<br/>
+      Team registration opens June 9th, 2025<br/>
+      Competition weekend is August 15-17th, 2025<br/>
       </div>
-      -->
       </nav>
     </div>
 </div>

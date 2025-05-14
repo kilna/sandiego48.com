@@ -160,15 +160,15 @@ header {
   text-decoration: none;
   font-weight: 500;
   line-height: 2em;
-  text-shadow: -1px -1px 1px var(--48-white),
-                1px -1px 1px var(--48-white),
-               -1px  1px 1px var(--48-white),
-                1px  1px 1px var(--48-white);
+  text-shadow: -0.5rem -0.5rem 0.5rem var(--48-white),
+                0.5rem -0.5rem 0.5rem var(--48-white),
+               -0.5rem  0.5rem 0.5rem var(--48-white),
+                0.5rem  0.5rem 0.5rem var(--48-white);
 }
 
 @media all and (max-width: 768px) {
   .site-menu a {
-    display: block;
+    /* display: block; */ /* Removed to prevent full-width on small screens */
   }
 }
 
@@ -209,10 +209,10 @@ header {
   color: var(--48-yellow);
   font-weight: 600;
   font-size: 1em;
-  text-shadow: -1px -1px 1px var(--48-black),
-                1px -1px 1px var(--48-black),
-               -1px  1px 1px var(--48-black),
-                1px  1px 1px var(--48-black);
+  text-shadow: -0.15rem -0.15rem 0.15rem var(--48-black),
+                0.15rem -0.15rem 0.15rem var(--48-black),
+               -0.15rem  0.15rem 0.15rem var(--48-black),
+                0.15rem  0.15rem 0.15rem var(--48-black);
 }
 
 .content {
