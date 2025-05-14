@@ -98,6 +98,7 @@ iframe[src*="https://www.youtube.com/embed/"] {
     width: 100%;
     max-width: 80vw;
     height: auto;
+    max-height: 80vh;
     aspect-ratio: 9 / 16 !important;
     margin: 0 auto;
     padding: .5em;
