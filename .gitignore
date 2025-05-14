@@ -1,0 +1,6 @@
+public/
+resources/
+.*.swp
+*.bak*
+.DS_Store
+Thumbs.db
