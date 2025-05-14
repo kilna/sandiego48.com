@@ -18,14 +18,14 @@
   --48-lighten:          #ffffff40;
   --48-lighten-more:     #ffffff70;
   --48-lighten-most:     #ffffffa0;
-  --dynamic-padding-content: clamp(2vw, 3rem, 10vw);
+  --dynamic-padding-content: clamp(3vw, 3rem, 10vw);
   --dynamic-padding-feature: .5rem 1.5rem .5rem 1.5rem;
 }
 
 @media all and (max-width: max(768px, 65em)) {
   :root {
-    --dynamic-padding-content: 2vw;
-    --dynamic-padding-feature: 1vw;
+    --dynamic-padding-content: 3vw;
+    --dynamic-padding-feature: .5vw 1.5vw .5vw 1.5vw;
   }
 }
 
