@@ -1,3 +1,4 @@
+---
 languageCode: en-us
 title: San Diego 48 Hour Film Project
 theme: 48hfp
@@ -41,23 +42,23 @@ menus:
 #    weight: 6
 #    params:
 #      class: highlight
-#  - identifier: events
-#    name: Events
-#    url: /events
-#    weight: 7
-  - identifier: bestof
-    name: Best of 2024 Selections and Nominees
-    url: https://www.tixtree.com/e/best-of-san-diego-48-hour-film-project-screening-and-awards-gala-f8b4d04c2b71
-    #url: /go/tickets
-    weight: 10
-    params:
-      target: _blank
-  - identifier: tickets
-    name: Buy Tickets
-    url: https://www.tixtree.com/e/best-of-san-diego-48-hour-film-project-screening-and-awards-gala-f8b4d04c2b71
-    #url: /go/tickets
-    weight: 12
-    params:
-      class: highlight
-      target: _blank
+  - identifier: events
+    name: Events
+    url: /events
+    weight: 7
+#  - identifier: bestof
+#    name: Best of 2024 Selections and Nominees
+#    url: https://www.tixtree.com/e/best-of-san-diego-48-hour-film-project-screening-and-awards-gala-f8b4d04c2b71
+#    #url: /go/tickets
+#    weight: 10
+#    params:
+#      target: _blank
+#  - identifier: tickets
+#    name: Buy Tickets
+#    url: https://www.tixtree.com/e/best-of-san-diego-48-hour-film-project-screening-and-awards-gala-f8b4d04c2b71
+#    #url: /go/tickets
+#    weight: 12
+#    params:
+#      class: highlight
+#      target: _blank
 

@@ -81,10 +81,19 @@
 </div>
  
 <div class="event">
-{{ if .Params.image -}}
-{{- $img := .Resources.Get .Params.image -}}
-<img src="{{ $img.RelPermalink }}"/>
+{{ with .Resources.Get .Params.image -}}
+<img src="{{ .RelPermalink }}"/>
 {{ end -}}
+
+<!--
+<pre>
+Params:
+{{ .Params | jsonify (dict "indent" "  ") | safeHTML }}
+
+Resources:
+{{ .Resources | jsonify (dict "indent" "  ") | safeHTML }}
+</pre>
+-->
 
 {{ .Content }}
 </div>

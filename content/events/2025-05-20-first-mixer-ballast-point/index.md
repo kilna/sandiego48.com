@@ -1,5 +1,6 @@
 ---
 title: First 2025 Mixer / Meet & Greet
+layout: events
 summary: >
   The first 48 Hour Film Project mixer / meet & greet of the 2025 competition
   year at Ballast Point Brewing Company in Miramar
@@ -9,7 +10,7 @@ draft: false
 params:
   image: flyer.png
   event_start: 2025-05-20T18:00:00-07:00
-  event_end: 2024-05-20T21:00:00-07:00
+  event_end: 2025-05-20T21:00:00-07:00
   location_name: Ballast Point Brewing Company
   location_details: A child and dog friendly brewpub with non-beer drink options
   location_url: https://www.ballastpoint.com/location/miramar

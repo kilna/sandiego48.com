@@ -6,8 +6,15 @@
     <description>Recent content in Events on San Diego 48 Hour Film Project</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Jul 2024 23:30:00 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 13 May 2025 23:00:00 -0700</lastBuildDate>
     <atom:link href="//localhost:1313/events/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First 2025 Mixer / Meet &amp; Greet</title>
+      <link>//localhost:1313/events/2025-05-20-first-mixer-ballast-point/</link>
+      <pubDate>Tue, 13 May 2025 00:00:00 -0700</pubDate>
+      <guid>//localhost:1313/events/2025-05-20-first-mixer-ballast-point/</guid>
+      <description>The first 48 Hour Film Project mixer / meet &amp;amp; greet of the 2025 competition year at Ballast Point Brewing Company in Miramar</description>
+    </item>
     <item>
       <title>Competition Weekend Wrap Party</title>
       <link>//localhost:1313/events/2024-07-14-wrap-party/</link>
