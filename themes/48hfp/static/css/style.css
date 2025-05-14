@@ -22,7 +22,7 @@
   --dynamic-padding-feature: .5rem 1.5rem .5rem 1.5rem;
 }
 
-@media all and (max-width: min(768px, 65em)) {
+@media all and (max-width: max(768px, 65em)) {
   :root {
     --dynamic-padding-content: 2vw;
     --dynamic-padding-feature: 1vw;
