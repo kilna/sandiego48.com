@@ -114,7 +114,7 @@ header {
 }
 
 .site-logo img {
-  max-width: min(100%, 50vw);
+  max-width: min(100%, 35vw);
   display: block;
   margin-left: auto;
   margin-right: auto;
