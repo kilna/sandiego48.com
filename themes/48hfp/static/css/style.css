@@ -114,7 +114,8 @@ header {
 }
 
 .site-logo img {
-  max-width: min(100%, 35vw);
+  width: clamp(15rem, 40vw, 100%);
+  max-width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
