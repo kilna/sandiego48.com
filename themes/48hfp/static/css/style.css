@@ -18,6 +18,15 @@
   --48-lighten:          #ffffff40;
   --48-lighten-more:     #ffffff70;
   --48-lighten-most:     #ffffffa0;
+  --dynamic-padding-content: clamp(2vw, 3rem, 10vw);
+  --dynamic-padding-feature: .5rem 1.5rem .5rem 1.5rem;
+}
+
+@media all and (max-width: 768px) {
+  :root {
+    --dynamic-padding-content: 2vw;
+    --dynamic-padding-feature: 2vw;
+  }
 }
 
 * {
@@ -39,8 +48,7 @@ body {
   margin: 0 auto;
   font-family: "League Spartan", sans-serif;
   font-weight: 200;
-  /* font-size: clamp(max(0.8rem, 16px), 2vw, max(1.75rem, 24px)); */
-  font-size: clamp(16px, 2rem, 24px);
+  font-size: clamp(max(0.8rem, 16px), 2.5vw, min(2rem, 24px));
   min-height: 100vh;
   max-width: 100vw;
 }
@@ -56,7 +64,7 @@ h1, h2, h3, h4, h5, h5 {
 }
 
 p {
-  margin: .25em 0 .25em 0;
+  margin: .75em 0 .75em 0;
   line-height: 1.35em;
 }
 
@@ -223,7 +231,7 @@ header {
 }
 
 .content {
-  padding: 1.5rem 3rem 3rem 3rem;
+  padding: var(--dynamic-padding-content);
   background: var(--48-nearwhite);
   background: linear-gradient(
                 135deg, 
@@ -260,7 +268,7 @@ header {
 .feature {
   background: var(--48-lighten);
   border: 0.25rem solid var(--48-orange);
-  padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+  padding: var(--dynamic-padding-feature);
   margin-top: 1rem;
   margin-bottom: 1rem;
   border-radius: 0.5em;
