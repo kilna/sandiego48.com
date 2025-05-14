@@ -14,13 +14,13 @@
       <script>setCountdown("June 9, 2025 00:00 PDT","reg-timer","countdown-reg")</script>
       <nav>
       -->
+      <div class="notice">
+        Team registration opens June 9th, 2025<br/>
+        Competition weekend is August 15-17th, 2025<br/>
+      </div>
       {{ range.Site.Menus.main -}} 
       <a href="{{ .URL }}" class="{{ .Params.class | default "" }}" target="{{ .Params.target | default "_self" }}">{{ .Name }}</a>
       {{- end }}
-      <div class="notice">
-      Team registration opens June 9th, 2025<br/>
-      Competition weekend is August 15-17th, 2025<br/>
-      </div>
       </nav>
     </div>
 </div>
