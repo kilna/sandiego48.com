@@ -129,9 +129,9 @@ header {
 }
 
 .site-logo img {
-  width: clamp(10rem, 40vw, 100%);
+  width: clamp(15rem, 40vw, 100%);
   max-width: 100%;
-  min-width: 10rem;
+  min-width: 15rem;
   display: block;
   margin-left: auto;
   margin-right: auto;
