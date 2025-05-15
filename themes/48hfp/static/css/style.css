@@ -18,15 +18,6 @@
   --48-lighten:          #ffffff40;
   --48-lighten-more:     #ffffff70;
   --48-lighten-most:     #ffffffa0;
-  --dynamic-padding-content: clamp(1.5vw, 3rem, 10vw);
-  --dynamic-padding-feature: .5rem 1.5rem .5rem 1.5rem;
-}
-
-@media all and (max-width: max(768px, 65em)) {
-  :root {
-    --dynamic-padding-content: 3vw;
-    --dynamic-padding-feature: 1vw 2vw 1vw 2vw;
-  }
 }
 
 * {
@@ -48,7 +39,8 @@ body {
   margin: 0 auto;
   font-family: "League Spartan", sans-serif;
   font-weight: 200;
-  font-size: clamp(max(0.8rem, 16px), 2.5vw, min(2rem, 24px));
+  /*font-size: clamp(max(0.8rem, 16px), 3vw, min(2rem, 24px));*/
+  font-size: clamp(max(1rem, 16px), 1.75vw, 2.5rem);
   min-height: 100vh;
   max-width: 100vw;
 }
@@ -107,6 +99,16 @@ iframe[src*="https://www.youtube.com/embed/"] {
     background-color: var(--48-black);
 }
 
+@media all and (max-width: 768px) {
+  iframe[src*="https://www.youtube.com/embed/"] {
+    width: calc(40vw + (768px - 100vw) * 0.6);
+    min-width: 40vw;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16 !important;
+  }
+}
+
 .site-header {
   display: flex;
   background-color: var(--48-purple-dark);
@@ -120,12 +122,6 @@ header {
   padding: 1em;
   position: relative;
   min-height: 5em;
-}
-
-@media all and (max-width: 768px) {
-  header h1 {
-    display: None;
-  }
 }
 
 .site-logo img {
@@ -242,7 +238,7 @@ header {
 }
 
 .content {
-  padding: var(--dynamic-padding-content);
+  padding: clamp(1.5vw, 3rem, 10vw);
   background: var(--48-nearwhite);
   background: linear-gradient(
                 135deg, 
@@ -253,8 +249,15 @@ header {
               );
 }
 
+@media all and (max-width: 768px) {
+  .content {
+    padding: 2vw !important;
+  }
+}
+
 .index-container {
   max-width: 65rem;
+  min-width: 60vw !important;
   margin: auto;
   padding: 0 0.5rem 0 1rem;
 }
@@ -284,12 +287,18 @@ header {
 .feature {
   background: var(--48-lighten);
   border: 0.25rem solid var(--48-orange);
-  padding: var(--dynamic-padding-feature);
+  padding: .5rem 1.5rem .5rem 1.5rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
   border-radius: 0.5em;
   font-weight: 400;
   box-shadow: 0.5rem 0.5rem 1rem 0 var(--48-darken);
+}
+
+@media all and (max-width: 768px) {
+  .feature {
+    padding: 1vw 2vw 1vw 2vw;
+  }
 }
 
 .feature * {
@@ -353,7 +362,7 @@ header {
   border-radius: .75rem;
 }
 
-@media all and (max-width: 65em) {
+@media all and (max-width: 768px) {
   .float-right {
     float: none;
     margin: 0;
@@ -374,7 +383,7 @@ header {
   border-radius: .5em;
 }
 
-@media all and (max-width: 65em) {
+@media all and (max-width: 768px) {
   .infoblock {
     margin: 0 0 .5em 0;
   }
@@ -498,7 +507,7 @@ footer nav.social a {
   }
 }
 
-@media all and (max-width: 768px) {
+.post-snippet .thumb {
   .event img {
     width: 70vw;
     display: block;
