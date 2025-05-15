@@ -103,7 +103,7 @@ iframe[src*="https://www.youtube.com/embed/"] {
   iframe[src*="https://www.youtube.com/embed/"] {
     width: calc(40vw + (768px - 100vw) * 0.6);
     min-width: 40vw;
-    max-width: 100%;
+    max-width: min(100%, calc((100vw/100vh) * 50vh));
     height: auto;
     aspect-ratio: 9 / 16 !important;
   }
