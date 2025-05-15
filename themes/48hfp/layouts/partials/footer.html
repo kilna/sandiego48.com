@@ -21,8 +21,6 @@
         Facebook Page<span class="hide-small"> <b>{{ .facebook_page }}</b></span>
       </a>
     {{ end -}}
-  </nav>
-  <nav class="social">
     {{ if .instagram -}}
       <a href="https://instagram.com/{{ .instagram }}" target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
@@ -55,8 +53,6 @@
         TikTok<span class="hide-small"> @<b>{{ .tiktok }}</b></span>
       </a>
     {{ end -}}
-  </nav>
-  <nav class="social">
     {{ if .discord_server -}}
       <a href="{{ .discord_server_invite }}" target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">

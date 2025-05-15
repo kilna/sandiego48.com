@@ -432,9 +432,20 @@ footer {
   padding: 1em 5em 1em 5em;
 }
 
+@media all and (max-width: 768px) {
+  footer {
+    padding: 1em 1em 1em 1em;
+  }
+}
+
 footer a {
   color: var(--48-darken-more);
 }
+
+footer nav.social {
+  max-width: 65rem;
+  margin: auto;
+} 
 
 footer nav.social a {
   display: inline-block;
