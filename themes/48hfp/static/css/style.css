@@ -129,14 +129,20 @@ header {
 }
 
 .site-logo img {
-  width: clamp(20rem, 40vw, 100%);
-  max-width: 100%;
-  min-width: 20rem;
+  width: 100%;
+  max-width: 20rem;
+  height: auto;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   position: relative;
   bottom: 0;
+}
+
+@media all and (max-width: 768px) {
+  .site-logo img {
+    width: 40vw;
+    min-width: 10rem;
+  }
 }
 
 .site-main {
