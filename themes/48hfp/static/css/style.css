@@ -80,35 +80,6 @@ a:hover {
   color: var(--48-purple);
 }
 
-/*
-html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
-}
-*/
-
-iframe[src*="https://www.youtube.com/embed/"] {
-    position: relative;
-    border-radius: 0.5rem;
-    width: 100%;
-    max-width: 70vw;
-    height: auto;
-    max-height: 80vh;
-    aspect-ratio: 9 / 16 !important;
-    margin: 0 auto 1em auto;
-    padding: 0.5em;
-    display: block;
-    background-color: var(--48-black);
-}
-
-@media all and (max-width: 768px) {
-  iframe[src*="https://www.youtube.com/embed/"] {
-    width: calc(40vw + (768px - 100vw) * 0.6);
-    min-width: 40vw;
-    max-width: min(100%, calc((100vw/100vh) * 50vh));
-    height: auto;
-    aspect-ratio: 9 / 16 !important;
-  }
-}
-
 .site-header {
   display: flex;
   background-color: var(--48-purple-dark);
@@ -265,16 +236,44 @@ header {
 .index-copy {
   padding: 0 0 0 1rem;
 }
-.index-video {
-  padding: 0 1rem 0 0;
-}
 
 @media all and (max-width: 768px) {
   .index-copy {
     padding: 0;
   }
+}
+
+.index-video {
+  padding: 0 1rem 0 0;
+}
+
+@media all and (max-width: 768px) {
   .index-video {
     padding: 0;
+  }
+}
+
+iframe[src*="https://www.youtube.com/embed/"] {
+  position: relative;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 70vw;
+  height: auto;
+  max-height: 80vh;
+  aspect-ratio: 9 / 16 !important;
+  margin: 0 auto 1em auto;
+  padding: 0.5em;
+  display: block;
+  background-color: var(--48-black);
+}
+
+@media all and (max-width: 768px) {
+  iframe[src*="https://www.youtube.com/embed/"] {
+    width: calc(40vw + (768px - 100vw) * 0.6);
+    min-width: 40vw;
+    max-width: min(100%, calc((100vw/100vh) * 50vh));
+    height: auto;
+    aspect-ratio: 9 / 16 !important;
   }
 }
 
@@ -335,6 +334,70 @@ header {
   margin-bottom: .5em;
 }
 
+.infoblock {
+  display: block;
+  padding: 1em;
+  text-align: left;
+  background-color: var(--48-orange-light);
+  border: 0.125rem solid var(--48-darken);
+  border-radius: .5em;
+  float: right;
+  width: 35vw;
+  margin-left: 1.5em;
+  margin-bottom: 1em;
+  margin-top: 0;
+  float: right;
+  order: -100;
+}
+
+@media all and (max-width: 768px) {
+  .infoblock {
+    float: none;
+    width: calc(60vw + (768px - 100vw) * 0.6);
+    min-width: 60vw;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+    float: none;
+    order: 100;
+  }
+}
+
+.infoblock img {
+  width: 100%;
+  max-width: min(100%, 12rem);
+  height: auto;
+  float: none;
+  margin: 0 auto 1rem auto;
+  display: block;
+}
+
+.infoblock h3 {
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+.infoblock h4 {
+  text-align: center;
+}
+
+.infoblock a {
+  color: var(--48-black);
+  text-decoration: none;
+}
+
+.infoblock a:hover {
+  text-decoration: underline;
+}
+
+.infoblock hr {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.infoblock .buttons {
+  margin-bottom: 1em;
+}
+
 .events {
   padding: 2rem;
   background: var(--48-purple-light);
@@ -348,58 +411,29 @@ header {
   box-shadow: 0.5rem 0.5rem 1rem 0 var(--48-darken);
 }
 
-.float-right {
-  float: right;
-  padding: 0;
-  margin-left: 1em;
-  max-width: 35vw;
-  text-align: center;
-}
-
-.float-right img {
-  width: inherit;
-  max-width: 30vw;
-  border-radius: .75rem;
-}
-
-@media all and (max-width: 768px) {
-  .float-right {
-    float: none;
-    margin: 0;
-    max-width: 100vw;
-  }
-  .float-right img {
-    max-width: 60vw;
-  }
-}
-
-.infoblock {
+.event {
+  overflow: auto;
   display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  text-align: left;
-  background-color: var(--48-orange-light);
-  border: 0.125rem solid var(--48-darken);
-  border-radius: .5em;
 }
 
 @media all and (max-width: 768px) {
-  .infoblock {
-    margin: 0 0 .5em 0;
+  .event {
+    display: flex;
+    flex-direction: column;
   }
 }
 
-.infoblock a {
-  color: var(--48-black);
+.event-image {
+  width: 40vw;
+  display: block;
+  margin: 1em auto;
+  float: none;
 }
 
-.infoblock hr {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-.infoblock .buttons {
-  margin-bottom: 1em;
+@media all and (max-width: 768px) {
+  .event-image {
+    width: 60vw;
+  }
 }
 
 a.button {
@@ -470,12 +504,6 @@ footer nav.social a {
   clear: both;
 }
 
-.event img {
-  width: 30vw;
-  float: left;
-  margin: 1em;
-}
-
 .post-snippet .thumb {
   display: flex;
   justify-content: center;
@@ -516,10 +544,6 @@ footer nav.social a {
     clear: both;
     margin: .5em;
   }
-}
-
-.event-location-logo {
-  max-width: 12em !important;
 }
 
 @media all and (max-width: 768px) {
