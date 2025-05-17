@@ -2,8 +2,8 @@
 title: First 2025 Mixer / Meet & Greet
 layout: events
 summary: >
-  The first 48 Hour Film Project mixer / meet & greet of the 2025 competition
-  year at Ballast Point Brewing Company in Miramar
+  The first San Diego 48 Hour Film Project event for the 2025 competition year is Tuesday! Come meet us at Ballast Point Brewing
+  in Miramar to connect with other filmmakers and get on a team!
 date: 2025-05-13T23:00:00-07:00
 publishDate: 2025-05-13T00:00:00-07:00
 draft: false

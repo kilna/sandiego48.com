@@ -46,17 +46,17 @@ body {
 }
 
 h1, h2, h3, h4, h5, h5 {
-  line-height: .8em;
   font-weight: 600;
   color: var(--48-purple);
   text-shadow: -1px -1px 1px var(--48-white),
                 1px -1px 1px var(--48-white),
                -1px  1px 1px var(--48-white),
                 1px  1px 1px var(--48-white);
+  margin: 1rem 0 1rem 0;
 }
 
 p {
-  margin: .75em 0 .75em 0;
+  margin: 0.75rem 0 0.75rem 0;
   line-height: 1.35em;
 }
 
@@ -90,9 +90,9 @@ a:hover {
 
 header {
   text-align: right;
-  padding: 1em;
+  padding: 1rem;
   position: relative;
-  min-height: 5em;
+  min-height: 5rem;
 }
 
 .site-logo img {
@@ -116,8 +116,8 @@ header {
   vertical-align: middle;
   padding: 1rem;
   background-color: var(--48-darken);
-  border: .125rem solid var(--48-orange-trans);
-  border-radius: .75em;
+  border: 0.125rem solid var(--48-orange-trans);
+  border-radius: 0.75rem;
   text-align: center;
 }
 
@@ -126,7 +126,7 @@ header {
 }
 
 .site-main h1 {
-  margin-bottom: .5em;
+  margin-bottom: 0.5rem;
 }
 
 @media all and (max-width: 768px) {
@@ -138,22 +138,23 @@ header {
 
 .site-menu a {
   display: inline-block;
-  margin: .25em;
-  padding: 0 .75em 0 .75em;
+  margin: 0.25rem 0.5rem;
+  padding: 0.25rem 1.5rem;
+  #padding: 0;
   background: var(--48-lighten-more);
   background: linear-gradient(
                 120deg, 
                 var(--48-lighten) 0%,
-                var(--48-lighten-more) 20%,
+                var(--48-lighten-more) 10%,
                 var(--48-white) 50%,
-                var(--48-lighten-more) 80%,
+                var(--48-lighten-more) 90%,
                 var(--48-lighten) 100%
               );
-  border: .125rem solid var(--48-orange-trans);
-  border-radius: .375em;
+  border: 0.125rem solid var(--48-orange-trans);
+  border-radius: 0.375rem;
   text-decoration: none;
   font-weight: 500;
-  line-height: 2em;
+  line-height: 2rem;
   text-shadow: -0.5rem -0.5rem 0.5rem var(--48-white),
                 0.5rem -0.5rem 0.5rem var(--48-white),
                -0.5rem  0.5rem 0.5rem var(--48-white),
@@ -183,13 +184,13 @@ header {
 .site-menu .countdown {
   display: none;
   margin: .5rem;
-  padding: .25em;
-  border-radius: .5rem;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
   background-color: var(--48-darken-most);
   color: var(--48-orange);
   text-align: center;
   font-weight: 400;
-  font-size: .75em;
+  font-size: 0.75rem;
 }
 
 .site-menu .notice {
@@ -209,6 +210,7 @@ header {
 }
 
 .content {
+  padding-top: 1rem !important;
   padding: clamp(1.5vw, 3rem, 10vw);
   background: var(--48-nearwhite);
   background: linear-gradient(
@@ -230,7 +232,7 @@ header {
   max-width: 65rem;
   min-width: 60vw !important;
   margin: auto;
-  padding: 0 0.5rem 0 1rem;
+  padding: 0 0.5rem;
 }
 
 .index-copy {
@@ -261,8 +263,8 @@ iframe[src*="https://www.youtube.com/embed/"] {
   height: auto;
   max-height: 80vh;
   aspect-ratio: 9 / 16 !important;
-  margin: 0 auto 1em auto;
-  padding: 0.5em;
+  margin: 0 auto 1rem auto;
+  padding: 0.5rem;
   display: block;
   background-color: var(--48-black);
 }
@@ -286,10 +288,10 @@ iframe[src*="https://www.youtube.com/embed/"] {
 .feature {
   background: var(--48-lighten);
   border: 0.25rem solid var(--48-orange);
-  padding: .5rem 1.5rem .5rem 1.5rem;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
   font-weight: 400;
   box-shadow: 0.5rem 0.5rem 1rem 0 var(--48-darken);
 }
@@ -306,7 +308,7 @@ iframe[src*="https://www.youtube.com/embed/"] {
 }
 
 .feature ul {
-  margin: .5em;
+  margin: 0.5rem;
   list-style: none;
 }
 
@@ -329,22 +331,22 @@ iframe[src*="https://www.youtube.com/embed/"] {
 }
 
 .feature-2 p {
-  line-height: 1.1em;
-  margin-top: .5em;
-  margin-bottom: .5em;
+  line-height: 1.1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .infoblock {
   display: block;
-  padding: 1em;
+  padding: 1rem;
   text-align: left;
   background-color: var(--48-orange-light);
   border: 0.125rem solid var(--48-darken);
-  border-radius: .5em;
+  border-radius: 0.5rem;
   float: right;
   width: 35vw;
-  margin-left: 1.5em;
-  margin-bottom: 1em;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
   margin-top: 0;
   float: right;
   order: -100;
@@ -356,7 +358,7 @@ iframe[src*="https://www.youtube.com/embed/"] {
     width: calc(60vw + (768px - 100vw) * 0.6);
     min-width: 60vw;
     max-width: 100%;
-    margin: 0 auto 1em auto;
+    margin: 0 auto 1rem auto;
     float: none;
     order: 100;
   }
@@ -373,7 +375,7 @@ iframe[src*="https://www.youtube.com/embed/"] {
 
 .infoblock h3 {
   margin-top: 2em;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5rem;
 }
 
 .infoblock h4 {
@@ -390,12 +392,12 @@ iframe[src*="https://www.youtube.com/embed/"] {
 }
 
 .infoblock hr {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .infoblock .buttons {
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
 }
 
 .events {
@@ -406,7 +408,7 @@ iframe[src*="https://www.youtube.com/embed/"] {
                 var(--48-purple-nearwhite) 0%, 
                 var(--48-purple-light) 100%
               );
-  border-radius: .75em;
+  border-radius: 0.75rem;
   border: 0.25rem solid var(--48-darken);
   box-shadow: 0.5rem 0.5rem 1rem 0 var(--48-darken);
 }
@@ -426,7 +428,7 @@ iframe[src*="https://www.youtube.com/embed/"] {
 .event-image {
   width: 40vw;
   display: block;
-  margin: 1em auto;
+  margin: 1rem auto;
   float: none;
 }
 
@@ -440,9 +442,9 @@ a.button {
   display: block;
   background-color: var(--48-orange);
   border: 0.125rem solid var(--48-darken);
-  border-radius: .5em;
-  padding: .5rem;
-  margin: .5rem 0 .5rem 0;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem 0 0.5rem 0;
   text-decoration: none;
 }
 
@@ -452,15 +454,6 @@ a.button:hover {
   box-shadow: 0 0 1rem 1rem var(--48-lighten);
 }
 
-.post-snippet {
-  margin-bottom: 1em;
-  clear: both;
-}
-
-.post-snippet h3 {
-  margin-bottom: 0.25em;
-}
-
 .expired {
   opacity: 0.5;
 }
@@ -468,16 +461,16 @@ a.button:hover {
 footer {
   text-align: center;
   background-color: var(--48-orange);
-  font-size: .75em;
+  font-size: 0.75rem;
   font-weight: 400;
   color: var(--48-darken-more);
-  margin-top: 2em;
-  padding: 1em 5em 1em 5em;
+  margin-top: 2rem;
+  padding: 1rem 5rem 1rem 5rem;
 }
 
 @media all and (max-width: 768px) {
   footer {
-    padding: 1em 1em 1em 1em;
+    padding: 1rem 1rem 1rem 1rem;
   }
 }
 
@@ -494,9 +487,9 @@ footer nav.social a {
   display: inline-block;
   background-color: var(--48-darken-more);
   color: var(--48-orange);
-  padding: .5em;
-  margin: .125em;
-  border-radius: .5em;
+  padding: 0.5rem;
+  margin: 0.125rem;
+  border-radius: 0.5rem;
   text-decoration: none;
 }
 
@@ -504,46 +497,46 @@ footer nav.social a {
   clear: both;
 }
 
+.post-snippet {
+  clear: both;
+  display: block;
+  text-align: left;
+  margin: 0.5rem;
+}
+
 .post-snippet .thumb {
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  border-radius: .5rem;
-  width: 15rem;
-  max-width: 30rem;
-  height: 15rem;
-  max-height: 30rem;
+  width: 20vw;
+  max-width: 15rem;
+  height: auto;
   float: left;
-  clear: both;
-  margin: 0 1em .5em 0;
-}
-
-.post-snippet .thumb img {
-  flex-shrink: 0;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
+  margin: 0 2rem 0 0;
 }
 
 @media all and (max-width: 768px) {
   .post-snippet .thumb {
-    width: 60vw;
-    text-align: center;
     display: block;
     float: none;
+    margin: 0 auto 1rem auto;
+    width: calc(50vw + (768px - 100vw) * 0.6);
+    max-width: 100%;
+    height: auto;
   }
 }
 
-.post-snippet .thumb {
-  .event img {
-    width: 70vw;
-    display: block;
-    text-align: center;
-    float: none;
-    clear: both;
-    margin: .5em;
-  }
+.post-snippet .thumb img {
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post-snippet h3 {
+  margin: 0 0 1rem 0;
 }
 
 @media all and (max-width: 768px) {
@@ -551,4 +544,17 @@ footer nav.social a {
     display: none;
     visibility: hidden;
   }
+}
+
+.featured-events {
+  background-color: var(--48-orange-light);
+  border: 0.125rem solid var(--48-darken);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 0 auto 1.5rem auto;
+}
+
+.timespan {
+  color: var(--48-darken-more);
+  padding-top: 0.5rem 0;
 }

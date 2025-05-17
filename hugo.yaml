@@ -1,9 +1,6 @@
 ---
 languageCode: en-us
 title: San Diego 48 Hour Film Project
-theme: 48hfp
-#relativeURLs: true
-#canonifyURLs: true
 
 params:
   facebook_group: sandiego48hfp
