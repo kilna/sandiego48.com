@@ -1,10 +1,10 @@
 {{- $bg := resources.Get "images/skyline.jpg" -}}
 <header class="site-header pure-g" style="background-image: url('{{ $bg.RelPermalink }}')">
-  <div class="site-logo pure-u-1 pure-u-md-1-4">
+  <div class="site-logo pure-u-1 pure-u-md-1-5">
     {{- $image := resources.Get "images/logo_trans_glow.png" -}}
     <a href="{{ .Site.BaseURL }}"><img class="pure-img" src="{{ $image.RelPermalink }}" alt="logo"/></a>
   </div>
-  <div class="site-main pure-u-1 pure-u-md-3-4">
+  <div class="site-main pure-u-1 pure-u-md-4-5">
     <h1 class="hide-small"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
     <div class="site-menu">
       <!--
