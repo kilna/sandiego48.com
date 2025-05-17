@@ -62,8 +62,8 @@ p {
 
 ul {
   display: block;
-  margin-left: 4rem;
-  padding-left: 4rem;
+  margin: 0;
+  padding-left: 0;
 }
 
 em {
@@ -307,7 +307,6 @@ iframe[src*="https://www.youtube.com/embed/"] {
 } 
 
 .feature ul {
-  margin: 0.5rem;
   list-style: none;
 }
 
