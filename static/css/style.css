@@ -140,7 +140,6 @@ header {
   display: inline-block;
   margin: 0.25rem 0.5rem;
   padding: 0.25rem 1.5rem;
-  #padding: 0;
   background: var(--48-lighten-more);
   background: linear-gradient(
                 120deg, 
@@ -316,8 +315,15 @@ iframe[src*="https://www.youtube.com/embed/"] {
   content: '★ ';
 }
 
-.feature em {
+.feature em, .feature strong {
   font-weight: 600;
+}
+
+.feature em, .feature strong, .feature li {
+  text-shadow: -0.1rem -0.1rem 0 var(--48-lighten-more),
+                0.1rem -0.1rem 0 var(--48-lighten-more),
+               -0.1rem  0.1rem 0 var(--48-lighten-more),
+                0.1rem  0.1rem 0 var(--48-lighten-more);
 }
 
 .feature-2 {
