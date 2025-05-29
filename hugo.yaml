@@ -30,7 +30,6 @@ menus:
 #    weight: 4
   - identifier: subscribe
     name: Subscribe to Newsletter
-    #url: https://docs.google.com/forms/d/e/1FAIpQLSepWKiTLeQ9LFIqAfBc7G6DxmpUX66W3Ah4aUTVQbB-2vqHug/viewform
     url: /go/newsletter
     params:
       target: _blank
