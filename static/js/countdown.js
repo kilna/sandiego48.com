@@ -1,4 +1,4 @@
-function setCountdown(timeString, setElementId, hideElementId) {
+function setCountdown(timeString, elementId) {
     var timeObj = new Date(timeString).getTime();
     var intervalObj = setInterval(function() {
         var elapsed = timeObj - new Date().getTime();
@@ -6,7 +6,7 @@ function setCountdown(timeString, setElementId, hideElementId) {
         var hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
-        document.getElementById(setElementId).innerHTML = (
+        document.getElementById(elementId).innerHTML = (
           days + " days "
           + hours + " hours "
           + minutes + " minutes "
