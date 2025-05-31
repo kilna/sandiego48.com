@@ -33,6 +33,7 @@ menus:
     url: /go/newsletter
     params:
       target: _blank
+      class: highlight
     weight: 5
 #  - identifier: register
 #    name: Register a Team

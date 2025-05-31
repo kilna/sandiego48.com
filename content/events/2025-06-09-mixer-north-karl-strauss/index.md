@@ -7,7 +7,7 @@ date: 2025-05-29T23:00:00-07:00
 publishDate: 2025-05-29T00:00:00-07:00
 draft: false
 params:
-  image: logo.png
+  image: flyer.png
   featured: true
   event_start: 2025-06-09T18:00:00-07:00
   event_end: 2025-06-09T21:00:00-07:00
