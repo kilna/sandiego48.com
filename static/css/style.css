@@ -184,18 +184,6 @@ header {
   animation-duration: 5s;
 }
 
-.site-menu .countdown {
-  display: block;
-  margin: .5rem;
-  padding: 0.25rem;
-  border-radius: 0.5rem;
-  background-color: var(--48-darken-most);
-  color: var(--48-orange);
-  text-align: center;
-  font-weight: 400;
-  font-size: 1.5rem;
-}
-
 .site-menu .notice {
   padding: 0.5em;
   width: fit-content;
