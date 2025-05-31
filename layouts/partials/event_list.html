@@ -9,6 +9,8 @@
     {{ with $thumb }}
       <a href="{{ $link }}"><img src="{{ .RelPermalink }}" /></a>
     {{ end -}}
+  {{ else }}
+    <a href="{{ $link }}"><img src="/images/logo-purple.png" /></a>
   {{- end }}
   </div>
   <h3>

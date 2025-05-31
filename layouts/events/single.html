@@ -81,6 +81,8 @@
 
   {{ with .Resources.Get .Params.image -}}
   <img src="{{ .RelPermalink }}" class="event-image"/>
+  {{ else }}
+  <img src="/images/logo-purple.png" class="event-image"/>
   {{ end -}}
 
   <div class="event-content">{{ .Content }}</div>

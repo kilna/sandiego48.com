@@ -1,5 +1,5 @@
 ---
-title: Registration Open and North County Mixer / Meet & Greet
+title: North County Filmmaker Mixer & Registration Opening Party
 layout: events
 summary: >
   Come celebrate the start of team registration on with our second Mixer / Meet & Greet event, at Karl Strauss in 4S Ranch (just west of Rancho Bernardo).

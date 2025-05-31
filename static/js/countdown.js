@@ -12,12 +12,5 @@ function setCountdown(timeString, setElementId, hideElementId) {
           + minutes + " minutes "
           + seconds + " seconds"
         );
-        if (elapsed < 0) {
-          clearInterval(intervalObj);
-          document.getElementById(hideElementId).style.display = 'none';
-        }
-        else {
-          document.getElementById(hideElementId).style.display = 'block';
-        }
     }, 1000);
 }

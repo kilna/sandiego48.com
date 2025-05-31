@@ -185,7 +185,7 @@ header {
 }
 
 .site-menu .countdown {
-  display: none;
+  display: block;
   margin: .5rem;
   padding: 0.25rem;
   border-radius: 0.5rem;
@@ -193,7 +193,7 @@ header {
   color: var(--48-orange);
   text-align: center;
   font-weight: 400;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
 }
 
 .site-menu .notice {

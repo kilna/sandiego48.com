@@ -35,12 +35,11 @@ menus:
       target: _blank
       class: highlight
     weight: 5
-#  - identifier: register
-#    name: Register a Team
-#    url: https://www.48hourfilm.com/team-registration
-#    weight: 6
-#    params:
-#      class: highlight
+  - identifier: register
+    name: Register a Team
+    url: /go/register
+    params:
+      class: highlight visible-after-2025-05-09T00:00:00-07:00
   - identifier: events
     name: Events
     url: /events
