@@ -1,3 +1,20 @@
+@font-face {
+  font-family: 'League Spartan';
+  src: url('/fonts/LeagueSpartan-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DSEG7Classic';
+  src: url('/fonts/DSEG7ClassicMini-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
 :root {
   --48-black:            #000000;
   --48-white:            #ffffff;
@@ -10,14 +27,16 @@
   --48-orange-nearwhite: #ede6d5;
   --48-purple:           #571c6d;
   --48-purple-light:     #be90cf;
+  --48-purple-bright:    #bb00ff;
   --48-purple-nearwhite: #d5c8db;
-  --48-purple-dark:      #4a195c;
   --48-darken:           #00000040;
   --48-darken-more:      #00000070;
   --48-darken-most:      #000000a0;
   --48-lighten:          #ffffff40;
   --48-lighten-more:     #ffffff70;
   --48-lighten-most:     #ffffffa0;
+  --clock-on:            #bb00ffd0;
+  --clock-off:           #50305080;
 }
 
 * {
@@ -187,6 +206,7 @@ header {
 .site-menu .notice {
   padding: 0.5em;
   width: fit-content;
+  max-width: 100%;
   margin: 0 auto;
   margin-bottom: .5em;
   color: var(--48-yellow);
@@ -198,6 +218,34 @@ header {
                 0.2rem -0.2rem 0.2rem var(--48-black),
                -0.2rem  0.2rem 0.2rem var(--48-black),
                 0.2rem  0.2rem 0.2rem var(--48-black);
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.clock {
+  font-family: 'DSEG7Classic', monospace;
+  font-size: 1.25rem;
+  display: inline-block;
+  position: relative;
+}
+
+.clock .on {
+  color: var(--clock-on);
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 0.2em var(--clock-on);
+}
+
+.clock .off {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--clock-off);
+  pointer-events: none;
+}
+
+.clock .zero {
+  opacity: 0;
 }
 
 .content {

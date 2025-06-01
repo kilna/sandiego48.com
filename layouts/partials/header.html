@@ -19,16 +19,10 @@
   <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
   
   <!--
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="/js/parallax.min.js"></script>
   -->
-  <script src="/js/countdown.js"></script>
-  <script src="/js/visibility-control.js"></script>
+  <script src="/js/css-utils.js"></script>
   
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
-
   {{ with .OutputFormats.Get "rss" -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
   {{ end -}}

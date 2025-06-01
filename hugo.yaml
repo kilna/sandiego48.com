@@ -39,7 +39,7 @@ menus:
     name: Register a Team
     url: /go/register
     params:
-      class: highlight visible-after-2025-05-09T00:00:00-07:00
+      class: highlight visible-after-2025-06-09T00:00:00-07:00
   - identifier: events
     name: Events
     url: /events
