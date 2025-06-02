@@ -3,21 +3,21 @@
 
 {{ partial "plaintext.txt" .Summary }}
 
-⏳ WHEN:
+WHEN ⏳
 {{- with partial "event-timespan.html" (
     dict
       "start_time" (time.AsTime .Params.event_start)
       "end_time" (time.AsTime .Params.event_end)
       "plain" true
   ) }}
-      {{ . | replaceRE "\n" "\n      " -}}
+   {{ . | replaceRE "\n" "\n   " -}}
 {{- end }}
 
-🌐 WHERE:
-      {{ .Params.location_name }}
-      {{ partial "plaintext.txt" .Params.location_address }}
+WHERE 🌐 
+   {{ .Params.location_name }}
+   {{ partial "plaintext.txt" .Params.location_address }}
 {{- if .Params.location_map_url }}
-      Google Map: {{ .Params.location_map_url }} 📍
+   Google Map: {{ .Params.location_map_url }} 📍
 {{ end }}
 {{ partial "plaintext.txt" .Content }}
 {{- if .Params.location_details }}
@@ -27,10 +27,10 @@ Location Details: {{ partial "plaintext.txt" .Params.location_details -}}
 
 ────────────────────────────────
 
-🔗 LINKS 🔗
+LINKS 🔗
 
 ➡️ Event Details:
-    {{ .Permalink }}
+    {{ .RelPermalink }}
 {{- if .Params.facebook_event_url }}
 👍 RSVP on Facebook:
     {{ .Params.facebook_event_url }}
@@ -44,6 +44,25 @@ Location Details: {{ partial "plaintext.txt" .Params.location_details -}}
     {{ .Params.location_url }}
 {{- end }}
 
+────────────────────────────────
+
+FIND OR FOLLOW US ONLINE ❤️
+
+📸 Instagram 🧵 Threads 🐦 Twitter 📱 TikTok → @sd8hfp
+
+🌐 SanDiego48.com: {{ .Site.BaseURL }}
+✉️ Newsletter: {{ .Site.BaseURL }}/go/newsletter
+{{ with .Site.Params -}}
+{{ if .facebook_page -}}
+👍 Facebook Page: https://facebook.com/{{ .facebook_page }}
+{{ end -}}
+{{ if .facebook_group -}}
+👥 Facebook Group: https://facebook.com/groups/{{ .facebook_group }}
+{{ end -}}
+{{ if .youtube -}}
+📺 YouTube: https://youtube.com/{{ .youtube }}
+{{ end -}}
+{{ end }}
 ────────────────────────────────
 
 {{ if .Params.org_info -}}

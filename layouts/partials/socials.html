@@ -4,6 +4,8 @@
 {{- $bg_color := .bg_color | default "black" -}}
 {{- $embed := .embed | default false -}}
 {{- $show_text := .show_text | default true -}}
+{{- $show_emoji := .show_emoji | default false -}}
+{{- $show_icon := .show_icon | default true -}}
 {{- $enable_home := .enable_home | default false -}}
 {{- $enable_newsletter := .enable_newsletter | default false -}}
 
@@ -22,10 +24,15 @@
 {{- $size_2 := ((div $size 2) | float) -}}
 {{- $size_3 := ((mul $size 1.5) | float) -}}
 
-{{- $nav_style := .nav_style | default (printf "font-size: %.2frem; margin: %.2frem 0; text-align: center;" $size $size_1) -}}
-{{- $link_style := .link_style | default (printf "display: inline-block; padding: %.2frem %.2frem; margin: %.2frem; border-radius: %.2frem; color: %s; background-color: %s; text-decoration: none;" $size_1 $size_2 $size_1 $size_2 $color $bg_color) -}}
-{{- $text_style := .text_style | default (printf "margin: %.2frem; text-decoration: none;" $size_1) -}}
-{{- $img_style := .img_style | default (printf "margin: %.2frem; height: %.2frem; width: auto; vertical-align: middle;" $size_1 $size_3) -}}
+{{- $nav_style := printf "font-size: %.2frem; margin: %.2frem 0; text-align: center;" $size $size_1 -}}
+{{- $link_style := printf "display: inline-block; padding: %.2frem %.2frem; margin: %.2frem; border-radius: %.2frem; color: %s; background-color: %s; text-decoration: none;" $size_1 $size_2 $size_1 $size_2 $color $bg_color -}}
+{{- $text_style := printf "margin: %.2frem; text-decoration: none;" $size_1 -}}
+{{- $img_style := printf "margin: %.2frem; height: %.2frem; width: auto; vertical-align: middle;" $size_1 $size_3 -}}
+
+{{ if .nav_style }}{{ $nav_style = printf "%s; %s" $nav_style .nav_style }}{{ end -}}
+{{ if .link_style }}{{ $link_style = printf "%s; %s" $link_style .link_style }}{{ end -}}
+{{ if .text_style }}{{ $text_style = printf "%s; %s" $text_style .text_style }}{{ end -}}
+{{ if .img_style }}{{ $img_style = printf "%s; %s" $img_style .img_style }}{{ end -}}
 
 {{- $nav_atttibs := `` -}}
 {{- if $nav_style -}}{{- $nav_atttibs = printf `%s style="%s"` $nav_atttibs $nav_style -}}{{- end -}}
@@ -47,6 +54,7 @@
 
   {{- if $enable_home -}}
     <a href="{{ .Site.BaseURL }}" {{ $link_atttibs }}>
+    {{- if $show_icon -}}
     {{- partial "icon.html" (
       dict
         "icon" "globe"
@@ -58,6 +66,10 @@
         "alt" "SanDiego48.com"
         "title" (cond (not $show_text) "SanDiego48.com" "")
     ) -}}
+    {{- end -}}
+    {{- if $show_emoji -}}
+      <span {{ $text_atttibs }}>🌐</span>
+    {{- end -}}
     {{- if $show_text -}}
       <span {{ $text_atttibs }}>SanDiego48.com</span>
     {{- end -}}
@@ -66,6 +78,7 @@
 
   {{- if $enable_newsletter -}}
     <a href="{{ .Site.BaseURL }}/go/newsletter" {{ $link_atttibs }}>
+    {{- if $show_icon -}}
     {{- partial "icon.html" (
       dict
         "icon" "email"
@@ -77,6 +90,10 @@
         "alt" "Newsletter"
         "title" (cond (not $show_text) "Newsletter" "")
     ) -}}
+    {{- end -}}
+    {{- if $show_emoji -}}
+      <span {{ $text_atttibs }}>📧</span>
+    {{- end -}}
     {{- if $show_text -}}
       <span {{ $text_atttibs }}>Newsletter</span>
     {{- end -}}
@@ -85,6 +102,7 @@
 
   {{- if .facebook_page -}}
     <a href="https://facebook.com/{{ .facebook_page }}" {{ $link_atttibs }}>
+    {{- if $show_icon -}}
     {{- partial "icon.html" (
       dict
         "icon" "facebook"
@@ -96,6 +114,10 @@
         "alt" "Facebook Page"
         "title" (cond (not $show_text) "Facebook Page" "")
     ) -}}
+    {{- end -}}
+    {{- if $show_emoji -}}
+      <span {{ $text_atttibs }}>👍</span>
+    {{- end -}}
     {{- if $show_text -}}
       <span {{ $text_atttibs }}>Facebook Page</span>
     {{- end -}}
@@ -104,6 +126,7 @@
 
   {{- if .facebook_group -}}
     <a href="https://facebook.com/groups/{{ .facebook_group }}" {{ $link_atttibs }}>
+    {{- if $show_icon -}}
     {{- partial "icon.html" (
       dict
         "icon" "facebook-group"
@@ -115,6 +138,10 @@
         "alt" "Facebook Group"
         "title" (cond (not $show_text) "Facebook Group" "")
     ) -}}
+    {{- end -}}
+    {{- if $show_emoji -}}
+      <span {{ $text_atttibs }}>👥</span>
+    {{- end -}}
     {{- if $show_text -}}
       <span {{ $text_atttibs }}>Facebook Group</span>
     {{- end -}}
@@ -123,6 +150,7 @@
 
   {{- if .instagram -}}
     <a href="https://instagram.com/{{ .instagram }}" {{ $link_atttibs }}>
+    {{- if $show_icon -}}
     {{- partial "icon.html" (
       dict
         "icon" "instagram"
@@ -134,6 +162,10 @@
         "alt" "Instagram"
         "title" (cond (not $show_text) "Instagram" "")
     ) -}}
+    {{- end -}}
+    {{- if $show_emoji -}}
+      <span {{ $text_atttibs }}>📸</span>
+    {{- end -}}
     {{- if $show_text -}}
       <span {{ $text_atttibs }}>Instagram</span>
     {{- end -}}
@@ -142,6 +174,7 @@
 
   {{- if .threads -}}
     <a href="https://threads.net/@{{ .threads }}" {{ $link_atttibs }}>
+    {{- if $show_icon -}}
     {{- partial "icon.html" (
       dict
         "icon" "threads"
@@ -153,6 +186,10 @@
         "alt" "Threads"
         "title" (cond (not $show_text) "Threads" "")
     ) -}}
+    {{- end -}}
+    {{- if $show_emoji -}}
+      <span {{ $text_atttibs }}>🧵</span>
+    {{- end -}}
     {{- if $show_text -}}
       <span {{ $text_atttibs }}>Threads</span>
     {{- end -}}
@@ -161,6 +198,7 @@
 
   {{- if .twitter -}}
     <a href="https://twitter.com/{{ .twitter }}" {{ $link_atttibs }}>
+    {{- if $show_icon -}}
     {{- partial "icon.html" (
       dict
         "icon" "twitter"
@@ -172,6 +210,10 @@
         "alt" "Twitter"
         "title" (cond (not $show_text) "Twitter" "")
     ) -}}
+    {{- end -}}
+    {{- if $show_emoji -}}
+      <span {{ $text_atttibs }}>🐦</span>
+    {{- end -}}
     {{- if $show_text -}}
       <span {{ $text_atttibs }}>Twitter</span>
     {{- end -}}
@@ -180,6 +222,7 @@
 
   {{- if .tiktok -}}
     <a href="https://tiktok.com/@{{ .tiktok }}" {{ $link_atttibs }}>
+    {{- if $show_icon -}}
     {{- partial "icon.html" (
       dict
         "icon" "tiktok"
@@ -191,6 +234,10 @@
         "alt" "TikTok"
         "title" (cond (not $show_text) "TikTok" "")
     ) -}}
+    {{- end -}}
+    {{- if $show_emoji -}}
+      <span {{ $text_atttibs }}>📱</span>
+    {{- end -}}
     {{- if $show_text -}}
       <span {{ $text_atttibs }}>TikTok</span>
     {{- end -}}
@@ -199,6 +246,7 @@
 
   {{- if .youtube -}}
     <a href="https://youtube.com/{{ .youtube }}" {{ $link_atttibs }}>
+    {{- if $show_icon -}}
     {{- partial "icon.html" (
       dict
         "icon" "youtube"
@@ -210,6 +258,10 @@
         "alt" "YouTube"
         "title" (cond (not $show_text) "YouTube" "")
     ) -}}
+    {{- end -}}
+    {{- if $show_emoji -}}
+      <span {{ $text_atttibs }}>▶️</span>
+    {{- end -}}
     {{- if $show_text -}}
       <span {{ $text_atttibs }}>YouTube</span>
     {{- end -}}
@@ -218,7 +270,8 @@
 
   {{- if .discord_server -}}
     <a href="{{ .discord_server_invite }}" {{ $link_atttibs }}>
-    {{- partial "icon.html" (
+    {{- if $show_icon -}}
+      {{- partial "icon.html" (
       dict
         "icon" "discord"
         "color" $color
@@ -229,6 +282,10 @@
         "alt" "Discord"
         "title" (cond (not $show_text) "Discord" "")
     ) -}}
+    {{- end -}}
+    {{- if $show_emoji -}}
+      <span {{ $text_atttibs }}>💬</span>
+    {{- end -}}
     {{- if $show_text -}}
       <span {{ $text_atttibs }}>Discord</span>
     {{- end -}}
