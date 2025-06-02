@@ -1,0 +1,239 @@
+{{- $px := .px | default "32" -}}
+{{- $size := .size | default 1.0 | float -}}
+{{- $color := .color | default "white" -}}
+{{- $bg_color := .bg_color | default "black" -}}
+{{- $embed := .embed | default false -}}
+{{- $show_text := .show_text | default true -}}
+{{- $enable_home := .enable_home | default false -}}
+{{- $enable_newsletter := .enable_newsletter | default false -}}
+
+{{- $class := "social-nav" -}}
+{{- $link_class := "social-link" -}}
+{{- $img_class := "social-img" -}}
+{{- $text_class := "social-text" -}}
+{{- if .class -}}
+  {{- $class := printf "social-nav %s-nav %s" (.class | default "") -}}
+  {{- $link_class := printf "social-link %s-link" (.class | default "") -}}
+  {{- $img_class := printf "social-img %s-img" (.class | default "") -}}
+  {{- $text_class := printf "social-text %s-text" (.class | default "") -}}
+{{- end -}}
+
+{{- $size_1 := ((div $size 4) | float) -}}
+{{- $size_2 := ((div $size 2) | float) -}}
+{{- $size_3 := ((mul $size 1.5) | float) -}}
+
+{{- $nav_style := .nav_style | default (printf "font-size: %.2frem; margin: %.2frem 0; text-align: center;" $size $size_1) -}}
+{{- $link_style := .link_style | default (printf "display: inline-block; padding: %.2frem %.2frem; margin: %.2frem; border-radius: %.2frem; color: %s; background-color: %s; text-decoration: none;" $size_1 $size_2 $size_1 $size_2 $color $bg_color) -}}
+{{- $text_style := .text_style | default (printf "margin: %.2frem; text-decoration: none;" $size_1) -}}
+{{- $img_style := .img_style | default (printf "margin: %.2frem; height: %.2frem; width: auto; vertical-align: middle;" $size_1 $size_3) -}}
+
+{{- $nav_atttibs := `` -}}
+{{- if $nav_style -}}{{- $nav_atttibs = printf `%s style="%s"` $nav_atttibs $nav_style -}}{{- end -}}
+{{- if and $class (not $embed) -}}{{- $nav_atttibs = printf `%s class="%s"` $nav_atttibs $class -}}{{- end -}}
+{{- $nav_atttibs = $nav_atttibs | safeHTMLAttr -}}
+
+{{- $link_atttibs := `target="_blank"` -}}
+{{- if $link_style -}}{{- $link_atttibs = printf `%s style="%s"` $link_atttibs $link_style -}}{{- end -}}
+{{- if and $link_class (not $embed) -}}{{- $link_atttibs = printf `%s class="%s"` $link_atttibs $link_class -}}{{- end -}}
+{{- $link_atttibs = $link_atttibs | safeHTMLAttr -}}
+
+{{- $text_atttibs := `` -}}
+{{- if $text_style -}}{{- $text_atttibs = printf `%s style="%s"` $text_atttibs $text_style -}}{{- end -}}
+{{- if and $text_class (not $embed) -}}{{- $text_atttibs = printf `%s class="%s"` $text_atttibs $text_class -}}{{- end -}}
+{{- $text_atttibs = $text_atttibs | safeHTMLAttr -}}
+
+{{- with .Site.Params -}}
+<nav {{ $nav_atttibs }}>
+
+  {{- if $enable_home -}}
+    <a href="{{ .Site.BaseURL }}" {{ $link_atttibs }}>
+    {{- partial "icon.html" (
+      dict
+        "icon" "globe"
+        "color" $color
+        "px" $px
+        "class" (cond $embed "" $img_class)
+        "style" $img_style
+        "embed" $embed
+        "alt" "SanDiego48.com"
+        "title" (cond (not $show_text) "SanDiego48.com" "")
+    ) -}}
+    {{- if $show_text -}}
+      <span {{ $text_atttibs }}>SanDiego48.com</span>
+    {{- end -}}
+    </a>
+  {{- end -}}
+
+  {{- if $enable_newsletter -}}
+    <a href="{{ .Site.BaseURL }}/go/newsletter" {{ $link_atttibs }}>
+    {{- partial "icon.html" (
+      dict
+        "icon" "email"
+        "color" $color
+        "px" $px
+        "class" (cond $embed "" $img_class)
+        "style" $img_style
+        "embed" $embed
+        "alt" "Newsletter"
+        "title" (cond (not $show_text) "Newsletter" "")
+    ) -}}
+    {{- if $show_text -}}
+      <span {{ $text_atttibs }}>Newsletter</span>
+    {{- end -}}
+    </a>
+  {{- end -}}
+
+  {{- if .facebook_page -}}
+    <a href="https://facebook.com/{{ .facebook_page }}" {{ $link_atttibs }}>
+    {{- partial "icon.html" (
+      dict
+        "icon" "facebook"
+        "color" $color
+        "px" $px
+        "class" (cond $embed "" $img_class)
+        "style" $img_style
+        "embed" $embed
+        "alt" "Facebook Page"
+        "title" (cond (not $show_text) "Facebook Page" "")
+    ) -}}
+    {{- if $show_text -}}
+      <span {{ $text_atttibs }}>Facebook Page</span>
+    {{- end -}}
+    </a>
+  {{- end -}}
+
+  {{- if .facebook_group -}}
+    <a href="https://facebook.com/groups/{{ .facebook_group }}" {{ $link_atttibs }}>
+    {{- partial "icon.html" (
+      dict
+        "icon" "facebook-group"
+        "color" $color
+        "px" $px
+        "class" (cond $embed "" $img_class)
+        "style" $img_style
+        "embed" $embed
+        "alt" "Facebook Group"
+        "title" (cond (not $show_text) "Facebook Group" "")
+    ) -}}
+    {{- if $show_text -}}
+      <span {{ $text_atttibs }}>Facebook Group</span>
+    {{- end -}}
+    </a>
+  {{- end -}}
+
+  {{- if .instagram -}}
+    <a href="https://instagram.com/{{ .instagram }}" {{ $link_atttibs }}>
+    {{- partial "icon.html" (
+      dict
+        "icon" "instagram"
+        "color" $color
+        "px" $px
+        "class" (cond $embed "" $img_class)
+        "style" $img_style
+        "embed" $embed
+        "alt" "Instagram"
+        "title" (cond (not $show_text) "Instagram" "")
+    ) -}}
+    {{- if $show_text -}}
+      <span {{ $text_atttibs }}>Instagram</span>
+    {{- end -}}
+    </a>
+  {{- end -}}
+
+  {{- if .threads -}}
+    <a href="https://threads.net/@{{ .threads }}" {{ $link_atttibs }}>
+    {{- partial "icon.html" (
+      dict
+        "icon" "threads"
+        "color" $color
+        "px" $px
+        "class" (cond $embed "" $img_class)
+        "style" $img_style
+        "embed" $embed
+        "alt" "Threads"
+        "title" (cond (not $show_text) "Threads" "")
+    ) -}}
+    {{- if $show_text -}}
+      <span {{ $text_atttibs }}>Threads</span>
+    {{- end -}}
+    </a>
+  {{- end -}}
+
+  {{- if .twitter -}}
+    <a href="https://twitter.com/{{ .twitter }}" {{ $link_atttibs }}>
+    {{- partial "icon.html" (
+      dict
+        "icon" "twitter"
+        "color" $color
+        "px" $px
+        "class" (cond $embed "" $img_class)
+        "style" $img_style
+        "embed" $embed
+        "alt" "Twitter"
+        "title" (cond (not $show_text) "Twitter" "")
+    ) -}}
+    {{- if $show_text -}}
+      <span {{ $text_atttibs }}>Twitter</span>
+    {{- end -}}
+    </a>
+  {{- end -}}
+
+  {{- if .tiktok -}}
+    <a href="https://tiktok.com/@{{ .tiktok }}" {{ $link_atttibs }}>
+    {{- partial "icon.html" (
+      dict
+        "icon" "tiktok"
+        "color" $color
+        "px" $px
+        "class" (cond $embed "" $img_class)
+        "style" $img_style
+        "embed" $embed
+        "alt" "TikTok"
+        "title" (cond (not $show_text) "TikTok" "")
+    ) -}}
+    {{- if $show_text -}}
+      <span {{ $text_atttibs }}>TikTok</span>
+    {{- end -}}
+    </a>
+  {{- end -}}
+
+  {{- if .youtube -}}
+    <a href="https://youtube.com/{{ .youtube }}" {{ $link_atttibs }}>
+    {{- partial "icon.html" (
+      dict
+        "icon" "youtube"
+        "color" $color
+        "px" $px
+        "class" (cond $embed "" $img_class)
+        "style" $img_style
+        "embed" $embed
+        "alt" "YouTube"
+        "title" (cond (not $show_text) "YouTube" "")
+    ) -}}
+    {{- if $show_text -}}
+      <span {{ $text_atttibs }}>YouTube</span>
+    {{- end -}}
+    </a>
+  {{- end -}}
+
+  {{- if .discord_server -}}
+    <a href="{{ .discord_server_invite }}" {{ $link_atttibs }}>
+    {{- partial "icon.html" (
+      dict
+        "icon" "discord"
+        "color" $color
+        "px" $px
+        "class" (cond $embed "" $img_class)
+        "style" $img_style
+        "embed" $embed
+        "alt" "Discord"
+        "title" (cond (not $show_text) "Discord" "")
+    ) -}}
+    {{- if $show_text -}}
+      <span {{ $text_atttibs }}>Discord</span>
+    {{- end -}}
+    </a>
+  {{- end -}}
+
+</nav>
+{{- end -}}

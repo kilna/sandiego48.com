@@ -1,0 +1,109 @@
+{{ $styles := dict
+  "details" "margin: 0;"
+  "heading" "margin: 0;"
+  "a" "color: #000; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; text-decoration-color: #888;"
+  "button" "display: inline-block; padding: .5rem .75rem; background: #84a; color: white; text-decoration: none; border-radius: 0.5rem; margin: 0 0 0.5rem 0.5rem;"
+-}}
+{{ $event_page_url := .Permalink }}
+{{ $timelink := .Permalink }}
+{{ if .Params.calendarlink_url }}
+  {{ $timelink = .Params.calendarlink_url }}
+{{ end }}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family: Arial, sans-serif; max-width: 600px; margin: 2rem auto; background-color: #fff;">
+
+<h1 style="margin: 0;">
+  <a href="{{ $event_page_url }}" style="{{ $styles.a | safeCSS }}">{{ .Title }}</a>
+</h1>
+
+{{ with (.Resources.Get .Params.image) -}}
+  {{ with .Resize "600x q80" -}}
+  <a href="{{ $event_page_url }}">
+  <img src="data:{{ .MediaType }};base64,{{ .Content | base64Encode }}" alt="{{ $.Title }}" style="margin: 1rem 0; border-radius: 0.5rem; max-width: 100%; height: auto;"/>
+  </a>
+  {{ end -}}
+{{ end -}}
+
+<div style="font-weight: bold;">{{ .Summary | markdownify }}</div>
+
+<div>{{ .Content }}</div>
+
+<div style="background-color: #eee; padding: 0.75rem 1.25rem; border-radius: 0.5rem;">
+  <h2 style="margin: .5rem 0; font-size: 1.25rem;">Event Details</h2>
+  <p style="margin: .5rem 0;">
+    {{ partial "icon.html" (dict "icon" "hourglass" "embed" true "color" "black" "px" "24") }}
+    <b style="margin: 0 0.5rem">When:</b>
+    <a href="{{ $timelink }}" style="{{ $styles.a | safeCSS }}">
+    {{- partial "event-timespan.html" (
+      dict
+        "start_time" (time.AsTime .Params.event_start)
+        "end_time" (time.AsTime .Params.event_end)
+        "plain" true
+      ) -}}
+    </a>
+  </p>
+  <p style="margin: .5rem 0;">
+    {{ partial "icon.html" (dict "icon" "globe" "embed" true "color" "black" "px" "24") }}
+    <b style="margin: 0 0.5rem">Where:</b>
+    <a href="{{ .Params.location_url }}" style="{{ $styles.a | safeCSS }}">{{ .Params.location_name }}</a>
+  </p>
+  {{ if .Params.location_details -}}
+    <p style="opacity: 0.5; margin: .5rem 0; margin-left: 6rem;">{{ .Params.location_details }}</p>
+  {{- end }}
+  <p style=" margin:0; margin-left: 6rem;">
+  {{- if .Params.location_map_url -}}
+    <a href="{{ .Params.location_map_url }}" style="{{ $styles.a | safeCSS }}">{{- .Params.location_address -}}</a>
+    {{ partial "icon.html" (dict "icon" "location" "embed" true "color" "black" "px" "24") }}
+  {{- else -}}
+    {{- .Params.location_address -}}
+  {{- end -}}
+  </p>
+  <div style="margin: 1rem 0 0 0; text-align: center;">
+    <a href="{{ .Permalink }}" style="{{ $styles.button | safeCSS }}">
+      {{ partial "icon.html" (dict "icon" "arrow-right" "embed" true "color" "white" "px" "24") }}
+      Event Page at SanDiego48.com
+    </a>
+    {{ if .Params.facebook_event_url }}
+    <a href="{{ .Params.facebook_event_url }}" style="{{ $styles.button | safeCSS }}">
+      {{ partial "icon.html" (dict "icon" "facebook" "embed" true "color" "white" "px" "24") }}
+      RSVP on Facebook
+    </a>
+    {{ end }}
+    {{ if .Params.calendarlink_url }}
+    <a href="{{ .Params.calendarlink_url }}" style="{{ $styles.button | safeCSS }}">
+      {{ partial "icon.html" (dict "icon" "calendar" "embed" true "color" "white" "px" "24") }}
+      Add to Calendar
+    </a>
+    {{ end }}
+    {{ if .Params.location_map_url }}
+    <a href="{{ .Params.location_map_url }}" style="{{ $styles.button | safeCSS }}">
+      {{ partial "icon.html" (dict "icon" "location" "embed" true "color" "white" "px" "24") }}
+      Google Map
+    </a>
+    {{ end }}
+  </div>
+</div>
+
+{{ if .Params.org_info }}
+<div>{{ .Params.org_info | markdownify }}</div>
+{{ end }}
+
+{{ partial "socials.html" (dict 
+  "class" "event"
+  "bg_color" "#ccc"
+  "size" 0.8
+  "show_text" true
+  "embed" true
+  "enable_home" true
+  "enable_newsletter" true
+  "Site" .Site
+) }}
+
+</body>
+</html>
