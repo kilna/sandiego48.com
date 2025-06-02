@@ -1,8 +1,9 @@
 ---
 title: North County Filmmaker Mixer & Registration Opening Party
 layout: events
+type: events
 summary: >
-  Come celebrate the start of team registration on with our second Mixer / Meet & Greet event, at Karl Strauss in 4S Ranch (just west of Rancho Bernardo).
+  Come celebrate the start of team registration with our second Mixer / Meet & Greet event at Karl Strauss in 4S Ranch (just west of Rancho Bernardo).
 date: 2025-05-29T23:00:00-07:00
 publishDate: 2025-05-29T00:00:00-07:00
 draft: false
@@ -24,25 +25,13 @@ params:
   location_map_url: https://maps.app.goo.gl/MEbb4VjjThrdko6J9
   facebook_event_url: https://www.facebook.com/events/691066663676775/
   calendarlink_url: https://calendarlink.com/event/4MefO
+  org_info: >
+    ### About the 48 Hour Film Project
+
+    The 48 Hour Film Project is the longest running and most popular timed film-making competition. Amateur and professional teams around the world make movies in a weekend, which are later given a premier in a real cinema. San Diego's competition takes place August 15-17th, 2024.
+
+    Team registration for will open at midnight the night before the mixer, on Monday June 9th.
 ---
-Come celebrate the start of team registration on with our second Mixer / Meet & Greet event, at Karl Strauss in 4S Ranch (just west of Rancho Bernardo).
-
 Whether you are in front of the camera or behind it... cast, crew, and helpers of all kinds have an opportunity to find and form teams before kickoff. Have a team already? Then this is an opportunity to network, to discover more talent, or simply hang out with like-minded 48ers and potential-48ers!
 
-Even if you’re only curious about film-making, we would love to see you from 6-9pm on Monday, June 9th at []()
-
-
-
-Come join us for our first Mixer / Meet & Greet event of 2025 in Miramar, at Ballast Point Brewing Company.
-
-Whether you are in front of the camera or behind it... cast, crew, and helpers of all kinds have an opportunity to find and form teams before kickoff. Have a team already? Then this is an opportunity to network, to discover more talent, or simply hang out with like-minded 48ers and potential-48ers!
-
-Even if you’re only curious about film-making, we'd love to see you from 6-9pm on Tuesday May 20th, at [Karl Strauss 4S Ranch](https://www.karlstrauss.com/location/4s-ranch/).
-
-## About the competition
-
-The 48 Hour Film Project is the longest running and most popular timed film-making competition. Amateur and professional teams around the world make movies in a weekend, which are later given a premier in a real cinema. San Diego's competition takes place August 15-17th, 2024.
-
-Team registration for the [San Diego 48 Hour Film Project](/) will open at midnight the night before the mixer, on Monday June 9th.
-
-[Find out more about the 48](/)
+Even if you're only curious about film-making, we would love to see you from 6-9pm on Monday, June 9th at [Karl Strauss 4S Ranch](https://www.karlstrauss.com/location/4s-ranch/).

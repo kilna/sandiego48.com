@@ -2,10 +2,12 @@
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 publishedDate: {{ .Date }}
-summary: 
+summary: >
+  # Short summary (Twitter length)
 draft: false
 params:
   image: image.png
+  featured: false
   event_start: 
   event_end: 
   location_name: 
@@ -19,6 +21,14 @@ params:
   location_map_url: 
   facebook_event_url: 
   calendarlink_url: 
+  # Content for different formats
+  content:
+    extended_summary: >
+      # Extended summary (2-3 paragraphs)
+    about_competition: >
+      # About the competition section
+    full_content: >
+      # Full content (all sections combined)
 ---
 
 

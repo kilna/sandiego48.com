@@ -1,6 +1,6 @@
----
+baseURL: "http://localhost:1313/"
+title: "San Diego 48 Hour Film Project"
 languageCode: en-us
-title: San Diego 48 Hour Film Project
 
 params:
   facebook_group: sandiego48hfp
@@ -9,10 +9,34 @@ params:
   instagram: sd48hfp
   tiktok: sd48hfp
   threads: sd48hfp
+  #youtube: sandiego48hourfilmproject42
   discord_server: San Diego 48 Hour Film Project
   discord_server_invite: https://discord.gg/hMMTY5PSXD
   copyright: Cine Diego LLC
   copyright_url: https://cinediego.com
+
+outputs:
+  page: ["HTML", "plain", "simple"]
+  home: ["HTML"]
+  section: ["HTML"]
+  taxonomy: ["HTML"]
+  term: ["HTML"]
+
+outputFormats:
+  plain:
+    mediaType: "text/plain"
+    baseName: "plain"
+    isPlainText: true
+    permalinkable: false
+  simple:
+    mediaType: "text/html"
+    baseName: "simple"
+    isPlainText: false
+    permalinkable: false
+
+mediaTypes:
+  "text/plain":
+    suffixes: ["txt"]
 
 menus:
   main:

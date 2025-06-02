@@ -16,18 +16,7 @@
   <h3>
     <a href="{{ $link }}">{{ .Title }}</a>
   </h3>
-  <div class="timespan">
-  <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $start_time }}">
-    {{- time.Format "Mon January 2, 2006 3:04 PM" $start_time -}}
-  </time> -
-  <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $end_time }}">
-    {{- if compare.Eq $start_time.Day $end_time.Day -}}
-      {{ time.Format "3:04 PM" $end_time -}}
-    {{ else -}}
-      <br/>{{ time.Format "Mon January 2, 2006 3:04 PM" $end_time -}}
-    {{ end }}
-  </time>
-  </div>
-  {{ if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end }}
+  {{ partial "event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
+  {{- if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end -}}
 </article>
 {{ end }} 

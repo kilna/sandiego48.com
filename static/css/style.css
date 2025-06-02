@@ -517,21 +517,6 @@ footer a {
   color: var(--48-darken-more);
 }
 
-footer nav.social {
-  max-width: 65rem;
-  margin: auto;
-} 
-
-footer nav.social a {
-  display: inline-block;
-  background-color: var(--48-darken-more);
-  color: var(--48-orange);
-  padding: 0.5rem;
-  margin: 0.125rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-}
-
 .clear {
   clear: both;
 }
