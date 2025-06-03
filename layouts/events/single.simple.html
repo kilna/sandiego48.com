@@ -1,94 +1,69 @@
-{{ $styles := dict
-  "details" "margin: 0;"
-  "heading" "margin: 0;"
-  "a" "color: #000; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; text-decoration-color: #888;"
-  "button" "display: inline-block; padding: .5rem .75rem; background: #84a; color: white; text-decoration: none; border-radius: 0.5rem; margin: 0 0 0.5rem 0.5rem;"
--}}
-{{ $event_page_url := .RelPermalink }}
-{{ $timelink := .RelPermalink }}
-{{ if .Params.calendarlink_url }}
-  {{ $timelink = .Params.calendarlink_url }}
-{{ end }}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<body style="font-family: Arial, sans-serif; max-width: 600px; margin: 2rem auto; background-color: #fff;">
+<body style="font-family: Roboto, sans-serif; max-width: 600px; margin: 0 auto; font-size: 16px;background-color: #69388e;">
 
-{{ with (.Resources.Get .Params.image) -}}
-  {{ with .Resize "600x q80" -}}
-  {{/* <img src="data:{{ .MediaType }};base64,{{ .Content | base64Encode }}" alt="{{ $.Title }}" style="margin: 1rem 0; border-radius: 0.5rem; max-width: 100%; height: auto;"/> */}}
-  <img src="{{ .Permalink }}" alt="{{ $.Title }}" style="margin: 1rem 0; border-radius: 0.5rem; max-width: 100%; height: auto;"/>
-  {{ end -}}
-{{ end -}}
+<div style="text-align: center; margin: 0; padding: 32px;background-color: #EDAD28;">
+  <h1 style="font-size: 1rem; margin: 0; color: #fff;">{{ .Title }}</h1>
+</div>
 
-<h1>{{ .Title }}</h1>
+<div style="background-color: #fff; margin: 0; padding: 30px;">
 
-<div style="font-weight: bold;">{{ .Summary | markdownify }}</div>
+<div>{{ .Summary | markdownify }}</div>
 
 <div>{{ .Content }}</div>
 
 <hr/>
 <h3>When ⏳</h3>
 
-<p>
-   <a href="{{ $timelink }}" style="{{ $styles.a | safeCSS }}">
+<blockquote>
   {{- partial "event-timespan.html" (
     dict
       "start_time" (time.AsTime .Params.event_start)
       "end_time" (time.AsTime .Params.event_end)
       "plain" true
-    ) -}}
-  </a>
-</p>
+    ) -}}<br/>
+    {{ if .Params.calendarlink_url }}
+    <a href="{{ .Params.calendarlink_url }}">
+      Add to Calendar
+    </a> &nbsp; 📅
+    {{ end }}
+    </blockquote>
 
 <h3>Where 🌐</h3>
 
-<p>
-<a href="{{ .Params.location_url }}" style="{{ $styles.a | safeCSS }}">{{ .Params.location_name }}</a><br/>
+<blockquote>
+<a href="{{ .Params.location_url }}">{{ .Params.location_name }}</a><br/>
 {{ if .Params.location_details -}}
 {{ .Params.location_details }}<br/>
 {{- end }}
-{{- if .Params.location_map_url -}}
-  <a href="{{ .Params.location_map_url }}" style="{{ $styles.a | safeCSS }}">
-    {{- .Params.location_address -}} 📍
-  </a><br/>
-{{- else -}}
-  {{- .Params.location_address -}}<br/>
-{{- end -}}
-</p>
+<br/>
+{{- .Params.location_address -}}
+{{ if .Params.location_map_url }}<br/>
+<a href="{{ .Params.location_map_url }}">
+  Google Map
+</a> &nbsp;📍
+{{ end }}
+</blockquote>
 
 <h3>Event Links 🔗</h3>
 
-<div>
-<a href="{{ .RelPermalink }}" style="{{ $styles.a | safeCSS }}">
-  ➡️ Event Page at SanDiego48.com
+<blockquote>
+➡️ <a href="{{ .RelPermalink }}">
+  Event Page at SanDiego48.com
 </a><br/>
 {{ if .Params.facebook_event_url }}
-<a href="{{ .Params.facebook_event_url }}" style="{{ $styles.a | safeCSS }}">
-  👍 RSVP on Facebook
+👍 <a href="{{ .Params.facebook_event_url }}">
+  RSVP on Facebook
 </a><br/>
 {{ end }}
-{{ if .Params.calendarlink_url }}
-<a href="{{ .Params.calendarlink_url }}" style="{{ $styles.a | safeCSS }}">
-  📅 Add to Calendar
-</a><br/>
-{{ end }}
-{{ if .Params.location_map_url }}
-<a href="{{ .Params.location_map_url }}" style="{{ $styles.a | safeCSS }}">
-  📍 Google Map
-</a><br/>
-{{ end }}
-</div>
-<br/>
-
-{{ if .Params.org_info }}
-<hr/>
-<div>{{ .Params.org_info | markdownify }}</div>
-{{ end }}
+</blockquote>
 
 <hr/>
 <h3>Find or Follow Us Online ❤️</h3>
@@ -107,25 +82,33 @@
 ) */}}
 
 <div>
-🌐 <a href="https://sandiego48.com" style="{{ $styles.a | safeCSS }}">SanDiego48.com</a>
-✉️ <a href="https://sandiego48.com/go/newsletter" style="{{ $styles.a | safeCSS }}">Newsletter</a>
+{{ with .Site.Params -}}
+👍<a href="https://facebook.com/@{{ .facebook_page }}">Facebook</a> &nbsp;
+📸<a href="https://instagram.com/{{ .instagram }}">Instagram</a> &nbsp;
+🧵<a href="https://threads.net/@{{ .threads }}">Threads</a> &nbsp;
+📱<a href="https://tiktok.com/@{{ .tiktok }}">TikTok</a> &nbsp;
+🐦<a href="https://twitter.com/{{ .twitter }}">Twitter</a> &nbsp;
+{{- end -}}
+<br/>
+🌐<a href="https://sandiego48.com">SanDiego48.com</a> &nbsp;
 {{ if .Site.Params.facebook_group -}}
-👥 <a href="https://facebook.com/groups/{{ .Site.Params.facebook_group }}" style="{{ $styles.a | safeCSS }}">Facebook Group</a>
+👥<a href="https://facebook.com/groups/{{ .Site.Params.facebook_group }}">Facebook Group</a> &nbsp;
 {{ end }}
 {{ if .Site.Params.discord_server -}}
-💬 <a href="{{ .Site.Params.discord_server_invite }}" style="{{ $styles.a | safeCSS }}">Discord Server</a>
+💬<a href="{{ .Site.Params.discord_server_invite }}">Discord Server</a>
 {{ end }}
+</div>
+
 <br/>
 <br/>
-{{ with .Site.Params -}}
-<b>@sd8hfp</b> → 
-📸<a href="https://instagram.com/{{ .instagram }}" style="{{ $styles.a | safeCSS }}">Instagram</a>
-👍<a href="https://facebook.com/@{{ .facebook_page }}" style="{{ $styles.a | safeCSS }}">Facebook</a>
-🧵<a href="https://threads.net/@{{ .threads }}" style="{{ $styles.a | safeCSS }}">Threads</a>
-📱<a href="https://tiktok.com/@{{ .tiktok }}" style="{{ $styles.a | safeCSS }}">TikTok</a>
-🐦<a href="https://twitter.com/{{ .twitter }}" style="{{ $styles.a | safeCSS }}">Twitter</a>
-📺<a href="https://youtube.com/@{{ .youtube }}" style="{{ $styles.a | safeCSS }}">YouTube</a>
-{{- end -}}
+
+{{ with (.Resources.Get .Params.image) -}}
+  {{ with .Resize "600x q80" -}}
+  {{/* <img src="data:{{ .MediaType }};base64,{{ .Content | base64Encode }}" alt="{{ $.Title }}" style="margin: 1rem 0; border-radius: 0.5rem; max-width: 100%; height: auto;"/> */}}
+  <img src="{{ .Permalink }}" alt="{{ $.Title }}" style="margin: 1rem 0; border-radius: 0.5rem; max-width: 100%; height: auto;"/>
+  {{ end -}}
+{{ end -}}
+
 </div>
 
 </body>
