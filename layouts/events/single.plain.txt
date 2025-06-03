@@ -27,7 +27,7 @@ Location Details: {{ partial "plaintext.txt" .Params.location_details -}}
 LINKS 🔗
 
 ➡️ Event Details:
-   https://sandiego48.com/{{ .RelPermalink }}
+   https://sandiego48.com{{ .RelPermalink }}
 {{- if .Params.facebook_event_url }}
 👍 RSVP on Facebook:
    {{ .Params.facebook_event_url }}
@@ -40,7 +40,7 @@ LINKS 🔗
 ——————————
 FIND OR FOLLOW US ONLINE ❤️
 
-@sd8hfp → 👍 Facebook 📸 Instagram 🧵 Threads 🐦 Twitter 📺 YouTube 📱 TikTok
+@sd8hfp → 👍Facebook 📸Instagram 🧵Threads 🐦Twitter 📺YouTube 📱TikTok
 
 🌐 Website
    https://sandiego48.com
