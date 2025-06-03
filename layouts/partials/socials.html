@@ -129,7 +129,7 @@
     {{- if $show_icon -}}
     {{- partial "icon.html" (
       dict
-        "icon" "facebook-group"
+        "icon" "group"
         "color" $color
         "px" $px
         "class" (cond $embed "" $img_class)
@@ -260,7 +260,7 @@
     ) -}}
     {{- end -}}
     {{- if $show_emoji -}}
-      <span {{ $text_atttibs }}>▶️</span>
+      <span {{ $text_atttibs }}>📺</span>
     {{- end -}}
     {{- if $show_text -}}
       <span {{ $text_atttibs }}>YouTube</span>

@@ -31,6 +31,7 @@
 
 <div>{{ .Content }}</div>
 
+<hr/>
 <h3>When ⏳</h3>
 
 <p>
@@ -82,11 +83,14 @@
 </a><br/>
 {{ end }}
 </div>
+<br/>
 
 {{ if .Params.org_info }}
+<hr/>
 <div>{{ .Params.org_info | markdownify }}</div>
 {{ end }}
 
+<hr/>
 <h3>Find or Follow Us Online ❤️</h3>
 
 {{/* partial "socials.html" (dict 
@@ -103,20 +107,25 @@
 ) */}}
 
 <div>
-📸 Instagram 🧵 Threads 🐦 Twitter 📱 TikTok → <b>@sd8hfp</b><br/>
-🌐 <a href="{{ .Site.BaseURL }}">SanDiego48.com</a> &nbsp;
-✉️ <a href="{{ .Site.BaseURL }}/go/newsletter">Newsletter</a> &nbsp;
-{{ with .Site.Params -}}
-{{ if .facebook_page -}}
-👍 <a href="https://facebook.com/{{ .facebook_page }}">Facebook Page</a> &nbsp;
-{{ end -}}
-{{ if .facebook_group -}}
-👥 <a href="https://facebook.com/groups/{{ .facebook_group }}">Facebook Group</a> &nbsp;
-{{ end -}}
-{{ if .youtube -}}
-📺 <a href="https://youtube.com/{{ .youtube }}">YouTube</a> &nbsp;
-{{ end -}}
+🌐 <a href="https://sandiego48.com" style="{{ $styles.a | safeCSS }}">SanDiego48.com</a>
+✉️ <a href="https://sandiego48.com/go/newsletter" style="{{ $styles.a | safeCSS }}">Newsletter</a>
+{{ if .Site.Params.facebook_group -}}
+👥 <a href="https://facebook.com/groups/{{ .Site.Params.facebook_group }}" style="{{ $styles.a | safeCSS }}">Facebook Group</a>
 {{ end }}
+{{ if .Site.Params.discord_server -}}
+💬 <a href="{{ .Site.Params.discord_server_invite }}" style="{{ $styles.a | safeCSS }}">Discord Server</a>
+{{ end }}
+<br/>
+<br/>
+{{ with .Site.Params -}}
+<b>@sd8hfp</b> → 
+📸<a href="https://instagram.com/{{ .instagram }}" style="{{ $styles.a | safeCSS }}">Instagram</a>
+👍<a href="https://facebook.com/@{{ .facebook_page }}" style="{{ $styles.a | safeCSS }}">Facebook</a>
+🧵<a href="https://threads.net/@{{ .threads }}" style="{{ $styles.a | safeCSS }}">Threads</a>
+📱<a href="https://tiktok.com/@{{ .tiktok }}" style="{{ $styles.a | safeCSS }}">TikTok</a>
+🐦<a href="https://twitter.com/{{ .twitter }}" style="{{ $styles.a | safeCSS }}">Twitter</a>
+📺<a href="https://youtube.com/@{{ .youtube }}" style="{{ $styles.a | safeCSS }}">YouTube</a>
+{{- end -}}
 </div>
 
 </body>
