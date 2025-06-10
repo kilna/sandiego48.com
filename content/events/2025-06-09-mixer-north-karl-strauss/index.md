@@ -9,8 +9,8 @@ publishDate: 2025-05-29T00:00:00-07:00
 draft: false
 params:
   image: flyer.png
-  featured: true
-  event_start: 2025-06-09T18:00:00-07:00
+  featured: false
+  event_start: 2025-06-09T15:00:00-07:00
   event_end: 2025-06-09T21:00:00-07:00
   location_name: Karl Strauss Brewing Company
   location_details: A child and dog friendly brewpub with non-beer drink options
