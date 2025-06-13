@@ -1,23 +1,21 @@
 {{ partial "plaintext.txt" (.Title | htmlUnescape) | upper }}
-────────────────────────────────
+——————————
 
 {{ partial "plaintext.txt" .Summary }}
 
-WHEN ⏳
-{{- with partial "event-timespan.html" (
-    dict
-      "start_time" (time.AsTime .Params.event_start)
-      "end_time" (time.AsTime .Params.event_end)
-      "plain" true
-  ) }}
-   {{ . | replaceRE "\n" "\n   " -}}
-{{- end }}
-
-WHERE 🌐 
-   {{ .Params.location_name }}
-   {{ partial "plaintext.txt" .Params.location_address }}
+WHEN  ⏳ {{ with partial "event-timespan.html" (
+              dict
+                "start_time" (time.AsTime .Params.event_start)
+                "end_time" (time.AsTime .Params.event_end)
+                "plain" true
+        ) -}}
+        {{ . | replaceRE "\n" "\n        " | strings.TrimLeft " \t\n" }}
+        {{- end }}
+WHERE 🌐 {{ .Params.location_name }}
+         {{ partial "plaintext.txt" .Params.location_address }}
 {{- if .Params.location_map_url }}
-   Google Map: {{ .Params.location_map_url }} 📍
+         Google Map 📍
+         {{ .Params.location_map_url }}
 {{ end }}
 {{ partial "plaintext.txt" .Content }}
 {{- if .Params.location_details }}
@@ -25,27 +23,21 @@ WHERE 🌐
 Location Details: {{ partial "plaintext.txt" .Params.location_details -}}
 {{ end }}
 
-────────────────────────────────
-
+——————————
 LINKS 🔗
 
 ➡️ Event Details:
-    {{ .RelPermalink }}
+   https://sandiego48.com{{ .RelPermalink }}
 {{- if .Params.facebook_event_url }}
 👍 RSVP on Facebook:
-    {{ .Params.facebook_event_url }}
+   {{ .Params.facebook_event_url }}
 {{- end -}}
 {{- if .Params.calendarlink_url }}
 🗓 Add To Calendar:
-    {{ .Params.calendarlink_url }}
-{{- end -}}
-{{- if .Params.location_url }}
-🏛️ Location Info:
-    {{ .Params.location_url }}
+   {{ .Params.calendarlink_url }}
 {{- end }}
 
-────────────────────────────────
-
+——————————
 FIND OR FOLLOW US ONLINE ❤️
 
 {{ partial "socials.txt" . }}
@@ -55,4 +47,4 @@ FIND OR FOLLOW US ONLINE ❤️
 {{ if .Params.org_info -}}
 {{ partial "plaintext.txt" .Params.org_info }}
 {{ end }}
-🧠 Learn more at {{ .Site.BaseURL }}
+🧠 Learn more at https://sandiego48.com
