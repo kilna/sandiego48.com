@@ -1,12 +1,16 @@
+{{ $redirectURL := .Site.BaseURL }}
+{{ with .Params.redirect_url }}
+  {{ $redirectURL = . }}
+{{ end }}
 <html>
 <head>
 <title>{{ .Params.title }}</title>
-<meta http-equiv="refresh" content="0; url={{ .Params.redirect_url }}">
+<meta http-equiv="refresh" content="2; url={{ $redirectURL }}">
 <script>
-location.href = '{{ .Params.redirect_url }}';
+location.href = '{{ $redirectURL }}';
 </script>
 </head>
 <body>
-<p>Forwarding to <a href="{{ .Params.redirect_url }}">{{ .Params.redirect_url }}</a></p>
+<p>Forwarding to <a href="{{ $redirectURL }}">{{ $redirectURL }}</a></p>
 </body>
 </html>

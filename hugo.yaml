@@ -3,15 +3,20 @@ title: "San Diego 48 Hour Film Project"
 languageCode: en-us
 
 params:
-  facebook_group: sandiego48hfp
-  facebook_page: sd48hfp
+  facebook: sd48hfp
   twitter: sd48hfp
   instagram: sd48hfp
   tiktok: sd48hfp
   threads: sd48hfp
-  #youtube: sandiego48hourfilmproject42
+  youtube: sd48hfp
+  youtube: sd48hfp
+  facebook_group: sandiego48hfp
   discord_server: San Diego 48 Hour Film Project
   discord_server_invite: https://discord.gg/hMMTY5PSXD
+  site_link_text: SanDiego48.com
+  email: sandiego@48hourfilm.com
+  phone: +1 619-48-321-48
+  phone_can_text: true
   copyright: Cine Diego LLC
   copyright_url: https://cinediego.com
 

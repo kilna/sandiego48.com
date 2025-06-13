@@ -5,6 +5,12 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  {{ if hugo.IsServer }}
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  {{ end }}
 
   <meta name="facebook-domain-verification" content="hb9s09smroq15gul1uvv8f566jusl7" />
 
@@ -16,7 +22,11 @@
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" type="text/css" media="all" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+  {{ if hugo.IsServer }}
+  <link rel="stylesheet" href="/css/style.css?v={{ now.Unix }}" type="text/css" media="all" />
+  {{ else }}
   <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+  {{ end }}
   
   <!--
   <script src="/js/parallax.min.js"></script>

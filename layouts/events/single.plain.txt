@@ -48,21 +48,8 @@ LINKS 🔗
 
 FIND OR FOLLOW US ONLINE ❤️
 
-📸 Instagram 🧵 Threads 🐦 Twitter 📱 TikTok → @sd8hfp
+{{ partial "socials.txt" . }}
 
-🌐 SanDiego48.com: {{ .Site.BaseURL }}
-✉️ Newsletter: {{ .Site.BaseURL }}/go/newsletter
-{{ with .Site.Params -}}
-{{ if .facebook_page -}}
-👍 Facebook Page: https://facebook.com/{{ .facebook_page }}
-{{ end -}}
-{{ if .facebook_group -}}
-👥 Facebook Group: https://facebook.com/groups/{{ .facebook_group }}
-{{ end -}}
-{{ if .youtube -}}
-📺 YouTube: https://youtube.com/{{ .youtube }}
-{{ end -}}
-{{ end }}
 ────────────────────────────────
 
 {{ if .Params.org_info -}}

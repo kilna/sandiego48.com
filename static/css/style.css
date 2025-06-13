@@ -494,6 +494,14 @@ a.button:hover {
   box-shadow: 0 0 1rem 1rem var(--48-lighten);
 }
 
+a.button img {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 0.5rem 0 0;
+  vertical-align: middle;
+  display: inline-block;
+}
+
 .expired {
   opacity: 0.5;
 }
@@ -583,3 +591,32 @@ footer a {
   color: var(--48-darken-more);
   padding-top: 0.5rem 0;
 }
+
+a.header-social-link {
+  background: var(--48-darken-most) !important;
+  color: var(--48-white) !important;
+  transition: background-color 0.2s ease-in-out;
+  margin: 0.25rem !important;
+  padding: 0.125rem 0.5rem !important;
+  border: 0 !important;
+}
+
+a:hover.header-social-link {
+  color: var(--48-white) !important;
+  background: var(--48-black) !important;
+}
+
+a.footer-social-link {
+  background: var(--48-lighten) !important;
+  color: var(--48-black) !important;
+  transition: background-color 0.2s ease-in-out;
+  margin: 0.25rem !important;
+  padding: 0.125rem 0.5rem !important;
+  border: 0 !important;
+}
+
+a:hover.footer-social-link {
+  color: var(--48-black) !important;
+  background: var(--48-white) !important;
+}
+

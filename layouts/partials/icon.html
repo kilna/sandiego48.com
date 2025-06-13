@@ -8,7 +8,8 @@
 {{ $img := resources.Get (printf "icons/%s/%s.png" $color $icon) -}}
 {{ if not $img }}{{ return }}{{ end -}}
 {{ if and .px (ne .px "") -}}
-  {{ $img = $img.Resize (printf "%sx" .px) -}}
+  {{ $px := .px | int -}}
+  {{ $img = $img.Resize (printf "%dx" $px) -}}
 {{ end -}}
 {{ $src := $img.RelPermalink -}}
 {{ if .embed -}}

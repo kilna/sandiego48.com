@@ -1,18 +1,22 @@
+{{ $enable_socials := .Params.enable_socials | default true }}
 </main>
 
 <div class="clear"></div>
 
 <footer>
+  {{ if $enable_socials -}}
   {{ partial "socials.html" (dict 
-    "class" "footer-socials"
-    "bg_color" "#0004"
-    "size" 0.8
+    "class" "footer-social"
+    "size" 0.75
     "show_text" true
     "embed" false
     "enable_home" false
     "enable_newsletter" true
+    "enable_contact" true
+    "show_id" true
     "Site" .Site
   ) }}
+  {{- end }}
   <p>&copy;{{ dateFormat "2006" now }} <a href="{{ .Site.Params.copyright_url }}"/>{{ .Site.Params.copyright }}</a></p>
 </footer>
 

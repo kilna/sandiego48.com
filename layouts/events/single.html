@@ -6,7 +6,7 @@
   <div class="infoblock">
     {{ if .Params.facebook_event_url -}}
       <a href="{{ .Params.facebook_event_url }}" class="button">
-        {{ partial "icon.html" (dict "icon" "facebook" "color" "black" "px" "24") }}
+        {{ partial "icon.html" (dict "icon" "facebook" "color" "black" "px" "32") }}
         RSVP to Facebook Event
       </a>
     {{ end -}}
@@ -16,7 +16,7 @@
     {{ partial "event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
     {{ if .Params.calendarlink_url -}}
       <a href="{{ .Params.calendarlink_url }}" class="button">
-        {{ partial "icon.html" (dict "icon" "calendar" "color" "black" "px" "24") }}
+        {{ partial "icon.html" (dict "icon" "calendar" "color" "black" "px" "32") }}
         Add to Calendar
       </a>
     {{ end -}}
@@ -49,7 +49,7 @@
     {{ end -}}
     {{ if .Params.location_map_url -}}
       <a href="{{ .Params.location_map_url }}" class="button">
-      {{ partial "icon.html" (dict "icon" "location" "color" "black" "px" "24") }}
+      {{ partial "icon.html" (dict "icon" "location" "color" "black" "px" "32") }}
       Google Map</a>
     {{ end -}}
     {{ if .Params.location_socials -}}

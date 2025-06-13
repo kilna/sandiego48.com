@@ -89,34 +89,31 @@
 
 <h3>Find or Follow Us Online ❤️</h3>
 
-{{/* partial "socials.html" (dict 
+{{ partial "socials.html" (dict 
   "nav_style" "text-align: left !important;"
-  "bg_color" "#ccc"
+  "bg_color" "#eee"
+  "color" "#000"
   "size" 0.8
   "show_text" true
+  "enable_headings" true
   "show_emoji" true
   "show_icon" false
   "embed" true
   "enable_home" true
   "enable_newsletter" true
   "Site" .Site
-) */}}
+) }}
 
-<div>
-📸 Instagram 🧵 Threads 🐦 Twitter 📱 TikTok → <b>@sd8hfp</b><br/>
-🌐 <a href="{{ .Site.BaseURL }}">SanDiego48.com</a> &nbsp;
-✉️ <a href="{{ .Site.BaseURL }}/go/newsletter">Newsletter</a> &nbsp;
-{{ with .Site.Params -}}
-{{ if .facebook_page -}}
-👍 <a href="https://facebook.com/{{ .facebook_page }}">Facebook Page</a> &nbsp;
+<br/>
+<br/>
+
+{{ with (.Resources.Get .Params.image) -}}
+  {{ with .Resize "600x q80" -}}
+  {{/* <img src="data:{{ .MediaType }};base64,{{ .Content | base64Encode }}" alt="{{ $.Title }}" style="margin: 1rem 0; border-radius: 0.5rem; max-width: 100%; height: auto;"/> */}}
+  <img src="{{ .Permalink }}" alt="{{ $.Title }}" style="margin: 1rem 0; border-radius: 0.5rem; max-width: 100%; height: auto;"/>
+  {{ end -}}
 {{ end -}}
-{{ if .facebook_group -}}
-👥 <a href="https://facebook.com/groups/{{ .facebook_group }}">Facebook Group</a> &nbsp;
-{{ end -}}
-{{ if .youtube -}}
-📺 <a href="https://youtube.com/{{ .youtube }}">YouTube</a> &nbsp;
-{{ end -}}
-{{ end }}
+
 </div>
 
 </body>
