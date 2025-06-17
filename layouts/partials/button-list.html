@@ -1,0 +1,31 @@
+{{- $tag := .tag | default "div" -}}
+{{- $collapse := .collapse -}}
+{{- $show_text := .show_text -}}
+{{- $px := .px -}}
+{{- $class := .class | default "button-list" -}}
+{{- if ne $class "button-list" -}}
+  {{- $class = printf "button-list %s" $class -}}
+{{- end -}}
+{{- $button_class := .button_class | default "button" -}}
+{{- if ne $button_class "button" -}}
+  {{- $button_class = printf "button %s" $button_class -}}
+{{- end -}}
+
+{{- printf "<%s class=\"%s\">" $tag $class | safeHTML -}}
+
+{{- range .buttons -}}
+  {{- partial "button.html" (dict
+    "url" .url
+    "target" .target
+    "text" .text
+    "icon" .icon
+    "class" $button_class
+    "px" $px
+    "collapse" $collapse
+    "show_text" $show_text
+    "alt" (default .alt .icon)
+    "title" (default .title .text)
+  ) -}}
+{{- end -}}
+
+{{- printf "</%s>" $tag | safeHTML -}}

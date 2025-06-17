@@ -1,20 +1,19 @@
 {{ $icon := .icon | default "link" -}}
-{{ $color := .color | default "white" -}}
 {{ $alt := .alt | default $icon -}}
 {{ $title := .title -}}
-{{ $style := .style | default "height: 1rem; width: auto; vertical-align: middle;" | safeCSS -}}
-{{ $class := .class | default "icon" -}}
+{{- $class := cond (not .class) "icon" (printf "icon %s" (default "" .class)) -}}
 
-{{ $img := resources.Get (printf "icons/%s/%s.png" $color $icon) -}}
+{{ $img := resources.Get (printf "icons/%s.png" $icon) -}}
 {{ if not $img }}{{ return }}{{ end -}}
 {{ if and .px (ne .px "") -}}
   {{ $px := .px | int -}}
   {{ $img = $img.Resize (printf "%dx" $px) -}}
 {{ end -}}
 {{ $src := $img.RelPermalink -}}
+
 {{ if .embed -}}
   {{ $src = printf "data:image/png;base64,%s" ($img.Content | base64Encode) -}}
 {{ end -}}
 
-<img src="{{ $src | safeURL }}" class="icon {{ $class }}" style="{{ $style }}"
-  alt="{{ $alt }}" {{- with .title }} title="{{ . }}"{{ end }}/>
+<img src="{{ $src | safeURL }}" {{ with .title }}title="{{ . }}" {{ end -}}
+  class="{{ $class }}" alt="{{ $alt }}"/>

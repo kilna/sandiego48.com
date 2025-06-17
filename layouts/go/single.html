@@ -1,3 +1,4 @@
+{{ $trackerURL := printf "http://localhost/log?qr=%s" .File.BaseFileName }}
 {{ $redirectURL := .Site.BaseURL }}
 {{ with .Params.redirect_url }}
   {{ $redirectURL = . }}
@@ -5,12 +6,16 @@
 <html>
 <head>
 <title>{{ .Params.title }}</title>
-<meta http-equiv="refresh" content="2; url={{ $redirectURL }}">
-<script>
-location.href = '{{ $redirectURL }}';
-</script>
 </head>
-<body>
-<p>Forwarding to <a href="{{ $redirectURL }}">{{ $redirectURL }}</a></p>
+<body style="background-color: #fff; color: #000;">
+<noscript>
+  <img src="{{ $trackerURL }}" width="1" height="1" style="display:none;" alt=""/>
+  <p>Forwarding to <a href="{{ $redirectURL }}">{{ .Title }}</a></p>
+  <meta http-equiv="refresh" content="2; url={{ $redirectURL }}">
+</noscript>
+<script>
+  location.href = '{{ $redirectURL }}';
+  fetch('{{ $trackerURL }}').catch(() => {});   
+</script>
 </body>
 </html>

@@ -1,30 +1,37 @@
-{{ partial "header.html" . }}
+{{- partial "stylesheet.html" "events" -}}
+{{- partial "stylesheet.html" "infoblock" -}}
 
-<h1>{{ .Site.Title }}<br/>{{ .Title }}</h1>
+<h1><div class="site-title">{{ .Site.Title }}</div>{{ .Title }}</h1>
 
 <div class="event">
   <div class="infoblock">
-    {{ if .Params.facebook_event_url -}}
-      <a href="{{ .Params.facebook_event_url }}" class="button">
-        {{ partial "icon.html" (dict "icon" "facebook" "color" "black" "px" "32") }}
-        RSVP to Facebook Event
-      </a>
-    {{ end -}}
+    {{- partial "button.html" (dict
+      "url" .Params.facebook_event_url
+      "text" "RSVP to Facebook Event"
+      "icon" "facebook"
+    ) -}}
     <h3>Schedule</h3>
     {{ $start_time := time.AsTime .Params.event_start -}}
     {{ $end_time := time.AsTime .Params.event_end -}}
     {{ partial "event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
     {{ if .Params.calendarlink_url -}}
-      <a href="{{ .Params.calendarlink_url }}" class="button">
-        {{ partial "icon.html" (dict "icon" "calendar" "color" "black" "px" "32") }}
-        Add to Calendar
-      </a>
+      {{- partial "button.html" (dict
+        "url" .Params.calendarlink_url
+        "text" "Add to Calendar"
+        "icon" "calendar"
+      ) -}}
     {{ end -}}
     <h3>Location</h3>
     {{ if .Params.location_logo -}}
-      {{ if .Params.location_url }}<a href="{{ .Params.location_url }}">{{ end -}}
-      <img src="{{ .Params.location_logo }}"/>
-      {{ if .Params.location_url }}</a>{{ end -}}
+      {{ $logo := .Resources.Get .Params.location_logo -}}
+      {{ if $logo -}}
+        {{ if and $logo.MediaType (ne $logo.MediaType.SubType "svg") -}}
+          {{ $logo = $logo.Resize "250x" -}}
+        {{ end -}}
+        {{ if .Params.location_url }}<a href="{{ .Params.location_url }}">{{ end -}}
+          <img src="{{ $logo.RelPermalink }}"/>
+        {{ if .Params.location_url }}</a>{{ end -}}
+      {{ end -}}
     {{ end -}}
     {{ if .Params.location_name -}}
       <h4>
@@ -34,9 +41,19 @@
         {{ .Params.location_name }}
       {{ end -}}
       </h4>
+      {{- partial "button-list.html" (dict
+        "class" "social"
+        "show_text" false
+        "buttons" .Params.location_socials
+      ) -}}
       {{ if .Params.location_details -}}
         <p>{{ .Params.location_details }}</p>
       {{ end -}}
+      {{- partial "button-list.html" (dict
+        "class" "links"
+        "show_text" true
+        "buttons" .Params.location_links
+      ) -}}
     {{ end -}}
     {{ if .Params.location_address -}}
       <p>
@@ -48,16 +65,40 @@
       </p>
     {{ end -}}
     {{ if .Params.location_map_url -}}
-      <a href="{{ .Params.location_map_url }}" class="button">
-      {{ partial "icon.html" (dict "icon" "location" "color" "black" "px" "32") }}
-      Google Map</a>
+      {{- partial "button.html" (dict
+        "url" .Params.location_map_url
+        "text" "Google Map"
+        "icon" "location"
+      ) -}}
     {{ end -}}
-    {{ if .Params.location_socials -}}
-    <hr/>
-    <p>{{ .Params.location_name }} social media:</p>
-    {{ range .Params.location_socials -}}
-      <a href="{{ .url }}" class="button">{{ .name }}</a>
+    {{ if .Params.partner_name -}}
+    <h3>Partner</h3>
+    {{ if .Params.partner_logo -}}
+      {{ $logo := .Resources.Get .Params.partner_logo -}}
+      {{ if $logo -}}
+        {{ if and $logo.MediaType (ne $logo.MediaType.SubType "svg") -}}
+          {{ $logo = $logo.Resize "250x" -}}
+        {{ end -}}
+        {{ if .Params.partner_url }}<a href="{{ .Params.partner_url }}">{{ end -}}
+          <img src="{{ $logo.RelPermalink }}"/>
+        {{ if .Params.partner_url }}</a>{{ end -}}
+      {{ end -}}
     {{ end -}}
+    <h4><a href="{{ .Params.partner_url }}">{{ .Params.partner_name }}</a></h4>
+    {{- partial "button-list.html" (dict
+      "class" "social"
+      "show_text" false
+      "buttons" .Params.partner_socials
+    ) -}}
+    {{ if .Params.partner_details -}}
+      <p>{{ .Params.partner_details | markdownify }}</p>
+    {{ end -}}
+    {{- partial "button-list.html" (dict
+      "class" "links"
+      "show_text" true
+      "collapse" false
+      "buttons" .Params.partner_links
+    ) -}}
     {{ end -}}
   </div>
 
@@ -76,5 +117,3 @@
   </div>
 
 </div>
-
-{{ partial "footer.html" . }}

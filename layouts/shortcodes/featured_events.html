@@ -1,8 +1,0 @@
-{{ $featured_events := where (where .Site.RegularPages "Section" "events") ".Params.featured" true }}
-{{ if $featured_events }}
-<div class="index-container pure-g">
-<div class="featured-events pure-u-1">
-{{ partial "event_list.html" $featured_events }}
-</div>
-</div>
-{{ end }}

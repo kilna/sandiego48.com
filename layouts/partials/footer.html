@@ -5,10 +5,9 @@
 
 <footer>
   {{ if $enable_socials -}}
-  {{ partial "socials.html" (dict 
-    "class" "footer-social"
+  {{ partial "common-buttons.html" (dict 
     "show_text" true
-    "enable_home" false
+    "enable_home" true
     "enable_newsletter" true
     "enable_contact" true
     "show_id" true

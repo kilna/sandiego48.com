@@ -1,4 +1,4 @@
-{{ partial "header.html" . }}
+{{- partial "stylesheet.html" "events" -}}
 
 <h1>{{ .Title }}</h1>
  
@@ -16,5 +16,3 @@
 <h2>Prior Year Events</h2>
 <br/>
 {{ partial "event_list.html" $priorYearEvents }}
-
-{{ partial "footer.html" . }}

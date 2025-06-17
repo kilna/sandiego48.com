@@ -1,0 +1,54 @@
+{{- $now := now -}}
+{{- $all_events := where .Site.RegularPages "Section" "events" -}}
+{{- $featured_events := slice -}}
+{{- range $all_events -}}
+  {{- if and .Params.featured .Params.event_end -}}
+    {{- $end_time := time.AsTime .Params.event_end -}}
+    {{- if $end_time.After $now -}}
+      {{- $featured_events = $featured_events | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if $featured_events -}}
+{{ partial "stylesheet.html" "events" }}
+<style>
+  h2.featured-events {
+    text-align: center;
+    margin: 0 auto;
+    padding: 0rem;
+    margin: 0 auto;
+    background-color: var(--48-purple);
+    color: var(--48-white);
+  }
+  .featured-event {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0rem;
+    background-color: var(--48-orange);
+  }
+</style>
+<h2 class="featured-events">Coming Events</h2>
+{{ range $featured_events -}}
+{{ $start_time := time.AsTime .Params.event_start -}}
+{{ $end_time := time.AsTime .Params.event_end -}}
+<article class="featured-event event-snippet post-snippet{{ if (gt time.Now $end_time) }} expired{{ end }}">
+  <div class="thumb{{ if not .Params.image }} hide-small{{ end }}">
+  {{ $link := .RelPermalink -}}
+  {{ with .Resources.Get .Params.image -}}
+    {{ $thumb := .Resize "300x" -}}
+    {{ with $thumb }}
+      <a href="{{ $link }}"><img src="{{ .RelPermalink }}" /></a>
+    {{ end -}}
+  {{ else }}
+    <a href="{{ $link }}"><img src="/images/logo-purple.png" /></a>
+  {{- end }}
+  </div>
+  <h3>
+    <a href="{{ $link }}">{{ .Title }}</a>
+  </h3>
+  {{ partial "event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
+  {{- if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end -}}
+</article>
+{{ end }} 
+{{ end }}

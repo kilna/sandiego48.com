@@ -2,7 +2,124 @@
 title="San Diego 48 Hour Film Project"
 +++
 
-{{< featured_events >}}
+<style>
+.index-container {
+  max-width: 65rem;
+  min-width: 60vw !important;
+  margin: auto;
+  padding: 0 0.5rem;
+}
+
+.index-copy {
+  padding: 0 0 0 1rem;
+}
+
+@media all and (max-width: 768px) {
+  .index-copy {
+    padding: 0;
+  }
+}
+
+.index-video {
+ padding: 0 1rem 0 0;
+}
+
+@media all and (max-width: 768px) {
+  .index-video {
+    padding: 0;
+  }
+}
+
+iframe[src*="https://www.youtube.com/embed/"] {
+  position: relative;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 70vw;
+  height: auto;
+  max-height: 80vh;
+  aspect-ratio: 9 / 16 !important;
+  margin: 0 auto 1rem auto;
+  padding: 0.5rem;
+  display: block;
+  background-color: var(--48-black);
+}
+
+@media all and (max-width: 768px) {
+  iframe[src*="https://www.youtube.com/embed/"] {
+    width: calc(40vw + (768px - 100vw) * 0.6);
+    min-width: 40vw;
+    max-width: min(100%, calc((100vw/100vh) * 50vh));
+    height: auto;
+    aspect-ratio: 9 / 16 !important;
+  }
+}
+
+h1 {
+  text-align: center;
+}
+
+.footnote {
+  font-style: italic;
+  font-size: 75%;
+  vertical-align: middle;
+}
+
+.feature {
+  background: var(--48-lighten);
+  border: 0.25rem solid var(--48-orange);
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  font-weight: 400;
+  box-shadow: 0.5rem 0.5rem 1rem 0 var(--48-darken);
+}
+
+@media all and (max-width: 768px) {
+  .feature {
+    padding: 1vw 2vw 1vw 2vw;
+  }
+}
+
+.feature p {
+  line-height: 1.25em;
+  margin: 0.5rem 0 0.5rem 0;
+} 
+
+.feature ul {
+  list-style: none;
+}
+
+.feature li:before {
+  content: '★ ';
+}
+
+.feature em, .feature strong {
+  font-weight: 600;
+}
+
+.feature em, .feature strong, .feature li {
+  text-shadow: -0.1rem -0.1rem 0 var(--48-lighten-more),
+                0.1rem -0.1rem 0 var(--48-lighten-more),
+                -0.1rem  0.1rem 0 var(--48-lighten-more),
+                0.1rem  0.1rem 0 var(--48-lighten-more);
+}
+
+.feature-2 {
+  background: var(--48-orange);
+  background: linear-gradient(
+                135deg,
+                var(--48-orange) 0%,
+                var(--48-orange-dark) 100%
+              );
+  border: 0.25rem solid var(--48-darken);
+}
+  
+</style>
+
+<h1>The San Diego 48 Hour Film Project</h1>
+
+{{< featured-items >}}
 
 <div class="index-container pure-g">
 <div class="index-video pure-u-1 pure-u-sm-1 pure-u-md-1-3">

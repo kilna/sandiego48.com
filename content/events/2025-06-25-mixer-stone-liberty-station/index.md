@@ -14,15 +14,40 @@ params:
   featured: true
   event_start: 2025-06-25T17:30:00-07:00
   event_end: 2025-06-25T21:00:00-07:00
+  partner_name: SD Media Pros
+  partner_details: >
+    [San Diego Media Pros](https://sdmediapros.org) is a community of video,
+    film, and media professionals offering networking, education, and
+    collaboration opportunities across all aspects of production. Whether
+    you're a seasoned filmmaker or just entering the industry, SD Media Pros
+    connects creatives through workshops, meetups, and resource sharing to
+    help grow skills and careers in media.
+  partner_url: https://sdmediapros.org
+  partner_logo: partner.png
+  partner_socials: 
+    - text: SDMediaPros.org
+      url: https://sdmediapros.org
+      icon: globe
+    - text: SD Media Pros on Facebook
+      url: https://www.facebook.com/sandiegomediapros/
+    - text: "@sdmediapros on Instagram"
+      url: http://instagram.com/sdmediapros
+  partner_links: 
+    - text: SDMP Event Details
+      url: https://sdmediapros.wildapricot.org/event-6218053
+      icon: info
   location_name: Stone Liberty Station
   location_details: A child and dog friendly bistro with non-beer drink options
   location_url: https://www.stonebrewing.com/visit/bistros/liberty-station
   location_logo: venue.png
   location_socials:
-    - name: Stone on Facebook
+    - text: StoneBrewing.com
+      url: https://www.stonebrewing.com
+    - text: Stone on Facebook
       url: https://www.facebook.com/StoneBrewing
-    - name: "@stonebrewing on Instagram"
+    - text: "@stonebrewing on Instagram"
       url: https://www.instagram.com/stonebrewing/
+  location_links: []
   location_address: 2816 Historic Decatur Road, San Diego, CA 92106
   location_map_url: https://maps.app.goo.gl/dtuCtYKXuYDkUvcC6
   facebook_event_url: https://www.facebook.com/events/670497809319263/
@@ -34,15 +59,6 @@ params:
     filmmaking competition. Amateur and professional teams around the world make
     movies over a weekend, which are later given a premier in a real cinema. San
     Diego's competition takes place August 15-17th, 2024.
-
-    ### About San Diego Media Pros
-
-    [San Diego Media Pros](https://sdmediapros.com) is a community of video,
-    film, and media professionals offering networking, education, and
-    collaboration opportunities across all aspects of production. Whether
-    you're a seasoned filmmaker or just entering the industry, SD Media Pros
-    connects creatives through workshops, meetups, and resource sharing to help
-    grow skills and careers in media.
 ---
 We're throwing a mixer and sync up in partnership with our friends at
 [San Diego Media Pros](https://sdmediapros.org/)...  and we're bringing

@@ -40,7 +40,7 @@ LINKS 🔗
 ——————————
 FIND OR FOLLOW US ONLINE ❤️
 
-{{ partial "socials.txt" . }}
+{{ partial "online.txt" . }}
 
 ────────────────────────────────
 

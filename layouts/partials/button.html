@@ -1,0 +1,75 @@
+{{- if not (and .url .text) -}}{{- return -}}{{- end -}}
+{{- $url := .url -}}
+{{- $target := .target | default "_blank" -}}
+{{- $text := .text -}}
+{{- $icon := .icon -}}
+{{- $collapse := .collapse | default false -}}
+{{- $show_text := .show_text | default true -}}
+{{- $px := .px | default 32 | int -}}
+{{- $alt := .alt | default $text -}}
+{{- $title := .title | default $text -}}
+{{- $class := .class | default "button" -}}
+{{- if ne $class "button" -}}
+  {{- $class = printf "button %s" $class -}}
+{{- end -}}
+
+{{- if not $icon -}}
+  {{- if strings.Contains $url "facebook.com/groups" -}}
+    {{- $icon = "facebook-group" -}}
+  {{- else if strings.Contains $url "facebook.com" -}}
+    {{- $icon = "facebook" -}}
+  {{- else if strings.Contains $url "instagram.com" -}}
+    {{- $icon = "instagram" -}}
+  {{- else if strings.Contains $url "threads.net" -}}
+    {{- $icon = "threads" -}}
+  {{- else if strings.Contains $url "x.com" -}}
+    {{- $icon = "twitter" -}}
+  {{- else if strings.Contains $url "twitter.com" -}}
+    {{- $icon = "twitter" -}}
+  {{- else if strings.Contains $url "youtube.com" -}}
+    {{- $icon = "youtube" -}}
+  {{- else if strings.Contains $url "tiktok.com" -}}
+    {{- $icon = "tiktok" -}}
+  {{- else if strings.Contains $url "maps.google.com" -}}
+    {{- $icon = "location" -}}
+  {{- else if strings.Contains $url "maps.app.goo.gl" -}}
+    {{- $icon = "location" -}}
+  {{- else if strings.Contains $url "calendarlink.com" -}}
+    {{- $icon = "calendar" -}}
+  {{- else if strings.Contains $url "mailto:" -}}
+    {{- $icon = "email" -}}
+  {{- else if strings.Contains $url "tel:" -}}
+    {{- $icon = "phone" -}}
+  {{- else if strings.Contains $url "discord.com" -}}
+    {{- $icon = "discord" -}}
+  {{- else if strings.Contains $url "/go/newsletter" -}}
+    {{- $icon = "newsletter" -}}
+  {{- else if strings.Contains $url "/events/" -}}
+    {{- $icon = "calendar" -}}
+  {{- else -}}
+    {{- $icon = "none" -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if and (eq $icon "none") (not $show_text) -}}
+  {{- $icon = "globe" -}}
+{{- end -}}
+
+<a href="{{ $url }}" target="{{ $target }}" class="{{ $class }}">
+
+{{- if ne $icon "none" -}}
+{{- partial "icon.html" (dict
+    "icon" $icon
+    "px" $px
+    "alt" $alt
+    "title" $title
+) -}}
+{{- end -}}
+
+{{- if and $show_text $collapse -}}
+  <span class="reveal">{{- .text -}}</span>
+{{- else if $show_text -}}
+  <span>{{- .text -}}</span>
+{{- end -}}
+
+</a>

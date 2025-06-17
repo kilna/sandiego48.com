@@ -16,22 +16,43 @@
 
   <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
 
-  {{ $icon := resources.Get "images/icon.png" }}
+  {{- $icon := resources.Get "images/icon.png" }}
   <link rel="icon" type="image/png" href="{{ $icon.RelPermalink }}"/>
 
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" type="text/css" media="all" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
-  {{ if hugo.IsServer }}
-  <link rel="stylesheet" href="/css/style.css?v={{ now.Unix }}" type="text/css" media="all" />
-  {{ else }}
-  <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+
+  {{/* Font preloading with Hugo Pipes */}}
+  {{ with resources.Get "fonts/LeagueSpartan-VariableFont_wght.ttf" }}
+  <link rel="preload" href="{{ .RelPermalink }}" as="font" type="font/ttf" crossorigin>
   {{ end }}
+  {{ with resources.Get "fonts/DSEG7ClassicMini-BoldItalic.ttf" }}
+  <link rel="preload" href="{{ .RelPermalink }}" as="font" type="font/ttf" crossorigin>
+  {{ end }}
+
+  {{- $css := resources.Get "css/style.css" -}}
+  {{- if hugo.IsServer }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}?v={{ now.Unix }}" type="text/css" media="all" />
+  {{- else }}
+  {{ $css = $css | resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" type="text/css" media="all" />
+  {{- end }}
   
   <!--
   <script src="/js/parallax.min.js"></script>
   -->
-  <script src="/js/css-utils.js"></script>
+
+  {{/* JavaScript processing with Hugo Pipes */}}
+  {{ $cssUtils := resources.Get "js/css-utils.js" }}
+  {{ if hugo.IsServer }}
+  {{/* Development: unminified with cache busting */}}
+  <script src="{{ $cssUtils.RelPermalink }}?v={{ now.Unix }}"></script>
+  {{ else }}
+  {{/* Production: minified and fingerprinted */}}
+  {{ $cssUtils = $cssUtils | minify | fingerprint }}
+  <script src="{{ $cssUtils.RelPermalink }}" integrity="{{ $cssUtils.Data.Integrity }}"></script>
+  {{ end }}
   
   {{ with .OutputFormats.Get "rss" -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
