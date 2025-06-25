@@ -34,7 +34,7 @@ Even if you’re only curious about film-making, we'd love to see you from 6-9pm
 
 ## About the competition
 
-The 48 Hour Film Project is the longest running and most popular timed film-making competition. Amateur and professional teams around the world make movies in a weekend, which are later given a premier in a real cinema. San Diego's competition takes place August 15-17th, 2024.
+The 48 Hour Film Project is the longest running and most popular timed film-making competition. Amateur and professional teams around the world make movies in a weekend, which are later given a premier in a real cinema. San Diego's competition takes place August 15-17th, 2025.
 
 Team registration for the [San Diego 48 Hour Film Project](https://48hourfilm.com/sandiego) will open in just a few short weeks on Monday, June 9th.
 

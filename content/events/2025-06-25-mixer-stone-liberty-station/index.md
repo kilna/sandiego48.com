@@ -58,7 +58,16 @@ params:
     The 48 Hour Film Project is the longest running and most popular timed
     filmmaking competition. Amateur and professional teams around the world make
     movies over a weekend, which are later given a premier in a real cinema. San
-    Diego's competition takes place August 15-17th, 2024.
+    Diego's competition takes place August 15-17th, 2025.
+
+    ### About San Diego Media Pros
+
+    [San Diego Media Pros](https://sdmediapros.com) is a community of video,
+    film, and media professionals offering networking, education, and
+    collaboration opportunities across all aspects of production. Whether
+    you're a seasoned filmmaker or just entering the industry, SD Media Pros
+    connects creatives through workshops, meetups, and resource sharing to help
+    grow skills and careers in media.
 ---
 We're throwing a mixer and sync up in partnership with our friends at
 [San Diego Media Pros](https://sdmediapros.org/)...  and we're bringing
