@@ -9,11 +9,11 @@
   <span style="display: inline-block;">
 
   <a href="{{ .Site.BaseURL }}" target="_blank" style="{{ $link_style }}">
-    🌐 {{ .site_link_text | default "Web Site" }}
+    &#127760; {{ .site_link_text | default "Web Site" }}
   </a>
 
   <a href="{{ .Site.BaseURL }}/go/newsletter" target="_blank" style="{{ $link_style }}">
-    🗞️ Newsletter
+    &#128478;&#65039; Newsletter
   </a>
 
   </span>
@@ -23,13 +23,13 @@
   {{- $phone_title := "Phone" -}}
   {{- if .phone_can_text }}{{ $phone_title = "Phone / Text" }}{{ end -}}
   <a href="tel:{{ .phone }}" target="_blank" style="{{ $link_style }}">
-    📞 {{ $phone_title }}
+    &#128222; {{ $phone_title }}
   </a>
   {{- end -}}
 
   {{- if .email -}}
   <a href="mailto:{{ .email }}" target="_blank" style="{{ $link_style }}">
-    📧 Email
+    &#128231; Email
   </a>
   {{- end -}}
 
@@ -39,19 +39,19 @@
 
   {{- if .facebook -}}
     <a href="https://facebook.com/{{ .facebook }}" target="_blank" style="{{ $link_style }}">
-    👍 Facebook
+    &#128077; Facebook
     </a>
   {{- end -}}
 
   {{- if .instagram -}}
     <a href="https://instagram.com/{{ .instagram }}" target="_blank" style="{{ $link_style }}">
-    📸 Instagram
+    &#128248; Instagram
     </a>
   {{- end -}}
 
   {{- if .threads -}}
     <a href="https://threads.net/@{{ .threads }}" target="_blank" style="{{ $link_style }}">
-    🧵 Threads
+    &#129525; Threads
     </a>
   {{- end -}}
 
@@ -60,19 +60,19 @@
 
   {{- if .twitter -}}
     <a href="https://twitter.com/{{ .twitter }}" target="_blank" style="{{ $link_style }}">
-    🐦 Twitter
+    &#128038; Twitter
     </a>
   {{- end -}}
 
   {{- if .youtube -}}
     <a href="https://youtube.com/{{ .youtube }}" target="_blank" style="{{ $link_style }}">
-    📺 YouTube
+    &#128250; YouTube
     </a>
   {{- end -}}
 
   {{- if .tiktok -}}
     <a href="https://tiktok.com/@{{ .tiktok }}" target="_blank" style="{{ $link_style }}">
-    📱 TikTok
+    &#128241; TikTok
     </a>
   {{- end -}}
 
@@ -81,13 +81,13 @@
 
   {{- if .facebook_group -}}
     <a href="https://facebook.com/groups/{{ .facebook_group }}" target="_blank" style="{{ $link_style }}">
-    👥 Facebook Group
+    &#128101; Facebook Group
     </a>
   {{- end -}}
 
   {{- if .discord_server -}}
     <a href="{{ .discord_server_invite }}" target="_blank" style="{{ $link_style }}">
-    💬 Discord
+    &#128172; Discord
     </a>
   {{- end -}}
 

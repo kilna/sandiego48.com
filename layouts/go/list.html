@@ -1,12 +1,8 @@
-<html>
-<head>
+{{- define "head" -}}
 <title>{{ .Params.title }}</title>
 <meta http-equiv="refresh" content="0; url=/">
-<script>
-location.href = '/';
-</script>
-</head>
-<body>
+<script>location.href = '/';</script>
+{{- end -}}
+{{- define "main" -}}
 <p>Forwarding to <a href="/">/</a></p>
-</body>
-</html>
+{{- end -}}

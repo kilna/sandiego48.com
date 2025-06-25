@@ -1,36 +1,58 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
-date: {{ .Date }}
-publishedDate: {{ .Date }}
+layout: events
+type: events
 summary: >
   # Short summary (Twitter length)
+date: {{ .Date }}
+publishDate: {{ .Date }}
 draft: false
 params:
-  image: image.png
+  image: flyer.png
   featured: false
   event_start: 
   event_end: 
+  # Partner information (if partnering with another organization)
+  partner_name: 
+  partner_details: >
+    # Description of the partner organization
+  partner_url: 
+  partner_logo: partner.png
+  partner_socials:
+    - text: 
+      url: 
+      icon: 
+  partner_links:
+    - text: 
+      url: 
+      icon: info
   location_name: 
   location_details: 
   location_url: 
-  location_logo: location.png
+  location_logo: venue.png
   location_socials:
-    - name: 
+    - text: 
       url: 
+      icon: 
+  location_links:
+    - text: 
+      url: 
+      icon: 
   location_address: 
   location_map_url: 
   facebook_event_url: 
   calendarlink_url: 
-  # Content for different formats
-  content:
-    extended_summary: >
-      # Extended summary (2-3 paragraphs)
-    about_competition: >
-      # About the competition section
-    full_content: >
-      # Full content (all sections combined)
+  # Organization info section
+  org_info: >
+    ### About the 48 Hour Film Project
+
+    The 48 Hour Film Project is the longest running and most popular timed
+    filmmaking competition. Amateur and professional teams around the world make
+    movies over a weekend, which are later given a premier in a real cinema. San
+    Diego's competition takes place August 15-17th, 2024.
 ---
 
+# Event content goes here
 
 ## About the competition
 
