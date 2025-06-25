@@ -12,27 +12,21 @@
 {{- if $featured_events -}}
 {{ partial "stylesheet.html" "events" }}
 <style>
-  h2.featured-events {
+  h2.coming-events-header {
     text-align: center;
-    margin: 0 auto;
-    padding: 0rem;
-    margin: 0 auto;
+    margin: 0 auto 1rem auto;
+    padding: 1rem;
     background-color: var(--48-purple);
     color: var(--48-white);
-  }
-  .featured-event {
-    display: block;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0rem;
-    background-color: var(--48-orange);
+    border-radius: 1rem 1rem 0 0;
   }
 </style>
-<h2 class="featured-events">Coming Events</h2>
-{{ range $featured_events -}}
-{{ $start_time := time.AsTime .Params.event_start -}}
-{{ $end_time := time.AsTime .Params.event_end -}}
-<article class="featured-event event-snippet post-snippet{{ if (gt time.Now $end_time) }} expired{{ end }}">
+<div class="featured-events">
+  <h2 class="coming-events-header">Coming Events</h2>
+  {{ range $featured_events -}}
+  {{ $start_time := time.AsTime .Params.event_start -}}
+  {{ $end_time := time.AsTime .Params.event_end -}}
+  <article class="event{{ if (gt time.Now $end_time) }} expired{{ end }}">
   <div class="thumb{{ if not .Params.image }} hide-small{{ end }}">
   {{ $link := .RelPermalink -}}
   {{ with .Resources.Get .Params.image -}}
@@ -47,8 +41,9 @@
   <h3>
     <a href="{{ $link }}">{{ .Title }}</a>
   </h3>
-  {{ partial "event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
-  {{- if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end -}}
-</article>
-{{ end }} 
+    {{ partial "event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
+    {{- if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end -}}
+  </article>
+  {{ end }} 
+</div>
 {{ end }}
