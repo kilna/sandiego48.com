@@ -1,14 +1,14 @@
 SHELL := /usr/bin/env bash
 
 # Set HUGO_BASEURL based on where we are building...
-ifeq ($(CF_PAGES),true))
+ifeq ($(CF_PAGES),true)
 ifeq ($(CF_PAGES_BRANCH),main)
 export HUGO_BASEURL=https://sandiego48.com
 else
 export HUGO_BASEURL=https://$(CF_PAGES_BRANCH).sandiego48.com
 endif
 else
-import .env # This is used for local development...
+-include .env # This is used for local development...
 endif
 
 # This is used by Cloudflare Pages to specify the Hugo version to use...
