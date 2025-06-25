@@ -1,5 +1,5 @@
-baseURL: "https://sandiego48.com"
-title: "San Diego 48 Hour Film Project"
+baseURL: https://sandiego48.com
+title: San Diego 48 Hour Film Project
 languageCode: en-us
 
 params:
@@ -66,7 +66,6 @@ menus:
     url: /go/newsletter
     params:
       target: _blank
-      class: highlight
     weight: 5
   - identifier: register
     name: Register a Team

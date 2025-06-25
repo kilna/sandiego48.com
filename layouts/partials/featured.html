@@ -1,0 +1,5 @@
+<section class="featured">
+{{- with .Site.GetPage "events" -}}
+{{- .Render "list.featured" -}}
+{{- end -}}
+</section>
