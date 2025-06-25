@@ -11,11 +11,6 @@ else
 -include .env # This is used for local development...
 endif
 
-# This is used by Cloudflare Pages to specify the Hugo version to use...
-# here we are just ganking it from the .tool-versions file since that's what
-# we use for local development.
-export HUGO_VERSION=$(shell grep '^hugo ' .tool-versions | awk '{print $2}')
-
 .PHONY: build build-clean server server-slow server-verbose
 
 server: build
