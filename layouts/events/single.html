@@ -4,9 +4,11 @@
   {{- partial "layout/stylesheet.html" "infoblock" -}}
 {{ end }}
 
-{{ define "main" }}
-<h1><div class="site-title">{{ .Site.Title }}</div>{{ .Title }}</h1>
+{{ define "title" }}
+{{- partial "title.html" (dict "Title" .Title "Site" .Site "ShowSiteTitle" true) -}}
+{{ end }}
 
+{{ define "main" }}
 <div class="event">
   <div class="infoblock">
     {{- partial "components/button.html" (dict

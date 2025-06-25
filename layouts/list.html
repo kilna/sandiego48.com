@@ -1,6 +1,8 @@
-{{ define "main" }}
-<h1>{{ .Title }}</h1>
+{{ define "title" }}
+{{- partial "title.html" (dict "Title" .Title "Site" .Site "ShowSiteTitle" true) -}}
+{{ end }}
 
+{{ define "main" }}
 {{ .Content }}
 
 {{ range.Data.Pages }}

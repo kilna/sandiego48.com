@@ -1,0 +1,24 @@
+<header class="title">
+<div class="logo">
+  {{- $logo := resources.Get "images/logo_trans_glow.png" -}}
+  <a href="{{ .Site.BaseURL }}"><img class="pure-img" src="{{ $logo.RelPermalink }}" alt="logo"/></a>
+</div>
+<div class="main">
+<h1>
+{{- if isset . "ShowSiteTitle" -}}
+<div class="subtitle">{{ .Site.Title }}</div>
+{{- end -}}
+{{- if isset . "Title" -}}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}
+{{- if isset . "Subtitle" -}}
+<div class="subtitle">{{ .Subtitle }}</div>
+{{- end -}}
+</h1>
+{{- if isset . "TitleInfo" -}}
+<div class="info">{{ .TitleInfo | safeHTML }}</div>
+{{- end -}}
+</div>
+<div class="socials">
+  {{- $socials := resources.Get "images/socials.png" -}}
+  <a href="/links"><img src="{{ $socials.RelPermalink }}" alt="socials"/></a>
+</div>
+</header>

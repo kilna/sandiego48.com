@@ -7,6 +7,7 @@
   --48-orange-trans-less: #eab32c40;
   --48-orange-trans:      #eab32c80;
   --48-orange-trans-more: #eab32cc0;
+  --48-orange-nearblack:  #43330d;
   --48-orange-dark:       #e5b12f;
   --48-orange-light:      #eacd86;
   --48-orange-nearwhite:  #ede6d5;
@@ -14,6 +15,7 @@
   --48-purple-trans-less: #30103040;
   --48-purple-trans:      #30103080;
   --48-purple-trans-more: #301030c0;
+  --48-purple-nearblack:  #2a0e34;
   --48-purple-dark:       #421552;
   --48-purple-light:      #be90cf;
   --48-purple-bright:     #bb00ff;
@@ -24,8 +26,10 @@
   --48-lighten:           #ffffff40;
   --48-lighten-more:      #ffffff70;
   --48-lighten-most:      #ffffffa0;
-  --clock-on:             #bb00ffd0;
-  --clock-off:            #50305080;
+  --clock-on:             #bb00ff;
+  --clock-off:            #503050b0;
+  --clock-glow:           #ca37ff;
+  --clock-shade:          #000000;
 }
 
 
@@ -55,6 +59,8 @@ body {
   margin: 0 auto;
   font-family: "League Spartan", sans-serif;
   font-weight: 200;
+  font-feature-settings: "kern" 1;
+  text-rendering: optimizeLegibility;
   /*font-size: clamp(max(0.8rem, 16px), 3vw, min(2rem, 24px));*/
   font-size: clamp(max(1rem, 16px), 1.75vw, 2.5rem);
   min-height: 100vh;
@@ -77,16 +83,9 @@ h4 { font-size: 1.375rem; font-weight: 600; }
 h5 { font-size: 1.25rem; font-weight: 600; }
 h6 { font-size: 1.125rem; font-weight: 600; }
 
-h1 .site-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-
 p {
   margin: 0.75rem 0 0.75rem 0;
-  line-height: 1.35em;
+  line-height: 1.25em;
 }
 
 ul {
@@ -101,7 +100,6 @@ em {
 
 a {
   font-weight: 400;
-  text-wrap: nowrap;
   color: var(--48-purple);
   text-decoration:  underline var(--48-black) 2px;
 }
@@ -220,101 +218,192 @@ a.button:hover img {
 }
 
 /*
-#     #                                    
-#     # ######   ##   #####  ###### #####  
-#     # #       #  #  #    # #      #    # 
-####### #####  #    # #    # #####  #    # 
-#     # #      ###### #    # #      #####  
-#     # #      #    # #    # #      #   #  
-#     # ###### #    # #####  ###### #    # 
+#######                       
+   #    # ##### #      ###### 
+   #    #   #   #      #      
+   #    #   #   #      #####  
+   #    #   #   #      #      
+   #    #   #   #      #      
+   #    #   #   ###### ###### 
+                              
 */
-
-header {
+header.title {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
   padding: 1rem;
-  min-height: 5rem;
-  background-color: var(--48-purple-dark);
-  background-position: 50% 75%;
+  background: 
+    linear-gradient(
+      110deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.5) 15%,
+      rgba(0, 0, 0, 0.85) 50%,
+      rgba(0, 0, 0, 0.5) 85%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    url('/images/skyline.jpg');
   background-size: cover;
+  background-position: center 81%;
   background-repeat: no-repeat;
+  background-color: var(--48-purple-dark);
+  border-radius: 0px;
 }
 
-@media all and (max-width: 768px) {
-  header {
-    flex-direction: column;
-  }
-}
-
-header a {
-  text-decoration: none;
-}
-
-header .logo {
+header.title div.logo {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 20%;
+  flex: 0 0 180px;
 }
 
-header .logo img {
+header.title div.logo img {
   width: 100%;
-  max-width: 20rem;
   height: auto;
 }
 
-@media all and (max-width: 768px) {
-  header .logo {
-    width: 100%;
-  }
-  header .logo img {
-    width: 40vw;
-    min-width: 10rem;
-  }
-}
-
-header .main {
+header.title div.main {
   display: flex;
   flex-direction: column;
-  width: 80%;
   align-items: center;
   justify-content: center;
-  background-color: var(--48-darken-more);
-  padding: 0.5rem;
-  border: 0.125rem solid var(--48-orange-trans-less);
-  border-radius: 0.75rem;
+  flex: 1;
+  text-align: center;
+}
+
+header.title div.socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 180px;
+}
+
+header.title div.socials img {
+  width: 75%;
+  height: auto;
+}
+
+
+header.title div.socials a {
+  opacity: 0.5;
+}
+
+header.title div.socials a:hover {
+  opacity: 1;
 }
 
 @media all and (max-width: 768px) {
-  header .main {
+  header.title {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  header.title div.logo,
+  header.title div.main,
+  header.title div.menu {
+    flex: none;
     width: 100%;
+  }
+  header.title div.logo img {
+    width: 360px;
+  }
+}
+
+header.title h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  text-shadow: -2px -2px 1px var(--48-white),
+                2px -2px 1px var(--48-white),
+               -2px  2px 1px var(--48-white),
+                2px  2px 1px var(--48-white);
+}
+
+header.title h1 div.subtitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: -1px -1px 1px var(--48-white),
+                1px -1px 1px var(--48-white),
+               -1px  1px 1px var(--48-white),
+                1px  1px 1px var(--48-white);
+}
+
+header.title div.info {
+  display: block;
+  font-size: clamp(1rem, 0.75em, 1.5rem);
+  font-weight: 300;
+  width: fit-content;
+  text-align: center;
+  background-color: var(--48-darken-more);
+  border: 0.1px solid var(--48-orange-trans);
+  border-radius: 0.5rem;
+  margin: 1rem auto 0 auto;
+  padding: 0.25em 1em 0.25em 1em;
+  color: var(--48-yellow);
+  text-shadow: -1px -1px 1px var(--48-darken-most),
+                1px -1px 1px var(--48-darken-most),
+               -1px  1px 1px var(--48-darken-most),
+                1px  1px 1px var(--48-darken-most);
+}
+
+/*
+#     #               
+##    #   ##   #    # 
+# #   #  #  #  #    # 
+#  #  # #    # #    # 
+#   # # ###### #    # 
+#    ## #    #  #  #  
+#     # #    #   ##   
+                      
+*/
+
+header.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25em;
+  margin: 0;
+  background-color: var(--48-purple);
+  background: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E"),
+    linear-gradient(
+      100deg,
+      var(--48-purple-dark) 0%,
+      var(--48-purple) 15%,
+      var(--48-purple) 50%,
+      var(--48-purple) 85%,
+      var(--48-purple-dark) 100%
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E"),
+    linear-gradient(
+      -1.5deg,
+      var(--48-purple-trans-more) 0%,
+      var(--48-darken) 20%,
+      var(--48-darken-more) 50%,
+      var(--48-darken) 80%,
+      var(--48-lighten) 100%
+    );
+}
+
+@media all and (max-width: 768px) {
+  header.nav {
     padding: 1rem;
   }
 }
 
-header h1 {
-  margin: 0;
+header.nav a {
+  text-decoration: none;
 }
 
-@media all and (max-width: 768px) {
-  header h1 {
-    display: none;
-  }
-}
-
-header .main .button-list {
-  font-size: 0.7em;
-}
-
-header .main a.button {
-  background-color: var(--48-darken-most);
-}
-
-header .main a.button:hover {
-  background-color: var(--48-lighten-most);
-}
-
-header .main .notice {
+header.nav .notice {
   padding: 0.5em;
   width: fit-content;
   max-width: 100%;
@@ -333,7 +422,7 @@ header .main .notice {
   word-wrap: break-word;
 }
 
-header .main nav.menu a {
+header.nav nav.menu a {
   display: inline-block;
   margin: 0.25rem 0.5rem;
   padding: 0.25rem 1.5rem;
@@ -363,14 +452,14 @@ header .main nav.menu a {
   100% { background-color: var(--48-orange); }
 }
 
-header .main nav.menu a.highlight {
+header.nav nav.menu a.highlight {
   animation-name: nav-main-highlight;
   animation-duration: 1.5s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
 
-header .main nav.menu a:hover {
+header.nav nav.menu a:hover {
   background: var(--48-white);
   border-color: var(--48-orange-light);
   box-shadow: 0 0 1rem 1rem var(--48-lighten);
@@ -378,16 +467,16 @@ header .main nav.menu a:hover {
 }
 
 /*
- #####                                          
-#     #  ####  #    # ##### ###### #    # ##### 
-#       #    # ##   #   #   #      ##   #   #   
-#       #    # # #  #   #   #####  # #  #   #   
-#       #    # #  # #   #   #      #  # #   #   
-#     # #    # #   ##   #   #      #   ##   #   
- #####   ####  #    #   #   ###### #    #   #   
+#     #                 
+##   ##   ##   # #    # 
+# # # #  #  #  # ##   # 
+#  #  # #    # # # #  # 
+#     # ###### # #  # # 
+#     # #    # # #   ## 
+#     # #    # # #    # 
+                        
 */
-
-.content {
+main {
   padding-top: 1rem !important;
   padding: clamp(1.5vw, 3rem, 10vw);
   background: var(--48-nearwhite);
@@ -401,7 +490,7 @@ header .main nav.menu a:hover {
 }
 
 @media all and (max-width: 768px) {
-  .content {
+  main {
     padding: 2vw !important;
   }
 }
@@ -527,7 +616,8 @@ footer .button-list img {
 
 .clock {
   font-family: 'DSEG7Classic', monospace;
-  font-size: 1.25rem;
+  font-size: 0.85em;
+  transform: translateY(0.1em);
   display: inline-block;
   position: relative;
 }
@@ -536,7 +626,7 @@ footer .button-list img {
   color: var(--clock-on);
   position: relative;
   z-index: 1;
-  text-shadow: 0 0 0.2em var(--clock-on);
+  text-shadow: 0 0 0.2em var(--clock-glow);
 }
 
 .clock .off {
@@ -545,9 +635,9 @@ footer .button-list img {
   top: 0;
   color: var(--clock-off);
   pointer-events: none;
+  text-shadow: 0 0 0.2em var(--clock-shade);
 }
 
 .clock .zero {
   opacity: 0;
 }
-

@@ -1,34 +1,19 @@
-{{- $bg := resources.Get "images/skyline.jpg" -}}
-<header style="background-image: url('{{ $bg.RelPermalink }}')">
-  <div class="logo">
-    {{- $logo := resources.Get "images/logo_trans_glow.png" -}}
-    <a href="{{ .Site.BaseURL }}"><img class="pure-img" src="{{ $logo.RelPermalink }}" alt="logo"/></a>
-  </div>
-  <div class="main">
-    <div class="notice">
-      Competition is August 15-17th, 2025
-      <span class="visible-until-2025-08-15T19:00:00-07:00">
-        <span class="countdown-to-2025-08-15T19:00:00-07:00"></span>
-      </span>
-      <div class="visible-until-2025-07-22T00:00:00-07:00">
-        <span class="countdown-to-2025-07-22T00:00:00-07:00">Not long</span>
-        left for early bird registration!
-      </div>
-      <div class="visible-after-2025-07-22T00:00:00-07:00 visible-until-2025-08-05T00:00:00-07:00">
-        <span class="countdown-to-2025-08-05T00:00:00-07:00">Not long</span>
-        before the late registration price increase!
-      </div>
-    </div>
-    <nav class="menu">
-      {{ range.Site.Menus.main -}} 
-      <a href="{{ .URL }}" class="{{ .Params.class | default "" }}" target="{{ .Params.target | default "_self" }}">{{ .Name }}</a>
-      {{- end }}
-    </nav>
-    {{- partial "components/common-buttons.html" (dict
-      "collapse" true
-      "show_text" true
-      "show_id" true
-      "Site" .Site
-    ) -}}
-  </div>
+<header class="nav">
+  {{ partial "components/countdown.html" (dict
+    "Default" "Not long"
+    "Suffix" "left for early bird registration!"
+    "Date" "2025-07-22T00:00:00-07:00"
+    "ShowAfter" "2025-07-10T00:00:00-07:00"
+  ) -}}
+  {{ partial "components/countdown.html" (dict
+    "Default" "Not long"
+    "Suffix" "before late registration price increase!"
+    "Date" "2025-08-05T00:00:00-07:00"
+    "ShowAfter" "2025-07-22T00:00:00-07:00"
+  ) -}}
+  <nav class="menu">
+    {{ range.Site.Menus.main -}} 
+    <a href="{{ .URL }}" class="{{ .Params.class | default "" }}" target="{{ .Params.target | default "_self" }}">{{ .Name }}</a>
+    {{- end }}
+  </nav>
 </header>

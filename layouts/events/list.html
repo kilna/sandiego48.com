@@ -3,9 +3,11 @@
   {{- partial "layout/stylesheet.html" "events" -}}
 {{ end }}
 
+{{ define "title" }}
+{{- partial "title.html" (dict "Title" .Title "Site" .Site "ShowSiteTitle" true) -}}
+{{ end }}
+
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
- 
 {{ .Content }}
 
 {{ $currentYear := now.Year }}

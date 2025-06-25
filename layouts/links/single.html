@@ -1,0 +1,205 @@
+{{ define "title" }}
+{{- partial "title.html" (dict "Title" .Title "Site" .Site) -}}
+{{ end }}
+
+{{ define "main" }}
+<style>
+.links-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.links-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.links-buttons a.links-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  margin: 0;
+  border-radius: 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--48-white);
+  background-color: var(--48-black);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  min-height: 4rem;
+}
+
+.links-buttons a.links-button:hover {
+  color: var(--48-black);
+  background-color: var(--48-white);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.links-buttons a.links-button img {
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.links-buttons a.links-button span {
+  margin-left: 0;
+}
+
+.links-container h2 {
+  margin-top: 2rem;
+  text-align: center;
+}
+</style>
+<div class="links-page">
+  {{ .Content }}
+  
+    <div class="links-container">
+    
+    <h2>San Diego 48 Hour Film Project Online</h2>
+    {{- $mainButtons := slice -}}
+    {{/* Home/Website Button */}}
+    {{- $mainButtons = $mainButtons | append (dict
+      "url" .Site.BaseURL
+      "text" .Site.Params.site_link_text
+      "icon" "globe"
+    ) -}}
+    {{/* Newsletter Button */}}
+    {{- $mainButtons = $mainButtons | append (dict
+      "url" (printf "%s/go/newsletter" .Site.BaseURL)
+      "text" "Subscribe to Newsletter"
+      "icon" "newsletter"
+    ) -}}
+    {{/* Events Button */}}
+    {{- $mainButtons = $mainButtons | append (dict
+      "url" "/events"
+      "text" "View Events"
+      "icon" "calendar"
+      "target" "_self"
+    ) -}}
+    {{- partial "components/button-list.html" (dict
+      "tag" "div"
+      "class" "links-buttons"
+      "button_class" "links-button"
+      "px" 64
+      "show_text" true
+      "buttons" $mainButtons
+    ) -}}
+    
+    <h2>Follow Us</h2>
+    {{- $socialButtons := slice -}}
+    {{/* Social Media Buttons */}}
+    {{- with .Site.Params.facebook -}}
+    {{- $socialButtons = $socialButtons | append (dict
+      "url" (printf "https://facebook.com/%s" .)
+      "text" (printf "Facebook @%s" .)
+      "icon" "facebook"
+    ) -}}
+    {{- end -}}
+    {{- with .Site.Params.instagram -}}
+    {{- $socialButtons = $socialButtons | append (dict
+      "url" (printf "https://instagram.com/%s" .)
+      "text" (printf "Instagram @%s" .)
+      "icon" "instagram"
+    ) -}}
+    {{- end -}}
+    {{- with .Site.Params.threads -}}
+    {{- $socialButtons = $socialButtons | append (dict
+      "url" (printf "https://threads.net/@%s" .)
+      "text" (printf "Threads @%s" .)
+      "icon" "threads"
+    ) -}}
+    {{- end -}}
+    {{- with .Site.Params.twitter -}}
+    {{- $socialButtons = $socialButtons | append (dict
+      "url" (printf "https://x.com/%s" .)
+      "text" (printf "X/Twitter @%s" .)
+      "icon" "twitter"
+    ) -}}
+    {{- end -}}
+    {{- with .Site.Params.youtube -}}
+    {{- $socialButtons = $socialButtons | append (dict
+      "url" (printf "https://youtube.com/@%s" .)
+      "text" (printf "YouTube @%s" .)
+      "icon" "youtube"
+    ) -}}
+    {{- end -}}
+    {{- with .Site.Params.tiktok -}}
+    {{- $socialButtons = $socialButtons | append (dict
+      "url" (printf "https://tiktok.com/@%s" .)
+      "text" (printf "TikTok @%s" .)
+      "icon" "tiktok"
+    ) -}}
+    {{- end -}}
+    {{- partial "components/button-list.html" (dict
+      "tag" "div"
+      "class" "links-buttons"
+      "button_class" "links-button"
+      "px" 64
+      "show_text" true
+      "buttons" $socialButtons
+    ) -}}
+
+    <h2>Join the Community</h2>
+    {{- $communityButtons := slice -}}
+    {{/* Facebook Group Button */}}
+    {{- with .Site.Params.facebook_group -}}
+    {{- $communityButtons = $communityButtons | append (dict
+      "url" (printf "https://facebook.com/groups/%s" .)
+      "text" "Join Facebook Group"
+      "icon" "facebook-group"
+    ) -}}
+    {{- end -}}
+    {{/* Discord Button */}}
+    {{- with .Site.Params.discord_server_invite -}}
+    {{- $communityButtons = $communityButtons | append (dict
+      "url" .
+      "text" "Join Discord Server"
+      "icon" "discord"
+    ) -}}
+    {{- end -}}
+    {{- partial "components/button-list.html" (dict
+      "tag" "div"
+      "class" "links-buttons"
+      "button_class" "links-button"
+      "px" 64
+      "show_text" true
+      "buttons" $communityButtons
+    ) -}}
+    
+    <h2>Contact Us</h2>
+    {{- $contactButtons := slice -}}
+    {{/* Contact Information Buttons */}}
+    {{- with .Site.Params.email -}}
+    {{- $contactButtons = $contactButtons | append (dict
+      "url" (printf "mailto:%s" .)
+      "text" (printf "Email %s" .)
+      "icon" "email"
+    ) -}}
+    {{- end -}}
+    {{- with .Site.Params.phone -}}
+    {{- $contactButtons = $contactButtons | append (dict
+      "url" (printf "tel:%s" .)
+      "text" (printf "%s %s" (cond $.Site.Params.phone_can_text "Phone / Text" "Phone") .)
+      "icon" "phone"
+    ) -}}
+    {{- end -}}
+    {{- partial "components/button-list.html" (dict
+      "tag" "div"
+      "class" "links-buttons"
+      "button_class" "links-button"
+      "px" 64
+      "show_text" true
+      "buttons" $contactButtons
+    ) -}}
+  </div>
+</div>
+{{ end }} 

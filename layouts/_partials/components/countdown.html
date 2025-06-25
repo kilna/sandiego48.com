@@ -1,0 +1,12 @@
+<span class="countdown visible-until-{{ .Date }}{{ if isset . "ShowAfter" }} visible-after-{{ .ShowAfter }}{{ end }}">
+{{ if isset . "Prefix" -}}
+  {{ .Prefix }}
+{{ end }}
+<span class="countdown-to-{{ .Date }}">
+  {{- if isset . "Default" }}{{ .Default }}{{ end -}}
+  {{- if isset . "Suffix" }}{{ .Suffix }}{{ end -}}
+</span>
+{{ if isset . "Suffix" -}}
+  {{ .Suffix }}
+{{- end -}}
+</span>
