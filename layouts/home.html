@@ -1,5 +1,5 @@
-{{ partial "header-new.html" . }}
+{{ define "main" }}
 <h1>{{ .Title }}</h1>
-{{ partial "featured.html" . }}
-{{ partial "content.html" . }}
-{{ partial "footer-new.html" . }}
+{{ partial "content/featured.html" . }}
+{{ partial "content/content.html" . }}
+{{ end }}

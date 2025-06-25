@@ -7,10 +7,10 @@ Stay Connected
 {{ if .phone }}
 {{- $phone_title := "Phone" -}}
 {{- if .phone_can_text }}{{ $phone_title = "Phone / Text" }}{{ end -}}
-📞 {{ $phone_title }}: {{ partial "plaintext.txt" .phone }}
+📞 {{ $phone_title }}: {{ partial "layout/plaintext.txt" .phone }}
 {{ end -}}
 {{- if .email -}}
-📧 Email: {{ partial "plaintext.txt" .email }}
+📧 Email: {{ partial "layout/plaintext.txt" .email }}
 {{ end }}
 Follow Us
 {{ $socials := slice -}}
@@ -23,22 +23,22 @@ Follow Us
   "tiktok" "📱"
 -}}
 {{- if .facebook -}}
-  {{- $socials = $socials | append (dict "platform" "facebook" "id" (partial "plaintext.txt" .facebook) "emoji" (index $emojis "facebook")) -}}
+  {{- $socials = $socials | append (dict "platform" "facebook" "id" (partial "layout/plaintext.txt" .facebook) "emoji" (index $emojis "facebook")) -}}
 {{- end -}}
 {{- if .instagram -}}
-  {{- $socials = $socials | append (dict "platform" "instagram" "id" (partial "plaintext.txt" .instagram) "emoji" (index $emojis "instagram")) -}}
+  {{- $socials = $socials | append (dict "platform" "instagram" "id" (partial "layout/plaintext.txt" .instagram) "emoji" (index $emojis "instagram")) -}}
 {{- end -}}
 {{- if .threads -}}
-  {{- $socials = $socials | append (dict "platform" "threads" "id" (partial "plaintext.txt" .threads) "emoji" (index $emojis "threads")) -}}
+  {{- $socials = $socials | append (dict "platform" "threads" "id" (partial "layout/plaintext.txt" .threads) "emoji" (index $emojis "threads")) -}}
 {{- end -}}
 {{- if .twitter -}}
-  {{- $socials = $socials | append (dict "platform" "twitter" "id" (partial "plaintext.txt" .twitter) "emoji" (index $emojis "twitter")) -}}
+  {{- $socials = $socials | append (dict "platform" "twitter" "id" (partial "layout/plaintext.txt" .twitter) "emoji" (index $emojis "twitter")) -}}
 {{- end -}}
 {{- if .youtube -}}
-  {{- $socials = $socials | append (dict "platform" "youtube" "id" (partial "plaintext.txt" .youtube) "emoji" (index $emojis "youtube")) -}}
+  {{- $socials = $socials | append (dict "platform" "youtube" "id" (partial "layout/plaintext.txt" .youtube) "emoji" (index $emojis "youtube")) -}}
 {{- end -}}
 {{- if .tiktok -}}
-  {{- $socials = $socials | append (dict "platform" "tiktok" "id" (partial "plaintext.txt" .tiktok) "emoji" (index $emojis "tiktok")) -}}
+  {{- $socials = $socials | append (dict "platform" "tiktok" "id" (partial "layout/plaintext.txt" .tiktok) "emoji" (index $emojis "tiktok")) -}}
 {{- end -}}
 {{- $ids := slice -}}
 {{- range $socials -}}
@@ -59,10 +59,10 @@ Follow Us
 Join the Community
 {{ if .Site.Params.discord_server -}}
 💬 Discord 
-   {{ partial "plaintext.txt" .Site.Params.discord_server_invite }}
+   {{ partial "layout/plaintext.txt" .Site.Params.discord_server_invite }}
 {{ end -}}
 {{ if .facebook_group -}}
 👥 Facebook Group
-   https://facebook.com/groups/{{ partial "plaintext.txt" .facebook_group }}
+   https://facebook.com/groups/{{ partial "layout/plaintext.txt" .facebook_group }}
 {{ end -}}
 {{- end -}}

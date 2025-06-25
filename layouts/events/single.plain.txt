@@ -1,9 +1,9 @@
-{{ partial "plaintext.txt" (.Title | htmlUnescape) | upper }}
+{{ partial "layout/plaintext.txt" (.Title | htmlUnescape) | upper }}
 ——————————
 
-{{ partial "plaintext.txt" .Summary }}
+{{ partial "layout/plaintext.txt" .Summary }}
 
-WHEN  ⏳ {{ with partial "event-timespan.html" (
+WHEN  ⏳ {{ with partial "content/event-timespan.html" (
               dict
                 "start_time" (time.AsTime .Params.event_start)
                 "end_time" (time.AsTime .Params.event_end)
@@ -12,15 +12,15 @@ WHEN  ⏳ {{ with partial "event-timespan.html" (
         {{ . | replaceRE "\n" "\n        " | strings.TrimLeft " \t\n" }}
         {{- end }}
 WHERE 🌐 {{ .Params.location_name }}
-         {{ partial "plaintext.txt" .Params.location_address }}
+         {{ partial "layout/plaintext.txt" .Params.location_address }}
 {{- if .Params.location_map_url }}
          Google Map 📍
          {{ .Params.location_map_url }}
 {{ end }}
-{{ partial "plaintext.txt" .Content }}
+{{ partial "layout/plaintext.txt" .Content }}
 {{- if .Params.location_details }}
 
-Location Details: {{ partial "plaintext.txt" .Params.location_details -}}
+Location Details: {{ partial "layout/plaintext.txt" .Params.location_details -}}
 {{ end }}
 
 ——————————
@@ -40,11 +40,11 @@ LINKS 🔗
 ——————————
 FIND OR FOLLOW US ONLINE ❤️
 
-{{ partial "online.txt" . }}
+{{ partial "layout/online.txt" . }}
 
 ────────────────────────────────
 
 {{ if .Params.org_info -}}
-{{ partial "plaintext.txt" .Params.org_info }}
+{{ partial "layout/plaintext.txt" .Params.org_info }}
 {{ end }}
 🧠 Learn more at https://sandiego48.com

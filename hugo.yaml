@@ -2,13 +2,42 @@ baseURL: https://sandiego48.com
 title: San Diego 48 Hour Film Project
 languageCode: en-us
 
+# Modern Hugo Configuration
+enableGitInfo: true
+enableRobotsTXT: true
+enableEmoji: true
+
+# Performance optimizations
+timeout: "30s"
+enableInlineShortcodes: true
+
+# Asset processing
+imaging:
+  resampleFilter: "CatmullRom"
+  quality: 85
+  anchor: "Smart"
+
+# Markup configuration
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    parser:
+      attribute:
+        block: true
+  highlight:
+    style: "github"
+    lineNos: false
+    tabWidth: 2
+
 params:
+  description: "San Diego 48 Hour Film Project - Make a film in 48 hours!"
+  author: "Kilna, Anthony"
   facebook: sd48hfp
   twitter: sd48hfp
   instagram: sd48hfp
   tiktok: sd48hfp
   threads: sd48hfp
-  youtube: sd48hfp
   youtube: sd48hfp
   facebook_group: sandiego48hfp
   discord_server: San Diego 48 Hour Film Project

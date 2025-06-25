@@ -4,4 +4,4 @@
 {{- end -}}
 {{- $context := dict "Site" .Site "Page" .Page -}}
 {{- $mergedParams := merge $context $params -}}
-{{- partial "common-buttons.html" $mergedParams -}}
+{{- partial "components/common-buttons.html" $mergedParams -}}

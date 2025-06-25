@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{{ $bg := resources.Get "images/background.png" }}
+<html lang="{{ .Site.Language.LanguageCode | default "en" }}">
+<head>
+  {{- block "head" . -}}
+  {{- partial "head.html" . -}}
+  {{- end -}}
+</head>
+<body>
+  {{- block "header" . -}}
+  {{- partial "nav.html" . -}}
+  {{- end -}}
+
+  <main>
+    {{- block "main" . -}}
+    {{- end -}}
+  </main>
+
+  {{- block "footer" . -}}
+  {{- partial "footer-new.html" . -}}
+  {{- end -}}
+</body>
+</html> 

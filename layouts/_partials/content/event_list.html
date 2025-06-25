@@ -16,7 +16,7 @@
   <h3>
     <a href="{{ $link }}">{{ .Title }}</a>
   </h3>
-  {{ partial "event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
+  {{ partial "content/event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
   {{- if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end -}}
 </article>
 {{ end }} 

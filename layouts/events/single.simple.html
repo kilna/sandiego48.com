@@ -23,7 +23,7 @@
 <h3>When ⏳</h3>
 
 <blockquote>
-  {{- partial "event-timespan.html" (
+  {{- partial "content/event-timespan.html" (
     dict
       "start_time" (time.AsTime .Params.event_start)
       "end_time" (time.AsTime .Params.event_end)
@@ -68,7 +68,7 @@
 <hr/>
 <h3>Find or Follow Us Online ❤️</h3>
 
-{{ partial "online.html" . }}
+{{ partial "layout/online.html" . }}
 
 <br/>
 <br/>

@@ -1,5 +1,9 @@
-{{- partial "stylesheet.html" "events" -}}
+{{ define "head" }}
+  {{- partial "head.html" . -}}
+  {{- partial "layout/stylesheet.html" "events" -}}
+{{ end }}
 
+{{ define "main" }}
 <h1>{{ .Title }}</h1>
  
 {{ .Content }}
@@ -8,11 +12,12 @@
 {{ $currentYearEvents := where .Data.Pages ".Date.Year" $currentYear }}
 {{ $priorYearEvents := where .Data.Pages ".Date.Year" "<" $currentYear }}
 
-{{ partial "event_list.html" $currentYearEvents }}
+{{ partial "content/event_list.html" $currentYearEvents }}
 
 <br clear="all" />
 <br/>
 <br/>
 <h2>Prior Year Events</h2>
 <br/>
-{{ partial "event_list.html" $priorYearEvents }}
+{{ partial "content/event_list.html" $priorYearEvents }}
+{{ end }}

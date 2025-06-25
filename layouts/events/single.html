@@ -1,11 +1,15 @@
-{{- partial "stylesheet.html" "events" -}}
-{{- partial "stylesheet.html" "infoblock" -}}
+{{ define "head" }}
+  {{- partial "head.html" . -}}
+  {{- partial "layout/stylesheet.html" "events" -}}
+  {{- partial "layout/stylesheet.html" "infoblock" -}}
+{{ end }}
 
+{{ define "main" }}
 <h1><div class="site-title">{{ .Site.Title }}</div>{{ .Title }}</h1>
 
 <div class="event">
   <div class="infoblock">
-    {{- partial "button.html" (dict
+    {{- partial "components/button.html" (dict
       "url" .Params.facebook_event_url
       "text" "RSVP to Facebook Event"
       "icon" "facebook"
@@ -13,9 +17,9 @@
     <h3>Schedule</h3>
     {{ $start_time := time.AsTime .Params.event_start -}}
     {{ $end_time := time.AsTime .Params.event_end -}}
-    {{ partial "event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
+    {{ partial "content/event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
     {{ if .Params.calendarlink_url -}}
-      {{- partial "button.html" (dict
+      {{- partial "components/button.html" (dict
         "url" .Params.calendarlink_url
         "text" "Add to Calendar"
         "icon" "calendar"
@@ -41,7 +45,7 @@
         {{ .Params.location_name }}
       {{ end -}}
       </h4>
-      {{- partial "button-list.html" (dict
+      {{- partial "components/button-list.html" (dict
         "class" "social"
         "show_text" false
         "buttons" .Params.location_socials
@@ -49,7 +53,7 @@
       {{ if .Params.location_details -}}
         <p>{{ .Params.location_details }}</p>
       {{ end -}}
-      {{- partial "button-list.html" (dict
+      {{- partial "components/button-list.html" (dict
         "class" "links"
         "show_text" true
         "buttons" .Params.location_links
@@ -65,7 +69,7 @@
       </p>
     {{ end -}}
     {{ if .Params.location_map_url -}}
-      {{- partial "button.html" (dict
+      {{- partial "components/button.html" (dict
         "url" .Params.location_map_url
         "text" "Google Map"
         "icon" "location"
@@ -85,7 +89,7 @@
       {{ end -}}
     {{ end -}}
     <h4><a href="{{ .Params.partner_url }}">{{ .Params.partner_name }}</a></h4>
-    {{- partial "button-list.html" (dict
+    {{- partial "components/button-list.html" (dict
       "class" "social"
       "show_text" false
       "buttons" .Params.partner_socials
@@ -93,7 +97,7 @@
     {{ if .Params.partner_details -}}
       <p>{{ .Params.partner_details | markdownify }}</p>
     {{ end -}}
-    {{- partial "button-list.html" (dict
+    {{- partial "components/button-list.html" (dict
       "class" "links"
       "show_text" true
       "collapse" false
@@ -117,3 +121,4 @@
   </div>
 
 </div>
+{{ end }}

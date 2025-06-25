@@ -1,5 +1,4 @@
-{{ partial "header.html" . }}
-
+{{ define "main" }}
 <h1>{{ .Title }}</h1>
 
 {{ .Content }}
@@ -15,5 +14,4 @@
   {{- if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end -}}
 </article>
 {{ end }}
-
-{{ partial "footer.html" . }}
+{{ end }}

@@ -14,7 +14,7 @@
 {{- printf "<%s class=\"%s\">" $tag $class | safeHTML -}}
 
 {{- range .buttons -}}
-  {{- partial "button.html" (dict
+        {{- partial "components/button.html" (dict
     "url" .url
     "target" .target
     "text" .text

@@ -24,7 +24,7 @@
       <a href="{{ .URL }}" class="{{ .Params.class | default "" }}" target="{{ .Params.target | default "_self" }}">{{ .Name }}</a>
       {{- end }}
     </nav>
-    {{- partial "common-buttons.html" (dict
+    {{- partial "components/common-buttons.html" (dict
       "collapse" true
       "show_text" true
       "show_id" true
