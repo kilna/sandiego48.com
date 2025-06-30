@@ -1,4 +1,5 @@
 SHELL := /usr/bin/env bash
+PARAMS := --disableFastRender --logLevel debug --printPathWarnings --printUnusedTemplates
 
 # Set HUGO_BASEURL based on where we are building...
 ifeq ($(CF_PAGES),true)
@@ -11,16 +12,7 @@ else
 -include .env # This is used for local development...
 endif
 
-.PHONY: build build-clean server server-slow server-verbose
-
-server: build
-	hugo server
-
-server-slow: build-clean
-	hugo server --disableFastRender
-
-server-verbose: build-clean
-	hugo server --disableFastRender --logLevel debug --printPathWarnings --printUnusedTemplates
+.PHONY: build build-clean server server-slow server-verbose open-wait
 
 build:
 	hugo
@@ -28,3 +20,12 @@ build:
 build-clean:
 	rm -rf public
 	hugo --forceSyncStatic --cleanDestinationDir
+
+server: build
+	hugo server $(PARAMS) | tee >($(MAKE) open-wait)
+
+open-wait:
+	awk '/at http/ {gsub(/.* at | \(.*/, ""); system("open " $$0); exit}'
+
+open:
+	open http://localhost:1313
