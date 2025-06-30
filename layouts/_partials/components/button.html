@@ -1,4 +1,5 @@
 {{- if not (and .url .text) -}}{{- return -}}{{- end -}}
+{{- if and (isset . "if") (not .if) -}}{{- return -}}{{- end -}}
 {{- $url := .url -}}
 {{- $target := .target | default "_blank" -}}
 {{- $text := .text -}}
@@ -15,7 +16,7 @@
 
 {{- if not $icon -}}
   {{- if strings.Contains $url "facebook.com/groups" -}}
-    {{- $icon = "facebook-group" -}}
+    {{- $icon = "group" -}}
   {{- else if strings.Contains $url "facebook.com" -}}
     {{- $icon = "facebook" -}}
   {{- else if strings.Contains $url "instagram.com" -}}
@@ -42,10 +43,16 @@
     {{- $icon = "phone" -}}
   {{- else if strings.Contains $url "discord.com" -}}
     {{- $icon = "discord" -}}
+  {{- else if strings.Contains $url "discord.gg" -}}
+    {{- $icon = "discord" -}}
   {{- else if strings.Contains $url "/go/newsletter" -}}
     {{- $icon = "newsletter" -}}
-  {{- else if strings.Contains $url "/events/" -}}
+  {{- else if strings.Contains $url "calendarlink.com" -}}
     {{- $icon = "calendar" -}}
+  {{- else if strings.Contains $url "/events" -}}
+    {{- $icon = "calendar" -}}
+  {{- else if strings.Contains $url "/sponsors" -}}
+    {{- $icon = "heart" -}}
   {{- else -}}
     {{- $icon = "none" -}}
   {{- end -}}

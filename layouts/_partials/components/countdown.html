@@ -1,12 +1,14 @@
-<span class="countdown visible-until-{{ .Date }}{{ if isset . "ShowAfter" }} visible-after-{{ .ShowAfter }}{{ end }}">
-{{ if isset . "Prefix" -}}
-  {{ .Prefix }}
+<span class="countdown{{ if isset . "show_after" }} visible-after-{{ .show_after }}{{ end }} visible-before-{{ .show_before | default .date }}">
+{{ if isset . "prefix" -}}
+  {{ .prefix }}
 {{ end }}
-<span class="countdown-to-{{ .Date }}">
-  {{- if isset . "Default" }}{{ .Default }}{{ end -}}
-  {{- if isset . "Suffix" }}{{ .Suffix }}{{ end -}}
+<span class="countdown-to-{{ .date }}">
+  {{- if isset . "default" }}{{ .default }}{{ end -}}
 </span>
-{{ if isset . "Suffix" -}}
-  {{ .Suffix }}
+{{ if isset . "suffix" -}}
+  {{ .suffix }}
+{{- end -}}
+{{ if isset . "button" -}}
+  {{ partial "components/button.html" .button -}}
 {{- end -}}
 </span>

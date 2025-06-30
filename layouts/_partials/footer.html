@@ -1,18 +1,78 @@
-{{ $enable_socials := .Params.enable_socials | default true }}
+<style>
+footer {
+  text-align: center;
+  background-color: var(--48-orange);
+  font-size: 0.6em;
+  font-weight: 400;
+  color: var(--48-darken-more);
+  padding: 1.5rem;
+  clear: both;
+}
 
-<div class="clear"></div>
+@media all and (max-width: 768px) {
+  footer {
+    padding: 1rem 1rem 1rem 1rem;
+  }
+}
+
+footer a {
+  color: var(--48-darken-most);
+  text-decoration: underline;
+  text-decoration-color: var(--48-darken-most);
+  text-decoration-thickness: 1px;
+}
+
+footer .button-list {
+  font-size: 1em;
+}
+
+footer .button-list a {
+  padding: 0.5em 0.5em;
+  margin: 0.25em;
+  background-color: var(--48-darken-more);
+}
+
+footer .button-list a:hover {
+  background-color: var(--48-lighten-more);
+}
+
+</style>
 
 <footer>
-  {{ if $enable_socials -}}
+  {{ partial "components/button-list.html" (dict
+    "buttons" (slice
+      (dict
+        "url" "/links#online"
+        "text" "Find Us Online"
+        "icon" "none"
+      )
+      (dict
+        "url" "/links#community"
+        "text" "Join Our Community"
+        "icon" "none"
+      )
+      (dict
+        "url" "/links#socials"
+        "text" "Follow Us On Social Media"
+        "icon" "none"
+      )
+      (dict
+        "url" "/links#contact"
+        "text" "Contact Us"
+        "icon" "none"
+      )
+
+    )
+  ) }}
   {{ partial "components/common-buttons.html" (dict 
-    "show_text" true
+    "show_text" false
     "enable_home" true
     "enable_newsletter" true
     "enable_contact" true
-    "show_id" true
+    "collapse" true
+    "show_text" true
     "Site" .Site
   ) }}
-  {{- end }}
   <p>&copy;{{ dateFormat "2006" now }} <a href="{{ .Site.Params.copyright_url }}"/>{{ .Site.Params.copyright }}</a></p>
 </footer>
 

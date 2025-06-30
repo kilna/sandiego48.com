@@ -17,13 +17,14 @@
 {{- $enable_community := .enable_community | default true -}}
 {{- $enable_contact := .enable_contact | default false -}}
 
-{{- with .Site.Params -}}
+{{- $site := .Site | default site -}}
+{{- with $site.Params -}}
 
 {{- $buttons := slice -}}
 {{- if $enable_home -}}
   {{- $buttons = $buttons | append (dict
     "enable" true
-    "url" .Site.BaseURL
+    "url" $site.BaseURL
     "icon" "globe"
     "text" .site_link_text
     "defaultText" "Home"
@@ -34,7 +35,7 @@
 {{- if $enable_newsletter -}}
   {{- $buttons = $buttons | append (dict
     "enable" true
-    "url" (printf "%s/go/newsletter" .Site.BaseURL)
+    "url" (printf "%s/go/newsletter" $site.BaseURL)
     "icon" "newsletter"
     "text" "Newsletter"
     "px" $px
@@ -47,6 +48,16 @@
     "url" (printf "https://facebook.com/groups/%s" .facebook_group)
     "icon" "group"
     "text" "Facebook Group"
+    "px" $px
+    "show_text" $show_text
+  ) -}}
+{{- end -}}
+{{- if and $enable_community .discord_server -}}
+  {{- $buttons = $buttons | append (dict
+    "enable" true
+    "url" .discord_server_invite
+    "icon" "discord"
+    "text" "Discord Server"
     "px" $px
     "show_text" $show_text
   ) -}}
@@ -107,16 +118,6 @@
     "url" (printf "https://tiktok.com/@%s" .tiktok)
     "icon" "tiktok"
     "text" (printf "TikTok @%s" .tiktok)
-    "px" $px
-    "show_text" $show_text
-  ) -}}
-{{- end -}}
-{{- if and $enable_community .discord_server -}}
-  {{- $buttons = $buttons | append (dict
-    "enable" true
-    "url" .discord_server_invite
-    "icon" "discord"
-    "text" "Discord Server"
     "px" $px
     "show_text" $show_text
   ) -}}

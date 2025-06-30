@@ -7,6 +7,10 @@
 </head>
 <body>
 
+{{- block "banner" . -}}
+{{ partial "countdowns.html" . -}}
+{{- end -}}
+  
 {{- block "title" . -}}
 {{- partial "title.html" . -}}
 {{- end -}}
@@ -14,8 +18,8 @@
 {{- block "nav" . -}}
 {{- partial "nav.html" . -}}
 {{- end -}}
-
-{{- block "banner" . -}}
+  
+{{- block "featured" . -}}
 {{- end -}}
 
 <main>

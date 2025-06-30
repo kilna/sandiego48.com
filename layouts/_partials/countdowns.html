@@ -1,0 +1,39 @@
+{{ if and (isset .Site.Params "countdowns") (gt (len .Site.Params.countdowns) 0) -}}
+<style>
+div.countdowns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--48-orange);
+  background-color: var(--48-black);
+  font-weight: 600;
+}
+div.countdowns .countdown {
+  margin: 0.125em;
+  padding: 1em;
+}
+@keyframes countdown-button-highlight {
+  0%   { background-color: var(--48-orange); }
+  20%  { background-color: var(--48-purple-light); }
+  40% { background-color: var(--48-orange); }
+  100% { background-color: var(--48-orange); }
+}
+div.countdowns .button {
+  color: var(--48-black);
+  background-color: var(--48-orange);
+  padding: 0.5em 0.75em 0.5em 0.75em;
+  margin: 0.5em;
+  animation-name: countdown-button-highlight;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+</style>
+<div class="countdowns">
+{{ range .Site.Params.countdowns -}}
+{{ partial "components/countdown.html" . -}}
+{{ end -}}
+</div>
+{{ end -}}

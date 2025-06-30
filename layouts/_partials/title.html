@@ -1,24 +1,146 @@
+{{- $bg := resources.Get (printf "images/%s" .Site.Params.header_bg) -}}
+<style>
+header.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 1em;
+  background: 
+    linear-gradient(
+      110deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.5) 15%,
+      rgba(0, 0, 0, 0.85) 50%,
+      rgba(0, 0, 0, 0.5) 85%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    url('{{ $bg.RelPermalink }}');
+  background-size: cover;
+  background-position: center 81%;
+  background-repeat: no-repeat;
+  background-color: var(--48-purple-dark);
+  border-radius: 0px;
+}
+
+header.title div.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 180px;
+}
+
+header.title div.logo img {
+  width: 100%;
+  height: auto;
+}
+
+header.title div.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+}
+
+header.title div.socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 180px;
+}
+
+header.title div.socials img {
+  width: 75%;
+  height: auto;
+}
+
+
+header.title div.socials a {
+  opacity: 0.5;
+}
+
+header.title div.socials a:hover {
+  opacity: 1;
+}
+
+header.title h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(1.5em, 4vw, 3.5em);
+  text-shadow: -2px -2px 1px var(--48-white),
+                2px -2px 1px var(--48-white),
+               -2px  2px 1px var(--48-white),
+                2px  2px 1px var(--48-white);
+}
+
+header.title h1 div.subtitle {
+  font-size: 0.5em;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: -1px -1px 1px var(--48-white),
+                1px -1px 1px var(--48-white),
+               -1px  1px 1px var(--48-white),
+                1px  1px 1px var(--48-white);
+}
+
+@media all and (max-width: 768px) {
+  header.title {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+  header.title div.logo,
+  header.title div.socials {
+    flex: 1;
+    width: auto;
+  }
+  header.title div.socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  header.title div.main {
+    flex: none;
+    width: 100%;
+    order: 3;
+  }
+  header.title div.logo img {
+    width: 180px;
+  }
+  header.title h1 {
+    font-size: clamp(1.5em, 10vw, 3.5em);
+  }
+}
+
+</style>
 <header class="title">
 <div class="logo">
-  {{- $logo := resources.Get "images/logo_trans_glow.png" -}}
-  <a href="{{ .Site.BaseURL }}"><img class="pure-img" src="{{ $logo.RelPermalink }}" alt="logo"/></a>
+  {{- $logo := resources.Get (printf "images/%s" .Site.Params.logo) -}}
+  <a href="{{ .Site.BaseURL }}"><img class="pure-img" src="{{ $logo.RelPermalink }}" alt="{{ .Site.Title}} Logo"/></a>
 </div>
 <div class="main">
 <h1>
 {{- if isset . "ShowSiteTitle" -}}
 <div class="subtitle">{{ .Site.Title }}</div>
 {{- end -}}
-{{- if isset . "Title" -}}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}
+{{ .Title | default .Site.Title }}
 {{- if isset . "Subtitle" -}}
 <div class="subtitle">{{ .Subtitle }}</div>
 {{- end -}}
 </h1>
-{{- if isset . "TitleInfo" -}}
-<div class="info">{{ .TitleInfo | safeHTML }}</div>
-{{- end -}}
 </div>
 <div class="socials">
   {{- $socials := resources.Get "images/socials.png" -}}
-  <a href="/links"><img src="{{ $socials.RelPermalink }}" alt="socials"/></a>
+  <a href="/links#socials"><img src="{{ $socials.RelPermalink }}" alt="socials"/></a>
 </div>
 </header>

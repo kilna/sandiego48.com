@@ -1,19 +1,77 @@
-<header class="nav">
-  {{ partial "components/countdown.html" (dict
-    "Default" "Not long"
-    "Suffix" "left for early bird registration!"
-    "Date" "2025-07-22T00:00:00-07:00"
-    "ShowAfter" "2025-07-10T00:00:00-07:00"
+<style>
+nav.main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25em;
+  margin: 0;
+  background-color: var(--48-purple);
+  background: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E"),
+    linear-gradient(
+      100deg,
+      var(--48-purple-dark) 0%,
+      var(--48-purple) 15%,
+      var(--48-purple) 50%,
+      var(--48-purple) 85%,
+      var(--48-purple-dark) 100%
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E"),
+    linear-gradient(
+      -1.5deg,
+      var(--48-purple-trans-more) 0%,
+      var(--48-darken) 20%,
+      var(--48-darken-more) 50%,
+      var(--48-darken) 80%,
+      var(--48-lighten) 100%
+    );
+}
+
+@media all and (max-width: 768px) {
+  nav.main {
+    padding: 1rem;
+  }
+}
+
+nav.main a.button {
+  margin: 0.125em 0.25em;
+/*
+  display: inline-block;
+  background: var(--48-lighten-more);
+  background: linear-gradient(
+                120deg, 
+                var(--48-lighten) 0%,
+                var(--48-lighten-more) 10%,
+                var(--48-white) 50%,
+                var(--48-lighten-more) 90%,
+                var(--48-lighten) 100%
+              );
+  text-decoration: none;
+  font-weight: 500;
+  line-height: 2em;
+  text-shadow: -0.5em -0.5em 0.5em var(--48-white),
+                0.5em -0.5em 0.5em var(--48-white),
+                -0.5em  0.5em 0.5em var(--48-white),
+                0.5em  0.5em 0.5em var(--48-white);
+*/
+}
+
+
+nav.main a.button:hover {
+  background: var(--48-white);
+  border-color: var(--48-orange-light);
+  box-shadow: 0 0 1em 1em var(--48-lighten);
+  animation-duration: 5s;
+}
+</style>
+<nav class="main">
+  {{ range .Site.Menus.main -}}
+  {{ partial "components/button.html" (dict
+    "url" .URL
+    "text" .Name
+    "class" .Params.class
+    "target" .Params.target
   ) -}}
-  {{ partial "components/countdown.html" (dict
-    "Default" "Not long"
-    "Suffix" "before late registration price increase!"
-    "Date" "2025-08-05T00:00:00-07:00"
-    "ShowAfter" "2025-07-22T00:00:00-07:00"
-  ) -}}
-  <nav class="menu">
-    {{ range.Site.Menus.main -}} 
-    <a href="{{ .URL }}" class="{{ .Params.class | default "" }}" target="{{ .Params.target | default "_self" }}">{{ .Name }}</a>
-    {{- end }}
-  </nav>
-</header>
+  {{- end }}
+</nav>
