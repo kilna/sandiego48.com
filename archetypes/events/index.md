@@ -48,7 +48,7 @@ params:
 
     The 48 Hour Film Project is the longest running and most popular timed
     filmmaking competition. Amateur and professional teams around the world make
-    movies over a weekend, which are later given a premier in a real cinema. San
+    movies over a weekend, which are later given a premier in a real theater. San
     Diego's competition takes place August 15-17th, 2024.
 ---
 
@@ -58,7 +58,7 @@ params:
 
 The 48 Hour Film Project is the longest running and most popular timed
 film-making competition. Amateur and professional teams around the world
-make movies in a weekend, which are later given a premier in a real cinema.
+make movies in a weekend, which are later given a premier in a real theater.
 San Diego's competition takes place July 12-14, 2024.
 
 [Find out more about the 48](/)

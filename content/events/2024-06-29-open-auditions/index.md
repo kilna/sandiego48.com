@@ -40,7 +40,7 @@ to repeat one of the lines of their monologue in that tone.
 
 The 48 Hour Film Project is the longest running and most popular timed
 film-making competition. Amateur and professional teams around the world
-make movies in a weekend, which are later given a premier in a real cinema.
+make movies in a weekend, which are later given a premier in a real theater.
 San Diego's competition takes place July 12-14, 2024.
 
 [Find out more about the 48](/)

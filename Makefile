@@ -1,5 +1,6 @@
 SHELL := /usr/bin/env bash
-PARAMS := --disableFastRender --logLevel debug --printPathWarnings --printUnusedTemplates
+#PARAMS := --disableFastRender --logLevel debug --printPathWarnings --printUnusedTemplates
+PARAMS := --disableFastRender
 
 # Set HUGO_BASEURL based on where we are building...
 ifeq ($(CF_PAGES),true)
@@ -22,10 +23,10 @@ build-clean:
 	hugo --forceSyncStatic --cleanDestinationDir
 
 server: build
-	hugo server $(PARAMS) | tee >($(MAKE) open-wait)
+	hugo server $(PARAMS) | tee >($(MAKE) open-wait) 2>&1
 
 open-wait:
-	awk '/at http/ {gsub(/.* at | \(.*/, ""); system("open " $$0); exit}'
+	awk '/at http/ {gsub(/.* at | \(.*/, ""); system("open " $$0); fflush(); while((getline) > 0) print}'
 
 open:
 	open http://localhost:1313

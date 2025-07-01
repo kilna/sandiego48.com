@@ -1,4 +1,3 @@
-{{- $px := .px | default 32 | int -}}
 {{- $collapse := .collapse | default false -}}
 {{- $show_text := .show_text | default true -}}
 
@@ -28,7 +27,6 @@
     "icon" "globe"
     "text" .site_link_text
     "defaultText" "Home"
-    "px" $px
     "show_text" $show_text
   ) -}}
 {{- end -}}
@@ -38,7 +36,6 @@
     "url" (printf "%s/go/newsletter" $site.BaseURL)
     "icon" "newsletter"
     "text" "Newsletter"
-    "px" $px
     "show_text" $show_text
   ) -}}
 {{- end -}}
@@ -48,7 +45,6 @@
     "url" (printf "https://facebook.com/groups/%s" .facebook_group)
     "icon" "group"
     "text" "Facebook Group"
-    "px" $px
     "show_text" $show_text
   ) -}}
 {{- end -}}
@@ -58,7 +54,6 @@
     "url" .discord_server_invite
     "icon" "discord"
     "text" "Discord Server"
-    "px" $px
     "show_text" $show_text
   ) -}}
 {{- end -}}
@@ -68,7 +63,6 @@
     "url" (printf "https://facebook.com/%s" .facebook)
     "icon" "facebook"
     "text" (printf "Facebook @%s" .facebook)
-    "px" $px
     "show_text" $show_text
   ) -}}
 {{- end -}}
@@ -78,7 +72,6 @@
     "url" (printf "https://instagram.com/%s" .instagram)
     "icon" "instagram"
     "text" (printf "Instagram @%s" .instagram)
-    "px" $px
     "show_text" $show_text
   ) -}}
 {{- end -}}
@@ -88,7 +81,6 @@
     "url" (printf "https://threads.net/@%s" .threads)
     "icon" "threads"
     "text" (printf "Threads @%s" .threads)
-    "px" $px
     "show_text" $show_text
   ) -}}
 {{- end -}}
@@ -98,7 +90,6 @@
     "url" (printf "https://twitter.com/%s" .twitter)
     "icon" "twitter"
     "text" (printf "Twitter @%s" .twitter)
-    "px" $px
     "show_text" $show_text
   ) -}}
 {{- end -}}
@@ -108,7 +99,6 @@
     "url" (printf "https://youtube.com/%s" .youtube)
     "icon" "youtube"
     "text" (printf "YouTube @%s" .youtube)
-    "px" $px
     "show_text" $show_text
   ) -}}
 {{- end -}}
@@ -118,7 +108,6 @@
     "url" (printf "https://tiktok.com/@%s" .tiktok)
     "icon" "tiktok"
     "text" (printf "TikTok @%s" .tiktok)
-    "px" $px
     "show_text" $show_text
   ) -}}
 {{- end -}}
@@ -128,7 +117,6 @@
     "url" (printf "tel:%s" .phone)
     "icon" "phone"
     "text" (printf "%s %s" (cond .phone_can_text "Phone / Text" "Phone") .phone)
-    "px" $px
     "show_text" $show_text
   ) -}}
 {{- end -}}
@@ -138,7 +126,6 @@
     "url" (printf "mailto:%s" .email)
     "icon" "email"
     "text" (printf "Email %s" .email)
-    "px" $px
     "show_text" $show_text
   ) -}}
 {{- end -}}
@@ -147,7 +134,6 @@
   "tag" "nav"
   "collapse" $collapse
   "show_text" $show_text
-  "px" $px
   "class" $class
   "button_class" $button_class
   "buttons" $buttons

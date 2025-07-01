@@ -52,32 +52,35 @@ params:
   copyright_url: https://cinediego.com
   countdowns:
     - default: "A while to go"
-      suffix: "until this year's competition... Prices go up soon!"
+      suffix: "until this year's competition..."
       date: "2025-08-15T19:00:00-07:00"
       show_after: "2025-06-09T00:00:00-07:00"
       show_before: "2025-07-22T00:00:00-07:00"
+      button_prefix: "Prices go up soon!"
       button:
         text: "Register Your Team Now!"
         url: /go/register
-        icon: register
+        icon2: register
     - default: "Not long"
-      suffix: "left for early bird registration!"
+      suffix: "left for early bird registration..."
       date: "2025-07-22T00:00:00-07:00"
       show_after: "2025-07-10T00:00:00-07:00"
       show_before: "2025-07-22T00:00:00-07:00"
+      button_prefix: "Prices go up soon!"
       button:
         text: "Register Your Team Now!"
         url: /go/register
-        icon: register
+        icon2: register
     - default: "Not long"
-      suffix: "until late registration price increase!"
+      suffix: "until late registration..."
       date: "2025-08-05T00:00:00-07:00"
       show_after: "2025-07-22T00:00:00-07:00"
       show_before: "2025-08-05T00:00:00-07:00"
+      button_prefix: "Prices increase soon!"
       button:
         text: "Register Your Team Now!"
         url: /go/register
-        icon: register
+        icon2: register
 outputs:
   page: ["HTML", "plain", "simple"]
   home: ["HTML"]
@@ -107,16 +110,21 @@ menus:
     weight: 1
     name: Events
     url: /events
-  - identifier: sponsors
-    weight: 2
-    name: Sponsors
-    url: /sponsors
+    params:
+      target: _self
+#  - identifier: sponsors
+#    weight: 2
+#    name: Sponsors
+#    url: /sponsors
+#    params:
+#      target: _self
   - identifier: subscribe
     weight: 5
     name: Subscribe to Newsletter
     url: /go/newsletter
     params:
       target: _blank
+      class: highlight
 #  - identifier: bestof
 #    name: Best of 2024 Selections and Nominees
 #    url: https://www.tixtree.com/e/best-of-san-diego-48-hour-film-project-screening-and-awards-gala-f8b4d04c2b71

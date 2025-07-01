@@ -1,7 +1,6 @@
 {{- $tag := .tag | default "div" -}}
 {{- $collapse := .collapse -}}
 {{- $show_text := .show_text -}}
-{{- $px := .px -}}
 {{- $class := .class | default "button-list" -}}
 {{- if ne $class "button-list" -}}
   {{- $class = printf "button-list %s" $class -}}
@@ -20,7 +19,6 @@
     "text" .text
     "icon" .icon
     "class" $button_class
-    "px" $px
     "collapse" $collapse
     "show_text" $show_text
     "alt" (default .alt .icon)

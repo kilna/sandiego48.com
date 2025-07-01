@@ -7,8 +7,13 @@
 </span>
 {{ if isset . "suffix" -}}
   {{ .suffix }}
-{{- end -}}
+{{- end }}
 {{ if isset . "button" -}}
-  {{ partial "components/button.html" .button -}}
+<span class="countdown-button">
+{{- if isset . "button_prefix" -}}
+  {{ .button_prefix }}
+{{- end -}}
+{{ partial "components/button.html" .button -}}
+</span>
 {{- end -}}
 </span>

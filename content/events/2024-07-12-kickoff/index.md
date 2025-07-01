@@ -45,6 +45,6 @@ competition.
 
 The 48 Hour Film Project is the longest running and most popular timed
 film-making competition. Amateur and professional teams around the world
-make movies in a weekend, which are later given a premier in a real cinema.
+make movies in a weekend, which are later given a premier in a real theater.
 
 [Find out more about the 48](/)

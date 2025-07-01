@@ -1,6 +1,7 @@
 :root {
   --48-black:             #000000;
   --48-white:             #ffffff;
+  --48-trans:             #00000000;
   --48-nearwhite:         #f0f0f0;
   --48-yellow:            #ffff00;
   --48-orange:            #eab32c;
@@ -30,6 +31,7 @@
   --clock-off:            #503050b0;
   --clock-glow:           #ca37ff;
   --clock-shade:          #000000;
+  --font-baseline-adjust: 0.05em;
 }
 
 
@@ -170,12 +172,17 @@ a[href*="http://"] {
 
 a.button {
   text-decoration: none;
-  padding: 0.25em;
+  text-align: center;
+  padding: 0.25em 0.5em;
   border-radius: 0.25em;
   white-space: nowrap;
   color: var(--48-white);
   background-color: var(--48-black);
   transition: all 0.5s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 a.button:hover {
@@ -183,8 +190,17 @@ a.button:hover {
   background-color: var(--48-white);
 }
 
-a.button img + span:not(.reveal) {
-  margin-left: 0.25em;
+a.button .icon + span {
+  margin-left: var(--icon-spacing, 0.25em);
+}
+
+a.button span:has(+ .icon) {
+  margin-right: var(--icon-spacing, 0.25em);
+}
+
+/* Compensate for League Spartan's high baseline - text only, not icons */
+a.button span:not(.icon):not(:has(svg)) {
+  transform: translateY(var(--font-baseline-adjust));
 }
 
 a.button span.reveal {
@@ -206,16 +222,16 @@ a.button:hover span.reveal {
   font-weight: 700;
 }
 
-a.button img {
-  width: 1em;
-  height: 1em;
-  vertical-align: text-bottom;
-  display: inline-block;
-  filter: invert(1);
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-a.button:hover img {
-  filter: invert(0);
+.icon svg {
+  width: calc(var(--icon-scale, 1) * 1em);
+  height: calc(var(--icon-scale, 1) * 1em);
+  display: block;
 }
 
 

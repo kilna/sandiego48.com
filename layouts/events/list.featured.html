@@ -1,6 +1,7 @@
 {{- $now := now -}}
 {{- $all_events := where .Site.RegularPages "Section" "events" -}}
 {{- $featured_events := slice -}}
+
 {{- range $all_events -}}
   {{- if and .Params.featured .Params.event_end -}}
     {{- $end_time := time.AsTime .Params.event_end -}}
@@ -9,8 +10,9 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
+
 {{- if $featured_events -}}
-{{ partial "stylesheet.html" "events" }}
+{{ partial "layout/stylesheet.html" "events" }}
 <style>
   h2.coming-events-header {
     text-align: center;
@@ -41,7 +43,7 @@
   <h3>
     <a href="{{ $link }}">{{ .Title }}</a>
   </h3>
-    {{ partial "event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
+    {{ partial "content/event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
     {{- if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end -}}
   </article>
   {{ end }} 

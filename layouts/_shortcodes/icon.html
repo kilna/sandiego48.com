@@ -1,10 +1,9 @@
 {{/*
   Icon Shortcode
-  Usage in content: {{< icon name="facebook" size="24" class="my-class" >}}
+  Usage in content: {{< icon name="facebook" class="my-class" >}}
   
   Parameters:
   - name: (required) Icon name - facebook, instagram, threads, twitter, tiktok, discord, calendar, location
-  - size: (optional) Icon size in pixels, defaults to "16"
-  - class: (optional) Additional CSS classes
+  - class: (optional) Additional CSS classes - use CSS to set --icon-scale for custom sizing
 */}}
-{{ partial "icon.html" (dict "name" (.Get "name") "size" (.Get "size") "class" (.Get "class")) -}}
+{{ partial "components/icon.html" (dict "icon" (.Get "name") "class" (.Get "class")) -}}
