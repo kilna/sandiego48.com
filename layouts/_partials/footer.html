@@ -7,6 +7,7 @@ footer {
   color: var(--48-darken-more);
   padding: 1.5rem;
   clear: both;
+  box-shadow: inset 0 0 2em var(--48-black);
 }
 
 @media all and (max-width: 768px) {
@@ -36,6 +37,7 @@ footer .button-list a:hover {
   background-color: var(--48-lighten-more);
 }
 
+
 </style>
 
 <footer>
@@ -64,16 +66,10 @@ footer .button-list a:hover {
 
     )
   ) }}
-  {{ partial "components/common-buttons.html" (dict 
-    "show_text" false
-    "enable_home" true
-    "enable_newsletter" true
-    "enable_contact" true
-    "collapse" true
-    "show_text" true
-    "Site" .Site
-  ) }}
-  <p>&copy;{{ dateFormat "2006" now }} <a href="{{ .Site.Params.copyright_url }}"/>{{ .Site.Params.copyright }}</a></p>
+
+  <div>
+    <p>&copy; {{ .Site.Params.year }} {{ .Site.Params.copyright }}</p>
+  </div>
 </footer>
 
 </body>

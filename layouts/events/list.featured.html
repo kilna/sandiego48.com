@@ -40,11 +40,13 @@
     <a href="{{ $link }}"><img src="/images/logo-purple.png" /></a>
   {{- end }}
   </div>
-  <h3>
-    <a href="{{ $link }}">{{ .Title }}</a>
-  </h3>
+  <div class="content">
+    <h3>
+      <a href="{{ $link }}">{{ .Title }}</a>
+    </h3>
     {{ partial "content/event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
     {{- if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end -}}
+  </div>
   </article>
   {{ end }} 
 </div>

@@ -1,9 +1,5 @@
 {{ define "title" -}}
-{{ $countdown := (partial "components/countdown.html" (dict
-  "Prefix" "Competition weekend is August 15-17th"
-  "Date" "2025-08-15T19:00:00-07:00"
-)) -}}
-{{ partial "title.html" (dict "Title" .Title "Site" .Site "TitleInfo" $countdown) }}
+{{ partial "title.html" (dict "Title" .Title "Site" .Site "Params" .Params "ShowSiteTitle" false) }}
 {{ end }}
 
 {{ define "featured" -}}

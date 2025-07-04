@@ -2,9 +2,10 @@
 nav.main {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding: 0.25em;
+  padding: 0.75em;
   margin: 0;
   background-color: var(--48-purple);
   background: radial-gradient(
@@ -17,11 +18,7 @@ nav.main {
 
 nav.main a.button {
   margin: 0.125em 0.25em;
-  border: 3px solid var(--48-purple);
-}
-
-nav.main a.button .icon {
-  color: var(--48-orange);
+  border: 0.1em solid var(--48-purple);
 }
 
 nav.main a.button:hover {
@@ -31,22 +28,21 @@ nav.main a.button:hover {
 }
 
 
-nav.main a.button:hover .icon {
-  color: var(--48-black);
-}
-
 @keyframes nav-button-throb {
   0% { 
     border-color: var(--48-purple); 
     box-shadow: 0 0 0.1em 0.1em var(--48-trans);
+    transform: scale(1);
   }
   50% { 
     border-color: var(--48-orange); 
     box-shadow: 0 0 0.25em 0.25em var(--48-orange-trans-less);
+    transform: scale(1.02);
   }
   100% { 
     border-color: var(--48-purple); 
     box-shadow: 0 0 0.1em 0.1em var(--48-trans);
+    transform: scale(1);
   }
 }
 
@@ -59,6 +55,7 @@ nav.main a.button.highlight:hover {
 }
 
 
+
 </style>
 
 <nav class="main">
@@ -68,6 +65,8 @@ nav.main a.button.highlight:hover {
     "text" .Name
     "class" .Params.class
     "target" .Params.target
+    "icon" .Params.icon
+    "icon_position" "right"
   ) -}}
   {{- end }}
 </nav>

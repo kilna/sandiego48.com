@@ -12,14 +12,12 @@
     {{ with .Resources.Get .Params.image -}}
       {{ $thumb := .Resize "200x" -}}
       {{ with $thumb }}
-        <a href="{{ $link }}"><img src="{{ .RelPermalink }}" /></a>
+        <img src="{{ .RelPermalink }}" />
       {{ end -}}
     {{- end }}
   </div>
   <div class="content">
-    <h3>
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    </h3>
+    <h3>{{ .Title }}</h3>
     {{/*
     <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
       {{ .Date.Format "January 2, 2006" }}

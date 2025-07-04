@@ -9,10 +9,10 @@ header.title {
   padding: 1em;
   background: 
     linear-gradient(
-      110deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.7) 50%,
-      rgba(0, 0, 0, 0) 100%
+      90deg,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.9) 100%
     ),
     url('{{ $bg.RelPermalink }}');
   background-size: cover;
@@ -20,6 +20,7 @@ header.title {
   background-repeat: no-repeat;
   background-color: var(--48-purple-dark);
   border-radius: 0px;
+  box-shadow: inset 0 0 2em var(--48-black);
 }
 
 header.title div.logo {
@@ -62,8 +63,10 @@ header.title div.socials {
 
 header.title div.socials img {
   width: 75%;
+  opacity: 0.8;
   height: auto;
   vertical-align: middle;
+  transition: all 0.5s ease;
 }
 
 
@@ -71,12 +74,12 @@ header.title div.socials a {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.8;
   filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 1));
 }
 
-header.title div.socials a:hover {
+header.title div.socials a:hover img {
   opacity: 1;
+  transform: scale(1.1);
 }
 
 header.title h1 {
@@ -147,6 +150,7 @@ header.title h1 div.subtitle {
   header.title h1 {
     font-size: clamp(1.5em, 10vw, 3.5em);
   }
+
 }
 
 </style>
@@ -157,12 +161,12 @@ header.title h1 div.subtitle {
 </div>
 <div class="main">
 <h1>
-{{- if isset . "ShowSiteTitle" -}}
+{{- if .ShowSiteTitle | default true -}}
 <div class="subtitle">{{ .Site.Title }}</div>
 {{- end -}}
 {{ .Title | default .Site.Title }}
-{{- if isset . "Subtitle" -}}
-<div class="subtitle">{{ .Subtitle }}</div>
+{{- if isset .Params "subtitle" -}}
+<div class="subtitle">{{ .Params.subtitle }}</div>
 {{- end -}}
 </h1>
 </div>

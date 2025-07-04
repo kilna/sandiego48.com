@@ -40,7 +40,7 @@
   text-decoration: none;
 }
 
-.infoblock a:hover {
+.infoblock a:hover, .infoblock a:active {
   text-decoration: underline;
 }
 
@@ -59,7 +59,7 @@
   line-height: 1;
 }
 
-.infoblock a.button:hover {
+.infoblock a.button:hover, .infoblock a.button:active {
   color: var(--48-purple);
   background-color: var(--48-white);
   font-weight: 700;
@@ -95,7 +95,7 @@
   line-height: 1;
 }
 
-.infoblock .social a.button:hover {
+.infoblock .social a.button:hover, .infoblock .social a.button:active {
   color: var(--48-black);
   background-color: var(--48-white);
   font-weight: 700;

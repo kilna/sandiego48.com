@@ -60,7 +60,8 @@ params:
       button:
         text: "Register Your Team Now!"
         url: /go/register
-        icon2: register
+        icon: register
+        icon_position: right
     - default: "Not long"
       suffix: "left for early bird registration..."
       date: "2025-07-22T00:00:00-07:00"
@@ -70,7 +71,8 @@ params:
       button:
         text: "Register Your Team Now!"
         url: /go/register
-        icon2: register
+        icon: register
+        icon_position: right
     - default: "Not long"
       suffix: "until late registration..."
       date: "2025-08-05T00:00:00-07:00"
@@ -80,7 +82,8 @@ params:
       button:
         text: "Register Your Team Now!"
         url: /go/register
-        icon2: register
+        icon: register
+        icon_position: right
 outputs:
   page: ["HTML", "plain", "simple"]
   home: ["HTML"]
@@ -109,15 +112,24 @@ menus:
   - identifier: events
     weight: 1
     name: Events
-    url: /events
+    url: /#events
     params:
       target: _self
-#  - identifier: sponsors
-#    weight: 2
-#    name: Sponsors
-#    url: /sponsors
-#    params:
-#      target: _self
+      icon: calendar
+  - identifier: about
+    weight: 1
+    name: About
+    url: /#about
+    params:
+      target: _self
+      icon: lightbulb
+  - identifier: get-started
+    weight: 1
+    name: Get Started
+    url: /#get-started
+    params:
+      target: _self
+      icon: question
   - identifier: subscribe
     weight: 5
     name: Subscribe to Newsletter

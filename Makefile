@@ -30,3 +30,6 @@ open-wait:
 
 open:
 	open http://localhost:1313
+
+icons:
+	./scripts/icons.sh

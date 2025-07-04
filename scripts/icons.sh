@@ -2,6 +2,23 @@
 
 set -euo pipefail
 
+# Parse command line arguments
+FORCE=false
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -f|--force)
+      FORCE=true
+      shift
+      ;;
+    *)
+      echo "Unknown option: $1"
+      echo "Usage: $0 [-f|--force]"
+      echo "  -f, --force    Force download even if file already exists"
+      exit 1
+      ;;
+  esac
+done
+
 # Check if yq is installed
 if ! command -v yq &> /dev/null; then
   echo "Error: yq is not installed. Please install mikefarah/yq first."
@@ -25,6 +42,9 @@ if [[ ! -f "$YAML_FILE" ]]; then
 fi
 
 echo "Parsing icons.yaml and downloading SVGs..."
+if [[ "$FORCE" == true ]]; then
+  echo "Force mode enabled - will overwrite existing files"
+fi
 
 # Parse YAML and iterate through each key-value pair
 yq eval '. as $root | keys | .[] | . as $key | {"name": $key, "iconify": $root[$key]}' "$YAML_FILE" | \
@@ -41,6 +61,12 @@ while read -r line; do
       
       url="https://api.iconify.design/${collection}/${icon}.svg"
       output_file="$SCRIPT_DIR/../assets/icons/${icon_name}.svg"
+      
+      # Check if file already exists and force flag is not set
+      if [[ -f "$output_file" && "$FORCE" != true ]]; then
+        echo "  ⏭  Skipping ${icon_name}.svg (already exists, use -f to force)"
+        continue
+      fi
       
       echo "Downloading $iconify_id as ${icon_name}.svg..."
       

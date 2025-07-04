@@ -1,7 +1,7 @@
 {{ range . -}}
 {{ $start_time := time.AsTime .Params.event_start -}}
 {{ $end_time := time.AsTime .Params.event_end -}}
-<article class="event-snippet post-snippet{{ if (gt time.Now $end_time) }} expired{{ end }}">
+<article class="event-entry entry{{ if (gt time.Now $end_time) }} expired{{ end }}">
   <div class="thumb{{ if not .Params.image }} hide-small{{ end }}">
   {{ $link := .RelPermalink -}}
   {{ with .Resources.Get .Params.image -}}
@@ -13,10 +13,12 @@
     <a href="{{ $link }}"><img src="/images/logo-purple.png" /></a>
   {{- end }}
   </div>
-  <h3>
-    <a href="{{ $link }}">{{ .Title }}</a>
-  </h3>
-  {{ partial "content/event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
-  {{- if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end -}}
+  <div class="content">
+    <h3>
+      <a href="{{ $link }}">{{ .Title }}</a>
+    </h3>
+    {{ partial "content/event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
+    {{- if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end -}}
+  </div>
 </article>
 {{ end }} 

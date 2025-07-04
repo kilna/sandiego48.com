@@ -85,6 +85,14 @@ h4 { font-size: 1.375rem; font-weight: 600; }
 h5 { font-size: 1.25rem; font-weight: 600; }
 h6 { font-size: 1.125rem; font-weight: 600; }
 
+@media all and (max-width: 768px) {
+  h1, h2 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 p {
   margin: 0.75rem 0 0.75rem 0;
   line-height: 1.25em;
@@ -106,7 +114,7 @@ a {
   text-decoration:  underline var(--48-black) 2px;
 }
 
-a:hover {
+a:hover, a:active {
   text-decoration:  underline var(--48-orange-light) 3px;
   color: var(--48-purple);
 }
@@ -136,12 +144,41 @@ a[href*="http://"] {
   display: none;
 }
 
+@media all and (min-width: 769px) {
+  .show-small, .hide-big {
+    display: none;
+    visibility: hidden;
+  }
+}
+
 @media all and (max-width: 768px) {
   .hide-small, .show-big {
     display: none;
     visibility: hidden;
   }
 }
+
+.float-left-unless-wide {
+  display: block;
+  float: left;
+  position: relative;
+  margin: 0 1em 1em 0;
+}
+
+.float-right-unless-wide {
+  display: block !important;
+  float: right !important;
+  position: relative !important;
+  margin: 0 1em 1em 0;
+}
+
+@media all and (max-width: 768px) {
+  .float-left-unless-wide, .float-right-unless-wide {
+    float: none !important;
+    margin: 0 0 1em 0;
+  }
+}
+
 
 /*
 ######                                   
@@ -172,12 +209,14 @@ a[href*="http://"] {
 
 a.button {
   text-decoration: none;
+  font-weight: 400;
   text-align: center;
   padding: 0.25em 0.5em;
   border-radius: 0.25em;
   white-space: nowrap;
   color: var(--48-white);
   background-color: var(--48-black);
+  border: 0.02em solid var(--48-orange-trans);
   transition: all 0.5s ease;
   display: inline-flex;
   align-items: center;
@@ -185,9 +224,12 @@ a.button {
   line-height: 1;
 }
 
-a.button:hover {
+a.button:hover, a.button:active {
+  font-weight: 700;
   color: var(--48-black);
   background-color: var(--48-white);
+  border: 0.02em solid var(--48-purple-trans);
+  transform: scale(1.08);
 }
 
 a.button .icon + span {
@@ -213,7 +255,7 @@ a.button span.reveal {
   transition: all 0.5s ease, margin 1s ease, font-weight 2s ease;
 }
 
-a.button:hover span.reveal {
+a.button:hover span.reveal, a.button:active span.reveal {
   opacity: 1;
   width: auto;
   margin-left: 0.5em;
@@ -222,18 +264,22 @@ a.button:hover span.reveal {
   font-weight: 700;
 }
 
-.icon {
+a.button .icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  color: var(--48-orange);
 }
 
-.icon svg {
+a:hover.button .icon, a:active.button .icon {
+  color: var(--48-purple);
+}
+
+a.button .icon svg {
   width: calc(var(--icon-scale, 1) * 1em);
   height: calc(var(--icon-scale, 1) * 1em);
   display: block;
 }
-
 
 /*
 #     #                 
@@ -250,12 +296,13 @@ main {
   padding: clamp(1.5vw, 3rem, 10vw);
   background: var(--48-nearwhite);
   background: linear-gradient(
-                135deg, 
-                var(--48-purple-nearwhite) 0%, 
-                var(--48-white) 33%, 
+                105deg,
+                var(--48-purple-nearwhite) 0%,
+                var(--48-white) 33%,
                 var(--48-white) 67%,
-                var(--48-orange-nearwhite) 100%
+                var(--48-purple-nearwhite) 100%
               );
+  box-shadow: inset 0 0 2em var(--48-black);
 }
 
 @media all and (max-width: 768px) {
@@ -265,24 +312,34 @@ main {
 }
 
 /*
-######                      
-#     #  ####   ####  ##### 
-#     # #    # #        #   
-######  #    #  ####    #   
-#       #    #      #   #   
-#       #    # #    #   #   
-#        ####   ####    #   
+#######                           
+#       #    # ##### #####  #   # 
+#       ##   #   #   #    #  # #  
+#####   # #  #   #   #    #   #   
+#       #  # #   #   #####    #   
+#       #   ##   #   #   #    #   
+####### #    #   #   #    #   #   
+                                  
 */
-
-.post-snippet {
+.entry {
   clear: both;
-  display: block;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
   text-align: left;
   margin: 0.5rem;
-  overflow: auto;
+  gap: 2rem;
 }
 
-.post-snippet .thumb {
+@media all and (max-width: 768px) {
+  .entry {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+.entry .thumb {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -290,22 +347,22 @@ main {
   width: 20vw;
   max-width: 15rem;
   height: auto;
-  float: left;
-  margin: 0 2rem 0 0;
+  flex-shrink: 0;
+}
+
+.entry .content {
+  flex: 1;
 }
 
 @media all and (max-width: 768px) {
-  .post-snippet .thumb {
-    display: block;
-    float: none;
-    margin: 0 auto 1rem auto;
+  .entry .thumb {
     width: calc(50vw + (768px - 100vw) * 0.6);
     max-width: 100%;
     height: auto;
   }
 }
 
-.post-snippet .thumb img {
+.entry .thumb img {
   border-radius: 0.5rem;
   flex-shrink: 0;
   width: 100%;
@@ -313,7 +370,7 @@ main {
   object-fit: cover;
 }
 
-.post-snippet h3 {
+.entry h3 {
   margin: 0 0 1rem 0;
 }
 

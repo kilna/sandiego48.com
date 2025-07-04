@@ -1,0 +1,3 @@
+{{- $path := .RelPermalink | replaceRE "^/|/$" "" -}}
+{{- $parts := split $path "/" -}}
+{{- index $parts (sub (len $parts) 1) -}}

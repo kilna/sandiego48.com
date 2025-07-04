@@ -5,6 +5,7 @@
 {{- $text := .text -}}
 {{- $icon := .icon -}}
 {{- $icon2 := .icon2 -}}
+{{- $icon_position := .icon_position | default "left" -}}
 {{- $collapse := .collapse | default false -}}
 {{- $show_text := .show_text | default true -}}
 {{- $alt := .alt | default $text -}}
@@ -50,7 +51,7 @@
   {{- $getIconFromUrl = "newsletter" -}}
 {{- else if strings.Contains $url "/events" -}}
   {{- $getIconFromUrl = "calendar" -}}
-{{- else if strings.Contains $url "/sponsors" -}}
+{{- else if strings.Contains $url "/partners" -}}
   {{- $getIconFromUrl = "heart" -}}
 {{- else -}}
   {{- $getIconFromUrl = "none" -}}
@@ -79,18 +80,32 @@
 
 <a href="{{ $url }}" target="{{ $target }}" class="{{ $class }}">
 
-{{- /* Render left icon */ -}}
-{{- template "renderIcon" (dict "icon" $icon "alt" $alt "title" $title) -}}
-
-{{- if and $show_text $collapse -}}
-  <span class="reveal">{{- .text -}}</span>
-{{- else if $show_text -}}
-  <span>{{- .text -}}</span>
-{{- end -}}
-
-{{- /* Render right icon only if explicitly set */ -}}
-{{- if $icon2 -}}
-{{- template "renderIcon" (dict "icon" $icon2 "alt" $alt "title" $title) -}}
+{{- if eq $icon_position "left" -}}
+  {{- /* Left-oriented layout: icon, text, icon2 */ -}}
+  {{- template "renderIcon" (dict "icon" $icon "alt" $alt "title" $title) -}}
+  
+  {{- if and $show_text $collapse -}}
+    <span class="reveal">{{- .text -}}</span>
+  {{- else if $show_text -}}
+    <span>{{- .text -}}</span>
+  {{- end -}}
+  
+  {{- if $icon2 -}}
+    {{- template "renderIcon" (dict "icon" $icon2 "alt" $alt "title" $title) -}}
+  {{- end -}}
+{{- else -}}
+  {{- /* Right-oriented layout: icon2, text, icon */ -}}
+  {{- if $icon2 -}}
+    {{- template "renderIcon" (dict "icon" $icon2 "alt" $alt "title" $title) -}}
+  {{- end -}}
+  
+  {{- if and $show_text $collapse -}}
+    <span class="reveal">{{- .text -}}</span>
+  {{- else if $show_text -}}
+    <span>{{- .text -}}</span>
+  {{- end -}}
+  
+  {{- template "renderIcon" (dict "icon" $icon "alt" $alt "title" $title) -}}
 {{- end -}}
 
 </a>
