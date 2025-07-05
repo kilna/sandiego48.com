@@ -50,6 +50,19 @@ params:
   phone_can_text: true
   copyright: Cine Diego LLC
   copyright_url: https://cinediego.com
+  registration:
+    early:
+      start: "2025-05-01T00:00:00-07:00"
+      end:  "2025-07-22T00:00:00-07:00"
+      price: 158
+    regular:
+      start: "2025-07-22T00:00:00-07:00"
+      end:  "2025-08-05T00:00:00-07:00"
+      price: 178
+    late:
+      start: "2025-08-05T00:00:00-07:00"
+      end:  "2025-08-15T00:00:00-07:00"
+      price: 198
   countdowns:
     - default: "A while to go"
       suffix: "until this year's competition..."
@@ -117,14 +130,14 @@ menus:
       target: _self
       icon: calendar
   - identifier: about
-    weight: 1
+    weight: 2
     name: About
     url: /#about
     params:
       target: _self
       icon: lightbulb
   - identifier: get-started
-    weight: 1
+    weight: 3
     name: Get Started
     url: /#get-started
     params:

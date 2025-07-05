@@ -12,6 +12,13 @@ params:
   padding: 0 0.5rem 0.5rem 0;
 }
 
+.index hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, transparent, var(--48-orange), transparent);
+  margin: 2em 0;
+}
+
 .index-video {
   display: block;
   float: right;
@@ -26,7 +33,7 @@ params:
   background-color: var(--48-black);
   border: 1px solid var(--48-black);
   border-radius: 1em;
-  box-shadow: 0 0 0.5rem 0 var(--48-black);
+  box-shadow: 0.25em 0.25em 0.5em 0 var(--48-black);
 }
 
 @media all and (max-width: 768px) {
@@ -49,7 +56,13 @@ params:
 
 .index-box {
   display: block;
-  background: var(--48-orange-trans);
+  background-color: var(--48-orange-trans);
+  background: linear-gradient(
+    135deg,
+    var(--48-orange-light) 0%,
+    var(--48-orange) 50%,
+    var(--48-orange-light) 100%
+  );
   border: 0.25rem solid var(--48-orange);
   padding: 0.5rem 1rem;
   margin: 1rem 0;
@@ -60,27 +73,16 @@ params:
 }
 
 .index p {
-  text-align: justify;
-}
-
-.index-box p {
   line-height: 1.25em;
   margin: 0.5rem 0 0.5rem 0;
-} 
-
-.index-box ul {
-  list-style: none;
 }
 
-.index-box li:before {
-  content: '★ ';
-}
 
-.index-box em, .index-box strong {
+.index em, .index strong {
   font-weight: 600;
 }
 
-.index-box em, .index-box strong, .index-box li {
+.index em, .index strong, .index li {
   text-shadow: -0.1rem -0.1rem 0 var(--48-lighten-more),
                 0.1rem -0.1rem 0 var(--48-lighten-more),
                 -0.1rem  0.1rem 0 var(--48-lighten-more),
@@ -88,13 +90,47 @@ params:
 }
 
 .index-elements {
-  background-color: var(--48-orange);
   background: linear-gradient(
-                135deg,
-                var(--48-orange) 0%,
-                var(--48-orange-dark) 100%
-              );
-  border: 0.25rem solid var(--48-darken);
+    45deg,
+    var(--48-orange) 0%,
+    var(--48-orange-dark) 50%,
+    var(--48-orange) 100%
+  );
+  border: 0.25rem solid var(--48-orange);
+}
+
+.index-flex-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin: 1em 0;
+}
+
+.index-flex-boxes > div {
+  flex: 1 1 300px;
+  background: var(--48-orange);
+  background: linear-gradient(
+    95deg,
+    var(--48-orange) 0%,
+    var(--48-orange-light) 50%,
+    var(--48-orange) 100%
+  );
+  border: 0.125em solid var(--48-purple);
+  padding: 0.5em 1em;
+  border-radius: 0.5rem;
+  font-weight: 400;
+  box-shadow: 0.5rem 0.5rem 0.5rem 0 var(--48-darken-more);
+  overflow: auto;
+}
+
+.index-flex-boxes a.button {
+  display: block;
+  margin: 0.5em auto;
+}
+
+/* Force left alignment for narrow paragraphs */
+.index, .index-flex-boxes > div, .index-box {
+  container-type: inline-size;
 }
   
 </style>
@@ -104,7 +140,7 @@ params:
 <iframe class="index-video"  frameborder="0"  allowfullscreen
   referrerpolicy="strict-origin-when-cross-origin"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  src="https://www.youtube.com/embed/oB4M6NDAyZI?autoplay=1&mute=1"
+  src="https://www.youtube.com/embed/oB4M6NDAyZI?autoplay=1&mute=1&loop=1&playlist=oB4M6NDAyZI&controls=1&enablejsapi=1"
   title="This is the 48 Hour Film Project!"></iframe>
 
 <h2 id="about">What is the 48 Hour Film Project?</h2>
@@ -148,5 +184,115 @@ jury-awarded best film in San Diego goes on to compete in the 48 Hour Film
 Project's Filmapalooza, an international celebration and competition between
 city winners. Later, <em>select winners are shown at the Cannes Film Festival
 (yes, <strong>that</strong> Cannes) Short Film Corner</em>.</p>
+
+<hr/>
+
+<h2 id="get-started">How to Participate in the San Diego 48</h2>
+
+<div class="index-flex-boxes">
+  <div>
+     <h3>Are You An Actor?</h3>
+     <p>Want to be in front of the camera? <em>Great!</em> There are several ways actors can find teams and get cast.</p>
+     <ul>
+      <li>Come to our <a href="/auditions">open auditions</a> to meet directors and get cast</li>
+      <li>Post your headshot and experience on our <a href="/go/facebook-group">Facebook group</a>
+        to help teams find you!</li>
+      <li>Our mixer <a href="/events">events</a> are a great way to get your
+        smiling face in front of filmmakers</li>
+      <li>Join our <a href="/go/newsletter">newsletter</a> to keep up to date
+        on coming events</li>
+      <!--<li>Check out our <a href="/teams">team listings</a> and reach out</li>-->
+      <li>Waited until it was down to the wire? Show up at the kickoff
+        <a href="/events">event</a> to find a last-minute team.</li>
+      <li>Do you have a camera phone and some gumption? Then you have everything
+        you need to make a film! Why not <a href="/go/register">form a team</a>?</li>
+     </ul>
+  </div>
+     <div>
+      <h3>Film Crew and Post-Production, Writers, Creatives and Other Helpers...?</h3>
+      <p>Want to work behind the camera? <em>Fantastic!</em> There are many
+       filmmaking teams looking for crew.</p>
+     <ul>
+      <li>Post your availability on our <a href="/go/facebook-group">Facebook group</a>
+        to help teams find you!  Share your skills, or even better your demo
+        reel.</li>
+      <li>Our mixer <a href="/events">events</a> are a great way to meet
+        teams looking for crew</li>
+      <li>Join our <a href="/go/newsletter">newsletter</a> to keep up to date
+        on coming events</li>
+      <!--<li>Check out our <a href="/teams">team listings</a> and reach out</li>-->
+      <li>Show up at the kickoff <a href="/events">event</a> and meet people at
+          the last minute.</li>
+      <li>Can't find a team? Come to mixers and post on Facebook to find other
+        behind-the-camera folks and <a href="/go/register">form your own
+        team</a>. You'll neeed to pick a team leader to register, and you're
+        allowed to split the team costs with among yourselves</li>
+     </ul>
+  </div>
+     <div>
+     <h3>Could You Be A Team Leader?</h3>
+     <p>Want to own the title "Director" or "Producer"? Never made a short film
+       before? Is your IMDB page loaded with movies you've made? In any case,
+       <em>Perfect!</em> The 48 welcomes all skill levels, and provides a fun
+       learning experience even for seasoned pros.</p>
+    <ul>
+      <li>Every team needs a team leader to register, but teams are allowed to
+        split the team costs with among themselves</li>
+      <li>Movies shown in the 48 can be listed on IMDB!</li>
+    </ul>
+    {{< button url="/go/register" text="Register Your Team" icon="register" icon_position="right" >}}
+    <p class="footnote">{{< registration-fees >}}</p>
+  </div>
+     <div>
+     <h3>Already Registered Your Team?</h3>
+     <p>Already registered your team? <em>Lovely!</em> You should absolutely
+       make sure to...</p>
+    <ul>
+      <li>Join our <a href="/go/newsletter">newsletter</a> to keep up to date
+        on coming events</li>
+      <li>Post your team's crew and cast needs on our
+        <a href="/go/facebook-group">Facebook group</a> to help people find you!</li>
+      <li>Our mixer <a href="/events">events</a> are a great way to meet
+        potential cast and crew</li>
+      <li>Come to our <a href="/auditions">open auditions</a> to scout for
+        potential actors</li>
+    </ul>
+  </div>
+     <div>
+     <h3>Want To Help But Don't Know How?</h3>
+     <p>You love film. You want to make a movie and see it on the big screen. The
+       only problem is you don't know how. Actually, <em>no problem!</em>  The 48
+       is a culture of collaboration and exploration, so we're always looking to
+       help newbies figure out how they can participate.</p>
+    <ul>
+      <li>Share that you'd like to be involved in some way on our
+        <a href="/go/facebook-group">Facebook group</a>... some teams just
+        need a few more hands to fill out their crew.</li>
+        <li>Our mixer <a href="/events">events</a> are a great way to meet
+          teams looking for more people</li>
+        <li>Join our <a href="/go/newsletter">newsletter</a> to keep up to date
+        on coming events</li>
+        <li>If all else fails, come to the kickoff <a href="/events">event</a>
+          and find a team at the last minute.</li>
+  </div>
+     <div>
+     <h3>Volunteering With The 48</h3>
+     <p>Do you believe in what the 48 is all about? Want to help out local
+       filmmaking? <em>Wonderful!</em> The 48 is a community effort and we need your
+       help.</p>
+    <p>We're always looking for help in a number of ways:</p>
+    <ul>
+      <li>Promote the competition and the festival (we need boots on the ground
+        to hang posters and distribute other promotional material)</li>
+      <li>Extra hands at events like the competition kickoff and screenings</li>
+      <li>Help with the awards ceremony</li>
+      <li>Outreach to find sponsors</li>
+      <li>If you're an experienced filmmaker, help onboard newbies</li>
+      <li>Post-production animation</li>
+    </ul>
+    <p>If you're interested in volunteering:</p>
+    {{< button url="mailto:{{ .Site.Params.email }}" text="Email Us" icon="email" icon_position="right" >}}
+  </div>
+</div>
 
 </div>

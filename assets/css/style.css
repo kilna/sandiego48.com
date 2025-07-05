@@ -9,7 +9,7 @@
   --48-orange-trans:      #eab32c80;
   --48-orange-trans-more: #eab32cc0;
   --48-orange-nearblack:  #43330d;
-  --48-orange-dark:       #e5b12f;
+  --48-orange-dark:       #c89b29;
   --48-orange-light:      #eacd86;
   --48-orange-nearwhite:  #ede6d5;
   --48-purple:            #571c6d;
@@ -63,8 +63,8 @@ body {
   font-weight: 200;
   font-feature-settings: "kern" 1;
   text-rendering: optimizeLegibility;
-  /*font-size: clamp(max(0.8rem, 16px), 3vw, min(2rem, 24px));*/
-  font-size: clamp(max(1rem, 16px), 1.75vw, 2.5rem);
+  font-size: clamp(max(0.8rem, 16px), 3vw, min(2rem, 24px));
+  /*font-size: clamp(max(1rem, 16px), 1.75vw, 2.5rem);*/
   min-height: 100vh;
   max-width: 100vw;
 }
@@ -74,7 +74,8 @@ h1, h2, h3, h4, h5, h5, h6 {
   text-shadow: -1px -1px 1px var(--48-white),
                 1px -1px 1px var(--48-white),
                -1px  1px 1px var(--48-white),
-                1px  1px 1px var(--48-white);
+                1px  1px 1px var(--48-white),
+                0px  0px 4px var(--48-black);
   margin: 0.75rem 0 0.75rem 0;
 }
 
@@ -100,8 +101,23 @@ p {
 
 ul {
   display: block;
-  margin: 0;
-  padding-left: 0;
+  list-style: none;
+  padding-left: 0.75em;
+}
+
+li {
+  padding-left: 0.25em;
+  margin: 0.5rem 0;
+  position: relative;
+}
+
+li::marker {
+  content: '★';
+  display: inline-block;
+  color: var(--48-purple);
+  font-size: 125%;
+  vertical-align: middle;
+  line-height: 1;
 }
 
 em {
@@ -244,7 +260,6 @@ a.button span:has(+ .icon) {
 a.button span:not(.icon):not(:has(svg)) {
   transform: translateY(var(--font-baseline-adjust));
 }
-
 a.button span.reveal {
   opacity: 0;
   width: 0;
