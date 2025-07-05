@@ -10,12 +10,26 @@
 
 {{ define "main" }}
 <div class="event">
+
+  <div class="event-content">
+    {{ with .Resources.Get .Params.image -}}
+    <img src="{{ .RelPermalink }}" class="event-image"/>
+    {{ end -}}
+  
+    {{ .Summary | markdownify }}
+    {{ .Content }}
+    {{ if .Params.org_info }}
+    {{ .Params.org_info | markdownify }}
+    {{ end }}
+  </div>
+
   <div class="infoblock">
     {{- partial "components/button.html" (dict
       "url" .Params.facebook_event_url
       "text" "RSVP to Facebook Event"
       "icon" "facebook"
     ) -}}
+    
     <h3>Schedule</h3>
     {{ $start_time := time.AsTime .Params.event_start -}}
     {{ $end_time := time.AsTime .Params.event_end -}}
@@ -27,6 +41,7 @@
         "icon" "calendar"
       ) -}}
     {{ end -}}
+    
     <h3>Location</h3>
     {{ if .Params.location_logo -}}
       {{ $logo := .Resources.Get .Params.location_logo -}}
@@ -40,6 +55,7 @@
       {{ end -}}
     {{ end -}}
     {{ if .Params.location_name -}}
+      
       <h4>
       {{ if .Params.location_url -}}
         <a href="{{ .Params.location_url }}">{{ .Params.location_name }}</a>
@@ -78,6 +94,7 @@
       ) -}}
     {{ end -}}
     {{ if .Params.partner_name -}}
+    
     <h3>Partner</h3>
     {{ if .Params.partner_logo -}}
       {{ $logo := .Resources.Get .Params.partner_logo -}}
@@ -90,6 +107,7 @@
         {{ if .Params.partner_url }}</a>{{ end -}}
       {{ end -}}
     {{ end -}}
+    
     <h4><a href="{{ .Params.partner_url }}">{{ .Params.partner_name }}</a></h4>
     {{- partial "components/button-list.html" (dict
       "class" "social"
@@ -106,20 +124,6 @@
       "buttons" .Params.partner_links
     ) -}}
     {{ end -}}
-  </div>
-
-  {{ with .Resources.Get .Params.image -}}
-  <img src="{{ .RelPermalink }}" class="event-image"/>
-  {{ else }}
-  <img src="/images/logo-purple.png" class="event-image"/>
-  {{ end -}}
-
-  <div class="event-content">
-    {{ .Summary | markdownify }}
-    {{ .Content }}
-    {{ if .Params.org_info }}
-    {{ .Params.org_info | markdownify }}
-    {{ end }}
   </div>
 
 </div>

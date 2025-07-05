@@ -5,7 +5,6 @@
 {{- $text := .text -}}
 {{- $icon := .icon -}}
 {{- $icon2 := .icon2 -}}
-{{- $icon_position := .icon_position | default "left" -}}
 {{- $collapse := .collapse | default false -}}
 {{- $show_text := .show_text | default true -}}
 {{- $alt := .alt | default $text -}}
@@ -79,9 +78,7 @@
 {{- end -}}
 
 <a href="{{ $url }}" target="{{ $target }}" class="{{ $class }}">
-
-{{- if eq $icon_position "left" -}}
-  {{- /* Left-oriented layout: icon, text, icon2 */ -}}
+  {{- /* Always render in this order: icon, text, icon2 */ -}}
   {{- template "renderIcon" (dict "icon" $icon "alt" $alt "title" $title) -}}
   
   {{- if and $show_text $collapse -}}
@@ -93,19 +90,4 @@
   {{- if $icon2 -}}
     {{- template "renderIcon" (dict "icon" $icon2 "alt" $alt "title" $title) -}}
   {{- end -}}
-{{- else -}}
-  {{- /* Right-oriented layout: icon2, text, icon */ -}}
-  {{- if $icon2 -}}
-    {{- template "renderIcon" (dict "icon" $icon2 "alt" $alt "title" $title) -}}
-  {{- end -}}
-  
-  {{- if and $show_text $collapse -}}
-    <span class="reveal">{{- .text -}}</span>
-  {{- else if $show_text -}}
-    <span>{{- .text -}}</span>
-  {{- end -}}
-  
-  {{- template "renderIcon" (dict "icon" $icon "alt" $alt "title" $title) -}}
-{{- end -}}
-
 </a>

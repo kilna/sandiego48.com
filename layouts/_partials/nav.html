@@ -5,7 +5,7 @@ nav.main {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding: 0.75em;
+  padding: 1em;
   margin: 0;
   background-color: var(--48-purple);
   background: radial-gradient(
@@ -15,47 +15,6 @@ nav.main {
     var(--48-black) 100%
   );
 }
-
-nav.main a.button {
-  margin: 0.125em 0.25em;
-  border: 0.1em solid var(--48-purple);
-}
-
-nav.main a.button:hover {
-  background: var(--48-white);
-  border-color: var(--48-orange-light);
-  box-shadow: 0 0 0.25em 0.25em var(--48-orange-trans);
-}
-
-
-@keyframes nav-button-throb {
-  0% { 
-    border-color: var(--48-purple); 
-    box-shadow: 0 0 0.1em 0.1em var(--48-trans);
-    transform: scale(1);
-  }
-  50% { 
-    border-color: var(--48-orange); 
-    box-shadow: 0 0 0.25em 0.25em var(--48-orange-trans-less);
-    transform: scale(1.02);
-  }
-  100% { 
-    border-color: var(--48-purple); 
-    box-shadow: 0 0 0.1em 0.1em var(--48-trans);
-    transform: scale(1);
-  }
-}
-
-nav.main a.button.highlight {
-  animation: nav-button-throb 2s ease-in-out infinite;
-}
-
-nav.main a.button.highlight:hover {
-  animation: none;
-}
-
-
-
 </style>
 
 <nav class="main">
@@ -63,10 +22,9 @@ nav.main a.button.highlight:hover {
   {{ partial "components/button.html" (dict
     "url" .URL
     "text" .Name
-    "class" .Params.class
+    "class" (printf "%s border right" (.Params.class | default ""))
     "target" .Params.target
     "icon" .Params.icon
-    "icon_position" "right"
   ) -}}
   {{- end }}
 </nav>

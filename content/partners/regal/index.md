@@ -12,5 +12,5 @@ state-of-the-art formats like IMAX, RPX, 4DX, and ScreenX. With hundreds of
 locations nationwide, Regal is a cornerstone of the American filmgoing
 experience, bringing audiences together for everything from indie debuts to
 blockbuster premieres. As a proud supporter of local filmmakers and
-community-driven storytelling, Regal is an ideal sponsor for the San Diego 
+community-driven storytelling, Regal is an valued sponsor for the San Diego 
 48 Hour Film Project, and host of the 2024 screenings.

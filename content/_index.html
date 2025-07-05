@@ -12,13 +12,6 @@ params:
   padding: 0 0.5rem 0.5rem 0;
 }
 
-.index hr {
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(to right, transparent, var(--48-orange), transparent);
-  margin: 2em 0;
-}
-
 .index-video {
   display: block;
   float: right;
@@ -65,7 +58,7 @@ params:
   );
   border: 0.25rem solid var(--48-orange);
   padding: 0.5rem 1rem;
-  margin: 1rem 0;
+  margin: 0.5em 0 1em 0;
   border-radius: 0.5rem;
   font-weight: 400;
   box-shadow: 0.5rem 0.5rem 0.5rem 0 var(--48-darken-more);
@@ -74,7 +67,7 @@ params:
 
 .index p {
   line-height: 1.25em;
-  margin: 0.5rem 0 0.5rem 0;
+  margin: 0.5em 0;
 }
 
 
@@ -92,9 +85,9 @@ params:
 .index-elements {
   background: linear-gradient(
     45deg,
-    var(--48-orange) 0%,
-    var(--48-orange-dark) 50%,
-    var(--48-orange) 100%
+    var(--48-orange-light) 0%,
+    var(--48-orange) 50%,
+    var(--48-orange-light) 100%
   );
   border: 0.25rem solid var(--48-orange);
 }
@@ -107,7 +100,7 @@ params:
 }
 
 .index-flex-boxes > div {
-  flex: 1 1 300px;
+  flex: 1 1 320px;
   background: var(--48-orange);
   background: linear-gradient(
     95deg,
@@ -115,7 +108,7 @@ params:
     var(--48-orange-light) 50%,
     var(--48-orange) 100%
   );
-  border: 0.125em solid var(--48-purple);
+  border: 0.1rem solid var(--48-purple);
   padding: 0.5em 1em;
   border-radius: 0.5rem;
   font-weight: 400;
@@ -123,16 +116,11 @@ params:
   overflow: auto;
 }
 
-.index-flex-boxes a.button {
-  display: block;
-  margin: 0.5em auto;
-}
-
 /* Force left alignment for narrow paragraphs */
 .index, .index-flex-boxes > div, .index-box {
   container-type: inline-size;
 }
-  
+
 </style>
 
 <div class="index">
@@ -157,8 +145,8 @@ world's longest running and most popular timed filmmaking competition. Each year
 teams of <em>all skill levels, ages and demographics</em>, in over a hundred
 cities across the globe, compete to make a short film in just two days. Amateur
 and professional teams around the world make movies over a weekend, which are
-later given a premier in a real theater. San Diego's competition takes place
-August 15-17th, 2025.</p>
+later given a premier in a real theater. <strong>San Diego's competition takes
+place August 15-17th, 2025.</strong></p>
 
 <div class="index-box index-elements">
 <p>The weekend of the competition begins with each team assigned a <strong>random
@@ -191,7 +179,25 @@ city winners. Later, <em>select winners are shown at the Cannes Film Festival
 
 <div class="index-flex-boxes">
   <div>
-     <h3>Are You An Actor?</h3>
+         <h3>Could you be a Team Leader?</h3>
+    <p>Never made a short film before? Is IMDB brimming with movies you've
+     made? In either case, <em>Perfect!</em> Anyone can own the title
+     "Director" or "Producer" if you have enough initiative. The 48 welcomes
+     all skill levels, and provides a fun learning experience even for
+     seasoned pros. <strong>You don't need to be a seasoned filmmaker to
+     participate!</strong></p>
+   <ul>
+     <li><strong>Submitted movies are given a Hollywood style premiere
+       screening</strong></li>
+     <li>Every team needs a team leader to register, but teams are allowed to
+       split the team costs with among themselves</li>
+     <li>Movies shown in the 48 can be listed on IMDB!</li>
+   </ul>
+   {{< button url="/go/register" text="Register Your Team" icon="register" class="right wide" >}}
+   <p class="footnote">{{< registration-fees >}}</p>
+ </div>
+ <div>
+           <h3>Are you an Actor?</h3>
      <p>Want to be in front of the camera? <em>Great!</em> There are several ways actors can find teams and get cast.</p>
      <ul>
       <li>Come to our <a href="/auditions">open auditions</a> to meet directors and get cast</li>
@@ -205,19 +211,22 @@ city winners. Later, <em>select winners are shown at the Cannes Film Festival
       <li>Waited until it was down to the wire? Show up at the kickoff
         <a href="/events">event</a> to find a last-minute team.</li>
       <li>Do you have a camera phone and some gumption? Then you have everything
-        you need to make a film! Why not <a href="/go/register">form a team</a>?</li>
+        you need to make a film! The only way to be absolutely sure your face
+        finds its way to the silver screen is to make it happen for yourself.
+        Why not <a href="/go/register">form a team</a>?</li>
      </ul>
   </div>
      <div>
-      <h3>Film Crew and Post-Production, Writers, Creatives and Other Helpers...?</h3>
-      <p>Want to work behind the camera? <em>Fantastic!</em> There are many
-       filmmaking teams looking for crew.</p>
+      <h3>Do you work behind the camera?</h3>
+      <p>Are you film crew, post-production, a writer, a creative or another
+        kind of helper...? <em>Fantastic!</em> There are many
+       filmmaking teams looking for crew, and most teams love newcomers!</p>
      <ul>
       <li>Post your availability on our <a href="/go/facebook-group">Facebook group</a>
         to help teams find you!  Share your skills, or even better your demo
         reel.</li>
       <li>Our mixer <a href="/events">events</a> are a great way to meet
-        teams looking for crew</li>
+        teams that are looking for crew</li>
       <li>Join our <a href="/go/newsletter">newsletter</a> to keep up to date
         on coming events</li>
       <!--<li>Check out our <a href="/teams">team listings</a> and reach out</li>-->
@@ -229,23 +238,9 @@ city winners. Later, <em>select winners are shown at the Cannes Film Festival
         allowed to split the team costs with among yourselves</li>
      </ul>
   </div>
-     <div>
-     <h3>Could You Be A Team Leader?</h3>
-     <p>Want to own the title "Director" or "Producer"? Never made a short film
-       before? Is your IMDB page loaded with movies you've made? In any case,
-       <em>Perfect!</em> The 48 welcomes all skill levels, and provides a fun
-       learning experience even for seasoned pros.</p>
-    <ul>
-      <li>Every team needs a team leader to register, but teams are allowed to
-        split the team costs with among themselves</li>
-      <li>Movies shown in the 48 can be listed on IMDB!</li>
-    </ul>
-    {{< button url="/go/register" text="Register Your Team" icon="register" icon_position="right" >}}
-    <p class="footnote">{{< registration-fees >}}</p>
-  </div>
-     <div>
-     <h3>Already Registered Your Team?</h3>
-     <p>Already registered your team? <em>Lovely!</em> You should absolutely
+   <div>
+           <h3>Your team is already registered?</h3>
+     <p>If you've already signed up, <em>Lovely!</em> You should absolutely
        make sure to...</p>
     <ul>
       <li>Join our <a href="/go/newsletter">newsletter</a> to keep up to date
@@ -256,13 +251,18 @@ city winners. Later, <em>select winners are shown at the Cannes Film Festival
         potential cast and crew</li>
       <li>Come to our <a href="/auditions">open auditions</a> to scout for
         potential actors</li>
+      <li>Research online how to run a successful 48 Hour Film</li>
+      <li>Brainstorm and practice with your film crew and actors to make sure
+        you're ready to make a movie! You're not allowed to do any of the
+        creative work for your 48 film ahead of time, but you are allowed to
+        try out ideas and make sure the people and equipment are ready to go!</li>
     </ul>
   </div>
      <div>
-     <h3>Want To Help But Don't Know How?</h3>
+     <h3>Want to do something on a film but don't know what?</h3>
      <p>You love film. You want to make a movie and see it on the big screen. The
        only problem is you don't know how. Actually, <em>no problem!</em>  The 48
-       is a culture of collaboration and exploration, so we're always looking to
+       is a culture of collaboration and community, so we're always looking to
        help newbies figure out how they can participate.</p>
     <ul>
       <li>Share that you'd like to be involved in some way on our
@@ -276,7 +276,7 @@ city winners. Later, <em>select winners are shown at the Cannes Film Festival
           and find a team at the last minute.</li>
   </div>
      <div>
-     <h3>Volunteering With The 48</h3>
+     <h3>Love the 48 and want to volunteer with us?</h3>
      <p>Do you believe in what the 48 is all about? Want to help out local
        filmmaking? <em>Wonderful!</em> The 48 is a community effort and we need your
        help.</p>
@@ -291,8 +291,21 @@ city winners. Later, <em>select winners are shown at the Cannes Film Festival
       <li>Post-production animation</li>
     </ul>
     <p>If you're interested in volunteering:</p>
-    {{< button url="mailto:{{ .Site.Params.email }}" text="Email Us" icon="email" icon_position="right" >}}
+    {{< button url="mailto:{{ .Site.Params.email }}" text="Email Us" icon="email" class="right wide" >}}
   </div>
 </div>
+
+<hr/>
+<h2>Get Connected, Stay In The Loop!</h2>
+<p>Join our newsletter to get the latest news and updates about the 48! We
+  announce all coming events, special promotions, and anything else 48-related
+  via email.</p>
+{{< button url="/go/newsletter" class="huge highlight glow pulse wide right" text="Sign Up For Our Newsletter" icon="newsletter" >}}
+<p>The most active online community for the San Diego 48 is our Facebook group. 
+  If you're on Facebook, you should join it, and you should also follow our
+  <a href="/go/facebook">Facebook page</a>!</p>
+{{< button url="/go/facebook-group" class="huge wide right" text="Join Our Facebook Group" icon="group" >}}
+<p>If you're on social media, make sure to connect with us!</p>
+{{< common-butons `{"button_class": "big", "show_text": false}` >}}
 
 </div>

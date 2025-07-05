@@ -1,19 +1,18 @@
-<span class="countdown{{ if isset . "show_after" }} visible-after-{{ .show_after }}{{ end }} visible-before-{{ .show_before | default .date }}">
+<div class="countdown{{ if isset . "show_after" }} visible-after-{{ .show_after }}{{ end }} visible-before-{{ .show_before | default .date }}">
 {{ if isset . "prefix" -}}
-  {{ .prefix }}
-{{ end }}
+<span class="countdown-prefix">{{ .prefix }}</span>
+{{- end -}}
 <span class="countdown-to-{{ .date }}">
-  {{- if isset . "default" }}{{ .default }}{{ end -}}
+{{- if isset . "default" }}{{ .default }}{{ end -}}
 </span>
 {{ if isset . "suffix" -}}
-  {{ .suffix }}
+<span class="countdown-suffix">{{ .suffix }}</span>
 {{- end }}
 {{ if isset . "button" -}}
-<span class="countdown-button">
 {{- if isset . "button_prefix" -}}
-  {{ .button_prefix }}
+<span class="countdown-button-prefix">{{ .button_prefix }}</span>
 {{- end -}}
-{{ partial "components/button.html" .button -}}
+{{ partial "components/button.html" (merge .button (dict "class" "countdown-button")) -}}
 </span>
 {{- end -}}
-</span>
+</div>

@@ -31,7 +31,7 @@
   --clock-off:            #503050b0;
   --clock-glow:           #ca37ff;
   --clock-shade:          #000000;
-  --font-baseline-adjust: 0.05em;
+  --league-spartan-offset: 0.07em;
 }
 
 
@@ -63,8 +63,7 @@ body {
   font-weight: 200;
   font-feature-settings: "kern" 1;
   text-rendering: optimizeLegibility;
-  font-size: clamp(max(0.8rem, 16px), 3vw, min(2rem, 24px));
-  /*font-size: clamp(max(1rem, 16px), 1.75vw, 2.5rem);*/
+  font-size: clamp(max(1.25rem, 20px), 1.6vw, min(2.5rem, 24px));
   min-height: 100vh;
   max-width: 100vw;
 }
@@ -115,9 +114,12 @@ li::marker {
   content: '★';
   display: inline-block;
   color: var(--48-purple);
-  font-size: 125%;
-  vertical-align: middle;
-  line-height: 1;
+  text-shadow: -0.1em 0.1em 0.1m var(--48-white),
+               0.1em 0.1em 0.1em var(--48-white),
+               0.1em -0.1em 0.1em var(--48-white),
+               -0.1em -0.1em 0.1em var(--48-white),
+               0 0 1em var(--48-black),
+               0 0 1em var(--48-black);
 }
 
 em {
@@ -130,9 +132,15 @@ a {
   text-decoration:  underline var(--48-black) 2px;
 }
 
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, transparent, var(--48-orange), transparent);
+  margin: 1.5em 0 1em 0;
+}
+
 a:hover, a:active {
-  text-decoration:  underline var(--48-orange-light) 3px;
-  color: var(--48-purple);
+  text-decoration:  underline;
 }
 
 /* Google maps links and links with the URL for text are oftent long, let them wrap */
@@ -224,20 +232,114 @@ a[href*="http://"] {
 }
 
 a.button {
-  text-decoration: none;
-  font-weight: 400;
-  text-align: center;
-  padding: 0.25em 0.5em;
-  border-radius: 0.25em;
-  white-space: nowrap;
-  color: var(--48-white);
-  background-color: var(--48-black);
-  border: 0.02em solid var(--48-orange-trans);
-  transition: all 0.5s ease;
   display: inline-flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  line-height: 1;
+  gap: var(--icon-spacing, 0.25em);
+  vertical-align: middle;
+  margin: 0.25em;
+  border: 0.02em solid var(--48-orange);
+  border-radius: 0.25em;
+  background-color: var(--48-purple);
+  color: var(--48-white);
+  text-decoration: none;
+  font-weight: 400;
+  white-space: normal;
+  transition: all 0.2s ease;
+}
+
+a.button.left {
+  flex-direction: row;
+}
+
+a.button.right {
+  flex-direction: row-reverse;
+}
+
+a.button.top {
+  flex-direction: column;
+}
+
+a.button.bottom {
+  flex-direction: column-reverse;
+}
+
+a.button.glow {
+  box-shadow: 0 0 0.25em var(--48-white);
+}
+
+a.button.glow:hover, a.button.glow:active {
+  box-shadow: 0 0 0.5em var(--48-white), 0 0 0.5em var(--48-orange);
+}
+
+a.button.pulse {
+  animation: button-pulse 3s infinite;
+}
+
+a.button.pulse:hover, a.button.pulse:active {
+  animation: none;
+}
+
+@keyframes button-pulse {
+  0% { transform: scale(0.99); }
+  50% { transform: scale(1.01); }
+  100% { transform: scale(0.99); }
+}
+
+a.button.pulse.glow {
+  animation: button-pulse-glow 3s infinite;
+}
+
+@keyframes button-pulse-glow {
+  0% {
+    transform: scale(0.99);
+    box-shadow: inset 0 0 0 var(--48-orange),
+                0 0 0 transparent,
+                0 0 0 transparent;
+  }
+  50% {
+    transform: scale(1.01);
+    box-shadow: inset 0 0 0 0.05em var(--48-orange),
+                0 0 0.5em var(--48-orange),
+                0 0 1em var(--48-white);
+  }
+  100% {
+    transform: scale(0.99);
+    box-shadow: inset 0 0 0 var(--48-orange),
+                0 0 0 transparent,
+                0 0 0 transparent;
+  }
+}
+
+a.button.nowrap {
+  white-space: nowrap !important;
+}
+
+a.button.wide {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+a.button.tiny {
+  font-size: 0.5em;
+}
+
+a.button.small {
+  font-size: 0.75em;
+}
+
+a.button.big {
+  font-size: 1.3em;
+}
+
+a.button.huge {
+  font-size: 1.8em;
+}
+
+a.button .icon + span, a.button span:has(+ .icon) {
+  margin: 0;
 }
 
 a.button:hover, a.button:active {
@@ -245,44 +347,11 @@ a.button:hover, a.button:active {
   color: var(--48-black);
   background-color: var(--48-white);
   border: 0.02em solid var(--48-purple-trans);
-  transform: scale(1.08);
-}
-
-a.button .icon + span {
-  margin-left: var(--icon-spacing, 0.25em);
-}
-
-a.button span:has(+ .icon) {
-  margin-right: var(--icon-spacing, 0.25em);
-}
-
-/* Compensate for League Spartan's high baseline - text only, not icons */
-a.button span:not(.icon):not(:has(svg)) {
-  transform: translateY(var(--font-baseline-adjust));
-}
-a.button span.reveal {
-  opacity: 0;
-  width: 0;
-  letter-spacing: -0.5em;
-  margin-left: 0;
-  margin-right: 0;
-  font-weight: 100;
-  transition: all 0.5s ease, margin 1s ease, font-weight 2s ease;
-}
-
-a.button:hover span.reveal, a.button:active span.reveal {
-  opacity: 1;
-  width: auto;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-  letter-spacing: 0em;
-  font-weight: 700;
+  transform: scale(1.05);
 }
 
 a.button .icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   color: var(--48-orange);
 }
 
@@ -294,6 +363,21 @@ a.button .icon svg {
   width: calc(var(--icon-scale, 1) * 1em);
   height: calc(var(--icon-scale, 1) * 1em);
   display: block;
+  margin: auto;
+}
+
+/* League Spartan baseline compensation for button text only */
+a.button span:not(.icon) {
+  transform: translateY(var(--league-spartan-offset));
+}
+
+/* Buttons with text get more horizontal padding */
+a.button:has(span:not(.icon)) {
+  padding: 0.2em 0.4em;
+}
+
+a.button:not(:has(span:not(.icon))) {
+  padding: 0.25em 0.35em;
 }
 
 /*
@@ -434,3 +518,7 @@ main {
 .clock .zero {
   opacity: 0;
 }
+
+
+
+

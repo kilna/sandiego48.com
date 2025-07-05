@@ -149,7 +149,7 @@ menus:
     url: /go/newsletter
     params:
       target: _blank
-      class: highlight
+      class: "glow pulse"
 #  - identifier: bestof
 #    name: Best of 2024 Selections and Nominees
 #    url: https://www.tixtree.com/e/best-of-san-diego-48-hour-film-project-screening-and-awards-gala-f8b4d04c2b71

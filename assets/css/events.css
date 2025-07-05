@@ -22,12 +22,7 @@
 .event {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
   gap: 2rem;
-}
-
-.event .content {
-  flex: 1;
 }
 
 @media all and (max-width: 768px) {
@@ -39,16 +34,9 @@
 }
 
 .event-image {
-  width: 40vw;
+  width: 100%;
   display: block;
-  margin: 1rem auto;
-  float: none;
-}
-
-@media all and (max-width: 768px) {
-  .event-image {
-    width: 60vw;
-  }
+  margin: 0 auto 1em auto;
 }
 
 .timespan {
@@ -57,5 +45,5 @@
 }
 
 .expired {
-  opacity: 0.5;
+  opacity: 0.75;
 }

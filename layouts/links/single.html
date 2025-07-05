@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto;
   padding: 1rem;
 }
@@ -26,41 +26,12 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 1rem;
-}
-
-.links a.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 0.5em;
-  margin: 0;
-  border-radius: 1rem;
-  font-size: 1.25rem;
-  font-weight: 500;
-  text-decoration: none;
-  color: var(--48-white);
-  background-color: var(--48-black);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  min-height: 4rem;
-  white-space: normal;
-}
-
-.links a.button:hover {
-  color: var(--48-black);
-  background-color: var(--48-white);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
+  gap: 0.25rem;
 }
 
 .links a.button {
   --icon-spacing: 0.75em;
-}
-
-.links a.button {
-  --icon-scale: 2;
+  --icon-scale: 1.25;
 }
 
 </style>
@@ -76,20 +47,24 @@
             "url" .Site.BaseURL
             "text" .Site.Params.site_link_text
             "icon" "sd48"
+            "class" "wide big left"
       ) -}}
       {{- partial "components/button.html" (dict
             "url" (printf "%s/go/newsletter" .Site.BaseURL)
             "text" "Subscribe to Newsletter"
+            "class" "wide big left"
       ) -}}
       {{- partial "components/button.html" (dict
             "url" "/events"
             "text" "View Events"
             "target" "_self"
+            "class" "wide big left"
       ) -}}
       {{- partial "components/button.html" (dict
             "url" "https://www.48hourfilm.com"
             "text" "48 Hour Film Project HQ"
             "icon" "48hfp"
+            "class" "wide big left"
       ) -}}
     </div>
     
@@ -99,31 +74,37 @@
             "if" .Site.Params.facebook
             "url" (printf "https://facebook.com/%s" .Site.Params.facebook)
             "text" (printf "Facebook @%s" .Site.Params.facebook)
+            "class" "wide big left"
       ) -}}
       {{- partial "components/button.html" (dict
             "if" .Site.Params.instagram
             "url" (printf "https://instagram.com/%s" .Site.Params.instagram)
             "text" (printf "Instagram @%s" .Site.Params.instagram)
+            "class" "wide big left"
       ) -}}
       {{- partial "components/button.html" (dict
             "if" .Site.Params.threads
             "url" (printf "https://threads.net/@%s" .Site.Params.threads)
             "text" (printf "Threads @%s" .Site.Params.threads)
+            "class" "wide big left"
       ) -}}
       {{- partial "components/button.html" (dict
             "if" .Site.Params.twitter
             "url" (printf "https://twitter.com/%s" .Site.Params.twitter)
             "text" (printf "Twitter @%s" .Site.Params.twitter)
+            "class" "wide big left"
       ) -}}
       {{- partial "components/button.html" (dict
             "if" .Site.Params.youtube
             "url" (printf "https://youtube.com/@%s" .Site.Params.youtube)
             "text" (printf "YouTube @%s" .Site.Params.youtube)
+            "class" "wide big left"
       ) -}}
       {{- partial "components/button.html" (dict
             "if" .Site.Params.tiktok
             "url" (printf "https://tiktok.com/@%s" .Site.Params.tiktok)
             "text" (printf "TikTok @%s" .Site.Params.tiktok)
+            "class" "wide big left"
       ) -}}
     </div>
 
@@ -133,11 +114,13 @@
             "if" .Site.Params.facebook_group
             "url" (printf "https://facebook.com/groups/%s" .Site.Params.facebook_group)
             "text" "Join Facebook Group"
+            "class" "wide big left"
       ) -}}
       {{- partial "components/button.html" (dict
             "if" .Site.Params.discord_server_invite
             "url" .Site.Params.discord_server_invite
             "text" "Join Discord Server"
+            "class" "wide big left"
       ) -}}
     </div>
     
@@ -147,11 +130,13 @@
             "if" .Site.Params.email
             "url" (printf "mailto:%s" .Site.Params.email)
             "text" (printf "Email %s" .Site.Params.email)
+            "class" "wide big left"
       ) -}}
       {{- partial "components/button.html" (dict
             "if" .Site.Params.phone
             "url" (printf "tel:%s" .Site.Params.phone)
             "text" (printf "%s %s" (cond .Site.Params.phone_can_text "Phone / Text" "Phone") .Site.Params.phone)
+            "class" "wide big left"
       ) -}}
     </div>
     
