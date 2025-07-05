@@ -249,6 +249,33 @@ a.button {
   transition: all 0.2s ease;
 }
 
+a.button:hover, a.button:active {
+  font-weight: 700;
+  color: var(--48-black);
+  background-color: var(--48-white);
+  border: 0.02em solid var(--48-purple-trans);
+  transform: scale(1.05);
+}
+
+a.button.social {
+  opacity: 0.75;
+  border: 0.05em solid var(--48-darken);
+  background-color: var(--48-white);
+  color: var(--48-black);
+}
+
+a.button.social:hover, a.button.social:active {
+  opacity: 1;
+}
+
+a.button.social .icon {
+  color: var(--48-black);
+}
+
+a.button.social:hover .icon, a.button.social:active .icon {
+  color: var(--48-orange);
+}
+
 a.button.left {
   flex-direction: row;
 }
@@ -338,18 +365,6 @@ a.button.huge {
   font-size: 1.8em;
 }
 
-a.button .icon + span, a.button span:has(+ .icon) {
-  margin: 0;
-}
-
-a.button:hover, a.button:active {
-  font-weight: 700;
-  color: var(--48-black);
-  background-color: var(--48-white);
-  border: 0.02em solid var(--48-purple-trans);
-  transform: scale(1.05);
-}
-
 a.button .icon {
   display: inline-block;
   color: var(--48-orange);
@@ -378,6 +393,35 @@ a.button:has(span:not(.icon)) {
 
 a.button:not(:has(span:not(.icon))) {
   padding: 0.25em 0.35em;
+}
+
+/* Reveal animation for collapsed buttons */
+a.button span.reveal {
+  opacity: 0;
+  width: 0;
+  letter-spacing: -0.5rem;
+  font-weight: 100;
+  transition: all 0.5s ease, font-weight 2s ease;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+a.button:hover span.reveal {
+  opacity: 1;
+  width: auto;
+  letter-spacing: 0rem;
+  font-weight: 700;
+}
+
+/* Override gap for buttons with reveal spans to prevent extra space */
+a.button:has(span.reveal) {
+  gap: 0;
+}
+
+a.button:has(span.reveal):hover {
+  gap: var(--icon-spacing, 0.25em);
 }
 
 /*
