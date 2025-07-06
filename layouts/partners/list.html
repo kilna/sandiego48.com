@@ -1,5 +1,9 @@
 {{ define "title" }}
-{{- partial "title.html" (dict "Title" .Title "Site" .Site "ShowSiteTitle" true) -}}
+{{- partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "ShowSiteTitle" true
+) -}}
 {{ end }}
 
 {{ define "main" }}

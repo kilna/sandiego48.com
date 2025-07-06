@@ -1,5 +1,7 @@
 ---
 title: 2024 Open Auditions
+layout: events
+type: events
 summary: >
   An open audition for prospective 48 Hour Film Project actors, and teams that
   are casting acting talent
@@ -17,6 +19,15 @@ params:
   location_map_url: https://maps.app.goo.gl/JdGPqGn2uafPPstK8
   facebook_event_url: https://www.facebook.com/events/999669305140157/
   calendarlink_url: https://calendarlink.com/event/NOaLN
+  org_info: >
+    ## About the competition
+
+    The 48 Hour Film Project is the longest running and most popular timed
+    film-making competition. Amateur and professional teams around the world
+    make movies in a weekend, which are later given a premier in a real theater.
+    San Diego's competition takes place July 12-14, 2024.
+
+    [Find out more about the 48](/)
 ---
 The [San Diego 48 Hour Film Project](/) will be having its annual open auditions
 at the Tower Room at the Handlery Hotel in Mission Valley this Saturday,
@@ -35,12 +46,3 @@ Be prepared to take notes, make contacts and have questions and direction for
 actors that are relavent to the kind of films you may end up making for the 48.
 For example, if your writing team's strengths are comedic, you may ask the actor
 to repeat one of the lines of their monologue in that tone.
-
-## About the competition
-
-The 48 Hour Film Project is the longest running and most popular timed
-film-making competition. Amateur and professional teams around the world
-make movies in a weekend, which are later given a premier in a real theater.
-San Diego's competition takes place July 12-14, 2024.
-
-[Find out more about the 48](/)

@@ -42,7 +42,7 @@
 {{- if and $enable_community .facebook_group -}}
   {{- $buttons = $buttons | append (dict
     "enable" true
-    "url" (printf "https://facebook.com/groups/%s" .facebook_group)
+    "url" ($.Scratch.Get "facebook_group_url")
     "icon" "group"
     "text" "Facebook Group"
     "show_text" $show_text
@@ -51,7 +51,7 @@
 {{- if and $enable_community .discord_server -}}
   {{- $buttons = $buttons | append (dict
     "enable" true
-    "url" .discord_server_invite
+    "url" ($.Scratch.Get "discord_url")
     "icon" "discord"
     "text" "Discord Server"
     "show_text" $show_text
@@ -60,7 +60,7 @@
 {{- if and $enable_socials .facebook -}}
   {{- $buttons = $buttons | append (dict
     "enable" true
-    "url" (printf "https://facebook.com/%s" .facebook)
+    "url" ($.Scratch.Get "facebook_url")
     "icon" "facebook"
     "text" (printf "Facebook @%s" .facebook)
     "show_text" $show_text
@@ -69,7 +69,7 @@
 {{- if and $enable_socials .instagram -}}
   {{- $buttons = $buttons | append (dict
     "enable" true
-    "url" (printf "https://instagram.com/%s" .instagram)
+    "url" ($.Scratch.Get "instagram_url")
     "icon" "instagram"
     "text" (printf "Instagram @%s" .instagram)
     "show_text" $show_text
@@ -78,7 +78,7 @@
 {{- if and $enable_socials .threads -}}
   {{- $buttons = $buttons | append (dict
     "enable" true
-    "url" (printf "https://threads.net/@%s" .threads)
+    "url" ($.Scratch.Get "threads_url")
     "icon" "threads"
     "text" (printf "Threads @%s" .threads)
     "show_text" $show_text
@@ -87,7 +87,7 @@
 {{- if and $enable_socials .twitter -}}
   {{- $buttons = $buttons | append (dict
     "enable" true
-    "url" (printf "https://twitter.com/%s" .twitter)
+    "url" ($.Scratch.Get "twitter_url")
     "icon" "twitter"
     "text" (printf "Twitter @%s" .twitter)
     "show_text" $show_text
@@ -96,7 +96,7 @@
 {{- if and $enable_socials .youtube -}}
   {{- $buttons = $buttons | append (dict
     "enable" true
-    "url" (printf "https://youtube.com/%s" .youtube)
+    "url" ($.Scratch.Get "youtube_url")
     "icon" "youtube"
     "text" (printf "YouTube @%s" .youtube)
     "show_text" $show_text
@@ -105,7 +105,7 @@
 {{- if and $enable_socials .tiktok -}}
   {{- $buttons = $buttons | append (dict
     "enable" true
-    "url" (printf "https://tiktok.com/@%s" .tiktok)
+    "url" ($.Scratch.Get "tiktok_url")
     "icon" "tiktok"
     "text" (printf "TikTok @%s" .tiktok)
     "show_text" $show_text
@@ -114,18 +114,18 @@
 {{- if and $enable_contact .phone -}}
   {{- $buttons = $buttons | append (dict
     "enable" true
-    "url" (printf "tel:%s" .phone)
+    "url" (printf "tel:%s" ($.Scratch.Get "site_phone"))
     "icon" "phone"
-    "text" (printf "%s %s" (cond .phone_can_text "Phone / Text" "Phone") .phone)
+    "text" (printf "%s %s" (cond .phone_can_text "Phone / Text" "Phone") ($.Scratch.Get "site_phone"))
     "show_text" $show_text
   ) -}}
 {{- end -}}
 {{- if and $enable_contact .email -}}
   {{- $buttons = $buttons | append (dict
     "enable" true
-    "url" (printf "mailto:%s" .email)
+    "url" (printf "mailto:%s" ($.Scratch.Get "site_email"))
     "icon" "email"
-    "text" (printf "Email %s" .email)
+    "text" (printf "Email %s" ($.Scratch.Get "site_email"))
     "show_text" $show_text
   ) -}}
 {{- end -}}

@@ -5,7 +5,11 @@
 {{ end }}
 
 {{ define "title" }}
-{{- partial "title.html" (dict "Title" .Title "Site" .Site "ShowSiteTitle" true) -}}
+{{- partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "ShowSiteTitle" true
+) -}}
 {{ end }}
 
 {{ define "main" }}
@@ -33,7 +37,10 @@
     <h3>Schedule</h3>
     {{ $start_time := time.AsTime .Params.event_start -}}
     {{ $end_time := time.AsTime .Params.event_end -}}
-    {{ partial "content/event-timespan.html" (dict "start_time" $start_time "end_time" $end_time) }}
+    {{ partial "content/event-timespan.html" (dict
+    "start_time" $start_time
+    "end_time" $end_time
+) }}
     {{ if .Params.calendarlink_url -}}
       {{- partial "components/button.html" (dict
         "url" .Params.calendarlink_url

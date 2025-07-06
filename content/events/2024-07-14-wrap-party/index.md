@@ -1,5 +1,7 @@
 ---
 title: Competition Weekend Wrap Party
+layout: events
+type: events
 summary: >
   Celebrate the completion of your film with your team at Novo Brazil, Mission
   Valley, and tell war stories to your fellow film makers over food and drink.
@@ -18,6 +20,14 @@ params:
   location_map_url: https://maps.app.goo.gl/8KdN8fUFwBw4nUA16
   facebook_event_url: https://www.facebook.com/events/994392428681762
   calendarlink_url: ""
+  org_info: >
+    ## About the competition
+
+    The 48 Hour Film Project is the longest running and most popular timed
+    film-making competition. Amateur and professional teams around the world
+    make movies in a weekend, which are later given a premier in a real theater.
+
+    [Find out more about the 48](/)
 ---
 Celebrate the completion of your film with your team, and tell war stories to
 your fellow film makers over food and drink. Join us at Novo Brazil in Mission
@@ -25,11 +35,3 @@ Valley when you've submitted your film on Sunday, July 14th.
 
 We are working on exclusive swag for team leaders who perform the in-person
 journey to share a beverage and a story with us!
-
-## About the competition
-
-The 48 Hour Film Project is the longest running and most popular timed
-film-making competition. Amateur and professional teams around the world
-make movies in a weekend, which are later given a premier in a real theater.
-
-[Find out more about the 48](/)

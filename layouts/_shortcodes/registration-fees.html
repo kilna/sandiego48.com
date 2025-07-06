@@ -1,8 +1,0 @@
-{{- with site.Params.registration -}}
-Early registration begins {{ dateFormat "January 2" (time .early.start) }} at
-${{ .early.price }} per team until
-{{ dateFormat "January 2" (time .regular.start) }}, then ${{ .regular.price }}
-for regular registration until {{ dateFormat "January 2" (time .regular.end) }},
-and ${{ .late.price }} for late registration up until start of the competition
-on {{ dateFormat "January 2" (time .late.end) }}. 
-{{- end -}}

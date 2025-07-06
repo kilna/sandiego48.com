@@ -47,20 +47,14 @@
   color: var(--48-white);
   background-color: var(--48-black);
   opacity: 0.25;
-}
-
-.infoblock .social a.button .icon {
-  color: var(--48-white);
+  --icon-color: var(--48-white);
+  --icon-hover-color: var(--48-black);
 }
 
 .infoblock .social a.button:hover, .infoblock .social a.button:active {
   color: var(--48-black);
   background-color: var(--48-white);
   opacity: 1;
-}
-
-.infoblock .social a.button:hover .icon, .infoblock .social a.button:active .icon {
-  color: var(--48-black);
 }
 
 .infoblock h3 {

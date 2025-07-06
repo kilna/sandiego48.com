@@ -9,7 +9,7 @@
   --48-orange-trans:      #eab32c80;
   --48-orange-trans-more: #eab32cc0;
   --48-orange-nearblack:  #43330d;
-  --48-orange-dark:       #c89b29;
+  --48-orange-dark:       #80631a;
   --48-orange-light:      #eacd86;
   --48-orange-nearwhite:  #ede6d5;
   --48-purple:            #571c6d;
@@ -27,10 +27,7 @@
   --48-lighten:           #ffffff40;
   --48-lighten-more:      #ffffff70;
   --48-lighten-most:      #ffffffa0;
-  --clock-on:             #bb00ff;
-  --clock-off:            #503050b0;
-  --clock-glow:           #ca37ff;
-  --clock-shade:          #000000;
+  --clock-color:          #bb00ff;
   --league-spartan-offset: 0.07em;
 }
 
@@ -53,6 +50,14 @@
 
 html {
   font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
@@ -78,12 +83,12 @@ h1, h2, h3, h4, h5, h5, h6 {
   margin: 0.75rem 0 0.75rem 0;
 }
 
-h1 { font-size: 2.5rem; font-weight: 800; }
-h2 { font-size: 2rem; font-weight: 700; }
-h3 { font-size: 1.5rem; font-weight: 700; }
-h4 { font-size: 1.375rem; font-weight: 600; }
-h5 { font-size: 1.25rem; font-weight: 600; }
-h6 { font-size: 1.125rem; font-weight: 600; }
+h1 { font-size: 2.5em; font-weight: 800; }
+h2 { font-size: 1.75em; font-weight: 700; }
+h3 { font-size: 1.5em; font-weight: 700; }
+h4 { font-size: 1.375em; font-weight: 600; }
+h5 { font-size: 1.25em; font-weight: 600; }
+h6 { font-size: 1.125em; font-weight: 600; }
 
 @media all and (max-width: 768px) {
   h1, h2 {
@@ -96,6 +101,13 @@ h6 { font-size: 1.125rem; font-weight: 600; }
 p {
   margin: 0.75rem 0 0.75rem 0;
   line-height: 1.25em;
+}
+
+div.bordered {
+  border: 0.05em solid var(--48-darken);
+  border-radius: 0.25em;
+  padding: 0.25em 1em;
+  margin: 0.5em 0;
 }
 
 ul {
@@ -166,6 +178,29 @@ a[href*="http://"] {
 
 .hidden {
   display: none;
+}
+
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.tiny {
+  font-size: 0.5em;
+}
+
+.small {
+  font-size: 0.75em;
+}
+
+.big {
+  font-size: 1.25em;
+}
+
+.huge {
+  font-size: 1.75em;
 }
 
 @media all and (min-width: 769px) {
@@ -243,7 +278,7 @@ a.button {
   border-radius: 0.25em;
   background-color: var(--48-purple);
   color: var(--48-white);
-  text-decoration: none;
+  text-decoration: none !important;
   font-weight: 400;
   white-space: normal;
   transition: all 0.2s ease;
@@ -259,21 +294,15 @@ a.button:hover, a.button:active {
 
 a.button.social {
   opacity: 0.75;
-  border: 0.05em solid var(--48-darken);
+  border: none !important;
   background-color: var(--48-white);
   color: var(--48-black);
+  --icon-color: var(--48-orange);
+  --icon-hover-color: var(--48-purple);
 }
 
 a.button.social:hover, a.button.social:active {
   opacity: 1;
-}
-
-a.button.social .icon {
-  color: var(--48-black);
-}
-
-a.button.social:hover .icon, a.button.social:active .icon {
-  color: var(--48-orange);
 }
 
 a.button.left {
@@ -349,29 +378,13 @@ a.button.wide {
   margin-left: auto;
 }
 
-a.button.tiny {
-  font-size: 0.5em;
-}
-
-a.button.small {
-  font-size: 0.75em;
-}
-
-a.button.big {
-  font-size: 1.3em;
-}
-
-a.button.huge {
-  font-size: 1.8em;
-}
-
 a.button .icon {
   display: inline-block;
-  color: var(--48-orange);
+  color: var(--icon-color, var(--48-orange));
 }
 
 a:hover.button .icon, a:active.button .icon {
-  color: var(--48-purple);
+  color: var(--icon-hover-color, var(--48-purple));
 }
 
 a.button .icon svg {
@@ -445,7 +458,15 @@ main {
                 var(--48-white) 67%,
                 var(--48-purple-nearwhite) 100%
               );
-  box-shadow: inset 0 0 2em var(--48-black);
+  box-shadow: inset 0 0 clamp(0.25em, 2vw, 2em) var(--48-black);
+}
+
+main > * {
+  max-width: min(55rem, 90vw);
+  min-width: 60vw !important;
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media all and (max-width: 768px) {
@@ -544,19 +565,25 @@ main {
 }
 
 .clock .on {
-  color: var(--clock-on);
+  color: var(--clock-color);
   position: relative;
   z-index: 1;
-  text-shadow: 0 0 0.2em var(--clock-glow);
+  text-shadow: 0 0 0.25em var(--clock-color, #c00000);
 }
 
 .clock .off {
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--clock-off);
+  color: color-mix(in srgb, var(--clock-color, #c00000) 40%, #000000);
+  opacity: 0.4;
   pointer-events: none;
-  text-shadow: 0 0 0.2em var(--clock-shade);
+  letter-spacing: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  line-height: inherit;
 }
 
 .clock .zero {

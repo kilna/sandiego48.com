@@ -1,5 +1,7 @@
 ---
 title: Competition Weekend Kickoff
+layout: events
+type: events
 summary: >
   The start of the 2024 San Diego 48 Hour Film Project competition weekend,
   we meet at NTC Park Liberty Station... where genres are picked, and random
@@ -19,6 +21,14 @@ params:
   location_map_url: https://maps.app.goo.gl/aWWQiqbeWpw4dygQ8
   facebook_event_url: https://www.facebook.com/events/401892592856083/
   calendarlink_url: ""
+  org_info: >
+    ## About the competition
+
+    The 48 Hour Film Project is the longest running and most popular timed
+    film-making competition. Amateur and professional teams around the world
+    make movies in a weekend, which are later given a premier in a real theater.
+
+    [Find out more about the 48](/)
 ---
 This event is the start for the San Diego 48 Hour Film Project weekend! Join us
 at NTC Park in Liberty Station on Friday the 12th of July at 5pm to start your
@@ -40,11 +50,3 @@ the 7pm start, teams will find out the assigned elements:
 
 ...all of which will not be known to participants prior to the start of the
 competition.
-
-## About the competition
-
-The 48 Hour Film Project is the longest running and most popular timed
-film-making competition. Amateur and professional teams around the world
-make movies in a weekend, which are later given a premier in a real theater.
-
-[Find out more about the 48](/)

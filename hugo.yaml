@@ -125,7 +125,7 @@ menus:
   - identifier: events
     weight: 1
     name: Events
-    url: /#events
+    url: /events
     params:
       target: _self
       icon: calendar
