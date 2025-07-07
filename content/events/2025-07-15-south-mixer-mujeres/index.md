@@ -3,10 +3,10 @@ title: South Mixer / Meet & Greet at Mujeres
 layout: events
 type: events
 summary: >
-  Come join us for our South Mixer / Meet & Greet at Mujeres Brew House! The
-  event takes place one month until the 48 kickoff... This is a great opportunity
-  for cast, crew, and helpers to network and form teams before the competition
-  kicks off. We're gathering at Mujeres, just south of downtown in Barrio
+  Come join us for our South Mixer / Meet & Greet at Mujeres Brew House just
+  south of Downtown in Barrio Logal! This is a great opportunity for potential
+  cast, crew, and helpers to network and form teams before the competition
+  kicks off.
   Logan.
 date: 2025-07-01T12:00:00-07:00
 publishDate: 2025-07-01T00:00:00-07:00
@@ -40,20 +40,20 @@ params:
     movies over a weekend, which are later given a premier in a real theater. San
     Diego's competition takes place August 15-17th, 2025.
 ---
-Come join us for our South Mixer / Meet & Greet at Mujeres Brew House! The
-event takes place one month until the 48 kickoff... This is a great opportunity
-for cast, crew, and helpers to network and form teams before the competition
-kicks off.
+Our South Mixer / Meet & Greet at Mujeres Brew House! The event takes place one
+month until the 48 kickoff... This is a great opportunity for actors, crew, and
+helpers to form teams. Get ready to network!
 
-Whether you're in front of the camera or behind it, this mixer is perfect for:
+Whether you want to be in front of the camera or behind it, this mixer is
+perfect for:
 
 * Finding team members for your 48 Hour Film Project
 * Networking with fellow filmmakers
 * Meeting potential cast and crew
 * Getting to know the San Diego filmmaking community
 
-We'll be gathering at Mujeres Brew House, a latinx woman-owned and operated brewery 
-located just south of Downtown in Barrio Logan. The location is kid and
+We'll be gathering at Mujeres Brew House, a latinx woman-owned and operated
+brewery  located just south of Downtown in Barrio Logan. The location is kid and
 dog-friendly, with food options. Join us from 6-9pm on Tuesday, July 15th, 2025.
 
 Even if you're only curious about film-making, come down and see what the 
