@@ -4,7 +4,7 @@ layout: events
 type: events
 summary: >
   Come join us for our South Mixer / Meet & Greet at Mujeres Brew House! The
-  event takes place one month until the 48 kickoff! This is a great opportunity
+  event takes place one month until the 48 kickoff... This is a great opportunity
   for cast, crew, and helpers to network and form teams before the competition
   kicks off. We're gathering at Mujeres, just south of downtown in Barrio
   Logan.
@@ -41,7 +41,7 @@ params:
     Diego's competition takes place August 15-17th, 2025.
 ---
 Come join us for our South Mixer / Meet & Greet at Mujeres Brew House! The
-event takes place one month until the 48 kickoff! This is a great opportunity
+event takes place one month until the 48 kickoff... This is a great opportunity
 for cast, crew, and helpers to network and form teams before the competition
 kicks off.
 
