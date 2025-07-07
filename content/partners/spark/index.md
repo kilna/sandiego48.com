@@ -1,5 +1,5 @@
 ---
-title: Spark Studios Soundstage
+title: Spark Studio Soundstage
 params:
   image: spark-square.png
   image_wide: spark.png
@@ -7,7 +7,7 @@ params:
   level: featured
   links:
     - url: https://www.sparkstudiosoundstage.com/
-      text: Spark Studios Soundstage for Media Production
+      text: Spark Studio Soundstage for Media Production
     - url: https://sparkyourparty.com/
       text: Spark Hall at Encore Event Center
     - url: https://maps.app.goo.gl/XjEki9B6YzDrFBtf6
@@ -21,7 +21,7 @@ params:
     - url: https://www.instagram.com/sparkstudiosndstge/
       text: Instagram @sparkstudiosndstge
 ---
-Spark Studios Soundstage in San Diego is a full-featured media production
+Spark Studio Soundstage in San Diego is a full-featured media production
 suite, as a part of the Encore Event Center complex.  The versatile 3,000 sq ft
 double-walled, sound-insulated TV studio in Kearny Mesa is the former XETV‑6
 broadcast campus. Beyond serving film, TV, photography, and podcast productions,

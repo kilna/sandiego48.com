@@ -1,11 +1,11 @@
 ---
-title: 2025 Open Auditions at Spark Studios
+title: 2025 Open Auditions at Spark Studio
 layout: events
 type: events
 summary: >
   An open audition for prospective 48 Hour Film Project actors, and teams that
   are casting acting talent. Auditions will be held at San Diego 48 Hour Film
-  Project's sponsor, Spark Studios Soundstage in Kearny Mesa.  Actors of all
+  Project's sponsor, Spark Studio Soundstage in Kearny Mesa.  Actors of all
   skill levels are encouraged to try out, and all teams (or potential teams)
   looking to cast talent are likewise encouraged to come. Audition spots are
   first-come-first-served, so please arrive promptly at the start.
@@ -17,7 +17,7 @@ params:
   featured: true
   event_start: 2025-07-20T12:00:00-07:00
   event_end: 2025-07-20T16:00:00-07:00
-  partner_name: Spark Studios Soundstage
+  partner_name: Spark Studio Soundstage
   partner_details: >
     A full-featured media production suite featuring a versatile 3,000 sq ft
     double-walled, sound-insulated TV studio in the former XETV-6 broadcast
@@ -30,7 +30,7 @@ params:
       url: https://www.sparkstudiosoundstage.com/
       icon: globe
   partner_links: []
-  location_name: Spark Studios Soundstage
+  location_name: Spark Studio Soundstage
   location_details: Full-featured media production suite
   location_url: https://www.sparkstudiosoundstage.com/
   location_logo: venue.png
@@ -52,7 +52,7 @@ params:
     Diego's competition takes place August 15-17th, 2025.
 ---
 The San Diego 48 Hour Film Project will be having its 2025 open auditions
-at Spark Studios Soundstage in Kearny Mesa this Sunday, July 20, 2025.
+at Spark Studio Soundstage in Kearny Mesa this Sunday, July 20, 2025.
 
 ## If you are acting talent...
 
