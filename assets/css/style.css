@@ -462,7 +462,7 @@ main {
 }
 
 main > * {
-  max-width: min(55rem, 90vw);
+  max-width: min(70rem, 90vw);
   min-width: 60vw !important;
   margin: auto;
   margin-left: auto;

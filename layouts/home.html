@@ -101,7 +101,7 @@
 }
 
 .index-flex-boxes > div {
-  flex: 1 1 320px;
+  flex: 1 1 300px;
   background: var(--48-orange);
   background: linear-gradient(
     95deg,
@@ -120,6 +120,16 @@
 /* Force left alignment for narrow paragraphs */
 .index, .index-flex-boxes > div, .index-box {
   container-type: inline-size;
+}
+
+.index a.button-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.125rem;
+  margin: 0;
+  padding: 0;
 }
 
 </style>
@@ -341,7 +351,7 @@ city winners. Later, <em>select winners are shown at the Cannes Film Festival
 <div class="bordered center" style="background-color: var(--48-orange);">
 <p>If you're on social media, make sure to connect with us!</p>
 {{ partial "components/common-buttons.html" (dict
-    "button_class" "big social"
+    "button_class" "social"
     "show_text" true
     "collapse" true
     "Site" .Site

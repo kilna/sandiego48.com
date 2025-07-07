@@ -1,0 +1,103 @@
+{{ define "main" }}
+{{- partial "vars.html" . -}}
+{{- $button_color := "#f4a424" -}}
+
+<style>
+body { 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f39c12;
+}
+</style>
+
+
+
+
+<!-- City Message HTML for copy-paste embedding -->
+  
+<p style="text-align: center; margin: 0 0 20px 0;">
+  <a href="{{ .Site.BaseURL }}" style="text-decoration: none; color: black;">
+    <img src="{{ .Site.BaseURL }}/images/logo_horiz_trans.png" alt="{{ .Site.Title }}" style="width: 100%; height: auto; display: block; margin: 0 auto;">
+  </a>
+</p>
+
+<p style="text-align: center; font-size: 20px; width: 80%; margin: 0.25em auto;">
+  <a href="{{ .Site.BaseURL }}" style="background: {{ $button_color }}; color: black; text-decoration: none; border-radius: 5px; display: block; width: 100%; box-sizing: border-box; border: 2px outset {{ $button_color }}; padding: 5px; margin: 0.25em;">Visit SanDiego48.com for more updates! ☀️</a>
+</p>
+
+{{- $events := where .Site.Pages "Section" "events" -}}
+{{- $publishedEvents := where $events "Draft" false -}}
+{{- $futureEvents := slice -}}
+{{- range $publishedEvents -}}
+  {{- if .Params.event_start -}}
+    {{- $eventStart := time .Params.event_start -}}
+    {{- if $eventStart.After now -}}
+      {{- $futureEvents = $futureEvents | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $sortedEvents := sort $futureEvents ".Params.event_start" "asc" -}}
+
+{{- range first 3 $sortedEvents -}}
+  <hr style="border: none; border-top: 2px solid #6b2c91; margin: 20px 0;">
+  {{- $event := . -}}
+  {{- $displayImage := .Resources.GetMatch .Params.image -}}
+  
+  {{- if $displayImage -}}
+    <p style="text-align: center; margin: 20px 0 10px 0;">
+      <a href="{{ .Site.BaseURL }}{{ .RelPermalink }}" style="text-decoration: none;">
+          {{- $resizedImage := $displayImage.Resize "800x" -}}
+          <img src="{{ .Site.BaseURL }}{{ $resizedImage.RelPermalink }}" alt="{{ .Title }}" style="width: 80%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 0 auto; display: block;">
+      </a>
+    </p>
+  {{- end -}}
+  
+      <p style="font-size: 24px; font-weight: bold; color: #6B2C91; margin: 10px 0 5px 0; text-align: center;">
+    <a href="{{ .Site.BaseURL }}{{ .RelPermalink }}" style="color: #6b2c91; text-decoration: none;">{{ .Title }}</a>
+  </p>
+  
+  {{- $start_time := .Params.event_start -}}
+{{- $end_time := .Params.event_end -}}
+{{- if not $end_time -}}
+  {{- $end_time = $start_time -}}
+{{- end -}}
+  
+  <p style="font-size: 18px; color: black; margin: 0 0 10px 0; text-align: center;">
+    {{- $startTime := time $start_time -}}
+    {{- $endTime := time $end_time -}}
+    {{- partial "content/event-timespan.html" (dict "start_time" $startTime "end_time" $endTime "plain" true) -}}
+  </p>
+  
+  {{- if .Summary -}}
+    <p style="font-size: 14px; color: black; margin: 0 0 15px 0; text-align: left; line-height: 1.4;">
+      {{ .Summary }}
+    </p>
+  {{- end -}}
+  
+      <p style="text-align: center; margin: 0 0 25px 0;">
+        {{- with .Params.facebook_event_url -}}
+          <a href="{{ . }}" style="background: {{ $button_color }}; color: black; padding: 4px 8px; text-decoration: none; border-radius: 5px; font-size: 16px; display: inline-block; margin: 0 5px; border: 2px outset {{ $button_color }};">Facebook RSVP ✅</a>
+        {{- end -}}
+        {{- with .Params.calendarlink_url -}}
+          <a href="{{ . }}" style="background: {{ $button_color }}; color: black; padding: 4px 8px; text-decoration: none; border-radius: 5px; font-size: 16px; display: inline-block; margin: 0 5px; border: 2px outset {{ $button_color }};">Add to Calendar 📅</a>
+        {{- end -}}
+        {{- with .Params.location_map_url -}}
+          <a href="{{ . }}" style="background: {{ $button_color }}; color: black; padding: 4px 8px; text-decoration: none; border-radius: 5px; font-size: 16px; display: inline-block; margin: 0 5px; border: 2px outset {{ $button_color }};">Map 📍</a>
+        {{- end -}}
+        <a href="{{ .Site.BaseURL }}{{ .RelPermalink }}" style="background: {{ $button_color }}; color: black; padding: 4px 8px; text-decoration: none; border-radius: 5px; font-size: 16px; display: inline-block; margin: 0 5px; border: 2px outset {{ $button_color }};">More Details ➡️</a>
+      </p>
+{{- end -}}
+
+<hr style="border: none; border-top: 2px solid #6b2c91; margin: 20px 0;">
+
+<p style="text-align: center; font-size: 20px; width: 80%; margin: 0.25em auto;">
+    <a href="{{ .Site.BaseURL }}/go/newsletter" style="background: {{ $button_color }}; color: black; text-decoration: none; border-radius: 5px; display: block; width: 100%; box-sizing: border-box; border: 2px outset {{ $button_color }}; padding: 5px; margin: 0.25em;">Sign Up for Newsletter 📰</a>
+  {{- with .Site.Params.facebook_group -}}
+    <a href="{{ $.Scratch.Get "facebook_group_url" }}" style="background: {{ $button_color }}; color: black; text-decoration: none; border-radius: 5px; display: block; width: 100%; box-sizing: border-box; border: 2px outset {{ $button_color }}; padding: 5px; margin: 0.25em;">Join Facebook Group 👥</a>
+  {{- end -}}
+    <a href="{{ .Site.BaseURL }}/links" style="background: {{ $button_color }}; color: black; text-decoration: none; border-radius: 5px; display: block; width: 100%; box-sizing: border-box; border: 2px outset {{ $button_color }}; padding: 5px; margin: 0.25em;">Follow @sd48hfp on Social Media ❤️</a>
+</p>
+
+
+
+
+{{ end }} 

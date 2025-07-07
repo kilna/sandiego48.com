@@ -1,5 +1,5 @@
 ---
-title: T-Minus One Month Mixer at Mujeres
+title: T-Minus 1 Month Mixer at Mujeres
 layout: events
 type: events
 summary: >
@@ -12,13 +12,13 @@ date: 2025-07-01T12:00:00-07:00
 publishDate: 2025-07-01T00:00:00-07:00
 draft: false
 params:
-  image: flyer.png
+  image: 2025-mixer-4-horizontal.png
   featured: true
   event_start: 2025-07-15T18:00:00-07:00
   event_end: 2025-07-15T21:00:00-07:00
   location_name: Mujeres Brew House
   location_details: >
-    A latinx woman-owned and operated, kid and dog-friendly brewery withs food
+    A latinx woman-owned and operated, kid and dog-friendly brewery with food
     options
   location_url: https://www.facebook.com/mujeresbrewhouse/
   location_logo: venue.png
@@ -30,8 +30,8 @@ params:
   location_links: []
   location_address: 1983 Julian Ave, San Diego, CA 92113
   location_map_url: https://maps.app.goo.gl/DvrPuihYG8nXMfTi6
-  facebook_event_url: TODO
-  calendarlink_url: TODO
+  facebook_event_url: ""
+  calendarlink_url: ""
   org_info: |
     ### About the 48 Hour Film Project
 

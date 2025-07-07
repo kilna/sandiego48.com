@@ -27,7 +27,7 @@ Location Details: {{ partial "layout/plaintext.txt" .Params.location_details -}}
 LINKS 🔗
 
 ➡️ Event Details:
-   https://sandiego48.com{{ .RelPermalink }}
+   {{ .Site.Params.canonical_url }}{{ .RelPermalink }}
 {{- if .Params.facebook_event_url }}
 👍 RSVP on Facebook:
    {{ .Params.facebook_event_url }}
@@ -47,4 +47,4 @@ FIND OR FOLLOW US ONLINE ❤️
 {{ if .Params.org_info -}}
 {{ partial "layout/plaintext.txt" .Params.org_info }}
 {{ end }}
-🧠 Learn more at https://sandiego48.com
+🧠 Learn more at {{ .Site.Params.canonical_url }}
