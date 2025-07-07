@@ -1,5 +1,5 @@
 ---
-title: T-Minus 1 Month Mixer at Mujeres
+title: South Mixer / Meet & Greet at Mujeres
 layout: events
 type: events
 summary: >
