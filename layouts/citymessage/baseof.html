@@ -4,8 +4,18 @@
   <meta charset="utf-8">
   <title>{{ .Title }} - {{ .Site.Title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f39c12;
+    }
+  </style>
 </head>
 <body>
-  {{ block "main" . }}{{ end }}
+
+{{ $main := partial "citymessage/main.html" . }}
+{{ $minified := replaceRE "\\s*\n\\s*" "" $main }}
+{{ $minified | safeHTML }}
+
 </body>
 </html> 
