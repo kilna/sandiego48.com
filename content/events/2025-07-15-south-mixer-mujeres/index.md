@@ -31,7 +31,7 @@ params:
   location_address: 1983 Julian Ave, San Diego, CA 92113
   location_map_url: https://maps.app.goo.gl/DvrPuihYG8nXMfTi6
   facebook_event_url: https://www.facebook.com/events/1188616666350721/
-  calendarlink_url: ""
+  calendarlink_url: https://calendarlink.com/event/3nzMA
   org_info: |
     ### About the 48 Hour Film Project
 
