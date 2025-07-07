@@ -20,8 +20,8 @@ body {
   </a>
 </p>
 
-<p style="text-align: center; font-size: 20px; width: 80%; margin: 0.25em auto;">
-  <a href="{{ .Site.BaseURL }}" style="background: {{ $button_color }}; color: black; text-decoration: none; border-radius: 5px; display: block; width: 100%; box-sizing: border-box; border: 2px outset {{ $button_color }}; padding: 5px; margin: 0.25em;">Visit SanDiego48.com for more updates! ☀️</a>
+<p style="margin: 0 0 8px 0; font-size: 20px; line-height: 1.2; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <a href="{{ .Site.BaseURL }}" style="display: block; background: #f4a424; color: black; text-decoration: none; border-radius: 5px; border: 2px outset #f4a424; padding: 5px; margin: 0 !important; font-size: 18px; font-family: inherit;">Visit SanDiego48.com for more updates! ☀️</a>
 </p>
 
 {{- $events := where .Site.Pages "Section" "events" -}}
@@ -38,7 +38,7 @@ body {
 {{- $sortedEvents := sort $futureEvents ".Params.event_start" "asc" -}}
 
 {{- range first 3 $sortedEvents -}}
-  <hr style="border: none; border-top: 2px solid #6b2c91; margin: 20px 0;">
+  <hr style="margin: 10px 0 !important; border: none; border-top: 2px solid #6b2c91;">
   {{- $event := . -}}
   {{- $displayImage := .Resources.GetMatch .Params.image -}}
   
@@ -87,7 +87,7 @@ body {
       </p>
 {{- end -}}
 
-<hr style="border: none; border-top: 2px solid #6b2c91; margin: 20px 0;">
+<hr style="margin: 10px 0 !important; border: none; border-top: 2px solid #6b2c91;">
 
 <p style="text-align: center; font-size: 20px; width: 80%; margin: 0.25em auto;">
     <a href="{{ .Site.BaseURL }}/go/newsletter" style="background: {{ $button_color }}; color: black; text-decoration: none; border-radius: 5px; display: block; width: 100%; box-sizing: border-box; border: 2px outset {{ $button_color }}; padding: 5px; margin: 0.25em;">Sign Up for Newsletter 📰</a>
