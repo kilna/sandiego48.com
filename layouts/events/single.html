@@ -21,6 +21,7 @@
     {{ end -}}
   
     {{ .Summary | markdownify }}
+    <hr/>
     {{ .Content }}
     {{ if .Params.org_info }}
     {{ .Params.org_info | markdownify }}
