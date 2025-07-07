@@ -3,11 +3,11 @@ title: T-Minus 1 Month Mixer at Mujeres
 layout: events
 type: events
 summary: >
-  Come join us for our south Mixer / Meet & Greet at Mujeres Brew House! This is
-  a great opportunity for cast, crew, and helpers to network and form teams before
-  the competition kicks off. We're gathering at Mujeres, just south of downtown
-  in Barrio Logan, a latinx women-owned and operated, kid and dog-friendly
-  brewery with food options.
+  Come join us for our South Mixer / Meet & Greet at Mujeres Brew House! The
+  event takes place one month until the 48 kickoff! This is a great opportunity
+  for cast, crew, and helpers to network and form teams before the competition
+  kicks off. We're gathering at Mujeres, just south of downtown in Barrio
+  Logan.
 date: 2025-07-01T12:00:00-07:00
 publishDate: 2025-07-01T00:00:00-07:00
 draft: false
@@ -40,9 +40,10 @@ params:
     movies over a weekend, which are later given a premier in a real theater. San
     Diego's competition takes place August 15-17th, 2025.
 ---
-Come join us for our south mixer at Mujeres Brew House in Barrio Logan! This is
-a great opportunity for cast, crew, and helpers to network and form teams before
-the competition kicks off.
+Come join us for our South Mixer / Meet & Greet at Mujeres Brew House! The
+event takes place one month until the 48 kickoff! This is a great opportunity
+for cast, crew, and helpers to network and form teams before the competition
+kicks off.
 
 Whether you're in front of the camera or behind it, this mixer is perfect for:
 
@@ -51,9 +52,9 @@ Whether you're in front of the camera or behind it, this mixer is perfect for:
 * Meeting potential cast and crew
 * Getting to know the San Diego filmmaking community
 
-We'll be gathering at Mujeres Brew House, a woman-owned and operated brewery 
-located just south of Downtown in Barrio Logan. Join us from 6-9pm on 
-Tuesday, July 15th, 2025.
+We'll be gathering at Mujeres Brew House, a latinx woman-owned and operated brewery 
+located just south of Downtown in Barrio Logan. The location is kid and
+dog-friendly, with food options. Join us from 6-9pm on Tuesday, July 15th, 2025.
 
 Even if you're only curious about film-making, come down and see what the 
 48 Hour Film Project is all about!
