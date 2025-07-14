@@ -3,7 +3,7 @@ title: South Mixer / Meet & Greet at Mujeres
 layout: events
 type: events
 summary: >
-  Come join us for our South Mixer / Meet & Greet at Mujeres Brew House just
+  Join us for our South Mixer / Meet & Greet at Mujeres Brew House just
   south of Downtown in Barrio Logal! This is a great opportunity for potential
   cast, crew, and helpers to network and form teams before the competition
   kicks off.

@@ -68,8 +68,8 @@ params:
     - default: "A while to go"
       suffix: "until this year's competition..."
       date: "2025-08-15T19:00:00-07:00"
-      show_after: "2025-06-09T00:00:00-07:00"
-      show_before: "2025-07-22T00:00:00-07:00"
+      show_after: "2025-08-05T00:00:00-07:00"
+      show_before: "2025-08-15T19:00:00-07:00"
       button_prefix: "Prices go up soon!"
       button:
         text: "Register Your Team Now!"

@@ -1,21 +1,23 @@
 {{ define "main" }}
 {{- partial "vars.html" . -}}
+{{- $p_center_style := "text-align: center; margin: 0 auto; max-width: 100% !important; font-size: 0.6em; line-height: 1.2;" -}}
+{{- $p_left_style := "text-align: left; margin: 0 auto; font-size: 0.6em; max-width: 100% !important;" -}}
 {{- $a_image_style := "margin: 0 auto; max-width: 100% !important;" -}}
-{{- $image_style := "display: block; width: 80%; height: auto; border-radius: 0.5em; max-width: 100% !important;" -}}
-{{- $common_button_style := "text-decoration: none; border-radius: 0.3125em; text-align: center; margin: 0.3em auto; display: inline-block; max-width: 100% !important; line-height: 1.2;" -}}
-{{- $big_button_style := printf "%s %s" $common_button_style "display: block; width: 90%; background: #6b2c91; color: white; border: 0.1em outset #6b2c91; padding: 0.5em; font-size: 1.2em; line-height: 1.2;" -}}
+{{- $image_style := "display: block; width: 80%; height: auto; border-radius: 0.5em; max-width: 100% !important; margin: 0 auto;" -}}
+{{- $common_button_style := "text-decoration: none; border-radius: 0.3em; text-align: center; margin: 0.3em auto; display: inline-block; max-width: 100% !important; line-height: 1.2;" -}}
+{{- $big_button_style := printf "%s %s" $common_button_style "display: block; width: 90%; background: #6b2c91; color: white; border: 0.1em outset #6b2c91; padding: 0.3em; font-size: 1.5em; line-height: 1.2;" -}}
 {{- $event_button_style  := printf "%s %s" $common_button_style "display: inline-block; background: #f4a424; color: black; padding: 0.3em; margin: 0.1em; border: 0.1em outset #f4a424; line-height: 1.2;" -}}
 {{- $event_button_style2 := printf "%s %s" $common_button_style "display: inline-block; background: #6b2c91; color: white; padding: 0.3em; margin: 0.1em; border: 0.1em outset #6b2c91; line-height: 1.2;" -}}
-{{- $event_title_style := "display: block; font-weight: bold; color: #6B2C91 !important; margin: 0 0.3em; text-align: center; text-decoration: none; font-size: 1.5em; max-width: 100% !important; line-height: 1.2;" -}}
-{{- $event_time_style := "display: block; color: black !important; margin: 0 0.3em; text-align: center; text-decoration: none; font-style: italic; max-width: 100% !important; line-height: 1.2;" -}}
-{{- $event_summary_style := "display: block; margin: 0 0.3em; max-width: 100% !important; line-height: 1.2;" -}}
-{{- $event_buttons_style := "display: block; text-align: center; margin: 0 auto; max-width: 100% !important; line-height: 1.2;" -}}
+{{- $event_title_style := "display: block; font-weight: bold; color: #6B2C91 !important; margin: 0.3em auto; text-decoration: none; font-size: 1.5em; max-width: 100% !important; line-height: 1.2;" -}}
+{{- $event_time_style := "display: block; color: black !important; margin: 0.3em auto; text-decoration: none; font-style: italic; max-width: 100% !important; line-height: 1.2;" -}}
+<p style="{{ $p_center_style | safeCSS }}">{{- /* */ -}}
 <a href="{{ .Site.BaseURL }}" style="{{ $a_image_style | safeCSS }}">{{- /* */ -}}
   <img src="{{ .Site.BaseURL }}/images/logo_horiz_trans.png" style="{{ $image_style | safeCSS }}">{{- /* */ -}}
 </a>{{- /* */ -}}
 <a href="{{ .Site.BaseURL }}" style="{{ $big_button_style | safeCSS }}">{{- /* */ -}}
     Visit SanDiego48.com for more updates! ☀️{{- /* */ -}}
 </a>{{- /* */ -}}
+</p>{{- /* */ -}}
 {{- $events := where .Site.Pages "Section" "events" -}}
 {{- $publishedEvents := where $events "Draft" false -}}
 {{- $futureEvents := slice -}}
@@ -30,6 +32,7 @@
 {{- $sortedEvents := sort $futureEvents ".Params.event_start" "asc" -}}
 {{- range first 3 $sortedEvents }}
 <hr/>{{- /* */ -}}
+<p style="{{ $p_center_style | safeCSS }}">{{- /* */ -}}
 {{- $event := . -}}
 {{- $displayImage := .Resources.GetMatch .Params.image -}}
 {{- if $displayImage -}}
@@ -47,10 +50,11 @@
 <a href="{{ .Site.BaseURL }}{{ .RelPermalink }}" style="{{ $event_time_style | safeCSS }}">
   {{- partial "content/event-timespan.html" (dict "start_time" $startTime "end_time" $endTime "plain" true) -}}
 </a>
+</p>{{- /* */ -}}
 {{- if .Summary -}}
-  <p style="{{ $event_summary_style | safeCSS }}">{{ .Summary }}</p>
+  <p style="{{ $p_left_style | safeCSS }}">{{ .Summary }}</p>
 {{- end -}}
-<p style="{{ $event_buttons_style | safeCSS }}">
+<p style="{{ $p_center_style | safeCSS }}">
   {{- with .Params.facebook_event_url -}}
     <a href="{{ . }}" style="{{ $event_button_style | safeCSS }}">{{- /* */ -}}
       Facebook RSVP ✅{{- /* */ -}}
@@ -72,6 +76,7 @@
 </p>
 {{- end }}
 <hr/>{{- /* */ -}}
+<p style="{{ $p_center_style | safeCSS }}">{{- /* */ -}}
 <a href="{{ .Site.BaseURL }}/go/newsletter" style="{{ $big_button_style | safeCSS }}">{{- /* */ -}}
   Sign Up for Newsletter 📰{{- /* */ -}}
 </a>
@@ -83,4 +88,5 @@
 <a href="{{ .Site.BaseURL }}/links" style="{{ $big_button_style | safeCSS }}">{{- /* */ -}}
   Follow @sd48hfp on Social Media ❤️{{- /* */ -}}
 </a>
+</p>{{- /* */ -}}
 {{ end }}
