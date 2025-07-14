@@ -68,7 +68,7 @@
   border-radius: 0 0 0.5rem 0.5rem;
 }
 
-.event-card a.image-link {
+.event-card a.image {
   flex: 0 0 33%;
   display: flex;
   align-items: center;
@@ -87,7 +87,7 @@
     gap: 0.5rem;
   }
 
-  .event-card a.image-link {
+  .event-card a.image {
   flex: none;
   text-align: center;
   display: flex;
@@ -95,7 +95,7 @@
   justify-content: center;
 }
 
-  .event-card a.image-link img {
+  .event-card a.image img {
     width: auto;
     height: auto;
     max-width: 85%;
@@ -105,6 +105,9 @@
 
   .event-card .content {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .event-card .actions {
@@ -112,6 +115,9 @@
     margin-top: 1rem;
     padding-top: 0.5rem;
     border-top: 1px solid var(--48-orange-dark);
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
@@ -158,8 +164,12 @@
   align-items: stretch;
   gap: 0.125rem;
   margin-top: 0.5rem;
-  padding-top: 0.5rem;
+  padding: 0.5rem;
   border-top: 1px solid var(--48-darken);
+  flex-wrap: nowrap;
+  min-height: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .event-card .actions a.button {
@@ -169,11 +179,40 @@
   border-color: var(--48-darken);
   --icon-color: var(--48-purple);
   opacity: 0.6;
-  font-size: 0.8em;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: none;
+  white-space: normal;
+  text-align: center;
+  justify-content: center;
+  height: auto;
+  align-self: stretch;
+  overflow: hidden;
+  padding: 0.25em 0.5em;
+  word-wrap: break-word;
+  hyphens: auto;
+  font-size: 0.9em;
 }
 
 .event-card .actions a.button:hover {
   opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .event-card .actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.125rem;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 0.9em;
+  }
+  
+  .event-card .actions a.button {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 
 .event-card .countdown {
@@ -189,4 +228,10 @@
   --clock-color: var(--48-orange);
   border: 0.125em solid var(--48-black);
   box-shadow: inset 0 0 0.5em var(--48-black);
+}
+
+/* Disable animation on More Details button hover */
+.event-card .actions a.button.pulse.glow:hover,
+.event-card .actions a.button.pulse.glow:active {
+  animation: none;
 }

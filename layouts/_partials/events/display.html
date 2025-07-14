@@ -64,15 +64,14 @@
 {{- end -}}
 
 <article class="event-card{{ $event_visibility_class }}{{ $visible_after_class }}">
-{{- $link := .RelPermalink -}}
-<a href="{{ $link }}" class="image-link{{ if not .Params.image }} hide-small{{ end }}">
-{{- with .Resources.Get .Params.image -}}
-  {{- $thumb := .Resize "x512" -}}
-  {{- with $thumb -}}
-    <img src="{{ .RelPermalink }}" />
-  {{- end -}}
-{{- end -}}
-</a>
+{{- $event := . -}}
+{{- $link := $event.RelPermalink -}}
+{{- partial "components/responsive-img.html" (dict
+    "ctx" $event
+    "image_mobile" "image_wide"
+    "image_desktop" "image_square"
+    "resize" "x512"
+    ) -}}
 <div class="content">
   <div class="header-group">
     <h3><a href="{{ $link }}">{{ .Title }}</a></h3>
@@ -106,7 +105,7 @@
        {{- end -}}
        {{- with .Params.location_map_url -}}
        {{- partial "components/button.html" (dict
-           "text" "Map"
+           "text" "Google Map"
            "url" .
            "icon" "location"
            "class" "right"

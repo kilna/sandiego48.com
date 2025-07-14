@@ -22,8 +22,11 @@ build-clean:
 	rm -rf public
 	hugo --forceSyncStatic --cleanDestinationDir
 
-server: build
+server: build kill-server
 	hugo server $(PARAMS) | tee >($(MAKE) open-wait) 2>&1
+
+kill-server:
+	pkill -f "hugo server" || true
 
 open-wait:
 	awk '/at http/ {gsub(/.* at | \(.*/, ""); system("open " $$0); fflush(); while((getline) > 0) print}'

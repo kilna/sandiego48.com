@@ -204,14 +204,14 @@ a[href*="http://"] {
 }
 
 @media all and (min-width: 769px) {
-  .show-small, .hide-big {
+  .show-phone, .hide-desktop {
     display: none;
     visibility: hidden;
   }
 }
 
 @media all and (max-width: 768px) {
-  .hide-small, .show-big {
+  .hide-phone, .show-desktop {
     display: none;
     visibility: hidden;
   }

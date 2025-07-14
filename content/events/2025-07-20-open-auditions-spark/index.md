@@ -13,7 +13,9 @@ date: 2025-01-15T00:00:00-08:00
 publishDate: 2025-01-15T00:00:00-08:00
 draft: false
 params:
-  image: 2025-auditions-horizontal.png
+  image: 2025-auditions-post.png
+  image_wide: 2025-auditions-horizontal.png
+  image_square: 2025-auditions-square.png
   featured: true
   event_start: 2025-07-20T12:00:00-07:00
   event_end: 2025-07-20T16:00:00-07:00

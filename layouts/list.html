@@ -11,7 +11,7 @@
 
 {{ range.Data.Pages }}
 <article class="entry" id="{{ partial "components/entry-id.html" . }}">
-  <div class="thumb{{ if not .Params.image }} hide-small{{ end }}">
+  <div class="thumb{{ if not .Params.image }} hide-phone{{ end }}">
     {{ $link := .RelPermalink -}}
     {{ with .Resources.Get .Params.image -}}
       {{ $thumb := .Resize "200x" -}}

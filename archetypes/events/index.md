@@ -9,6 +9,8 @@ publishDate: {{ .Date }}
 draft: false
 params:
   image: flyer.png
+  image_square: flyer-square.png
+  image_wide: flyer-horizontal.png
   featured: false
   event_start: 
   event_end: 

@@ -155,4 +155,58 @@ document.addEventListener('DOMContentLoaded', function() {
       element.style.display = '';
     }
   });
-}); 
+
+  // Initialize responsive image swapping
+  initResponsiveImages();
+});
+
+// Function to handle responsive image swapping
+function initResponsiveImages() {
+  const images = document.querySelectorAll('img[data-mobile-src], img[data-desktop-src]');
+  console.log('initResponsiveImages: Found', images.length, 'images with responsive src attributes');
+  
+  function updateImageSrc() {
+    const isDesktop = window.innerWidth >= 769; // Match the CSS breakpoint
+    console.log('updateImageSrc: Screen width =', window.innerWidth, 'isDesktop =', isDesktop);
+    
+    images.forEach((img, index) => {
+      const mobileSrc = img.getAttribute('data-mobile-src');
+      const desktopSrc = img.getAttribute('data-desktop-src');
+      const originalSrc = img.getAttribute('data-originalsrc') || img.src;
+      
+      console.log(`Image ${index}: mobileSrc = "${mobileSrc}", desktopSrc = "${desktopSrc}", originalSrc = "${originalSrc}", current src = "${img.src}"`);
+      
+      if (isDesktop && desktopSrc) {
+        // Store original src if not already stored
+        if (!img.getAttribute('data-originalsrc')) {
+          img.setAttribute('data-originalsrc', img.src);
+          console.log(`Image ${index}: Stored original src as "${img.src}"`);
+        }
+        img.src = desktopSrc;
+        console.log(`Image ${index}: Switched to desktop src "${desktopSrc}"`);
+      } else if (!isDesktop && mobileSrc) {
+        // Store original src if not already stored
+        if (!img.getAttribute('data-originalsrc')) {
+          img.setAttribute('data-originalsrc', img.src);
+          console.log(`Image ${index}: Stored original src as "${img.src}"`);
+        }
+        img.src = mobileSrc;
+        console.log(`Image ${index}: Switched to mobile src "${mobileSrc}"`);
+      } else if (img.getAttribute('data-originalsrc')) {
+        // Restore original src if no specific size src is available
+        img.src = originalSrc;
+        console.log(`Image ${index}: Restored to original src "${originalSrc}"`);
+      }
+    });
+  }
+  
+  // Initial update
+  updateImageSrc();
+  
+  // Update on window resize
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(updateImageSrc, 100); // Debounce resize events
+  });
+} 
