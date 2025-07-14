@@ -1,9 +1,9 @@
 {{- with .Site.Params }}
 Stay Connected
 🌐 Website
-    {{ .Site.URL }}
+    {{ .Site.BaseURL }}
 🗞️ Newsletter
-    {{ .Site.URL }}/go/newsletter
+    {{ .Site.BaseURL }}/go/newsletter
 {{ if .phone }}
 {{- $phone_title := "Phone" -}}
 {{- if .phone_can_text }}{{ $phone_title = "Phone / Text" }}{{ end -}}

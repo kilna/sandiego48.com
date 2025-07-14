@@ -4,7 +4,7 @@ layout: events
 type: events
 summary: >
   Join us for our South Mixer / Meet & Greet at Mujeres Brew House just
-  south of Downtown in Barrio Logal! This is a great opportunity for potential
+  south of Downtown in Barrio Logan! This is a great opportunity for potential
   cast, crew, and helpers to network and form teams before the competition
   kicks off.
   Logan.
@@ -55,7 +55,7 @@ perfect for:
 * Getting to know the San Diego filmmaking community
 
 We'll be gathering at Mujeres Brew House, a latinx woman-owned and operated
-brewery  located just south of Downtown in Barrio Logan. The location is kid and
+brewery, located just south of Downtown in Barrio Logan. The location is kid and
 dog-friendly, with food options. Join us from 6-9pm on Tuesday, July 15th, 2025.
 
 Even if you're only curious about film-making, come down and see what the 
