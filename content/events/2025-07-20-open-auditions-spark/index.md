@@ -18,7 +18,7 @@ params:
   image_square: 2025-auditions-square.png
   featured: true
   event_start: 2025-07-20T12:00:00-07:00
-  event_end: 2025-07-20T16:00:00-07:00
+  event_end: 2025-07-20T15:00:00-07:00
   partner_name: Spark Studio Soundstage
   partner_details: >
     A full-featured media production suite featuring a versatile 3,000 sq ft
