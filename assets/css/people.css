@@ -128,6 +128,15 @@
 .person-headshot-large {
   width: 100%;
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+}
+
+.person-headshot-image {
+  width: 100%;
+  max-width: 600px;
   height: 800px;
   overflow: hidden;
   border-radius: 12px;
@@ -137,7 +146,7 @@
   background: transparent;
 }
 
-.person-headshot-large img {
+.person-headshot-image img {
   width: 100%;
   height: 100%;
   object-fit: contain;
