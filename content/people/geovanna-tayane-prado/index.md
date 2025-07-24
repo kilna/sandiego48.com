@@ -1,6 +1,5 @@
 ---
 title: "geovanna tayane prado"
-image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
 contact_email: ""

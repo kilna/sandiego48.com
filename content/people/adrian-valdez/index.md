@@ -1,6 +1,5 @@
 ---
 title: "adrian valdez"
-image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
 contact_email: ""

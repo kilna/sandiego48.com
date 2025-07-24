@@ -1,6 +1,5 @@
 ---
 title: "kimberly leiker"
-image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
 contact_email: ""
