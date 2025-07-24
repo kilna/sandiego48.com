@@ -1,5 +1,5 @@
 ---
-title: "harry kakatsakis"
+title: "Harry Kakatsakis"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About harry kakatsakis
+## About Harry Kakatsakis
 
-harry kakatsakis is an actor participating in the San Diego 48 Hour Film Project.
+Harry Kakatsakis is an actor participating in the San Diego 48 Hour Film Project.

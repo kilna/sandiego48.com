@@ -1,5 +1,5 @@
 ---
-title: "mike egbert"
+title: "Mike Egbert"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About mike egbert
+## About Mike Egbert
 
-mike egbert is an actor participating in the San Diego 48 Hour Film Project.
+Mike Egbert is an actor participating in the San Diego 48 Hour Film Project.

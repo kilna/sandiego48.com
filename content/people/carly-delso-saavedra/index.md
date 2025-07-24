@@ -1,5 +1,5 @@
 ---
-title: "carly delso saavedra"
+title: "Carly Delso-Saavedra"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -14,6 +14,6 @@ social: []
 image_credit: "Headshot by [Jon Medel](https://www.jonmedel.com)"
 ---
 
-## About carly delso saavedra
+## About Carly Delso-Saavedra
 
-carly delso saavedra is an actor participating in the San Diego 48 Hour Film Project.
+Carly Delso-Saavedra is an actor participating in the San Diego 48 Hour Film Project.
