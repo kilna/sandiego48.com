@@ -74,21 +74,5 @@
   {{ end }}
 </div>
 
-{{/* Image Credit - Show if any people have image_credit parameter */}}
-{{ $hasImageCredits := false }}
-{{ range .Data.Pages }}
-  {{ if .Params.image_credit }}
-    {{ $hasImageCredits = true }}
-  {{ end }}
-{{ end }}
 
-{{ if $hasImageCredits }}
-<div class="image-credit">
-  {{ range .Data.Pages }}
-    {{ if .Params.image_credit }}
-      <p>{{ .Params.image_credit | markdownify }}</p>
-    {{ end }}
-  {{ end }}
-</div>
-{{ end }}
 {{ end }} 
