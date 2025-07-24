@@ -10,22 +10,20 @@
 <article class="person-profile">
   <div class="person-header">
     <div class="person-headshot-large">
-      <div class="person-headshot-image">
-        {{ if .Params.image }}
-          {{ with .Resources.Get .Params.image -}}
-            {{ $large := .Fill "600x800" -}}
-            {{ with $large }}
-              <img src="{{ .RelPermalink }}" alt="{{ $.Title }} headshot" />
-            {{ end -}}
-          {{- end }}
-        {{ else }}
-          {{ $placeholder := resources.Get "images/placeholder-silhouette.png" }}
-          {{ with $placeholder }}
-            {{ $large := .Fill "600x800" }}
-            <img src="{{ $large.RelPermalink }}" alt="{{ $.Title }} headshot" class="placeholder-image" />
-          {{ end }}
+      {{ if .Params.image }}
+        {{ with .Resources.Get .Params.image -}}
+          {{ $large := .Fill "600x800" -}}
+          {{ with $large }}
+            <img src="{{ .RelPermalink }}" alt="{{ $.Title }} headshot" />
+          {{ end -}}
+        {{- end }}
+      {{ else }}
+        {{ $placeholder := resources.Get "images/placeholder-silhouette.png" }}
+        {{ with $placeholder }}
+          {{ $large := .Fill "600x800" }}
+          <img src="{{ $large.RelPermalink }}" alt="{{ $.Title }} headshot" class="placeholder-image" />
         {{ end }}
-      </div>
+      {{ end }}
       
       {{/* Image Credit - Show if person has image_credit parameter */}}
       {{ if .Params.image_credit }}
