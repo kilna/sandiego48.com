@@ -24,6 +24,13 @@
           {{ end -}}
         {{- end }}
       {{ end }}
+      
+      {{/* Image Credit - Show if person has image_credit parameter */}}
+      {{ if .Params.image_credit }}
+      <div class="person-image-credit">
+        {{ .Params.image_credit | markdownify }}
+      </div>
+      {{ end }}
     </div>
     <div class="person-details">
       <h1>{{ .Title }}</h1>
@@ -120,13 +127,6 @@
       <a href="{{ .url }}" target="_blank" rel="noopener">{{ .platform }}</a>
       {{ end }}
     </div>
-  </div>
-  {{ end }}
-
-  {{/* Image Credit - Show if person has image_credit parameter */}}
-  {{ if .Params.image_credit }}
-  <div class="image-credit">
-    <p>{{ .Params.image_credit | markdownify }}</p>
   </div>
   {{ end }}
 </article>

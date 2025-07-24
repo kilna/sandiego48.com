@@ -144,6 +144,26 @@
   object-position: center;
 }
 
+/* Person Image Credit - Large and prominent under headshot */
+.person-image-credit {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--48-purple);
+  line-height: 1.4;
+}
+
+.person-image-credit a {
+  color: var(--48-purple);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.person-image-credit a:hover {
+  text-decoration: underline;
+}
+
 /* Resume link styling */
 .resume-link {
   display: inline-flex;
