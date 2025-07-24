@@ -126,7 +126,7 @@
 
 /* Single person page headshot styling */
 .person-headshot-large {
-  width: 100%;
+  width: 50%;
   max-width: 600px;
   display: flex;
   flex-direction: column;
@@ -135,7 +135,7 @@
 }
 
 .person-headshot-image {
-  width: 50%;
+  width: 100%;
   max-width: 600px;
   height: 70vh;
   overflow: hidden;
