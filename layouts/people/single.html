@@ -123,17 +123,10 @@
   </div>
   {{ end }}
 
-  {{/* Image Credit - Only show if there are edited-* images (Jon Medel's work) */}}
-  {{ $hasJonImages := false }}
-  {{ range .Resources }}
-    {{ if and (eq .ResourceType "image") (hasPrefix .Name "edited-") }}
-      {{ $hasJonImages = true }}
-    {{ end }}
-  {{ end }}
-
-  {{ if $hasJonImages }}
+  {{/* Image Credit - Show if person has image_credit parameter */}}
+  {{ if .Params.image_credit }}
   <div class="image-credit">
-    <p>Headshot by <a href="https://www.jonmedel.com" target="_blank" rel="noopener">Jon Medel</a></p>
+    <p>{{ .Params.image_credit | markdownify }}</p>
   </div>
   {{ end }}
 </article>

@@ -1,13 +1,19 @@
 ---
-title: "Alexander Pimentel"
+title: "alexander pimentel"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "lexpimentel90@gmail.com"
-contact_phone: "619-758-6535"
+contact_email: ""
+contact_phone: ""
+open_auditions:
+  2025:
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
+image_credit: "Headshot by [Jon Medel](https://www.jonmedel.com)"
 ---
 
-## About Alexander Pimentel
+## About alexander pimentel
 
+alexander pimentel is an actor participating in the San Diego 48 Hour Film Project.

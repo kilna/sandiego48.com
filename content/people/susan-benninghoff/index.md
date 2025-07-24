@@ -1,17 +1,18 @@
 ---
-title: "Susan Benninghoff"
+title: "susan benninghoff"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "suraines22@gmail.com"
-contact_phone: "619-602-8820"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "+ACI-Virginia from +ACIAIg-The Clean House+ACIAIg- by Sarah Ruhl+ACI-"
-    audition_number: 31
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Susan Benninghoff
+## About susan benninghoff
 
+susan benninghoff is an actor participating in the San Diego 48 Hour Film Project.

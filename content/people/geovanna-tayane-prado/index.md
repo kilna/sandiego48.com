@@ -1,17 +1,18 @@
 ---
-title: "Geovanna Tayane Prado"
-image: "placeholder-silhouette.png"
+title: "geovanna tayane prado"
+image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "geovanna.prado@outlook.com"
-contact_phone: "425-891-3062"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "Personal Letter"
-    audition_number: 32
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Geovanna Tayane Prado
+## About geovanna tayane prado
 
+geovanna tayane prado is an actor participating in the San Diego 48 Hour Film Project.

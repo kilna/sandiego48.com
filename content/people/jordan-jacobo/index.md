@@ -1,13 +1,18 @@
 ---
-title: "Jordan Jacobo"
+title: "jordan jacobo"
 image: "headshot.jpg"
-roles: ["Actor", "Team Leader"]
+roles: ["Actor"]
 draft: false
+contact_email: ""
+contact_phone: ""
+open_auditions:
+  2025:
+    monologue: ""
+    audition_number: ""
+credits: []
+social: []
 ---
 
-# Jordan Jacobo
+## About jordan jacobo
 
-## About
-
-Jordan Jacobo is an actor participating in the San Diego 48 Hour Film Project.
-
+jordan jacobo is an actor participating in the San Diego 48 Hour Film Project.

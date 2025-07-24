@@ -1,13 +1,18 @@
 ---
-title: "Bernie Flash Kellish"
-image: "placeholder-silhouette.png"
-roles: ["Actor", "Team Leader"]
+title: "bernie flash kellish"
+image: "headshot.jpg"
+roles: ["Actor"]
 draft: false
 contact_email: ""
-contact_phone: "207-659-1096"
+contact_phone: ""
+open_auditions:
+  2025:
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Bernie Flash Kellish
+## About bernie flash kellish
 
+bernie flash kellish is an actor participating in the San Diego 48 Hour Film Project.

@@ -1,13 +1,18 @@
 ---
-title: "Scotty Rodriguez"
+title: "scotty rodriguez"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
+contact_email: ""
+contact_phone: ""
+open_auditions:
+  2025:
+    monologue: ""
+    audition_number: ""
+credits: []
+social: []
 ---
 
-# Scotty Rodriguez
+## About scotty rodriguez
 
-## About
-
-Scotty Rodriguez is an actor participating in the San Diego 48 Hour Film Project.
-
+scotty rodriguez is an actor participating in the San Diego 48 Hour Film Project.

@@ -1,17 +1,19 @@
 ---
-title: "Carly Delso-Saavedra"
+title: "carly delso saavedra"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "aymarala@gmail.com"
-contact_phone: "619-453-3096"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "Blue Skies Forever"
-    audition_number: 11
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
+image_credit: "Headshot by [Jon Medel](https://www.jonmedel.com)"
 ---
 
-## About Carly Delso-Saavedra
+## About carly delso saavedra
 
+carly delso saavedra is an actor participating in the San Diego 48 Hour Film Project.

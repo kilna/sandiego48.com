@@ -1,17 +1,19 @@
 ---
-title: "Dean LeCrone"
+title: "dean lecrone"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "deanlecrone@hotmail.com"
-contact_phone: "858-472-9470"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "The Accomplice (Original Monologue)"
-    audition_number: 7
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
+image_credit: "Headshot by [Jon Medel](https://www.jonmedel.com)"
 ---
 
-## About Dean LeCrone
+## About dean lecrone
 
+dean lecrone is an actor participating in the San Diego 48 Hour Film Project.

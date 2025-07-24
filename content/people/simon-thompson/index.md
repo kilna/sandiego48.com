@@ -1,17 +1,18 @@
 ---
-title: "Simon Thompson"
+title: "simon thompson"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "simon.t.schulze@gmail.com"
-contact_phone: "619-997-1528"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "Gilmore Girls"
-    audition_number: 14
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Simon Thompson
+## About simon thompson
 
+simon thompson is an actor participating in the San Diego 48 Hour Film Project.

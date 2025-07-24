@@ -1,17 +1,19 @@
 ---
-title: "David Bobrow"
+title: "david bobrow"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "david.bobrow@cox.net"
-contact_phone: "619-871-1347"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "Call Me By Your Name"
-    audition_number: 17
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
+image_credit: "Headshot by [Jon Medel](https://www.jonmedel.com)"
 ---
 
-## About David Bobrow
+## About david bobrow
 
+david bobrow is an actor participating in the San Diego 48 Hour Film Project.

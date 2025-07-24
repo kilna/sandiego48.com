@@ -1,17 +1,18 @@
 ---
-title: "Tarif 'Ty' Garrett"
+title: "tarif ty garrett"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "tarifgarrett1997@gmail.com"
-contact_phone: "619-607-0026"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "Everything Everywhere All At Once"
-    audition_number: 25
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Tarif 'Ty' Garrett
+## About tarif ty garrett
 
+tarif ty garrett is an actor participating in the San Diego 48 Hour Film Project.

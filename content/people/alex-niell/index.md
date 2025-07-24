@@ -1,13 +1,19 @@
 ---
-title: "Alex Niell"
+title: "alex niell"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
+contact_email: ""
+contact_phone: ""
+open_auditions:
+  2025:
+    monologue: ""
+    audition_number: ""
+credits: []
+social: []
+image_credit: "Headshot by [Jon Medel](https://www.jonmedel.com)"
 ---
 
-# Alex Niell
+## About alex niell
 
-## About
-
-Alex Niell is an actor participating in the San Diego 48 Hour Film Project.
-
+alex niell is an actor participating in the San Diego 48 Hour Film Project.

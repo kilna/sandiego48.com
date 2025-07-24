@@ -1,13 +1,18 @@
 ---
-title: "Harry Kakatsakis"
+title: "harry kakatsakis"
 image: "headshot.jpg"
-roles: ["Actor", "Team Leader"]
+roles: ["Actor"]
 draft: false
+contact_email: ""
+contact_phone: ""
+open_auditions:
+  2025:
+    monologue: ""
+    audition_number: ""
+credits: []
+social: []
 ---
 
-# Harry Kakatsakis
+## About harry kakatsakis
 
-## About
-
-Harry Kakatsakis is an actor participating in the San Diego 48 Hour Film Project.
-
+harry kakatsakis is an actor participating in the San Diego 48 Hour Film Project.

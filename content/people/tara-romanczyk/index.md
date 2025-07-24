@@ -1,17 +1,18 @@
 ---
-title: "Tara Romanczyk"
+title: "tara romanczyk"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "tromanc@gmail.com"
-contact_phone: "301-538-0934"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "How was your day darling face?"
-    audition_number: 8
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Tara Romanczyk
+## About tara romanczyk
 
+tara romanczyk is an actor participating in the San Diego 48 Hour Film Project.

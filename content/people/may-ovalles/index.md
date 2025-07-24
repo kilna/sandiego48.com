@@ -1,17 +1,18 @@
 ---
-title: "May Ovalles"
-image: "placeholder-silhouette.png"
+title: "may ovalles"
+image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "mayovallesofficial@gmail.com"
-contact_phone: "619-305-3572"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "Foundation Mono"
-    audition_number: 23
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About May Ovalles
+## About may ovalles
 
+may ovalles is an actor participating in the San Diego 48 Hour Film Project.

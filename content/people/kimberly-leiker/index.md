@@ -1,17 +1,18 @@
 ---
-title: "Kimberly Leiker"
-image: "placeholder-silhouette.png"
+title: "kimberly leiker"
+image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "kimberly.ann.bookings@gmail.com"
-contact_phone: "619-913-5957"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "God of Battles / Henry V"
-    audition_number: 1
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Kimberly Leiker
+## About kimberly leiker
 
+kimberly leiker is an actor participating in the San Diego 48 Hour Film Project.
