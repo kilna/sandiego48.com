@@ -135,9 +135,9 @@
 }
 
 .person-headshot-image {
-  width: 100%;
+  width: 50%;
   max-width: 600px;
-  height: 800px;
+  height: 70vh;
   overflow: hidden;
   border-radius: 12px;
   display: flex;
