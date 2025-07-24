@@ -123,8 +123,15 @@
   </div>
   {{ end }}
 
-  {{/* Image Credit - Only show for people with real headshots */}}
-  {{ if ne .Params.image "placeholder-silhouette.png" }}
+  {{/* Image Credit - Only show if there are edited-* images (Jon Medel's work) */}}
+  {{ $hasJonImages := false }}
+  {{ range .Resources }}
+    {{ if and (eq .ResourceType "image") (hasPrefix .Name "edited-") }}
+      {{ $hasJonImages = true }}
+    {{ end }}
+  {{ end }}
+
+  {{ if $hasJonImages }}
   <div class="image-credit">
     <p>Headshot by <a href="https://www.jonmedel.com" target="_blank" rel="noopener">Jon Medel</a></p>
   </div>
