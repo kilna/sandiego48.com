@@ -1,5 +1,5 @@
 ---
-title: "tarif ty garrett"
+title: "Tarif 'Ty' Garrett"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About tarif ty garrett
+## About Tarif 'Ty' Garrett
 
-tarif ty garrett is an actor participating in the San Diego 48 Hour Film Project.
+Tarif 'Ty' Garrett is an actor participating in the San Diego 48 Hour Film Project.

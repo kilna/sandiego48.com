@@ -1,5 +1,5 @@
 ---
-title: "doug williams"
+title: "Doug Williams"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -14,6 +14,6 @@ social: []
 image_credit: "Headshot by [Jon Medel](https://www.jonmedel.com)"
 ---
 
-## About doug williams
+## About Doug Williams
 
-doug williams is an actor participating in the San Diego 48 Hour Film Project.
+Doug Williams is an actor participating in the San Diego 48 Hour Film Project.

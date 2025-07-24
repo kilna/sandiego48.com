@@ -1,5 +1,5 @@
 ---
-title: "genius truitt"
+title: "Genius Truitt"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About genius truitt
+## About Genius Truitt
 
-genius truitt is an actor participating in the San Diego 48 Hour Film Project.
+Genius Truitt is an actor participating in the San Diego 48 Hour Film Project.

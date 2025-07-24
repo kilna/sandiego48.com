@@ -1,5 +1,5 @@
 ---
-title: "susan benninghoff"
+title: "Susan Benninghoff"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About susan benninghoff
+## About Susan Benninghoff
 
-susan benninghoff is an actor participating in the San Diego 48 Hour Film Project.
+Susan Benninghoff is an actor participating in the San Diego 48 Hour Film Project.

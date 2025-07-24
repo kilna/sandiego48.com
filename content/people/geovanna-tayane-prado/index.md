@@ -1,5 +1,5 @@
 ---
-title: "geovanna tayane prado"
+title: "Geovanna Tayane Prado"
 roles: ["Actor"]
 draft: false
 contact_email: ""
@@ -12,6 +12,6 @@ credits: []
 social: []
 ---
 
-## About geovanna tayane prado
+## About Geovanna Tayane Prado
 
-geovanna tayane prado is an actor participating in the San Diego 48 Hour Film Project.
+Geovanna Tayane Prado is an actor participating in the San Diego 48 Hour Film Project.

@@ -1,5 +1,5 @@
 ---
-title: "michael s meyer"
+title: "Michael S. Meyer"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About michael s meyer
+## About Michael S. Meyer
 
-michael s meyer is an actor participating in the San Diego 48 Hour Film Project.
+Michael S. Meyer is an actor participating in the San Diego 48 Hour Film Project.

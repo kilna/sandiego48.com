@@ -1,5 +1,5 @@
 ---
-title: "tommy carindella"
+title: "Tommy Carindella"
 roles: ["Actor"]
 draft: false
 contact_email: ""
@@ -12,6 +12,6 @@ credits: []
 social: []
 ---
 
-## About tommy carindella
+## About Tommy Carindella
 
-tommy carindella is an actor participating in the San Diego 48 Hour Film Project.
+Tommy Carindella is an actor participating in the San Diego 48 Hour Film Project.

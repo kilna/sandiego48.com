@@ -1,5 +1,5 @@
 ---
-title: "dean lecrone"
+title: "Dean LeCrone"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -14,6 +14,6 @@ social: []
 image_credit: "Headshot by [Jon Medel](https://www.jonmedel.com)"
 ---
 
-## About dean lecrone
+## About Dean LeCrone
 
-dean lecrone is an actor participating in the San Diego 48 Hour Film Project.
+Dean LeCrone is an actor participating in the San Diego 48 Hour Film Project.

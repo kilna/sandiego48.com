@@ -1,5 +1,5 @@
 ---
-title: "len charles"
+title: "Len Charles"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About len charles
+## About Len Charles
 
-len charles is an actor participating in the San Diego 48 Hour Film Project.
+Len Charles is an actor participating in the San Diego 48 Hour Film Project.

@@ -1,5 +1,5 @@
 ---
-title: "kimberly leiker"
+title: "Kimberly Leiker"
 roles: ["Actor"]
 draft: false
 contact_email: ""
@@ -12,6 +12,6 @@ credits: []
 social: []
 ---
 
-## About kimberly leiker
+## About Kimberly Leiker
 
-kimberly leiker is an actor participating in the San Diego 48 Hour Film Project.
+Kimberly Leiker is an actor participating in the San Diego 48 Hour Film Project.

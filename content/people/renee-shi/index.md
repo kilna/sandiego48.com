@@ -1,5 +1,5 @@
 ---
-title: "renee shi"
+title: "Renee Shi"
 roles: ["Actor"]
 draft: false
 contact_email: ""
@@ -12,6 +12,6 @@ credits: []
 social: []
 ---
 
-## About renee shi
+## About Renee Shi
 
-renee shi is an actor participating in the San Diego 48 Hour Film Project.
+Renee Shi is an actor participating in the San Diego 48 Hour Film Project.

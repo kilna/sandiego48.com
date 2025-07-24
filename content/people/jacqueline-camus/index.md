@@ -1,5 +1,5 @@
 ---
-title: "jacqueline camus"
+title: "Jacqueline Camus"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About jacqueline camus
+## About Jacqueline Camus
 
-jacqueline camus is an actor participating in the San Diego 48 Hour Film Project.
+Jacqueline Camus is an actor participating in the San Diego 48 Hour Film Project.

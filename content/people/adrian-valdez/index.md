@@ -1,5 +1,5 @@
 ---
-title: "adrian valdez"
+title: "Adrian Valdez"
 roles: ["Actor"]
 draft: false
 contact_email: ""
@@ -12,6 +12,6 @@ credits: []
 social: []
 ---
 
-## About adrian valdez
+## About Adrian Valdez
 
-adrian valdez is an actor participating in the San Diego 48 Hour Film Project.
+Adrian Valdez is an actor participating in the San Diego 48 Hour Film Project.

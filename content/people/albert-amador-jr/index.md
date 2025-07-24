@@ -1,5 +1,5 @@
 ---
-title: "albert amador jr"
+title: "Albert Amador Jr."
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -14,6 +14,6 @@ social: []
 image_credit: "Headshot by [Jon Medel](https://www.jonmedel.com)"
 ---
 
-## About albert amador jr
+## About Albert Amador Jr.
 
-albert amador jr is an actor participating in the San Diego 48 Hour Film Project.
+Albert Amador Jr. is an actor participating in the San Diego 48 Hour Film Project.

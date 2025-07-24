@@ -1,5 +1,5 @@
 ---
-title: "gabriela sosa"
+title: "Gabriela Sosa"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About gabriela sosa
+## About Gabriela Sosa
 
-gabriela sosa is an actor participating in the San Diego 48 Hour Film Project.
+Gabriela Sosa is an actor participating in the San Diego 48 Hour Film Project.
