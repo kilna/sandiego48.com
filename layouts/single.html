@@ -1,0 +1,7 @@
+{{ define "title" }}
+{{- partial "title.html" (dict "Title" .Title "Site" .Site) -}}
+{{ end }}
+
+{{ define "main" }}
+{{ .Content }}
+{{ end }}

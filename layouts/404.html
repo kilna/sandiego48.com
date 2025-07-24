@@ -1,0 +1,9 @@
+{{ define "title" }}
+{{- partial "title.html" (dict "Title" "Page Not Found" "Site" .Site) -}}
+{{ end }}
+
+{{ define "main" }}
+<p>This page doesn't exist.</p>
+
+<p><a href="/">Go back to the home page</a></p>
+{{ end }}

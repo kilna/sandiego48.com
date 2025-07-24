@@ -1,0 +1,27 @@
+{{- define "head" -}}
+<title>{{ .Params.title }}</title>
+{{- end -}}
+{{- define "main" -}}
+{{ $tracker_url := printf "%s;qr=%s" .Site.Params.tracking_url .File.BaseFileName }}
+{{ $redirect_url := .Site.BaseURL }}
+{{ with .Params.redirect_url }}
+  {{ $redirect_url = . }}
+{{ end }}
+<noscript>
+  {{- if $tracker_url }}
+  <img src="{{ $tracker_url }}" width="1" height="1" style="display:none;" alt=""/>
+  {{- end -}}
+  {{- if $redirect_url }}
+  <p>Forwarding to <a href="{{ $redirect_url }}">{{ .Title }}</a></p>
+  <meta http-equiv="refresh" content="2; url={{ $redirect_url }}">
+  {{- end -}}
+</noscript>
+<script>
+  {{- if $redirect_url }}
+  location.href = '{{ $redirect_url }}';
+  {{- end -}}
+  {{- if $tracker_url }}
+  fetch('{{ $tracker_url }}').catch(() => {});
+  {{- end -}}
+</script>
+{{- end -}}

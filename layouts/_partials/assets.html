@@ -1,0 +1,71 @@
+{{/* Favicon and Icons */}}
+{{ $icon := resources.Get "images/icon.png" }}
+<link rel="icon" type="image/png" href="{{ $icon.RelPermalink }}" />
+<link rel="apple-touch-icon" href="{{ $icon.RelPermalink }}" />
+
+{{/* External CSS - Critical Above Fold */}}
+<link rel="preload" href="https://necolas.github.io/normalize.css/latest/normalize.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+{{/* Fallback for non-JS */}}
+<noscript>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+</noscript>
+
+{{/* Font Preloading with improved performance */}}
+{{ with resources.Get "fonts/LeagueSpartan-VariableFont_wght.ttf" }}
+<link rel="preload" href="{{ .RelPermalink }}" as="font" type="font/ttf" crossorigin>
+{{ end }}
+{{ with resources.Get "fonts/DSEG7ClassicMini-BoldItalic.ttf" }}
+<link rel="preload" href="{{ .RelPermalink }}" as="font" type="font/ttf" crossorigin>
+{{ end }}
+
+{{/* Modern CSS Pipeline with Bundling */}}
+{{ $css := slice }}
+{{ $css = $css | append (resources.Get "css/style.css") }}
+{{ if resources.Get "css/people.css" }}
+  {{ $css = $css | append (resources.Get "css/people.css") }}
+{{ end }}
+
+{{/* Add page-specific CSS if available */}}
+{{ if .Params.css }}
+  {{ range .Params.css }}
+    {{ with resources.Get (printf "css/%s.css" .) }}
+      {{ $css = $css | append . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* Bundle, process, and optimize CSS */}}
+{{ $bundledCSS := $css | resources.Concat "css/bundle.css" }}
+{{ if hugo.IsProduction }}
+  {{ $bundledCSS = $bundledCSS | resources.Minify | resources.Fingerprint }}
+{{ end }}
+
+<link rel="stylesheet" href="{{ $bundledCSS.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $bundledCSS.Data.Integrity }}"{{ end }} />
+
+{{/* Modern JavaScript Pipeline */}}
+{{ $js := slice }}
+{{ $js = $js | append (resources.Get "js/css-utils.js") }}
+{{ if resources.Get "js/people-filter.js" }}
+  {{ $js = $js | append (resources.Get "js/people-filter.js") }}
+{{ end }}
+
+{{/* Bundle and optimize JavaScript */}}
+{{ if len $js }}
+  {{ $bundledJS := $js | resources.Concat "js/bundle.js" }}
+  {{ if hugo.IsProduction }}
+    {{ $bundledJS = $bundledJS | resources.Minify | resources.Fingerprint }}
+    <script src="{{ $bundledJS.RelPermalink }}" integrity="{{ $bundledJS.Data.Integrity }}" defer></script>
+  {{ else }}
+    <script src="{{ $bundledJS.RelPermalink }}?v={{ now.Unix }}" defer></script>
+  {{ end }}
+{{ end }}
+
+{{/* RSS Feed */}}
+{{ with .OutputFormats.Get "rss" }}
+<link rel="alternate" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}" />
+{{ end }} 

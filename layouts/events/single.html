@@ -1,0 +1,144 @@
+{{ define "head" }}
+  {{- partial "head.html" . -}}
+  {{- partial "layout/stylesheet.html" "events" -}}
+  {{- partial "layout/stylesheet.html" "infoblock" -}}
+{{ end }}
+
+{{ define "title" }}
+{{- partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "ShowSiteTitle" true
+) -}}
+{{ end }}
+
+{{ define "main" }}
+<div class="event">
+
+  <div class="event-content">
+    {{- partial "components/responsive-img.html" (dict
+        "ctx" .
+        "name" "image"
+        "class" "event-image"
+        "image_mobile" "image_square"
+        "image_desktop" "image_wide"
+        "resize" "x640"
+        "resize_desktop" "x1024"
+        ) -}}
+  
+    {{ .Summary | markdownify }}
+    <hr/>
+    {{ .Content }}
+    {{ if .Params.org_info }}
+    {{ .Params.org_info | markdownify }}
+    {{ end }}
+  </div>
+
+  <div class="infoblock">
+    {{- partial "components/button.html" (dict
+      "url" .Params.facebook_event_url
+      "text" "RSVP to Facebook Event"
+      "icon" "facebook"
+    ) -}}
+    
+    <h3>Schedule</h3>
+    {{ $start_time := time.AsTime .Params.event_start -}}
+    {{ $end_time := time.AsTime .Params.event_end -}}
+    {{ partial "content/event-timespan.html" (dict
+    "start_time" $start_time
+    "end_time" $end_time
+) }}
+    {{ if .Params.calendarlink_url -}}
+      {{- partial "components/button.html" (dict
+        "url" .Params.calendarlink_url
+        "text" "Add to Calendar"
+        "icon" "calendar"
+      ) -}}
+    {{ end -}}
+    
+    <h3>Location</h3>
+    {{ if .Params.location_logo -}}
+      {{ $logo := .Resources.Get .Params.location_logo -}}
+      {{ if $logo -}}
+        {{ if and $logo.MediaType (ne $logo.MediaType.SubType "svg") -}}
+          {{ $logo = $logo.Resize "250x" -}}
+        {{ end -}}
+        {{ if .Params.location_url }}<a href="{{ .Params.location_url }}">{{ end -}}
+          <img src="{{ $logo.RelPermalink }}"/>
+        {{ if .Params.location_url }}</a>{{ end -}}
+      {{ end -}}
+    {{ end -}}
+    {{ if .Params.location_name -}}
+      
+      <h4>
+      {{ if .Params.location_url -}}
+        <a href="{{ .Params.location_url }}">{{ .Params.location_name }}</a>
+      {{ else -}}
+        {{ .Params.location_name }}
+      {{ end -}}
+      </h4>
+      {{- partial "components/button-list.html" (dict
+        "class" "social"
+        "show_text" false
+        "buttons" .Params.location_socials
+      ) -}}
+      {{ if .Params.location_details -}}
+        <p>{{ .Params.location_details }}</p>
+      {{ end -}}
+      {{- partial "components/button-list.html" (dict
+        "class" "links"
+        "show_text" true
+        "buttons" .Params.location_links
+      ) -}}
+    {{ end -}}
+    {{ if .Params.location_address -}}
+      <p>
+      {{ if .Params.location_map_url -}}
+        <a href="{{ .Params.location_map_url }}">{{ .Params.location_address }}</a>
+      {{ else -}}
+        {{ .Params.location_address }}
+      {{ end -}}
+      </p>
+    {{ end -}}
+    {{ if .Params.location_map_url -}}
+      {{- partial "components/button.html" (dict
+        "url" .Params.location_map_url
+        "text" "Google Map"
+        "icon" "location"
+      ) -}}
+    {{ end -}}
+    {{ if .Params.partner_name -}}
+    
+    <h3>Partner</h3>
+    {{ if .Params.partner_logo -}}
+      {{ $logo := .Resources.Get .Params.partner_logo -}}
+      {{ if $logo -}}
+        {{ if and $logo.MediaType (ne $logo.MediaType.SubType "svg") -}}
+          {{ $logo = $logo.Resize "250x" -}}
+        {{ end -}}
+        {{ if .Params.partner_url }}<a href="{{ .Params.partner_url }}">{{ end -}}
+          <img src="{{ $logo.RelPermalink }}"/>
+        {{ if .Params.partner_url }}</a>{{ end -}}
+      {{ end -}}
+    {{ end -}}
+    
+    <h4><a href="{{ .Params.partner_url }}">{{ .Params.partner_name }}</a></h4>
+    {{- partial "components/button-list.html" (dict
+      "class" "social"
+      "show_text" false
+      "buttons" .Params.partner_socials
+    ) -}}
+    {{ if .Params.partner_details -}}
+      <p>{{ .Params.partner_details | markdownify }}</p>
+    {{ end -}}
+    {{- partial "components/button-list.html" (dict
+      "class" "links"
+      "show_text" true
+      "collapse" false
+      "buttons" .Params.partner_links
+    ) -}}
+    {{ end -}}
+  </div>
+
+</div>
+{{ end }}

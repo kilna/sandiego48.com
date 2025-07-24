@@ -1,0 +1,143 @@
+{{- $collapse := .collapse | default false -}}
+{{- $show_text := .show_text | default true -}}
+
+{{- $class := .class | default "common-links" -}}
+{{- if ne $class "common-links" -}}
+  {{- $class = printf "common-links %s" $class -}}
+{{- end -}}
+{{- $button_class := .button_class | default "common-link-button" -}}
+{{- if ne $button_class "common-link-button" -}}
+  {{- $button_class = printf "common-link-button %s" $button_class -}}
+{{- end -}}
+
+{{- $enable_home := .enable_home | default false -}}
+{{- $enable_newsletter := .enable_newsletter | default false -}}
+{{- $enable_socials := .enable_socials | default true -}}
+{{- $enable_community := .enable_community | default true -}}
+{{- $enable_contact := .enable_contact | default false -}}
+
+{{- $site := .Site | default site -}}
+{{- $page := .Page | default . -}}
+{{- with $site.Params -}}
+
+{{- $buttons := slice -}}
+{{- if $enable_home -}}
+  {{- $buttons = $buttons | append (dict
+    "enable" true
+    "url" $site.BaseURL
+    "icon" "globe"
+    "text" .site_link_text
+    "defaultText" "Home"
+    "show_text" $show_text
+  ) -}}
+{{- end -}}
+{{- if $enable_newsletter -}}
+  {{- $buttons = $buttons | append (dict
+    "enable" true
+    "url" (printf "%s/go/newsletter" $site.BaseURL)
+    "icon" "newsletter"
+    "text" "Newsletter"
+    "show_text" $show_text
+  ) -}}
+{{- end -}}
+{{- if and $enable_community .facebook_group -}}
+  {{- $buttons = $buttons | append (dict
+    "enable" true
+    "url" ($page.Scratch.Get "facebook_group_url")
+    "icon" "group"
+    "text" "Facebook Group"
+    "show_text" $show_text
+  ) -}}
+{{- end -}}
+{{- if and $enable_community .discord_server -}}
+  {{- $buttons = $buttons | append (dict
+    "enable" true
+    "url" ($page.Scratch.Get "discord_url")
+    "icon" "discord"
+    "text" "Discord Server"
+    "show_text" $show_text
+  ) -}}
+{{- end -}}
+{{- if and $enable_socials .facebook -}}
+  {{- $buttons = $buttons | append (dict
+    "enable" true
+    "url" ($page.Scratch.Get "facebook_url")
+    "icon" "facebook"
+    "text" (printf "Facebook @%s" .facebook)
+    "show_text" $show_text
+  ) -}}
+{{- end -}}
+{{- if and $enable_socials .instagram -}}
+  {{- $buttons = $buttons | append (dict
+    "enable" true
+    "url" ($page.Scratch.Get "instagram_url")
+    "icon" "instagram"
+    "text" (printf "Instagram @%s" .instagram)
+    "show_text" $show_text
+  ) -}}
+{{- end -}}
+{{- if and $enable_socials .threads -}}
+  {{- $buttons = $buttons | append (dict
+    "enable" true
+    "url" ($page.Scratch.Get "threads_url")
+    "icon" "threads"
+    "text" (printf "Threads @%s" .threads)
+    "show_text" $show_text
+  ) -}}
+{{- end -}}
+{{- if and $enable_socials .twitter -}}
+  {{- $buttons = $buttons | append (dict
+    "enable" true
+    "url" ($page.Scratch.Get "twitter_url")
+    "icon" "twitter"
+    "text" (printf "Twitter @%s" .twitter)
+    "show_text" $show_text
+  ) -}}
+{{- end -}}
+{{- if and $enable_socials .youtube -}}
+  {{- $buttons = $buttons | append (dict
+    "enable" true
+    "url" ($page.Scratch.Get "youtube_url")
+    "icon" "youtube"
+    "text" (printf "YouTube @%s" .youtube)
+    "show_text" $show_text
+  ) -}}
+{{- end -}}
+{{- if and $enable_socials .tiktok -}}
+  {{- $buttons = $buttons | append (dict
+    "enable" true
+    "url" ($page.Scratch.Get "tiktok_url")
+    "icon" "tiktok"
+    "text" (printf "TikTok @%s" .tiktok)
+    "show_text" $show_text
+  ) -}}
+{{- end -}}
+{{- if and $enable_contact .phone -}}
+  {{- $buttons = $buttons | append (dict
+    "enable" true
+    "url" (printf "tel:%s" ($page.Scratch.Get "site_phone"))
+    "icon" "phone"
+    "text" (printf "%s %s" (cond .phone_can_text "Phone / Text" "Phone") ($page.Scratch.Get "site_phone"))
+    "show_text" $show_text
+  ) -}}
+{{- end -}}
+{{- if and $enable_contact .email -}}
+  {{- $buttons = $buttons | append (dict
+    "enable" true
+    "url" (printf "mailto:%s" ($page.Scratch.Get "site_email"))
+    "icon" "email"
+    "text" (printf "Email %s" ($page.Scratch.Get "site_email"))
+    "show_text" $show_text
+  ) -}}
+{{- end -}}
+
+    {{- partial "components/button-list.html" (dict
+  "tag" "nav"
+  "collapse" $collapse
+  "show_text" $show_text
+  "class" $class
+  "button_class" $button_class
+  "buttons" $buttons
+) -}}
+
+{{- end -}}

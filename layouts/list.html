@@ -1,0 +1,36 @@
+{{ define "title" }}
+{{- partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "ShowSiteTitle" true
+) -}}
+{{ end }}
+
+{{ define "main" }}
+{{ .Content }}
+
+{{ range.Data.Pages }}
+<article class="entry" id="{{ partial "components/entry-id.html" . }}">
+  <div class="thumb{{ if not .Params.image }} hide-phone{{ end }}">
+    {{ $link := .RelPermalink -}}
+    {{ with .Resources.Get .Params.image -}}
+      {{ $thumb := .Resize "200x" -}}
+      {{ with $thumb }}
+        <a href="{{ $link }}"><img src="{{ .RelPermalink }}" /></a>
+      {{ end -}}
+    {{- end }}
+  </div>
+  <div class="content">
+    <h3>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h3>
+    {{/*
+    <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+      {{ .Date.Format "January 2, 2006" }}
+    </time>
+    */}}
+    {{- if .Summary -}}<p class="summary">{{ .Summary }}</p>{{- end -}}
+  </div>
+</article>
+{{ end }}
+{{ end }}

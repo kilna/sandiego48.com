@@ -1,0 +1,145 @@
+{{ define "title" }}
+{{- partial "title.html" (dict "Title" .Title "Site" .Site) -}}
+{{ end }}
+
+{{ define "main" }}
+<style>
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.links h2 {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.links h2:first-of-type {
+  margin-top: 0;
+}
+
+.links .button-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.25rem;
+}
+
+.links a.button {
+  --icon-spacing: 0.75em;
+  --icon-scale: 1.25;
+}
+
+</style>
+
+<div class="links-page">
+  {{ .Content }}
+  
+  <div class="links">
+    
+    <h2 id="online">San Diego 48 Hour Film Project Online</h2>
+    <div class="button-list">
+      {{- partial "components/button.html" (dict
+            "url" .Site.BaseURL
+            "text" .Site.Params.site_link_text
+            "icon" "sd48"
+            "class" "wide big left"
+      ) -}}
+      {{- partial "components/button.html" (dict
+            "url" (printf "%s/go/newsletter" .Site.BaseURL)
+            "text" "Subscribe to Newsletter"
+            "class" "wide big left"
+      ) -}}
+      {{- partial "components/button.html" (dict
+            "url" "/events"
+            "text" "View Events"
+            "target" "_self"
+            "class" "wide big left"
+      ) -}}
+      {{- partial "components/button.html" (dict
+            "url" "https://www.48hourfilm.com"
+            "text" "48 Hour Film Project HQ"
+            "icon" "48hfp"
+            "class" "wide big left"
+      ) -}}
+    </div>
+    
+    <h2 id="socials">Follow Us On Social Media</h2>
+    <div class="button-list">
+      {{- partial "components/button.html" (dict
+            "if" .Site.Params.facebook
+            "url" (printf "https://facebook.com/%s" .Site.Params.facebook)
+            "text" (printf "Facebook @%s" .Site.Params.facebook)
+            "class" "wide big left"
+      ) -}}
+      {{- partial "components/button.html" (dict
+            "if" .Site.Params.instagram
+            "url" (printf "https://instagram.com/%s" .Site.Params.instagram)
+            "text" (printf "Instagram @%s" .Site.Params.instagram)
+            "class" "wide big left"
+      ) -}}
+      {{- partial "components/button.html" (dict
+            "if" .Site.Params.threads
+            "url" (printf "https://threads.net/@%s" .Site.Params.threads)
+            "text" (printf "Threads @%s" .Site.Params.threads)
+            "class" "wide big left"
+      ) -}}
+      {{- partial "components/button.html" (dict
+            "if" .Site.Params.twitter
+            "url" (printf "https://twitter.com/%s" .Site.Params.twitter)
+            "text" (printf "Twitter @%s" .Site.Params.twitter)
+            "class" "wide big left"
+      ) -}}
+      {{- partial "components/button.html" (dict
+            "if" .Site.Params.youtube
+            "url" (printf "https://youtube.com/@%s" .Site.Params.youtube)
+            "text" (printf "YouTube @%s" .Site.Params.youtube)
+            "class" "wide big left"
+      ) -}}
+      {{- partial "components/button.html" (dict
+            "if" .Site.Params.tiktok
+            "url" (printf "https://tiktok.com/@%s" .Site.Params.tiktok)
+            "text" (printf "TikTok @%s" .Site.Params.tiktok)
+            "class" "wide big left"
+      ) -}}
+    </div>
+
+    <h2 id="community">Join Our Community</h2>
+    <div class="button-list">
+      {{- partial "components/button.html" (dict
+            "if" .Site.Params.facebook_group
+            "url" (printf "https://facebook.com/groups/%s" .Site.Params.facebook_group)
+            "text" "Join Facebook Group"
+            "class" "wide big left"
+      ) -}}
+      {{- partial "components/button.html" (dict
+            "if" .Site.Params.discord_server_invite
+            "url" .Site.Params.discord_server_invite
+            "text" "Join Discord Server"
+            "class" "wide big left"
+      ) -}}
+    </div>
+    
+    <h2 id="contact">Contact Us</h2>
+    <div class="button-list">
+      {{- partial "components/button.html" (dict
+            "if" .Site.Params.email
+            "url" (printf "mailto:%s" .Site.Params.email)
+            "text" (printf "Email %s" .Site.Params.email)
+            "class" "wide big left"
+      ) -}}
+      {{- partial "components/button.html" (dict
+            "if" .Site.Params.phone
+            "url" (printf "tel:%s" .Site.Params.phone)
+            "text" (printf "%s %s" (cond .Site.Params.phone_can_text "Phone / Text" "Phone") .Site.Params.phone)
+            "class" "wide big left"
+      ) -}}
+    </div>
+    
+  </div>
+</div>
+{{ end }} 

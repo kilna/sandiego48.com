@@ -1,0 +1,47 @@
+{{- with .Site.Params -}}
+
+{{- with .facebook -}}
+{{- $.Scratch.Set "facebook_url" (printf "https://facebook.com/%s" .) -}}
+{{- end -}}
+{{- with .twitter -}}
+{{- $.Scratch.Set "twitter_url" (printf "https://twitter.com/%s" .) -}}
+{{- end -}}
+{{- with .instagram -}}
+{{- $.Scratch.Set "instagram_url" (printf "https://instagram.com/%s" .) -}}
+{{- end -}}
+{{- with .tiktok -}}
+{{- $.Scratch.Set "tiktok_url" (printf "https://tiktok.com/@%s" .) -}}
+{{- end -}}
+{{- with .threads -}}
+{{- $.Scratch.Set "threads_url" (printf "https://threads.net/@%s" .) -}}
+{{- end -}}
+{{- with .youtube -}}
+{{- $.Scratch.Set "youtube_url" (printf "https://youtube.com/@%s" .) -}}
+{{- end -}}
+{{- with .facebook_group -}}
+{{- $.Scratch.Set "facebook_group_url" (printf "https://facebook.com/groups/%s" .) -}}
+{{- end -}}
+{{- with .discord_server_invite -}}
+{{- $.Scratch.Set "discord_url" . -}}
+{{- end -}}
+
+{{- with .email -}}
+{{- $.Scratch.Set "email_url" (printf "mailto:%s" .) -}}
+{{- end -}}
+{{- with .phone -}}
+{{- $.Scratch.Set "phone_url" (printf "tel:%s" .) -}}
+{{- end -}}
+
+{{- with .registration -}}
+{{- $.Scratch.Set "registration_fees_text" (printf "Early registration begins %s at $%d per team until %s, then $%d for regular registration until %s, and $%d for late registration up until start of the competition on %s." 
+  (dateFormat "January 2" (time .early.start))
+  .early.price
+  (dateFormat "January 2" (time .regular.start))
+  .regular.price
+  (dateFormat "January 2" (time .regular.end))
+  .late.price
+  (dateFormat "January 2" (time .late.end))
+) -}}
+{{- end -}}
+
+{{- end -}}
