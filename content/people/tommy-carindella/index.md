@@ -1,6 +1,5 @@
 ---
 title: "tommy carindella"
-image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
 contact_email: ""
