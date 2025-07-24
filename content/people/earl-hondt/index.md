@@ -1,6 +1,6 @@
 ---
 title: "Earl Hondt"
-image: "edited-P1862889.jpg"
+image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
 contact_email: ""
