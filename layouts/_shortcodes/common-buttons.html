@@ -1,0 +1,7 @@
+{{- $params := .Params -}}
+{{- with .Get 0 -}}
+  {{- $params = . | unmarshal -}}
+{{- end -}}
+{{- $context := dict "Site" .Site "Page" .Page -}}
+{{- $mergedParams := merge $context $params -}}
+{{- partial "components/common-buttons.html" $mergedParams -}} 

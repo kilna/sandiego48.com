@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.LanguageCode | default "en" }}">
+<head>
+  {{- block "head" . -}}
+  {{- partial "head.html" . -}}
+  {{- end -}}
+</head>
+<body>
+
+{{/* Include site-wide variables */}}
+{{- partial "vars.html" . -}}
+
+{{- block "banner" . -}}
+{{ partial "countdowns.html" . -}}
+{{- end -}}
+  
+{{- block "title" . -}}
+{{- partial "title.html" . -}}
+{{- end -}}
+
+{{- block "nav" . -}}
+{{- partial "nav.html" . -}}
+{{- end -}}
+
+<main>
+{{- block "main" . -}}
+{{ .Content }}
+{{- end -}}
+</main>
+
+{{- block "sponsors" . -}}
+{{- partial "sponsors.html" . -}}
+{{- end -}}
+
+{{- block "footer" . -}}
+{{- partial "footer.html" . -}}
+{{- end -}}
+</body>
+</html>

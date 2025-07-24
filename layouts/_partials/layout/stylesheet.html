@@ -1,0 +1,7 @@
+{{- $css := resources.Get (printf "css/%s.css" .) -}}
+{{- if not hugo.IsServer -}}
+  {{- $css = $css | resources.Minify | resources.Fingerprint -}}
+{{- end -}}
+<style type="text/css">
+{{- $css.Content | safeCSS -}}
+</style>

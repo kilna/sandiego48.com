@@ -1,0 +1,49 @@
+{{/*
+  Event Timespan Partial
+  Usage: {{ partial "event-timespan.html" (dict
+    "start_time" $start_time
+    "end_time" $end_time
+    "plain" $plain
+) }}
+  
+  Parameters:
+  - start_time: (required) Start time object
+  - end_time: (required) End time object
+  - plain: (optional) Boolean for plain text output, defaults to true
+*/}}
+
+{{- $start_time := .start_time -}}
+{{- $end_time := .end_time -}}
+{{- $plain := default true .plain -}}
+
+{{- $same_day := compare.Eq $start_time.Day $end_time.Day -}}
+
+{{- $start_hour_format := cond (eq $start_time.Minute 0) "3pm" "3:04pm" -}}
+{{- $end_hour_format := cond (eq $end_time.Minute 0) "3pm" "3:04pm" -}}
+
+{{- $start_format := printf "%s %s" "Monday, January 2, 2006" $start_hour_format -}}
+{{- $end_format := cond $same_day
+                   $end_hour_format
+                   (printf "%s %s" "Monday, January 2, 2006" $end_hour_format)
+-}}
+
+{{- if $plain -}}
+
+  {{- time.Format $start_format $start_time }} - {{ if not $same_day }}
+{{ end }}{{ time.Format $end_format $end_time -}}
+
+{{- else -}}
+
+  <div class="timespan">
+    {{- "" -}}
+    <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $start_time }}">
+      {{- time.Format $start_format $start_time -}}
+    </time>
+    {{- if $same_day }} - {{ else }} - <br/>{{ end -}}
+    <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $end_time }}">
+      {{- time.Format $end_format $end_time -}}
+    </time>
+    {{- "" -}}
+  </div>
+
+{{- end -}}

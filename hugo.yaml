@@ -1,0 +1,179 @@
+baseURL: https://sandiego48.com
+title: San Diego 48 Hour Film Project
+languageCode: en-us
+
+# Modern Hugo Configuration
+enableGitInfo: true
+enableRobotsTXT: true
+enableEmoji: true
+
+# Performance optimizations
+timeout: "30s"
+enableInlineShortcodes: true
+
+# Asset processing
+imaging:
+  resampleFilter: "CatmullRom"
+  quality: 85
+  anchor: "Smart"
+
+# Taxonomies configuration
+taxonomies:
+  role: roles
+
+# Markup configuration
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    parser:
+      attribute:
+        block: true
+  highlight:
+    style: "github"
+    lineNos: false
+    tabWidth: 2
+
+params:
+  description: "San Diego 48 Hour Film Project - Make a film in 48 hours!"
+  canonical_url: https://sandiego48.com
+  author: "Kilna, Anthony"
+  header_bg: header_bg.jpg
+  logo: logo_trans_glow.png
+  facebook: sd48hfp
+  twitter: sd48hfp
+  instagram: sd48hfp
+  tiktok: sd48hfp
+  threads: sd48hfp
+  youtube: sd48hfp
+  facebook_group: sandiego48hfp
+  discord_server: San Diego 48 Hour Film Project
+  discord_server_invite: https://discord.gg/hMMTY5PSXD
+  site_link_text: SanDiego48.com
+  email: sandiego@48hourfilm.com
+  phone: +1-619-48-321-48
+  phone_can_text: true
+  copyright: Cine Diego LLC
+  copyright_url: https://cinediego.com
+  registration:
+    early:
+      start: "2025-05-01T00:00:00-07:00"
+      end:  "2025-07-23T23:59:59-07:00"
+      price: 158
+    regular:
+      start: "2025-07-22T00:00:00-07:00"
+      end:  "2025-08-05T23:59:59-07:00"
+      price: 178
+    late:
+      start: "2025-08-05T00:00:00-07:00"
+      end:  "2025-08-15T00:00:00-07:00"
+      price: 198
+  countdowns:
+    - default: "A while to go"
+      suffix: "until this year's competition..."
+      date: "2025-08-15T19:00:00-07:00"
+      show_after: "2025-08-05T00:00:00-07:00"
+      show_before: "2025-08-15T19:00:00-07:00"
+      button_prefix: "Prices go up soon!"
+      button:
+        text: "Register Your Team Now!"
+        url: /go/register
+        icon: register
+        icon_position: right
+    #- default: "Not long"
+    #  suffix: "left for early bird registration..."
+    #  date: "2025-07-22T23:59:59-07:00"
+    #  show_after: "2025-07-10T00:00:00-07:00"
+    #  show_before: "2025-07-22T23:59:59-07:00"
+    #  button_prefix: "Prices go up soon!"
+    #  button:
+    #    text: "Register Your Team Now!"
+    #    url: /go/register
+    #    icon: register
+    #    icon_position: right
+    - default: "Not long"
+      suffix: "until late registration..."
+      date: "2025-08-05T23:59:59-07:00"
+      show_after: "2025-07-23T00:00:00-07:00"
+      show_before: "2025-08-05T23:59:59-07:00"
+      button_prefix: "Prices increase soon!"
+      button:
+        text: "Register Your Team Now!"
+        url: /go/register
+        icon: register
+        icon_position: right
+outputs:
+  page: ["HTML", "plain", "simple"]
+  home: ["HTML"]
+  section: ["HTML"]
+  taxonomy: ["HTML"]
+  term: ["HTML"]
+
+outputFormats:
+  plain:
+    mediaType: "text/plain"
+    baseName: "plain"
+    isPlainText: true
+    permalinkable: false
+  simple:
+    mediaType: "text/html"
+    baseName: "simple"
+    isPlainText: false
+    permalinkable: false
+
+mediaTypes:
+  "text/plain":
+    suffixes: ["txt"]
+
+menus:
+  main:
+  - identifier: events
+    weight: 1
+    name: Events
+    url: /events
+    params:
+      target: _self
+      icon: calendar
+  - identifier: about
+    weight: 3
+    name: About
+    url: /#about
+    params:
+      target: _self
+      icon: question
+  - identifier: get-started
+    weight: 4
+    name: Get Started
+    url: /#get-started
+    params:
+      target: _self
+      icon: star
+  - identifier: subscribe
+    weight: 5
+    name: Subscribe to Newsletter
+    url: /go/newsletter
+    params:
+      target: _blank
+      class: "glow pulse"
+  - identifier: people
+    weight: 9
+    name: SD 48 Talent
+    url: /people
+    params:
+      target: _self
+      icon: director
+#  - identifier: bestof
+#    name: Best of 2024 Selections and Nominees
+#    url: https://www.tixtree.com/e/best-of-san-diego-48-hour-film-project-screening-and-awards-gala-f8b4d04c2b71
+#    #url: /go/tickets
+#    weight: 10
+#    params:
+#      target: _blank
+#  - identifier: tickets
+#    name: Buy Tickets
+#    url: https://www.tixtree.com/e/best-of-san-diego-48-hour-film-project-screening-and-awards-gala-f8b4d04c2b71
+#    #url: /go/tickets
+#    weight: 12
+#    params:
+#      class: highlight
+#      target: _blank

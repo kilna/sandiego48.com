@@ -1,0 +1,68 @@
+{{- with .Site.Params }}
+Stay Connected
+🌐 Website
+    {{ .canonical_url }}
+🗞️ Newsletter
+    {{ .canonical_url }}/go/newsletter
+{{ if .phone }}
+{{- $phone_title := "Phone" -}}
+{{- if .phone_can_text }}{{ $phone_title = "Phone / Text" }}{{ end -}}
+📞 {{ $phone_title }}: {{ partial "layout/plaintext.txt" .phone }}
+{{ end -}}
+{{- if .email -}}
+📧 Email: {{ partial "layout/plaintext.txt" .email }}
+{{ end }}
+Follow Us
+{{ $socials := slice -}}
+{{- $emojis := dict 
+  "facebook" "👍"
+  "instagram" "📸"
+  "threads" "🧵"
+  "twitter" "🐦"
+  "youtube" "📺"
+  "tiktok" "📱"
+-}}
+{{- if .facebook -}}
+  {{- $socials = $socials | append (dict "platform" "facebook" "id" (partial "layout/plaintext.txt" .facebook) "emoji" (index $emojis "facebook")) -}}
+{{- end -}}
+{{- if .instagram -}}
+  {{- $socials = $socials | append (dict "platform" "instagram" "id" (partial "layout/plaintext.txt" .instagram) "emoji" (index $emojis "instagram")) -}}
+{{- end -}}
+{{- if .threads -}}
+  {{- $socials = $socials | append (dict "platform" "threads" "id" (partial "layout/plaintext.txt" .threads) "emoji" (index $emojis "threads")) -}}
+{{- end -}}
+{{- if .twitter -}}
+  {{- $socials = $socials | append (dict "platform" "twitter" "id" (partial "layout/plaintext.txt" .twitter) "emoji" (index $emojis "twitter")) -}}
+{{- end -}}
+{{- if .youtube -}}
+  {{- $socials = $socials | append (dict "platform" "youtube" "id" (partial "layout/plaintext.txt" .youtube) "emoji" (index $emojis "youtube")) -}}
+{{- end -}}
+{{- if .tiktok -}}
+  {{- $socials = $socials | append (dict "platform" "tiktok" "id" (partial "layout/plaintext.txt" .tiktok) "emoji" (index $emojis "tiktok")) -}}
+{{- end -}}
+{{- $ids := slice -}}
+{{- range $socials -}}
+  {{- if not (in $ids .id) -}}
+    {{- $ids = $ids | append .id -}}
+  {{- end -}}
+{{- end -}}
+{{- range $ids -}}
+  {{- $id := . -}}
+  {{- $platforms := slice -}}
+  {{- range $socials -}}
+    {{- if eq .id $id -}}
+      {{- $platforms = $platforms | append . -}}
+    {{- end -}}
+  {{- end -}}
+@{{ $id }} → {{ range $i, $platform := $platforms }}{{ $platform.emoji }}{{ title $platform.platform }}{{ if lt $i (sub (len $platforms) 1) }} {{ end }}{{ end }}
+{{ end }}
+Join the Community
+{{ if .Site.Params.discord_server -}}
+💬 Discord 
+   {{ partial "layout/plaintext.txt" .Site.Params.discord_server_invite }}
+{{ end -}}
+{{ if .facebook_group -}}
+👥 Facebook Group
+   https://facebook.com/groups/{{ partial "layout/plaintext.txt" .facebook_group }}
+{{ end -}}
+{{- end -}}
