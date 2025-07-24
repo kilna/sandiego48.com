@@ -1,5 +1,5 @@
 ---
-title: "eliana perez"
+title: "Eliana Perez"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About eliana perez
+## About Eliana Perez
 
-eliana perez is an actor participating in the San Diego 48 Hour Film Project.
+Eliana Perez is an actor participating in the San Diego 48 Hour Film Project.

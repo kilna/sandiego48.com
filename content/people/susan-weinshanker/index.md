@@ -1,5 +1,5 @@
 ---
-title: "susan weinshanker"
+title: "Susan Weinshanker"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About susan weinshanker
+## About Susan Weinshanker
 
-susan weinshanker is an actor participating in the San Diego 48 Hour Film Project.
+Susan Weinshanker is an actor participating in the San Diego 48 Hour Film Project.

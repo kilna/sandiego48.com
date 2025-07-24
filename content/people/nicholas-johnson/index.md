@@ -1,5 +1,5 @@
 ---
-title: "nicholas johnson"
+title: "Nicholas Johnson"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About nicholas johnson
+## About Nicholas Johnson
 
-nicholas johnson is an actor participating in the San Diego 48 Hour Film Project.
+Nicholas Johnson is an actor participating in the San Diego 48 Hour Film Project.

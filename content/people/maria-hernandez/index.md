@@ -1,5 +1,5 @@
 ---
-title: "maria hernandez"
+title: "Maria Hernandez"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About maria hernandez
+## About Maria Hernandez
 
-maria hernandez is an actor participating in the San Diego 48 Hour Film Project.
+Maria Hernandez is an actor participating in the San Diego 48 Hour Film Project.

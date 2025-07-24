@@ -1,5 +1,5 @@
 ---
-title: "alexander pimentel"
+title: "Alexander Pimentel"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -14,6 +14,6 @@ social: []
 image_credit: "Headshot by [Jon Medel](https://www.jonmedel.com)"
 ---
 
-## About alexander pimentel
+## About Alexander Pimentel
 
-alexander pimentel is an actor participating in the San Diego 48 Hour Film Project.
+Alexander Pimentel is an actor participating in the San Diego 48 Hour Film Project.

@@ -1,5 +1,5 @@
 ---
-title: "bernie flash kellish"
+title: "Bernie Flash Kellish"
 roles: ["Actor"]
 draft: false
 contact_email: ""
@@ -12,6 +12,6 @@ credits: []
 social: []
 ---
 
-## About bernie flash kellish
+## About Bernie Flash Kellish
 
-bernie flash kellish is an actor participating in the San Diego 48 Hour Film Project.
+Bernie Flash Kellish is an actor participating in the San Diego 48 Hour Film Project.

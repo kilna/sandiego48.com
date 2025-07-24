@@ -1,5 +1,5 @@
 ---
-title: "tara romanczyk"
+title: "Tara Romanczyk"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About tara romanczyk
+## About Tara Romanczyk
 
-tara romanczyk is an actor participating in the San Diego 48 Hour Film Project.
+Tara Romanczyk is an actor participating in the San Diego 48 Hour Film Project.

@@ -1,5 +1,5 @@
 ---
-title: "matt thompson"
+title: "Matt Thompson"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About matt thompson
+## About Matt Thompson
 
-matt thompson is an actor participating in the San Diego 48 Hour Film Project.
+Matt Thompson is an actor participating in the San Diego 48 Hour Film Project.

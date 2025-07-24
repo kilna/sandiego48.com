@@ -1,5 +1,5 @@
 ---
-title: "chelsea militaro"
+title: "Chelsea Militaro"
 roles: ["Actor"]
 draft: false
 contact_email: ""
@@ -12,6 +12,6 @@ credits: []
 social: []
 ---
 
-## About chelsea militaro
+## About Chelsea Militaro
 
-chelsea militaro is an actor participating in the San Diego 48 Hour Film Project.
+Chelsea Militaro is an actor participating in the San Diego 48 Hour Film Project.

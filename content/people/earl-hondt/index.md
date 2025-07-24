@@ -1,5 +1,5 @@
 ---
-title: "earl hondt"
+title: "Earl Hondt"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -14,6 +14,6 @@ social: []
 image_credit: "Headshot by [Jon Medel](https://www.jonmedel.com)"
 ---
 
-## About earl hondt
+## About Earl Hondt
 
-earl hondt is an actor participating in the San Diego 48 Hour Film Project.
+Earl Hondt is an actor participating in the San Diego 48 Hour Film Project.

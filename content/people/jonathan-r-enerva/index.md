@@ -1,5 +1,5 @@
 ---
-title: "jonathan r enerva"
+title: "Jonathan R. Enerva"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About jonathan r enerva
+## About Jonathan R. Enerva
 
-jonathan r enerva is an actor participating in the San Diego 48 Hour Film Project.
+Jonathan R. Enerva is an actor participating in the San Diego 48 Hour Film Project.
