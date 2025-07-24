@@ -1,5 +1,5 @@
 ---
-title: "jordan jacobo"
+title: "Jordan Jacobo"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
@@ -13,6 +13,6 @@ credits: []
 social: []
 ---
 
-## About jordan jacobo
+## About Jordan Jacobo
 
-jordan jacobo is an actor participating in the San Diego 48 Hour Film Project.
+Jordan Jacobo is an actor participating in the San Diego 48 Hour Film Project.
