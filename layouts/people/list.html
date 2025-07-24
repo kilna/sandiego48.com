@@ -43,20 +43,22 @@
     
     <article class="person-card{{ if not $hasRealPhoto }} placeholder-photo{{ end }}" data-roles="{{ delimit .Params.roles "," }}">
       <div class="person-headshot">
-        {{ if eq .Params.image "placeholder-silhouette.png" }}
-          {{ $placeholder := resources.Get "images/placeholder-silhouette.png" }}
-          {{ with $placeholder }}
-            {{ $thumb := .Fill "300x400" }}
-            <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} headshot" class="placeholder-image" />
+        <a href="{{ .RelPermalink }}" class="headshot-link">
+          {{ if eq .Params.image "placeholder-silhouette.png" }}
+            {{ $placeholder := resources.Get "images/placeholder-silhouette.png" }}
+            {{ with $placeholder }}
+              {{ $thumb := .Fill "300x400" }}
+              <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} headshot" class="placeholder-image" />
+            {{ end }}
+          {{ else }}
+            {{ with .Resources.Get .Params.image -}}
+              {{ $thumb := .Fill "300x400" -}}
+              {{ with $thumb }}
+                <img src="{{ .RelPermalink }}" alt="{{ $.Title }} headshot" />
+              {{ end -}}
+            {{- end }}
           {{ end }}
-        {{ else }}
-          {{ with .Resources.Get .Params.image -}}
-            {{ $thumb := .Fill "300x400" -}}
-            {{ with $thumb }}
-              <img src="{{ .RelPermalink }}" alt="{{ $.Title }} headshot" />
-            {{ end -}}
-          {{- end }}
-        {{ end }}
+        </a>
       </div>
       <div class="person-info">
         <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
