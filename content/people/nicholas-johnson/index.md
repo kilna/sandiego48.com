@@ -1,17 +1,18 @@
 ---
-title: "Nicholas Johnson"
+title: "nicholas johnson"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "nicholas.s.johnson1@gmail.com"
-contact_phone: "845-238-6659"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "Sleep With Me"
-    audition_number: 15
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Nicholas Johnson
+## About nicholas johnson
 
+nicholas johnson is an actor participating in the San Diego 48 Hour Film Project.

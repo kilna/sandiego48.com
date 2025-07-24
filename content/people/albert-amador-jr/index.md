@@ -1,17 +1,19 @@
 ---
-title: "Albert Amador Jr."
+title: "albert amador jr"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "amadorjralbert@gmail.com"
-contact_phone: "619-862-1485"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "The Seagull"
-    audition_number: 4
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
+image_credit: "Headshot by [Jon Medel](https://www.jonmedel.com)"
 ---
 
-## About Albert Amador Jr.
+## About albert amador jr
 
+albert amador jr is an actor participating in the San Diego 48 Hour Film Project.

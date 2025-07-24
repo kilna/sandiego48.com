@@ -1,17 +1,18 @@
 ---
-title: "Genius Truitt"
+title: "genius truitt"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "genius.truitt5080@gmail.com"
-contact_phone: "619-995-5273"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "The Breakfast Club"
-    audition_number: 5
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Genius Truitt
+## About genius truitt
 
+genius truitt is an actor participating in the San Diego 48 Hour Film Project.

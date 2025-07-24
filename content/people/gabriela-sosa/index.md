@@ -1,17 +1,18 @@
 ---
-title: "Gabriela Sosa"
+title: "gabriela sosa"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
 contact_email: ""
-contact_phone: "323-377-2667"
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "Sonnet 29 / Shakespeare"
-    audition_number: 28
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Gabriela Sosa
+## About gabriela sosa
 
+gabriela sosa is an actor participating in the San Diego 48 Hour Film Project.

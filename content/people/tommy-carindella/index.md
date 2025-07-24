@@ -1,17 +1,18 @@
 ---
-title: "Tommy Carindella"
-image: "placeholder-silhouette.png"
+title: "tommy carindella"
+image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "tommy.carrindell@gmail.com"
-contact_phone: "858-312-0346"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "Jim Quinn (Prodigal Son)"
-    audition_number: 12
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Tommy Carindella
+## About tommy carindella
 
+tommy carindella is an actor participating in the San Diego 48 Hour Film Project.

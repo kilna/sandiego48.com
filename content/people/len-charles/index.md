@@ -1,17 +1,18 @@
 ---
-title: "Len Charles"
+title: "len charles"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "len@lencharles.com"
-contact_phone: "951-265-4947"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "Hello There / Dead Poets Society"
-    audition_number: 9
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Len Charles
+## About len charles
 
+len charles is an actor participating in the San Diego 48 Hour Film Project.

@@ -1,13 +1,18 @@
 ---
-title: "Renee Shi"
-image: "placeholder-silhouette.png"
+title: "renee shi"
+image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
 contact_email: ""
-contact_phone: "858-705-9646"
+contact_phone: ""
+open_auditions:
+  2025:
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Renee Shi
+## About renee shi
 
+renee shi is an actor participating in the San Diego 48 Hour Film Project.

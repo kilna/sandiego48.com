@@ -1,17 +1,19 @@
 ---
-title: "Earl Hondt"
+title: "earl hondt"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
 contact_email: ""
-contact_phone: "708-369-5006"
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "HS"
-    audition_number: 19
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
+image_credit: "Headshot by [Jon Medel](https://www.jonmedel.com)"
 ---
 
-## About Earl Hondt
+## About earl hondt
 
+earl hondt is an actor participating in the San Diego 48 Hour Film Project.

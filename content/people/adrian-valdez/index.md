@@ -1,17 +1,18 @@
 ---
-title: "Adrian Valdez"
-image: "placeholder-silhouette.png"
+title: "adrian valdez"
+image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "valdezcota726@gmail.com"
-contact_phone: "619-859-9728"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "Brokeback Mountain / I wish I knew how to quit you"
-    audition_number: 18
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Adrian Valdez
+## About adrian valdez
 
+adrian valdez is an actor participating in the San Diego 48 Hour Film Project.

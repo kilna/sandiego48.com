@@ -1,13 +1,18 @@
 ---
-title: "Chelsea Militaro"
-image: "placeholder-silhouette.png"
+title: "chelsea militaro"
+image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
 contact_email: ""
-contact_phone: "707-761-4671"
+contact_phone: ""
+open_auditions:
+  2025:
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Chelsea Militaro
+## About chelsea militaro
 
+chelsea militaro is an actor participating in the San Diego 48 Hour Film Project.

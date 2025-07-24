@@ -1,17 +1,18 @@
 ---
-title: "Maria Hernandez"
+title: "maria hernandez"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
 contact_email: ""
-contact_phone: "619-392-0853"
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "Proof / Catherine"
-    audition_number: 20
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Maria Hernandez
+## About maria hernandez
 
+maria hernandez is an actor participating in the San Diego 48 Hour Film Project.

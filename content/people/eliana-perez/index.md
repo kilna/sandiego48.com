@@ -1,17 +1,18 @@
 ---
-title: "Eliana Perez"
+title: "eliana perez"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "urstruly726@gmail.com"
-contact_phone: "442-999-3788"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "My Mother+IBk-s Cooking"
-    audition_number: 16
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Eliana Perez
+## About eliana perez
 
+eliana perez is an actor participating in the San Diego 48 Hour Film Project.

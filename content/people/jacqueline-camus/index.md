@@ -1,17 +1,18 @@
 ---
-title: "Jacqueline Camus"
+title: "jacqueline camus"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "turnerjacqueline99@gmail.com"
-contact_phone: "817-718-3897"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "The Primary English Class"
-    audition_number: 22
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Jacqueline Camus
+## About jacqueline camus
 
+jacqueline camus is an actor participating in the San Diego 48 Hour Film Project.

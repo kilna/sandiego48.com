@@ -1,17 +1,18 @@
 ---
-title: "Matt Thompson"
+title: "matt thompson"
 image: "headshot.jpg"
 roles: ["Actor"]
 draft: false
-contact_email: "mattthompsonstage@gmail.com"
-contact_phone: "619-993-5233"
+contact_email: ""
+contact_phone: ""
 open_auditions:
   2025:
-    monologue: "Who Am I?"
-    audition_number: 13
+    monologue: ""
+    audition_number: ""
 credits: []
 social: []
 ---
 
-## About Matt Thompson
+## About matt thompson
 
+matt thompson is an actor participating in the San Diego 48 Hour Film Project.
