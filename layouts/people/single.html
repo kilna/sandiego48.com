@@ -122,5 +122,12 @@
     </div>
   </div>
   {{ end }}
+
+  {{/* Image Credit - Only show for people with real headshots */}}
+  {{ if ne .Params.image "placeholder-silhouette.png" }}
+  <div class="image-credit">
+    <p>Headshot by <a href="https://www.jonmedel.com" target="_blank" rel="noopener">Jon Medel</a></p>
+  </div>
+  {{ end }}
 </article>
 {{ end }} 
