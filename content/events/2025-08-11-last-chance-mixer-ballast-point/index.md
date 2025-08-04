@@ -27,8 +27,8 @@ params:
       url: https://www.instagram.com/ballastpointbrewing/
   location_address: 9045 Carroll Way, San Diego, CA 92121
   location_map_url: https://maps.app.goo.gl/6bw7P2afkTiGFP5z5
-  facebook_event_url: ""
-  calendarlink_url: ""
+  facebook_event_url: https://www.facebook.com/events/688762980858344/
+  calendarlink_url: https://calendarlink.com/event/7TYNR
   org_info: |
     ### About the 48 Hour Film Project
 
@@ -48,12 +48,10 @@ this is the event for you.
 ## What to expect
 
 - Established teams looking for talent in front of and behind the camera
-- Actors, crew and production help seeking a film to work on
+- Actors, crew and production help seeking a film-making team to work on
 - Forming teams on the fly! If you gel with fellow creators, sign up
 - Details on how to run a successful 48 from the city producers and veteran team
   leader
 
 The competition weekend starts just 4 days later, so make this opportunity
 count!
-
-[Find out more about the 48](/) 
