@@ -13,8 +13,8 @@ params:
   image: 2025-kickoff-post.png
   image_wide: 2025-kickoff-horiz.png
   image_square: 2025-kickoff-square.png
-  featured: true
-  event_start: 2025-08-15T18:00:00-07:00
+
+  event_start: 2025-08-15T17:00:00-07:00
   event_end: 2025-08-15T19:00:00-07:00
   partner_name: Spark Studio Soundstage
   partner_details: >
@@ -50,35 +50,30 @@ params:
     movies over a weekend, which are later given a premier in a real theater. San
     Diego's competition takes place August 15-17th, 2025.
 ---
-The moment you've been waiting for is here! The 2025 San Diego 48 Hour Film Project officially begins at Spark Studio Soundstage.
+The moment you've been waiting for is here! The 2025 San Diego 48 Hour Film
+Project officially begins at Spark Studio Soundstage.
 
-## What happens at kickoff
+## What happens at kickoff?
 
-At exactly 6:00 PM on Friday, August 15th, all registered teams will receive their competition requirements:
+You must be checked in by 5pm. Team leaders must have their team leader
+agreements scanned, signed and uploaded to their dashboard at
+[48hourfilm](https://48hourfilm.com).
 
-- **Genre**: Your film's required genre (drawn randomly)
-- **Character**: A character that must appear in your film
-- **Prop**: An object that must be used in your film
-- **Line**: A line of dialogue that must be spoken in your film
+Immediately after all teams are checked in, teams will begin selection of their
+[random genres](https://www.48hourfilm.com/genres), one from each list, on our
+wheel of genres.
 
-## Important details
+Then leading up to 7pm, teams will receive:
 
-- **Team leaders only** need to attend in person
-- **All team members** can watch the live stream (link TBD)
-- Teams have exactly **48 hours** to write, shoot, and edit their films
-- Films must be submitted by **6:00 PM on Sunday, August 17th**
+* A random prop
+* A random character name and occupation
+* A random line of dialog
 
-## What to bring
+Then, the clock starts ticking!
 
-- Your team registration confirmation
-- A camera or phone to record the requirements
-- Notebook and pen for taking notes
-- Excitement and creativity!
+## What if I don't have a team?
 
-## After kickoff
-
-Once you receive your requirements, the clock starts ticking! Your team will have until 6:00 PM on Wednesday to complete your film. Make sure you have all your locations, actors, and equipment ready to go.
-
-This is where the magic begins - good luck to all teams!
-
-[Find out more about the 48](/) 
+If you want to be absolutely sure to have a team, you'll need to
+[create your own](/go/register)... but if you don't want to, come by and see if
+there's a team looking for what you've got to offer! Actors, crew, production
+and general helpers often find teams at kickoff!

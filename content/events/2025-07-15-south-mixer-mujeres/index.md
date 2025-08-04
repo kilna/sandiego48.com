@@ -15,7 +15,7 @@ params:
   image: 2025-mixer-4-post.png
   image_wide: 2025-mixer-4-horizontal.png
   image_square: 2025-mixer-4-square.png
-  featured: false
+
   event_start: 2025-07-15T18:00:00-07:00
   event_end: 2025-07-15T21:00:00-07:00
   location_name: Mujeres Brew House

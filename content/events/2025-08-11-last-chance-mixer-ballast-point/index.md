@@ -13,7 +13,7 @@ params:
   image: 2025-mixer-5-post.png
   image_wide: 2025-mixer-5-horizontal.png
   image_square: 2025-mixer-5-square.png
-  featured: true
+
   event_start: 2025-08-11T18:00:00-07:00
   event_end: 2025-08-11T21:00:00-07:00
   location_name: Ballast Point Brewing Company
@@ -37,24 +37,23 @@ params:
     movies over a weekend, which are later given a premier in a real theater. San
     Diego's competition takes place August 15-17th, 2025.
 ---
-This is your **last chance** to connect with other filmmakers before the 48 Hour Film Project competition weekend! 
+This is your last chance to connect with other filmmakers before the 48 Hour
+Film Project competition weekend! 
 
-Join us at Ballast Point Brewing Company in Miramar for our final mixer of the 2025 season. Whether you're still looking for team members, want to network with fellow filmmakers, or just want to soak in the pre-competition excitement, this is the event for you.
+Join us at Ballast Point Brewing Company in Miramar for our final mixer of the
+2025 season. Whether you're still looking for team members, want to network with
+fellow filmmakers, or just want to soak in the pre-competition excitement,
+this is the event for you.
 
 ## What to expect
 
-- **Team Formation**: Find actors, crew, or join existing teams
-- **Networking**: Connect with experienced and new filmmakers
-- **Information**: Get last-minute details about the competition weekend
-- **Community**: Meet your fellow 48ers before the big weekend
+- Established teams looking for talent in front of and behind the camera
+- Actors, crew and production help seeking a film to work on
+- Forming teams on the fly! If you gel with fellow creators, sign up
+- Details on how to run a successful 48 from the city producers and veteran team
+  leader
 
-## Who should attend
-
-- **Actors** looking for teams to join
-- **Directors** and **producers** seeking talent
-- **Crew members** (DPs, sound, editors, etc.) looking for projects
-- **Anyone curious** about filmmaking and the 48 Hour Film Project
-
-Even if you already have a team, come out and support the community! The competition weekend starts just 4 days later, so this is your final opportunity to make those crucial connections.
+The competition weekend starts just 4 days later, so make this opportunity
+count!
 
 [Find out more about the 48](/) 
