@@ -18,6 +18,7 @@
 {{ $currentYear := now.Year }}
 {{ $now := now }}
 {{ $currentYearEvents := where .Data.Pages ".Date.Year" $currentYear }}
+{{ $currentYearEvents = sort $currentYearEvents "Date" }}
 {{ $priorYearEvents := where .Data.Pages ".Date.Year" "<" $currentYear }}
 
 {{- $upcoming_events := slice -}}

@@ -63,6 +63,8 @@
   );
 }
 
+
+
 .event-card:last-child,
 .event-card:last-of-type {
   border-radius: 0 0 0.5rem 0.5rem;
@@ -98,7 +100,7 @@
   .event-card a.image img {
     width: auto;
     height: auto;
-    max-width: 85%;
+    max-width: 85% !important;
     max-height: 40vh;
     object-fit: contain;
   }
@@ -235,3 +237,4 @@
 .event-card .actions a.button.pulse.glow:active {
   animation: none;
 }
+
