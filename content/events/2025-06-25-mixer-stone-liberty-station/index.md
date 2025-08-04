@@ -11,7 +11,7 @@ publishDate: 2025-06-10T00:00:00-07:00
 draft: false
 params:
   image: flyer.png
-  featured: false
+
   event_start: 2025-06-25T17:30:00-07:00
   event_end: 2025-06-25T21:00:00-07:00
   partner_name: SD Media Pros

@@ -9,7 +9,7 @@ publishDate: 2025-05-13T00:00:00-07:00
 draft: false
 params:
   image: flyer.png
-  featured: false
+
   event_start: 2025-05-20T18:00:00-07:00
   event_end: 2025-05-20T21:00:00-07:00
   location_name: Ballast Point Brewing Company

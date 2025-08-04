@@ -26,8 +26,7 @@
         "resize_desktop" "x1024"
         ) -}}
   
-    {{ .Summary | markdownify }}
-    <hr/>
+
     {{ .Content }}
     {{ if .Params.org_info }}
     {{ .Params.org_info | markdownify }}

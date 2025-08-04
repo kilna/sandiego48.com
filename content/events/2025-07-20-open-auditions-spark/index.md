@@ -16,7 +16,7 @@ params:
   image: 2025-auditions-post.png
   image_wide: 2025-auditions-horizontal.png
   image_square: 2025-auditions-square.png
-  featured: false
+
   event_start: 2025-07-20T12:00:00-07:00
   event_end: 2025-07-20T15:00:00-07:00
   partner_name: Spark Studio Soundstage
