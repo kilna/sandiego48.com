@@ -34,11 +34,13 @@
   </div>
 
   <div class="infoblock">
+    {{ if .Params.facebook_event_url -}}
     {{- partial "components/button.html" (dict
       "url" .Params.facebook_event_url
       "text" "RSVP to Facebook Event"
       "icon" "facebook"
     ) -}}
+    {{ end -}}
     
     <h3>Schedule</h3>
     {{ $start_time := time.AsTime .Params.event_start -}}
