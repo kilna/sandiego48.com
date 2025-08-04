@@ -39,4 +39,3 @@ We are working on exclusive swag for team leaders who perform the in-person
 journey to share a beverage and a story with us!
 
 The wrap party location will be announced closer to the event date. 
-
