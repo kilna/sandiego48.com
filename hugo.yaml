@@ -69,12 +69,11 @@ params:
       end:  "2025-08-15T00:00:00-07:00"
       price: 198
   countdowns:
-    - default: "A while to go"
+    - default: "Not long"
       suffix: "until this year's competition..."
       date: "2025-08-15T19:00:00-07:00"
       show_after: "2025-08-05T00:00:00-07:00"
       show_before: "2025-08-15T19:00:00-07:00"
-      button_prefix: "Prices go up soon!"
       button:
         text: "Register Your Team Now!"
         url: /go/register
@@ -91,17 +90,17 @@ params:
     #    url: /go/register
     #    icon: register
     #    icon_position: right
-    - default: "Not long"
-      suffix: "until late registration..."
-      date: "2025-08-05T23:59:59-07:00"
-      show_after: "2025-07-23T00:00:00-07:00"
-      show_before: "2025-08-05T23:59:59-07:00"
-      button_prefix: "Prices increase soon!"
-      button:
-        text: "Register Your Team Now!"
-        url: /go/register
-        icon: register
-        icon_position: right
+    #- default: "Not long"
+    #  suffix: "until late registration..."
+    #  date: "2025-08-05T23:59:59-07:00"
+    #  show_after: "2025-07-23T00:00:00-07:00"
+    #  show_before: "2025-08-05T23:59:59-07:00"
+    #  button_prefix: "Prices increase soon!"
+    #  button:
+    #    text: "Register Your Team Now!"
+    #    url: /go/register
+    #    icon: register
+    #    icon_position: right
 outputs:
   page: ["HTML", "plain", "simple"]
   home: ["HTML"]
