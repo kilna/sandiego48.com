@@ -4,7 +4,7 @@ layout: events
 type: events
 summary: >
   Celebrate the completion of your film with your team, and tell war stories to
-  your fellow film makers over food and drink. Location TBD.
+  your fellow film makers over food and drink at BJ's Brewhouse Hazard Center.
 date: 2025-08-17T19:00:00-07:00
 publishDate: 2025-07-31T00:00:00-07:00
 draft: false
@@ -14,13 +14,13 @@ params:
   image_square: 2025-wrap-party-square.png
   event_start: 2025-08-17T19:00:00-07:00
   event_end: 2025-08-17T22:00:00-07:00
-  location_name: ""
-  location_details: ""
-  location_url: ""
-  location_logo: ""
+  location_name: BJ's Brewhouse Hazard Center
+  location_details: A family-friendly restaurant and brewery
+  location_url: https://www.bjsrestaurants.com/locations/ca/san-diego/hazard-center
+  location_logo: venue.png
   location_socials: []
-  location_address: "To Be Announced"
-  location_map_url: ""
+  location_address: 1370 Frazee Rd, San Diego, CA 92108
+  location_map_url: https://maps.app.goo.gl/CL4Qzp6fdcA21dBS6
   facebook_event_url: ""
   calendarlink_url: ""
   org_info: |
@@ -38,4 +38,4 @@ film on Sunday, August 17th.
 We are working on exclusive swag for team leaders who perform the in-person
 journey to share a beverage and a story with us!
 
-The wrap party location will be announced closer to the event date. 
+Join us at BJ's Brewhouse in Hazard Center to celebrate your 48-hour filmmaking achievement! 
