@@ -40,8 +40,8 @@ params:
   location_links: []
   location_address: 8283 Ronson Rd, San Diego, CA 92111
   location_map_url: https://maps.app.goo.gl/XjEki9B6YzDrFBtf6
-  facebook_event_url: ""
-  calendarlink_url: ""
+  facebook_event_url: https://www.facebook.com/events/1391333875701379/
+  calendarlink_url: https://calendarlink.com/event/TSTjd
   org_info: |
     ### About the 48 Hour Film Project
 

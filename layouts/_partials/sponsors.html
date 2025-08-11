@@ -54,9 +54,16 @@
 <section class="sponsors" id="{{ partial "components/entry-id.html" . }}">
   {{- $partners := where .Site.Pages "Section" "partners" -}}
   {{- $publishedPartners := where $partners "Draft" false -}}
-  {{- $sponsors := where $publishedPartners "Params.partner_type" "sponsor" -}}
-  {{- $featuredSponsors := where $sponsors "Params.level" "featured" -}}
-  {{- $regularSponsors := where $sponsors "Params.level" "!=" "featured" -}}
+  {{- /* Only include current partners (default true; when explicitly false, exclude) */ -}}
+  {{- $currentPartners := where $publishedPartners "Params.current" "!=" false -}}
+  {{- $sponsors := where $currentPartners "Params.partner_type" "sponsor" -}}
+  {{- /* Treat either level: featured or featured: true as featured */ -}}
+  {{- $featuredByLevel := where $sponsors "Params.level" "featured" -}}
+  {{- $featuredByFlag := where $sponsors "Params.featured" true -}}
+  {{- $featuredSponsors := union $featuredByLevel $featuredByFlag -}}
+  {{- /* Regular sponsors are those not marked featured by level or flag */ -}}
+  {{- $nonLevelFeatured := where $sponsors "Params.level" "!=" "featured" -}}
+  {{- $regularSponsors := where $nonLevelFeatured "Params.featured" "!=" true -}}
   {{- if $sponsors -}}
     <div class="sponsors-title">{{ .Site.Title }} is Proud to be Sponsored by</div>
     
@@ -67,11 +74,14 @@
           {{- $sponsor := . -}}
           {{- $sponsorImage := "" -}}
           
-          {{- /* Try to get the horizontal image first, then fall back to square image */ -}}
+          {{- /* Try wide image; if missing or not found, fall back to square image */ -}}
           {{- if .Params.image_wide -}}
             {{- $sponsorImage = .Resources.Get .Params.image_wide -}}
-          {{- else if .Params.image -}}
-            {{- $sponsorImage = .Resources.Get .Params.image -}}
+          {{- end -}}
+          {{- if not $sponsorImage -}}
+            {{- if .Params.image -}}
+              {{- $sponsorImage = .Resources.Get .Params.image -}}
+            {{- end -}}
           {{- end -}}
           
           {{- if $sponsorImage -}}
@@ -98,11 +108,14 @@
           {{- $sponsor := . -}}
           {{- $sponsorImage := "" -}}
           
-          {{- /* Try to get the horizontal image first, then fall back to square image */ -}}
+          {{- /* Try wide image; if missing or not found, fall back to square image */ -}}
           {{- if .Params.image_wide -}}
             {{- $sponsorImage = .Resources.Get .Params.image_wide -}}
-          {{- else if .Params.image -}}
-            {{- $sponsorImage = .Resources.Get .Params.image -}}
+          {{- end -}}
+          {{- if not $sponsorImage -}}
+            {{- if .Params.image -}}
+              {{- $sponsorImage = .Resources.Get .Params.image -}}
+            {{- end -}}
           {{- end -}}
           
           {{- if $sponsorImage -}}

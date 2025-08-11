@@ -4,7 +4,8 @@ params:
   image: regal-square.png
   image_wide: regal.png
   partner_type: sponsor
-  level: featured
+  featured: false
+  current: false
 ---
 Regal Cinemas is one of the largest and most recognizable movie theater chains
 in the United States, known for delivering premium cinematic experiences through
