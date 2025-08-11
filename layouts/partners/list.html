@@ -9,7 +9,7 @@
 {{ define "main" }}
 {{ .Content }}
 
-{{ range.Data.Pages }}
+{{ range where .Data.Pages "Params.current" "!=" false }}
 <article class="entry" id="{{ partial "components/entry-id.html" . }}">
   <div class="thumb{{ if not .Params.image }} hide-phone{{ end }}">
     {{ $link := .RelPermalink -}}

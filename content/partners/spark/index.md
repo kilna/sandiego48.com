@@ -3,6 +3,7 @@ title: Spark Studio Soundstage
 params:
   image: spark-square.png
   image_wide: spark.png
+  current: true
   partner_type: sponsor
   level: featured
   links:

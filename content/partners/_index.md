@@ -1,5 +1,8 @@
 ---
 Title: Sponsors and Partners
+cascade:
+  params:
+    current: true
 ---
 
 <p class="center">
