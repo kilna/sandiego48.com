@@ -14,7 +14,7 @@ params:
   image_wide: 2025-kickoff-horiz.png
   image_square: 2025-kickoff-square.png
 
-  event_start: 2025-08-15T17:00:00-07:00
+  event_start: 2025-08-15T16:30:00-07:00
   event_end: 2025-08-15T19:00:00-07:00
   partner_name: Spark Studio Soundstage
   partner_details: >
@@ -53,11 +53,11 @@ params:
 The moment you've been waiting for is here! The 2025 San Diego 48 Hour Film
 Project officially begins at Spark Studio Soundstage.
 
-## What happens at kickoff?
+## I'm a team leader. What happens at kickoff?
 
-You must be checked in by 5pm. Team leaders must have their team leader
-agreements scanned, signed and uploaded to their dashboard at
-[48hourfilm](https://48hourfilm.com).
+You should get there around 4:30pm. You must be checked in by 5pm. Team leaders
+must have their team leader agreements scanned, signed and uploaded to their
+dashboard at [48hourfilm](https://48hourfilm.com).
 
 Immediately after all teams are checked in, teams will begin selection of their
 [random genres](https://www.48hourfilm.com/genres), one from each list, on our
