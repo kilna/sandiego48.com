@@ -17,6 +17,9 @@ ignoreFiles:
   - '^scripts/'
   - '^source/'
   - '(^|/)\\.'
+  - '~$'
+
+
 
 # Asset processing
 imaging:
