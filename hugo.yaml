@@ -11,6 +11,13 @@ enableEmoji: true
 timeout: "30s"
 enableInlineShortcodes: true
 
+# Exclude files/dirs from processing and publication
+ignoreFiles:
+  - '\\.af(photo|design)$'
+  - '^scripts/'
+  - '^source/'
+  - '(^|/)\\.'
+
 # Asset processing
 imaging:
   resampleFilter: "CatmullRom"
@@ -40,6 +47,11 @@ params:
   author: "Kilna, Anthony"
   header_bg: header_bg.jpg
   logo: logo_trans_glow.png
+  banner:
+    image: images/tickets-banner.png
+    image_mobile: images/tickets-banner-fat.png
+    url: /go/tickets
+    alt: "Tickets On Sale Now!"
   facebook: sd48hfp
   twitter: sd48hfp
   instagram: sd48hfp
@@ -74,11 +86,6 @@ params:
       date: "2025-09-09T17:30:00-07:00"
       show_after: "2025-08-22T00:00:00-07:00"
       show_before: "2025-09-17T17:30:00-07:00"
-      button:
-        text: "Get Tickets Now!"
-        url: /go/tickets
-        icon: ticket
-        icon_position: right
     #- default: "Not long"
     #  suffix: "until this year's competition..."
     #  date: "2025-08-15T19:00:00-07:00"
@@ -136,6 +143,13 @@ mediaTypes:
 
 menus:
   main:
+  - identifier: tickets
+    weight: 0
+    name: Get Tickets
+    url: /go/tickets
+    params:
+      target: _blank
+      class: "glow pulse"
   - identifier: events
     weight: 1
     name: Events
@@ -161,9 +175,6 @@ menus:
     weight: 5
     name: Subscribe to Newsletter
     url: /go/newsletter
-    params:
-      target: _blank
-      class: "glow pulse"
   - identifier: people
     weight: 9
     name: SD 48 Talent
