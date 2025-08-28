@@ -2,6 +2,7 @@
 public/
 resources/
 external/
+static/images/
 .*.swp
 *.bak*
 .DS_Store

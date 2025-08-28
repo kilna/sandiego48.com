@@ -13,16 +13,19 @@ else
 -include .env # This is used for local development...
 endif
 
-.PHONY: build build-clean server server-slow server-verbose open-wait
+.PHONY: build build-clean server server-slow server-verbose open-wait copy-images
 
-build:
+copy-images:
+	./scripts/copy-images.sh
+
+build: copy-images
 	hugo
 
 build-clean:
 	rm -rf public
 	hugo --forceSyncStatic --cleanDestinationDir
 
-server: build kill-server
+server: copy-images kill-server
 	hugo server $(PARAMS) | tee >($(MAKE) open-wait) 2>&1
 
 server-clean: build-clean kill-server
