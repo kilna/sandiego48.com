@@ -13,7 +13,6 @@ params:
   image: 2025-kickoff-post.png
   image_wide: 2025-kickoff-horiz.png
   image_square: 2025-kickoff-square.png
-
   event_start: 2025-08-15T16:30:00-07:00
   event_end: 2025-08-15T19:00:00-07:00
   partner_name: Spark Studio Soundstage
