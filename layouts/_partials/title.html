@@ -166,7 +166,7 @@ header.title h1 div.subtitle {
 {{- end -}}
 {{ .Title | default .Site.Title }}
 {{- if isset .Params "subtitle" -}}
-<div class="subtitle">{{ .Params.subtitle }}</div>
+<div class="subtitle">{{ .Params.subtitle | replaceRE "\n" "<br>" | safeHTML }}</div>
 {{- end -}}
 </h1>
 </div>
