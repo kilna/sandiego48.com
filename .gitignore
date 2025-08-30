@@ -2,7 +2,7 @@
 public/
 resources/
 external/
-static/images/
+static/images/ # Generated from assets/images by the Makefile
 .*.swp
 *.bak*
 .DS_Store

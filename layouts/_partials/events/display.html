@@ -33,7 +33,7 @@
 {{- $visibility_class := "" -}}
 {{- if $show_visibility -}}
   {{- if $latest_end_time_formatted -}}
-    {{- $visibility_class = printf " visible-until-%s" $latest_end_time_formatted -}}
+    {{- $visibility_class = printf " visible-to-%s" $latest_end_time_formatted -}}
   {{- end -}}
 {{- end -}}
 
@@ -54,13 +54,13 @@
   {{- if .Params.visible_after -}}
     {{- $visible_after_time := time.AsTime .Params.visible_after -}}
     {{- $visible_after_formatted := $visible_after_time.Format "2006-01-02T15:04:05-07:00" -}}
-    {{- $visible_after_class = printf " visible-after-%s" $visible_after_formatted -}}
+    {{- $visible_after_class = printf " visible-from-%s" $visible_after_formatted -}}
   {{- end -}}
 {{- end -}}
 
 {{- $event_visibility_class := "" -}}
 {{- if $show_visibility -}}
-  {{- $event_visibility_class = printf " visible-until-%s" $end_time_formatted -}}
+  {{- $event_visibility_class = printf " visible-to-%s" $end_time_formatted -}}
 {{- end -}}
 
 <article class="event-card{{ $event_visibility_class }}{{ $visible_after_class }}">

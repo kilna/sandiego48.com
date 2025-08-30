@@ -110,31 +110,31 @@ document.addEventListener('DOMContentLoaded', function() {
   const countdownElements = document.querySelectorAll('[class*="countdown-to-"]');
   countdownElements.forEach(startCountdown);
 
-  // Find all elements with visibility time classes
-  const elements = document.querySelectorAll('[class*="visible-after-"], [class*="visible-until-"]');
+  // Find all elements with visibility time classes (standardized: visible-from-/visible-to-)
+  const elements = document.querySelectorAll('[class*="visible-from-"], [class*="visible-to-"]');
   
   elements.forEach(element => {
     const classes = element.className.split(' ');
-    let visibleAfter = null;
-    let visibleUntil = null;
+    let visibleFrom = null; // visible-from-
+    let visibleTo = null;   // visible-to-
     
     // Extract time classes
     for (const className of classes) {
-      if (!visibleAfter) {
-        const afterTime = parseTimeClass(className, 'visible-after-');
-        if (afterTime !== null) visibleAfter = afterTime;
+      if (!visibleFrom) {
+        const fromTime = parseTimeClass(className, 'visible-from-');
+        if (fromTime !== null) visibleFrom = fromTime;
       }
-      if (!visibleUntil) {
-        const untilTime = parseTimeClass(className, 'visible-until-');
-        if (untilTime !== null) visibleUntil = untilTime;
+      if (!visibleTo) {
+        const toTime = parseTimeClass(className, 'visible-to-');
+        if (toTime !== null) visibleTo = toTime;
       }
-      if (visibleAfter && visibleUntil) break;
+      if (visibleFrom && visibleTo) break;
     }
     
     const now = Date.now();
     
     // Check if element should be visible initially
-    const shouldBeVisible = (!visibleAfter || now >= visibleAfter) && (!visibleUntil || now < visibleUntil);
+    const shouldBeVisible = (!visibleFrom || now >= visibleFrom) && (!visibleTo || now < visibleTo);
     
     if (!shouldBeVisible) {
       element.style.display = 'none';
@@ -142,17 +142,27 @@ document.addEventListener('DOMContentLoaded', function() {
       // Set up an interval to check every minute
       const checkInterval = setInterval(() => {
         const currentTime = Date.now();
-        const shouldShow = (!visibleAfter || currentTime >= visibleAfter) && (!visibleUntil || currentTime < visibleUntil);
+        const shouldShow = (!visibleFrom || currentTime >= visibleFrom) && (!visibleTo || currentTime < visibleTo);
         
         if (shouldShow) {
           element.style.display = '';  // Show element by removing inline style
           clearInterval(checkInterval);  // Stop checking once visible
-        } else if (visibleUntil && currentTime >= visibleUntil) {
+        } else if (visibleTo && currentTime >= visibleTo) {
           clearInterval(checkInterval);
         }
       }, 1000);  // Check every minute
     } else {
       element.style.display = '';
+      // If initially visible, hide when we pass the visible-to time
+      if (visibleTo) {
+        const checkInterval = setInterval(() => {
+          const currentTime = Date.now();
+          if (currentTime >= visibleTo) {
+            element.style.display = 'none';
+            clearInterval(checkInterval);
+          }
+        }, 1000);
+      }
     }
   });
 
