@@ -35,34 +35,19 @@ footer .button-list a:hover {
 </style>
 
 <footer>
-  {{ partial "components/button-list.html" (dict
-    "buttons" (slice
-      (dict
-        "url" "/links#online"
-        "text" "Find Us Online"
-        "icon" "none"
-      )
-      (dict
-        "url" "/links#community"
-        "text" "Join Our Community"
-        "icon" "none"
-      )
-      (dict
-        "url" "/links#socials"
-        "text" "Follow Us On Social Media"
-        "icon" "none"
-      )
-      (dict
-        "url" "/links#contact"
-        "text" "Contact Us"
-        "icon" "none"
-      )
-
-    )
-  ) }}
+  <div class="button-list">
+    {{ range .Site.Menus.footer -}}
+    {{ partial "components/button.html" (dict
+      "url" .URL
+      "text" .Name
+      "target" .Params.target
+      "icon" .Params.icon
+    ) -}}
+    {{- end }}
+  </div>
 
   <div>
-    <p>&copy; {{ .Site.Params.year }} {{ .Site.Params.copyright }}</p>
+    <p>&copy; {{ .Site.Params.copyright }}</p>
   </div>
 </footer>
 

@@ -68,6 +68,7 @@
 {{- $link := $event.RelPermalink -}}
 {{- partial "components/responsive-img.html" (dict
     "ctx" $event
+    "name" "image"
     "image_mobile" "image_wide"
     "image_desktop" "image_square"
     "resize" "x512"
@@ -93,6 +94,19 @@
   </div>
   {{- if .Summary -}}
     <p class="summary">{{ .Summary }}</p>
+    
+    {{/* Get films for this event if it's a screening */}}
+    {{ $event_slug := path.Base .RelPermalink }}
+    {{ $all_films := where .Site.Pages "Section" "films" }}
+    {{ $films := where $all_films "Params.screening_events" "intersect" (slice $event_slug) }}
+    {{ $films = sort $films "Params.order" }}
+    
+    {{ if $films }}
+      <p class="featured-films"><strong>Featured Films</strong> 
+      {{ range $index, $film := $films }}{{ if $index }} • {{ else }} • {{ end }}<em><a href="{{ $link }}">{{ .Title }}</a></em>{{ end }}
+      </p>
+    {{ end }}
+    
     {{- if $show_actions -}}
       <div class="actions">
        {{- with .Params.calendarlink_url -}}
@@ -103,7 +117,8 @@
            "class" "right"
        ) -}}
        {{- end -}}
-       {{- with .Params.location_map_url -}}
+       {{- $map_url := partial "components/google-maps-url.html" (dict "map_url" .Params.location_map_url "address" .Params.location_address) -}}
+       {{- with $map_url -}}
        {{- partial "components/button.html" (dict
            "text" "Google Map"
            "url" .
@@ -119,11 +134,20 @@
            "class" "right"
        ) -}}
        {{- end -}}
+       {{- with .Params.tickets_url -}}
+       {{- partial "components/button.html" (dict
+           "text" "Get Tickets"
+           "url" .
+           "icon" "ticket"
+           "class" "right glow"
+           "target" "_blank"
+       ) -}}
+       {{- end -}}
        {{- partial "components/button.html" (dict
            "text" "More Details"
            "url" $link
            "icon" "arrow-right"
-           "class" "right pulse glow"
+           "class" "right pulse glow highlight primary"
        ) -}}
        </div>
     {{- end -}}

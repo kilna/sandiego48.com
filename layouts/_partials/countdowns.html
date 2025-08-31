@@ -58,6 +58,8 @@ div.countdown a.button {
 {{ range .Site.Params.countdowns -}}
 {{ partial "components/countdown.html" . -}}
 {{ end -}}
+{{ if .Site.Params.banner -}}
 {{ partial "banner.html" . -}}
+{{ end -}}
 </div>
 {{ end -}}

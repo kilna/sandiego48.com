@@ -17,9 +17,11 @@
 
 {{ $currentYear := now.Year }}
 {{ $now := now }}
-{{ $currentYearEvents := where .Data.Pages ".Date.Year" $currentYear }}
+{{ $all := .RegularPagesRecursive }}
+{{ $currentYearEvents := where $all ".Date.Year" $currentYear }}
 {{ $currentYearEvents = sort $currentYearEvents "Date" }}
-{{ $priorYearEvents := where .Data.Pages ".Date.Year" "<" $currentYear }}
+{{ $priorYearEvents := where $all ".Date.Year" "<" $currentYear }}
+{{ $priorYearEvents = sort $priorYearEvents "Date" "desc" }}
 
 {{- $upcoming_events := slice -}}
 {{- $past_events := slice -}}

@@ -30,6 +30,8 @@ imaging:
 # Taxonomies configuration
 taxonomies:
   role: roles
+  screening_group: screening_groups
+  screening_event: screening_events
 
 # Markup configuration
 markup:
@@ -50,11 +52,11 @@ params:
   author: "Kilna, Anthony"
   header_bg: header_bg.jpg
   logo: logo_trans_glow.png
-  banner:
-    image: images/tickets-banner.png
-    image_mobile: images/tickets-banner-fat.png
-    url: /go/tickets
-    alt: "Tickets On Sale Now!"
+  #banner:
+  #  image: images/tickets-banner.png
+  #  image_mobile: images/tickets-banner-fat.png
+  #  url: /go/tickets
+  #  alt: "Tickets On Sale Now!"
   facebook: sd48hfp
   twitter: sd48hfp
   instagram: sd48hfp
@@ -85,7 +87,7 @@ params:
       price: 198
   countdowns:
     - default: "Not long"
-      suffix: "until premiere screenings!..."
+      suffix: "until premiere screenings..."
       date: "2025-09-09T17:30:00-07:00"
       show_after: "2025-08-22T00:00:00-07:00"
       show_before: "2025-09-17T17:30:00-07:00"
@@ -146,57 +148,86 @@ mediaTypes:
 
 menus:
   main:
+  - identifier: events
+    weight: 1
+    name: Screenings & Events
+    url: /events
+    params:
+      target: _self
+      icon: calendar
+  - identifier: films
+    weight: 10
+    name: Films
+    url: /films
+    params:
+      target: _self
+      icon: film
   - identifier: tickets
-    weight: 0
+    weight: 20
     name: Get Tickets
     url: /go/tickets
     params:
       target: _blank
       class: "glow pulse"
-  - identifier: events
-    weight: 1
-    name: Events
-    url: /events
+      icon: ticket
+  - identifier: find-us-online
+    weight: 40
+    name: Find Us Online
+    url: /links#online
     params:
-      target: _self
-      icon: calendar
+      target: _blank
+      icon: globe
+  - identifier: subscribe
+    weight: 50
+    name: Subscribe to Newsletter
+    url: /go/newsletter
+  footer:
   - identifier: about
-    weight: 3
+    weight: 20
     name: About
     url: /#about
     params:
       target: _self
       icon: question
   - identifier: get-started
-    weight: 4
+    weight: 30
     name: Get Started
-    url: /#get-started
+    url: /get-started
     params:
       target: _self
       icon: star
-  - identifier: subscribe
-    weight: 5
-    name: Subscribe to Newsletter
-    url: /go/newsletter
   - identifier: people
-    weight: 9
+    weight: 35
     name: SD 48 Talent
     url: /people
     params:
       target: _self
       icon: director
-#  - identifier: bestof
-#    name: Best of 2024 Selections and Nominees
-#    url: https://www.tixtree.com/e/best-of-san-diego-48-hour-film-project-screening-and-awards-gala-f8b4d04c2b71
-#    #url: /go/tickets
-#    weight: 10
-#    params:
-#      target: _blank
-#  - identifier: tickets
-#    name: Buy Tickets
-#    url: https://www.tixtree.com/e/best-of-san-diego-48-hour-film-project-screening-and-awards-gala-f8b4d04c2b71
-#    #url: /go/tickets
-#    weight: 12
-#    params:
-#      class: highlight
-#      target: _blank
+  - identifier: find-us-online
+    weight: 40
+    name: Find Us Online
+    url: /links#online
+    params:
+      target: _blank
+      icon: globe
+  - identifier: join-community
+    weight: 50
+    name: Join Our Community
+    url: /links#community
+    params:
+      target: _blank
+      icon: group
+  - identifier: follow-social
+    weight: 60
+    name: Follow Us On Social Media
+    url: /links#socials
+    params:
+      target: _blank
+      icon: heart
+  - identifier: contact-us
+    weight: 70
+    name: Contact Us
+    url: /links#contact
+    params:
+      target: _blank
+      icon: contact

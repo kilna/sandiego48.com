@@ -3,16 +3,18 @@
 }
 
 .event {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 33%;
   gap: 2rem;
+  align-items: start;
 }
 
 @media all and (max-width: 768px) {
   .event {
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 1rem;
+    align-items: start;
   }
 }
 
@@ -237,4 +239,18 @@
 .event-card .actions a.button.pulse.glow:active {
   animation: none;
 }
+
+/* Featured Films styling */
+.event-card .featured-films {
+  font-size: 0.9em;
+  margin: 0.5rem 0 0 0;
+}
+
+@media (max-width: 768px) {
+  .event-card .featured-films {
+    font-size: 0.85em;
+  }
+}
+
+
 

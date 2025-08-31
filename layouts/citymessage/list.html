@@ -65,7 +65,8 @@
       Add to Calendar 📅{{- /* */ -}}
     </a>{{- /* */ -}}
   {{- end -}}
-  {{- with .Params.location_map_url -}}
+  {{- $map_url := partial "components/google-maps-url.html" (dict "map_url" .Params.location_map_url "address" .Params.location_address) -}}
+  {{- with $map_url -}}
     <a href="{{ . }}" style="{{ $event_button_style | safeCSS }}">{{- /* */ -}}
       Map 📍{{- /* */ -}}
     </a>{{- /* */ -}}
