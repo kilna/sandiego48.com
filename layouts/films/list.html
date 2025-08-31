@@ -1,0 +1,132 @@
+{{ define "head" }}
+  {{- partial "head.html" . -}}
+  {{- partial "layout/stylesheet.html" "people" -}}
+{{ end }}
+
+{{ define "title" }}
+{{- partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "ShowSiteTitle" true
+) -}}
+{{ end }}
+
+{{ define "main" }}
+{{ .Content }}
+
+{{/* Collect all existing screening groups */}}
+{{ $allGroups := slice }}
+{{ range .Data.Pages }}
+  {{ range .Params.screening_groups }}
+    {{ $allGroups = $allGroups | append . }}
+  {{ end }}
+{{ end }}
+{{ $uniqueGroups := $allGroups | uniq | sort }}
+
+<div class="people-filters">
+  <button class="filter-btn active" data-filter="all">All Films</button>
+  {{ range $uniqueGroups }}
+    {{ $groupName := . }}
+    {{ if eq . "group-a" }}{{ $groupName = "Group A" }}{{ end }}
+    {{ if eq . "group-b" }}{{ $groupName = "Group B" }}{{ end }}
+    {{ if eq . "group-c" }}{{ $groupName = "Group C" }}{{ end }}
+    {{ if eq . "group-d" }}{{ $groupName = "Group D" }}{{ end }}
+    <button class="filter-btn" data-filter="{{ . }}">{{ $groupName }}</button>
+  {{ end }}
+</div>
+
+<div id="filter-count" class="filter-count">Showing all {{ len .Data.Pages }} films</div>
+
+<div class="people-grid">
+  {{ range .Data.Pages }}
+    <article class="person-card" data-roles="{{ delimit .Params.screening_groups "," }}">
+      <div class="person-headshot">
+        {{ $screening_url := .RelPermalink }}
+        {{ if .Params.screening_events }}
+          {{ $screening_url = printf "/events/%s/" (index .Params.screening_events 0) }}
+        {{ end }}
+        <a href="{{ $screening_url }}" class="headshot-link">
+          {{ $film_image := "" }}
+          {{ $poster_name := printf "%s-poster.png" .File.BaseFileName }}
+          {{ $poster_jpg := printf "%s-poster.jpg" .File.BaseFileName }}
+          {{ $film_name := printf "%s.png" .File.BaseFileName }}
+          {{ $film_jpg := printf "%s.jpg" .File.BaseFileName }}
+          {{ $film_image = or (.Resources.Get $poster_name) (.Resources.Get $poster_jpg) (.Resources.Get $film_name) (.Resources.Get $film_jpg) }}
+          {{ if $film_image }}
+            {{ if and $film_image.MediaType (ne $film_image.MediaType.SubType "svg") }}
+              {{ $film_image = $film_image.Fill "300x450" }}
+            {{ end }}
+            <img src="{{ $film_image.RelPermalink }}" alt="{{ .Title }} poster" />
+          {{ else }}
+            {{ $placeholder := resources.Get "images/placeholder-poster.png" }}
+            {{ with $placeholder }}
+              {{ $thumb := .Fill "300x450" }}
+              <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} poster" class="placeholder-image" />
+            {{ end }}
+          {{ end }}
+        </a>
+      </div>
+      <div class="person-info">
+        <h3><a href="{{ $screening_url }}">{{ .Title }}</a></h3>
+        <p class="film-team">by {{ .Params.team }}</p>
+        {{ if .Params.screening_groups }}
+          <div class="person-roles">
+            {{ range .Params.screening_groups }}
+              {{ $groupName := . }}
+              {{ if eq . "group-a" }}{{ $groupName = "Group A" }}{{ end }}
+              {{ if eq . "group-b" }}{{ $groupName = "Group B" }}{{ end }}
+              {{ if eq . "group-c" }}{{ $groupName = "Group C" }}{{ end }}
+              {{ if eq . "group-d" }}{{ $groupName = "Group D" }}{{ end }}
+              <span class="role-tag">{{ $groupName }}</span>
+            {{ end }}
+          </div>
+        {{ end }}
+        {{ if .Params.logline }}
+          <p class="film-logline">{{ .Params.logline }}</p>
+        {{ end }}
+      </div>
+    </article>
+  {{ end }}
+</div>
+
+<script>
+// Filter functionality for films
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const filmCards = document.querySelectorAll('.person-card');
+    const filterCount = document.getElementById('filter-count');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            let visibleCount = 0;
+            
+            filmCards.forEach(card => {
+                const roles = card.getAttribute('data-roles');
+                
+                if (filter === 'all' || roles.includes(filter)) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Update count
+            if (filter === 'all') {
+                filterCount.textContent = `Showing all ${visibleCount} films`;
+            } else {
+                const groupName = this.textContent;
+                filterCount.textContent = `Showing ${visibleCount} films in ${groupName}`;
+            }
+        });
+    });
+});
+</script>
+
+{{ end }}

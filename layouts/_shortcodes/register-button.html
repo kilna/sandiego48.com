@@ -1,0 +1,8 @@
+{{- if lt now (time "2025-08-15T00:00:00-07:00") -}}
+{{- partial "components/button.html" (dict
+    "url" "/go/register"
+    "text" "Register Your Team"
+    "icon" "register"
+    "class" "right wide"
+) -}}
+{{- end -}}
