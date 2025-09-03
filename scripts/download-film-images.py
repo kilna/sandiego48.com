@@ -1,25 +1,32 @@
 #!/usr/bin/env python3
 """
 Download still images (posters, film stills and behind‑the‑scenes photos)
-for each film listed in a CSV from the 48 Hour Film Project site.
+for each film listed in a CSV from the 48 Hour Film Project site.
 
 The script requires the same CSV format as used by the film downloader: each
-row must include `film_id`, `team_name`, `film_title` and `film_url` (the
-URL of the drop‑off/gallery page).  It also needs an authentication cookie
-that you capture via your browser's developer tools after logging in to
-48hourfilm.com.  Supply that cookie using the `--cookie` option or the
+row must include `id` (team ID), `slug` (directory name), and `film` (film title).
+It also needs an authentication cookie that you capture via your browser's developer tools after logging in to
+48hourfilm.com. Supply that cookie using the `--cookie` option or the
 48HFP_COOKIE environment variable.
 
 Images are saved into the structure:
 
-    ~/Code/kilna/sandiego48.com/content/films/{year}-{team_slug}-{film_slug}/
+    ~/Code/kilna/sandiego48.com/content/films/{year}-{slug}/
 
 Each file is named with a prefix derived from its type (poster, still,
 behind) followed by a sequence number and the original file extension.
 
-The heuristic used to classify images simply looks for keywords in the
-image's alt text or filename.  You may need to adjust the `classify_image`
-function if your site's markup differs.
+Media to download is determined solely based on the presence of direct upload URLs
+in these specific formats:
+
+Still: https://www.48hourfilm.com/uploads/2025/48HFP/48%20Hour%20Film%20Project%20-%20San%20Diego/{TeamName}/Film%20Stills/{filename}
+
+Poster: https://www.48hourfilm.com/uploads/2025/48HFP/48%20Hour%20Film%20Project%20-%20San%20Diego/{TeamName}/Poster/{filename}
+
+BTS: https://www.48hourfilm.com/uploads/2025/48HFP/48%20Hour%20Film%20Project%20-%20San%20Diego/{TeamName}/Behind%20the%20Scenes%20Pictures/{filename}
+
+The script parses the number from the original filename (e.g., "file 1", "file 2") and uses it
+in the local filename to preserve the original numbering.
 
 Images larger than 1920x1920 are automatically resized to fit within those dimensions
 while preserving aspect ratio. Smaller images remain at their original size. All images
@@ -27,9 +34,9 @@ are compressed to meet GitHub Pages requirements (<25MB by default). Downloads a
 processed in parallel for faster processing. This ensures consistent maximum dimensions
 and requires ImageMagick to be installed (brew install imagemagick).
 
-For background about the 2025 San Diego competition, the official
-website explains that the event occurred August 15‑17th【875466236829739†L110-L120】
-and lists entries like "Extra Toppings" by Breakfast for Dinner!【652804158881346†L152-L166】.
+For background about the 2025 San Diego competition, the official
+website explains that the event occurred August 15‑17th【875466236829739†L110-L120】
+and lists entries like "Extra Toppings" by Breakfast for Dinner!【652804158881346†L152-L166】.
 """
 
 import argparse
@@ -41,12 +48,13 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Tuple
-from urllib.parse import urlparse
+from urllib.parse import urlparse, unquote
 
 import requests
 from bs4 import BeautifulSoup
 
-film_base_url="https://www.48hourfilm.com/dash/cp/production/team-more-info/"
+# Base URL for team/film pages - CSV is definitive, construct URL from team ID
+film_base_url = "https://www.48hourfilm.com/dash/cp/production/team-more-info/"
 
 def load_cookie(cookie_str: str) -> requests.cookies.RequestsCookieJar:
     jar = requests.cookies.RequestsCookieJar()
@@ -60,60 +68,65 @@ def load_cookie(cookie_str: str) -> requests.cookies.RequestsCookieJar:
     return jar
 
 
-def classify_image(link_text: str) -> str:
-    """Return a prefix describing the image type based on download button text."""
-    text = link_text.lower()
-    if "poster" in text:
-        return "poster"
-    elif "film stills" in text:
+def classify_image_from_url(url: str) -> str:
+    """Return a prefix describing the image type based on the upload URL format."""
+    url_lower = url.lower()
+    
+    if "/film%20stills/" in url_lower or "/film stills/" in url_lower:
         return "still"
-    elif "behind the scenes pictures" in text:
+    elif "/poster/" in url_lower:
+        return "poster"
+    elif "/behind%20the%20scenes%20pictures/" in url_lower or "/behind the scenes pictures/" in url_lower:
         return "bts"
     else:
         return "unknown"
 
 
-def download_images(session: requests.Session, film_url: str) -> List[Tuple[str, str]]:
-    """Return list of (image_url, link_text) pairs found in download buttons."""
+def extract_number_from_filename(url: str) -> int:
+    """Extract the number from a filename like 'Film Stills - file 1.png' or 'Poster - file 2.png'."""
+    try:
+        # Get the filename from the URL
+        filename = os.path.basename(urlparse(url).path)
+        
+        # Look for patterns like "file 1", "file 2", etc.
+        match = re.search(r'file\s+(\d+)', filename, re.IGNORECASE)
+        if match:
+            return int(match.group(1))
+        
+        # Alternative pattern: look for numbers before the extension
+        match = re.search(r'(\d+)\.(?:png|jpg|jpeg|gif|webp)$', filename, re.IGNORECASE)
+        if match:
+            return int(match.group(1))
+            
+    except Exception:
+        pass
+    
+    # Default to 1 if we can't parse the number
+    return 1
+
+
+def find_upload_urls(session: requests.Session, film_url: str) -> List[Tuple[str, str]]:
+    """Find direct upload URLs in the page content based on specific URL patterns."""
     resp = session.get(film_url)
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
-    images: List[Tuple[str, str]] = []
     
-    # Look for table rows that contain our target image types
-    for row in soup.find_all("tr"):
-        cells = row.find_all("td")
-        if len(cells) < 2:
-            continue
-            
-        # Check if the first cell contains our target descriptive text
-        first_cell_text = cells[0].get_text(strip=True)
-        if not any(pattern in first_cell_text.lower() for pattern in [
-            "poster",
-            "film stills", 
-            "behind the scenes pictures"
-        ]):
-            continue
-            
-        # Look for a download link in the second cell
-        download_link = cells[1].find("a")
-        if not download_link or download_link.get_text(strip=True).lower() != "download":
-            continue
-            
-        href = download_link.get("href")
+    upload_urls: List[Tuple[str, str]] = []
+    
+    # Look for all links and check if they match our upload URL patterns
+    for link in soup.find_all("a", href=True):
+        href = link.get("href")
         if not href:
             continue
             
-        # Extract the download URL
-        if href.startswith("http"):
-            download_url = href
-        else:
-            # Handle relative URLs
-            download_url = requests.compat.urljoin(film_url, href)
-        
-        images.append((download_url, first_cell_text))
+        # Check if this is a direct upload URL
+        if href.startswith("https://www.48hourfilm.com/uploads/2025/48HFP/48%20Hour%20Film%20Project%20-%20San%20Diego/"):
+            # Classify the image type based on URL format
+            image_type = classify_image_from_url(href)
+            if image_type != "unknown":
+                upload_urls.append((href, image_type))
     
-    return images
+    return upload_urls
 
 
 def download_file(session: requests.Session, url: str, dest_path: Path) -> None:
@@ -146,22 +159,23 @@ def download_and_process_image(args_tuple: Tuple) -> Tuple[str, bool, str]:
     Download and process a single image. Returns (image_name, success, message).
     This function is designed to be run in parallel.
     """
-    film_name, download_url, link_text, dest_root, counters, args = args_tuple
+    film_name, upload_url, image_type, dest_root, args = args_tuple
     
     try:
-        prefix = classify_image(link_text)
-        if prefix == "unknown":
-            return f"{film_name}:{prefix}", False, "Unknown image type"
+        if image_type == "unknown":
+            return f"{film_name}:{image_type}", False, "Unknown image type"
         
-        counters[prefix] = counters.get(prefix, 0) + 1
-        ext = os.path.splitext(urlparse(download_url).path)[1].lower()
+        # Extract the number from the original filename
+        file_number = extract_number_from_filename(upload_url)
+        
+        ext = os.path.splitext(urlparse(upload_url).path)[1].lower()
         # Normalize JPEG extensions to JPG
         if ext in ['.jpeg', '.jpg']:
             ext = '.jpg'
         elif not ext:
             ext = '.jpg'  # Default to JPG if no extension
         
-        fname = f"{prefix}-{counters[prefix]}{ext}"
+        fname = f"{image_type}-{file_number}{ext}"
         dest = dest_root / fname
         
         # Check if existing image has correct dimensions (1920x1920 or smaller)
@@ -187,7 +201,7 @@ def download_and_process_image(args_tuple: Tuple) -> Tuple[str, bool, str]:
             session.cookies.update(load_cookie(args.cookie))
         
         print(f"Downloading {fname} for {film_name}...")
-        download_file(session, download_url, dest)
+        download_file(session, upload_url, dest)
         
         # Check if image needs resizing for GitHub Pages compatibility
         if dest.suffix.lower() in ['.jpg', '.jpeg', '.png']:
@@ -196,7 +210,7 @@ def download_and_process_image(args_tuple: Tuple) -> Tuple[str, bool, str]:
         return f"{film_name}:{fname}", True, "Downloaded and processed successfully"
         
     except Exception as exc:
-        return f"{film_name}:{prefix}", False, f"Failed: {exc}"
+        return f"{film_name}:{image_type}", False, f"Failed: {exc}"
 
 
 def resize_large_image_if_needed(image_path: Path, max_size_mb: int = 25) -> bool:
@@ -278,7 +292,7 @@ def resize_large_image_if_needed(image_path: Path, max_size_mb: int = 25) -> boo
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Download 48 HFP film images")
+    parser = argparse.ArgumentParser(description="Download 48 HFP film images")
     parser.add_argument("--csv", default="data/teams.csv", help="CSV file with film data")
     parser.add_argument("--year", default=2025, type=int, help="Competition year")
     parser.add_argument("--base-dir", default=os.path.expanduser("content/films"), help="Root directory for image storage")
@@ -329,34 +343,48 @@ def main() -> None:
     with open(args.csv, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            team = row.get("team", "unknown_team")
-            film = row.get("film", "unknown_film")
-            dir = row.get("dir", "unknown_film")
-            team_id = row.get("id", "unknown_id")
-            film_url = film_base_url + team_id
+            # CSV is definitive - use these fields directly
+            team_id = row.get("id")
+            slug = row.get("slug")  # Use slug directly from CSV
+            film_title = row.get("film", "unknown_film")
+            
             if not team_id:
-                print(f"Skipping {film}: no film_url provided")
+                print(f"Skipping {film_title}: no team ID provided")
                 continue
-            dest_root = base_dir / f"{args.year}-{dir}"
+                
+            if not slug:
+                print(f"Skipping {film_title}: no slug provided")
+                continue
+            
+            # Construct URL directly from team ID - CSV is definitive
+            film_url = film_base_url + str(team_id)
+            
+            # Use slug directly from CSV for directory name
+            dest_root = base_dir / f"{args.year}-{slug}"
+            
+            print(f"Processing {film_title} (ID: {team_id}, Slug: {slug})")
+            print(f"  URL: {film_url}")
+            print(f"  Directory: {dest_root}")
 
             try:
-                images = download_images(session, film_url)
+                # Find upload URLs based on specific URL patterns
+                upload_urls = find_upload_urls(session, film_url)
             except Exception as exc:
-                print(f"Error fetching images for {film}: {exc}")
+                print(f"Error fetching images for {film_title}: {exc}")
                 continue
-            if not images:
-                print(f"No images found for {film}")
+            if not upload_urls:
+                print(f"No upload URLs found for {film_title}")
                 continue
 
-            counters: Dict[str, int] = {}
+            print(f"  Found {len(upload_urls)} upload URLs")
             
             # Prepare arguments for parallel processing
             download_tasks = []
-            for download_url, link_text in images:
-                download_tasks.append((film, download_url, link_text, dest_root, counters, args))
+            for upload_url, image_type in upload_urls:
+                download_tasks.append((film_title, upload_url, image_type, dest_root, args))
             
             if download_tasks:
-                print(f"Processing {len(download_tasks)} images for {film} with {args.workers} workers...")
+                print(f"Processing {len(download_tasks)} images for {film_title} with {args.workers} workers...")
                 
                 # Use ThreadPoolExecutor for parallel downloads
                 with ThreadPoolExecutor(max_workers=args.workers) as executor:
