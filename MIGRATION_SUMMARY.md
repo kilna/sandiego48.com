@@ -10,7 +10,7 @@ Successfully migrated film directories from old `dir` field to new `slug` field 
 - Updated all team entries with new slug values
 
 ### 2. Directory Renaming
-The following 5 directories were successfully renamed to remove the "the-" prefix:
+The following 6 directories were successfully renamed to remove the "the-" prefix and correct other naming issues:
 
 | Old Directory Name | New Directory Name |
 |-------------------|-------------------|
@@ -19,6 +19,7 @@ The following 5 directories were successfully renamed to remove the "the-" prefi
 | `2025-the-k-concern-tango-of-the-unseen` | `2025-k-concern-tango-of-the-unseen` |
 | `2025-the-super-pas-dystopian-cowboys` | `2025-super-pas-dystopian-cowboys` |
 | `2025-the-underdogs-crimson-hour` | `2025-underdogs-crimson-hour` |
+| `2025-k-concern-tango-of-the-unseen` | `2025-k-concern-tango-for-the-unseen` |
 
 ### 3. Image Migration
 - All images from old redirect directories were moved to new slug-based directories
@@ -33,6 +34,8 @@ A `static/_redirects` file was created for production deployments:
 - `/films/the-k-concern-tango-of-the-unseen` → `/films/k-concern-tango-of-the-unseen`
 - `/films/the-super-pas-dystopian-cowboys` → `/films/super-pas-dystopian-cowboys`
 - `/films/the-underdogs-crimson-hour` → `/films/underdogs-crimson-hour`
+- `/films/hipponymous-r3n3gad3s` → `/films/hippononymous-r3n3gad3s`
+- `/films/k-concern-tango-of-the-unseen` → `/films/k-concern-tango-for-the-unseen`
 
 **Note**: This file is compatible with Cloudflare Pages, Netlify, and other hosting platforms that support `_redirects` files.
 
