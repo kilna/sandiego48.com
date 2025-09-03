@@ -24,7 +24,7 @@ def get_available_images(film_dir: Path) -> List[str]:
 
 def prioritize_image(image_files: List[str]) -> Optional[str]:
     """
-    Prioritize images: poster first, then still, then BTS.
+    Prioritize images: poster first, then still. BTS images are excluded from main image selection.
     Returns the best image filename or None if no suitable image.
     """
     if not image_files:
@@ -44,15 +44,9 @@ def prioritize_image(image_files: List[str]) -> Optional[str]:
         still_files.sort(key=lambda x: int(re.search(r'still-(\d+)', x).group(1)) if re.search(r'still-(\d+)', x) else 0)
         return still_files[0]
     
-    # Look for BTS images third
-    bts_files = [f for f in image_files if f.startswith('bts-')]
-    if bts_files:
-        # Sort by number to get the first BTS
-        bts_files.sort(key=lambda x: int(re.search(r'bts-(\d+)', x).group(1)) if re.search(r'bts-(\d+)', x) else 0)
-        return bts_files[0]
-    
-    # If no categorized images, return the first image file
-    return image_files[0]
+    # BTS images are excluded from main image selection
+    # If no poster or still images, return None to use placeholder
+    return None
 
 
 def update_film_image(film_dir: Path, dry_run: bool = False) -> bool:
@@ -69,13 +63,18 @@ def update_film_image(film_dir: Path, dry_run: bool = False) -> bool:
     with open(index_file, 'r') as f:
         content = f.read()
     
+    # Get available images first
+    available_images = get_available_images(film_dir)
+    
     # Check if it already has a non-placeholder image
     if 'image:' in content and 'placeholder-poster' not in content:
-        print(f"  {film_dir.name}: Already has non-placeholder image")
-        return False
+        # Check if it's using a BTS image (which we don't want for main image)
+        if available_images and any(f'image: "{img}"' in content for img in available_images if img.startswith('bts-')):
+            print(f"  {film_dir.name}: Currently using BTS image, will update")
+        else:
+            print(f"  {film_dir.name}: Already has non-placeholder image")
+            return False
     
-    # Get available images
-    available_images = get_available_images(film_dir)
     if not available_images:
         print(f"  {film_dir.name}: No images found")
         return False
@@ -83,8 +82,22 @@ def update_film_image(film_dir: Path, dry_run: bool = False) -> bool:
     # Choose the best image
     best_image = prioritize_image(available_images)
     if not best_image:
-        print(f"  {film_dir.name}: Could not determine best image")
-        return False
+        # No suitable image found, should use placeholder
+        if 'placeholder-poster' in content:
+            print(f"  {film_dir.name}: No suitable image, using placeholder (correct)")
+            return False
+        else:
+            # Update to use placeholder
+            new_content = re.sub(r'image: "[^"]*"', 'image: "placeholder-poster.png"', content)
+            if new_content != content:
+                if dry_run:
+                    print(f"  {film_dir.name}: Would update to placeholder (no suitable image)")
+                else:
+                    with open(index_file, 'w') as f:
+                        f.write(new_content)
+                    print(f"  {film_dir.name}: Updated to placeholder (no suitable image)")
+                return True
+            return False
     
     # Check if the image is already set correctly
     if f'image: "{best_image}"' in content:

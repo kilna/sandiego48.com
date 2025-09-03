@@ -1,6 +1,6 @@
 ---
 title: "Where I Left You"
-image: "bts-1.jpg"
+image: "placeholder-poster.png"
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
