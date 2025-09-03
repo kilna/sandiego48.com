@@ -4,6 +4,7 @@ Update film index.md files to use downloaded images instead of placeholders.
 
 This script scans all film directories and updates the image field in index.md
 files to use the most appropriate downloaded image (poster first, then still, then placeholder).
+BTS (behind-the-scenes) images are excluded from main image selection as they are supplementary content.
 """
 
 import os
