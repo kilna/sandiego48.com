@@ -1,0 +1,234 @@
+baseURL: https://sandiego48.com
+title: San Diego 48 Hour Film Project
+languageCode: en-us
+
+# Modern Hugo Configuration
+enableGitInfo: true
+enableRobotsTXT: true
+enableEmoji: true
+
+# Performance optimizations
+timeout: "30s"
+enableInlineShortcodes: true
+
+# Exclude files/dirs from processing and publication
+ignoreFiles:
+  - '\\.af(photo|design)$'
+  - '^scripts/'
+  - '^source/'
+  - '(^|/)\\.'
+  - '~$'
+
+
+
+# Asset processing
+imaging:
+  resampleFilter: "CatmullRom"
+  quality: 85
+  anchor: "Smart"
+
+# Taxonomies configuration
+taxonomies:
+  role: roles
+  screening_group: screening_groups
+  screening_event: screening_events
+
+# Markup configuration
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    parser:
+      attribute:
+        block: true
+  highlight:
+    style: "github"
+    lineNos: false
+    tabWidth: 2
+
+params:
+  description: "San Diego 48 Hour Film Project - Make a film in 48 hours!"
+  canonical_url: https://sandiego48.com
+  author: "Kilna, Anthony"
+  header_bg: header_bg.jpg
+  logo: logo_trans_glow.png
+  #
+  #banner:
+  #  image: images/tickets-banner.png
+  #  image_mobile: images/tickets-banner-fat.png
+  #  url: /go/tickets
+  #  alt: "Tickets On Sale Now!"
+  facebook: sd48hfp
+  twitter: sd48hfp
+  instagram: sd48hfp
+  tiktok: sd48hfp
+  threads: sd48hfp
+  youtube: sd48hfp
+  facebook_group: sandiego48hfp
+  discord_server: San Diego 48 Hour Film Project
+  discord_server_invite: https://discord.gg/hMMTY5PSXD
+  site_link_text: SanDiego48.com
+  email: sandiego@48hourfilm.com
+  phone: +1-619-48-321-48
+  phone_can_text: true
+  copyright: Cine Diego LLC
+  copyright_url: https://cinediego.com
+  registration:
+    early:
+      start: "2025-05-01T00:00:00-07:00"
+      end:  "2025-07-23T23:59:59-07:00"
+      price: 158
+    regular:
+      start: "2025-07-22T00:00:00-07:00"
+      end:  "2025-08-05T23:59:59-07:00"
+      price: 178
+    late:
+      start: "2025-08-05T00:00:00-07:00"
+      end:  "2025-08-15T00:00:00-07:00"
+      price: 198
+  countdowns:
+    - default: "Not long"
+      suffix: "until premiere screenings..."
+      date: "2025-09-09T17:30:00-07:00"
+      show_after: "2025-08-22T00:00:00-07:00"
+      show_before: "2025-09-17T17:30:00-07:00"
+    #- default: "Not long"
+    #  suffix: "until this year's competition..."
+    #  date: "2025-08-15T19:00:00-07:00"
+    #  show_after: "2025-08-05T00:00:00-07:00"
+    #  show_before: "2025-08-15T19:00:00-07:00"
+    #  button:
+    #    text: "Register Your Team Now!"
+    #    url: /go/register
+    #    icon: register
+    #    icon_position: right
+    #- default: "Not long"
+    #  suffix: "left for early bird registration..."
+    #  date: "2025-07-22T23:59:59-07:00"
+    #  show_after: "2025-07-10T00:00:00-07:00"
+    #  show_before: "2025-07-22T23:59:59-07:00"
+    #  button_prefix: "Prices go up soon!"
+    #  button:
+    #    text: "Register Your Team Now!"
+    #    url: /go/register
+    #    icon: register
+    #    icon_position: right
+    #- default: "Not long"
+    #  suffix: "until late registration..."
+    #  date: "2025-08-05T23:59:59-07:00"
+    #  show_after: "2025-07-23T00:00:00-07:00"
+    #  show_before: "2025-08-05T23:59:59-07:00"
+    #  button_prefix: "Prices increase soon!"
+    #  button:
+    #    text: "Register Your Team Now!"
+    #    url: /go/register
+    #    icon: register
+    #    icon_position: right
+outputs:
+  page: ["HTML", "plain", "simple"]
+  home: ["HTML"]
+  section: ["HTML"]
+  taxonomy: ["HTML"]
+  term: ["HTML"]
+
+outputFormats:
+  plain:
+    mediaType: "text/plain"
+    baseName: "plain"
+    isPlainText: true
+    permalinkable: false
+  simple:
+    mediaType: "text/html"
+    baseName: "simple"
+    isPlainText: false
+    permalinkable: false
+
+mediaTypes:
+  "text/plain":
+    suffixes: ["txt"]
+
+menus:
+  main:
+  - identifier: events
+    weight: 1
+    name: Screenings & Events
+    url: /events
+    params:
+      target: _self
+      icon: calendar
+  - identifier: films
+    weight: 10
+    name: Films
+    url: /films
+    params:
+      target: _self
+      icon: film
+  - identifier: tickets
+    weight: 20
+    name: Get Tickets
+    url: /go/tickets
+    params:
+      target: _blank
+      class: "glow pulse"
+      icon: ticket
+  - identifier: find-us-online
+    weight: 40
+    name: Find Us Online
+    url: /links#online
+    params:
+      target: _blank
+      icon: globe
+  - identifier: subscribe
+    weight: 50
+    name: Subscribe to Newsletter
+    url: /go/newsletter
+  footer:
+  - identifier: about
+    weight: 20
+    name: About
+    url: /#about
+    params:
+      target: _self
+      icon: question
+  - identifier: get-started
+    weight: 30
+    name: Get Started
+    url: /get-started
+    params:
+      target: _self
+      icon: star
+  - identifier: people
+    weight: 35
+    name: SD 48 Talent
+    url: /people
+    params:
+      target: _self
+      icon: director
+  - identifier: find-us-online
+    weight: 40
+    name: Find Us Online
+    url: /links#online
+    params:
+      target: _blank
+      icon: globe
+  - identifier: join-community
+    weight: 50
+    name: Join Our Community
+    url: /links#community
+    params:
+      target: _blank
+      icon: group
+  - identifier: follow-social
+    weight: 60
+    name: Follow Us On Social Media
+    url: /links#socials
+    params:
+      target: _blank
+      icon: heart
+  - identifier: contact-us
+    weight: 70
+    name: Contact Us
+    url: /links#contact
+    params:
+      target: _blank
+      icon: contact

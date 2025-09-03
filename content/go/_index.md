@@ -1,0 +1,4 @@
+---
+title: Redirects
+layout: go
+---

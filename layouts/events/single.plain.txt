@@ -1,0 +1,87 @@
+{{ partial "layout/plaintext.txt" (.Title | htmlUnescape) | upper }}
+——————————
+
+{{ partial "layout/plaintext.txt" .Summary }}
+
+{{ if .Params.tickets_url }}
+TICKETS 🎫
+   Buy Tickets at {{ .Site.Params.canonical_url }}{{ .RelPermalink }}
+{{ end }}
+
+WHEN  ⏳ {{ with partial "content/event-timespan.html" (
+              dict
+                "start_time" (time.AsTime .Params.event_start)
+                "end_time" (time.AsTime .Params.event_end)
+                "plain" true
+        ) -}}
+        {{ . | replaceRE "\n" "\n        " | strings.TrimLeft " \t\n" }}
+        {{- end }}
+
+WHERE 🌐 {{ .Params.location_name }}
+         {{ partial "layout/plaintext.txt" .Params.location_address }}
+{{- $map_url := partial "components/google-maps-url.html" (dict "map_url" .Params.location_map_url "address" .Params.location_address) }}{{- if $map_url }}
+         Google Map 📍
+         {{ $map_url }}
+{{- if .Params.location_details }}
+
+         Location Details
+         {{ partial "layout/plaintext.txt" .Params.location_details -}}
+{{ end }}
+{{ end }}
+{{ partial "layout/plaintext.txt" .Content }}
+{{- $event_slug := path.Base .RelPermalink }}
+{{- $all_films := where .Site.Pages "Section" "films" }}
+{{- $films := where $all_films "Params.screening_events" "intersect" (slice $event_slug) }}
+{{- $films = sort $films "Params.order" }}
+{{- if $films }}
+
+FILMS 🎬
+{{ range $films }}
+  {{ .Title }}{{ with .Params.team }} — by {{ . }}{{ end -}}
+{{ end -}}
+{{ end -}}
+{{ if .Params.notes }}
+
+IMPORTANT DETAILS ✍️
+{{- range .Params.notes }}
+  • {{ . }}
+{{- end -}}
+{{- end -}}
+
+{{ if .Params.schedule }}
+
+SCHEDULE 📅
+{{ range .Params.schedule }}
+  {{ $start := time.AsTime .start -}}
+{{- if .end -}}
+  {{ $end := time.AsTime .end -}}
+  {{ $start.Format "3:04pm" }} - {{ $end.Format "3:04pm" -}}
+{{- else -}}
+  {{ $start.Format "3:04pm" }}
+{{- end -}}
+{{- with .name }} - {{ . }}{{ end -}}
+{{- with .details }}
+    {{ . | plainify | htmlUnescape }}{{ end }}
+{{ end }}
+{{ end -}}
+LINKS 🔗
+
+➡️ Event Details:
+   {{ .Site.Params.canonical_url }}{{ .RelPermalink }}
+{{- if .Params.facebook_event_url }}
+👍 RSVP on Facebook:
+   {{ .Params.facebook_event_url }}
+{{- end -}}
+{{- if .Params.calendarlink_url }}
+🗓 Add To Calendar:
+   {{ .Params.calendarlink_url }}
+{{- end }}
+
+FIND OR FOLLOW US ONLINE ❤️
+
+{{ partial "layout/online.txt" . }}
+
+{{ if .Params.org_info -}}
+{{ partial "layout/plaintext.txt" .Params.org_info }}
+{{ end }}
+🧠 Learn more at {{ .Site.Params.canonical_url }}

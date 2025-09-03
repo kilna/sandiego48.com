@@ -1,0 +1,145 @@
+<style>
+.sponsors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--48-orange);
+  background: radial-gradient(
+    ellipse at top,
+    var(--48-purple-dark) 0%,
+    var(--48-black) 100%
+  );
+  margin: 0;
+  padding: 0.75em;
+  font-size: 0.75em;
+}
+
+.sponsors .sponsors-title {
+  font-weight: 200;
+  color: var(--48-orange);
+  margin: 0 0 0.5em 0;
+  text-align: center;
+  filter: drop-shadow(0px 0px 0.2em rgba(255, 255, 255, 0.8));
+}
+
+.sponsors .sponsors-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  margin: 0 0 0.5em 0;
+}
+
+.sponsors .sponsors-logos img {
+  height: 3em;
+  width: auto;
+  object-fit: contain;
+  border-radius: 0.5em;
+  transition: transform 0.3s ease;
+  border: 0.1em solid var(--48-orange-trans-less);
+  filter: drop-shadow(0px 0px 0.25em rgba(255, 255, 255, 0.25));
+}
+
+.sponsors .sponsors-logos img:hover {
+  transform: scale(1.1);
+}
+
+.sponsors .sponsors-logos.featured img {
+  height: 5em;
+}
+</style>
+
+<section class="sponsors" id="{{ partial "components/entry-id.html" . }}">
+  {{- $partners := where .Site.Pages "Section" "partners" -}}
+  {{- $publishedPartners := where $partners "Draft" false -}}
+  {{- /* Only include current partners (default true; when explicitly false, exclude) */ -}}
+  {{- $currentPartners := where $publishedPartners "Params.current" "!=" false -}}
+  {{- $sponsors := where $currentPartners "Params.partner_type" "sponsor" -}}
+  {{- /* Treat either level: featured or featured: true as featured */ -}}
+  {{- $featuredByLevel := where $sponsors "Params.level" "featured" -}}
+  {{- $featuredByFlag := where $sponsors "Params.featured" true -}}
+  {{- $featuredSponsors := union $featuredByLevel $featuredByFlag -}}
+  {{- /* Regular sponsors are those not marked featured by level or flag */ -}}
+  {{- $nonLevelFeatured := where $sponsors "Params.level" "!=" "featured" -}}
+  {{- $regularSponsors := where $nonLevelFeatured "Params.featured" "!=" true -}}
+  {{- if $sponsors -}}
+    <div class="sponsors-title">{{ .Site.Title }} is Proud to be Sponsored by</div>
+    
+    {{- /* Display featured sponsors with large logos first */ -}}
+    {{- if $featuredSponsors -}}
+      <div class="sponsors-logos featured">
+        {{- range $featuredSponsors -}}
+          {{- $sponsor := . -}}
+          {{- $sponsorImage := "" -}}
+          
+          {{- /* Try wide image; if missing or not found, fall back to square image */ -}}
+          {{- if .Params.image_wide -}}
+            {{- $sponsorImage = .Resources.Get .Params.image_wide -}}
+          {{- end -}}
+          {{- if not $sponsorImage -}}
+            {{- if .Params.image -}}
+              {{- $sponsorImage = .Resources.Get .Params.image -}}
+            {{- end -}}
+          {{- end -}}
+          
+          {{- if $sponsorImage -}}
+            {{- /* Resize featured sponsor images, but skip SVG files */ -}}
+            {{- if and $sponsorImage.MediaType (ne $sponsorImage.MediaType.SubType "svg") -}}
+              {{- $resizedImage := $sponsorImage.Resize "200x" -}}
+              <a href="/partners#{{ partial "components/entry-id.html" . }}">
+                <img src="{{ $resizedImage.RelPermalink }}" alt="{{ .Title }}" title="{{ .Title }}" />
+              </a>
+            {{- else -}}
+              <a href="/partners#{{ partial "components/entry-id.html" . }}">
+                <img src="{{ $sponsorImage.RelPermalink }}" alt="{{ .Title }}" title="{{ .Title }}" />
+              </a>
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      </div>
+    {{- end -}}
+    
+    {{- /* Display regular sponsors with small logos */ -}}
+    {{- if $regularSponsors -}}
+      <div class="sponsors-logos">
+        {{- range $regularSponsors -}}
+          {{- $sponsor := . -}}
+          {{- $sponsorImage := "" -}}
+          
+          {{- /* Try wide image; if missing or not found, fall back to square image */ -}}
+          {{- if .Params.image_wide -}}
+            {{- $sponsorImage = .Resources.Get .Params.image_wide -}}
+          {{- end -}}
+          {{- if not $sponsorImage -}}
+            {{- if .Params.image -}}
+              {{- $sponsorImage = .Resources.Get .Params.image -}}
+            {{- end -}}
+          {{- end -}}
+          
+          {{- if $sponsorImage -}}
+            {{- /* Resize regular sponsor images, but skip SVG files */ -}}
+            {{- if and $sponsorImage.MediaType (ne $sponsorImage.MediaType.SubType "svg") -}}
+              {{- $resizedImage := $sponsorImage.Resize "120x" -}}
+              <a href="/partners#{{ partial "components/entry-id.html" . }}">
+                <img src="{{ $resizedImage.RelPermalink }}" alt="{{ .Title }}" title="{{ .Title }}" />
+              </a>
+            {{- else -}}
+              <a href="/partners#{{ partial "components/entry-id.html" . }}">
+                <img src="{{ $sponsorImage.RelPermalink }}" alt="{{ .Title }}" title="{{ .Title }}" />
+              </a>
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      </div>
+    {{- end -}}
+
+    {{ partial "components/button.html" (dict
+      "text" "Contact Us to Become a Sponsor"
+      "url" "/links#contact"
+      "icon" "heart"
+      "class" "right"
+    ) }}
+  {{- end -}}
+</section>

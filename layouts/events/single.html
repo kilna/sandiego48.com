@@ -1,0 +1,367 @@
+{{ define "head" }}
+  {{- partial "head.html" . -}}
+  {{- partial "layout/stylesheet.html" "events" -}}
+  {{- partial "layout/stylesheet.html" "infoblock" -}}
+{{ end }}
+
+{{ define "title" }}
+{{- partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "ShowSiteTitle" true
+) -}}
+{{ end }}
+
+{{ define "main" }}
+<div class="event">
+
+  <div class="event-content">
+    {{- partial "components/responsive-img.html" (dict
+        "ctx" .
+        "name" "image"
+        "class" "event-image"
+        "image_mobile" "image_square"
+        "image_desktop" "image_wide"
+        "resize" "x640"
+        "resize_desktop" "x1024"
+        ) -}}
+  
+    {{/* Add countdown timer below image if tickets are available */}}
+    {{ if .Params.tickets_url }}
+    {{ $start_time := time.AsTime .Params.event_start -}}
+    {{ $end_time := time.AsTime .Params.event_end -}}
+    {{ $start_time_formatted := $start_time.Format "2006-01-02T15:04:05-07:00" -}}
+    {{ $end_time_formatted := $end_time.Format "2006-01-02T15:04:05-07:00" -}}
+    
+    <div style="text-align: center; margin: 1rem 0;">
+      {{- partial "components/countdown.html" (dict
+          "date" $start_time_formatted
+          "end_date" $end_time_formatted
+          "prefix_date" true
+          "default" "Loading..."
+          "show_before" $start_time_formatted
+      ) -}}
+    </div>
+    {{ end }}
+
+    {{ .Content }}
+    
+    {{/* Get films for this event using the page slug */}}
+    {{ $event_slug := path.Base .RelPermalink }}
+    {{ $all_films := where .Site.Pages "Section" "films" }}
+    {{ $films := where $all_films "Params.screening_events" "intersect" (slice $event_slug) }}
+    {{/* Sort by order, handling potential string/int conversion */}}
+    {{ $films = sort $films "Params.order" }}
+    
+    {{ if $films }}
+    <div class="films-section">
+      <h2>Featured Films</h2>
+      <div class="films-grid">
+        {{ range $films }}
+        <div class="film-item" data-order="{{ .Params.order | default 999 }}">
+          <div class="film-poster-container">
+            <a href="{{ .RelPermalink }}" class="film-poster-link">
+              {{ $film_image := "" }}
+              {{ if .Params.image }}
+                {{ $film_image = .Resources.Get .Params.image }}
+              {{ end }}
+              {{ if $film_image }}
+                {{ if and $film_image.MediaType (ne $film_image.MediaType.SubType "svg") }}
+                  {{ $film_image = $film_image.Fit "200x300" }}
+                {{ end }}
+                <img src="{{ $film_image.RelPermalink }}" alt="{{ .Title }}" class="film-poster" />
+              {{ else }}
+                {{ $placeholder := resources.Get "images/placeholder-poster.png" }}
+                {{ with $placeholder }}
+                  {{ $placeholder_resized := .Fit "200x300" }}
+                  <img src="{{ $placeholder_resized.RelPermalink }}" alt="{{ $.Title }} poster" class="film-poster placeholder-image" />
+                {{ end }}
+              {{ end }}
+            </a>
+          </div>
+          <div class="film-info">
+            <h3 class="film-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            <p class="film-team"><em>by <a href="{{ .RelPermalink }}">{{ .Params.team }}</a></em></p>
+            {{ if .Params.logline }}
+              <p class="film-logline"><strong>{{ .Params.logline }}</strong></p>
+            {{ end }}
+            {{ if .Params.synopsis }}
+              <div class="film-synopsis">{{ .Params.synopsis | markdownify }}</div>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    
+
+    {{ end }}
+
+    {{ if .Params.org_info }}
+    {{ .Params.org_info | markdownify }}
+    {{ end }}
+  </div>
+
+  <div class="infoblock">
+    {{ if .Params.tickets_url -}}
+    {{ $event_end := time.AsTime .Params.event_end -}}
+    <div class="visible-to-{{ $event_end.Format "2006-01-02T15:04:05-07:00" }} desktop-only">
+    {{- partial "components/button.html" (dict
+      "url" .Params.tickets_url
+      "text" "Buy Tickets"
+      "icon" "ticket"
+    ) -}}
+    </div>
+    {{ end -}}
+    
+    {{ if .Params.facebook_event_url -}}
+    {{- partial "components/button.html" (dict
+      "url" .Params.facebook_event_url
+      "text" "RSVP to Facebook Event"
+      "icon" "facebook"
+    ) -}}
+    {{ end -}}
+    
+    <h3>Schedule</h3>
+    {{ if .Params.schedule }}
+      {{/* Detailed schedule */}}
+      <div class="detailed-schedule">
+        {{ range .Params.schedule }}
+          <div class="schedule-item">
+            <div class="schedule-content">
+              <div class="schedule-name">{{ .name }}</div>
+              {{ $start_time := time.AsTime .start }}
+              <div class="schedule-time">
+                {{ if .end }}
+                  {{ $end_time := time.AsTime .end }}
+                  {{ $start_time.Format "3:04pm" }} - {{ $end_time.Format "3:04pm" }}
+                {{ else }}
+                  {{ $start_time.Format "3:04pm" }}
+                {{ end }}
+              </div>
+              {{ if .details }}
+                <div class="schedule-details">{{ .details }}</div>
+              {{ end }}
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    {{ else }}
+      {{/* Fallback to simple start/end time */}}
+      {{ $start_time := time.AsTime .Params.event_start -}}
+      {{ $end_time := time.AsTime .Params.event_end -}}
+      {{ partial "content/event-timespan.html" (dict
+      "start_time" $start_time
+      "end_time" $end_time
+      ) }}
+    {{ end }}
+    {{ if .Params.calendarlink_url -}}
+      {{- partial "components/button.html" (dict
+        "url" .Params.calendarlink_url
+        "text" "Add to Calendar"
+        "icon" "calendar"
+      ) -}}
+    {{ end -}}
+    
+    <h3>Location</h3>
+    {{ if .Params.location_image -}}
+      {{ $logo := .Resources.Get .Params.location_image -}}
+      {{ if $logo -}}
+        {{ if and $logo.MediaType (ne $logo.MediaType.SubType "svg") -}}
+          {{ $logo = $logo.Resize "250x" -}}
+        {{ end -}}
+        {{ if .Params.location_url }}<a href="{{ .Params.location_url }}">{{ end -}}
+          <img src="{{ $logo.RelPermalink }}"/>
+        {{ if .Params.location_url }}</a>{{ end -}}
+      {{ end -}}
+    {{ end -}}
+    {{ if .Params.location_name -}}
+      
+      <h4>
+      {{ if .Params.location_url -}}
+        <a href="{{ .Params.location_url }}">{{ .Params.location_name }}</a>
+      {{ else -}}
+        {{ .Params.location_name }}
+      {{ end -}}
+      </h4>
+      {{- partial "components/button-list.html" (dict
+        "class" "social"
+        "show_text" false
+        "buttons" .Params.location_socials
+      ) -}}
+      {{ if .Params.location_details -}}
+        <p>{{ .Params.location_details }}</p>
+      {{ end -}}
+      {{- partial "components/button-list.html" (dict
+        "class" "links"
+        "show_text" true
+        "buttons" .Params.location_links
+      ) -}}
+    {{ end -}}
+    {{ if .Params.location_address -}}
+      {{ $map_url := partial "components/google-maps-url.html" (dict "map_url" .Params.location_map_url "address" .Params.location_address) -}}
+      <p>
+      {{ if $map_url -}}
+        <a href="{{ $map_url }}">{{ .Params.location_address }}</a>
+      {{ else -}}
+        {{ .Params.location_address }}
+      {{ end -}}
+      </p>
+    {{ end -}}
+    {{ $map_url := partial "components/google-maps-url.html" (dict "map_url" .Params.location_map_url "address" .Params.location_address) -}}
+    {{ if $map_url -}}
+      {{- partial "components/button.html" (dict
+        "url" $map_url
+        "text" "Google Map"
+        "icon" "location"
+      ) -}}
+    {{ end -}}
+    {{ if .Params.partner_name -}}
+    
+    <h3>Partner</h3>
+    {{ if .Params.partner_logo -}}
+      {{ $logo := .Resources.Get .Params.partner_logo -}}
+      {{ if $logo -}}
+        {{ if and $logo.MediaType (ne $logo.MediaType.SubType "svg") -}}
+          {{ $logo = $logo.Resize "250x" -}}
+        {{ end -}}
+        {{ if .Params.partner_url }}<a href="{{ .Params.partner_url }}">{{ end -}}
+          <img src="{{ $logo.RelPermalink }}"/>
+        {{ if .Params.partner_url }}</a>{{ end -}}
+      {{ end -}}
+    {{ end -}}
+    
+    <h4><a href="{{ .Params.partner_url }}">{{ .Params.partner_name }}</a></h4>
+    {{- partial "components/button-list.html" (dict
+      "class" "social"
+      "show_text" false
+      "buttons" .Params.partner_socials
+    ) -}}
+    {{ if .Params.partner_details -}}
+      <p>{{ .Params.partner_details | markdownify }}</p>
+    {{ end -}}
+    {{- partial "components/button-list.html" (dict
+      "class" "links"
+      "show_text" true
+      "collapse" false
+      "buttons" .Params.partner_links
+    ) -}}
+    {{ end -}}
+    
+    {{ if .Params.notes }}
+    <h3>Important Details</h3>
+    <ul>
+      {{ range .Params.notes }}
+        <li>{{ . }}</li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </div>
+
+</div>
+
+<style>
+/* Make Get Tickets button text larger on event pages */
+.event .infoblock .actions .button:has(.icon[title="Get Tickets"]) {
+  font-size: 2em !important;
+}
+
+/* Alternative selector if :has() not supported */
+.event .infoblock .actions .button[href*="tixtree"] {
+  font-size: 2em !important;
+}
+
+/* Hide desktop-only elements on mobile */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+/* Style countdown timer on event pages to match event list */
+.event-content .countdown {
+  margin: 0.5rem 0;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: 100;
+  letter-spacing: 0.03em;
+  background-color: var(--48-purple);
+  padding: 0.2em;
+  border-radius: 0.25em;
+  color: var(--48-white);
+  --clock-color: var(--48-orange);
+  border: 0.125em solid var(--48-black);
+  box-shadow: inset 0 0 0.5em var(--48-black);
+  display: block;
+  width: 100%;
+}
+
+/* Make infobox buy tickets button full-width with heading-sized text */
+.infoblock .button {
+  width: 100% !important;
+  font-size: 1.2em !important;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+/* Detailed schedule styling */
+.detailed-schedule {
+  margin: 0;
+}
+
+.schedule-item {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--48-lighten);
+}
+
+.schedule-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.schedule-content {
+  width: 100%;
+}
+
+.schedule-name {
+  font-weight: bold;
+  color: var(--48-darken-most);
+  margin-bottom: 0.25rem;
+}
+
+.schedule-time {
+  font-weight: bold;
+  color: var(--48-darken-more);
+  font-size: 0.9em;
+  margin-bottom: 0.5rem;
+}
+
+.schedule-details {
+  font-size: 0.85em;
+  color: var(--48-darken-more);
+  line-height: 1.4;
+}
+</style>
+
+{{/* Add big ticket button at end like homepage if tickets are available */}}
+{{ if .Params.tickets_url }}
+{{ $event_end := time.AsTime .Params.event_end -}}
+<div class="visible-to-{{ $event_end.Format "2006-01-02T15:04:05-07:00" }}">
+<hr/>
+<div style="text-align: center; margin: 2rem 0;">
+  <h2>Ready to Get Your Tickets?</h2>
+  <p>Don't miss out on this amazing event! Get your tickets now.</p>
+  {{ partial "components/button.html" (dict
+      "url" .Params.tickets_url
+      "class" "huge highlight glow pulse wide right"
+      "text" "Get Your Tickets Now!"
+      "icon" "ticket"
+      "target" "_blank"
+  ) }}
+</div>
+</div>
+{{ end }}
+
+{{ end }}

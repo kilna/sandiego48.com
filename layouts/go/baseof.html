@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+{{- block "head" . -}}
+<title>{{ .Site.Title }}</title>
+{{- end -}}
+</head>
+<body>
+{{- block "main" . -}}
+<p>Main content</p>
+{{- end -}}
+</body>
+</html>

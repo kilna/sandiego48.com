@@ -1,0 +1,15 @@
+.env
+.venv
+public/
+resources/
+external/
+static/images/ # Generated from assets/images by the Makefile
+.*.swp
+*.bak*
+.DS_Store
+Thumbs.db
+.hugo_build.lock
+hugo_stats.json
+.vscode/
+node_modules/
+

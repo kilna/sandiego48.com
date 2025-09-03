@@ -1,0 +1,31 @@
+<style>
+nav.main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  margin: 0;
+  background-color: var(--48-purple);
+  background: linear-gradient(
+    to right,
+    var(--48-black) 0%,
+    var(--48-purple-dark) 33%,
+    var(--48-purple-dark) 67%,
+    var(--48-black) 100%
+  );
+}
+</style>
+
+<nav class="main">
+  {{ range .Site.Menus.main -}}
+  {{ partial "components/button.html" (dict
+    "url" .URL
+    "text" .Name
+    "class" (printf "%s border right" (.Params.class | default ""))
+    "target" .Params.target
+    "icon" .Params.icon
+  ) -}}
+  {{- end }}
+</nav>

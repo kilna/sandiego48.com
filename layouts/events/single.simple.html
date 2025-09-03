@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body style="font-family: Roboto, sans-serif; max-width: 600px; margin: 0 auto; font-size: 16px;background-color: #69388e;">
+
+<div style="text-align: center; margin: 0; padding: 32px;background-color: #EDAD28;">
+  <h1 style="font-size: 1rem; margin: 0; color: #fff;">{{ .Title }}</h1>
+</div>
+
+<div style="background-color: #fff; margin: 0; padding: 30px;">
+
+<div>{{ .Summary | markdownify }}</div>
+
+<div>{{ .Content }}</div>
+
+{{/* Add films list if any are associated with this event */}}
+{{ $event_slug := path.Base .RelPermalink }}
+{{ $all_films := where .Site.Pages "Section" "films" }}
+{{ $films := where $all_films "Params.screening_events" "intersect" (slice $event_slug) }}
+{{ $films = sort $films "Params.order" }}
+{{ if $films }}
+<div style="margin: 1rem 0;">
+  <h3>Featured Films:</h3>
+  <ul style="margin: 0.5rem 0 0 1.25rem; padding: 0;">
+    {{ range $films }}
+      <li>{{ .Title }}{{ with .Params.team }} · <em>by {{ . }}</em>{{ end }}</li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}
+
+{{ if .Params.notes }}
+<p style="display: block; margin: 0.5rem 0;">Important Details ✍️</p>
+<ul style="margin: 0; padding-left: 1.5rem;">
+  {{ range .Params.notes }}
+    <li style="font-style: italic;">{{ . }}</li>
+  {{ end }}
+</ul>
+{{ end }}
+
+{{ if .Params.tickets_url }}
+<a href="{{ .Site.Params.canonical_url }}{{ .RelPermalink }}" style="display: block; margin: 1rem 0; font-size: 1.5rem;">
+Buy Tickets Now 🎫
+</a>
+{{ end }}
+
+<hr/>
+<h3>When ⏳</h3>
+
+<blockquote>
+  {{- partial "content/event-timespan.html" (
+    dict
+      "start_time" (time.AsTime .Params.event_start)
+      "end_time" (time.AsTime .Params.event_end)
+      "plain" true
+    ) -}}<br/>
+    {{ if .Params.calendarlink_url }}
+    <a href="{{ .Params.calendarlink_url }}">
+      Add to Calendar
+    </a> &nbsp; 📅
+    {{ end }}
+    </blockquote>
+
+{{ if .Params.schedule }}
+<h3>Schedule 📅</h3>
+<blockquote>
+{{ range .Params.schedule }}
+  <div style="margin-bottom: 1rem;">
+    {{ if .name }}<strong>{{ .name }}</strong><br/>{{ end }}
+    {{ $start_time := time.AsTime .start }}
+    {{ if .end }}
+      {{ $end_time := time.AsTime .end }}
+      {{ $start_time.Format "3:04pm" }} - {{ $end_time.Format "3:04pm" }}
+    {{ else }}
+      {{ $start_time.Format "3:04pm" }}
+    {{ end }}
+    {{ if .details }}<br/><em>{{ .details }}</em>{{ end }}
+  </div>
+{{ end }}
+</blockquote>
+{{ end }}
+
+<h3>Where 🌐</h3>
+
+<blockquote>
+<a href="{{ .Params.location_url }}">{{ .Params.location_name }}</a><br/>
+{{ if .Params.location_details -}}
+{{ .Params.location_details }}<br/>
+{{- end }}
+<br/>
+{{- .Params.location_address -}}
+{{ $map_url := partial "components/google-maps-url.html" (dict "map_url" .Params.location_map_url "address" .Params.location_address) }}{{ if $map_url }}<br/>
+<a href="{{ $map_url }}">
+  Google Map
+</a> &nbsp;📍
+{{ end }}
+</blockquote>
+
+<h3>Event Links 🔗</h3>
+
+<blockquote>
+➡️ <a href="{{ .Site.BaseURL }}{{ .RelPermalink }}">
+  Event Page at SanDiego48.com
+</a><br/>
+{{ if .Params.facebook_event_url }}
+👍 <a href="{{ .Params.facebook_event_url }}">
+  RSVP on Facebook
+</a><br/>
+{{ end }}
+</blockquote>
+
+<hr/>
+<h3>Find or Follow Us Online ❤️</h3>
+
+{{ partial "layout/online.html" . }}
+
+<br/>
+<br/>
+
+{{ with (.Resources.Get .Params.image) -}}
+  {{ with .Resize "600x q80" -}}
+  {{/* <img src="data:{{ .MediaType }};base64,{{ .Content | base64Encode }}" alt="{{ $.Title }}" style="margin: 1rem 0; border-radius: 0.5rem; max-width: 100%; height: auto;"/> */}}
+  <img src="{{ .Permalink }}" alt="{{ $.Title }}" style="margin: 1rem 0; border-radius: 0.5rem; max-width: 100%; height: auto;"/>
+  {{ end -}}
+{{ end -}}
+
+</div>
+
+</body>
+</html>

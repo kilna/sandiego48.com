@@ -1,0 +1,24 @@
+{{- $now := now -}}
+{{- $all_events := where .Site.RegularPages "Section" "events" -}}
+{{- $all_events = sort $all_events "Date" -}}
+{{- $upcoming_events := slice -}}
+
+{{- range $all_events -}}
+  {{- if .Params.event_end -}}
+    {{- $end_time := time.AsTime .Params.event_end -}}
+    {{- if $end_time.After $now -}}
+      {{- $upcoming_events = $upcoming_events | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if $upcoming_events -}}
+{{- partial "events/display.html" (dict
+    "events" $upcoming_events
+    "title" "Coming Events"
+    "wrapper_class" "coming-events"
+    "show_countdown" true
+    "show_actions" true
+    "show_visibility" true
+) -}}
+{{- end -}}

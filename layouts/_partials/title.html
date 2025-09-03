@@ -1,0 +1,177 @@
+{{- $bg := resources.Get (printf "images/%s" .Site.Params.header_bg) -}}
+<style>
+header.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 1em;
+  background: 
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.9) 100%
+    ),
+    url('{{ $bg.RelPermalink }}');
+  background-size: cover;
+  background-position: center 81%;
+  background-repeat: no-repeat;
+  background-color: var(--48-purple-dark);
+  border-radius: 0px;
+  box-shadow: inset 0 0 2em var(--48-black);
+}
+
+header.title div.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 180px;
+}
+
+header.title div.logo a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header.title div.logo img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 1));
+  vertical-align: middle;
+}
+
+header.title div.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+}
+
+header.title div.socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 180px;
+}
+
+header.title div.socials img {
+  width: 75%;
+  opacity: 0.8;
+  height: auto;
+  vertical-align: middle;
+  transition: all 0.5s ease;
+}
+
+
+header.title div.socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 1));
+}
+
+header.title div.socials a:hover img {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+header.title h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(1.5em, 4vw, 3.5em);
+  text-shadow: -2px  0px 1px var(--48-white),
+                2px  0px 1px var(--48-white),
+                0px -2px 1px var(--48-white),
+                0px  2px 1px var(--48-white),
+               -2px -2px 1px var(--48-white),
+                2px -2px 1px var(--48-white),
+               -2px  2px 1px var(--48-white),
+                2px  2px 1px var(--48-white),
+               -6px  6px 12px var(--48-black),
+                6px -6px 12px var(--48-black),
+               -6px -6px 12px var(--48-black),
+                6px  6px 12px var(--48-black);
+}
+
+header.title h1 div.subtitle {
+  font-size: 0.5em;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: -1px  0px 1px var(--48-white),
+                1px  0px 1px var(--48-white),
+                0px  1px 1px var(--48-white),
+                0px  1px 1px var(--48-white),
+               -1px -1px 1px var(--48-white),
+                1px -1px 1px var(--48-white),
+               -1px  1px 1px var(--48-white),
+                1px  1px 1px var(--48-white),
+               -6px  6px 12px var(--48-black),
+                6px -6px 12px var(--48-black),
+               -6px -6px 12px var(--48-black),
+                6px  6px 12px var(--48-black);
+}
+
+@media all and (max-width: 768px) {
+  header.title {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+  header.title div.logo,
+  header.title div.socials {
+    flex: 1;
+    width: auto;
+  }
+  header.title div.socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  header.title div.main {
+    flex: none;
+    width: 100%;
+    order: 3;
+  }
+  header.title div.logo img {
+    width: 180px;
+  }
+  header.title h1 {
+    font-size: clamp(1.5em, 10vw, 3.5em);
+  }
+
+}
+
+</style>
+<header class="title">
+<div class="logo">
+  {{- $logo := resources.Get (printf "images/%s" .Site.Params.logo) -}}
+  <a href="{{ .Site.BaseURL }}"><img class="pure-img" src="{{ $logo.RelPermalink }}" alt="{{ .Site.Title}} Logo"/></a>
+</div>
+<div class="main">
+<h1>
+{{- if .ShowSiteTitle | default true -}}
+<div class="subtitle">{{ .Site.Title }}</div>
+{{- end -}}
+{{ .Title | default .Site.Title }}
+{{- if isset .Params "subtitle" -}}
+<div class="subtitle">{{ .Params.subtitle | replaceRE "\n" "<br>" | safeHTML }}</div>
+{{- end -}}
+</h1>
+</div>
+<div class="socials">
+  {{- $socials := resources.Get "images/socials.png" -}}
+  <a href="/links#socials"><img src="{{ $socials.RelPermalink }}" alt="socials"/></a>
+</div>
+</header>

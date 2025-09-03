@@ -1,0 +1,17 @@
+{{/*
+  Generate a Google Maps URL from an address or return an explicit URL if provided
+  
+  Usage: partial "components/google-maps-url.html" (dict 
+    "map_url" .Params.location_map_url
+    "address" .Params.location_address
+  )
+*/}}
+{{- $map_url := .map_url -}}
+{{- $address := .address -}}
+
+{{- if $map_url -}}
+  {{- $map_url -}}
+{{- else if $address -}}
+  {{- $encoded_address := $address | replaceRE " " "%20" -}}
+  {{- printf "https://www.google.com/maps?q=%s" $encoded_address | safeURL -}}
+{{- end -}}

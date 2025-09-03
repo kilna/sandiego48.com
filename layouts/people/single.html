@@ -1,0 +1,133 @@
+{{ define "title" }}
+{{- partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "ShowSiteTitle" true
+) -}}
+{{ end }}
+
+{{ define "main" }}
+<article class="person-profile">
+  <div class="person-header">
+    <div class="person-headshot-large">
+      {{ if .Params.image }}
+        {{ with .Resources.Get .Params.image -}}
+          {{ $large := .Fill "600x800" -}}
+          {{ with $large }}
+            <img src="{{ .RelPermalink }}" alt="{{ $.Title }} headshot" />
+          {{ end -}}
+        {{- end }}
+      {{ else }}
+        {{ $placeholder := resources.Get "images/placeholder-silhouette.png" }}
+        {{ with $placeholder }}
+          {{ $large := .Fill "600x800" }}
+          <img src="{{ $large.RelPermalink }}" alt="{{ $.Title }} headshot" class="placeholder-image" />
+        {{ end }}
+      {{ end }}
+      
+      {{/* Image Credit - Show if person has image_credit parameter */}}
+      {{ if .Params.image_credit }}
+      <div class="person-image-credit">
+        {{ .Params.image_credit | markdownify }}
+      </div>
+      {{ end }}
+    </div>
+    <div class="person-details">
+      <h1>{{ .Title }}</h1>
+      {{ if .Params.roles }}
+        <div class="person-roles-large">
+          {{ range .Params.roles }}
+            <span class="role-tag-large">{{ . }}</span>
+          {{ end }}
+        </div>
+      {{ end }}
+      {{ with .Params.location }}<p class="person-location">📍 {{ . }}</p>{{ end }}
+      {{ with .Params.contact_email }}<p class="person-contact">✉️ <a href="mailto:{{ . }}">{{ . }}</a></p>{{ end }}
+      {{ with .Params.contact_phone }}<p class="person-contact">📞 <a href="tel:{{ . }}">{{ . }}</a></p>{{ end }}
+    </div>
+  </div>
+
+  <div class="person-content">
+    {{ .Content }}
+  </div>
+
+  {{/* Photo Gallery */}}
+  {{ $images := slice }}
+  {{ range .Resources }}
+    {{ if and (eq .ResourceType "image") (ne .Name "headshot.jpg") }}
+      {{ $images = $images | append . }}
+    {{ end }}
+  {{ end }}
+  
+  {{/* Resume Section - PDF Only */}}
+  {{ with .Resources.GetMatch "resume.pdf" }}
+  <div class="person-resume">
+    <h3>Resume</h3>
+    <div class="resume-container">
+      <a href="{{ .RelPermalink }}" target="_blank" class="resume-link">
+        <span class="resume-icon">📄</span>
+        View Resume (PDF)
+      </a>
+    </div>
+  </div>
+  {{ end }}
+
+  {{ if gt (len $images) 0 }}
+  <div class="person-gallery">
+    <h3>Photo Gallery</h3>
+    <div class="gallery-grid">
+      {{ range $images }}
+        {{ $thumb := .Fill "300x400" }}
+        {{ $large := .Fill "800x1200" }}
+        <div class="gallery-item">
+          <a href="{{ $large.RelPermalink }}" class="gallery-link" data-lightbox="person-gallery" data-title="{{ $.Title }}">
+            <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} photo" loading="lazy" />
+          </a>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+
+  {{ if .Params.open_auditions }}
+  <div class="person-auditions">
+    <h3>Audition History</h3>
+    {{ range $year, $audition := .Params.open_auditions }}
+    <div class="audition-year">
+      <h4>{{ $year }} Open Auditions</h4>
+      <div class="audition-details">
+        {{ with $audition.monologue }}
+          <p><strong>Monologue:</strong> {{ . }}</p>
+        {{ end }}
+        {{ with $audition.audition_number }}
+          <p><strong>Audition #:</strong> {{ . }}</p>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  {{ if .Params.credits }}
+  <div class="person-credits">
+    <h3>48HFP Credits</h3>
+    <ul>
+      {{ range .Params.credits }}
+      <li>{{ . }}</li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+
+  {{ if .Params.social }}
+  <div class="person-social">
+    <h3>Connect</h3>
+    <div class="social-links">
+      {{ range .Params.social }}
+      <a href="{{ .url }}" target="_blank" rel="noopener">{{ .platform }}</a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</article>
+{{ end }} 

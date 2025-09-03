@@ -1,0 +1,65 @@
+{{ if and (isset .Site.Params "countdowns") (gt (len .Site.Params.countdowns) 0) -}}
+<style>
+div.countdowns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em 0.5em 0.75em 0.5em;
+  background: radial-gradient(
+    ellipse at bottom,
+    var(--48-purple-dark) 0%,
+    var(--48-black) 100%
+  );
+}
+
+div.countdown {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  color: var(--48-orange);
+  border-radius: 0.25em;
+  font-weight: 600;
+  text-align: center;
+  gap: 0.25em;
+}
+
+.countdowns div.countdown {
+  font-size: 2em;
+}
+
+@keyframes countdown-button-highlight {
+  0%   { background-color: var(--48-orange); }
+  30%  { background-color: var(--48-purple-light); }
+  70% { background-color: var(--48-orange); }
+  100% { background-color: var(--48-orange); }
+}
+
+div.countdown a.button {
+  padding: 0.125em 0.25em;
+  font-size: 0.8em;
+  color: var(--48-black);
+  background-color: var(--48-orange);
+  animation-name: countdown-button-highlight;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.countdown-button .icon svg {
+  color: var(--48-black);
+}
+
+
+</style>
+<div class="countdowns">
+{{ range .Site.Params.countdowns -}}
+{{ partial "components/countdown.html" . -}}
+{{ end -}}
+{{ if .Site.Params.banner -}}
+{{ partial "banner.html" . -}}
+{{ end -}}
+</div>
+{{ end -}}

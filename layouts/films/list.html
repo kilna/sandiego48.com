@@ -1,0 +1,67 @@
+{{ define "head" }}
+  {{- partial "head.html" . -}}
+  {{- partial "layout/stylesheet.html" "people" -}}
+{{ end }}
+
+{{ define "title" }}
+{{- partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "ShowSiteTitle" true
+) -}}
+{{ end }}
+
+{{ define "main" }}
+{{ .Content }}
+
+
+
+<div class="people-grid">
+  {{ range .Data.Pages }}
+          <article class="film-card">
+        <div class="film-poster">
+          <a href="{{ .RelPermalink }}" class="film-poster-link">
+                    {{ $film_image := "" }}
+          {{ if .Params.image }}
+            {{ $film_image = .Resources.Get .Params.image }}
+          {{ end }}
+          {{ if $film_image }}
+            {{ if and $film_image.MediaType (ne $film_image.MediaType.SubType "svg") }}
+              {{ $film_image = $film_image.Fit "300x450" }}
+            {{ end }}
+            <img src="{{ $film_image.RelPermalink }}" alt="{{ .Title }} poster" />
+          {{ else }}
+            {{ $placeholder := resources.Get "images/placeholder-poster.png" }}
+            {{ with $placeholder }}
+              {{ $thumb := .Fit "300x450" }}
+              <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} poster" class="placeholder-image" />
+            {{ end }}
+          {{ end }}
+        </a>
+      </div>
+                      <div class="film-info">
+          <h3 class="film-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <p class="film-team">by <a href="{{ .RelPermalink }}">{{ .Params.team }}</a></p>
+          {{ if .Params.screening_groups }}
+            <div class="film-groups">
+              {{ range .Params.screening_groups }}
+                {{ $groupName := . }}
+                {{ if eq . "group-a" }}{{ $groupName = "Group A" }}{{ end }}
+                {{ if eq . "group-b" }}{{ $groupName = "Group B" }}{{ end }}
+                {{ if eq . "group-c" }}{{ $groupName = "Group C" }}{{ end }}
+                {{ if eq . "group-d" }}{{ $groupName = "Group D" }}{{ end }}
+                <span class="group-tag">{{ $groupName }}</span>
+              {{ end }}
+            </div>
+          {{ end }}
+          {{ if .Params.logline }}
+            <p class="film-logline">{{ .Params.logline }}</p>
+          {{ end }}
+        </div>
+    </article>
+  {{ end }}
+</div>
+
+
+
+{{ end }}

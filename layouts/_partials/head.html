@@ -1,0 +1,27 @@
+{{/* Modern SEO and Meta Tags */}}
+{{ partial "seo.html" . }}
+
+{{/* Development Cache Control */}}
+{{ if hugo.IsServer }}
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+{{ end }}
+
+{{/* Site-specific verification */}}
+<meta name="facebook-domain-verification" content="hb9s09smroq15gul1uvv8f566jusl7" />
+
+{{/* Page Title */}}
+<title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+
+{{/* Modern Asset Pipeline */}}
+{{ partial "assets.html" . }}
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17187636847">
+</script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-17187636847');
+</script>

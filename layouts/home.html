@@ -1,0 +1,233 @@
+{{ define "title" -}}
+{{ partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "Params" .Params
+    "ShowSiteTitle" false
+) }}
+{{ end }}
+
+{{ define "head" }}
+  {{- partial "head.html" . -}}
+  {{- partial "layout/stylesheet.html" "events" -}}
+{{ end }}
+
+{{ define "main" -}}
+<style>
+.index-video {
+  display: block;
+  float: right;
+  position: relative;
+  padding: 0;
+  margin: 0.75em 0 1em 1em;
+  width: 33%;
+  height: auto;
+  max-height: 80vh;
+  aspect-ratio: 9 / 16 !important;
+  background-color: var(--48-black);
+  border: 1px solid var(--48-black);
+  border-radius: 1em;
+  box-shadow: 0.25em 0.25em 0.5em 0 var(--48-black);
+}
+
+@media all and (max-width: 768px) {
+  .index-video {
+    float: none;
+    margin: 0.5em auto 2em auto;
+    width: calc(75vh * 9 / 16);
+    max-width: 85vw;
+    height: auto;
+    max-height: auto;
+    aspect-ratio: 9 / 16 !important;
+  }
+}
+
+.footnote {
+  font-style: italic;
+  font-size: 75%;
+  vertical-align: middle;
+}
+
+.index-box {
+  display: block;
+  background-color: var(--48-orange-trans);
+  background: linear-gradient(
+    135deg,
+    var(--48-orange-light) 0%,
+    var(--48-orange) 50%,
+    var(--48-orange-light) 100%
+  );
+  border: 0.25rem solid var(--48-orange);
+  padding: 0.5rem 1rem;
+  margin: 0.5em 0 1em 0;
+  border-radius: 0.5rem;
+  font-weight: 400;
+  box-shadow: 0.5rem 0.5rem 0.5rem 0 var(--48-darken-more);
+  overflow: auto;
+}
+
+.index p {
+  line-height: 1.25em;
+  margin: 0.5em 0;
+}
+
+
+.index em, .index strong {
+  font-weight: 600;
+}
+
+.index em, .index strong, .index li {
+  text-shadow: -0.1rem -0.1rem 0 var(--48-lighten-more),
+                0.1rem -0.1rem 0 var(--48-lighten-more),
+                -0.1rem  0.1rem 0 var(--48-lighten-more),
+                0.1rem  0.1rem 0 var(--48-lighten-more);
+}
+
+.index-elements {
+  background: linear-gradient(
+    45deg,
+    var(--48-orange-light) 0%,
+    var(--48-orange) 50%,
+    var(--48-orange-light) 100%
+  );
+  border: 0.25rem solid var(--48-orange);
+}
+
+.index-flex-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin: 1em 0;
+}
+
+.index-flex-boxes > div {
+  flex: 1 1 300px;
+  background: var(--48-orange);
+  background: linear-gradient(
+    95deg,
+    var(--48-orange) 0%,
+    var(--48-orange-light) 50%,
+    var(--48-orange) 100%
+  );
+  border: 0.1rem solid var(--48-purple);
+  padding: 0.5em 1em;
+  border-radius: 0.5rem;
+  font-weight: 400;
+  box-shadow: 0.5rem 0.5rem 0.5rem 0 var(--48-darken-more);
+  overflow: auto;
+}
+
+/* Force left alignment for narrow paragraphs */
+.index, .index-flex-boxes > div, .index-box {
+  container-type: inline-size;
+}
+
+.index a.button-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.125rem;
+  margin: 0;
+  padding: 0;
+}
+
+</style>
+
+<div class="index">
+
+{{ (.Site.GetPage "/events").Render "coming" -}}
+
+<iframe class="index-video"  frameborder="0"  allowfullscreen
+  referrerpolicy="strict-origin-when-cross-origin"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  src="https://www.youtube.com/embed/oB4M6NDAyZI?autoplay=1&mute=1&loop=1&playlist=oB4M6NDAyZI&controls=1&enablejsapi=1"
+  title="This is the 48 Hour Film Project!"></iframe>
+
+<h2 id="about">What is the 48 Hour Film Project?</h2>
+
+<div class="index-box">
+<p><strong>The 48 Hour Film Project</strong> is a creative competition fueled by
+a love of filmmaking. Teams are challenged to <em>make a movie in a
+weekend</em>, exercising mental and physical endurance, and building lifelong
+friendships and professional connections along the way.</p>
+</div>
+
+<p>Sometimes casually and unofficially shortened as <i>"The 48"</i>, it is the
+world's longest running and most popular timed filmmaking competition. Each year
+teams of <em>all skill levels, ages and demographics</em>, in over a hundred
+cities across the globe, compete to make a short film in just two days. Amateur
+and professional teams around the world make movies over a weekend, which are
+later given a premier in a real theater. <strong>San Diego's 2025 competition took
+place August 15-17th.</strong></p>
+
+<div class="index-box index-elements">
+<p>The weekend of the competition begins with each team assigned a <strong>random
+movie genre</strong> by chance.</p>
+<p>Additionally, all teams must include in their films:</p>
+<ul>
+<li>
+  A character name and occupation</br>
+  <i>This year's was <b>Kim or Kevin Kolliver, Hotel Employee</b></i>
+</li>
+<li>
+  A line of dialog<br/>
+  <i>This year's was <b>"I know it's hard, but you have to try"</b><br/>
+  ...or <b>"I know it is hard, but you have to try"</b></i>
+</li>
+<li>
+  A prop<br/>
+  <i>This year's was <b>a slice of pizza</b>... yum!</i>
+</li>
+</ul>
+<p style="text-align: right;"><em>...and they only found out when the competition
+started!</em></p>
+</div>
+
+<p><em>Completed movies are given a Hollywood-style premiere</em> in a
+real movie theater packed with attendees. The audience selects an Audience
+Choice winner by voting. Then, all qualifying on-time films are considered
+for film festival judging.</p>
+
+<p>The best films are honored at the 48's own "Best Of San Diego" screening and
+Academy Awards inspired ceremony, with many categories for recognition. The
+jury-awarded best film in San Diego goes on to compete in the 48 Hour Film
+Project's Filmapalooza, an international celebration and competition between
+city winners. Later, <em>select winners are shown at the Cannes Film Festival
+(yes, <strong>that</strong> Cannes) Short Film Corner</em>.</p>
+
+<hr class="clear"/>
+
+<hr/>
+<h2>Get Connected, Stay In The Loop!</h2>
+<p>Join our newsletter to get the latest news and updates about the 48! We
+  announce all coming events, special promotions, and anything else 48-related
+  via email.</p>
+{{ partial "components/button.html" (dict
+    "url" "/go/newsletter"
+    "class" "huge highlight glow pulse wide right"
+    "text" "Sign Up For Our Newsletter"
+    "icon" "newsletter"
+) }}
+<p>The most active online community for the San Diego 48 is our Facebook group. 
+  If you're on Facebook, you should join it, and you should also follow our
+  <a href="{{ .Scratch.Get "facebook_url" }}">Facebook page</a>!</p>
+{{ partial "components/button.html" (dict
+    "url" (.Scratch.Get "facebook_group_url")
+    "class" "huge wide right"
+    "text" "Join Our Facebook Group"
+    "icon" "group"
+) }}
+<div class="bordered center" style="background-color: var(--48-orange);">
+<p>If you're on social media, make sure to connect with us!</p>
+{{ partial "components/common-buttons.html" (dict
+    "button_class" "social"
+    "show_text" true
+    "collapse" true
+    "Site" .Site
+    "Page" .
+) }}
+</div>
+
+</div>
+{{ end }}

@@ -1,0 +1,21 @@
+{{- $content := . -}}
+{{- if $content -}}
+  {{- /* Remove unwanted markdown formatting */ -}}
+  {{- $content = plainify $content -}}
+  {{- /* Unescape anything plainify might have introduced */ -}}
+  {{- $content = htmlUnescape $content -}}
+  {{- $content = replaceRE `\n` "\n\n" $content -}}
+  {{- $content = replaceRE `\*\*([^*]+)\*\*` "${1}" $content -}}
+  {{- $content = replaceRE `_([^_]+)_` "${1}" $content -}}
+  {{- $content = replaceRE `__([^_]+)__` "${1}" $content -}}
+  {{- /* Process headers - find all headers and convert to uppercase */ -}}
+  {{- $headers := findRE `(?m)^#{1,6}\s*(.+)$` $content -}}
+  {{- range $headers -}}
+    {{- $headerText := replaceRE `^#{1,6}\s*` "" . -}}
+    {{- $upperHeader := upper $headerText -}}
+    {{- $content = replace $content . $upperHeader -}}
+  {{- end -}}
+  {{- $content = replaceRE `\[([^\]]+)\]\(([^)]+)\)` "${1}" $content -}}
+  {{- $content = replaceRE "`([^`]+)`" "${1}" $content -}}
+  {{- $content | strings.TrimRight "\n " | htmlUnescape | safeHTML -}}
+{{- end -}}

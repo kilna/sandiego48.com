@@ -1,0 +1,8 @@
+{{- $icon := .icon | default "link" -}}
+{{- $class := cond (not .class) "icon" (printf "icon %s" (default "" .class)) -}}
+{{- $img := resources.Get (printf "icons/%s.svg" $icon) -}}
+{{- with $img -}}
+<span class="{{ $class }}"{{ with $.title }} title="{{ . }}"{{ end }}>
+  {{- .Content | safeHTML -}}
+</span>
+{{- end -}}

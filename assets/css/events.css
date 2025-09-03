@@ -1,0 +1,371 @@
+.events {
+  padding: 0;
+}
+
+.event {
+  display: grid;
+  grid-template-columns: 1fr 33%;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media all and (max-width: 768px) {
+  .event {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+}
+
+.event-image {
+  width: 100%;
+  display: block;
+  margin: 0 auto 1em auto;
+}
+
+.timespan {
+  color: var(--48-darken-more);
+  padding-top: 0.5rem 0;
+  text-align: center;
+}
+
+/* Generalized Event List Styles */
+.event-list {
+  margin: 0;
+  padding: 0;
+}
+
+.event-list h2 {
+  text-align: center;
+  margin: 0 auto;
+  padding: 0.25rem;
+  background-color: var(--48-orange);
+  background: linear-gradient(
+    135deg,
+    var(--48-orange-dark) 0%,
+    var(--48-orange) 50%,
+    var(--48-orange-dark) 100%
+  );
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 0.75rem 1.5em;
+  border-top: 0.125rem solid var(--48-darken);
+  background-color: var(--48-orange-light);
+  background: linear-gradient(
+    135deg,
+    var(--48-orange) 0%,
+    var(--48-orange-light) 50%,
+    var(--48-orange) 100%
+  );
+}
+
+
+
+.event-card:last-child,
+.event-card:last-of-type {
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.event-card a.image {
+  flex: 0 0 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-card img {
+  width: 100%;
+  height: auto;
+}
+
+/* Film Posters in Events */
+.films-section {
+  margin: 2rem 0;
+}
+
+.films-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.film-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border: 1px solid var(--48-orange-trans);
+  border-radius: 0.5rem;
+  background: var(--48-purple-dark);
+}
+
+.film-poster-container {
+  flex-shrink: 0;
+  width: 200px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.film-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.film-poster-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.film-poster-link:hover {
+  transform: scale(1.05);
+}
+
+.film-info {
+  flex: 1;
+}
+
+.film-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.4rem;
+}
+
+.film-title a {
+  color: white;
+  text-decoration: none;
+  text-shadow:
+    -1px -1px 0 black,
+    1px -1px 0 black,
+    -1px 1px 0 black,
+    1px 1px 0 black,
+    0 0 3px black;
+}
+
+.film-title a:hover {
+  text-decoration: underline;
+}
+
+.film-item .film-team {
+  margin: 0 0 0.75rem 0;
+  color: white !important;
+  font-size: 0.95rem;
+}
+
+.film-item .film-team a {
+  color: white !important;
+  text-decoration: none;
+}
+
+.film-item .film-team a:hover {
+  text-decoration: underline;
+}
+
+.film-logline {
+  margin: 0 0 1rem;
+  color: var(--48-orange);
+  font-size: 1rem;
+}
+
+.film-synopsis {
+  color: white;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .film-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .film-poster-container {
+    width: 150px;
+    height: 225px;
+  }
+}
+
+@media (max-width: 768px) {
+  .event-card {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .event-card a.image {
+  flex: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+  .event-card a.image img {
+    width: auto;
+    height: auto;
+    max-width: 85% !important;
+    max-height: 40vh;
+    object-fit: contain;
+  }
+
+  .event-card .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .event-card .actions {
+    text-align: center;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--48-orange-dark);
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.event-card h3 {
+  text-align: center;
+  margin: 0.25em 0 !important;
+  font-size: 1.25em !important;
+}
+
+.event-card h3 a {
+  text-decoration: none !important;
+  font-weight: inherit !important;
+}
+
+.event-card .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.event-card .content:not(:has(.actions)) .summary {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.event-card .content .header-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.event-card .content .header-group > * {
+  margin: 0 !important;
+}
+
+.event-card .actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.125rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-top: 1px solid var(--48-darken);
+  flex-wrap: nowrap;
+  min-height: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.event-card .actions a.button {
+  margin: 0;
+  color: var(--48-black);
+  background-color: var(--48-orange);
+  border-color: var(--48-darken);
+  --icon-color: var(--48-purple);
+  opacity: 0.6;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: none;
+  white-space: normal;
+  text-align: center;
+  justify-content: center;
+  height: auto;
+  align-self: stretch;
+  overflow: hidden;
+  padding: 0.25em 0.5em;
+  word-wrap: break-word;
+  hyphens: auto;
+  font-size: 0.9em;
+}
+
+.event-card .actions a.button:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .event-card .actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.125rem;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 0.9em;
+  }
+  
+  .event-card .actions a.button {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+.event-card .countdown {
+  margin: 0.5rem 0;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: 100;
+  letter-spacing: 0.03em;
+  background-color: var(--48-orange-dark);
+  padding: 0.2em;
+  border-radius: 0.25em;
+  color: var(--48-white);
+  --clock-color: var(--48-orange);
+  border: 0.125em solid var(--48-black);
+  box-shadow: inset 0 0 0.5em var(--48-black);
+}
+
+/* Disable animation on More Details button hover */
+.event-card .actions a.button.pulse.glow:hover,
+.event-card .actions a.button.pulse.glow:active {
+  animation: none;
+}
+
+/* Featured Films styling */
+.event-card .featured-films {
+  font-size: 0.9em;
+  margin: 0.5rem 0 0 0;
+}
+
+@media (max-width: 768px) {
+  .event-card .featured-films {
+    font-size: 0.85em;
+  }
+}
+
+
+

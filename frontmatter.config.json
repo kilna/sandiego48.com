@@ -1,0 +1,84 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "Events",
+      "path": "content/events"
+    },
+    {
+      "title": "Partners", 
+      "path": "content/partners"
+    },
+    {
+      "title": "Go Pages",
+      "path": "content/go"
+    },
+    {
+      "title": "City Message",
+      "path": "content/citymessage"
+    },
+    {
+      "title": "Press",
+      "path": "content/press"
+    }
+  ],
+  "frontMatter.content.defaultFileType": "md",
+  "frontMatter.content.supportedFileTypes": ["md", "html"],
+  "frontMatter.taxonomy.tags": true,
+  "frontMatter.taxonomy.categories": true,
+  "frontMatter.framework.id": "hugo",
+  "frontMatter.framework.name": "Hugo",
+  "frontMatter.content.autoUpdateDate": true,
+  "frontMatter.content.autoUpdateDateField": "publishDate",
+  "frontMatter.content.snippets": [
+    {
+      "name": "Event",
+      "description": "Event page template",
+      "body": [
+        "---",
+        "title: ${1:Event Title}",
+        "layout: events",
+        "type: events", 
+        "summary: >",
+        "  ${2:Event summary}",
+        "date: ${3:2025-01-01T00:00:00-08:00}",
+        "publishDate: ${3:2025-01-01T00:00:00-08:00}",
+        "draft: false",
+        "params:",
+        "  image: ${4:image.png}",
+        "  featured: false",
+        "  event_start: ${5:2025-01-01T12:00:00-08:00}",
+        "  event_end: ${5:2025-01-01T16:00:00-08:00}",
+        "  location_name: ${6:Location Name}",
+        "  location_address: ${7:123 Main St, San Diego, CA}",
+        "  location_map_url: ${8:https://maps.app.goo.gl/...}",
+        "---",
+        "",
+        "${9:Event content goes here}"
+      ]
+    },
+    {
+      "name": "Partner",
+      "description": "Partner page template", 
+      "body": [
+        "---",
+        "title: ${1:Partner Name}",
+        "layout: partners",
+        "type: partners",
+        "summary: >",
+        "  ${2:Partner description}",
+        "date: ${3:2025-01-01T00:00:00-08:00}",
+        "publishDate: ${3:2025-01-01T00:00:00-08:00}",
+        "draft: false",
+        "params:",
+        "  image: ${4:partner.png}",
+        "  logo: ${5:logo.png}",
+        "  website: ${6:https://example.com}",
+        "  description: ${7:Detailed partner description}",
+        "---",
+        "",
+        "${8:Partner content goes here}"
+      ]
+    }
+  ]
+} 

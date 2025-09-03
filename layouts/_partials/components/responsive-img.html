@@ -1,0 +1,97 @@
+{{/*
+  Usage: partial "components/responsive-img.html" (dict 
+    "ctx" $page 
+    "name" "image" 
+    "image" "image" 
+    "image_mobile" "image_wide" 
+    "image_desktop" "image_square" 
+    "resize" "x250" 
+    "resize_mobile" "x250" 
+    "resize_desktop" "x250" 
+    "alt" "..." 
+    "url" "..." 
+    "class" "..." 
+    "wrap_class" "..."
+  )
+*/}}
+{{- $ctx := .ctx -}}
+{{- $name := .name | default "image" -}}
+{{- $image_field := .image | default $name -}}
+{{- $image_mobile_field := .image_mobile | default "" -}}
+{{- $image_desktop_field := .image_desktop | default "" -}}
+{{- $resize := .resize | default "x250" -}}
+{{- $resize_mobile := .resize_mobile | default $resize -}}
+{{- $resize_desktop := .resize_desktop | default $resize -}}
+{{- $alt := .alt | default $ctx.Title | default "" -}}
+{{- $url := .url | default $ctx.RelPermalink | default "" -}}
+{{- $class := .class | default "" -}}
+{{- $wrap_class := .wrap_class | default $name -}}
+
+{{ $class = printf "%s %s" "responsive-image" $class }}
+
+{{- /* Get image resources and URLs */ -}}
+{{- $src := "" -}}
+{{- $mobileSrc := "" -}}
+{{- $desktopSrc := "" -}}
+
+{{- /* Check if any image fields are available */ -}}
+{{- $hasAnyImage := or (index $ctx.Params $image_field) (and $image_mobile_field (index $ctx.Params $image_mobile_field)) (and $image_desktop_field (index $ctx.Params $image_desktop_field)) -}}
+{{- if not $hasAnyImage -}}
+  {{- return -}}
+{{- end -}}
+
+{{- /* Base image */ -}}
+{{- with $ctx.Resources.Get (index $ctx.Params $image_field) -}}
+  {{- $thumb := .Resize $resize -}}
+  {{- with $thumb -}}
+    {{- $src = .RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Mobile image */ -}}
+{{- if $image_mobile_field -}}
+  {{- with $ctx.Resources.Get (index $ctx.Params $image_mobile_field) -}}
+    {{- $mobileThumb := .Resize $resize_mobile -}}
+    {{- with $mobileThumb -}}
+      {{- $mobileSrc = .RelPermalink -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Desktop image */ -}}
+{{- if $image_desktop_field -}}
+  {{- with $ctx.Resources.Get (index $ctx.Params $image_desktop_field) -}}
+    {{- $desktopThumb := .Resize $resize_desktop -}}
+    {{- with $desktopThumb -}}
+      {{- $desktopSrc = .RelPermalink -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Determine final src */ -}}
+{{- $finalSrc := $src -}}
+{{- if not $finalSrc -}}
+  {{- if $desktopSrc -}}
+    {{- $finalSrc = $desktopSrc -}}
+  {{- else if $mobileSrc -}}
+    {{- $finalSrc = $mobileSrc -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Build img tag */ -}}
+{{- $imgTag := printf "<img src=\"%s\" alt=\"%s\" loading=\"lazy\"%s%s%s/>" 
+    $finalSrc 
+    $alt 
+    (cond $mobileSrc (printf " data-mobile-src=\"%s\"" $mobileSrc) "") 
+    (cond $desktopSrc (printf " data-desktop-src=\"%s\"" $desktopSrc) "") 
+    (cond $class (printf " class=\"%s\"" $class) "") 
+-}}
+
+{{- /* Output with optional link wrapper */ -}}
+{{- if $finalSrc -}}
+  {{- if $url -}}
+    <a href="{{ $url }}" class="{{ $wrap_class }}">{{ $imgTag | safeHTML }}</a>
+  {{- else -}}
+    <a tabindex="-1" class="{{ $wrap_class }}">{{ $imgTag | safeHTML }}</a>
+  {{- end -}}
+{{- end -}} 

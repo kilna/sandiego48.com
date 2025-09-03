@@ -1,0 +1,434 @@
+/* People Filter Buttons */
+.people-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 2rem 0;
+  justify-content: center;
+}
+
+.filter-btn {
+  background: var(--48-purple-light);
+  color: var(--48-purple-nearblack);
+  border: 2px solid var(--48-purple);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: var(--48-purple);
+  color: var(--48-white);
+  transform: translateY(-1px);
+}
+
+.filter-btn.active {
+  background: var(--48-purple);
+  color: var(--48-white);
+  box-shadow: 0 4px 12px rgba(87, 28, 109, 0.3);
+}
+
+.filter-count {
+  text-align: center;
+  color: var(--48-purple-nearblack);
+  font-weight: 500;
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+}
+
+/* People section headers */
+.people-section-header {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin: 3rem 0 1.5rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #8b5cf6;
+}
+
+.people-section-header:first-of-type {
+  margin-top: 2rem;
+}
+
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem auto;
+  justify-content: center;
+}
+
+/* Person Card Styling */
+.person-card, .film-card {
+  background: transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.person-card:hover, .film-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Placeholder image styling */
+.person-card.placeholder-photo {
+  /* No card-level opacity - only apply to image */
+}
+
+.person-card.placeholder-photo .person-headshot {
+  background: transparent;
+}
+
+.person-card.placeholder-photo .person-headshot img.placeholder-image {
+  opacity: 0.1;
+  filter: none;
+}
+
+/* Film placeholder image styling */
+.film-card .film-poster img.placeholder-image {
+  opacity: 0.5;
+  filter: none;
+}
+
+.person-headshot, .film-poster {
+  position: relative;
+  overflow: hidden;
+  width: 300px;
+  height: 450px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.headshot-link, .film-poster-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s ease;
+}
+
+.headshot-link:hover, .film-poster-link:hover {
+  opacity: 0.9;
+}
+
+.person-headshot img, .film-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.3s ease;
+  margin: auto;
+}
+
+.person-card:hover .person-headshot img, .film-card:hover .film-poster img {
+  transform: scale(1.05);
+}
+
+/* Single person page headshot styling */
+.person-headshot-large {
+  width: 100%;
+  max-width: 600px;
+  height: 800px;
+  overflow: hidden;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.person-headshot-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Person Image Credit - Large and prominent under headshot */
+.person-image-credit {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--48-purple);
+  line-height: 1.4;
+}
+
+.person-image-credit a {
+  color: var(--48-purple);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.person-image-credit a:hover {
+  text-decoration: underline;
+}
+
+/* Resume link styling */
+.resume-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--48-purple-light);
+  color: var(--48-purple-nearblack);
+  border: 2px solid var(--48-purple);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.resume-link:hover {
+  background: var(--48-purple);
+  color: var(--48-white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(87, 28, 109, 0.3);
+}
+
+.resume-icon {
+  font-size: 1.2rem;
+}
+
+.person-info, .film-info {
+  padding: 1.5rem;
+}
+
+.person-info h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.film-info h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.person-info h3 a, .film-info h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.person-info h3 a:hover {
+  color: var(--48-purple);
+}
+
+.film-info h3 a:hover {
+  color: white;
+}
+
+
+
+/* Film-specific title styling for films list */
+.film-info .film-title a {
+  color: white;
+  text-decoration: none;
+  text-shadow:
+    -1px -1px 0 black,
+    1px -1px 0 black,
+    -1px 1px 0 black,
+    1px 1px 0 black,
+    0 0 3px black;
+}
+
+.film-info .film-title a:hover {
+  text-decoration: underline;
+}
+
+/* Film team link styling */
+.film-info .film-team a {
+  color: black;
+  text-decoration: none;
+}
+
+.film-info .film-team a:hover {
+  text-decoration: underline;
+}
+
+/* Film team name styling */
+.film-info .film-team {
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem 0;
+  color: black;
+}
+
+.person-bio, .film-logline {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+  margin: 0.5rem 0 0 0;
+}
+
+/* Person Role Tags */
+.person-roles, .film-groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.role-tag, .group-tag {
+  display: inline-block;
+  background: var(--48-purple-light);
+  color: var(--48-purple-nearblack);
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Single person page styling */
+.person-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  margin: 2rem 0;
+  align-items: start;
+}
+
+.person-details h1 {
+  font-size: 2.5rem;
+  margin: 0 0 1rem 0;
+  color: var(--48-purple-nearblack);
+}
+
+.person-roles-large {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.role-tag-large {
+  background: var(--48-purple);
+  color: var(--48-white);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.person-contact {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.person-contact a {
+  color: var(--48-purple);
+  text-decoration: none;
+}
+
+.person-contact a:hover {
+  text-decoration: underline;
+}
+
+.person-content {
+  margin: 3rem 0;
+  line-height: 1.6;
+}
+
+/* Photo Gallery */
+.person-gallery {
+  margin: 3rem 0;
+}
+
+.person-gallery h3 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.5rem;
+  color: var(--48-purple-nearblack);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-item {
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Resume Section */
+.person-resume {
+  margin: 3rem 0;
+}
+
+.person-resume h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  color: var(--48-purple-nearblack);
+}
+
+/* Image Credit */
+.image-credit {
+  text-align: center;
+  margin: 3rem 0 1rem 0;
+  padding: 1rem;
+  border-top: 1px solid #e5e7eb;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.image-credit p {
+  margin: 0;
+}
+
+.image-credit a {
+  color: var(--48-purple);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.image-credit a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .people-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .person-header {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .person-detail {
+    padding: 1rem;
+  }
+  
+  .person-details h1 {
+    font-size: 2rem;
+  }
+  
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+} 

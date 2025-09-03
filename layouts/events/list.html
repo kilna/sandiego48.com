@@ -1,0 +1,77 @@
+{{ define "head" }}
+  {{- partial "head.html" . -}}
+  {{- partial "layout/stylesheet.html" "events" -}}
+{{ end }}
+
+{{ define "title" }}
+{{- partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "ShowSiteTitle" true
+) -}}
+{{ end }}
+
+{{ define "main" }}
+<div class="events">
+{{ .Content }}
+
+{{ $currentYear := now.Year }}
+{{ $now := now }}
+{{ $all := .RegularPagesRecursive }}
+{{ $currentYearEvents := where $all ".Date.Year" $currentYear }}
+{{ $currentYearEvents = sort $currentYearEvents "Date" }}
+{{ $priorYearEvents := where $all ".Date.Year" "<" $currentYear }}
+{{ $priorYearEvents = sort $priorYearEvents "Date" "desc" }}
+
+{{- $upcoming_events := slice -}}
+{{- $past_events := slice -}}
+
+{{- range $currentYearEvents -}}
+  {{- if .Params.event_end -}}
+    {{- $end_time := time.AsTime .Params.event_end -}}
+    {{- if $end_time.After $now -}}
+      {{- $upcoming_events = $upcoming_events | append . -}}
+    {{- else -}}
+      {{- $past_events = $past_events | append . -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $past_events = $past_events | append . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if $upcoming_events -}}
+{{- partial "events/display.html" (dict
+    "events" $upcoming_events
+    "title" "Coming Events"
+    "show_countdown" true
+    "show_actions" true
+    "show_visibility" true
+) -}}
+{{- end -}}
+
+{{- if $past_events -}}
+<br clear="all" />
+<br/>
+{{- partial "events/display.html" (dict
+    "events" $past_events
+    "title" "Recent Events"
+    "show_countdown" false
+    "show_actions" false
+    "show_visibility" false
+) -}}
+{{- end -}}
+
+{{- if $priorYearEvents -}}
+<br clear="all" />
+<br/>
+{{- partial "events/display.html" (dict
+    "events" $priorYearEvents
+    "title" "Prior Year Events"
+    "show_countdown" false
+    "show_actions" false
+    "show_visibility" false
+) -}}
+{{- end -}}
+
+</div>
+{{ end }}

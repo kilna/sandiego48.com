@@ -1,0 +1,35 @@
+{{- $start_time := time.AsTime .date -}}
+{{- $end_time := "" -}}
+{{- $timespan_text := "" -}}
+
+{{- if and (isset . "end_date") (isset . "prefix_date") .prefix_date -}}
+  {{- $end_time = time.AsTime .end_date -}}
+  {{- $same_day := compare.Eq $start_time.Day $end_time.Day -}}
+  {{- $start_hour_format := cond (eq $start_time.Minute 0) "3pm" "3:04pm" -}}
+  {{- $end_hour_format := cond (eq $end_time.Minute 0) "3pm" "3:04pm" -}}
+  {{- $start_format := printf "%s %s" "Monday, January 2, 2006" $start_hour_format -}}
+  {{- $end_format := cond $same_day $end_hour_format (printf "%s %s" "Monday, January 2, 2006" $end_hour_format) -}}
+  {{- $timespan_text = printf "%s - %s" (time.Format $start_format $start_time) (time.Format $end_format $end_time) -}}
+{{- end -}}
+
+<div class="countdown{{ if isset . "show_after" }} visible-from-{{ .show_after }}{{ end }} visible-to-{{ .show_before | default .date }}">
+{{ if $timespan_text -}}
+<span class="countdown-prefix">{{ $timespan_text }}</span>
+{{- end -}}
+{{ if isset . "prefix" -}}
+<span class="countdown-prefix">{{ .prefix }}</span>
+{{- end -}}
+<span class="countdown-to-{{ .date }}">
+{{- if isset . "default" }}{{ .default }}{{ end -}}
+</span>
+{{ if isset . "suffix" -}}
+<span class="countdown-suffix">{{ .suffix }}</span>
+{{- end }}
+{{ if isset . "button" -}}
+{{- if isset . "button_prefix" -}}
+<span class="countdown-button-prefix">{{ .button_prefix }}</span>
+{{- end -}}
+{{ partial "components/button.html" (merge .button (dict "class" "countdown-button")) -}}
+</span>
+{{- end -}}
+</div>

@@ -1,0 +1,78 @@
+{{ define "title" }}
+{{- partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "ShowSiteTitle" true
+) -}}
+{{ end }}
+
+{{ define "main" }}
+{{ .Content }}
+
+{{/* Collect all existing roles */}}
+{{ $allRoles := slice }}
+{{ range .Data.Pages }}
+  {{ range .Params.roles }}
+    {{ $allRoles = $allRoles | append . }}
+  {{ end }}
+{{ end }}
+{{ $uniqueRoles := $allRoles | uniq | sort }}
+
+<div class="people-filters">
+  <button class="filter-btn active" data-filter="all">All Talent</button>
+  {{ range $uniqueRoles }}
+    {{ $pluralName := . }}
+    {{ if eq . "Actor" }}{{ $pluralName = "Actors" }}{{ end }}
+    {{ if eq . "Team Leader" }}{{ $pluralName = "Team Leaders" }}{{ end }}
+    {{ if eq . "City Producer" }}{{ $pluralName = "City Producers" }}{{ end }}
+    {{ if eq . "City Volunteer" }}{{ $pluralName = "City Volunteers" }}{{ end }}
+    {{ if eq . "Crew" }}{{ $pluralName = "Crew" }}{{ end }}
+    {{ if eq . "Production" }}{{ $pluralName = "Production" }}{{ end }}
+    <button class="filter-btn" data-filter="{{ . }}">{{ $pluralName }}</button>
+  {{ end }}
+</div>
+
+<div id="filter-count" class="filter-count">Showing all {{ len .Data.Pages }} people</div>
+
+<div class="people-grid">
+  {{ range .Data.Pages }}
+    {{ $hasRealPhoto := true }}
+    {{ if not .Params.image }}
+      {{ $hasRealPhoto = false }}
+    {{ end }}
+    
+    <article class="person-card{{ if not $hasRealPhoto }} placeholder-photo{{ end }}" data-roles="{{ delimit .Params.roles "," }}">
+      <div class="person-headshot">
+        <a href="{{ .RelPermalink }}" class="headshot-link">
+          {{ if .Params.image }}
+            {{ with .Resources.Get .Params.image -}}
+              {{ $thumb := .Fill "300x400" -}}
+              {{ with $thumb }}
+                <img src="{{ .RelPermalink }}" alt="{{ $.Title }} headshot" />
+              {{ end -}}
+            {{- end }}
+          {{ else }}
+            {{ $placeholder := resources.Get "images/placeholder-silhouette.png" }}
+            {{ with $placeholder }}
+              {{ $thumb := .Fill "300x400" }}
+              <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} headshot" class="placeholder-image" />
+            {{ end }}
+          {{ end }}
+        </a>
+      </div>
+      <div class="person-info">
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        {{ if .Params.roles }}
+          <div class="person-roles">
+            {{ range .Params.roles }}
+              <span class="role-tag">{{ . }}</span>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </article>
+  {{ end }}
+</div>
+
+
+{{ end }} 
