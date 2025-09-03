@@ -20,6 +20,8 @@ screening_groups:
   - "group-a"
 screening_events:
   - "2025-09-09-group-a-premieres"
+aliases:
+  - "the-2880-minute-movie-makers-i-plead-the-fifth"
 ---
 
 Detective Jack Slater is on administrative 

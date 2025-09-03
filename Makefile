@@ -42,3 +42,13 @@ open:
 
 icons:
 	./scripts/icons.sh
+
+migrate-directories:
+	python3 scripts/migrate-directories.py content/films
+
+cleanup-redirects:
+	rm -rf layouts/films/the-*
+	@echo "Redirect files cleaned up"
+
+move-images:
+	python3 scripts/move-images.py

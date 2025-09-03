@@ -1,0 +1,8 @@
+# Redirects for old film URLs to new slug-based URLs
+# Format: from_path to_path status_code
+
+/films/the-2880-minute-movie-makers-i-plead-the-fifth /films/2880-minute-movie-makers-i-plead-the-fifth 301
+/films/the-filmigos-fire-in-my-heart /films/filmigos-fire-in-my-heart 301
+/films/the-k-concern-tango-of-the-unseen /films/k-concern-tango-of-the-unseen 301
+/films/the-super-pas-dystopian-cowboys /films/super-pas-dystopian-cowboys 301
+/films/the-underdogs-crimson-hour /films/underdogs-crimson-hour 301
