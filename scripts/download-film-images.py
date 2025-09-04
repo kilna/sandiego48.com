@@ -1,42 +1,20 @@
 #!/usr/bin/env python3
 """
-Download still images (posters, film stills and behind‑the‑scenes photos)
-for each film listed in a CSV from the 48 Hour Film Project site.
+Download film images from 48hourfilm.com by looking for URLs in specific formats.
 
-The script requires the same CSV format as used by the film downloader: each
-row must include `id` (team ID), `slug` (directory name), and `film` (film title).
-It also needs an authentication cookie that you capture via your browser's developer tools after logging in to
-48hourfilm.com. Supply that cookie using the `--cookie` option or the
-48HFP_COOKIE environment variable.
+This script looks for URLs in the following formats:
+- Still: https://www.48hourfilm.com/uploads/2025/48HFP/48%20Hour%20Film%20Project%20-%20San%20Diego/TeamName/Film%20Stills/48HFP%20San%20Diego%202025%20-%20TeamName%20-%20Film%20Stills%20-%20file%20X.jpg
+- BTS: https://www.48hourfilm.com/uploads/2025/48HFP/48%20Hour%20Film%20Project%20-%20San%20Diego/TeamName/Behind%20the%20Scenes%20Pictures/48HFP%20San%20Diego%202025%20-%20TeamName%20-%20Behind%20the%20Scenes%20Pictures%20-%20file%20X.jpg
+- Poster: https://www.48hourfilm.com/uploads/2025/48HFP/48%20Hour%20Film%20Project%20-%20San%20Diego/TeamName/Poster/48HFP%20San%20Diego%202025%20-%20TeamName%20-%20Poster%20-%20file%20X.jpg
+- Group: https://www.48hourfilm.com/uploads/2025/48HFP/48%20Hour%20Film%20Project%20-%20San%20Diego/TeamName/Group%20Picture/48HFP%20San%20Diego%202025%20-%20TeamName%20-%20Group%20Picture%20-%20file%20X.jpg
 
-Images are saved into the structure:
-
-    ~/Code/kilna/sandiego48.com/content/films/{year}-{slug}/
-
-Each file is named with a prefix derived from its type (poster, still,
-behind) followed by a sequence number and the original file extension.
-
-Media to download is determined solely based on the presence of direct upload URLs
-in these specific formats:
-
-Still: https://www.48hourfilm.com/uploads/2025/48HFP/48%20Hour%20Film%20Project%20-%20San%20Diego/{TeamName}/Film%20Stills/{filename}
-
-Poster: https://www.48hourfilm.com/uploads/2025/48HFP/48%20Hour%20Film%20Project%20-%20San%20Diego/{TeamName}/Poster/{filename}
-
-BTS: https://www.48hourfilm.com/uploads/2025/48HFP/48%20Hour%20Film%20Project%20-%20San%20Diego/{TeamName}/Behind%20the%20Scenes%20Pictures/{filename}
-
-The script parses the number from the original filename (e.g., "file 1", "file 2") and uses it
-in the local filename to preserve the original numbering.
+The script properly decodes URLs and extracts the file number from the "file X" part.
 
 Images larger than 1920x1920 are automatically resized to fit within those dimensions
 while preserving aspect ratio. Smaller images remain at their original size. All images
 are compressed to meet GitHub Pages requirements (<25MB by default). Downloads are
 processed in parallel for faster processing. This ensures consistent maximum dimensions
 and requires ImageMagick to be installed (brew install imagemagick).
-
-For background about the 2025 San Diego competition, the official
-website explains that the event occurred August 15‑17th【875466236829739†L110-L120】
-and lists entries like "Extra Toppings" by Breakfast for Dinner!【652804158881346†L152-L166】.
 """
 
 import argparse
@@ -78,23 +56,20 @@ def classify_image_from_url(url: str) -> str:
         return "poster"
     elif "/behind%20the%20scenes%20pictures/" in url_lower or "/behind the scenes pictures/" in url_lower:
         return "bts"
+    elif "/group%20picture/" in url_lower or "/group picture/" in url_lower:
+        return "group"
     else:
         return "unknown"
 
 
 def extract_number_from_filename(url: str) -> int:
-    """Extract the number from a filename like 'Film Stills - file 1.png' or 'Poster - file 2.png'."""
+    """Extract the number from a filename like '48HFP San Diego 2025 - TeamName - Film Stills - file 1.jpg'."""
     try:
-        # Get the filename from the URL
-        filename = os.path.basename(urlparse(url).path)
+        # First, properly decode the URL to handle %20 and other encodings
+        decoded_url = unquote(url)
         
-        # Look for patterns like "file 1", "file 2", etc.
-        match = re.search(r'file\s+(\d+)', filename, re.IGNORECASE)
-        if match:
-            return int(match.group(1))
-        
-        # Alternative pattern: look for numbers before the extension
-        match = re.search(r'(\d+)\.(?:png|jpg|jpeg|gif|webp)$', filename, re.IGNORECASE)
+        # Look for the "file X" pattern in the decoded URL
+        match = re.search(r'file (\d+)', decoded_url, re.IGNORECASE)
         if match:
             return int(match.group(1))
             
