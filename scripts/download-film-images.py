@@ -112,6 +112,10 @@ def cleanup_old_images_with_wrong_numbers(dest_root: Path, image_type: str, corr
     try:
         # Look for existing images of the same type with different numbers
         for existing_file in dest_root.glob(f"{image_type}-*.{ext.lstrip('.')}"):
+            # Check if file still exists (another thread might have already deleted it)
+            if not existing_file.exists():
+                continue
+                
             # Extract the number from the filename
             match = re.match(rf'{image_type}-(\d+)\.{ext.lstrip(".")}$', existing_file.name)
             if match:
@@ -119,7 +123,11 @@ def cleanup_old_images_with_wrong_numbers(dest_root: Path, image_type: str, corr
                 # If the number is different from the correct number, remove it
                 if existing_number != correct_number:
                     print(f"  Removing old image with wrong number: {existing_file.name}")
-                    existing_file.unlink()
+                    try:
+                        existing_file.unlink()
+                    except FileNotFoundError:
+                        # File was already deleted by another thread, that's fine
+                        pass
     except Exception as e:
         print(f"  Warning: Error cleaning up old images: {e}")
 
