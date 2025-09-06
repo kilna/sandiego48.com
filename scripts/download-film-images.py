@@ -104,6 +104,26 @@ def find_upload_urls(session: requests.Session, film_url: str) -> List[Tuple[str
     return upload_urls
 
 
+def cleanup_old_images_with_wrong_numbers(dest_root: Path, image_type: str, correct_number: int, ext: str) -> None:
+    """
+    Remove old images with wrong numbers for the same image type.
+    For example, if we're about to create poster-1.jpg, remove any existing poster-201.jpg, poster-202.jpg, etc.
+    """
+    try:
+        # Look for existing images of the same type with different numbers
+        for existing_file in dest_root.glob(f"{image_type}-*.{ext.lstrip('.')}"):
+            # Extract the number from the filename
+            match = re.match(rf'{image_type}-(\d+)\.{ext.lstrip(".")}$', existing_file.name)
+            if match:
+                existing_number = int(match.group(1))
+                # If the number is different from the correct number, remove it
+                if existing_number != correct_number:
+                    print(f"  Removing old image with wrong number: {existing_file.name}")
+                    existing_file.unlink()
+    except Exception as e:
+        print(f"  Warning: Error cleaning up old images: {e}")
+
+
 def download_file(session: requests.Session, url: str, dest_path: Path) -> None:
     """Download file to a temporary location, then atomically move to destination."""
     dest_path.parent.mkdir(parents=True, exist_ok=True)
@@ -152,6 +172,10 @@ def download_and_process_image(args_tuple: Tuple) -> Tuple[str, bool, str]:
         
         fname = f"{image_type}-{file_number}{ext}"
         dest = dest_root / fname
+        
+        # Clean up any old images with wrong numbers for this image type
+        if not args.dry_run and not args.no_cleanup_old:
+            cleanup_old_images_with_wrong_numbers(dest_root, image_type, file_number, ext)
         
         # Check if existing image has correct dimensions (1920x1920 or smaller)
         if not args.no_skip_existing and dest.exists():
@@ -279,6 +303,14 @@ def main() -> None:
         help=(
             "Download all files even if they already exist. By default, files are skipped if they exist "
             "and have correct dimensions (1920x1920 or smaller)."
+        ),
+    )
+    parser.add_argument(
+        "--no-cleanup-old",
+        action="store_true",
+        help=(
+            "Don't remove old images with wrong numbers. By default, old images with incorrect numbering "
+            "are removed before downloading the correct ones."
         ),
     )
     parser.add_argument(
