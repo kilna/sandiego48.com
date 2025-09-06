@@ -218,6 +218,11 @@ def resize_large_image_if_needed(image_path: Path, max_size_mb: int = 25) -> boo
     Smaller images are left unchanged. Returns True if image was resized, False if no resize was needed.
     """
     try:
+        # Check if the file still exists (it might have been cleaned up by another thread)
+        if not image_path.exists():
+            print(f"  Warning: Image {image_path.name} no longer exists, skipping resize")
+            return False
+        
         # Check if ImageMagick is available
         try:
             subprocess.run(['convert', '--version'], capture_output=True, check=True)
@@ -237,6 +242,11 @@ def resize_large_image_if_needed(image_path: Path, max_size_mb: int = 25) -> boo
         width, height = map(int, current_dimensions.split('x'))
         
         # Check if image needs resizing (only if dimensions are too large OR file size exceeds limit)
+        # Double-check file exists before getting file size
+        if not image_path.exists():
+            print(f"  Warning: Image {image_path.name} no longer exists, skipping resize")
+            return False
+        
         file_size_mb = image_path.stat().st_size / (1024 * 1024)
         needs_resize = (width > 1920 or height > 1920 or file_size_mb > max_size_mb)
         
