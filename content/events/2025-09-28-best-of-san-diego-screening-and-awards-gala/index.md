@@ -3,15 +3,15 @@ title: Best of San Diego Screening and Awards Gala
 type: events
 summary: >
   Strut your style on our purple carpet (so much better than a red carpet!) ...and have professional photos taken at our Hollywood style step-and-repeat before heading into a theater packed with the very best of our 48 hour filmmakers... and friends, fans of the 48.
-date: 2025-09-28T17:30:00-07:00
+date: 2025-09-28T16:00:00-07:00
 publishDate: 2025-08-22T00:00:00-07:00
 draft: false
 params:
   image: 2025-gala-post.png
   image_wide: 2025-gala-horiz.png
   image_square: 2025-gala-square.png
-  event_start: 2025-09-28T17:30:00-07:00
-  event_end: 2025-09-28T22:00:00-07:00
+  event_start: 2025-09-28T16:00:00-07:00
+  event_end: 2025-09-28T20:30:00-07:00
   tickets_url: https://www.tixtree.com/e/san-diego-48-hour-film-project-2025-best-of-san-diego-screening-and-awards-gala-091a8e4846ab
   screening_group: Best of San Diego
   location_name: AMC Mission Valley 20

@@ -112,10 +112,6 @@ def cleanup_old_images_with_wrong_numbers(dest_root: Path, image_type: str, corr
     try:
         # Look for existing images of the same type with different numbers
         for existing_file in dest_root.glob(f"{image_type}-*.{ext.lstrip('.')}"):
-            # Check if file still exists (another thread might have already deleted it)
-            if not existing_file.exists():
-                continue
-                
             # Extract the number from the filename
             match = re.match(rf'{image_type}-(\d+)\.{ext.lstrip(".")}$', existing_file.name)
             if match:
@@ -123,11 +119,7 @@ def cleanup_old_images_with_wrong_numbers(dest_root: Path, image_type: str, corr
                 # If the number is different from the correct number, remove it
                 if existing_number != correct_number:
                     print(f"  Removing old image with wrong number: {existing_file.name}")
-                    try:
-                        existing_file.unlink()
-                    except FileNotFoundError:
-                        # File was already deleted by another thread, that's fine
-                        pass
+                    existing_file.unlink()
     except Exception as e:
         print(f"  Warning: Error cleaning up old images: {e}")
 
@@ -182,7 +174,7 @@ def download_and_process_image(args_tuple: Tuple) -> Tuple[str, bool, str]:
         dest = dest_root / fname
         
         # Clean up any old images with wrong numbers for this image type
-        if not args.dry_run and not args.no_cleanup_old:
+        if not args.dry_run and args.cleanup_old:
             cleanup_old_images_with_wrong_numbers(dest_root, image_type, file_number, ext)
         
         # Check if existing image has correct dimensions (1920x1920 or smaller)
@@ -226,11 +218,6 @@ def resize_large_image_if_needed(image_path: Path, max_size_mb: int = 25) -> boo
     Smaller images are left unchanged. Returns True if image was resized, False if no resize was needed.
     """
     try:
-        # Check if the file still exists (it might have been cleaned up by another thread)
-        if not image_path.exists():
-            print(f"  Warning: Image {image_path.name} no longer exists, skipping resize")
-            return False
-        
         # Check if ImageMagick is available
         try:
             subprocess.run(['convert', '--version'], capture_output=True, check=True)
@@ -250,11 +237,6 @@ def resize_large_image_if_needed(image_path: Path, max_size_mb: int = 25) -> boo
         width, height = map(int, current_dimensions.split('x'))
         
         # Check if image needs resizing (only if dimensions are too large OR file size exceeds limit)
-        # Double-check file exists before getting file size
-        if not image_path.exists():
-            print(f"  Warning: Image {image_path.name} no longer exists, skipping resize")
-            return False
-        
         file_size_mb = image_path.stat().st_size / (1024 * 1024)
         needs_resize = (width > 1920 or height > 1920 or file_size_mb > max_size_mb)
         
@@ -324,11 +306,11 @@ def main() -> None:
         ),
     )
     parser.add_argument(
-        "--no-cleanup-old",
+        "--cleanup-old",
         action="store_true",
         help=(
-            "Don't remove old images with wrong numbers. By default, old images with incorrect numbering "
-            "are removed before downloading the correct ones."
+            "Remove old images with wrong numbers. By default, old images are preserved. "
+            "When enabled, images with different numbers for the same type are removed before downloading."
         ),
     )
     parser.add_argument(

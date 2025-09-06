@@ -335,18 +335,37 @@
     </div>
   </div>
   
-  {{ if or (.Resources.Match "still-*") (.Resources.Match "bts-*") }}
+  {{ if or (.Resources.Match "poster-*") (.Resources.Match "still-*") (.Resources.Match "bts-*") }}
     <div class="film-galleries">
+      {{ $posters := .Resources.Match "poster-*" }}
+      {{ if gt (len $posters) 1 }}
+        <div class="gallery-section">
+          <h2 class="gallery-title">Posters</h2>
+          <div class="gallery-grid">
+            {{ range sort $posters "Name" }}
+              {{ if .MediaType }}
+                <div class="gallery-item" onclick="openModal('{{ .Name }}', '{{ $.Title }} - Poster')">
+                  {{ $thumb := .Fit "250x375" }}
+                  <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} poster" />
+                </div>
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+      
       {{ $stills := .Resources.Match "still-*" }}
       {{ if $stills }}
         <div class="gallery-section">
           <h2 class="gallery-title">Film Stills</h2>
           <div class="gallery-grid">
             {{ range sort $stills "Name" }}
-              <div class="gallery-item" onclick="openModal('{{ .Name }}', '{{ $.Title }} - Still')">
-                {{ $thumb := .Fit "250x200" }}
-                <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} still" />
-              </div>
+              {{ if .MediaType }}
+                <div class="gallery-item" onclick="openModal('{{ .Name }}', '{{ $.Title }} - Still')">
+                  {{ $thumb := .Fit "250x200" }}
+                  <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} still" />
+                </div>
+              {{ end }}
             {{ end }}
           </div>
         </div>
@@ -358,10 +377,12 @@
           <h2 class="gallery-title">Behind the Scenes</h2>
           <div class="gallery-grid">
             {{ range sort $bts "Name" }}
-              <div class="gallery-item" onclick="openModal('{{ .Name }}', '{{ $.Title }} - Behind the Scenes')">
-                {{ $thumb := .Fit "250x200" }}
-                <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} behind the scenes" />
-              </div>
+              {{ if .MediaType }}
+                <div class="gallery-item" onclick="openModal('{{ .Name }}', '{{ $.Title }} - Behind the Scenes')">
+                  {{ $thumb := .Fit "250x200" }}
+                  <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} behind the scenes" />
+                </div>
+              {{ end }}
             {{ end }}
           </div>
         </div>
@@ -389,11 +410,11 @@ function openModal(imageName, title) {
   const modalImg = document.getElementById('modalImage');
   
   // Get all images for navigation
-  const posterImage = '{{ .Params.image }}';
+  const posterImages = [{{ range .Resources.Match "poster-*" }}'{{ .Name }}',{{ end }}];
   const stillImages = [{{ range .Resources.Match "still-*" }}'{{ .Name }}',{{ end }}];
   const btsImages = [{{ range .Resources.Match "bts-*" }}'{{ .Name }}',{{ end }}];
   
-  allImages = [posterImage, ...stillImages, ...btsImages].filter(img => img);
+  allImages = [...posterImages, ...stillImages, ...btsImages].filter(img => img);
   
   // Find the clicked image index
   currentImageIndex = allImages.indexOf(imageName);
