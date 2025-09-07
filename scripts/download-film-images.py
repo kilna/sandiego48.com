@@ -206,10 +206,56 @@ def download_and_process_image(args_tuple: Tuple) -> Tuple[str, bool, str]:
         if dest.suffix.lower() in ['.jpg', '.jpeg', '.png']:
             resize_large_image_if_needed(dest, max_size_mb=args.max_image_size)
         
+        # If this is a poster and no image was previously set, update the film's index.md
+        if image_type == "poster" and not args.dry_run:
+            update_film_index_if_needed(dest_root, fname)
+        
         return f"{film_name}:{fname}", True, "Downloaded and processed successfully"
         
     except Exception as exc:
         return f"{film_name}:{image_type}", False, f"Failed: {exc}"
+
+
+def update_film_index_if_needed(film_dir: Path, poster_filename: str) -> None:
+    """
+    Update the film's index.md file to set the image field if no image was previously set.
+    Only updates if the image field is missing or empty.
+    """
+    index_file = film_dir / "index.md"
+    if not index_file.exists():
+        return
+    
+    try:
+        content = index_file.read_text(encoding='utf-8')
+        
+        # Check if image field already exists and has a value
+        if re.search(r'^image:\s*["\']?[^"\'\s]+["\']?\s*$', content, re.MULTILINE):
+            return  # Image already set, don't update
+        
+        # Look for the frontmatter section (between --- markers)
+        frontmatter_match = re.search(r'^---\s*\n(.*?)\n---\s*\n', content, re.DOTALL)
+        if not frontmatter_match:
+            return  # No frontmatter found
+        
+        frontmatter = frontmatter_match.group(1)
+        
+        # Add image field to frontmatter
+        if frontmatter.strip():
+            # Add image field after the last existing field
+            updated_frontmatter = frontmatter.rstrip() + f"\nimage: {poster_filename}\n"
+        else:
+            # Empty frontmatter, just add the image field
+            updated_frontmatter = f"image: {poster_filename}\n"
+        
+        # Reconstruct the file content
+        updated_content = content.replace(frontmatter, updated_frontmatter)
+        
+        # Write back to file
+        index_file.write_text(updated_content, encoding='utf-8')
+        print(f"  Updated {index_file.name} to set image: {poster_filename}")
+        
+    except Exception as e:
+        print(f"  Warning: Could not update {index_file.name}: {e}")
 
 
 def resize_large_image_if_needed(image_path: Path, max_size_mb: int = 25) -> bool:

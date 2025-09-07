@@ -1,169 +1,114 @@
 #!/usr/bin/env python3
 """
-Update film index.md files to use downloaded images instead of placeholders.
+Update film index.md files to use actual poster images instead of placeholders.
 
 This script scans all film directories and updates the image field in index.md
-files to use the most appropriate downloaded image (poster first, then still, then placeholder).
-BTS (behind-the-scenes) images are excluded from main image selection as they are supplementary content.
+to use the highest-numbered poster file if one exists, otherwise keeps the current image.
 """
 
-import os
 import re
 from pathlib import Path
 from typing import List, Optional
 
 
-def get_available_images(film_dir: Path) -> List[str]:
-    """Get list of available image files in a film directory."""
-    image_files = []
-    for ext in ['.jpg', '.jpeg', '.png']:
-        image_files.extend(film_dir.glob(f"*{ext}"))
-        image_files.extend(film_dir.glob(f"*{ext.upper()}"))
+def find_highest_poster(film_dir: Path) -> Optional[str]:
+    """Find the highest-numbered poster file in a film directory."""
+    poster_files = []
     
-    return [f.name for f in image_files]
-
-
-def prioritize_image(image_files: List[str]) -> Optional[str]:
-    """
-    Prioritize images: poster first, then still. BTS images are excluded from main image selection.
-    Returns the best image filename or None if no suitable image.
-    """
-    if not image_files:
+    for file_path in film_dir.glob("poster-*.jpg"):
+        # Extract number from filename like "poster-1.jpg"
+        match = re.match(r'poster-(\d+)\.jpg$', file_path.name)
+        if match:
+            number = int(match.group(1))
+            poster_files.append((number, file_path.name))
+    
+    for file_path in film_dir.glob("poster-*.png"):
+        # Extract number from filename like "poster-1.png"
+        match = re.match(r'poster-(\d+)\.png$', file_path.name)
+        if match:
+            number = int(match.group(1))
+            poster_files.append((number, file_path.name))
+    
+    if not poster_files:
         return None
     
-    # Look for poster first (highest priority)
-    poster_files = [f for f in image_files if f.startswith('poster-')]
-    if poster_files:
-        # Sort by number to get the first poster
-        poster_files.sort(key=lambda x: int(re.search(r'poster-(\d+)', x).group(1)) if re.search(r'poster-(\d+)', x) else 0)
-        return poster_files[0]
-    
-    # Look for still images second
-    still_files = [f for f in image_files if f.startswith('still-')]
-    if still_files:
-        # Sort by number to get the first still
-        still_files.sort(key=lambda x: int(re.search(r'still-(\d+)', x).group(1)) if re.search(r'still-(\d+)', x) else 0)
-        return still_files[0]
-    
-    # BTS images are excluded from main image selection
-    # If no poster or still images, return None to use placeholder
-    return None
+    # Return the highest-numbered poster
+    poster_files.sort(key=lambda x: x[0], reverse=True)
+    return poster_files[0][1]
 
 
-def update_film_image(film_dir: Path, dry_run: bool = False) -> bool:
-    """
-    Update a film's index.md to use the best available image.
-    Returns True if updated, False if no update needed.
-    """
+def update_film_image(film_dir: Path) -> bool:
+    """Update a single film's index.md to use the best available poster."""
     index_file = film_dir / "index.md"
     if not index_file.exists():
-        print(f"  No index.md found in {film_dir.name}")
         return False
     
-    # Read current index.md
-    with open(index_file, 'r') as f:
-        content = f.read()
-    
-    # Get available images first
-    available_images = get_available_images(film_dir)
-    
-    # Check if it already has a non-placeholder image
-    if 'image:' in content and 'placeholder-poster' not in content:
-        # Check if it's using a BTS image (which we don't want for main image)
-        if available_images and any(f'image: "{img}"' in content for img in available_images if img.startswith('bts-')):
-            print(f"  {film_dir.name}: Currently using BTS image, will update")
+    try:
+        content = index_file.read_text(encoding='utf-8')
+        
+        # Find the highest-numbered poster
+        best_poster = find_highest_poster(film_dir)
+        if not best_poster:
+            return False  # No poster files found
+        
+        # Check if image field already exists
+        image_match = re.search(r'^image:\s*["\']?([^"\'\s]+)["\']?\s*$', content, re.MULTILINE)
+        if image_match:
+            current_image = image_match.group(1)
+            if current_image == best_poster:
+                return False  # Already using the correct image
+            
+            # Update the existing image field - handle both quoted and unquoted values
+            old_line = image_match.group(0)  # The entire matched line
+            new_line = f'image: {best_poster}'
+            updated_content = content.replace(old_line, new_line)
+            print(f"  Updated {film_dir.name}: {current_image} → {best_poster}")
         else:
-            print(f"  {film_dir.name}: Already has non-placeholder image")
-            return False
-    
-    if not available_images:
-        print(f"  {film_dir.name}: No images found")
-        return False
-    
-    # Choose the best image
-    best_image = prioritize_image(available_images)
-    if not best_image:
-        # No suitable image found, should use placeholder
-        if 'placeholder-poster' in content:
-            print(f"  {film_dir.name}: No suitable image, using placeholder (correct)")
-            return False
-        else:
-            # Update to use placeholder
-            new_content = re.sub(r'image: "[^"]*"', 'image: "placeholder-poster.png"', content)
-            if new_content != content:
-                if dry_run:
-                    print(f"  {film_dir.name}: Would update to placeholder (no suitable image)")
-                else:
-                    with open(index_file, 'w') as f:
-                        f.write(new_content)
-                    print(f"  {film_dir.name}: Updated to placeholder (no suitable image)")
-                return True
-            return False
-    
-    # Check if the image is already set correctly
-    if f'image: "{best_image}"' in content:
-        print(f"  {film_dir.name}: Already using best image {best_image}")
-        return False
-    
-    # Update the image field
-    if 'image:' in content:
-        # Replace existing image field
-        new_content = re.sub(r'image: "[^"]*"', f'image: "{best_image}"', content)
-    else:
-        # Add image field after title
-        new_content = re.sub(r'(title: "[^"]*")', f'\\1\nimage: "{best_image}"', content)
-    
-    if new_content != content:
-        if dry_run:
-            print(f"  {film_dir.name}: Would update image to {best_image}")
-        else:
-            # Write updated content
-            with open(index_file, 'w') as f:
-                f.write(new_content)
-            print(f"  {film_dir.name}: Updated image to {best_image}")
+            # Add image field to frontmatter
+            frontmatter_match = re.search(r'^---\s*\n(.*?)\n---\s*\n', content, re.DOTALL)
+            if not frontmatter_match:
+                return False  # No frontmatter found
+            
+            frontmatter = frontmatter_match.group(1)
+            if frontmatter.strip():
+                updated_frontmatter = frontmatter.rstrip() + f"\nimage: {best_poster}\n"
+            else:
+                updated_frontmatter = f"image: {best_poster}\n"
+            
+            updated_content = content.replace(frontmatter, updated_frontmatter)
+            print(f"  Added image to {film_dir.name}: {best_poster}")
+        
+        # Write back to file
+        index_file.write_text(updated_content, encoding='utf-8')
         return True
-    else:
-        print(f"  {film_dir.name}: No changes needed")
+        
+    except Exception as e:
+        print(f"  Error updating {film_dir.name}: {e}")
         return False
 
 
 def main():
-    """Update all film index.md files."""
+    """Update all film index.md files to use actual poster images."""
     films_dir = Path("content/films")
     if not films_dir.exists():
         print("Error: content/films directory not found")
         return
     
-    # Get all film directories
-    film_dirs = [d for d in films_dir.iterdir() if d.is_dir() and d.name.startswith('2025-')]
-    film_dirs.sort()
-    
-    print(f"Found {len(film_dirs)} film directories")
-    print("=" * 50)
-    
     updated_count = 0
-    total_count = 0
+    total_films = 0
     
-    for film_dir in film_dirs:
-        print(f"Processing: {film_dir.name}")
-        total_count += 1
+    print("Scanning film directories for poster updates...")
+    
+    for film_dir in films_dir.iterdir():
+        if not film_dir.is_dir():
+            continue
         
-        if update_film_image(film_dir, dry_run=False):
+        total_films += 1
+        if update_film_image(film_dir):
             updated_count += 1
-        
-        print()
     
-    print("=" * 50)
-    print(f"Update complete!")
-    print(f"  Updated: {updated_count} films")
-    print(f"  No changes needed: {total_count - updated_count} films")
-    print(f"  Total processed: {total_count} films")
-    
-    if updated_count > 0:
-        print("\nNext steps:")
-        print("1. Review the updated index.md files")
-        print("2. Commit the changes: git add . && git commit -m 'Update film images to use downloaded media'")
-        print("3. Test the Hugo site: hugo --minify")
+    print(f"\nUpdated {updated_count} out of {total_films} films")
+    print("Done!")
 
 
 if __name__ == "__main__":
