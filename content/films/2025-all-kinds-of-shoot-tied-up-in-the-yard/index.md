@@ -1,6 +1,6 @@
 ---
 title: "Tied up in the Yard"
-image: "poster-1.jpg"
+image: all-kinds-of-shoot-tied-up-in-the-yard.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

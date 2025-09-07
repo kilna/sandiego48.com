@@ -1,6 +1,6 @@
 ---
 title: "The \"Good\" Sister"
-image: "poster-1.png"
+image: lime-street-entertainment-the-good-sister.png
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

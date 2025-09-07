@@ -1,6 +1,6 @@
 ---
 title: "A Cut Above"
-image: "poster-4.jpg"
+image: team-roller-pictures-a-cut-above.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

@@ -1,6 +1,6 @@
 ---
 title: "The South Mission Inn"
-image: poster-1.jpg
+image: rorbach-with-clark-the-south-mission-inn.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

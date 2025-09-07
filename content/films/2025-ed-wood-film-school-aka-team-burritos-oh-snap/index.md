@@ -1,6 +1,6 @@
 ---
 title: "Oh Snap!"
-image: "placeholder-poster.png"
+image: ed-wood-film-school-aka-team-burritos-oh-snap.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

@@ -1,6 +1,6 @@
 ---
 title: "The San Diego Hotel"
-image: "poster-1.jpg"
+image: all-of-us-productions-the-san-diego-hotel.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

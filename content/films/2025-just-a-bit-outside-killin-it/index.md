@@ -1,6 +1,6 @@
 ---
 title: "Killin' It"
-image: "placeholder-poster.png"
+image: just-a-bit-outside-killin-it.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

@@ -1,6 +1,6 @@
 ---
 title: "I Plead The Fifth"
-image: "poster-1.png"
+image: 2880-minute-movie-makers-i-plead-the-fifth.png
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

@@ -1,6 +1,6 @@
 ---
 title: "Tango of the Unseen"
-image: "poster-1.png"
+image: k-concern-tango-for-the-unseen.png
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

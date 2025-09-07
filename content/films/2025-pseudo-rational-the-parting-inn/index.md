@@ -1,6 +1,6 @@
 ---
 title: "The Parting Inn"
-image: "placeholder-poster.png"
+image: pseudo-rational-the-parting-inn.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

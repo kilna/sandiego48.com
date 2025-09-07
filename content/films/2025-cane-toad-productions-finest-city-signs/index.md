@@ -1,6 +1,6 @@
 ---
 title: "Finest City Signs"
-image: "poster-2.jpg"
+image: cane-toad-productions-finest-city-signs.png
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

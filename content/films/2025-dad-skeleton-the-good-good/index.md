@@ -1,6 +1,6 @@
 ---
 title: "The Good Good"
-image: "poster-1.png"
+image: dad-skeleton-the-good-good.png
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

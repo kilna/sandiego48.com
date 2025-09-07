@@ -1,6 +1,6 @@
 ---
 title: "Winds of Vengeance"
-image: poster-2.png
+image: state-of-flux-winds-of-vengeance.png
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

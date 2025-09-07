@@ -1,6 +1,6 @@
 ---
 title: "Mood Swings"
-image: "poster-1.png"
+image: loaf-productions-mood-swings.png
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

@@ -1,6 +1,6 @@
 ---
 title: "The Clown Closet"
-image: "poster-1.jpg"
+image: and-company-productions-the-clown-closet.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
