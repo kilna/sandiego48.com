@@ -24,17 +24,17 @@ params:
   location_address: 1640 Camino Del Rio North, San Diego, CA 92108
   location_image: location.jpg
   schedule:
-    - start: 2025-09-10T20:30:00-07:00
+    - start: 2025-09-10T19:30:00-07:00
       name: Ticket Checkin
       details: >-
         Have your ticket from TixTree QR code ready (it will be in your email after purchase).
         There will be no on-site ticket sales, you must order online.
-    - start: 2025-09-10T20:30:00-07:00
-      end: 2025-09-10T21:30:00-07:00
+    - start: 2025-09-10T19:30:00-07:00
+      end: 2025-09-10T20:30:00-07:00
       name: Purple Carpet Photos
       details: Strut your stuff and have your photo taken professionally at our hollywood-style backdrop.
-    - start: 2025-09-10T21:30:00-07:00
-      end: 2025-09-10T23:30:00-07:00
+    - start: 2025-09-10T20:30:00-07:00
+      end: 2025-09-10T23:00:00-07:00
       name: Films Screened
   notes:
     - You must purchase a ticket online before the event, and have your emailed QR code ready. There will be no on-site ticket sales.
