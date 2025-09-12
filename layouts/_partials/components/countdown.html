@@ -12,7 +12,7 @@
   {{- $timespan_text = printf "%s - %s" (time.Format $start_format $start_time) (time.Format $end_format $end_time) -}}
 {{- end -}}
 
-<div class="countdown{{ if isset . "show_after" }} visible-from-{{ .show_after }}{{ end }} visible-to-{{ .show_before | default .date }}">
+<div class="countdown{{ if isset . "visible_from" }} visible-from-{{ .visible_from }}{{ end }} visible-to-{{ .visible_to | default .date }}">
 {{ if $timespan_text -}}
 <span class="countdown-prefix">{{ $timespan_text }}</span>
 {{- end -}}

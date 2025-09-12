@@ -88,15 +88,16 @@ params:
       price: 198
   countdowns:
     - default: "Not long"
-      suffix: "until premiere screenings..."
-      date: "2025-09-09T17:30:00-07:00"
-      show_after: "2025-08-22T00:00:00-07:00"
-      show_before: "2025-09-17T17:30:00-07:00"
+      suffix: "until the Best of San Diego Screening..."
+      date: "2025-09-28T17:30:00-07:00"
+      button:
+        text: "Buy Tickets Now!"
+        url: /go/tickets
+        icon: ticket
+        icon_position: right
     #- default: "Not long"
     #  suffix: "until this year's competition..."
     #  date: "2025-08-15T19:00:00-07:00"
-    #  show_after: "2025-08-05T00:00:00-07:00"
-    #  show_before: "2025-08-15T19:00:00-07:00"
     #  button:
     #    text: "Register Your Team Now!"
     #    url: /go/register
@@ -105,8 +106,6 @@ params:
     #- default: "Not long"
     #  suffix: "left for early bird registration..."
     #  date: "2025-07-22T23:59:59-07:00"
-    #  show_after: "2025-07-10T00:00:00-07:00"
-    #  show_before: "2025-07-22T23:59:59-07:00"
     #  button_prefix: "Prices go up soon!"
     #  button:
     #    text: "Register Your Team Now!"
@@ -116,8 +115,6 @@ params:
     #- default: "Not long"
     #  suffix: "until late registration..."
     #  date: "2025-08-05T23:59:59-07:00"
-    #  show_after: "2025-07-23T00:00:00-07:00"
-    #  show_before: "2025-08-05T23:59:59-07:00"
     #  button_prefix: "Prices increase soon!"
     #  button:
     #    text: "Register Your Team Now!"

@@ -93,6 +93,7 @@ function startCountdown(element) {
     updateCountdown();
     return setInterval(updateCountdown, 1000);
   }
+  
   var animationInterval = setInterval(function() {
     if (Date.now() - animationStart > 500) {
       clearInterval(animationInterval);
@@ -139,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!shouldBeVisible) {
       element.style.display = 'none';
       
-      // Set up an interval to check every minute
+      // Set up an interval to check every second
       const checkInterval = setInterval(() => {
         const currentTime = Date.now();
         const shouldShow = (!visibleFrom || currentTime >= visibleFrom) && (!visibleTo || currentTime < visibleTo);
@@ -150,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (visibleTo && currentTime >= visibleTo) {
           clearInterval(checkInterval);
         }
-      }, 1000);  // Check every minute
+      }, 1000);  // Check every second
     } else {
       element.style.display = '';
       // If initially visible, hide when we pass the visible-to time
