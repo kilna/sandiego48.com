@@ -11,6 +11,16 @@ params:
   order: 2
   genre: "Alternate History Musical or Western"
   tixtree_id: "group-a-san-diego-48-hour-film-project-2025-d0f1fe2a78dd"
+  cdn:
+    galleries:
+      films:
+        Posters: 1
+      poster:
+        count: 1
+      bts:
+        count: 3
+      group:
+        count: 1
 screening_groups:
   - "group-a"
 screening_events:

@@ -11,6 +11,12 @@ params:
   order: 11
   genre: "Climate Film Mockumentary"
   tixtree_id: "group-c-san-diego-48-hour-film-project-2025-0aa4550010ed"
+  cdn:
+    galleries:
+      films:
+        Posters: 1
+      poster:
+        count: 1
 screening_groups:
   - "group-c"
 screening_events:

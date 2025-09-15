@@ -11,6 +11,14 @@ params:
   order: 11
   genre: "Mockumentary "
   tixtree_id: "group-a-san-diego-48-hour-film-project-2025-d0f1fe2a78dd"
+  cdn:
+    galleries:
+      films:
+        Film Stills: 3
+      still:
+        count: 3
+      group:
+        count: 1
 screening_groups:
   - "group-a"
 screening_events:

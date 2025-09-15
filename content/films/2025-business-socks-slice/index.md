@@ -11,6 +11,15 @@ params:
   order: 12
   genre: "Mystery Fantasy"
   tixtree_id: "group-c-san-diego-48-hour-film-project-2025-0aa4550010ed"
+  cdn:
+    galleries:
+      films:
+        Posters: 1
+        Film Stills: 3
+      poster:
+        count: 1
+      still:
+        count: 3
 screening_groups:
   - "group-c"
 screening_events:

@@ -1,0 +1,121 @@
+{{/*
+  CDN Gallery Partial
+  
+  Automatically displays galleries of images from the CDN for any page.
+  Only shows galleries that have images configured in params.cdn.galleries.
+  
+  CDN URL resolution:
+  - If BASEURL contains localhost or 127.0.0.1: use params.cdn.localhost
+  - If params.cdn.<baseurl> exists: use that value
+  - Otherwise: use params.cdn.default
+*/}}
+
+{{- if .Params.cdn.galleries -}}
+  {{- /* Get CDN base URL */ -}}
+  {{- $baseURL := .Site.BaseURL -}}
+  {{- $cdnURL := "" -}}
+  
+  {{- /* Check if we're running locally (development server) */ -}}
+  {{- $isLocalDev := or (in $baseURL "localhost") (in $baseURL "127.0.0.1") (in $baseURL ":1313") -}}
+  
+  {{- if $isLocalDev -}}
+    {{- $cdnURL = .Site.Params.cdn.localhost -}}
+  {{- else -}}
+    {{- $baseURLHost := replaceRE "^https?://([^/]+).*" "$1" $baseURL -}}
+    {{- $cdnURL = index .Site.Params.cdn $baseURLHost -}}
+    {{- if not $cdnURL -}}
+      {{- $cdnURL = .Site.Params.cdn.default -}}
+    {{- end -}}
+  {{- end -}}
+  
+  {{- /* Capture the page slug before the range loops */ -}}
+  {{- $pageSlug := path.Base .RelPermalink -}}
+  
+  {{- /* Loop through all configured gallery IDs */ -}}
+  {{- range $galleryId, $galleryData := .Params.cdn.galleries -}}
+    {{- $imageCount := $galleryData.count -}}
+    {{- if and $imageCount (gt $imageCount 0) -}}
+      {{- /* Find the gallery configuration by ID across all Hugo types */ -}}
+      {{- $config := "" -}}
+      {{- range $hugoType, $galleries := $.Site.Params.cdn.galleries -}}
+        {{- if index $galleries $galleryId -}}
+          {{- $config = index $galleries $galleryId -}}
+          {{- break -}}
+        {{- end -}}
+      {{- end -}}
+      
+      {{- if $config -}}
+        {{- $prefix := $config.prefix | default (printf "%s-" $galleryId) -}}
+        {{- $extension := default "jpg" $config.extension -}}
+        {{- $name := $config.name -}}
+        {{- $padding := default 3 $config.padding -}}
+        
+        {{- /* Get thumbnail configuration */ -}}
+        {{- $thumbSize := $config.thumb_size -}}
+        {{- $thumbSuffix := printf "-%d" $thumbSize -}}
+        {{- $thumbExt := "webp" -}}
+        
+        {{- /* Map gallery ID to CDN directory name */ -}}
+        {{- $cdnDirName := "" -}}
+        {{- if eq $galleryId "poster" -}}
+          {{- $cdnDirName = "posters" -}}
+        {{- else if eq $galleryId "still" -}}
+          {{- $cdnDirName = "film-stills" -}}
+        {{- else if eq $galleryId "bts" -}}
+          {{- $cdnDirName = "bts" -}}
+        {{- else if eq $galleryId "group" -}}
+          {{- $cdnDirName = "group-photos" -}}
+        {{- else if eq $galleryId "event" -}}
+          {{- $cdnDirName = "events" -}}
+        {{- else -}}
+          {{- $cdnDirName = $galleryId -}}
+        {{- end -}}
+        
+        {{- /* Generate gallery HTML */ -}}
+        <div class="cdn-gallery" data-type="{{ $galleryId }}" style="--thumb-size: {{ $thumbSize }}px;">
+          <h2>{{ $name }}</h2>
+          <div class="gallery-grid">
+            {{- range $i := (seq 1 $imageCount) -}}
+              {{- $paddedNum := printf "%0*d" $padding $i -}}
+              {{- $imageName := printf "%s%s.%s" $prefix $paddedNum $extension -}}
+              {{- $thumbName := printf "%s%s%s.%s" $prefix $paddedNum $thumbSuffix $thumbExt -}}
+              {{- $contentPath := printf "%s/%s" $cdnDirName $pageSlug -}}
+              {{- $imageURL := printf "%s/%s/%s" $cdnURL $contentPath $imageName -}}
+              {{- $thumbURL := printf "%s/%s/thumbs/%s" $cdnURL $contentPath $thumbName -}}
+              
+              <div class="gallery-item">
+                <a href="{{ $imageURL }}" 
+                   class="gallery-link" 
+                   data-gallery="{{ $galleryId }}-gallery" 
+                   data-index="{{ $i }}"
+                   data-title="{{ $name }} {{ $i }}">
+                  <img src="{{ $thumbURL }}" 
+                       alt="{{ $name }} {{ $i }}" 
+                       loading="lazy">
+                </a>
+              </div>
+            {{- end -}}
+          </div>
+        </div>
+        
+        {{- /* Lightbox HTML */ -}}
+        <div class="lightbox" id="lightbox-{{ $galleryId }}-gallery">
+          <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox('{{ $galleryId }}-gallery')">&times;</button>
+            <button class="lightbox-nav lightbox-prev" onclick="previousImage('{{ $galleryId }}-gallery')">‹</button>
+            <img class="lightbox-image" src="" alt="">
+            <button class="lightbox-nav lightbox-next" onclick="nextImage('{{ $galleryId }}-gallery')">›</button>
+            <button class="lightbox-download" onclick="downloadImage('{{ $galleryId }}-gallery')" title="Download image">
+              <svg class="download-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+              </svg>
+            </button>
+            <div class="lightbox-counter">
+              <span class="lightbox-current">1</span> / <span class="lightbox-total">{{ $imageCount }}</span>
+            </div>
+          </div>
+        </div>
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

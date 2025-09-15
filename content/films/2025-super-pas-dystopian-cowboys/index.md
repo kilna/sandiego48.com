@@ -11,6 +11,10 @@ params:
   order: 6
   genre: "Musical or Western Utopian or Dystopian"
   tixtree_id: "group-b-san-diego-48-hour-film-project-2025-4f39289dea92"
+  cdn:
+    galleries:
+      bts:
+        count: 3
 screening_groups:
   - "group-b"
 screening_events:

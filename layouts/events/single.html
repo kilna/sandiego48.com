@@ -46,6 +46,9 @@
 
     {{ .Content }}
     
+    {{/* Add CDN gallery if images are available */}}
+    {{- partial "cdn-gallery.html" . -}}
+    
     {{/* Get films for this event using the page slug */}}
     {{ $event_slug := path.Base .RelPermalink }}
     {{ $all_films := where .Site.Pages "Section" "films" }}
@@ -363,5 +366,7 @@
 </div>
 </div>
 {{ end }}
+
+<script src="{{ "js/gallery-lightbox.js" | relURL }}"></script>
 
 {{ end }}

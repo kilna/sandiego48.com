@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Download film images from 48hourfilm.com by looking for URLs in specific formats.
+Download film images from 48hourfilm.com and save them to the CDN directory structure.
 
 This script looks for URLs in the following formats:
 - Still: https://www.48hourfilm.com/uploads/2025/48HFP/48%20Hour%20Film%20Project%20-%20San%20Diego/TeamName/Film%20Stills/48HFP%20San%20Diego%202025%20-%20TeamName%20-%20Film%20Stills%20-%20file%20X.jpg
@@ -8,13 +8,17 @@ This script looks for URLs in the following formats:
 - Poster: https://www.48hourfilm.com/uploads/2025/48HFP/48%20Hour%20Film%20Project%20-%20San%20Diego/TeamName/Poster/48HFP%20San%20Diego%202025%20-%20TeamName%20-%20Poster%20-%20file%20X.jpg
 - Group: https://www.48hourfilm.com/uploads/2025/48HFP/48%20Hour%20Film%20Project%20-%20San%20Diego/TeamName/Group%20Picture/48HFP%20San%20Diego%202025%20-%20TeamName%20-%20Group%20Picture%20-%20file%20X.jpg
 
-The script properly decodes URLs and extracts the file number from the "file X" part.
+Images are saved to the CDN directory structure:
+- cdn/film-stills/<film-slug>/still-001.jpg, still-002.jpg, etc.
+- cdn/bts/<film-slug>/bts-001.jpg, bts-002.jpg, etc.
+- cdn/posters/<film-slug>/poster-001.jpg, poster-002.jpg, etc.
+- cdn/group-photos/<film-slug>/group-001.jpg, group-002.jpg, etc.
 
-Images larger than 1920x1920 are automatically resized to fit within those dimensions
-while preserving aspect ratio. Smaller images remain at their original size. All images
-are compressed to meet GitHub Pages requirements (<25MB by default). Downloads are
-processed in parallel for faster processing. This ensures consistent maximum dimensions
-and requires ImageMagick to be installed (brew install imagemagick).
+The script properly decodes URLs, extracts the file number from the "file X" part,
+and uses 3-digit padding for filenames. Images larger than 1920x1920 are automatically
+resized to fit within those dimensions while preserving aspect ratio. All images are
+compressed to meet GitHub Pages requirements (<25MB by default). Downloads are processed
+in parallel for faster processing. This requires ImageMagick to be installed (brew install imagemagick).
 """
 
 import argparse
@@ -62,6 +66,17 @@ def classify_image_from_url(url: str) -> str:
         return "unknown"
 
 
+def get_cdn_directory_name(image_type: str) -> str:
+    """Map image type to CDN directory name."""
+    mapping = {
+        "still": "film-stills",
+        "bts": "bts", 
+        "poster": "posters",
+        "group": "group-photos"
+    }
+    return mapping.get(image_type, image_type)
+
+
 def extract_number_from_filename(url: str) -> int:
     """Extract the number from a filename like '48HFP San Diego 2025 - TeamName - Film Stills - file 1.jpg'."""
     try:
@@ -104,14 +119,14 @@ def find_upload_urls(session: requests.Session, film_url: str) -> List[Tuple[str
     return upload_urls
 
 
-def cleanup_old_images_with_wrong_numbers(dest_root: Path, image_type: str, correct_number: int, ext: str) -> None:
+def cleanup_old_images_with_wrong_numbers(film_dir: Path, image_type: str, correct_number: int, ext: str) -> None:
     """
     Remove old images with wrong numbers for the same image type.
-    For example, if we're about to create poster-1.jpg, remove any existing poster-201.jpg, poster-202.jpg, etc.
+    For example, if we're about to create poster-001.jpg, remove any existing poster-002.jpg, poster-003.jpg, etc.
     """
     try:
         # Look for existing images of the same type with different numbers
-        for existing_file in dest_root.glob(f"{image_type}-*.{ext.lstrip('.')}"):
+        for existing_file in film_dir.glob(f"{image_type}-*.{ext.lstrip('.')}"):
             # Extract the number from the filename
             match = re.match(rf'{image_type}-(\d+)\.{ext.lstrip(".")}$', existing_file.name)
             if match:
@@ -170,12 +185,17 @@ def download_and_process_image(args_tuple: Tuple) -> Tuple[str, bool, str]:
         elif not ext:
             ext = '.jpg'  # Default to JPG if no extension
         
-        fname = f"{image_type}-{file_number}{ext}"
-        dest = dest_root / fname
+        # Use 3-digit padding for filename
+        fname = f"{image_type}-{file_number:03d}{ext}"
+        
+        # Create CDN directory structure: cdn/<type>/<film-slug>/
+        cdn_dir_name = get_cdn_directory_name(image_type)
+        film_dir = dest_root / cdn_dir_name / film_name
+        dest = film_dir / fname
         
         # Clean up any old images with wrong numbers for this image type
         if not args.dry_run and args.cleanup_old:
-            cleanup_old_images_with_wrong_numbers(dest_root, image_type, file_number, ext)
+            cleanup_old_images_with_wrong_numbers(film_dir, image_type, file_number, ext)
         
         # Check if existing image has correct dimensions (1920x1920 or smaller)
         if not args.no_skip_existing and dest.exists():
@@ -340,7 +360,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Download 48 HFP film images")
     parser.add_argument("--csv", default="data/teams.csv", help="CSV file with film data")
     parser.add_argument("--year", default=2025, type=int, help="Competition year")
-    parser.add_argument("--base-dir", default=os.path.expanduser("content/films"), help="Root directory for image storage")
+    parser.add_argument("--base-dir", default=os.path.expanduser("cdn"), help="Root directory for image storage")
     parser.add_argument("--cookie", default=os.environ.get("COOKIE"), help="Raw authentication cookie string")
     parser.add_argument("--dry-run", action="store_true", help="Print actions without downloading")
     parser.add_argument(

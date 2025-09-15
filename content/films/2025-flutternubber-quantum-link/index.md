@@ -11,6 +11,16 @@ params:
   order: 4
   genre: "Time Travel Movie "
   tixtree_id: "group-c-san-diego-48-hour-film-project-2025-0aa4550010ed"
+  cdn:
+    galleries:
+      films:
+        Film Stills: 25
+      still:
+        count: 25
+      bts:
+        count: 8
+      group:
+        count: 1
 screening_groups:
   - "group-c"
 screening_events:

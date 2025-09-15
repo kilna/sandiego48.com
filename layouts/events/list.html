@@ -21,7 +21,7 @@
 {{ $currentYearEvents := where $all ".Date.Year" $currentYear }}
 {{ $currentYearEvents = sort $currentYearEvents "Date" }}
 {{ $priorYearEvents := where $all ".Date.Year" "<" $currentYear }}
-{{ $priorYearEvents = sort $priorYearEvents "Date" "desc" }}
+{{ $priorYearEvents = sort $priorYearEvents "Date" }}
 
 {{- $upcoming_events := slice -}}
 {{- $past_events := slice -}}
@@ -52,6 +52,7 @@
 {{- if $past_events -}}
 <br clear="all" />
 <br/>
+{{- $past_events = sort $past_events "Date" "desc" -}}
 {{- partial "events/display.html" (dict
     "events" $past_events
     "title" "Recent Events"

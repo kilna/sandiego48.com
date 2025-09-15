@@ -11,6 +11,10 @@ params:
   order: 8
   genre: "Comedy Buddy Film"
   tixtree_id: "group-a-san-diego-48-hour-film-project-2025-d0f1fe2a78dd"
+  cdn:
+    galleries:
+      bts:
+        count: 2
 screening_groups:
   - "group-a"
 screening_events:

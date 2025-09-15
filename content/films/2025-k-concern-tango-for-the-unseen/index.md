@@ -1,5 +1,5 @@
 ---
-title: "Tango of the Unseen"
+title: "Tango for the Unseen"
 image: k-concern-tango-for-the-unseen.png
 date: 2025-08-17T19:00:00-07:00
 draft: false
@@ -11,6 +11,12 @@ params:
   order: 14
   genre: "Dance Film Sci Fi"
   tixtree_id: "group-c-san-diego-48-hour-film-project-2025-0aa4550010ed"
+  cdn:
+    galleries:
+      still:
+        count: 13
+      group:
+        count: 2
 screening_groups:
   - "group-c"
 screening_events:

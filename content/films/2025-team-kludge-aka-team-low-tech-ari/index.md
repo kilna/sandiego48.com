@@ -11,6 +11,12 @@ params:
   order: 4
   genre: "Comedy "
   tixtree_id: "group-b-san-diego-48-hour-film-project-2025-4f39289dea92"
+  cdn:
+    galleries:
+      films:
+        Film Stills: 5
+      still:
+        count: 5
 screening_groups:
   - "group-b"
 screening_events:

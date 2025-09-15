@@ -11,6 +11,14 @@ params:
   order: 8
   genre: "Utopian or Dystopian Fish Out of Water"
   tixtree_id: "group-c-san-diego-48-hour-film-project-2025-0aa4550010ed"
+  cdn:
+    galleries:
+      films:
+        Posters: 1
+      poster:
+        count: 1
+      still:
+        count: 3
 screening_groups:
   - "group-c"
 screening_events:

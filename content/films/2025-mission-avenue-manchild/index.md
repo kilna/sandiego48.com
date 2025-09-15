@@ -11,6 +11,14 @@ params:
   order: 3
   genre: "Romance Dark Comedy"
   tixtree_id: "group-b-san-diego-48-hour-film-project-2025-4f39289dea92"
+  cdn:
+    galleries:
+      films:
+        Posters: 1
+      poster:
+        count: 1
+      still:
+        count: 3
 screening_groups:
   - "group-b"
 screening_events:

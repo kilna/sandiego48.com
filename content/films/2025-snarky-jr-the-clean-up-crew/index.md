@@ -11,6 +11,12 @@ params:
   order: 6
   genre: "Martial Arts / Fight Film Dark Comedy"
   tixtree_id: "group-c-san-diego-48-hour-film-project-2025-0aa4550010ed"
+  cdn:
+    galleries:
+      films:
+        Film Stills: 2
+      still:
+        count: 2
 screening_groups:
   - "group-c"
 screening_events:

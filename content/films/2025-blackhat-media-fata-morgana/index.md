@@ -11,6 +11,12 @@ params:
   order: 7
   genre: "Mystery "
   tixtree_id: "group-b-san-diego-48-hour-film-project-2025-4f39289dea92"
+  cdn:
+    galleries:
+      bts:
+        count: 26
+      group:
+        count: 1
 screening_groups:
   - "group-b"
 screening_events:

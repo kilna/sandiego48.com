@@ -11,6 +11,12 @@ params:
   order: 14
   genre: "Single Room Movie "
   tixtree_id: "group-b-san-diego-48-hour-film-project-2025-4f39289dea92"
+  cdn:
+    galleries:
+      still:
+        count: 4
+      bts:
+        count: 5
 screening_groups:
   - "group-b"
 screening_events:

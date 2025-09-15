@@ -11,6 +11,10 @@ params:
   order: 10
   genre: "Detective / Cop Workplace Film"
   tixtree_id: "group-d-san-diego-48-hour-film-project-2025-ef55effb18b4"
+  cdn:
+    galleries:
+      still:
+        count: 3
 screening_groups:
   - "group-d"
 screening_events:

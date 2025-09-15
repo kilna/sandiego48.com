@@ -3,6 +3,7 @@
 public/
 resources/
 external/
+cdn/
 static/images/ # Generated from assets/images by the Makefile
 .*.swp
 *.bak*

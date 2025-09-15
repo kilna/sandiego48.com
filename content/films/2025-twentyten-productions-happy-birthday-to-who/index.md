@@ -11,6 +11,15 @@ params:
   order: 1
   genre: "Romance "
   tixtree_id: "group-d-san-diego-48-hour-film-project-2025-ef55effb18b4"
+  cdn:
+    galleries:
+      films:
+        Posters: 1
+        Film Stills: 4
+      poster:
+        count: 1
+      still:
+        count: 4
 screening_groups:
   - "group-d"
 screening_events:

@@ -53,6 +53,9 @@
 {{ if resources.Get "js/people-filter.js" }}
   {{ $js = $js | append (resources.Get "js/people-filter.js") }}
 {{ end }}
+{{ if resources.Get "js/gallery-lightbox.js" }}
+  {{ $js = $js | append (resources.Get "js/gallery-lightbox.js") }}
+{{ end }}
 
 {{/* Bundle and optimize JavaScript */}}
 {{ if len $js }}

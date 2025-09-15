@@ -11,6 +11,12 @@ params:
   order: 2
   genre: "Musical or Western "
   tixtree_id: "group-d-san-diego-48-hour-film-project-2025-ef55effb18b4"
+  cdn:
+    galleries:
+      films:
+        Posters: 1
+      poster:
+        count: 1
 screening_groups:
   - "group-d"
 screening_events:

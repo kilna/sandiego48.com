@@ -11,6 +11,16 @@ params:
   order: 12
   genre: "Film de Femme Vacation / Holiday Film"
   tixtree_id: "group-a-san-diego-48-hour-film-project-2025-d0f1fe2a78dd"
+  cdn:
+    galleries:
+      films:
+        Posters: 1
+      poster:
+        count: 1
+      still:
+        count: 3
+      bts:
+        count: 3
 screening_groups:
   - "group-a"
 screening_events:

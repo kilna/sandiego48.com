@@ -11,6 +11,16 @@ params:
   order: 5
   genre: "Utopian or Dystopian Thriller / Suspense"
   tixtree_id: "group-d-san-diego-48-hour-film-project-2025-ef55effb18b4"
+  cdn:
+    galleries:
+      films:
+        Film Stills: 13
+      still:
+        count: 13
+      bts:
+        count: 8
+      group:
+        count: 1
 screening_groups:
   - "group-d"
 screening_events:

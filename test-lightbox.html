@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lightbox Test</title>
+    <style>
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.9);
+        }
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-image {
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+        .lightbox-download {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            padding: 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lightbox Test</h1>
+    <button onclick="testOpen()">Open Lightbox</button>
+    
+    <div class="lightbox" id="lightbox-test">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox('test')">&times;</button>
+            <img class="lightbox-image" src="/cdn/group-photos/2025-k-concern-tango-for-the-unseen/group-001.jpg" alt="Test">
+            <button class="lightbox-download" onclick="downloadImage('test')" title="Download image">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="/js/gallery-lightbox.js"></script>
+    <script>
+        function testOpen() {
+            const lightbox = document.getElementById('lightbox-test');
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox(galleryId) {
+            const lightbox = document.getElementById('lightbox-' + galleryId);
+            if (lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        function downloadImage(galleryId) {
+            const lightbox = document.getElementById('lightbox-' + galleryId);
+            if (!lightbox) {
+                console.error('Lightbox not found:', 'lightbox-' + galleryId);
+                return;
+            }
+            
+            const lightboxImage = lightbox.querySelector('.lightbox-image');
+            if (!lightboxImage) {
+                console.error('Lightbox image not found');
+                return;
+            }
+            
+            if (!lightboxImage.src) {
+                console.error('Lightbox image has no src attribute');
+                return;
+            }
+            
+            // Extract filename from URL
+            const urlParts = lightboxImage.src.split('/');
+            const filename = urlParts[urlParts.length - 1];
+            
+            try {
+                // Try to trigger download using fetch and blob
+                fetch(lightboxImage.src)
+                    .then(response => response.blob())
+                    .then(blob => {
+                        const url = window.URL.createObjectURL(blob);
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.download = filename;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        window.URL.revokeObjectURL(url);
+                        console.log('Download triggered for:', filename);
+                    })
+                    .catch(error => {
+                        console.error('Download failed, opening in new tab:', error);
+                        // Fallback: open in new tab
+                        window.open(lightboxImage.src, '_blank');
+                    });
+            } catch (error) {
+                console.error('Download failed, opening in new tab:', error);
+                // Fallback: open in new tab
+                window.open(lightboxImage.src, '_blank');
+            }
+        }
+    </script>
+</body>
+</html>
