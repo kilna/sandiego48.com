@@ -3,13 +3,7 @@ set -euo pipefail
 
 # Copy assets/images to static/images, respecting Hugo's ignoreFiles patterns
 
-# Check if yq exists, install if not
-if ! command -v yq >/dev/null 2>&1; then
-  echo "Installing yq..."
-  curl -L https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o /tmp/yq
-  chmod +x /tmp/yq
-  export PATH="/tmp:$PATH"
-fi
+# yq should be installed by Makefile
 
 echo "Copying images from assets/images to static/images..."
 

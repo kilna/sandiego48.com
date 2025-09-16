@@ -13,9 +13,17 @@ else
 -include .env # This is used for local development...
 endif
 
-.PHONY: build build-clean server server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit
+.PHONY: build build-clean server server-slow server-verbose open-wait install-yq copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit
 
-copy-images:
+install-yq:
+	@if ! command -v yq >/dev/null 2>&1; then \
+		echo "Installing yq..."; \
+		curl -L https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o /tmp/yq; \
+		chmod +x /tmp/yq; \
+		sudo mv /tmp/yq /usr/local/bin/yq; \
+	fi
+
+copy-images: install-yq
 	./scripts/copy-images.sh
 
 build: copy-images gallery-audit
