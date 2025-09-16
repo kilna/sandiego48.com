@@ -125,7 +125,7 @@ params:
       price: 198
   countdowns:
     - default: "Not long"
-      suffix: "until the Best of San Diego Screening..."
+      suffix: "until the Best of 2025 Screening..."
       date: "2025-09-28T17:30:00-07:00"
       button:
         text: "Buy Tickets Now!"
