@@ -1,6 +1,6 @@
 ---
 title: "The Good Good"
-image: dad-skeleton-the-good-good.png
+image: poster-001.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
@@ -17,10 +17,18 @@ params:
         count: 4
       bts:
         count: 5
+      poster:
+        count: 1
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 4
+    bts:
+      count: 5
 screening_groups:
   - "group-b"
 screening_events:
   - "2025-09-09-group-b-premieres"
 ---
-
 As his best friend bleeds out, one fugitive’s last hope lies in the hands of a different type of healer.

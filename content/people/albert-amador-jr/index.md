@@ -12,8 +12,13 @@ open_auditions:
 credits: []
 social: []
 image_credit: "Headshot by [Jon Medel](https://www.jonmedel.com)"
+params:
+  cdn:
+    galleries:
+      gallery:
+        count: 12
+  galleries:
+    gallery:
+      count: 12
 ---
-
-## About Albert Amador Jr.
-
 Albert Amador Jr. is an actor participating in the San Diego 48 Hour Film Project.

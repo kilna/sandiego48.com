@@ -13,15 +13,15 @@ else
 -include .env # This is used for local development...
 endif
 
-.PHONY: build build-clean server server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download cdn-thumbnails update-cdn-counts
+.PHONY: build build-clean server server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit
 
 copy-images:
 	./scripts/copy-images.sh
 
-build: copy-images
+build: copy-images gallery-audit
 	hugo
 
-build-clean:
+build-clean: gallery-audit
 	rm -rf public
 	hugo --forceSyncStatic --cleanDestinationDir
 
@@ -53,11 +53,11 @@ cleanup-redirects:
 move-images:
 	python3 scripts/move-images.py
 
-cdn: cdn-thumbnails update-cdn-counts cdn-upload
+cdn: gallery-thumbs gallery-update-counts cdn-upload
 
-cdn-force: cdn-thumbnails-force update-cdn-counts cdn-upload
+cdn-force: gallery-thumbs-force gallery-update-counts cdn-upload
 
-cdn-upload:
+cdn-upload: gallery-audit
 	export $$(cat .env | xargs) && \
 	  aws s3 sync cdn/ s3://sandiego48-com/ --delete \
 		  --exclude ".*"
@@ -66,11 +66,14 @@ cdn-download:
 	export $$(cat .env | xargs) && \
 	   aws s3 sync s3://sandiego48-com/ cdn/
 
-cdn-thumbnails:
-	./scripts/cdn-thumbnails.sh
+gallery-thumbs:
+	./scripts/gallery-thumbs.sh
 
-cdn-thumbnails-force:
-	./scripts/cdn-thumbnails.sh --force
+gallery-thumbs-force:
+	./scripts/gallery-thumbs.sh --force
 
-update-cdn-counts:
-	./scripts/update-cdn-counts.sh
+gallery-update-counts:
+	./scripts/gallery-update-counts.sh
+
+gallery-audit:
+	./scripts/gallery-audit.sh

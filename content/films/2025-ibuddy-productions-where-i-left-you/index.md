@@ -15,10 +15,16 @@ params:
     galleries:
       group:
         count: 1
+      bts:
+        count: 4
+  galleries:
+    bts:
+      count: 4
+    group:
+      count: 1
 screening_groups:
   - "group-c"
 screening_events:
   - "2025-09-10-group-c-premieres"
 ---
-
 A man barely escapes with his own life, only to realize that the true survivor is his wife, the woman holding their love together while carrying the weight of the life they both lost.

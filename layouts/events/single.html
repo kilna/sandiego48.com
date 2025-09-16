@@ -47,7 +47,7 @@
     {{ .Content }}
     
     {{/* Add CDN gallery if images are available */}}
-    {{- partial "cdn-gallery.html" . -}}
+    {{- partial "cdn-gallery.html" (dict "galleryId" "photo" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
     
     {{/* Get films for this event using the page slug */}}
     {{ $event_slug := path.Base .RelPermalink }}

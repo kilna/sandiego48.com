@@ -1,6 +1,6 @@
 ---
 title: "FATA MORGANA"
-image: blackhat-media-fata-morgana.png
+image: poster-001.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
@@ -17,10 +17,18 @@ params:
         count: 26
       group:
         count: 1
+      poster:
+        count: 1
+  galleries:
+    poster:
+      count: 1
+    bts:
+      count: 26
+    group:
+      count: 1
 screening_groups:
   - "group-b"
 screening_events:
   - "2025-09-09-group-b-premieres"
 ---
-
 A young man wakes up in the dunes, trying to figure out why and how he got there.

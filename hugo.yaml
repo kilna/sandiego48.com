@@ -74,39 +74,42 @@ params:
   cdn:
     default: https://cdn.sandiego48.com
     localhost: /cdn
-    galleries:
-      events:
-        event:
-          name: "Event Photos"
-          padding: 3
-          extension: "jpg"
-          thumb_size: 96
-          order: 1
-      films:
-        poster:
-          name: "Posters"
-          padding: 3
-          extension: "jpg"
-          thumb_size: 320
-          order: 1
-        still:
-          name: "Film Stills"
-          padding: 3
-          extension: "jpg"
-          thumb_size: 200
-          order: 2
-        bts:
-          name: "Behind the Scenes"
-          padding: 3
-          extension: "jpg"
-          thumb_size: 200
-          order: 3
-        group:
-          name: "Group Photos"
-          padding: 3
-          extension: "jpg"
-          thumb_size: 200
-          order: 4
+  galleries:
+    events:
+      photo:
+        name: "Event Photos"
+        prefix: "photos-"
+        padding: 3
+        extension: "jpg"
+        thumb_size: 128
+    films:
+      poster:
+        name: "Posters"
+        padding: 3
+        extension: "jpg"
+        thumb_size: 320
+      still:
+        name: "Film Stills"
+        padding: 3
+        extension: "jpg"
+        thumb_size: 200
+      bts:
+        name: "Behind the Scenes"
+        padding: 3
+        extension: "jpg"
+        thumb_size: 200
+      group:
+        name: "Group Photos"
+        padding: 3
+        extension: "jpg"
+        thumb_size: 200
+    people:
+      gallery:
+        name: "Photo Gallery"
+        prefix: "image-"
+        padding: 3
+        extension: "jpg"
+        thumb_size: 256
   registration:
     early:
       start: "2025-05-01T00:00:00-07:00"

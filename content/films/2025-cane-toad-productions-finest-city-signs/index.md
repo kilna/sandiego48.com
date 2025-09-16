@@ -1,6 +1,6 @@
 ---
 title: "Finest City Signs"
-image: cane-toad-productions-finest-city-signs.png
+image: poster-002.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
@@ -15,10 +15,16 @@ params:
     galleries:
       still:
         count: 3
+      poster:
+        count: 2
+  galleries:
+    poster:
+      count: 2
+    still:
+      count: 3
 screening_groups:
   - "group-d"
 screening_events:
   - "2025-09-10-group-d-premieres"
 ---
-
 A brother and sister enjoy their hometown as they honor their late mother

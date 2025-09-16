@@ -12,8 +12,13 @@ open_auditions:
 credits: []
 social: []
 image_credit: "Headshot by [Jon Medel](https://www.jonmedel.com)"
+params:
+  cdn:
+    galleries:
+      gallery:
+        count: 21
+  galleries:
+    gallery:
+      count: 21
 ---
-
-## About Alexander Pimentel
-
 Alexander Pimentel is an actor participating in the San Diego 48 Hour Film Project.

@@ -1,6 +1,6 @@
 ---
 title: "Tango for the Unseen"
-image: k-concern-tango-for-the-unseen.png
+image: poster-001.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
@@ -17,10 +17,22 @@ params:
         count: 13
       group:
         count: 2
+      poster:
+        count: 1
+      bts:
+        count: 13
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 13
+    bts:
+      count: 13
+    group:
+      count: 2
 screening_groups:
   - "group-c"
 screening_events:
   - "2025-09-10-group-c-premieres"
 ---
-
-An arguing couple, fresh from a Tango class in the park, collide with a homeless man, then, as the erratic man is about to attack the couple with a knife, visitors from the future intervene. 
+An arguing couple, fresh from a Tango class in the park, collide with a homeless man, then, as the erratic man is about to attack the couple with a knife, visitors from the future intervene.

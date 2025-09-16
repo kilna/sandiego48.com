@@ -1,6 +1,6 @@
 ---
 title: "F.I.R.E. In My Heart"
-image: filmigos-fire-in-my-heart.png
+image: poster-001.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
@@ -15,10 +15,16 @@ params:
     galleries:
       still:
         count: 3
+      poster:
+        count: 1
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 3
 screening_groups:
   - "group-d"
 screening_events:
   - "2025-09-10-group-d-premieres"
 ---
-
 Follow Bryan, an immigration officer, on his patrol as an unexpected adventure awaits.

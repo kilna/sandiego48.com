@@ -1,6 +1,6 @@
 ---
 title: "Chef Quest"
-image: digital-lemonade-stand-chef-quest.png
+image: poster-001.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
@@ -15,10 +15,16 @@ params:
     galleries:
       still:
         count: 3
+      poster:
+        count: 1
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 3
 screening_groups:
   - "group-a"
 screening_events:
   - "2025-09-09-group-a-premieres"
 ---
-
 When the chef of a hotel restaurant gets an unexpected order, he embarks on a journey for fine ingredients, joined by the aloof bartender

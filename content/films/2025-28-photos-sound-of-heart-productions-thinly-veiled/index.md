@@ -14,11 +14,13 @@ params:
   cdn:
     galleries:
       bts:
-        count: 2
+        count: 1
+  galleries:
+    bts:
+      count: 1
 screening_groups:
   - "group-a"
 screening_events:
   - "2025-09-09-group-a-premieres"
 ---
-
 When a well-meaning millennial little sister, dismissed as incompetent and unlucky, stumbles into chaos, her underestimated skills become the very thing that saves the day

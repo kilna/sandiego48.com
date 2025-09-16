@@ -1,6 +1,6 @@
 ---
 title: "Truth or Dare"
-image: young-line-studios-truth-or-dare.png
+image: poster-001.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
@@ -13,14 +13,18 @@ params:
   tixtree_id: "group-b-san-diego-48-hour-film-project-2025-4f39289dea92"
   cdn:
     galleries:
-      films:
-        Film Stills: 3
+      poster:
+        count: 1
       still:
         count: 3
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 3
 screening_groups:
   - "group-b"
 screening_events:
   - "2025-09-09-group-b-premieres"
 ---
-
-It was just a silly game of truth or dare, but when Molly is dared to talk to the boy next door her self confidence is questioned. 
+It was just a silly game of truth or dare, but when Molly is dared to talk to the boy next door her self confidence is questioned.

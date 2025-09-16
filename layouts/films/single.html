@@ -1,6 +1,6 @@
 {{ define "head" }}
   {{- partial "head.html" . -}}
-  {{- partial "layout/stylesheet.html" "people" -}}
+  {{- partial "layout/stylesheet.html" "film" -}}
   {{- partial "layout/stylesheet.html" "style" -}}
   <style>
     /* Film-specific styles */
@@ -145,15 +145,17 @@
 <div class="film-single">
   <div class="film-header">
     <div class="film-poster-container" onclick="openModal('{{ .Params.image }}', '{{ .Title }}')">
-      {{ $film_image := "" }}
       {{ if .Params.image }}
-        {{ $film_image = .Resources.Get .Params.image }}
-      {{ end }}
-      {{ if $film_image }}
-        {{ if and $film_image.MediaType (ne $film_image.MediaType.SubType "svg") }}
-          {{ $film_image = $film_image.Fit "300x450" }}
+        {{ $poster := .Resources.Get .Params.image }}
+        {{ if $poster }}
+          <img src="{{ $poster.RelPermalink }}" alt="{{ .Title }} poster" class="film-poster" />
+        {{ else }}
+          {{ $placeholder := resources.Get "images/placeholder-poster.png" }}
+          {{ with $placeholder }}
+            {{ $thumb := .Fit "300x450" }}
+            <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} poster (placeholder)" class="film-poster" />
+          {{ end }}
         {{ end }}
-        <img src="{{ $film_image.RelPermalink }}" alt="{{ .Title }} poster" class="film-poster" />
       {{ else }}
         {{ $placeholder := resources.Get "images/placeholder-poster.png" }}
         {{ with $placeholder }}
@@ -215,8 +217,14 @@
     </div>
   </div>
   
-  {{/* Add CDN gallery if images are available */}}
-  {{- partial "cdn-gallery.html" . -}}
+  {{/* Add CDN galleries in specific order for films */}}
+  {{- /* Only show poster gallery if there's more than one poster */ -}}
+  {{- if and .Params.galleries.poster (gt .Params.galleries.poster.count 1) -}}
+    {{- partial "cdn-gallery.html" (dict "galleryId" "poster" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
+  {{- end -}}
+  {{- partial "cdn-gallery.html" (dict "galleryId" "still" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
+  {{- partial "cdn-gallery.html" (dict "galleryId" "bts" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
+  {{- partial "cdn-gallery.html" (dict "galleryId" "group" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
 </div>
 
 <script src="{{ "js/gallery-lightbox.js" | relURL }}"></script>

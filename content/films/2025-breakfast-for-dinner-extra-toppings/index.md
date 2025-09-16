@@ -1,6 +1,6 @@
 ---
 title: "Extra Toppings"
-image: breakfast-for-dinner-extra-toppings.png
+image: poster-002.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
@@ -15,10 +15,16 @@ params:
     galleries:
       still:
         count: 3
+      poster:
+        count: 2
+  galleries:
+    poster:
+      count: 2
+    still:
+      count: 3
 screening_groups:
   - "group-a"
 screening_events:
   - "2025-09-09-group-a-premieres"
 ---
-
 Party rental company for unique fantasy requests.

@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
+  // Initialize Load More buttons
+  initializeLoadMoreButtons();
+  
   // Handle URL hash on page load
   handleHashOnLoad();
   
@@ -236,3 +239,113 @@ document.addEventListener('click', function(e) {
     closeLightbox(galleryId);
   }
 });
+
+// Load More functionality
+function initializeLoadMoreButtons() {
+  const loadMoreButtons = document.querySelectorAll('.gallery-load-more-btn');
+  
+  loadMoreButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      loadMoreImages(this);
+    });
+  });
+}
+
+function loadMoreImages(button) {
+  const galleryId = button.dataset.gallery;
+  const currentLoaded = parseInt(button.dataset.loaded);
+  const totalImages = parseInt(button.dataset.total);
+  const loadAmount = 24; // Load 24 more images at a time
+  
+  // Show loading state
+  const loadMoreText = button.querySelector('.load-more-text');
+  const loadMoreLoading = button.querySelector('.load-more-loading');
+  
+  loadMoreText.style.display = 'none';
+  loadMoreLoading.style.display = 'flex';
+  button.disabled = true;
+  
+  // Get gallery data
+  const cdnUrl = button.dataset.cdnUrl;
+  const contentPath = button.dataset.contentPath;
+  const prefix = button.dataset.prefix;
+  const extension = button.dataset.extension;
+  const thumbSuffix = button.dataset.thumbSuffix;
+  const thumbExt = button.dataset.thumbExt;
+  const padding = parseInt(button.dataset.padding);
+  const name = button.dataset.name;
+  
+  // Calculate how many images to load
+  const nextBatch = Math.min(currentLoaded + loadAmount, totalImages);
+  
+  // Get the gallery grid
+  const galleryGrid = document.getElementById(`gallery-grid-${galleryId}`);
+  
+  // Create new gallery items
+  const fragment = document.createDocumentFragment();
+  
+  for (let i = currentLoaded + 1; i <= nextBatch; i++) {
+    const paddedNum = i.toString().padStart(padding, '0');
+    const imageName = `${prefix}${paddedNum}.${extension}`;
+    const thumbName = `${prefix}${paddedNum}${thumbSuffix}.${thumbExt}`;
+    const imageURL = `${cdnUrl}/${contentPath}/${imageName}`;
+    const thumbURL = `${cdnUrl}/${contentPath}/thumbs/${thumbName}`;
+    
+    const galleryItem = document.createElement('div');
+    galleryItem.className = 'gallery-item';
+    
+    const link = document.createElement('a');
+    link.href = imageURL;
+    link.className = 'gallery-link';
+    link.dataset.gallery = `${galleryId}-gallery`;
+    link.dataset.index = i;
+    link.dataset.title = `${name} ${i}`;
+    
+    const img = document.createElement('img');
+    img.src = thumbURL;
+    img.alt = `${name} ${i}`;
+    img.loading = 'lazy';
+    
+    link.appendChild(img);
+    galleryItem.appendChild(link);
+    fragment.appendChild(galleryItem);
+    
+    // Add click event listener for lightbox
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const index = parseInt(this.dataset.index);
+      const imageName = this.href.split('/').pop();
+      openLightbox(galleryId + '-gallery', index, imageName);
+    });
+  }
+  
+  // Add new items to gallery
+  galleryGrid.appendChild(fragment);
+  
+  // Update button state
+  button.dataset.loaded = nextBatch;
+  
+  // Update remaining count
+  const remainingCount = totalImages - nextBatch;
+  const countSpan = button.querySelector('.load-more-count');
+  
+  if (remainingCount > 0) {
+    countSpan.textContent = `(${remainingCount} more)`;
+    // Reset button state
+    loadMoreText.style.display = 'flex';
+    loadMoreLoading.style.display = 'none';
+    button.disabled = false;
+  } else {
+    // Hide button when all images are loaded
+    button.parentElement.style.display = 'none';
+  }
+  
+  // Update lightbox total count for this gallery
+  const lightbox = document.getElementById(`lightbox-${galleryId}-gallery`);
+  if (lightbox) {
+    const totalCounter = lightbox.querySelector('.lightbox-total');
+    if (totalCounter) {
+      totalCounter.textContent = nextBatch;
+    }
+  }
+}

@@ -15,10 +15,12 @@ params:
     galleries:
       group:
         count: 1
+  galleries:
+    group:
+      count: 1
 screening_groups:
   - "group-a"
 screening_events:
   - "2025-09-09-group-a-premieres"
 ---
-
 A psychopathic couple's perfect "date night" is a terrifying ritual of torture and murder for the unsuspecting newlyweds who rented their home.

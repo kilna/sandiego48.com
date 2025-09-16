@@ -1,6 +1,6 @@
 ---
 title: "Mood Swings"
-image: loaf-productions-mood-swings.png
+image: poster-001.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
@@ -15,10 +15,16 @@ params:
     galleries:
       bts:
         count: 14
+      poster:
+        count: 1
+  galleries:
+    poster:
+      count: 1
+    bts:
+      count: 14
 screening_groups:
   - "group-d"
 screening_events:
   - "2025-09-10-group-d-premieres"
 ---
-
 Tensions run high on what was supposed to be a relaxed weekend vacation. Follow the alcohol infused chaos of the Castle Suite, and what is wrong with that butler?

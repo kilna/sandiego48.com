@@ -1,6 +1,6 @@
 ---
 title: "The Clean Up Crew"
-image: snarky-jr-the-clean-up-crew.png
+image: poster-001.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
@@ -13,14 +13,18 @@ params:
   tixtree_id: "group-c-san-diego-48-hour-film-project-2025-0aa4550010ed"
   cdn:
     galleries:
-      films:
-        Film Stills: 2
+      poster:
+        count: 1
       still:
         count: 2
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 2
 screening_groups:
   - "group-c"
 screening_events:
   - "2025-09-10-group-c-premieres"
 ---
-
 When a washed-up maid-turned-secret-agent recruits a team of oddball kids to stop a ruthless crime lord, their improvised plan unravels into pizza-fueled martial arts mayhem—with redemption on the line and failure almost guaranteed.

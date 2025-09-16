@@ -9,16 +9,16 @@ This script looks for URLs in the following formats:
 - Group: https://www.48hourfilm.com/uploads/2025/48HFP/48%20Hour%20Film%20Project%20-%20San%20Diego/TeamName/Group%20Picture/48HFP%20San%20Diego%202025%20-%20TeamName%20-%20Group%20Picture%20-%20file%20X.jpg
 
 Images are saved to the CDN directory structure:
-- cdn/film-stills/<film-slug>/still-001.jpg, still-002.jpg, etc.
-- cdn/bts/<film-slug>/bts-001.jpg, bts-002.jpg, etc.
-- cdn/posters/<film-slug>/poster-001.jpg, poster-002.jpg, etc.
-- cdn/group-photos/<film-slug>/group-001.jpg, group-002.jpg, etc.
+- cdn/films/<film-slug>/poster-001.jpg, poster-002.jpg, etc.
+- cdn/films/<film-slug>/still-001.jpg, still-002.jpg, etc.
+- cdn/films/<film-slug>/bts-001.jpg, bts-002.jpg, etc.
+- cdn/films/<film-slug>/group-001.jpg, group-002.jpg, etc.
 
 The script properly decodes URLs, extracts the file number from the "file X" part,
 and uses 3-digit padding for filenames. Images larger than 1920x1920 are automatically
 resized to fit within those dimensions while preserving aspect ratio. All images are
-compressed to meet GitHub Pages requirements (<25MB by default). Downloads are processed
-in parallel for faster processing. This requires ImageMagick to be installed (brew install imagemagick).
+converted to JPG format to match gallery specifications. Downloads are processed
+in parallel for faster processing. This requires vips to be installed (brew install vips).
 """
 
 import argparse
@@ -66,17 +66,6 @@ def classify_image_from_url(url: str) -> str:
         return "unknown"
 
 
-def get_cdn_directory_name(image_type: str) -> str:
-    """Map image type to CDN directory name."""
-    mapping = {
-        "still": "film-stills",
-        "bts": "bts", 
-        "poster": "posters",
-        "group": "group-photos"
-    }
-    return mapping.get(image_type, image_type)
-
-
 def extract_number_from_filename(url: str) -> int:
     """Extract the number from a filename like '48HFP San Diego 2025 - TeamName - Film Stills - file 1.jpg'."""
     try:
@@ -119,16 +108,16 @@ def find_upload_urls(session: requests.Session, film_url: str) -> List[Tuple[str
     return upload_urls
 
 
-def cleanup_old_images_with_wrong_numbers(film_dir: Path, image_type: str, correct_number: int, ext: str) -> None:
+def cleanup_old_images_with_wrong_numbers(film_dir: Path, image_type: str, correct_number: int) -> None:
     """
     Remove old images with wrong numbers for the same image type.
     For example, if we're about to create poster-001.jpg, remove any existing poster-002.jpg, poster-003.jpg, etc.
     """
     try:
         # Look for existing images of the same type with different numbers
-        for existing_file in film_dir.glob(f"{image_type}-*.{ext.lstrip('.')}"):
+        for existing_file in film_dir.glob(f"{image_type}-*.jpg"):
             # Extract the number from the filename
-            match = re.match(rf'{image_type}-(\d+)\.{ext.lstrip(".")}$', existing_file.name)
+            match = re.match(rf'{image_type}-(\d+)\.jpg$', existing_file.name)
             if match:
                 existing_number = int(match.group(1))
                 # If the number is different from the correct number, remove it
@@ -164,6 +153,204 @@ def download_file(session: requests.Session, url: str, dest_path: Path) -> None:
         raise
 
 
+def get_image_dimensions(image_path: Path) -> Optional[Tuple[int, int]]:
+    """Get image dimensions using vips. Returns (width, height) or None if failed."""
+    try:
+        result = subprocess.run(['vips', 'header', 'image', str(image_path), 'width'], 
+                              capture_output=True, text=True)
+        if result.returncode != 0:
+            return None
+        
+        width = int(result.stdout.strip())
+        
+        result = subprocess.run(['vips', 'header', 'image', str(image_path), 'height'], 
+                              capture_output=True, text=True)
+        if result.returncode != 0:
+            return None
+        
+        height = int(result.stdout.strip())
+        return (width, height)
+        
+    except Exception:
+        return None
+
+
+def resize_image_with_vips(input_path: Path, output_path: Path, max_dimension: int = 1920) -> bool:
+    """
+    Resize image using vips if it's larger than max_dimension in any dimension.
+    Returns True if resized, False if no resize was needed.
+    """
+    try:
+        # Get current dimensions
+        dimensions = get_image_dimensions(input_path)
+        if not dimensions:
+            print(f"  Warning: Could not get image dimensions for {input_path.name}")
+            return False
+        
+        width, height = dimensions
+        
+        # Check if resize is needed
+        if width <= max_dimension and height <= max_dimension:
+            return False
+        
+        print(f"  Image {input_path.name} is {width}x{height}, resizing to fit within {max_dimension}x{max_dimension}...")
+        
+        # Create backup of original
+        backup_path = input_path.with_suffix(input_path.suffix + '.original')
+        input_path.rename(backup_path)
+        
+        # Use vips to resize the image
+        # Calculate new dimensions while maintaining aspect ratio
+        if width > height:
+            new_width = max_dimension
+            new_height = int((height * max_dimension) / width)
+        else:
+            new_height = max_dimension
+            new_width = int((width * max_dimension) / height)
+        
+        cmd = [
+            'vips', 'resize', str(backup_path), str(output_path),
+            f'{new_width / width}', f'{new_height / height}'
+        ]
+        
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        if result.returncode != 0:
+            print(f"  Warning: vips resize failed: {result.stderr}")
+            # Restore original if resize failed
+            backup_path.rename(input_path)
+            return False
+        
+        # Get new dimensions
+        new_dimensions = get_image_dimensions(output_path)
+        if new_dimensions:
+            print(f"  Resized to {new_dimensions[0]}x{new_dimensions[1]}")
+        
+        # Remove backup if resize was successful
+        backup_path.unlink()
+        return True
+        
+    except Exception as e:
+        print(f"  Warning: Error during image resize: {e}")
+        # Try to restore original if something went wrong
+        try:
+            if backup_path.exists():
+                backup_path.rename(input_path)
+        except:
+            pass
+        return False
+
+
+def convert_to_jpg_with_vips(input_path: Path, output_path: Path) -> bool:
+    """
+    Convert image to JPG format using vips.
+    Returns True if conversion was successful, False otherwise.
+    """
+    try:
+        # Check if vips is available
+        try:
+            subprocess.run(['vips', '--version'], capture_output=True, check=True)
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            print(f"  Warning: vips not available, cannot convert {input_path.name}")
+            print(f"  Please install vips: brew install vips")
+            return False
+        
+        # Use vips to convert to JPG with good quality
+        cmd = [
+            'vips', 'jpegsave', str(input_path), str(output_path),
+            '--Q', '90'  # Quality 90
+        ]
+        
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        if result.returncode != 0:
+            print(f"  Warning: vips conversion failed: {result.stderr}")
+            return False
+        
+        return True
+        
+    except Exception as e:
+        print(f"  Warning: Error during image conversion: {e}")
+        return False
+
+
+def process_downloaded_image(dest_path: Path, image_type: str) -> bool:
+    """
+    Post-process downloaded image: resize if needed and convert to JPG.
+    Returns True if processing was successful, False otherwise.
+    """
+    try:
+        # Check if the image is already JPG
+        is_jpg = dest_path.suffix.lower() in ['.jpg', '.jpeg']
+        
+        # Get dimensions to check if resize is needed
+        dimensions = get_image_dimensions(dest_path)
+        if not dimensions:
+            print(f"  Warning: Could not get image dimensions for {dest_path.name}")
+            return False
+        
+        width, height = dimensions
+        needs_resize = width > 1920 or height > 1920
+        
+        # Determine output path
+        if is_jpg:
+            final_path = dest_path
+            temp_path = None
+        else:
+            # Need to convert to JPG
+            final_path = dest_path.with_suffix('.jpg')
+            temp_path = dest_path
+        
+        # Resize if needed
+        if needs_resize:
+            if is_jpg:
+                # Resize in place
+                resize_image_with_vips(dest_path, dest_path)
+            else:
+                # Convert and resize in one step using vips
+                print(f"  Converting {dest_path.name} to JPG and resizing...")
+                if convert_to_jpg_with_vips(dest_path, final_path):
+                    # Now resize the JPG
+                    resize_image_with_vips(final_path, final_path)
+                    # Remove original non-JPG file
+                    temp_path.unlink()
+                else:
+                    return False
+        elif not is_jpg:
+            # Just convert to JPG without resizing
+            print(f"  Converting {dest_path.name} to JPG...")
+            if convert_to_jpg_with_vips(dest_path, final_path):
+                # Remove original non-JPG file
+                temp_path.unlink()
+            else:
+                return False
+        
+        return True
+        
+    except Exception as e:
+        print(f"  Warning: Error during image processing: {e}")
+        return False
+
+
+def is_image_already_downloaded(dest_path: Path) -> bool:
+    """
+    Check if image is already downloaded with correct dimensions.
+    Returns True if image exists and is <= 1920 in all dimensions (already processed).
+    """
+    if not dest_path.exists():
+        return False
+    
+    try:
+        dimensions = get_image_dimensions(dest_path)
+        if not dimensions:
+            return False
+        
+        width, height = dimensions
+        # Consider it already downloaded if dimensions are correct (<= 1920)
+        return width <= 1920 and height <= 1920
+        
+    except Exception:
+        return False
+
+
 def download_and_process_image(args_tuple: Tuple) -> Tuple[str, bool, str]:
     """
     Download and process a single image. Returns (image_name, success, message).
@@ -178,38 +365,22 @@ def download_and_process_image(args_tuple: Tuple) -> Tuple[str, bool, str]:
         # Extract the number from the original filename
         file_number = extract_number_from_filename(upload_url)
         
-        ext = os.path.splitext(urlparse(upload_url).path)[1].lower()
-        # Normalize JPEG extensions to JPG
-        if ext in ['.jpeg', '.jpg']:
-            ext = '.jpg'
-        elif not ext:
-            ext = '.jpg'  # Default to JPG if no extension
+        # Use 3-digit padding for filename, always save as .jpg
+        fname = f"{image_type}-{file_number:03d}.jpg"
         
-        # Use 3-digit padding for filename
-        fname = f"{image_type}-{file_number:03d}{ext}"
-        
-        # Create CDN directory structure: cdn/<type>/<film-slug>/
-        cdn_dir_name = get_cdn_directory_name(image_type)
-        film_dir = dest_root / cdn_dir_name / film_name
+        # Create CDN directory structure: cdn/films/<film-slug>/
+        film_dir = dest_root / "films" / film_name
         dest = film_dir / fname
         
         # Clean up any old images with wrong numbers for this image type
         if not args.dry_run and args.cleanup_old:
-            cleanup_old_images_with_wrong_numbers(film_dir, image_type, file_number, ext)
+            cleanup_old_images_with_wrong_numbers(film_dir, image_type, file_number)
         
-        # Check if existing image has correct dimensions (1920x1920 or smaller)
-        if not args.no_skip_existing and dest.exists():
-            try:
-                result = subprocess.run(['identify', '-format', '%wx%h', str(dest)], 
-                                      capture_output=True, text=True)
-                if result.returncode == 0:
-                    dimensions = result.stdout.strip()
-                    width, height = map(int, dimensions.split('x'))
-                    if width <= 1920 and height <= 1920:
-                        return f"{film_name}:{fname}", True, f"Skipped (dimensions {dimensions} are correct)"
-            except Exception:
-                # If we can't read the image, assume it needs to be downloaded
-                pass
+        # Check if image is already downloaded with correct dimensions
+        if not args.no_skip_existing and is_image_already_downloaded(dest):
+            dimensions = get_image_dimensions(dest)
+            if dimensions:
+                return f"{film_name}:{fname}", True, f"Skipped (dimensions {dimensions[0]}x{dimensions[1]} are correct)"
         
         if args.dry_run:
             return f"{film_name}:{fname}", True, "Would download (dry run)"
@@ -220,17 +391,26 @@ def download_and_process_image(args_tuple: Tuple) -> Tuple[str, bool, str]:
             session.cookies.update(load_cookie(args.cookie))
         
         print(f"Downloading {fname} for {film_name}...")
-        download_file(session, upload_url, dest)
         
-        # Check if image needs resizing for GitHub Pages compatibility
-        if dest.suffix.lower() in ['.jpg', '.jpeg', '.png']:
-            resize_large_image_if_needed(dest, max_size_mb=args.max_image_size)
+        # Download to temporary file first
+        temp_dest = dest.with_suffix('.tmp')
+        download_file(session, upload_url, temp_dest)
         
-        # If this is a poster and no image was previously set, update the film's index.md
-        if image_type == "poster" and not args.dry_run:
-            update_film_index_if_needed(dest_root, fname)
-        
-        return f"{film_name}:{fname}", True, "Downloaded and processed successfully"
+        # Post-process: resize if needed and convert to JPG
+        if process_downloaded_image(temp_dest, image_type):
+            # Move to final destination
+            temp_dest.replace(dest)
+            
+            # If this is a poster and no image was previously set, update the film's index.md
+            if image_type == "poster":
+                update_film_index_if_needed(dest_root, fname)
+            
+            return f"{film_name}:{fname}", True, "Downloaded and processed successfully"
+        else:
+            # Clean up temp file if processing failed
+            if temp_dest.exists():
+                temp_dest.unlink()
+            return f"{film_name}:{fname}", False, "Failed to process image"
         
     except Exception as exc:
         return f"{film_name}:{image_type}", False, f"Failed: {exc}"
@@ -278,84 +458,6 @@ def update_film_index_if_needed(film_dir: Path, poster_filename: str) -> None:
         print(f"  Warning: Could not update {index_file.name}: {e}")
 
 
-def resize_large_image_if_needed(image_path: Path, max_size_mb: int = 25) -> bool:
-    """
-    Resize image only if it's larger than 1920x1920 dimensions or exceeds max_size_mb.
-    Smaller images are left unchanged. Returns True if image was resized, False if no resize was needed.
-    """
-    try:
-        # Check if ImageMagick is available
-        try:
-            subprocess.run(['convert', '--version'], capture_output=True, check=True)
-        except (subprocess.CalledProcessError, FileNotFoundError):
-            print(f"  Warning: ImageMagick not available, cannot resize {image_path.name}")
-            print(f"  Please install ImageMagick: brew install imagemagick")
-            return False
-        
-        # Get current image dimensions
-        result = subprocess.run(['identify', '-format', '%wx%h', str(image_path)], 
-                              capture_output=True, text=True)
-        if result.returncode != 0:
-            print(f"  Warning: Could not get image dimensions for {image_path.name}")
-            return False
-        
-        current_dimensions = result.stdout.strip()
-        width, height = map(int, current_dimensions.split('x'))
-        
-        # Check if image needs resizing (only if dimensions are too large OR file size exceeds limit)
-        file_size_mb = image_path.stat().st_size / (1024 * 1024)
-        needs_resize = (width > 1920 or height > 1920 or file_size_mb > max_size_mb)
-        
-        if not needs_resize:
-            return False
-        
-        print(f"  Image {image_path.name} is {width}x{height} ({file_size_mb:.1f}MB), resizing to 1920x1920 or smaller...")
-        
-        # Create backup of original
-        backup_path = image_path.with_suffix(image_path.suffix + '.original')
-        image_path.rename(backup_path)
-        
-        # Use ImageMagick to resize the image
-        # Resize to fit within 1920x1920 while maintaining aspect ratio
-        cmd = [
-            'convert', str(backup_path),
-            '-resize', '1920x1920>',  # Resize if larger, maintain aspect ratio
-            '-quality', '85',          # Good quality, reasonable file size
-            str(image_path)
-        ]
-        
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        if result.returncode != 0:
-            print(f"  Warning: ImageMagick resize failed: {result.stderr}")
-            # Restore original if resize failed
-            backup_path.rename(image_path)
-            return False
-        
-        # Get new dimensions and file size
-        result = subprocess.run(['identify', '-format', '%wx%h', str(image_path)], 
-                              capture_output=True, text=True)
-        if result.returncode == 0:
-            new_dimensions = result.stdout.strip()
-            print(f"  Resized to {new_dimensions}")
-        
-        new_size_mb = image_path.stat().st_size / (1024 * 1024)
-        print(f"  File size: {new_size_mb:.1f}MB")
-        
-        # Remove backup if resize was successful
-        backup_path.unlink()
-        return True
-        
-    except Exception as e:
-        print(f"  Warning: Error during image resize: {e}")
-        # Try to restore original if something went wrong
-        try:
-            if backup_path.exists():
-                backup_path.rename(image_path)
-        except:
-            pass
-        return False
-
-
 def main() -> None:
     parser = argparse.ArgumentParser(description="Download 48 HFP film images")
     parser.add_argument("--csv", default="data/teams.csv", help="CSV file with film data")
@@ -392,10 +494,10 @@ def main() -> None:
         help="Delay in seconds between films"
     )
     parser.add_argument(
-        "--max-image-size",
+        "--max-dimension",
         type=int,
-        default=25,
-        help="Maximum image size in MB (default: 25MB for GitHub Pages). Images larger than 1920x1920 are resized to fit within those dimensions."
+        default=1920,
+        help="Maximum dimension for images (default: 1920px). Images larger than this are resized."
     )
     parser.add_argument(
         "--workers",

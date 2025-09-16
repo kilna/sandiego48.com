@@ -1,8 +1,8 @@
 {{/*
   CDN Gallery Partial
   
-  Automatically displays galleries of images from the CDN for any page.
-  Only shows galleries that have images configured in params.cdn.galleries.
+  Displays a specific gallery of images from the CDN.
+  Takes a gallery ID parameter to show a specific gallery type.
   
   CDN URL resolution:
   - If BASEURL contains localhost or 127.0.0.1: use params.cdn.localhost
@@ -10,34 +10,41 @@
   - Otherwise: use params.cdn.default
 */}}
 
-{{- if .Params.cdn.galleries -}}
-  {{- /* Get CDN base URL */ -}}
-  {{- $baseURL := .Site.BaseURL -}}
-  {{- $cdnURL := "" -}}
-  
-  {{- /* Check if we're running locally (development server) */ -}}
-  {{- $isLocalDev := or (in $baseURL "localhost") (in $baseURL "127.0.0.1") (in $baseURL ":1313") -}}
-  
-  {{- if $isLocalDev -}}
-    {{- $cdnURL = .Site.Params.cdn.localhost -}}
-  {{- else -}}
-    {{- $baseURLHost := replaceRE "^https?://([^/]+).*" "$1" $baseURL -}}
-    {{- $cdnURL = index .Site.Params.cdn $baseURLHost -}}
-    {{- if not $cdnURL -}}
-      {{- $cdnURL = .Site.Params.cdn.default -}}
-    {{- end -}}
-  {{- end -}}
-  
-  {{- /* Capture the page slug before the range loops */ -}}
-  {{- $pageSlug := path.Base .RelPermalink -}}
-  
-  {{- /* Loop through all configured gallery IDs */ -}}
-  {{- range $galleryId, $galleryData := .Params.cdn.galleries -}}
+{{- $galleryId := .galleryId -}}
+{{- if not $galleryId -}}
+  {{- errorf "cdn-gallery partial requires galleryId parameter" -}}
+{{- end -}}
+
+{{- if .Params.galleries -}}
+  {{- $galleryData := index .Params.galleries $galleryId -}}
+  {{- if $galleryData -}}
     {{- $imageCount := $galleryData.count -}}
     {{- if and $imageCount (gt $imageCount 0) -}}
+      {{- /* Get CDN base URL */ -}}
+      {{- $baseURL := .Site.BaseURL -}}
+      {{- $cdnURL := "" -}}
+      
+      {{- /* Check if we're running locally using environment variable or baseURL */ -}}
+      {{- $envBaseURL := os.Getenv "HUGO_BASEURL" -}}
+      {{- $isLocalDev := or (in $baseURL "localhost") (in $baseURL "127.0.0.1") (in $baseURL ":1313") (and $envBaseURL (in $envBaseURL "localhost")) -}}
+      
+      {{- if $isLocalDev -}}
+        {{- $cdnURL = "/cdn" -}}
+      {{- else -}}
+        {{- $baseURLHost := replaceRE "^https?://([^/]+).*" "$1" $baseURL -}}
+        {{- $cdnURL = index .Site.Params.cdn $baseURLHost -}}
+        {{- if not $cdnURL -}}
+          {{- $cdnURL = .Site.Params.cdn.default -}}
+        {{- end -}}
+      {{- end -}}
+      
+      {{- /* Capture the page context */ -}}
+      {{- $pageSlug := path.Base .RelPermalink -}}
+      {{- $pageSection := .Section -}}
+      
       {{- /* Find the gallery configuration by ID across all Hugo types */ -}}
       {{- $config := "" -}}
-      {{- range $hugoType, $galleries := $.Site.Params.cdn.galleries -}}
+      {{- range $hugoType, $galleries := $.Site.Params.galleries -}}
         {{- if index $galleries $galleryId -}}
           {{- $config = index $galleries $galleryId -}}
           {{- break -}}
@@ -55,31 +62,23 @@
         {{- $thumbSuffix := printf "-%d" $thumbSize -}}
         {{- $thumbExt := "webp" -}}
         
-        {{- /* Map gallery ID to CDN directory name */ -}}
-        {{- $cdnDirName := "" -}}
-        {{- if eq $galleryId "poster" -}}
-          {{- $cdnDirName = "posters" -}}
-        {{- else if eq $galleryId "still" -}}
-          {{- $cdnDirName = "film-stills" -}}
-        {{- else if eq $galleryId "bts" -}}
-          {{- $cdnDirName = "bts" -}}
-        {{- else if eq $galleryId "group" -}}
-          {{- $cdnDirName = "group-photos" -}}
-        {{- else if eq $galleryId "event" -}}
-          {{- $cdnDirName = "events" -}}
-        {{- else -}}
-          {{- $cdnDirName = $galleryId -}}
-        {{- end -}}
+        {{- /* Get content type from captured page section */ -}}
+        {{- $contentType := $pageSection -}}
         
         {{- /* Generate gallery HTML */ -}}
-        <div class="cdn-gallery" data-type="{{ $galleryId }}" style="--thumb-size: {{ $thumbSize }}px;">
+        <div class="cdn-gallery" data-type="{{ $galleryId }}" style="--thumb-size: {{ $thumbSize }}px;" data-total-images="{{ $imageCount }}">
           <h2>{{ $name }}</h2>
-          <div class="gallery-grid">
-            {{- range $i := (seq 1 $imageCount) -}}
+          <div class="gallery-grid" id="gallery-grid-{{ $galleryId }}">
+            {{- /* Show first 24 images initially */ -}}
+            {{- $initialCount := 24 -}}
+            {{- if lt $imageCount $initialCount -}}
+              {{- $initialCount = $imageCount -}}
+            {{- end -}}
+            {{- range $i := (seq 1 $initialCount) -}}
               {{- $paddedNum := printf "%0*d" $padding $i -}}
               {{- $imageName := printf "%s%s.%s" $prefix $paddedNum $extension -}}
               {{- $thumbName := printf "%s%s%s.%s" $prefix $paddedNum $thumbSuffix $thumbExt -}}
-              {{- $contentPath := printf "%s/%s" $cdnDirName $pageSlug -}}
+              {{- $contentPath := printf "%s/%s" $contentType $pageSlug -}}
               {{- $imageURL := printf "%s/%s/%s" $cdnURL $contentPath $imageName -}}
               {{- $thumbURL := printf "%s/%s/thumbs/%s" $cdnURL $contentPath $thumbName -}}
               
@@ -96,6 +95,40 @@
               </div>
             {{- end -}}
           </div>
+          
+          {{- /* Load More Button - only show if there are more images */ -}}
+          {{- if gt $imageCount $initialCount -}}
+            <div class="gallery-load-more-container">
+              <button class="gallery-load-more-btn" 
+                      data-gallery="{{ $galleryId }}" 
+                      data-loaded="{{ $initialCount }}" 
+                      data-total="{{ $imageCount }}"
+                      data-cdn-url="{{ $cdnURL }}"
+                      data-content-path="{{ $contentType }}/{{ $pageSlug }}"
+                      data-prefix="{{ $prefix }}"
+                      data-extension="{{ $extension }}"
+                      data-thumb-suffix="{{ $thumbSuffix }}"
+                      data-thumb-ext="{{ $thumbExt }}"
+                      data-padding="{{ $padding }}"
+                      data-name="{{ $name }}">
+                <span class="load-more-text">
+                  <svg class="load-more-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                  </svg>
+                  Load More Photos
+                  <span class="load-more-count">({{ sub $imageCount $initialCount }} more)</span>
+                </span>
+                <span class="load-more-loading" style="display: none;">
+                  <svg class="loading-spinner" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z">
+                      <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" from="0 12 12" to="360 12 12"/>
+                    </path>
+                  </svg>
+                  Loading...
+                </span>
+              </button>
+            </div>
+          {{- end -}}
         </div>
         
         {{- /* Lightbox HTML */ -}}

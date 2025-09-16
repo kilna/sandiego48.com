@@ -1,6 +1,6 @@
 ---
 title: "Dystopian Cowboys"
-image: super-pas-dystopian-cowboys.png
+image: poster-001.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
@@ -15,10 +15,16 @@ params:
     galleries:
       bts:
         count: 3
+      poster:
+        count: 1
+  galleries:
+    poster:
+      count: 1
+    bts:
+      count: 3
 screening_groups:
   - "group-b"
 screening_events:
   - "2025-09-09-group-b-premieres"
 ---
-
 A meek hotel clerk escapes into a VR Wild West with his best friend, but when the lines blur between fantasy and reality, he must find the courage to stand up to his domineering boss or risk losing both his friend and his shot at a better life.

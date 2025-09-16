@@ -1,6 +1,6 @@
 ---
 title: "Neon Judas"
-image: axiomatic-twist-neon-judas.png
+image: poster-001.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
@@ -17,10 +17,18 @@ params:
         count: 3
       bts:
         count: 48
+      poster:
+        count: 1
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 3
+    bts:
+      count: 48
 screening_groups:
   - "group-b"
 screening_events:
   - "2025-09-09-group-b-premieres"
 ---
-
 A rebel operative being courted as a double-agent faces an impossible choice between love and loyalty.

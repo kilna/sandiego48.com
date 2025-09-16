@@ -51,14 +51,6 @@
     {{ .Content }}
   </div>
 
-  {{/* Photo Gallery */}}
-  {{ $images := slice }}
-  {{ range .Resources }}
-    {{ if and (eq .ResourceType "image") (ne .Name "headshot.jpg") }}
-      {{ $images = $images | append . }}
-    {{ end }}
-  {{ end }}
-  
   {{/* Resume Section - PDF Only */}}
   {{ with .Resources.GetMatch "resume.pdf" }}
   <div class="person-resume">
@@ -72,22 +64,8 @@
   </div>
   {{ end }}
 
-  {{ if gt (len $images) 0 }}
-  <div class="person-gallery">
-    <h3>Photo Gallery</h3>
-    <div class="gallery-grid">
-      {{ range $images }}
-        {{ $thumb := .Fill "300x400" }}
-        {{ $large := .Fill "800x1200" }}
-        <div class="gallery-item">
-          <a href="{{ $large.RelPermalink }}" class="gallery-link" data-lightbox="person-gallery" data-title="{{ $.Title }}">
-            <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} photo" loading="lazy" />
-          </a>
-        </div>
-      {{ end }}
-    </div>
-  </div>
-  {{ end }}
+  {{/* CDN Photo Gallery */}}
+  {{- partial "cdn-gallery.html" (dict "galleryId" "gallery" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
 
   {{ if .Params.open_auditions }}
   <div class="person-auditions">

@@ -1,6 +1,6 @@
 ---
 title: "I Plead The Fifth"
-image: 2880-minute-movie-makers-i-plead-the-fifth.png
+image: poster-001.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
@@ -17,6 +17,19 @@ params:
         count: 10
       bts:
         count: 13
+      poster:
+        count: 1
+      group:
+        count: 1
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 10
+    bts:
+      count: 13
+    group:
+      count: 1
 screening_groups:
   - "group-a"
 screening_events:
@@ -24,10 +37,4 @@ screening_events:
 aliases:
   - "the-2880-minute-movie-makers-i-plead-the-fifth"
 ---
-
-Detective Jack Slater is on administrative 
-leave from his role as a SDPD Detective after
-he discharged his weapon in the line of duty.
-
-This is footage from the deposition of that case.
-
+Detective Jack Slater is on administrative leave from his role as a SDPD Detective after he discharged his weapon in the line of duty. This is footage from the deposition of that case.

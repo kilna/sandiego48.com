@@ -1,6 +1,6 @@
 ---
 title: "The Last Slice"
-image: matte-black-productions-the-last-slice.png
+image: poster-002.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
@@ -13,16 +13,38 @@ params:
   tixtree_id: "group-a-san-diego-48-hour-film-project-2025-d0f1fe2a78dd"
   cdn:
     galleries:
-      films:
-        Film Stills: 3
+      poster:
+        count: 2
       still:
         count: 3
       group:
         count: 1
+  galleries:
+    poster:
+      count: 2
+    still:
+      count: 3
+    group:
+      count: 1
 screening_groups:
   - "group-a"
 screening_events:
   - "2025-09-09-group-a-premieres"
 ---
-
 Amber wanted one thing for her birthday: the last slice of pizza. How will she and her ragtag group of friends find out who took that last slice?
+params:
+  cdn:
+    galleries:
+      poster:
+        count: 2
+      still:
+        count: 3
+      group:
+        count: 1
+  galleries:
+    poster:
+      count: 2
+    still:
+      count: 3
+    group:
+      count: 1
