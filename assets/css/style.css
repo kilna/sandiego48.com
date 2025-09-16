@@ -80,7 +80,7 @@ h1, h2, h3, h4, h5, h5, h6 {
                -1px  1px 1px var(--48-white),
                 1px  1px 1px var(--48-white),
                 0px  0px 4px var(--48-black);
-  margin: 0.75rem 0 0.75rem 0;
+  margin: 0.5rem 0 0.5rem 0 !important;
 }
 
 h1 { font-size: 2.5em; font-weight: 800; }
@@ -99,7 +99,7 @@ h6 { font-size: 1.125em; font-weight: 600; }
 }
 
 p {
-  margin: 0.75rem 0 0.75rem 0;
+  margin: 0.75rem 0 0.75rem 0 !important;
   line-height: 1.25em;
 }
 
@@ -920,6 +920,17 @@ main > * {
   }
 }
 
-
+.notice {
+  display: block;
+  background: var(--48-orange);
+  color: black;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem auto;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
 
 

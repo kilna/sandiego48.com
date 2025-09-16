@@ -126,7 +126,7 @@ params:
   countdowns:
     - default: "Not long"
       suffix: "until the Best of 2025 Screening..."
-      date: "2025-09-28T17:30:00-07:00"
+      date: "2025-09-28T16:00:00-07:00"
       button:
         text: "Buy Tickets Now!"
         url: /go/tickets
@@ -237,6 +237,13 @@ menus:
     params:
       target: _self
       icon: director
+  - identifier: team
+    weight: 37
+    name: Meet the Team
+    url: /team
+    params:
+      target: _self
+      icon: team
   - identifier: find-us-online
     weight: 40
     name: Find Us Online
