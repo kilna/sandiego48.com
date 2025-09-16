@@ -30,5 +30,6 @@ screening_groups:
   - "group-a"
 screening_events:
   - "2025-09-09-group-a-premieres"
+  - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
 ---
 With only 48 hours to complete a film, a naively ambitious team of artists are pushed to the limits of sanity.

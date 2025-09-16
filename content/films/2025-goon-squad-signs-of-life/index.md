@@ -22,5 +22,6 @@ screening_groups:
   - "group-c"
 screening_events:
   - "2025-09-10-group-c-premieres"
+  - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
 ---
 A man fights with himself while fighting the elements in a world scorched by the sun

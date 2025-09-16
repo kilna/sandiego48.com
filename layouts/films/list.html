@@ -17,34 +17,47 @@
 
 
 <div class="people-grid">
-  {{ range .Data.Pages }}
+  {{/* Sort films alphabetically by title, ignoring "The" prefix */}}
+  {{ $films := .Data.Pages }}
+  {{ $films = sort $films "Title" }}
+  {{ $sorted_films := slice }}
+  {{ range $films }}
+    {{ $title := .Title }}
+    {{ if hasPrefix $title "The " }}
+      {{ $title = substr $title 4 }}
+    {{ end }}
+    {{ $sorted_films = $sorted_films | append (dict "page" . "sort_title" $title) }}
+  {{ end }}
+  {{ $sorted_films = sort $sorted_films "sort_title" }}
+  {{ range $sorted_films }}
+    {{ $film := .page }}
           <article class="film-card">
         <div class="film-poster">
-          <a href="{{ .RelPermalink }}" class="film-poster-link">
+          <a href="{{ $film.RelPermalink }}" class="film-poster-link">
                     {{ $film_image := "" }}
-          {{ if .Params.image }}
-            {{ $film_image = .Resources.Get .Params.image }}
+          {{ if $film.Params.image }}
+            {{ $film_image = $film.Resources.Get $film.Params.image }}
           {{ end }}
           {{ if $film_image }}
             {{ if and $film_image.MediaType (ne $film_image.MediaType.SubType "svg") }}
               {{ $film_image = $film_image.Fit "300x450" }}
             {{ end }}
-            <img src="{{ $film_image.RelPermalink }}" alt="{{ .Title }} poster" />
+            <img src="{{ $film_image.RelPermalink }}" alt="{{ $film.Title }} poster" />
           {{ else }}
             {{ $placeholder := resources.Get "images/placeholder-poster.png" }}
             {{ with $placeholder }}
               {{ $thumb := .Fit "300x450" }}
-              <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} poster" class="placeholder-image" />
+              <img src="{{ $thumb.RelPermalink }}" alt="{{ $film.Title }} poster" class="placeholder-image" />
             {{ end }}
           {{ end }}
         </a>
       </div>
                       <div class="film-info">
-          <h3 class="film-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-          <p class="film-team">by <a href="{{ .RelPermalink }}">{{ .Params.team }}</a></p>
-          {{ if .Params.screening_groups }}
+          <h3 class="film-title"><a href="{{ $film.RelPermalink }}">{{ $film.Title }}</a></h3>
+          <p class="film-team">by <a href="{{ $film.RelPermalink }}">{{ $film.Params.team }}</a></p>
+          {{ if $film.Params.screening_groups }}
             <div class="film-groups">
-              {{ range .Params.screening_groups }}
+              {{ range $film.Params.screening_groups }}
                 {{ $groupName := . }}
                 {{ if eq . "group-a" }}{{ $groupName = "Group A" }}{{ end }}
                 {{ if eq . "group-b" }}{{ $groupName = "Group B" }}{{ end }}
@@ -54,8 +67,8 @@
               {{ end }}
             </div>
           {{ end }}
-          {{ if .Params.logline }}
-            <p class="film-logline">{{ .Params.logline }}</p>
+          {{ if $film.Params.logline }}
+            <p class="film-logline">{{ $film.Params.logline }}</p>
           {{ end }}
         </div>
     </article>

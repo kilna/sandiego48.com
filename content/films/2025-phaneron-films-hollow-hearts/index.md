@@ -22,5 +22,6 @@ screening_groups:
   - "group-d"
 screening_events:
   - "2025-09-10-group-d-premieres"
+  - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
 ---
 Two brothers on the run from the law and a young couple looking for a better life fight over a bag of loot that will change the course of their fate forever.

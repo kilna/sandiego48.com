@@ -30,5 +30,6 @@ screening_groups:
   - "group-b"
 screening_events:
   - "2025-09-09-group-b-premieres"
+  - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
 ---
 As his best friend bleeds out, one fugitive’s last hope lies in the hands of a different type of healer.

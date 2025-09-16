@@ -99,7 +99,36 @@
     {{ $event_slug := path.Base .RelPermalink }}
     {{ $all_films := where .Site.Pages "Section" "films" }}
     {{ $films := where $all_films "Params.screening_events" "intersect" (slice $event_slug) }}
-    {{ $films = sort $films "Params.order" }}
+    
+    {{/* Use custom film order if specified, otherwise sort alphabetically by title (ignoring "The") */}}
+    {{ if .Params.film_order }}
+      {{ $ordered_films := slice }}
+      {{ range .Params.film_order }}
+        {{ $film_slug := . }}
+        {{ range $films }}
+          {{ if eq (path.Base .RelPermalink) $film_slug }}
+            {{ $ordered_films = $ordered_films | append . }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ $films = $ordered_films }}
+    {{ else }}
+      {{/* Sort alphabetically by title, ignoring "The" prefix */}}
+      {{ $films = sort $films "Title" }}
+      {{ $sorted_films := slice }}
+      {{ range $films }}
+        {{ $title := .Title }}
+        {{ if hasPrefix $title "The " }}
+          {{ $title = substr $title 4 }}
+        {{ end }}
+        {{ $sorted_films = $sorted_films | append (dict "page" . "sort_title" $title) }}
+      {{ end }}
+      {{ $sorted_films = sort $sorted_films "sort_title" }}
+      {{ $films = slice }}
+      {{ range $sorted_films }}
+        {{ $films = $films | append .page }}
+      {{ end }}
+    {{ end }}
     
     {{ if $films }}
       <p class="featured-films"><strong>Featured Films</strong> 

@@ -36,12 +36,28 @@ params:
     - start: 2025-09-09T20:30:00-07:00
       end: 2025-09-09T23:00:00-07:00
       name: Films Screened
+  film_order:
+    - "2025-fora-productions-room-to-grieve"
+    - "2025-young-line-studios-truth-or-dare"
+    - "2025-bigboy-productions-kai"
+    - "2025-blackhat-media-fata-morgana"
+    - "2025-team-kludge-aka-team-low-tech-ari"
+    - "2025-rhino-street-productions-last-drop"
+    - "2025-wgj-productions-behind-the-close-door"
+    - "2025-super-pas-dystopian-cowboys"
+    - "2025-reading-crew-the-movie-stars-assistant"
+    - "2025-mission-avenue-manchild"
+    - "2025-interstellar-studios-meat-the-family"
+    - "2025-dad-skeleton-the-good-good"
+    - "2025-ed-wood-film-school-aka-team-burritos-oh-snap"
+    - "2025-axiomatic-twist-neon-judas"
+    - "2025-team-roller-pictures-a-cut-above"
   notes:
     - You must purchase a ticket online before the event, and have your emailed QR code ready. There will be no on-site ticket sales.
     - Bring your style! You're coming to a film premiere, be sure to dress to impress.
   galleries:
     photo:
-      count: 330
+      count: 257
   org_info: |
     ### About the 48 Hour Film Project
     The 48 Hour Film Project is the longest running and most popular timed filmmaking competition. Teams have just 48 hours to write, shoot, edit and score a short film. All films are screened in a real theater and compete for awards and recognition.

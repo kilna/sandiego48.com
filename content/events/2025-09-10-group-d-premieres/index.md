@@ -36,6 +36,21 @@ params:
     - start: 2025-09-10T20:30:00-07:00
       end: 2025-09-10T23:00:00-07:00
       name: Films Screened
+  film_order:
+    - "2025-cane-toad-productions-finest-city-signs"
+    - "2025-fade-in-a-slice-of-deception"
+    - "2025-nick-bahen-productions-agent-of-piece"
+    - "2025-pass-the-sugar-one-last-sunset"
+    - "2025-twentyten-productions-happy-birthday-to-who"
+    - "2025-all-kinds-of-shoot-tied-up-in-the-yard"
+    - "2025-filmigos-fire-in-my-heart"
+    - "2025-loaf-productions-mood-swings"
+    - "2025-sunny-side-up-duty-calls"
+    - "2025-dampt-productions-kevin-clark"
+    - "2025-arthouse-films-breakdown-boogie"
+    - "2025-just-a-bit-outside-killin-it"
+    - "2025-hippononymous-r3n3gad3s"
+    - "2025-phaneron-films-hollow-hearts"
   notes:
     - You must purchase a ticket online before the event, and have your emailed QR code ready. There will be no on-site ticket sales.
     - Bring your style! You're coming to a film premiere, be sure to dress to impress.

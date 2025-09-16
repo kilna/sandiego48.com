@@ -26,5 +26,6 @@ screening_groups:
   - "group-c"
 screening_events:
   - "2025-09-10-group-c-premieres"
+  - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
 ---
 Lovers Clementine and Mimi have their relationship tested when Mimi's father arrives. Clementine must decide if they can reconcile or if it is time to abandon her romantic fantasy.

@@ -22,5 +22,6 @@ screening_groups:
   - "group-a"
 screening_events:
   - "2025-09-09-group-a-premieres"
+  - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
 ---
 Tap-dancing the fine line between drama and comedy, everything is at stake when Heather confronts her husband about his crippling dance addiction.

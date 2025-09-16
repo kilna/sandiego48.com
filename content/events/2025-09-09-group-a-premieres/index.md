@@ -36,6 +36,22 @@ params:
     - start: 2025-09-09T18:30:00-07:00
       end: 2025-09-09T20:30:00-07:00
       name: Films Screened
+  film_order:
+    - "2025-extra-rad-tango"
+    - "2025-28-photos-sound-of-heart-productions-thinly-veiled"
+    - "2025-all-of-us-productions-the-san-diego-hotel"
+    - "2025-digital-lemonade-stand-chef-quest"
+    - "2025-lime-street-entertainment-the-good-sister"
+    - "2025-matte-black-productions-the-last-slice"
+    - "2025-2880-minute-movie-makers-i-plead-the-fifth"
+    - "2025-state-of-flux-winds-of-vengeance"
+    - "2025-broken-leg-meets-surya-deva-late-checkout"
+    - "2025-jordan-does-productions-quality-trauma-bonding"
+    - "2025-grudio-pictures-the-tupperware-party"
+    - "2025-jake-byrd-productions-plastic-porcelain"
+    - "2025-metal-pixel-foundry-granulated"
+    - "2025-underdogs-crimson-hour"
+    - "2025-breakfast-for-dinner-extra-toppings"
   notes:
     - You must purchase a ticket online before the event, and have your emailed QR code ready. There will be no on-site ticket sales.
     - Bring your style! You're coming to a film premiere, be sure to dress to impress.
@@ -44,6 +60,6 @@ params:
     The 48 Hour Film Project is the longest running and most popular timed filmmaking competition. Teams have just 48 hours to write, shoot, edit and score a short film. All films are screened in a real theater and compete for awards and recognition.
   galleries:
     photo:
-      count: 272
+      count: 273
 ---
 Step onto the red carpet... no, purple carpet! ...and have professional photos taken at our Hollywood style step-and-repeat before heading into a theater packed with filmmakers, friends, and fans. Entry is by advance purchase only through TixTree (QR code required at the door). Each screening ends with live voting for the Audience Choice Award, with winners and runners-up announced on the spot.

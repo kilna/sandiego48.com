@@ -36,6 +36,22 @@ params:
     - start: 2025-09-10T18:30:00-07:00
       end: 2025-09-10T20:30:00-07:00
       name: Films Screened
+  film_order:
+    - "2025-no-umbrella-studios-wondrfull"
+    - "2025-goon-squad-signs-of-life"
+    - "2025-ibuddy-productions-where-i-left-you"
+    - "2025-k-concern-tango-for-the-unseen"
+    - "2025-snarky-jr-the-clean-up-crew"
+    - "2025-hallyu-usa-doctor-p"
+    - "2025-rorbach-with-clark-the-south-mission-inn"
+    - "2025-flutternubber-quantum-link"
+    - "2025-project-conclusion-company-hello"
+    - "2025-pseudo-rational-the-parting-inn"
+    - "2025-riley-recruits-emendare"
+    - "2025-and-company-productions-the-clown-closet"
+    - "2025-jabronie-pictures-divide-and-concierge"
+    - "2025-business-socks-slice"
+    - "2025-ecliptic-entertainment-the-kollivers"
   notes:
     - You must purchase a ticket online before the event, and have your emailed QR code ready. There will be no on-site ticket sales.
     - Bring your style! You're coming to a film premiere, be sure to dress to impress.

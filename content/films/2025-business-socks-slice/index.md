@@ -26,5 +26,6 @@ screening_groups:
   - "group-c"
 screening_events:
   - "2025-09-10-group-c-premieres"
+  - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
 ---
 Two detectives try to find a grisly murderer, before the case turns cold.
