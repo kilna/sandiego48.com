@@ -20,11 +20,13 @@ install-yq:
 		echo "Installing yq..."; \
 		curl -L https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o /tmp/yq; \
 		chmod +x /tmp/yq; \
-		sudo mv /tmp/yq /usr/local/bin/yq; \
+		mkdir -p ~/.local/bin; \
+		mv /tmp/yq ~/.local/bin/yq; \
+		echo "yq installed to ~/.local/bin/yq"; \
 	fi
 
 copy-images: install-yq
-	./scripts/copy-images.sh
+	PATH="$$HOME/.local/bin:$$PATH" ./scripts/copy-images.sh
 
 build: copy-images gallery-audit
 	hugo
@@ -49,7 +51,7 @@ open:
 	open http://localhost:1313
 
 icons:
-	./scripts/icons.sh
+	PATH="$$HOME/.local/bin:$$PATH" ./scripts/icons.sh
 
 migrate-directories:
 	python3 scripts/migrate-directories.py content/films
@@ -75,13 +77,13 @@ cdn-download:
 	   aws s3 sync s3://sandiego48-com/ cdn/
 
 gallery-thumbs:
-	./scripts/gallery-thumbs.sh
+	PATH="$$HOME/.local/bin:$$PATH" ./scripts/gallery-thumbs.sh
 
 gallery-thumbs-force:
-	./scripts/gallery-thumbs.sh --force
+	PATH="$$HOME/.local/bin:$$PATH" ./scripts/gallery-thumbs.sh --force
 
 gallery-update-counts:
-	./scripts/gallery-update-counts.sh
+	PATH="$$HOME/.local/bin:$$PATH" ./scripts/gallery-update-counts.sh
 
 gallery-audit:
-	./scripts/gallery-audit.sh
+	PATH="$$HOME/.local/bin:$$PATH" ./scripts/gallery-audit.sh
