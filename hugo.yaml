@@ -78,7 +78,7 @@ params:
     events:
       photo:
         name: "Event Photos"
-        prefix: "photos-"
+        prefix: "photo-"
         padding: 3
         extension: "jpg"
         thumb_size: 128
