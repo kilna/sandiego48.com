@@ -62,5 +62,5 @@ Awards to be given:
 - ...and dozens of additional technical and creative awards.
 
 <div style="background: var(--48-orange); color: white; padding: 1rem; border-radius: 0.5rem; margin: 1.5rem 0; text-align: center; font-weight: bold; font-size: 1.1em; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-🎬 Films to be screened will be announced in mid-September
+🎬 Nominations will be announced Wednesday, September 17th at Noon
 </div>
