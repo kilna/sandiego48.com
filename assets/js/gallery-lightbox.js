@@ -57,25 +57,62 @@ function handleHashOnLoad() {
     const galleryType = gallery.dataset.type;
     const galleryLinks = gallery.querySelectorAll('.gallery-link');
     
+    // First, try to find in existing loaded links
+    let found = false;
     galleryLinks.forEach(link => {
       const imageName = link.href.split('/').pop();
       if (imageName === hash) {
         const index = parseInt(link.dataset.index);
         openLightbox(galleryType + '-gallery', index, imageName);
+        found = true;
       }
     });
+    
+    // If not found in loaded links, try to extract index from hash and generate URL
+    if (!found) {
+      const match = hash.match(/^(.+?)(\d+)\.(.+)$/);
+      if (match) {
+        const prefix = match[1];
+        const index = parseInt(match[2]);
+        const extension = match[3];
+        
+        // Check if this matches our gallery pattern
+        const loadMoreBtn = gallery.querySelector('.gallery-load-more-btn');
+        if (loadMoreBtn) {
+          const galleryPrefix = loadMoreBtn.dataset.prefix;
+          const galleryExtension = loadMoreBtn.dataset.extension;
+          
+          if (prefix === galleryPrefix && extension === galleryExtension) {
+            openLightbox(galleryType + '-gallery', index, hash);
+          }
+        }
+      }
+    }
   });
 }
 
 function openLightbox(galleryId, index, imageName) {
   const lightbox = document.getElementById('lightbox-' + galleryId);
   const gallery = document.querySelector(`[data-type="${galleryId.replace('-gallery', '')}"]`);
+  
+  if (!lightbox || !gallery) return;
+  
+  // Try to use existing link first, fall back to dynamic generation
   const links = gallery.querySelectorAll('.gallery-link');
+  const totalImages = parseInt(gallery.dataset.totalImages);
   
-  if (!lightbox || !links.length) return;
-  
-  // Set current image
-  setLightboxImage(lightbox, links, index);
+  if (links.length > 0 && index <= links.length) {
+    // Use existing link (for images that are already loaded)
+    setLightboxImage(lightbox, links, index);
+  } else {
+    // Use dynamic generation for images beyond what's loaded
+    const imageUrl = generateImageUrl(gallery, index);
+    if (imageUrl) {
+      setLightboxImageDynamic(lightbox, index, imageUrl, totalImages);
+    } else {
+      return; // Can't generate URL
+    }
+  }
   
   // Update URL hash
   if (imageName) {
@@ -103,35 +140,37 @@ function closeLightbox(galleryId) {
 function previousImage(galleryId) {
   const lightbox = document.getElementById('lightbox-' + galleryId);
   const gallery = document.querySelector(`[data-type="${galleryId.replace('-gallery', '')}"]`);
-  const links = gallery.querySelectorAll('.gallery-link');
   const currentIndex = parseInt(lightbox.querySelector('.lightbox-current').textContent);
+  const totalImages = parseInt(lightbox.querySelector('.lightbox-total').textContent);
   
   // Don't loop - stay at first image if already there
   if (currentIndex <= 1) return;
   
   const newIndex = currentIndex - 1;
-  const newImageName = links[newIndex - 1].href.split('/').pop();
-  setLightboxImage(lightbox, links, newIndex);
+  const imageUrl = generateImageUrl(gallery, newIndex);
+  const imageName = imageUrl.split('/').pop();
+  setLightboxImageDynamic(lightbox, newIndex, imageUrl, totalImages);
   
   // Update URL hash
-  window.location.hash = newImageName;
+  window.location.hash = imageName;
 }
 
 function nextImage(galleryId) {
   const lightbox = document.getElementById('lightbox-' + galleryId);
   const gallery = document.querySelector(`[data-type="${galleryId.replace('-gallery', '')}"]`);
-  const links = gallery.querySelectorAll('.gallery-link');
   const currentIndex = parseInt(lightbox.querySelector('.lightbox-current').textContent);
+  const totalImages = parseInt(lightbox.querySelector('.lightbox-total').textContent);
   
   // Don't loop - stay at last image if already there
-  if (currentIndex >= links.length) return;
+  if (currentIndex >= totalImages) return;
   
   const newIndex = currentIndex + 1;
-  const newImageName = links[newIndex - 1].href.split('/').pop();
-  setLightboxImage(lightbox, links, newIndex);
+  const imageUrl = generateImageUrl(gallery, newIndex);
+  const imageName = imageUrl.split('/').pop();
+  setLightboxImageDynamic(lightbox, newIndex, imageUrl, totalImages);
   
   // Update URL hash
-  window.location.hash = newImageName;
+  window.location.hash = imageName;
 }
 
 function setLightboxImage(lightbox, links, index) {
@@ -180,6 +219,103 @@ function preloadAdjacentImages(links, currentIndex) {
     const nextIndex = currentIndex + 1;
     const nextImg = new Image();
     nextImg.src = links[nextIndex - 1].href;
+  }
+}
+
+// Generate image URL dynamically based on gallery configuration
+function generateImageUrl(gallery, index) {
+  const galleryData = gallery.dataset;
+  const totalImages = parseInt(galleryData.totalImages);
+  
+  if (index < 1 || index > totalImages) {
+    return '';
+  }
+  
+  // Get gallery configuration from the first existing link (if any)
+  const existingLinks = gallery.querySelectorAll('.gallery-link');
+  if (existingLinks.length > 0) {
+    // Use existing link pattern to determine URL structure
+    const firstLink = existingLinks[0];
+    const baseUrl = firstLink.href.replace(/\/[^/]+$/, ''); // Remove filename
+    const filename = firstLink.href.split('/').pop();
+    
+    // Extract prefix and extension from filename
+    const match = filename.match(/^(.+?)(\d+)\.(.+)$/);
+    if (match) {
+      const prefix = match[1];
+      const extension = match[3];
+      const padding = match[2].length; // Determine padding from existing filename
+      const paddedIndex = index.toString().padStart(padding, '0');
+      return `${baseUrl}/${prefix}${paddedIndex}.${extension}`;
+    }
+  }
+  
+  // Fallback: try to get configuration from load more button data attributes
+  const loadMoreBtn = gallery.querySelector('.gallery-load-more-btn');
+  if (loadMoreBtn) {
+    const cdnUrl = loadMoreBtn.dataset.cdnUrl;
+    const contentPath = loadMoreBtn.dataset.contentPath;
+    const prefix = loadMoreBtn.dataset.prefix;
+    const extension = loadMoreBtn.dataset.extension;
+    const padding = parseInt(loadMoreBtn.dataset.padding);
+    const paddedIndex = index.toString().padStart(padding, '0');
+    const imageName = `${prefix}${paddedIndex}.${extension}`;
+    return `${cdnUrl}/${contentPath}/${imageName}`;
+  }
+  
+  return '';
+}
+
+// Set lightbox image dynamically (works with any image index, not just loaded ones)
+function setLightboxImageDynamic(lightbox, index, imageUrl, totalImages) {
+  const lightboxImage = lightbox.querySelector('.lightbox-image');
+  const currentCounter = lightbox.querySelector('.lightbox-current');
+  const totalCounter = lightbox.querySelector('.lightbox-total');
+  const prevButton = lightbox.querySelector('.lightbox-prev');
+  const nextButton = lightbox.querySelector('.lightbox-next');
+  
+  // Update image
+  lightboxImage.src = imageUrl;
+  lightboxImage.alt = `Gallery Image ${index}`;
+  
+  // Update counter
+  currentCounter.textContent = index;
+  totalCounter.textContent = totalImages;
+  
+  // Show/hide navigation arrows based on position
+  if (prevButton) {
+    prevButton.style.display = index > 1 ? 'block' : 'none';
+  }
+  if (nextButton) {
+    nextButton.style.display = index < totalImages ? 'block' : 'none';
+  }
+  
+  // Preload adjacent images for smoother navigation
+  preloadAdjacentImagesDynamic(lightbox, index, totalImages);
+}
+
+// Preload adjacent images dynamically
+function preloadAdjacentImagesDynamic(lightbox, currentIndex, totalImages) {
+  const gallery = document.querySelector(`[data-type="${lightbox.id.replace('lightbox-', '').replace('-gallery', '')}"]`);
+  
+  // Preload previous image (only if it exists)
+  if (currentIndex > 1) {
+    const prevIndex = currentIndex - 1;
+    const prevImageUrl = generateImageUrl(gallery, prevIndex);
+    if (prevImageUrl) {
+      const prevImg = new Image();
+      prevImg.src = prevImageUrl;
+    }
+  }
+  
+  // Preload next image (only if it exists)
+  if (currentIndex < totalImages) {
+    const nextIndex = currentIndex + 1;
+    const nextImageUrl = generateImageUrl(gallery, nextIndex);
+    if (nextImageUrl) {
+      const nextImg = new Image();
+      nextImg.src = nextImageUrl;
+    }
   }
 }
 
