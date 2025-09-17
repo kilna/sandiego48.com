@@ -157,7 +157,7 @@ header.title h1 div.subtitle {
 <header class="title">
 <div class="logo">
   {{- $logo := resources.Get (printf "images/%s" .Site.Params.logo) -}}
-  <a href="{{ .Site.BaseURL }}"><img class="pure-img" src="{{ $logo.RelPermalink }}" alt="{{ .Site.Title}} Logo"/></a>
+  <a href="{{ .Site.BaseURL }}"><img src="{{ $logo.RelPermalink }}" alt="{{ .Site.Title}} Logo"/></a>
 </div>
 <div class="main">
 <h1>
