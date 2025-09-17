@@ -83,6 +83,11 @@
                 0.1rem  0.1rem 0 var(--48-lighten-more);
 }
 
+/* Announcement heading: use darker purple, keep default heading effects */
+.index .index-box h2 {
+  color: var(--48-purple-dark);
+}
+
 .index-elements {
   background: linear-gradient(
     45deg,
@@ -135,6 +140,19 @@
 </style>
 
 <div class="index">
+
+<div class="index-box" style="background: linear-gradient(135deg, var(--48-purple) 0%, var(--48-purple-light) 50%, var(--48-purple) 100%); border-color: var(--48-purple-light); margin-bottom: 2rem;">
+  <h2 style="text-align: center; margin: 0;">🎬 Award Nominations Announced!</h2>
+  <p style="text-align: center; margin: 0;">
+    <span style="color: var(--48-white);">Check out this year's nominees for the Best of San Diego Screening & Awards Gala</span><br/>
+    {{ partial "components/button.html" (dict
+        "url" "/events/2025-09-28-best-of-san-diego-screening-and-awards-gala"
+        "class" "medium glow pulse"
+        "text" "View Nominations"
+        "icon" "trophy"
+    ) }}
+  </p>
+</div>
 
 {{ (.Site.GetPage "/events").Render "coming" -}}
 

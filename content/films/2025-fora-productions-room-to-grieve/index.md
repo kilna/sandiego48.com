@@ -5,7 +5,7 @@ date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
   year: 2025
-  team: "Fora Productions"
+  team: "FORA Productions"
   logline: "Giving Space to Breathe"
   synopsis: "In a support group built on the five stages of grief a man find solace and himself. "
   order: 13

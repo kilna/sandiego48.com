@@ -1,3 +1,22 @@
+/* Awards section white box */
+.awards-box {
+  background: var(--48-white);
+  color: var(--48-black);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.awards-box h3,
+.awards-box h4,
+.awards-box h5 {
+  color: var(--48-black);
+}
+
+.awards-box a {
+  color: var(--48-purple);
+}
 .events {
   padding: 0;
 }
@@ -366,6 +385,12 @@
     font-size: 0.85em;
   }
 }
+
+/* Nominee Lists Styling */
+.nominee-list {
+  margin: 1rem 0;
+}
+
 
 
 
