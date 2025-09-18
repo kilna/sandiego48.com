@@ -68,7 +68,7 @@
 <p style="display: block; margin: 0.5rem 0;">Important Details ✍️</p>
 <ul style="margin: 0; padding-left: 1.5rem;">
   {{ range .Params.notes }}
-    <li style="font-style: italic;">{{ . }}</li>
+    <li style="font-style: italic;">{{ . | markdownify }}</li>
   {{ end }}
 </ul>
 {{ end }}

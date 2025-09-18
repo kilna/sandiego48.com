@@ -285,7 +285,7 @@
     <h3>Important Details</h3>
     <ul>
       {{ range .Params.notes }}
-        <li>{{ . }}</li>
+        <li>{{ . | markdownify }}</li>
       {{ end }}
     </ul>
     {{ end }}

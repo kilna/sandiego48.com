@@ -5,7 +5,7 @@ date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
   year: 2025
-  team: "...and Company! Productions"
+  team: "And Company! Productions"
   logline: "...And they were roommates. "
   synopsis: "Lovers Clementine and Mimi have their relationship tested when Mimi's father arrives. Clementine must decide if they can reconcile or if it is time to abandon her romantic fantasy. "
   order: 7

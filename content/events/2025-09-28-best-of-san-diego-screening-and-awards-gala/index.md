@@ -39,6 +39,8 @@ params:
   notes:
     - You must purchase a ticket online before the event, and have your emailed QR code ready. There will be no on-site ticket sales.
     - Bring your style! You're coming to a film premiere, be sure to dress to impress.
+    - By purchasing a ticket or attending the event, the attendee agrees to the
+      [Attendee Terms](/attendee-terms/)
   org_info: |
     ### About the 48 Hour Film Project
     The 48 Hour Film Project is the longest running and most popular timed filmmaking competition. Teams have just 48 hours to write, shoot, edit and score a short film. All films are screened in a real theater and compete for awards and recognition.
@@ -54,9 +56,9 @@ The following nominees have been selected for this year's awards:
 ### Best Cinematography
 <div class="nominee-list">
 <ul>
-<li><strong>Will Severson, Sean McDonald, & Maximillian Newhan</strong><br>for <strong><a href="/films/2025-extra-rad-tango/">Tango</a></strong> <em>by Extra Rad</em></li>
+<li><strong>Will Severson, Sean McDannold, & Maximillian Newhan</strong><br>for <strong><a href="/films/2025-extra-rad-tango/">Tango</a></strong> <em>by Extra Rad</em></li>
 <li><strong>Cody Caldwell</strong><br>for <strong><a href="/films/2025-fora-productions-room-to-grieve/">Room to Grieve</a></strong> <em>by FORA Productions</em></li>
-<li><strong>Dan Goodman</strong><br>for <strong><a href="/films/2025-filmigos-fire-in-my-heart/">F.I.R.E. in my Heart</a></strong> <em>by The Filmigos</em></li>
+<li><strong>Ryan Matthysse</strong><br>for <strong><a href="/films/2025-filmigos-fire-in-my-heart/">F.I.R.E. in my Heart</a></strong> <em>by The Filmigos</em></li>
 <li><strong>Greyson Joralemon</strong><br>for <strong><a href="/films/2025-goon-squad-signs-of-life/">Signs of Life</a></strong> <em>by Goon Squad</em></li>
 <li><strong>Nathan Tomczak</strong><br>for <strong><a href="/films/2025-phaneron-films-hollow-hearts/">Hollow Hearts</a></strong> <em>by Phaneron Films</em></li>
 </ul>
@@ -120,8 +122,8 @@ The following nominees have been selected for this year's awards:
 ### Best Acting in a Female Role
 <div class="nominee-list">
 <ul>
-<li><strong>Jenna Pekny</strong><br>for <strong><a href="/films/2025-and-company-productions-the-clown-closet/">The Clown Closet</a></strong> <em>by ...and Company! Productions</em></li>
-<li><strong>Nana La</strong><br>for <strong><a href="/films/2025-and-company-productions-the-clown-closet/">The Clown Closet</a></strong> <em>by ...and Company! Productions</em></li>
+<li><strong>Jenna Pekny</strong><br>for <strong><a href="/films/2025-and-company-productions-the-clown-closet/">The Clown Closet</a></strong> <em>by And Company! Productions</em></li>
+<li><strong>Nana La</strong><br>for <strong><a href="/films/2025-and-company-productions-the-clown-closet/">The Clown Closet</a></strong> <em>by And Company! Productions</em></li>
 <li><strong>Abbie Black</strong><br>for <strong><a href="/films/2025-cane-toad-productions-finest-city-signs/">Finest City Signs</a></strong> <em>by Cane Toad Productions</em></li>
 <li><strong>Paige Chadwick</strong><br>for <strong><a href="/films/2025-dad-skeleton-the-good-good/">The Good Good</a></strong> <em>by Dad Skeleton</em></li>
 <li><strong>Yoselina Castillo</strong><br>for <strong><a href="/films/2025-phaneron-films-hollow-hearts/">Hollow Hearts</a></strong> <em>by Phaneron Films</em></li>
