@@ -54,81 +54,123 @@ This screening will consist of a dozen or more featured best films from the San 
 The following nominees have been selected for this year's awards:
 
 ### Best Cinematography
-<div class="nominee-list">
-<ul>
-<li><strong>Will Severson, Sean McDannold, & Maximillian Newhan</strong><br>for <strong><a href="/films/2025-extra-rad-tango/">Tango</a></strong> <em>by Extra Rad</em></li>
-<li><strong>Cody Caldwell</strong><br>for <strong><a href="/films/2025-fora-productions-room-to-grieve/">Room to Grieve</a></strong> <em>by FORA Productions</em></li>
-<li><strong>Ryan Matthysse</strong><br>for <strong><a href="/films/2025-filmigos-fire-in-my-heart/">F.I.R.E. in my Heart</a></strong> <em>by The Filmigos</em></li>
-<li><strong>Greyson Joralemon</strong><br>for <strong><a href="/films/2025-goon-squad-signs-of-life/">Signs of Life</a></strong> <em>by Goon Squad</em></li>
-<li><strong>Nathan Tomczak</strong><br>for <strong><a href="/films/2025-phaneron-films-hollow-hearts/">Hollow Hearts</a></strong> <em>by Phaneron Films</em></li>
-</ul>
-</div>
 
-### Best Film Editing  
-<div class="nominee-list">
-<ul>
-<li><strong>Tyler Diffie & Dan Goldman</strong><br>for <strong><a href="/films/2025-filmigos-fire-in-my-heart/">F.I.R.E. in my Heart</a></strong> <em>by The Filmigos</em></li>
-<li><strong>Ivan Parascandolo</strong><br>for <strong><a href="/films/2025-fora-productions-room-to-grieve/">Room to Grieve</a></strong> <em>by FORA Productions</em></li>
-<li><strong>Greyson Joralemon</strong><br>for <strong><a href="/films/2025-goon-squad-signs-of-life/">Signs of Life</a></strong> <em>by Goon Squad</em></li>
-<li><strong>Mauricio Navarro</strong><br>for <strong><a href="/films/2025-jordan-does-productions-quality-trauma-bonding/">Quality Trauma Bonding</a></strong> <em>by Jordan Does Productions</em></li>
-<li><strong>Jake Segraves</strong><br>for <strong><a href="/films/2025-state-of-flux-winds-of-vengeance/">Winds of Vengeance</a></strong> <em>by State of Flux</em></li>
-</ul>
-</div>
+- **Will Severson, Sean McDannold, & Maximillian Newhan**  
+  for **[Tango](/films/2025-extra-rad-tango/)** by *Extra Rad*
+
+- **Cody Caldwell**  
+  for **[Room to Grieve](/films/2025-fora-productions-room-to-grieve/)** by *FORA Productions*
+
+- **Ryan Matthysse**  
+  for **[F.I.R.E. in my Heart](/films/2025-filmigos-fire-in-my-heart/)** by *The Filmigos*
+
+- **Greyson Joralemon**  
+  for **[Signs of Life](/films/2025-goon-squad-signs-of-life/)** by *Goon Squad*
+
+- **Nathan Tomczak**  
+  for **[Hollow Hearts](/films/2025-phaneron-films-hollow-hearts/)** by *Phaneron Films*
+
+### Best Film Editing
+
+- **Tyler Diffie & Dan Goldman**  
+  for **[F.I.R.E. in my Heart](/films/2025-filmigos-fire-in-my-heart/)** by *The Filmigos*
+
+- **Ivan Parascandolo**  
+  for **[Room to Grieve](/films/2025-fora-productions-room-to-grieve/)** by *FORA Productions*
+
+- **Greyson Joralemon**  
+  for **[Signs of Life](/films/2025-goon-squad-signs-of-life/)** by *Goon Squad*
+
+- **Mauricio Navarro**  
+  for **[Quality Trauma Bonding](/films/2025-jordan-does-productions-quality-trauma-bonding/)** by *Jordan Does Productions*
+
+- **Jake Segraves**  
+  for **[Winds of Vengeance](/films/2025-state-of-flux-winds-of-vengeance/)** by *State of Flux*
 
 ### Best Directing
-<div class="nominee-list">
-<ul>
-<li><strong>Flash Kellish</strong><br>for <strong><a href="/films/2025-team-roller-pictures-a-cut-above/">A Cut Above</a></strong> <em>by Team Roller Pictures</em></li>
-<li><strong>Jacob Rozansky,  Harrison Webb, Paige Chadwick, & Joel Arriola</strong><br>for <strong><a href="/films/2025-dad-skeleton-the-good-good/">The Good Good</a></strong> <em>by Dad Skeleton</em></li>
-<li><strong>Peter Kowalchuk</strong><br>for <strong><a href="/films/2025-phaneron-films-hollow-hearts/">Hollow Hearts</a></strong> <em>by Phaneron Films</em></li>
-<li><strong> Maximilian Newhan & Sean McDonald</strong><br>for <strong><a href="/films/2025-extra-rad-tango/">Tango</a></strong> <em>by Extra Rad</em></li>
-<li><strong>Ben Wilson</strong><br>for <strong><a href="/films/2025-no-umbrella-studios-wondrfull/">WondRFULL</a></strong> <em>by No Umbrella Studios</em></li>
-</ul>
-</div>
+
+- **Flash Kellish**  
+  for **[A Cut Above](/films/2025-team-roller-pictures-a-cut-above/)** by *Team Roller Pictures*
+
+- **Jacob Rozansky, Harrison Webb, Paige Chadwick, & Joel Arriola**  
+  for **[The Good Good](/films/2025-dad-skeleton-the-good-good/)** by *Dad Skeleton*
+
+- **Peter Kowalchuk**  
+  for **[Hollow Hearts](/films/2025-phaneron-films-hollow-hearts/)** by *Phaneron Films*
+
+- **Maximilian Newhan & Sean McDonald**  
+  for **[Tango](/films/2025-extra-rad-tango/)** by *Extra Rad*
+
+- **Ben Wilson**  
+  for **[WondRFULL](/films/2025-no-umbrella-studios-wondrfull/)** by *No Umbrella Studios*
 
 ### Best Screenwriting
-<div class="nominee-list">
-<ul>
-<li><strong>Alex Guillen & Michael Scott</strong><br>for <strong><a href="/films/2025-team-roller-pictures-a-cut-above/">A Cut Above</a></strong> <em>by Team Roller Pictures</em></li>
-<li><strong>Rachel Kelly & Justin Hundall</strong><br>for <strong><a href="/films/2025-business-socks-slice/">Slice</a></strong> <em>by Business Socks</em></li>
-<li><strong>Joel Arriola, Paige Chadwick, & Jacob Rozansky</strong><br>for <strong><a href="/films/2025-dad-skeleton-the-good-good/">The Good Good</a></strong> <em>by Dad Skeleton</em></li>
-<li><strong>Scott W. Peterson & Andrew Van Camp</strong><br>for <strong><a href="/films/2025-broken-leg-meets-surya-deva-late-checkout/">Late Checkout</a></strong> <em>by Broken Leg Meets Surya Deva</em></li>
-<li><strong>Kellen Crawford, Will Severson, & Maximillian Newhan</strong><br>for <strong><a href="/films/2025-extra-rad-tango/">Tango</a></strong> <em>by Extra Rad</em></li>
-</ul>
-</div>
+
+- **Alex Guillen & Michael Scott**  
+  for **[A Cut Above](/films/2025-team-roller-pictures-a-cut-above/)** by *Team Roller Pictures*
+
+- **Rachel Kelly & Justin Hundall**  
+  for **[Slice](/films/2025-business-socks-slice/)** by *Business Socks*
+
+- **Joel Arriola, Paige Chadwick, & Jacob Rozansky**  
+  for **[The Good Good](/films/2025-dad-skeleton-the-good-good/)** by *Dad Skeleton*
+
+- **Scott W. Peterson & Andrew Van Camp**  
+  for **[Late Checkout](/films/2025-broken-leg-meets-surya-deva-late-checkout/)** by *Broken Leg Meets Surya Deva*
+
+- **Kellen Crawford, Will Severson, & Maximillian Newhan**  
+  for **[Tango](/films/2025-extra-rad-tango/)** by *Extra Rad*
 
 ### Best Musical Score
-<div class="nominee-list">
-<ul>
-<li><strong>Jarrah Newman</strong><br>for <strong><a href="/films/2025-cane-toad-productions-finest-city-signs/">Finest City Signs</a></strong> <em>by Cane Toad Productions</em></li>
-<li><strong>Ray Kim</strong><br>for <strong><a href="/films/2025-fora-productions-room-to-grieve/">Room to Grieve</a></strong> <em>by FORA Productions</em></li>
-<li><strong>Edward Spade</strong><br>for <strong><a href="/films/2025-k-concern-tango-for-the-unseen/">Tango for the Unseen</a></strong> <em>by The K Concern</em></li>
-<li><strong>Alan Perales</strong><br>for <strong><a href="/films/2025-all-kinds-of-shoot-tied-up-in-the-yard/">Tied up in the Yard</a></strong> <em>by All Kinds of Shoot</em></li>
-<li><strong>David Dudas</strong><br>for <strong><a href="/films/2025-state-of-flux-winds-of-vengeance/">Winds of Vengeance</a></strong> <em>by State of Flux</em></li>
-</ul>
-</div>
+
+- **Jarrah Newman**  
+  for **[Finest City Signs](/films/2025-cane-toad-productions-finest-city-signs/)** by *Cane Toad Productions*
+
+- **Ray Kim**  
+  for **[Room to Grieve](/films/2025-fora-productions-room-to-grieve/)** by *FORA Productions*
+
+- **Edward Spade**  
+  for **[Tango for the Unseen](/films/2025-k-concern-tango-for-the-unseen/)** by *The K Concern*
+
+- **Alan Perales**  
+  for **[Tied up in the Yard](/films/2025-all-kinds-of-shoot-tied-up-in-the-yard/)** by *All Kinds of Shoot*
+
+- **David Dudas**  
+  for **[Winds of Vengeance](/films/2025-state-of-flux-winds-of-vengeance/)** by *State of Flux*
 
 ### Best Acting in a Male Role
-<div class="nominee-list">
-<ul>
-<li><strong>Devon Guevara</strong><br>for <strong><a href="/films/2025-filmigos-fire-in-my-heart/">F.I.R.E. in my Heart</a></strong> <em>by The Filmigos</em></li>
-<li><strong>Randy Davison</strong><br>for <strong><a href="/films/2025-fora-productions-room-to-grieve/">Room to Grieve</a></strong> <em>by FORA Productions</em></li>
-<li><strong>Paul Costen</strong><br>for <strong><a href="/films/2025-business-socks-slice/">Slice</a></strong> <em>by Business Socks</em></li>
-<li><strong>Enrique Dueñas</strong><br>for <strong><a href="/films/2025-extra-rad-tango/">Tango</a></strong> <em>by Extra Rad</em></li>
-<li><strong>Rivers Daniel Michel</strong><br>for <strong><a href="/films/2025-no-umbrella-studios-wondrfull/">WondRFULL</a></strong> <em>by No Umbrella Studios</em></li>
-</ul>
-</div>
+
+- **Devon Guevara**  
+  for **[F.I.R.E. in my Heart](/films/2025-filmigos-fire-in-my-heart/)** by *The Filmigos*
+
+- **Randy Davison**  
+  for **[Room to Grieve](/films/2025-fora-productions-room-to-grieve/)** by *FORA Productions*
+
+- **Paul Costen**  
+  for **[Slice](/films/2025-business-socks-slice/)** by *Business Socks*
+
+- **Enrique Dueñas**  
+  for **[Tango](/films/2025-extra-rad-tango/)** by *Extra Rad*
+
+- **Rivers Daniel Michel**  
+  for **[WondRFULL](/films/2025-no-umbrella-studios-wondrfull/)** by *No Umbrella Studios*
 
 ### Best Acting in a Female Role
-<div class="nominee-list">
-<ul>
-<li><strong>Jenna Pekny</strong><br>for <strong><a href="/films/2025-and-company-productions-the-clown-closet/">The Clown Closet</a></strong> <em>by And Company! Productions</em></li>
-<li><strong>Nana La</strong><br>for <strong><a href="/films/2025-and-company-productions-the-clown-closet/">The Clown Closet</a></strong> <em>by And Company! Productions</em></li>
-<li><strong>Abbie Black</strong><br>for <strong><a href="/films/2025-cane-toad-productions-finest-city-signs/">Finest City Signs</a></strong> <em>by Cane Toad Productions</em></li>
-<li><strong>Paige Chadwick</strong><br>for <strong><a href="/films/2025-dad-skeleton-the-good-good/">The Good Good</a></strong> <em>by Dad Skeleton</em></li>
-<li><strong>Yoselina Castillo</strong><br>for <strong><a href="/films/2025-phaneron-films-hollow-hearts/">Hollow Hearts</a></strong> <em>by Phaneron Films</em></li>
-</ul>
-</div>
+
+- **Jenna Pekny**  
+  for **[The Clown Closet](/films/2025-and-company-productions-the-clown-closet/)** by *And Company! Productions*
+
+- **Nana La**  
+  for **[The Clown Closet](/films/2025-and-company-productions-the-clown-closet/)** by *And Company! Productions*
+
+- **Abbie Black**  
+  for **[Finest City Signs](/films/2025-cane-toad-productions-finest-city-signs/)** by *Cane Toad Productions*
+
+- **Paige Chadwick**  
+  for **[The Good Good](/films/2025-dad-skeleton-the-good-good/)** by *Dad Skeleton*
+
+- **Yoselina Castillo**  
+  for **[Hollow Hearts](/films/2025-phaneron-films-hollow-hearts/)** by *Phaneron Films*
 
 ### Other Awards
 
