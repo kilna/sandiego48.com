@@ -125,7 +125,7 @@ params:
       price: 198
   countdowns:
     - default: "Not long"
-      suffix: "until the Best of 2025 Screening..."
+      suffix: "until the Best of 2025..."
       date: "2025-09-28T16:00:00-07:00"
       button:
         text: "Buy Tickets Now!"
