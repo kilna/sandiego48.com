@@ -13,7 +13,7 @@ else
 -include .env # This is used for local development...
 endif
 
-.PHONY: build build-clean server server-slow server-verbose open-wait install-yq copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit
+.PHONY: build build-clean server server-cdn server-slow server-verbose open-wait install-yq copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit
 
 install-yq:
 	@if ! command -v yq >/dev/null 2>&1; then \
@@ -37,6 +37,9 @@ build-clean: gallery-audit
 
 server: copy-images kill-server
 	hugo server $(PARAMS) | tee >($(MAKE) open-wait) 2>&1
+
+server-cdn: copy-images kill-server
+	HUGO_FORCE_PRODUCTION_CDN=true hugo server $(PARAMS) | tee >($(MAKE) open-wait) 2>&1
 
 server-clean: build-clean kill-server
 	hugo server $(PARAMS) | tee >($(MAKE) open-wait) 2>&1

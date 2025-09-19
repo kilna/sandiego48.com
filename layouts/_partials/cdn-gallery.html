@@ -26,7 +26,8 @@
       
       {{- /* Check if we're running locally using environment variable or baseURL */ -}}
       {{- $envBaseURL := os.Getenv "HUGO_BASEURL" -}}
-      {{- $isLocalDev := or (in $baseURL "localhost") (in $baseURL "127.0.0.1") (in $baseURL ":1313") (and $envBaseURL (in $envBaseURL "localhost")) -}}
+      {{- $forceProductionCDN := os.Getenv "HUGO_FORCE_PRODUCTION_CDN" -}}
+      {{- $isLocalDev := and (not $forceProductionCDN) (or (in $baseURL "localhost") (in $baseURL "127.0.0.1") (in $baseURL ":1313") (and $envBaseURL (in $envBaseURL "localhost"))) -}}
       
       {{- if $isLocalDev -}}
         {{- $cdnURL = "/cdn" -}}

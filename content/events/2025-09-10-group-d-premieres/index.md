@@ -3,6 +3,7 @@ title: Group D Premieres Screening
 type: events
 summary: >
   Step onto the purple carpet and have professional photos taken before heading into a theater packed with filmmakers, friends, and fans. Entry is by advance purchase only through TixTree.
+
 date: 2025-09-10T20:30:00-07:00
 publishDate: 2025-08-22T00:00:00-07:00
 draft: false
@@ -18,8 +19,8 @@ params:
   screening_group: D
   location_name: AMC Mission Valley 20
   location_details: >
-    State-of-the-art movie theater with premium seating and sound systems.
-    Located in the heart of Mission Valley with easy access from I-8 and I-15.
+    State-of-the-art movie theater with premium seating and sound systems. Located in the heart of Mission Valley with easy access from I-8 and I-15.
+
   location_url: https://www.amctheatres.com/movie-theatres/san-diego/amc-mission-valley-20
   location_address: 1640 Camino Del Rio North, San Diego, CA 92108
   location_image: location.jpg
@@ -27,8 +28,7 @@ params:
     - start: 2025-09-10T19:30:00-07:00
       name: Ticket Checkin
       details: >-
-        Have your ticket from TixTree QR code ready (it will be in your email after purchase).
-        There will be no on-site ticket sales, you must order online.
+        Have your ticket from TixTree QR code ready (it will be in your email after purchase). There will be no on-site ticket sales, you must order online.
     - start: 2025-09-10T19:30:00-07:00
       end: 2025-09-10T20:30:00-07:00
       name: Purple Carpet Photos
