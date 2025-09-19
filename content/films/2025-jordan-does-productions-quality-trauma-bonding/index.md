@@ -29,7 +29,10 @@ params:
 screening_groups:
   - "group-a"
 screening_events:
-best_of_2025: true  - "2025-09-09-group-a-premieres"
+  - "2025-09-09-group-a-premieres"
   - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
+best_of_2025: true
+nominations:
+  - "Best Film Editing - Mauricio Navarro"
 ---
 With only 48 hours to complete a film, a naively ambitious team of artists are pushed to the limits of sanity.

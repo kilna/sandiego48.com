@@ -21,7 +21,11 @@ params:
 screening_groups:
   - "group-b"
 screening_events:
-best_of_2025: true  - "2025-09-09-group-b-premieres"
+  - "2025-09-09-group-b-premieres"
   - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
+best_of_2025: true
+nominations:
+  - "Best Directing - Flash Kellish"
+  - "Best Screenwriting - Alex Guillen & Michael Scott"
 ---
 A father, who is the subject of a documentary, has an unusual hobby that he is teaching to his son.

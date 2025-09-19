@@ -21,7 +21,11 @@ params:
 screening_groups:
   - "group-c"
 screening_events:
-best_of_2025: true  - "2025-09-10-group-c-premieres"
+  - "2025-09-10-group-c-premieres"
   - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
+best_of_2025: true
+nominations:
+  - "Best Directing - Ben Wilson"
+  - "Best Acting in a Male Role - Rivers Daniel Michel"
 ---
 A conflicted individual consults younger versions of himself to decide how they should move ahead with their struggling romantic relationship.

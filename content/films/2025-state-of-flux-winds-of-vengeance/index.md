@@ -21,7 +21,11 @@ params:
 screening_groups:
   - "group-a"
 screening_events:
-best_of_2025: true  - "2025-09-09-group-a-premieres"
+  - "2025-09-09-group-a-premieres"
   - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
+best_of_2025: true
+nominations:
+  - "Best Film Editing - Jake Segraves"
+  - "Best Musical Score - David Dudas"
 ---
 A young woman seeks purpose in the aftermath of her mother’s murder

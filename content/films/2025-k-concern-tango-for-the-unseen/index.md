@@ -33,6 +33,10 @@ params:
 screening_groups:
   - "group-c"
 screening_events:
-best_of_2025: true  - "2025-09-28-best-of-san-diego-screening-and-awards-gala"  - "2025-09-10-group-c-premieres"
+  - "2025-09-10-group-c-premieres"
+  - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
+best_of_2025: true
+nominations:
+  - "Best Musical Score - Edward Spade"
 ---
 An arguing couple, fresh from a Tango class in the park, collide with a homeless man, then, as the erratic man is about to attack the couple with a knife, visitors from the future intervene.

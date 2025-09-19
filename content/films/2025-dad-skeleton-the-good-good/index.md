@@ -29,7 +29,12 @@ params:
 screening_groups:
   - "group-b"
 screening_events:
-best_of_2025: true  - "2025-09-09-group-b-premieres"
+  - "2025-09-09-group-b-premieres"
   - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
+best_of_2025: true
+nominations:
+  - "Best Directing - Jacob Rozansky, Harrison Webb, Paige Chadwick, & Joel Arriola"
+  - "Best Screenwriting - Joel Arriola, Paige Chadwick, & Jacob Rozansky"
+  - "Best Acting in a Female Role - Paige Chadwick"
 ---
 As his best friend bleeds out, one fugitive’s last hope lies in the hands of a different type of healer.

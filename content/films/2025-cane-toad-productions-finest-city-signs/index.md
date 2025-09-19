@@ -25,7 +25,11 @@ params:
 screening_groups:
   - "group-d"
 screening_events:
-best_of_2025: true  - "2025-09-10-group-d-premieres"
+  - "2025-09-10-group-d-premieres"
   - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
+best_of_2025: true
+nominations:
+  - "Best Musical Score - Jarrah Newman"
+  - "Best Acting in a Female Role - Abbie Black"
 ---
 A brother and sister enjoy their hometown as they honor their late mother

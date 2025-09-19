@@ -118,6 +118,31 @@
       font-size: 1.1rem;
     }
     
+    /* Nominations section styling */
+    .film-nominations {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: var(--48-purple-light);
+      border-radius: 12px;
+      border-left: 4px solid var(--48-purple);
+    }
+    
+    .film-nominations h2 {
+      margin: 0 0 1rem 0;
+      color: var(--48-purple);
+      font-size: 1.4rem;
+    }
+    
+    .film-nominations ul {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+    
+    .film-nominations li {
+      margin-bottom: 0.5rem;
+      color: black;
+      font-size: 1.1rem;
+    }
     
     @media (max-width: 768px) {
       .film-header {
@@ -203,6 +228,18 @@
         <div class="film-synopsis">{{ .Params.synopsis | markdownify }}</div>
       {{ end }}
       
+      {{/* Award Nominations section */}}
+      {{ if .Params.nominations }}
+        <div class="film-nominations">
+          <h2>Award Nominations</h2>
+          <ul>
+            {{ range .Params.nominations }}
+              <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        </div>
+      {{ end }}
+      
       {{/* Get Tickets Button - For best-of selections, prioritize gala; otherwise find premiere screening */}}
       {{ $event_page := "" }}
       {{ $button_text := "Get Tickets for Premiere" }}
@@ -235,18 +272,6 @@
             </p>
           </div>
         {{ end }}
-      {{ end }}
-      
-      {{/* Award Nominations at bottom of film-info section */}}
-      {{ if .Params.nominations }}
-        <div class="film-nominations">
-          <h2>Award Nominations</h2>
-          <ul>
-            {{ range .Params.nominations }}
-              <li>{{ . }}</li>
-            {{ end }}
-          </ul>
-        </div>
       {{ end }}
     </div>
   </div>

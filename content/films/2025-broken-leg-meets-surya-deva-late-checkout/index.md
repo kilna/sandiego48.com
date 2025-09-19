@@ -21,7 +21,10 @@ params:
 screening_groups:
   - "group-a"
 screening_events:
-best_of_2025: true  - "2025-09-09-group-a-premieres"
+  - "2025-09-09-group-a-premieres"
   - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
+best_of_2025: true
+nominations:
+  - "Best Screenwriting - Scott W. Peterson & Andrew Van Camp"
 ---
 A hotel guest has 60 minutes to decide the fate of his comatose mother during which a not so chance encounter occurs with a sincere concierge and a optimistic bellhop  leading to life altering advice and pizza.
