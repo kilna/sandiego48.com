@@ -5,7 +5,7 @@ date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
   year: 2025
-  team: "Broken Leg meets Surya Deva"
+  team: "Broken Leg Meets Surya Deva"
   logline: "In one hour, a hotel guest must decide to check out...or hold on for a miracle"
   synopsis: "A hotel guest has 60 minutes to decide the fate of his comatose mother during which a not so chance encounter occurs with a sincere concierge and a optimistic bellhop  leading to life altering advice and pizza. "
   order: 6

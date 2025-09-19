@@ -1,11 +1,11 @@
 ---
-title: "FATA MORGANA"
+title: "Fata Morgana"
 image: poster-001.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
   year: 2025
-  team: "blackhat media"
+  team: "Blackhat Media"
   logline: "How did I get here?"
   synopsis: "A young man wakes up in the dunes, trying to figure out why and how he got there."
   order: 7

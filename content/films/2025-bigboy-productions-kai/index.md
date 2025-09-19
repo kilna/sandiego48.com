@@ -5,7 +5,7 @@ date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
   year: 2025
-  team: "BIGBOY PRODUCTIONS"
+  team: "BigBoy Productions"
   logline: "Love expired at 8:07 AM. Family destroyed by 8:09."
   synopsis: "When a teenager’s AI companion subscription abruptly ends, her fractured family spirals into chaos forcing them to confront years of neglect, dependence, and artificial love in one harrowing morning."
   order: 8

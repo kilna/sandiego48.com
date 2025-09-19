@@ -1,11 +1,11 @@
 ---
-title: "KEVIN & CLARK"
+title: "Kevin & Clark"
 image: poster-001.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
   year: 2025
-  team: "DAMPT PRODUCTIONS"
+  team: "DAMPT Pproductions"
   logline: ""
   synopsis: ""
   order: 3
@@ -23,4 +23,4 @@ screening_groups:
 screening_events:
   - "2025-09-10-group-d-premieres"
 ---
-A film by DAMPT PRODUCTIONS.
+A film by DAMPT Productions.

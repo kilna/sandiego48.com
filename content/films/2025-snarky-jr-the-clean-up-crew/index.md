@@ -5,7 +5,7 @@ date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
   year: 2025
-  team: "Snarky JR."
+  team: "Snarky Jr."
   logline: "Misfit Crew cleans up crime—one slice at a time."
   synopsis: "When a washed-up maid-turned-secret-agent recruits a team of oddball kids to stop a ruthless crime lord, their improvised plan unravels into pizza-fueled martial arts mayhem—with redemption on the line and failure almost guaranteed."
   order: 6

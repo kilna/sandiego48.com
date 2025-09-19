@@ -5,7 +5,7 @@ date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
   year: 2025
-  team: "HIPPONONYMOUS"
+  team: "Hippononymous"
   logline: "\"Humanoids... they walk amongst us.\""
   synopsis: "A glitch in humanoid robotics is the newest global terrorist."
   order: 5

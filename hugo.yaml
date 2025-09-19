@@ -128,7 +128,7 @@ params:
       suffix: "until the Best of 2025..."
       date: "2025-09-28T16:00:00-07:00"
       button:
-        text: "Buy Tickets Now!"
+        text: "Buy Tickets!"
         url: /go/tickets
         icon: ticket
         icon_position: right
