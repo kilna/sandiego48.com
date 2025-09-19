@@ -1,6 +1,6 @@
 ---
 title: "The Movie Star's Assistant"
-image: reading-crew-the-movie-stars-assistant.jpg
+image: poster-new.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

@@ -23,5 +23,11 @@ screening_groups:
 screening_events:
   - "2025-09-09-group-a-premieres"
   - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
+best_of_2025: true
+nominations:
+  - "Best Cinematography - Will Severson, Sean McDannold, & Maximillian Newhan"
+  - "Best Directing - Maximilian Newhan & Sean McDonald"
+  - "Best Screenwriting - Kellen Crawford, Will Severson, & Maximillian Newhan"
+  - "Best Acting in a Male Role - Enrique Dueñas"
 ---
 Tap-dancing the fine line between drama and comedy, everything is at stake when Heather confronts her husband about his crippling dance addiction.

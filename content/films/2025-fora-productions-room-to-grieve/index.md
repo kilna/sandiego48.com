@@ -23,5 +23,11 @@ screening_groups:
 screening_events:
   - "2025-09-09-group-b-premieres"
   - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
+best_of_2025: true
+nominations:
+  - "Best Cinematography - Cody Caldwell"
+  - "Best Film Editing - Ivan Parascandolo"
+  - "Best Musical Score - Ray Kim"
+  - "Best Acting in a Male Role - Randy Davison"
 ---
 In a support group built on the five stages of grief a man find solace and himself.

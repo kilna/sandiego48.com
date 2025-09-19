@@ -27,5 +27,9 @@ screening_groups:
 screening_events:
   - "2025-09-10-group-c-premieres"
   - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
+best_of_2025: true
+nominations:
+  - "Best Acting in a Female Role - Jenna Pekny"
+  - "Best Acting in a Female Role - Nana La"
 ---
 Lovers Clementine and Mimi have their relationship tested when Mimi's father arrives. Clementine must decide if they can reconcile or if it is time to abandon her romantic fantasy.

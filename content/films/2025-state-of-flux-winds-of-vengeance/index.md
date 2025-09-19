@@ -21,7 +21,7 @@ params:
 screening_groups:
   - "group-a"
 screening_events:
-  - "2025-09-09-group-a-premieres"
+best_of_2025: true  - "2025-09-09-group-a-premieres"
   - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
 ---
 A young woman seeks purpose in the aftermath of her mother’s murder

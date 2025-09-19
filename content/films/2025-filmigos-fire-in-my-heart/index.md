@@ -27,5 +27,10 @@ screening_groups:
 screening_events:
   - "2025-09-10-group-d-premieres"
   - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
+best_of_2025: true
+nominations:
+  - "Best Cinematography - Ryan Matthysse"
+  - "Best Film Editing - Tyler Diffie & Dan Goldman"
+  - "Best Acting in a Male Role - Devon Guevara"
 ---
 Follow Bryan, an immigration officer, on his patrol as an unexpected adventure awaits.

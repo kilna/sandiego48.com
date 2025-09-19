@@ -184,6 +184,17 @@
         {{ end }}
       </dl>
       
+      {{ if .Params.best_of_2025 }}
+        <div class="best-of-2025-badge-container">
+          <div class="best-of-2025-star" title="Best of 2025 Selection">
+            {{ partial "components/icon.html" (dict "icon" "star") }}
+          </div>
+          <a href="/events/2025-09-28-best-of-san-diego-screening-and-awards-gala/" class="best-of-2025-badge">
+            <span class="best-of-2025-text">Best of 2025 Selection</span>
+          </a>
+        </div>
+      {{ end }}
+      
       {{ if .Params.logline }}
         <p class="film-logline">{{ .Params.logline }}</p>
       {{ end }}
@@ -192,27 +203,50 @@
         <div class="film-synopsis">{{ .Params.synopsis | markdownify }}</div>
       {{ end }}
       
-      {{/* Get Tickets Button - Find premiere screening and show if tickets available and event hasn't happened */}}
-      {{ if .Params.screening_events }}
-        {{ $premiere_event := index .Params.screening_events 0 }}
-        {{ $event_page := $.Site.GetPage (printf "events/%s" $premiere_event) }}
-        {{ if and $event_page $event_page.Params.tickets_url }}
-          {{ $event_start := time.AsTime $event_page.Params.event_start }}
-          {{ $now := now }}
-          {{ if gt $event_start $now }}
-            <div class="tickets-section">
-              <a href="{{ $event_page.Params.tickets_url }}" class="button wide glow big" target="_blank" rel="noopener">
-                {{ partial "components/icon.html" (dict "icon" "ticket") }}
-                <span>Get Tickets for Premiere</span>
-              </a>
-              <p class="tickets-info">
-                <strong>{{ $event_page.Title }}</strong><br>
-                {{ $event_start.Format "Monday, January 2, 2006 at 3:04 PM" }}<br>
-                <em>{{ $event_page.Params.location_name }}</em>
-              </p>
-            </div>
-          {{ end }}
+      {{/* Get Tickets Button - For best-of selections, prioritize gala; otherwise find premiere screening */}}
+      {{ $event_page := "" }}
+      {{ $button_text := "Get Tickets for Premiere" }}
+      {{ if .Params.best_of_2025 }}
+        {{/* For best-of selections, link to the gala */}}
+        {{ $gala_page := $.Site.GetPage "events/2025-09-28-best-of-san-diego-screening-and-awards-gala" }}
+        {{ if and $gala_page $gala_page.Params.tickets_url }}
+          {{ $event_page = $gala_page }}
+          {{ $button_text = "Get Tickets for Gala" }}
         {{ end }}
+      {{ else if .Params.screening_events }}
+        {{/* For regular films, use premiere screening */}}
+        {{ $premiere_event := index .Params.screening_events 0 }}
+        {{ $event_page = $.Site.GetPage (printf "events/%s" $premiere_event) }}
+      {{ end }}
+      
+      {{ if and $event_page $event_page.Params.tickets_url }}
+        {{ $event_start := time.AsTime $event_page.Params.event_start }}
+        {{ $now := now }}
+        {{ if gt $event_start $now }}
+          <div class="tickets-section">
+            <a href="{{ $event_page.Params.tickets_url }}" class="button wide glow big" target="_blank" rel="noopener">
+              {{ partial "components/icon.html" (dict "icon" "ticket") }}
+              <span>{{ $button_text }}</span>
+            </a>
+            <p class="tickets-info">
+              <strong>{{ $event_page.Title }}</strong><br>
+              {{ $event_start.Format "Monday, January 2, 2006 at 3:04 PM" }}<br>
+              <em>{{ $event_page.Params.location_name }}</em>
+            </p>
+          </div>
+        {{ end }}
+      {{ end }}
+      
+      {{/* Award Nominations at bottom of film-info section */}}
+      {{ if .Params.nominations }}
+        <div class="film-nominations">
+          <h2>Award Nominations</h2>
+          <ul>
+            {{ range .Params.nominations }}
+              <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        </div>
       {{ end }}
     </div>
   </div>

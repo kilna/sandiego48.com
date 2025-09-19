@@ -26,6 +26,9 @@
     {{ if hasPrefix $title "The " }}
       {{ $title = substr $title 4 }}
     {{ end }}
+    {{/* Remove quotes for sorting purposes */}}
+    {{ $title = replace $title "\"" "" }}
+    {{ $title = replace $title "'" "" }}
     {{ $sorted_films = $sorted_films | append (dict "page" . "sort_title" $title) }}
   {{ end }}
   {{ $sorted_films = sort $sorted_films "sort_title" }}
@@ -51,10 +54,20 @@
             {{ end }}
           {{ end }}
         </a>
+        {{ if $film.Params.best_of_2025 }}
+          <div class="best-of-2025-star" title="Best of 2025 Selection">
+            {{ partial "components/icon.html" (dict "icon" "star") }}
+          </div>
+        {{ end }}
       </div>
                       <div class="film-info">
           <h3 class="film-title"><a href="{{ $film.RelPermalink }}">{{ $film.Title }}</a></h3>
           <p class="film-team">by <a href="{{ $film.RelPermalink }}">{{ $film.Params.team }}</a></p>
+          {{ if $film.Params.best_of_2025 }}
+            <a href="/events/2025-09-28-best-of-san-diego-screening-and-awards-gala/" class="best-of-2025-badge">
+              <span class="best-of-2025-text">Best of 2025 Selection</span>
+            </a>
+          {{ end }}
           {{ if $film.Params.screening_groups }}
             <div class="film-groups">
               {{ range $film.Params.screening_groups }}

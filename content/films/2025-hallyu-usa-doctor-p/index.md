@@ -1,6 +1,6 @@
 ---
 title: "Doctor P"
-image: hallyu-usa-doctor-p.jpg
+image: poster-new.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

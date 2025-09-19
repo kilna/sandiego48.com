@@ -25,7 +25,7 @@ params:
 screening_groups:
   - "group-d"
 screening_events:
-  - "2025-09-10-group-d-premieres"
+best_of_2025: true  - "2025-09-10-group-d-premieres"
   - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
 ---
 A brother and sister enjoy their hometown as they honor their late mother
