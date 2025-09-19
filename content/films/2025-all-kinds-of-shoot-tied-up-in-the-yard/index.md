@@ -26,8 +26,6 @@ screening_groups:
   - "group-d"
 screening_events:
   - "2025-09-10-group-d-premieres"
-  - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
-best_of_2025: true
 nominations:
   - "Best Musical Score - Alan Perales"
 ---

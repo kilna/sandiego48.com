@@ -23,5 +23,6 @@ screening_groups:
 screening_events:
   - "2025-09-10-group-c-premieres"
   - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
+best_of_2025: true
 ---
 A clever beach Motel owner out smarts a hotel giant in this epic journey that tests a father and son's love for one another.

@@ -34,8 +34,6 @@ screening_groups:
   - "group-c"
 screening_events:
   - "2025-09-10-group-c-premieres"
-  - "2025-09-28-best-of-san-diego-screening-and-awards-gala"
-best_of_2025: true
 nominations:
   - "Best Musical Score - Edward Spade"
 ---
