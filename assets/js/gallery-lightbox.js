@@ -97,22 +97,9 @@ function openLightbox(galleryId, index, imageName) {
   
   if (!lightbox || !gallery) return;
   
-  // Try to use existing link first, fall back to dynamic generation
+  // Always use the unified setLightboxImage function which handles both loaded and unloaded images
   const links = gallery.querySelectorAll('.gallery-link');
-  const totalImages = parseInt(gallery.dataset.totalImages);
-  
-  if (links.length > 0 && index <= links.length) {
-    // Use existing link (for images that are already loaded)
-    setLightboxImage(lightbox, links, index);
-  } else {
-    // Use dynamic generation for images beyond what's loaded
-    const imageUrl = generateImageUrl(gallery, index);
-    if (imageUrl) {
-      setLightboxImageDynamic(lightbox, index, imageUrl, totalImages);
-    } else {
-      return; // Can't generate URL
-    }
-  }
+  setLightboxImage(lightbox, links, index);
   
   // Update URL hash
   if (imageName) {
@@ -174,9 +161,20 @@ function nextImage(galleryId) {
 }
 
 function setLightboxImage(lightbox, links, index) {
-  const link = links[index - 1]; // Convert to 0-based index
-  const imageUrl = link.href;
-  const imageAlt = link.dataset.title;
+  const gallery = document.querySelector(`[data-type="${lightbox.id.replace('lightbox-', '').replace('-gallery', '')}"]`);
+  const totalImages = parseInt(gallery.dataset.totalImages);
+  
+  // Use existing link if available, otherwise generate URL dynamically
+  let imageUrl, imageAlt;
+  if (index <= links.length) {
+    const link = links[index - 1]; // Convert to 0-based index
+    imageUrl = link.href;
+    imageAlt = link.dataset.title;
+  } else {
+    // Generate URL for images beyond loaded thumbnails
+    imageUrl = generateImageUrl(gallery, index);
+    imageAlt = `Gallery Image ${index}`;
+  }
   
   const lightboxImage = lightbox.querySelector('.lightbox-image');
   const currentCounter = lightbox.querySelector('.lightbox-current');
@@ -190,15 +188,18 @@ function setLightboxImage(lightbox, links, index) {
   
   // Update counter
   currentCounter.textContent = index;
-  totalCounter.textContent = links.length;
+  totalCounter.textContent = totalImages;
   
-  // Show/hide navigation arrows based on position
+  // Show/hide navigation arrows based on total images, not just loaded ones
   if (prevButton) {
     prevButton.style.display = index > 1 ? 'block' : 'none';
   }
   if (nextButton) {
-    nextButton.style.display = index < links.length ? 'block' : 'none';
+    nextButton.style.display = index < totalImages ? 'block' : 'none';
   }
+  
+  // Update navigation thumbnails
+  updateNavigationThumbnails(gallery, index, totalImages);
   
   // Preload adjacent images for smoother navigation (only if they exist)
   preloadAdjacentImages(links, index);
@@ -266,8 +267,100 @@ function generateImageUrl(gallery, index) {
   return '';
 }
 
+// Generate thumbnail URL dynamically based on gallery configuration
+function generateThumbnailUrl(gallery, index) {
+  const galleryData = gallery.dataset;
+  const totalImages = parseInt(galleryData.totalImages);
+  
+  if (index < 1 || index > totalImages) {
+    return '';
+  }
+  
+  // Get gallery configuration from the first existing link (if any)
+  const existingLinks = gallery.querySelectorAll('.gallery-link');
+  if (existingLinks.length > 0) {
+    // Use existing thumbnail pattern
+    const firstThumb = existingLinks[0].querySelector('img');
+    if (firstThumb) {
+      const baseUrl = firstThumb.src.replace(/\/[^/]+$/, ''); // Remove filename
+      const filename = firstThumb.src.split('/').pop();
+      
+      // Extract prefix, thumb size, and extension from filename
+      const match = filename.match(/^(.+?)(\d+)-(\d+)\.(.+)$/);
+      if (match) {
+        const prefix = match[1];
+        const thumbSize = match[3];
+        const extension = match[4];
+        const padding = match[2].length; // Determine padding from existing filename
+        const paddedIndex = index.toString().padStart(padding, '0');
+        return `${baseUrl}/${prefix}${paddedIndex}-${thumbSize}.${extension}`;
+      }
+    }
+  }
+  
+  // Fallback: try to get configuration from load more button data attributes
+  const loadMoreBtn = gallery.querySelector('.gallery-load-more-btn');
+  if (loadMoreBtn) {
+    const cdnUrl = loadMoreBtn.dataset.cdnUrl;
+    const contentPath = loadMoreBtn.dataset.contentPath;
+    const prefix = loadMoreBtn.dataset.prefix;
+    const thumbSuffix = loadMoreBtn.dataset.thumbSuffix;
+    const thumbExt = loadMoreBtn.dataset.thumbExt;
+    const padding = parseInt(loadMoreBtn.dataset.padding);
+    const paddedIndex = index.toString().padStart(padding, '0');
+    const thumbName = `${prefix}${paddedIndex}${thumbSuffix}.${thumbExt}`;
+    return `${cdnUrl}/${contentPath}/thumbs/${thumbName}`;
+  }
+  
+  return '';
+}
+
+// Update navigation thumbnails
+function updateNavigationThumbnails(gallery, currentIndex, totalImages) {
+  const lightbox = document.getElementById(`lightbox-${gallery.dataset.type}-gallery`);
+  if (!lightbox) return;
+  
+  const prevThumb = lightbox.querySelector('.nav-thumb-prev');
+  const nextThumb = lightbox.querySelector('.nav-thumb-next');
+  
+  // Update previous thumbnail
+  if (prevThumb && currentIndex > 1) {
+    const prevThumbUrl = generateThumbnailUrl(gallery, currentIndex - 1);
+    console.log('Previous thumbnail URL:', prevThumbUrl);
+    if (prevThumbUrl) {
+      prevThumb.src = prevThumbUrl;
+      prevThumb.style.display = 'block';
+      console.log('Previous thumbnail displayed');
+    } else {
+      prevThumb.style.display = 'none';
+      console.log('Previous thumbnail hidden - no URL');
+    }
+  } else if (prevThumb) {
+    prevThumb.style.display = 'none';
+    console.log('Previous thumbnail hidden - at start');
+  }
+  
+  // Update next thumbnail
+  if (nextThumb && currentIndex < totalImages) {
+    const nextThumbUrl = generateThumbnailUrl(gallery, currentIndex + 1);
+    console.log('Next thumbnail URL:', nextThumbUrl);
+    if (nextThumbUrl) {
+      nextThumb.src = nextThumbUrl;
+      nextThumb.style.display = 'block';
+      console.log('Next thumbnail displayed');
+    } else {
+      nextThumb.style.display = 'none';
+      console.log('Next thumbnail hidden - no URL');
+    }
+  } else if (nextThumb) {
+    nextThumb.style.display = 'none';
+    console.log('Next thumbnail hidden - at end');
+  }
+}
+
 // Set lightbox image dynamically (works with any image index, not just loaded ones)
 function setLightboxImageDynamic(lightbox, index, imageUrl, totalImages) {
+  const gallery = document.querySelector(`[data-type="${lightbox.id.replace('lightbox-', '').replace('-gallery', '')}"]`);
   const lightboxImage = lightbox.querySelector('.lightbox-image');
   const currentCounter = lightbox.querySelector('.lightbox-current');
   const totalCounter = lightbox.querySelector('.lightbox-total');
@@ -288,6 +381,11 @@ function setLightboxImageDynamic(lightbox, index, imageUrl, totalImages) {
   }
   if (nextButton) {
     nextButton.style.display = index < totalImages ? 'block' : 'none';
+  }
+  
+  // Update navigation thumbnails
+  if (gallery) {
+    updateNavigationThumbnails(gallery, index, totalImages);
   }
   
   // Preload adjacent images for smoother navigation

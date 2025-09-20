@@ -82,6 +82,10 @@ params:
         padding: 3
         extension: "jpg"
         thumb_size: 128
+        credit: "Photos courtesy of Photographer Name"
+        credit_url: "https://photographer-website.com"
+        alternate: "Can't find your picture? Check other events!"
+        alternate_url: "/events/"
     films:
       poster:
         name: "Posters"

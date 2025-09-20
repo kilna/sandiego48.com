@@ -58,6 +58,18 @@
         {{- $name := $config.name -}}
         {{- $padding := default 3 $config.padding -}}
         
+        {{- /* Check for event-specific photographer credit, fall back to global config */ -}}
+        {{- $credit := "" -}}
+        {{- if .Params.galleries -}}
+          {{- $eventGallery := index .Params.galleries $galleryId -}}
+          {{- if and $eventGallery $eventGallery.credit -}}
+            {{- $credit = $eventGallery -}}
+          {{- end -}}
+        {{- end -}}
+        {{- if not $credit -}}
+          {{- $credit = $config -}}
+        {{- end -}}
+        
         {{- /* Get thumbnail configuration */ -}}
         {{- $thumbSize := $config.thumb_size -}}
         {{- $thumbSuffix := printf "-%d" $thumbSize -}}
@@ -113,10 +125,7 @@
                       data-padding="{{ $padding }}"
                       data-name="{{ $name }}">
                 <span class="load-more-text">
-                  <svg class="load-more-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-                  </svg>
-                  Load More Photos
+                  + Load More Photos 
                   <span class="load-more-count">({{ sub $imageCount $initialCount }} more)</span>
                 </span>
                 <span class="load-more-loading" style="display: none;">
@@ -130,15 +139,44 @@
               </button>
             </div>
           {{- end -}}
+          
+          {{- /* Photographer credit below load more button */ -}}
+          {{- if $credit.credit -}}
+            <div class="photographer-credit-top">
+              {{- /* Alternate photo location */ -}}
+              {{- if $credit.alternate -}}
+                <p>
+                  {{- if $credit.alternate_url -}}
+                    <a href="{{ $credit.alternate_url }}"><strong>{{ $credit.alternate }}</strong></a>
+                  {{- else -}}
+                    <strong>{{ $credit.alternate }}</strong>
+                  {{- end -}}
+                </p>
+              {{- end -}}
+              <p>
+                {{- if $credit.credit_url -}}
+                  <a href="{{ $credit.credit_url }}" target="_blank" rel="noopener">{{ $credit.credit }}</a>
+                {{- else -}}
+                  {{ $credit.credit }}
+                {{- end -}}
+              </p>
+            </div>
+          {{- end -}}
         </div>
         
         {{- /* Lightbox HTML */ -}}
         <div class="lightbox" id="lightbox-{{ $galleryId }}-gallery">
           <div class="lightbox-content">
             <button class="lightbox-close" onclick="closeLightbox('{{ $galleryId }}-gallery')">&times;</button>
-            <button class="lightbox-nav lightbox-prev" onclick="previousImage('{{ $galleryId }}-gallery')">‹</button>
+            <button class="lightbox-nav lightbox-prev" onclick="previousImage('{{ $galleryId }}-gallery')">
+              <span class="nav-arrow">‹</span>
+              <img class="nav-thumbnail nav-thumb-prev" src="" alt="" style="display: none;">
+            </button>
             <img class="lightbox-image" src="" alt="">
-            <button class="lightbox-nav lightbox-next" onclick="nextImage('{{ $galleryId }}-gallery')">›</button>
+            <button class="lightbox-nav lightbox-next" onclick="nextImage('{{ $galleryId }}-gallery')">
+              <span class="nav-arrow">›</span>
+              <img class="nav-thumbnail nav-thumb-next" src="" alt="" style="display: none;">
+            </button>
             <button class="lightbox-download" onclick="downloadImage('{{ $galleryId }}-gallery')" title="Download image">
               <svg class="download-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
@@ -147,6 +185,18 @@
             <div class="lightbox-counter">
               <span class="lightbox-current">1</span> / <span class="lightbox-total">{{ $imageCount }}</span>
             </div>
+            {{- /* Photographer credit at bottom of lightbox */ -}}
+            {{- if $credit.credit -}}
+              <div class="photographer-credit-lightbox">
+                <p>
+                  {{- if $credit.credit_url -}}
+                    <a href="{{ $credit.credit_url }}" target="_blank" rel="noopener">{{ $credit.credit }}</a>
+                  {{- else -}}
+                    {{ $credit.credit }}
+                  {{- end -}}
+                </p>
+              </div>
+            {{- end -}}
           </div>
         </div>
       {{- end -}}

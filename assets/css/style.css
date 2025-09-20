@@ -591,7 +591,7 @@ main > * {
 
 /* CDN Gallery Styles */
 .cdn-gallery {
-  margin: 3rem 0;
+  margin: 1.5rem 0;
   clear: both;
   overflow: hidden;
 }
@@ -638,44 +638,23 @@ main > * {
 
 /* Load More Button Styles - Very Prominent */
 .gallery-load-more-container {
-  text-align: center;
-  margin: 3rem 0;
-  padding: 2rem 0;
-  border-top: 2px solid #e2e8f0;
-  border-bottom: 2px solid #e2e8f0;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  border-radius: 1rem;
-  position: relative;
-  overflow: hidden;
+  text-align: right;
+  margin: 0.5rem 0;
+  padding: 0.25rem 0;
 }
 
-.gallery-load-more-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  animation: shimmer 3s infinite;
-}
 
-@keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
 
 .gallery-load-more-btn {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: white;
   border: none;
-  padding: 1.5rem 3rem;
+  padding: 0.75rem 1.5rem;
   font-size: 1.25rem;
   font-weight: 700;
   border-radius: 0.75rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
   position: relative;
   overflow: hidden;
   min-width: 300px;
@@ -688,14 +667,11 @@ main > * {
 }
 
 .gallery-load-more-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
   background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
 }
 
 .gallery-load-more-btn:active {
   transform: translateY(0);
-  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
 }
 
 .gallery-load-more-btn:disabled {
@@ -704,15 +680,6 @@ main > * {
   transform: none;
 }
 
-.load-more-icon {
-  width: 24px;
-  height: 24px;
-  transition: transform 0.3s ease;
-}
-
-.gallery-load-more-btn:hover .load-more-icon {
-  transform: scale(1.1);
-}
 
 .load-more-count {
   font-size: 0.9em;
@@ -739,7 +706,7 @@ main > * {
   }
   
   .gallery-load-more-btn {
-    padding: 1.25rem 2rem;
+    padding: 0.625rem 1rem;
     font-size: 1.1rem;
     min-width: 250px;
   }
@@ -789,7 +756,7 @@ main > * {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
   border: none;
   color: white;
   font-size: 2.5rem;
@@ -798,9 +765,30 @@ main > * {
   cursor: pointer;
   border-radius: 50%;
   transition: all 0.2s ease;
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
   line-height: 1;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-arrow {
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.nav-thumbnail {
+  width: 1.5em !important;
+  height: 1.5em !important;
+  border-radius: 0.1em;
+  margin-top: 0.1em;
+  object-fit: cover;
+  border: none;
+  max-width: none !important;
+  max-height: none !important;
 }
 
 .lightbox-nav:hover {
@@ -872,6 +860,71 @@ main > * {
   border-radius: 20px;
   font-size: 0.9rem;
   backdrop-filter: blur(10px);
+}
+
+/* Photographer Credit Styles */
+.photographer-credit-top {
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0.375rem 0.5rem;
+  background: var(--48-purple-nearwhite);
+  border-radius: 8px;
+  border: 1px solid var(--48-purple-light);
+}
+
+.photographer-credit-top p {
+  margin: 0.125rem 0 !important;
+  font-size: 0.9rem;
+  color: var(--48-purple-dark);
+  font-weight: 300;
+}
+
+.photographer-credit-top p:first-child {
+  margin-top: 0 !important;
+}
+
+.photographer-credit-top p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.photographer-credit-top a {
+  color: var(--48-purple);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.photographer-credit-top a:hover {
+  color: var(--48-purple-bright);
+  text-decoration: underline;
+}
+
+.photographer-credit-lightbox {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.photographer-credit-lightbox p {
+  margin: 0 !important;
+  line-height: 1;
+}
+
+.photographer-credit-lightbox a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.photographer-credit-lightbox a:hover {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: underline;
 }
 
 /* Responsive adjustments */
