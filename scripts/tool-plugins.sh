@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -eo pipefail
-
 cat .tool-plugins | while IFS= read -r spec; do
 
   # Skip empty lines and comments (lines starting with # or containing only whitespace)
@@ -25,6 +23,7 @@ cat .tool-plugins | while IFS= read -r spec; do
 
 done
 
-# Now that everything's installed, set the default tool versions file back
-unset ASDF_DEFAULT_TOOL_VERSIONS_FILENAME
-asdf reshim
+if [ $CF_PAGES == "true" ]; then
+  cat .tool-versions >> .tool-versions.cloudflare
+  asdf reshim
+fi
