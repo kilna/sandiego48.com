@@ -4,9 +4,9 @@ SHELL := /usr/bin/env bash
 
 # Set HUGO_BASEURL based on where we are building...
 ifeq ($(CF_PAGES),1)
-./scripts/tool-plugins.sh
-export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=.tool-versions.full
-asdf install
+	./scripts/tool-plugins.sh
+	export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=.tool-versions.full
+	asdf install
 ifeq ($(CF_PAGES_BRANCH),main)
 	export HUGO_BASEURL=https://sandiego48.com
 else
