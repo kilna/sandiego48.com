@@ -19,7 +19,7 @@ endif
 install-tools:
 ifeq ($(CF_PAGES),1)
 	./scripts/tool-plugins.sh
-	export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=.tool-versions.full
+	mv .tool-versions.full .tool-versions
 	asdf install
 endif
 
