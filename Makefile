@@ -93,12 +93,17 @@ check-clean:
 		exit 1; \
 	fi
 
-push:
+commit:
+	git add .
 	git add -A
 	git commit
-	git push
 
 deploy: check-clean build-clean gallery-audit
+	git push
+	./scripts/open-deploy.sh
+
+deploy-dirty:
+	git push
 	./scripts/open-deploy.sh
 
 preview: build-clean
