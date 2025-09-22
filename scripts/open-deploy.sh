@@ -18,20 +18,10 @@ else
 fi
 echo "Debug: Using project name: $PROJECT_NAME"
 
-echo -n "Getting deployment URL."
+echo -n "Getting deployment URLs."
 TIMEOUT=60
 ELAPSED=0
 while [ $ELAPSED -lt $TIMEOUT ]; do
-  # Debug: show what we're looking for
-  if [ $ELAPSED -eq 0 ]; then
-    echo
-    echo "Debug: Looking for commit hash: $COMMIT_HASH"
-    echo "Debug: Testing wrangler authentication..."
-    wrangler whoami
-    echo "Debug: Wrangler deployment list output:"
-    wrangler pages deployment list --project-name="$PROJECT_NAME" 2>&1 | head -10
-  fi
-
   # Look for deployment with matching commit hash
   URL=$(
     wrangler pages deployment list --project-name="$PROJECT_NAME" 2>/dev/null \
@@ -41,7 +31,7 @@ while [ $ELAPSED -lt $TIMEOUT ]; do
       || echo ""
   )
 
-  # Also get the build URL for error cases
+  # Also get the build URL
   BUILD_URL=$(
     wrangler pages deployment list --project-name="$PROJECT_NAME" 2>/dev/null \
       | grep "$COMMIT_HASH" \
@@ -69,20 +59,27 @@ while [ $ELAPSED -lt $TIMEOUT ]; do
     )
   fi
 
-  [ -n "$URL" ] && break
+  # If we have both URLs, we can proceed
+  [ -n "$URL" ] && [ -n "$BUILD_URL" ] && break
   echo -n "."
   sleep 1
   ELAPSED=$((ELAPSED + 1))
 done
+
+# Always open the build page first
+if [ -n "$BUILD_URL" ]; then
+  echo
+  echo "Opening build page to monitor deployment..."
+  open "$BUILD_URL"
+else
+  echo "Error: Build URL not found within $TIMEOUT seconds" >&2
+  exit 1
+fi
+
+# If we still don't have a deployment URL, exit
 if [ -z "$URL" ]; then
   echo "Error: Deployment URL not found within $TIMEOUT seconds" >&2
-  if [ -n "$BUILD_URL" ]; then
-    echo "Opening build URL to check build status..."
-    exec open "$BUILD_URL"
-  else
-    echo "No build URL found" >&2
-    exit 1
-  fi
+  exit 1
 fi
 
 echo
@@ -100,30 +97,10 @@ while [ $ELAPSED -lt $TIMEOUT ]; do
       || echo ""
   )
   
-  # Debug output on first iteration
-  if [ $ELAPSED -eq 0 ]; then
-    echo
-    echo "Debug: Checking deployment status..."
-    echo "Debug: Found status: '$STATUS'"
-  fi
-  
-  # Check for failure/skipped states
-  if echo "$STATUS" | grep -qiE "(fail|error|skip|timeout|cancel)"; then
-    echo
-    echo "Deployment failed/skipped with status: $STATUS" >&2
-    if [ -n "$BUILD_URL" ]; then
-      echo "Opening build URL to check build details..."
-      exec open "$BUILD_URL"
-    else
-      echo "No build URL found" >&2
-      exit 1
-    fi
-  fi
-  
   # Check for success states (timestamps like "just now", "X minutes ago", "X hours ago")
   if echo "$STATUS" | grep -qiE " ago$"; then
     echo
-    echo "Deployment successful! Opening $URL"
+    echo "Deployment completed! Opening site..."
     exec open "$URL"
   fi
   
@@ -134,11 +111,5 @@ while [ $ELAPSED -lt $TIMEOUT ]; do
 done
 
 echo
-echo "Deployment timed out after $TIMEOUT seconds" >&2
-if [ -n "$BUILD_URL" ]; then
-  echo "Opening build URL to check build status..."
-  exec open "$BUILD_URL"
-else
-  echo "No build URL found" >&2
-  exit 1
-fi
+echo "Deployment timed out after $TIMEOUT seconds, but opening site anyway..."
+exec open "$URL"
