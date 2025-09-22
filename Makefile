@@ -24,6 +24,11 @@ build-clean: copy-images cleanup-dev-cdn
 	rm -rf public
 	hugo --forceSyncStatic --cleanDestinationDir
 
+initialize-cloudflare:
+	cat .tool-versions.cloudflare | \
+	  wrangler pages secret put ASDF_DEFAULT_TOOL_VERSIONS_FILENAME \
+	    --project-name $$CLOUDFLARE_PAGES_PROJECT
+
 tool-plugins:
 	./scripts/tool-plugins.sh
 
