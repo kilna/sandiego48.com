@@ -26,14 +26,14 @@ build-clean: copy-images cleanup-dev-cdn
 	hugo --forceSyncStatic --cleanDestinationDir
 
 initialize-cloudflare:
-	cat .tool-versions.cloudflare | \
+	cat .tool-versions | \
 	  wrangler pages secret put ASDF_DEFAULT_TOOL_VERSIONS_FILENAME \
 	    --project-name $$CLOUDFLARE_PAGES_PROJECT
 
 install-tools:
 ifeq ($(CF_PAGES),1)
 	./scripts/tool-plugins.sh
-	cat .tool-versions >> .tool-versions.cloudflare
+	export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=.tool-versions.full
 	asdf install
 endif
 
