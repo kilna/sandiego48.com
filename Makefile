@@ -19,12 +19,12 @@ endif
 install-tools:
 ifeq ($(CF_PAGES),1)
 	./scripts/tool-plugins.sh
-	mv .tool-versions.full .tool-versions
+	cp .tool-versions.full .tool-versions
 	asdf install
 endif
 
-# Install tools for any target
-%: install-tools
+# Make install-tools a prerequisite for all targets except itself
+$(filter-out install-tools,$(MAKECMDGOALS)): install-tools
 
 copy-images:
 	./scripts/copy-images.sh
