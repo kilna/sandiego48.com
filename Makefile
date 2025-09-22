@@ -23,15 +23,10 @@ ifeq ($(CF_PAGES),1)
 	asdf install
 endif
 
-# Make install-tools a prerequisite for all targets when CF_PAGES=1
-ifeq ($(CF_PAGES),1)
-%: install-tools
-endif
-
 copy-images:
 	./scripts/copy-images.sh
 
-build: copy-images cleanup-dev-cdn
+build: install-tools copy-images cleanup-dev-cdn
 	hugo
 
 build-clean: copy-images cleanup-dev-cdn
@@ -81,7 +76,7 @@ open:
 	@if [ -z "$$SERVER_PORT" ]; then echo "Error: SERVER_PORT not set in .env file"; exit 1; fi
 	open http://localhost:$$SERVER_PORT
 
-icons:
+icons: install-tools
 	./scripts/icons.sh
 
 cdn: gallery-thumbs gallery-update-counts cdn-upload
@@ -97,16 +92,16 @@ cdn-download:
 	export $$(cat .env | xargs) && \
 	   aws s3 sync s3://sandiego48-com/ cdn/
 
-gallery-thumbs:
+gallery-thumbs: install-tools
 	./scripts/gallery-thumbs.sh
 
-gallery-thumbs-force:
+gallery-thumbs-force: install-tools
 	./scripts/gallery-thumbs.sh --force
 
-gallery-update-counts:
+gallery-update-counts: install-tools
 	./scripts/gallery-update-counts.sh
 
-gallery-audit:
+gallery-audit: install-tools
 	./scripts/gallery-audit.sh
 
 preview: copy-images cleanup-dev-cdn
