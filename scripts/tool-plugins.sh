@@ -13,14 +13,22 @@ while IFS= read -r spec; do
   
   tool=$(echo "$spec" | cut -d' ' -f1)
   version=$(echo "$spec" | cut -d' ' -f2)
+  plugin_url=$(echo "$spec" | cut -d' ' -f3)
   
   # Add plugin if it doesn't exist (plugin name is same as tool name)
   if ! asdf plugin list | grep -q "^$tool$"; then
     echo "Adding asdf plugin: $tool"
-    asdf plugin add $tool || {
-      echo "Warning: Failed to add plugin $tool, continuing..."
-      continue
-    }
+    if [[ -n "$plugin_url" ]]; then
+      asdf plugin add $tool $plugin_url || {
+        echo "Warning: Failed to add plugin $tool from $plugin_url, continuing..."
+        continue
+      }
+    else
+      asdf plugin add $tool || {
+        echo "Warning: Failed to add plugin $tool, continuing..."
+        continue
+      }
+    fi
   fi
   
   # Install version if not already installed (check via asdf list)
@@ -33,11 +41,4 @@ while IFS= read -r spec; do
   else
     echo "$tool version $version is already installed"
   fi
-  
-  # Set the version for the current project
-  echo "Setting $tool version $version for current project"
-  asdf set $tool $version || {
-    echo "Warning: Failed to set version for $tool, continuing..."
-    continue
-  }
 done < .tool-plugins
