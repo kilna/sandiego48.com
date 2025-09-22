@@ -86,9 +86,7 @@ gallery-update-counts: tool-plugins
 gallery-audit: tool-plugins
 	./scripts/gallery-audit.sh
 
-check-clean:
-
-deploy: check-clean build-clean gallery-audit
+deploy: build-clean gallery-audit
 	git add .
 	git add -A
 	git commit
