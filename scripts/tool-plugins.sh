@@ -22,8 +22,3 @@ cat .tool-plugins | while IFS= read -r spec; do
   fi
 
 done
-
-if [ $CF_PAGES == "true" ]; then
-  cat .tool-versions >> .tool-versions.cloudflare
-  asdf reshim
-fi

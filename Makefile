@@ -14,7 +14,7 @@ endif
 
 .PHONY: build build-clean server server-cdn server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit tool-plugins setup-dev-cdn cleanup-dev-cdn push deploy preview dash help
 
-copy-images: tool-plugins
+copy-images: install-tools
 	./scripts/copy-images.sh
 
 build: copy-images cleanup-dev-cdn
@@ -29,8 +29,12 @@ initialize-cloudflare:
 	  wrangler pages secret put ASDF_DEFAULT_TOOL_VERSIONS_FILENAME \
 	    --project-name $$CLOUDFLARE_PAGES_PROJECT
 
-tool-plugins:
+install-tools:
+ifeq ($(CF_PAGES),true)
 	./scripts/tool-plugins.sh
+	cat .tool-versions >> .tool-versions.cloudflare
+	asdf install
+endif
 
 setup-dev-cdn:
 	@if [ ! -L static/cdn ]; then \
