@@ -41,4 +41,13 @@ while IFS= read -r spec; do
   else
     echo "$tool version $version is already installed"
   fi
+  
+  # Set the version for the current project and reshim
+  echo "Setting $tool version $version for current project"
+  asdf local $tool $version || {
+    echo "Warning: Failed to set version for $tool, continuing..."
+    continue
+  }
+  echo "Reshimming asdf $tool..."
+  asdf reshim $tool
 done < .tool-plugins
