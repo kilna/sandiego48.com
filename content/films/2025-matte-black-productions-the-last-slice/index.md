@@ -1,6 +1,6 @@
 ---
 title: "The Last Slice"
-image: poster-002.jpg
+image: poster.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:
@@ -32,19 +32,3 @@ screening_events:
   - "2025-09-09-group-a-premieres"
 ---
 Amber wanted one thing for her birthday: the last slice of pizza. How will she and her ragtag group of friends find out who took that last slice?
-params:
-  cdn:
-    galleries:
-      poster:
-        count: 2
-      still:
-        count: 3
-      group:
-        count: 1
-  galleries:
-    poster:
-      count: 2
-    still:
-      count: 3
-    group:
-      count: 1

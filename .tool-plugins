@@ -1,0 +1,5 @@
+# Like .tool-versions except it will install its associated asdf plugins
+# This is needed because the cloudflare environment doesn't have all plugins
+# preinstalled, and .tool-versions is processed before builds, so this can
+# install them during the build instead.
+yq 4.47.2 https://github.com/mikefarah/asdf-yq

@@ -1,6 +1,6 @@
 ---
 title: "Agent of Piece"
-image: poster-001.jpg
+image: poster.jpg
 date: 2025-08-17T19:00:00-07:00
 draft: false
 params:

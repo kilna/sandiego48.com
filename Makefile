@@ -1,6 +1,4 @@
 SHELL := /usr/bin/env bash
-#PARAMS := --disableFastRender --logLevel debug --printPathWarnings --printUnusedTemplates
-PARAMS := --disableFastRender
 
 # Set HUGO_BASEURL based on where we are building...
 ifeq ($(CF_PAGES),true)
@@ -10,61 +8,58 @@ else
 export HUGO_BASEURL=https://$(CF_PAGES_BRANCH).sandiego48.com
 endif
 else
+export HUGO_BASEURL=http://localhost:$(SERVER_PORT)
 -include .env # This is used for local development...
 endif
 
-.PHONY: build build-clean server server-cdn server-slow server-verbose open-wait install-yq copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit
+.PHONY: build build-clean server server-cdn server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit tool-plugins setup-dev-cdn cleanup-dev-cdn push deploy preview dash help
 
-install-yq:
-	@if ! command -v yq >/dev/null 2>&1; then \
-		echo "Installing yq..."; \
-		curl -L https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o /tmp/yq; \
-		chmod +x /tmp/yq; \
-		mkdir -p ~/.local/bin; \
-		mv /tmp/yq ~/.local/bin/yq; \
-		echo "yq installed to ~/.local/bin/yq"; \
-	fi
+copy-images: tool-plugins
+	./scripts/copy-images.sh
 
-copy-images: install-yq
-	PATH="$$HOME/.local/bin:$$PATH" ./scripts/copy-images.sh
-
-build: copy-images gallery-audit
+build: copy-images cleanup-dev-cdn
 	hugo
 
-build-clean: gallery-audit
+build-clean: copy-images cleanup-dev-cdn
 	rm -rf public
 	hugo --forceSyncStatic --cleanDestinationDir
 
-server: copy-images kill-server
-	hugo server $(PARAMS) | tee >($(MAKE) open-wait) 2>&1
+tool-plugins:
+	./scripts/tool-plugins.sh
 
-server-cdn: copy-images kill-server
-	HUGO_FORCE_PRODUCTION_CDN=true hugo server $(PARAMS) | tee >($(MAKE) open-wait) 2>&1
+setup-dev-cdn:
+	@if [ ! -L static/cdn ]; then \
+		ln -sf ../cdn static/cdn; \
+	fi
+
+cleanup-dev-cdn:
+	@if [ -L static/cdn ]; then \
+		rm static/cdn; \
+	fi
+
+server: copy-images setup-dev-cdn kill-server
+	hugo server --disableFastRender --port $$SERVER_PORT | ./scripts/open-server.sh
+
+server-cdn: copy-images setup-dev-cdn kill-server
+	HUGO_FORCE_PRODUCTION_CDN=true hugo server --disableFastRender --port $$SERVER_PORT | ./scripts/open-server.sh
 
 server-clean: build-clean kill-server
-	hugo server $(PARAMS) | tee >($(MAKE) open-wait) 2>&1
+	hugo server --disableFastRender --port $$SERVER_PORT | ./scripts/open-server.sh
+
+server-slow: copy-images setup-dev-cdn kill-server
+	hugo server --disableFastRender --port $$SERVER_PORT | ./scripts/open-server.sh
+
+server-verbose: copy-images setup-dev-cdn kill-server
+	hugo server --disableFastRender --port $$SERVER_PORT --logLevel debug --printPathWarnings --printUnusedTemplates | ./scripts/open-server.sh
 
 kill-server:
-	pkill -f "hugo server" || true
-
-open-wait:
-	awk '/at http/ {gsub(/.* at | \(.*/, ""); system("open " $$0); fflush(); while((getline) > 0) print}'
+	lsof -ti:$$SERVER_PORT | xargs kill -9 2>/dev/null || true
 
 open:
-	open http://localhost:1313
+	open http://localhost:$$SERVER_PORT
 
-icons:
-	PATH="$$HOME/.local/bin:$$PATH" ./scripts/icons.sh
-
-migrate-directories:
-	python3 scripts/migrate-directories.py content/films
-
-cleanup-redirects:
-	rm -rf layouts/films/the-*
-	@echo "Redirect files cleaned up"
-
-move-images:
-	python3 scripts/move-images.py
+icons: tool-plugins
+	./scripts/icons.sh
 
 cdn: gallery-thumbs gallery-update-counts cdn-upload
 
@@ -79,14 +74,57 @@ cdn-download:
 	export $$(cat .env | xargs) && \
 	   aws s3 sync s3://sandiego48-com/ cdn/
 
-gallery-thumbs:
-	PATH="$$HOME/.local/bin:$$PATH" ./scripts/gallery-thumbs.sh
+gallery-thumbs: tool-plugins
+	./scripts/gallery-thumbs.sh
 
-gallery-thumbs-force:
-	PATH="$$HOME/.local/bin:$$PATH" ./scripts/gallery-thumbs.sh --force
+gallery-thumbs-force: tool-plugins
+	./scripts/gallery-thumbs.sh --force
 
-gallery-update-counts:
-	PATH="$$HOME/.local/bin:$$PATH" ./scripts/gallery-update-counts.sh
+gallery-update-counts: tool-plugins
+	./scripts/gallery-update-counts.sh
 
-gallery-audit:
-	PATH="$$HOME/.local/bin:$$PATH" ./scripts/gallery-audit.sh
+gallery-audit: tool-plugins
+	./scripts/gallery-audit.sh
+
+check-clean:
+	@if [ -n "$$(git status --porcelain)" ]; then \
+		echo "Error: Working directory is not clean. Please commit or stash changes first." >&2; \
+		git status --short >&2; \
+		exit 1; \
+	fi
+
+push:
+	git add -A
+	git commit
+	git push
+
+deploy: check-clean build-clean gallery-audit
+	./scripts/open-deploy.sh
+
+preview: build-clean
+	script -q /dev/null \
+	  bash -c "wrangler pages deploy ./public --commit-dirty=true" \
+		| ./scripts/open-preview.sh
+
+dash:
+	open $$CLOUDFLARE_PAGES_DASHBOARD_URL
+
+help:
+	@echo "Available targets:"
+	@echo "  build         - Build the site"
+	@echo "  build-clean   - Clean build with force sync"
+	@echo "  server        - Start development server"
+	@echo "  server-cdn    - Start server with production CDN"
+	@echo "  server-clean  - Start server with clean build"
+	@echo "  server-slow   - Start server with fast render disabled"
+	@echo "  server-verbose- Start server with debug logging"
+	@echo "  deploy        - Build and deploy via git (requires clean working copy)"
+	@echo "  preview       - Deploy to Cloudflare Pages preview and open in browser"
+	@echo "  push          - Commit and push to origin"
+	@echo "  cdn           - Upload to CDN (includes gallery processing)"
+	@echo "  cdn-force     - Force CDN upload with gallery regeneration"
+	@echo "  cdn-download  - Download from CDN"
+	@echo "  gallery-thumbs- Generate gallery thumbnails"
+	@echo "  gallery-audit - Audit gallery images"
+	@echo "  icons         - Download/refresh SVG icons from icons.yaml"
+	@echo "  help          - Show this help message"

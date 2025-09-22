@@ -48,12 +48,16 @@ for hugo_type in "events" "films" "people"; do
     
     for gallery_id in $gallery_ids; do
       # Get gallery configuration
-      expected_extension=$(yq eval ".params.galleries.${hugo_type}.${gallery_id}.extension // \"jpg\"" "$HUGO_CONFIG")
-      prefix=$(yq eval ".params.galleries.${hugo_type}.${gallery_id}.prefix // \"${gallery_id}-\"" "$HUGO_CONFIG")
+      expected_extension=$(yq eval ".params.galleries.${hugo_type}.${gallery_id}.extension // \"jpg\"" "$HUGO_CONFIG" | tr -d '\n\r' | xargs)
+      prefix=$(yq eval ".params.galleries.${hugo_type}.${gallery_id}.prefix // \"${gallery_id}-\"" "$HUGO_CONFIG" | tr -d '\n\r' | xargs)
       
       # Get the frontmatter count for this gallery type
-      frontmatter_count=$(yq eval ".params.galleries.${gallery_id}.count // 0" "$md_file" 2>/dev/null || echo "0")
-      frontmatter_count=${frontmatter_count:-0}
+      frontmatter_count=$(yq eval ".params.galleries.${gallery_id}.count" "$md_file" 2>/dev/null || echo "0")
+      frontmatter_count=$(echo "$frontmatter_count" | tr -d '\n\r' | xargs)
+      # Handle null values and malformed data
+      if [ "$frontmatter_count" = "null" ] || [ -z "$frontmatter_count" ] || [[ "$frontmatter_count" =~ null ]]; then
+        frontmatter_count=0
+      fi
       
       # Skip if no images expected
       if [ "$frontmatter_count" -eq 0 ]; then
