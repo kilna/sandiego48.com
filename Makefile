@@ -13,7 +13,7 @@ else
 	export HUGO_BASEURL=http://localhost:$(SERVER_PORT)
 endif
 
-.PHONY: build build-clean server server-cdn server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit tool-plugins setup-dev-cdn cleanup-dev-cdn push deploy preview dash help install-tools
+.PHONY: build build-clean server server-cdn server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit tool-plugins setup-dev-cdn cleanup-dev-cdn push deploy preview dash help
 
 # Auto-install tools when running on Cloudflare Pages
 install-tools:
@@ -23,10 +23,13 @@ ifeq ($(CF_PAGES),1)
 	asdf install
 endif
 
+# Install tools for any target
+%: install-tools
+
 copy-images:
 	./scripts/copy-images.sh
 
-build: install-tools copy-images cleanup-dev-cdn
+build: copy-images cleanup-dev-cdn
 	hugo
 
 build-clean: copy-images cleanup-dev-cdn
@@ -76,7 +79,7 @@ open:
 	@if [ -z "$$SERVER_PORT" ]; then echo "Error: SERVER_PORT not set in .env file"; exit 1; fi
 	open http://localhost:$$SERVER_PORT
 
-icons: install-tools
+icons:
 	./scripts/icons.sh
 
 cdn: gallery-thumbs gallery-update-counts cdn-upload
@@ -92,16 +95,16 @@ cdn-download:
 	export $$(cat .env | xargs) && \
 	   aws s3 sync s3://sandiego48-com/ cdn/
 
-gallery-thumbs: install-tools
+gallery-thumbs:
 	./scripts/gallery-thumbs.sh
 
-gallery-thumbs-force: install-tools
+gallery-thumbs-force:
 	./scripts/gallery-thumbs.sh --force
 
-gallery-update-counts: install-tools
+gallery-update-counts:
 	./scripts/gallery-update-counts.sh
 
-gallery-audit: install-tools
+gallery-audit:
 	./scripts/gallery-audit.sh
 
 preview: copy-images cleanup-dev-cdn
