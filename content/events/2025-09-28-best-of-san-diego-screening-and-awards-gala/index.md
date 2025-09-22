@@ -103,7 +103,7 @@ The following nominees have been selected for this year's awards:
 - **Peter Kowalchuk**  
   for **[Hollow Hearts](/films/2025-phaneron-films-hollow-hearts/)** by *Phaneron Films*
 
-- **Maximilian Newhan & Sean McDonald**  
+- **Maximilian Newhan & Sean McDannold**  
   for **[Tango](/films/2025-extra-rad-tango/)** by *Extra Rad*
 
 - **Ben Wilson**  
