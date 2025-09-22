@@ -108,7 +108,7 @@ while [ $ELAPSED -lt $TIMEOUT ]; do
   fi
   
   # Check for failure/skipped states
-  if echo "$STATUS" | grep -qiE "^(fail|skip)"; then
+  if echo "$STATUS" | grep -qiE "(fail|error|skip|timeout|cancel)"; then
     echo
     echo "Deployment failed/skipped with status: $STATUS" >&2
     if [ -n "$BUILD_URL" ]; then
