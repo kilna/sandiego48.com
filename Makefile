@@ -1,7 +1,7 @@
 SHELL := /usr/bin/env bash
 
 # Set HUGO_BASEURL based on where we are building...
-ifeq ($(CF_PAGES),true)
+ifeq ($(CF_PAGES),1)
 ifeq ($(CF_PAGES_BRANCH),main)
 export HUGO_BASEURL=https://sandiego48.com
 else
@@ -30,9 +30,7 @@ initialize-cloudflare:
 	    --project-name $$CLOUDFLARE_PAGES_PROJECT
 
 install-tools:
-	@echo "CF_PAGES is: $(CF_PAGES)"
-	@echo "Running install-tools..."
-ifeq ($(CF_PAGES),true)
+ifeq ($(CF_PAGES),1)
 	./scripts/tool-plugins.sh
 	cat .tool-versions >> .tool-versions.cloudflare
 	asdf install
