@@ -4,9 +4,6 @@ SHELL := /usr/bin/env bash
 
 # Set HUGO_BASEURL based on where we are building...
 ifeq ($(CF_PAGES),1)
-	./scripts/tool-plugins.sh
-	export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=.tool-versions.full
-	asdf install
 ifeq ($(CF_PAGES_BRANCH),main)
 	export HUGO_BASEURL=https://sandiego48.com
 else
@@ -16,7 +13,20 @@ else
 	export HUGO_BASEURL=http://localhost:$(SERVER_PORT)
 endif
 
-.PHONY: build build-clean server server-cdn server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit tool-plugins setup-dev-cdn cleanup-dev-cdn push deploy preview dash help
+.PHONY: build build-clean server server-cdn server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit tool-plugins setup-dev-cdn cleanup-dev-cdn push deploy preview dash help install-tools
+
+# Auto-install tools when running on Cloudflare Pages
+install-tools:
+ifeq ($(CF_PAGES),1)
+	./scripts/tool-plugins.sh
+	export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=.tool-versions.full
+	asdf install
+endif
+
+# Make install-tools a prerequisite for all targets when CF_PAGES=1
+ifeq ($(CF_PAGES),1)
+%: install-tools
+endif
 
 copy-images:
 	./scripts/copy-images.sh
