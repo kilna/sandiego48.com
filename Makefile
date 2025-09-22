@@ -86,22 +86,6 @@ gallery-update-counts: tool-plugins
 gallery-audit: tool-plugins
 	./scripts/gallery-audit.sh
 
-deploy: build-clean gallery-audit
-	git add .
-	git add -A
-	git commit
-	@if [ -n "$$(git status --porcelain)" ]; then \
-		echo "Error: Working directory is not clean. Please commit or stash changes first." >&2; \
-		git status --short >&2; \
-		exit 1; \
-	fi
-	git push
-	./scripts/open-deploy.sh
-
-deploy-dirty:
-	git push
-	./scripts/open-deploy.sh
-
 preview: build-clean
 	script -q /dev/null \
 	  bash -c "wrangler pages deploy ./public --commit-dirty=true" \
