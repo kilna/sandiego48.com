@@ -30,6 +30,8 @@ initialize-cloudflare:
 	    --project-name $$CLOUDFLARE_PAGES_PROJECT
 
 install-tools:
+	@echo "CF_PAGES is: $(CF_PAGES)"
+	@echo "Running install-tools..."
 ifeq ($(CF_PAGES),true)
 	./scripts/tool-plugins.sh
 	cat .tool-versions >> .tool-versions.cloudflare
