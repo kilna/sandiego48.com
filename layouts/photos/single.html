@@ -101,8 +101,9 @@
                   
                   {{/* Show link to full gallery if there are more photos */}}
                   {{- if gt $photoGallery.count $photosToShow -}}
+                    {{- $firstImageName := printf "%s%s.%s" $prefix (printf "%0*d" $padding 1) $extension -}}
                     <div class="view-full-gallery">
-                      <a href="{{ $eventRelPermalink }}#gallery-photo" class="button">
+                      <a href="{{ $eventRelPermalink }}#{{ $firstImageName }}" class="button">
                         View All {{ $photoGallery.count }} Photos from {{ $eventTitle }}
                       </a>
                     </div>
