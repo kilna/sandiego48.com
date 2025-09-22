@@ -87,18 +87,16 @@ gallery-audit: tool-plugins
 	./scripts/gallery-audit.sh
 
 check-clean:
+
+deploy: check-clean build-clean gallery-audit
+	git add .
+	git add -A
+	git commit
 	@if [ -n "$$(git status --porcelain)" ]; then \
 		echo "Error: Working directory is not clean. Please commit or stash changes first." >&2; \
 		git status --short >&2; \
 		exit 1; \
 	fi
-
-commit:
-	git add .
-	git add -A
-	git commit
-
-deploy: check-clean build-clean gallery-audit
 	git push
 	./scripts/open-deploy.sh
 
