@@ -24,19 +24,14 @@
       {{- $baseURL := .Site.BaseURL -}}
       {{- $cdnURL := "" -}}
       
-      {{- /* Check if we're running locally using environment variable or baseURL */ -}}
-      {{- $envBaseURL := os.Getenv "HUGO_BASEURL" -}}
+      {{- /* Simple logic: localhost gets /cdn, everything else gets production CDN */ -}}
       {{- $forceProductionCDN := os.Getenv "HUGO_FORCE_PRODUCTION_CDN" -}}
-      {{- $isLocalDev := and (not $forceProductionCDN) (or (in $baseURL "localhost") (in $baseURL "127.0.0.1") (in $baseURL ":1313") (and $envBaseURL (in $envBaseURL "localhost"))) -}}
+      {{- $isLocalhost := and (not $forceProductionCDN) (or (in $baseURL "localhost") (in $baseURL "127.0.0.1")) -}}
       
-      {{- if $isLocalDev -}}
+      {{- if $isLocalhost -}}
         {{- $cdnURL = "/cdn" -}}
       {{- else -}}
-        {{- $baseURLHost := replaceRE "^https?://([^/]+).*" "$1" $baseURL -}}
-        {{- $cdnURL = index .Site.Params.cdn $baseURLHost -}}
-        {{- if not $cdnURL -}}
-          {{- $cdnURL = .Site.Params.cdn.default -}}
-        {{- end -}}
+        {{- $cdnURL = .Site.Params.cdn.default -}}
       {{- end -}}
       
       {{- /* Capture the page context */ -}}

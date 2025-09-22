@@ -73,7 +73,6 @@ params:
   copyright_url: https://cinediego.com
   cdn:
     default: https://cdn.sandiego48.com
-    localhost: /cdn
   galleries:
     events:
       photo:
@@ -193,6 +192,13 @@ menus:
     params:
       target: _self
       icon: calendar
+  - identifier: photos
+    weight: 7
+    name: Event Photos
+    url: /photos/
+    params:
+      target: _self
+      icon: camera
   - identifier: films
     weight: 10
     name: Films
@@ -208,13 +214,6 @@ menus:
       target: _blank
       class: "glow pulse"
       icon: ticket
-  - identifier: find-us-online
-    weight: 40
-    name: Find Us Online
-    url: /links#online
-    params:
-      target: _blank
-      icon: globe
   - identifier: subscribe
     weight: 50
     name: Subscribe to Newsletter

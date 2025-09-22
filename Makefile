@@ -1,5 +1,7 @@
 SHELL := /usr/bin/env bash
 
+-include .env
+
 # Set HUGO_BASEURL based on where we are building...
 ifeq ($(CF_PAGES),1)
 ifeq ($(CF_PAGES_BRANCH),main)
@@ -9,7 +11,6 @@ export HUGO_BASEURL=https://$(CF_PAGES_BRANCH).sandiego48.com
 endif
 else
 export HUGO_BASEURL=http://localhost:$(SERVER_PORT)
--include .env # This is used for local development...
 endif
 
 .PHONY: build build-clean server server-cdn server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit tool-plugins setup-dev-cdn cleanup-dev-cdn push deploy preview dash help
@@ -47,24 +48,31 @@ cleanup-dev-cdn:
 	fi
 
 server: copy-images setup-dev-cdn kill-server
+	@if [ -z "$$SERVER_PORT" ]; then echo "Error: SERVER_PORT not set in .env file"; exit 1; fi
 	hugo server --disableFastRender --port $$SERVER_PORT | ./scripts/open-server.sh
 
 server-cdn: copy-images setup-dev-cdn kill-server
+	@if [ -z "$$SERVER_PORT" ]; then echo "Error: SERVER_PORT not set in .env file"; exit 1; fi
 	HUGO_FORCE_PRODUCTION_CDN=true hugo server --disableFastRender --port $$SERVER_PORT | ./scripts/open-server.sh
 
 server-clean: build-clean kill-server
+	@if [ -z "$$SERVER_PORT" ]; then echo "Error: SERVER_PORT not set in .env file"; exit 1; fi
 	hugo server --disableFastRender --port $$SERVER_PORT | ./scripts/open-server.sh
 
 server-slow: copy-images setup-dev-cdn kill-server
+	@if [ -z "$$SERVER_PORT" ]; then echo "Error: SERVER_PORT not set in .env file"; exit 1; fi
 	hugo server --disableFastRender --port $$SERVER_PORT | ./scripts/open-server.sh
 
 server-verbose: copy-images setup-dev-cdn kill-server
+	@if [ -z "$$SERVER_PORT" ]; then echo "Error: SERVER_PORT not set in .env file"; exit 1; fi
 	hugo server --disableFastRender --port $$SERVER_PORT --logLevel debug --printPathWarnings --printUnusedTemplates | ./scripts/open-server.sh
 
 kill-server:
+	@if [ -z "$$SERVER_PORT" ]; then echo "Error: SERVER_PORT not set in .env file"; exit 1; fi
 	lsof -ti:$$SERVER_PORT | xargs kill -9 2>/dev/null || true
 
 open:
+	@if [ -z "$$SERVER_PORT" ]; then echo "Error: SERVER_PORT not set in .env file"; exit 1; fi
 	open http://localhost:$$SERVER_PORT
 
 icons: tool-plugins
@@ -95,7 +103,9 @@ gallery-update-counts: tool-plugins
 gallery-audit: tool-plugins
 	./scripts/gallery-audit.sh
 
-preview: build-clean
+preview: copy-images cleanup-dev-cdn
+	rm -rf public
+	HUGO_BASEURL=https://dev.sandiego48.com hugo --forceSyncStatic --cleanDestinationDir
 	script -q /dev/null \
 	  bash -c "wrangler pages deploy ./public --commit-dirty=true" \
 		| ./scripts/open-preview.sh

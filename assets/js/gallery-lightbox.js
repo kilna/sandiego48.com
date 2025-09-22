@@ -117,9 +117,20 @@ function closeLightbox(galleryId) {
     lightbox.classList.remove('active');
     document.body.style.overflow = '';
     
-    // Clear URL hash
+    // Set hash to gallery section instead of clearing it
     if (window.location.hash) {
-      window.history.replaceState(null, null, window.location.pathname);
+      const galleryType = galleryId.replace('-gallery', '');
+      const galleryId_attr = `gallery-${galleryType}`;
+      window.history.replaceState(null, null, window.location.pathname + '#' + galleryId_attr);
+      
+      // Scroll to gallery heading
+      const galleryElement = document.querySelector(`[data-type="${galleryType}"]`);
+      if (galleryElement) {
+        const galleryHeading = galleryElement.querySelector('h2');
+        if (galleryHeading) {
+          galleryHeading.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     }
   }
 }
