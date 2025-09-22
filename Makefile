@@ -101,6 +101,7 @@ preview: build-clean
 		| ./scripts/open-preview.sh
 
 dash:
+	@echo "Opening Cloudflare Pages dashboard at $$CLOUDFLARE_PAGES_DASHBOARD_URL"
 	open $$CLOUDFLARE_PAGES_DASHBOARD_URL
 
 help:
