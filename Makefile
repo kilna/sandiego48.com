@@ -30,11 +30,11 @@ initialize-cloudflare:
 	    --project-name $$CLOUDFLARE_PAGES_PROJECT
 
 install-tools:
-ifeq ($(CF_PAGES),true)
+	@echo "CF_PAGES is: $(CF_PAGES)"
+	@echo "Running install-tools..."
 	./scripts/tool-plugins.sh
 	cat .tool-versions >> .tool-versions.cloudflare
 	asdf install
-endif
 
 setup-dev-cdn:
 	@if [ ! -L static/cdn ]; then \
