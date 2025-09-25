@@ -14,6 +14,7 @@ params:
   event_end: 2025-09-28T20:30:00-07:00
   tickets_url: https://www.tixtree.com/e/san-diego-48-hour-film-project-2025-best-of-san-diego-screening-and-awards-gala-091a8e4846ab
   screening_group: Best of 2025
+  facebook_event_url: https://www.facebook.com/events/1987941132028703/
   location_name: AMC Mission Valley 20
   location_details: >
     State-of-the-art movie theater with premium seating and sound systems.
