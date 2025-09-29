@@ -126,15 +126,15 @@ params:
       start: "2025-08-05T00:00:00-07:00"
       end:  "2025-08-15T00:00:00-07:00"
       price: 198
-  countdowns:
-    - default: "Not long"
-      suffix: "until the Best of 2025..."
-      date: "2025-09-28T16:00:00-07:00"
-      button:
-        text: "Buy Tickets!"
-        url: /go/tickets
-        icon: ticket
-        icon_position: right
+  countdowns: []
+    # - default: "Not long"
+    #   suffix: "until the Best of 2025..."
+    #   date: "2025-09-28T16:00:00-07:00"
+    #   button:
+    #     text: "Buy Tickets!"
+    #     url: /go/tickets
+    #     icon: ticket
+    #     icon_position: right
     #- default: "Not long"
     #  suffix: "until this year's competition..."
     #  date: "2025-08-15T19:00:00-07:00"
