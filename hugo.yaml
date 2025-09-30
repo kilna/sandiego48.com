@@ -187,7 +187,7 @@ menus:
   main:
   - identifier: events
     weight: 1
-    name: Screenings & Events
+    name: Events
     url: /events
     params:
       target: _self
@@ -206,14 +206,14 @@ menus:
     params:
       target: _self
       icon: film
-  - identifier: tickets
-    weight: 20
-    name: Get Tickets
-    url: /go/tickets
-    params:
-      target: _blank
-      class: "glow pulse"
-      icon: ticket
+  #- identifier: tickets
+  #  weight: 20
+  #  name: Get Tickets
+  #  url: /go/tickets
+  #  params:
+  #    target: _blank
+  #    class: "glow pulse"
+  #    icon: ticket
   - identifier: subscribe
     weight: 50
     name: Subscribe to Newsletter
