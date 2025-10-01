@@ -71,6 +71,7 @@ params:
   phone_can_text: true
   copyright: Cine Diego LLC
   copyright_url: https://cinediego.com
+  facebook_app_id: 25372891222294566
   cdn:
     default: https://cdn.sandiego48.com
   galleries:

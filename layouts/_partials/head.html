@@ -11,6 +11,10 @@
 {{/* Site-specific verification */}}
 <meta name="facebook-domain-verification" content="hb9s09smroq15gul1uvv8f566jusl7" />
 
+{{/* Facebook SDK for Comments */}}
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0&appId={{ .Site.Params.facebook_app_id }}&autoLogAppEvents=1"></script>
+
 {{/* Page Title */}}
 <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
 
