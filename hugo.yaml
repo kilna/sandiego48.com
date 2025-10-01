@@ -185,8 +185,15 @@ mediaTypes:
     suffixes: ["txt"]
 menus:
   main:
-  - identifier: events
+  - identifier: winners
     weight: 1
+    name: Winners
+    url: /competition-summary/2025
+    params:
+      target: _self
+      icon: trophy
+  - identifier: events
+    weight: 3
     name: Events
     url: /events
     params:
