@@ -46,9 +46,9 @@ params:
     The 48 Hour Film Project is the longest running and most popular timed filmmaking competition. Teams have just 48 hours to write, shoot, edit and score a short film. All films are screened in a real theater and compete for awards and recognition.
   galleries:
     photo:
-      count: 0
-      credit: "Photos courtesy of Professional Event Photographer"
-      credit_url: "https://photographer-website.com"
+      count: 396
+      credit: "Photos courtesy of Casey Cousins / Event Master Photo"
+      credit_url: "https://www.instagram.com/event_master_photo/"
 ---
 This screening will consist of a dozen or more featured best films from the San Diego competition, and even better, filmmakers will be given dozens of awards from the entire catalog of this year's films.
 
