@@ -98,7 +98,8 @@
 }
 
 .view-full-gallery .button:hover {
-  background: var(--48-purple-dark);
+  background: var(--48-yellow);
+  color: var(--48-purple);
 }
 
 /* No Photos State */

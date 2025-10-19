@@ -1,0 +1,146 @@
+{{/*
+  CDN Gallery Teaser Partial
+  
+  Displays a small preview of a gallery with a link to the full event page.
+  Used for homepage previews of event galleries.
+  
+  Parameters:
+  - eventSlug: The slug of the event (e.g., "2025-09-28-best-of-san-diego-screening-and-awards-gala")
+  - galleryId: The gallery ID (e.g., "photo")
+  - title: Optional custom title (defaults to gallery name)
+  - previewCount: Number of images to show (default 12)
+  - showCredit: Whether to show photographer credit (default true)
+*/}}
+
+{{- $eventSlug := .eventSlug -}}
+{{- $galleryId := .galleryId | default "photo" -}}
+{{- $previewCount := .previewCount | default 12 -}}
+{{- $showCredit := .showCredit | default true -}}
+{{- $customTitle := .title -}}
+
+{{- if not $eventSlug -}}
+  {{- errorf "cdn-gallery-teaser partial requires eventSlug parameter" -}}
+{{- end -}}
+
+{{- /* Get the event page */ -}}
+{{- $eventPage := $.Site.GetPage (printf "/events/%s" $eventSlug) -}}
+{{- if not $eventPage -}}
+  {{- warnf "Event not found: %s" $eventSlug -}}
+{{- else -}}
+  {{- if $eventPage.Params.galleries -}}
+    {{- $galleryData := index $eventPage.Params.galleries $galleryId -}}
+    {{- if $galleryData -}}
+      {{- $imageCount := $galleryData.count -}}
+      {{- if and $imageCount (gt $imageCount 0) -}}
+        {{- /* Get CDN base URL */ -}}
+        {{- $cdnURL := "" -}}
+        
+        {{- $forceProductionCDN := os.Getenv "HUGO_FORCE_PRODUCTION_CDN" -}}
+        {{- $isLocalhost := and (not $forceProductionCDN) hugo.IsServer -}}
+        
+        {{- if $isLocalhost -}}
+          {{- $cdnURL = "/cdn" -}}
+        {{- else -}}
+          {{- $cdnURL = $.Site.Params.cdn.default -}}
+        {{- end -}}
+        
+        {{- /* Find the gallery configuration */ -}}
+        {{- $config := "" -}}
+        {{- range $hugoType, $galleries := $.Site.Params.galleries -}}
+          {{- if index $galleries $galleryId -}}
+            {{- $config = index $galleries $galleryId -}}
+            {{- break -}}
+          {{- end -}}
+        {{- end -}}
+        
+        {{- if $config -}}
+          {{- $prefix := $config.prefix | default (printf "%s-" $galleryId) -}}
+          {{- $extension := default "jpg" $config.extension -}}
+          {{- $name := $customTitle | default $config.name -}}
+          {{- $padding := default 3 $config.padding -}}
+          {{- /* Use largest thumbnail size, or fallback to 256 */ -}}
+          {{- $thumbSize := 256 -}}
+          {{- if $config.thumb_sizes -}}
+            {{- $thumbSize = index $config.thumb_sizes (sub (len $config.thumb_sizes) 1) -}}
+          {{- else if $config.thumb_size -}}
+            {{- $thumbSize = $config.thumb_size -}}
+          {{- end -}}
+          {{- $thumbSuffix := printf "-%d" $thumbSize -}}
+          {{- $thumbExt := "webp" -}}
+          
+          {{- /* Limit preview count to actual image count */ -}}
+          {{- if gt $previewCount $imageCount -}}
+            {{- $previewCount = $imageCount -}}
+          {{- end -}}
+          
+          {{- $credit := "" -}}
+          {{- if $eventPage.Params.galleries -}}
+            {{- $eventGallery := index $eventPage.Params.galleries $galleryId -}}
+            {{- if and $eventGallery $eventGallery.credit -}}
+              {{- $credit = $eventGallery -}}
+            {{- end -}}
+          {{- end -}}
+          {{- if not $credit -}}
+            {{- $credit = $config -}}
+          {{- end -}}
+          
+          <div class="cdn-gallery-teaser" 
+               style="--thumb-size: {{ $thumbSize }}px;"
+               data-preview-count="{{ $previewCount }}"
+               data-total-images="{{ $imageCount }}"
+               data-cdn-url="{{ $cdnURL }}"
+               data-content-path="events/{{ $eventSlug }}"
+               data-prefix="{{ $prefix }}"
+               data-extension="{{ $extension }}"
+               data-thumb-suffix="{{ $thumbSuffix }}"
+               data-thumb-ext="{{ $thumbExt }}"
+               data-padding="{{ $padding }}"
+               data-gallery-name="{{ $name }}"
+               data-event-url="{{ $eventPage.RelPermalink }}">
+            <h2>{{ $name }}</h2>
+            <div class="gallery-grid-teaser">
+              {{- /* JavaScript will populate this with random images */ -}}
+            </div>
+            
+            <div class="gallery-teaser-footer">
+              {{- if $showCredit -}}
+                {{- if $credit.credit -}}
+                  <div class="photographer-credit">
+                    <p>
+                      {{- if $credit.credit_url -}}
+                        <a href="{{ $credit.credit_url }}" target="_blank" rel="noopener">{{ $credit.credit }}</a>
+                      {{- else -}}
+                        {{ $credit.credit }}
+                      {{- end -}}
+                    </p>
+                  </div>
+                {{- end -}}
+              {{- end -}}
+              
+              {{- if gt $imageCount $previewCount -}}
+                <div class="view-all-container">
+                  {{ partial "components/button.html" (dict
+                      "url" $eventPage.RelPermalink
+                      "class" "medium highlight glow"
+                      "text" (printf "View All %d Photos" $imageCount)
+                      "icon" "camera"
+                  ) }}
+                </div>
+              {{- else -}}
+                <div class="view-all-container">
+                  {{ partial "components/button.html" (dict
+                      "url" $eventPage.RelPermalink
+                      "class" "medium highlight glow"
+                      "text" "View Event Details"
+                      "icon" "arrow-right"
+                  ) }}
+                </div>
+              {{- end -}}
+            </div>
+          </div>
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+

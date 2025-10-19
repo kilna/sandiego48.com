@@ -5,15 +5,23 @@ SHELL := /usr/bin/env bash
 # Set HUGO_BASEURL based on where we are building...
 ifeq ($(CF_PAGES),1)
 ifeq ($(CF_PAGES_BRANCH),main)
-export HUGO_BASEURL=https://sandiego48.com
+	export HUGO_BASEURL=https://sandiego48.com
 else
-export HUGO_BASEURL=https://$(CF_PAGES_BRANCH).sandiego48.com
+	export HUGO_BASEURL=https://$(CF_PAGES_BRANCH).sandiego48.com
 endif
 else
-export HUGO_BASEURL=http://localhost:$(SERVER_PORT)
+	export HUGO_BASEURL=http://localhost:$(SERVER_PORT)
 endif
 
 .PHONY: build build-clean server server-cdn server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit tool-plugins setup-dev-cdn cleanup-dev-cdn push deploy preview dash help
+
+# Auto-install tools when running on Cloudflare Pages
+install-tools:
+ifeq ($(CF_PAGES),1)
+	./scripts/tool-plugins.sh
+	cp .tool-versions.full .tool-versions
+	asdf install
+endif
 
 copy-images: install-tools
 	./scripts/copy-images.sh
@@ -26,16 +34,9 @@ build-clean: copy-images cleanup-dev-cdn
 	hugo --forceSyncStatic --cleanDestinationDir
 
 initialize-cloudflare:
-	cat .tool-versions.cloudflare | \
+	cat .tool-versions | \
 	  wrangler pages secret put ASDF_DEFAULT_TOOL_VERSIONS_FILENAME \
 	    --project-name $$CLOUDFLARE_PAGES_PROJECT
-
-install-tools:
-ifeq ($(CF_PAGES),1)
-	./scripts/tool-plugins.sh
-	cat .tool-versions >> .tool-versions.cloudflare
-	asdf install
-endif
 
 setup-dev-cdn:
 	@if [ ! -L static/cdn ]; then \
@@ -75,7 +76,7 @@ open:
 	@if [ -z "$$SERVER_PORT" ]; then echo "Error: SERVER_PORT not set in .env file"; exit 1; fi
 	open http://localhost:$$SERVER_PORT
 
-icons: tool-plugins
+icons: install-tools
 	./scripts/icons.sh
 
 cdn: gallery-thumbs gallery-update-counts cdn-upload
@@ -91,16 +92,16 @@ cdn-download:
 	export $$(cat .env | xargs) && \
 	   aws s3 sync s3://sandiego48-com/ cdn/
 
-gallery-thumbs: tool-plugins
+gallery-thumbs: install-tools
 	./scripts/gallery-thumbs.sh
 
-gallery-thumbs-force: tool-plugins
+gallery-thumbs-force: install-tools
 	./scripts/gallery-thumbs.sh --force
 
-gallery-update-counts: tool-plugins
+gallery-update-counts: install-tools
 	./scripts/gallery-update-counts.sh
 
-gallery-audit: tool-plugins
+gallery-audit: install-tools
 	./scripts/gallery-audit.sh
 
 preview: copy-images cleanup-dev-cdn

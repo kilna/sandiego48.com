@@ -49,7 +49,7 @@ HUGO_BASEURL=http://localhost:1313
 
 This project uses asdf for tool version management. The following tools are managed:
 
-- **Hugo**: Static site generator (version defined in `.tool-versions`)
+- **Hugo**: Static site generator (version defined in `.tool-versions.full`)
 - **yq**: YAML processor (version defined in `.tool-plugins`)
 
 ## Cloudflare Pages Configuration

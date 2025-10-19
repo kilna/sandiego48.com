@@ -71,6 +71,7 @@ params:
   phone_can_text: true
   copyright: Cine Diego LLC
   copyright_url: https://cinediego.com
+  facebook_app_id: 25372891222294566
   cdn:
     default: https://cdn.sandiego48.com
   galleries:
@@ -80,7 +81,7 @@ params:
         prefix: "photo-"
         padding: 3
         extension: "jpg"
-        thumb_size: 128
+        thumb_sizes: [128, 256]
         credit: "Photos courtesy of Photographer Name"
         credit_url: "https://photographer-website.com"
         alternate: "Can't find your picture? Check other events!"
@@ -126,15 +127,15 @@ params:
       start: "2025-08-05T00:00:00-07:00"
       end:  "2025-08-15T00:00:00-07:00"
       price: 198
-  countdowns:
-    - default: "Not long"
-      suffix: "until the Best of 2025..."
-      date: "2025-09-28T16:00:00-07:00"
-      button:
-        text: "Buy Tickets!"
-        url: /go/tickets
-        icon: ticket
-        icon_position: right
+  countdowns: []
+    # - default: "Not long"
+    #   suffix: "until the Best of 2025..."
+    #   date: "2025-09-28T16:00:00-07:00"
+    #   button:
+    #     text: "Buy Tickets!"
+    #     url: /go/tickets
+    #     icon: ticket
+    #     icon_position: right
     #- default: "Not long"
     #  suffix: "until this year's competition..."
     #  date: "2025-08-15T19:00:00-07:00"
@@ -185,9 +186,16 @@ mediaTypes:
     suffixes: ["txt"]
 menus:
   main:
-  - identifier: events
+  - identifier: winners
     weight: 1
-    name: Screenings & Events
+    name: Winners
+    url: /competition-summary/2025
+    params:
+      target: _self
+      icon: trophy
+  - identifier: events
+    weight: 3
+    name: Events
     url: /events
     params:
       target: _self
@@ -206,14 +214,14 @@ menus:
     params:
       target: _self
       icon: film
-  - identifier: tickets
-    weight: 20
-    name: Get Tickets
-    url: /go/tickets
-    params:
-      target: _blank
-      class: "glow pulse"
-      icon: ticket
+  #- identifier: tickets
+  #  weight: 20
+  #  name: Get Tickets
+  #  url: /go/tickets
+  #  params:
+  #    target: _blank
+  #    class: "glow pulse"
+  #    icon: ticket
   - identifier: subscribe
     weight: 50
     name: Subscribe to Newsletter

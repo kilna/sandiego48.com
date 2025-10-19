@@ -3,7 +3,7 @@
 {{- end -}}
 {{- define "main" -}}
 {{ $tracker_url := printf "%s;qr=%s" .Site.Params.tracking_url .File.BaseFileName }}
-{{ $redirect_url := .Site.BaseURL }}
+{{ $redirect_url := "/" | relURL }}
 {{ with .Params.redirect_url }}
   {{ $redirect_url = . }}
 {{ end }}
