@@ -58,7 +58,13 @@
           {{- $extension := default "jpg" $config.extension -}}
           {{- $name := $customTitle | default $config.name -}}
           {{- $padding := default 3 $config.padding -}}
-          {{- $thumbSize := $config.thumb_size -}}
+          {{- /* Use largest thumbnail size, or fallback to 256 */ -}}
+          {{- $thumbSize := 256 -}}
+          {{- if $config.thumb_sizes -}}
+            {{- $thumbSize = index $config.thumb_sizes (sub (len $config.thumb_sizes) 1) -}}
+          {{- else if $config.thumb_size -}}
+            {{- $thumbSize = $config.thumb_size -}}
+          {{- end -}}
           {{- $thumbSuffix := printf "-%d" $thumbSize -}}
           {{- $thumbExt := "webp" -}}
           
