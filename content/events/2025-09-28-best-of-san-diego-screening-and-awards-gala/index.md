@@ -3,6 +3,7 @@ title: Best of 2025 Screening and Awards Gala
 type: events
 summary: >
   Strut your style on our purple carpet (so much better than a red carpet!) ...and have professional photos taken at our Hollywood style step-and-repeat before heading into a theater packed with the very best of our 48 hour filmmakers... and friends, fans of the 48.
+
 date: 2025-09-28T16:00:00-07:00
 publishDate: 2025-08-22T00:00:00-07:00
 draft: false
@@ -17,8 +18,8 @@ params:
   facebook_event_url: https://www.facebook.com/events/1987941132028703/
   location_name: AMC Mission Valley 20
   location_details: >
-    State-of-the-art movie theater with premium seating and sound systems.
-    Located in the heart of Mission Valley with easy access from I-8 and I-15.
+    State-of-the-art movie theater with premium seating and sound systems. Located in the heart of Mission Valley with easy access from I-8 and I-15.
+
   location_url: https://www.amctheatres.com/movie-theatres/san-diego/amc-mission-valley-20
   location_address: 1640 Camino Del Rio North, San Diego, CA 92108
   location_image: location.jpg
@@ -26,8 +27,7 @@ params:
     - start: 2025-09-28T16:00:00-07:00
       name: Ticket Checkin
       details: >-
-        Have your ticket from TixTree QR code ready (it will be in your email after purchase).
-        There will be no on-site ticket sales, you must order online.
+        Have your ticket from TixTree QR code ready (it will be in your email after purchase). There will be no on-site ticket sales, you must order online.
     - start: 2025-09-28T16:00:00-07:00
       end: 2025-09-28T17:00:00-07:00
       details: Strut your style on our purple carpet and have professional photos taken at our Hollywood style step-and-repeat
@@ -35,29 +35,30 @@ params:
       end: 2025-09-28T20:30:00-07:00
       name: Best of 2025 Films and Awards
       details: >-
-        The very best films from this year's San Diego competition, along with
-        dozens of awards
+        The very best films from this year's San Diego competition, along with dozens of awards
   notes:
     - You must purchase a ticket online before the event, and have your emailed QR code ready. There will be no on-site ticket sales.
     - Bring your style! You're coming to a film premiere, be sure to dress to impress.
-    - By purchasing a ticket or attending the event, the attendee agrees to the
-      [Attendee Terms](/attendee-terms/)
+    - "By purchasing a ticket or attending the event, the attendee agrees to the [Attendee Terms](/attendee-terms/)"
   org_info: |
     ### About the 48 Hour Film Project
     The 48 Hour Film Project is the longest running and most popular timed filmmaking competition. Teams have just 48 hours to write, shoot, edit and score a short film. All films are screened in a real theater and compete for awards and recognition.
   galleries:
     photo:
-      count: 0
-      credit: "Photos courtesy of Professional Event Photographer"
-      credit_url: "https://photographer-website.com"
+      count: 396
+      credit: "Photos courtesy of Casey Cousins / Event Master Photo"
+      credit_url: "https://www.instagram.com/event_master_photo/"
 ---
 This screening will consist of a dozen or more featured best films from the San Diego competition, and even better, filmmakers will be given dozens of awards from the entire catalog of this year's films.
 
-## Award Nominations
+**🏆 [View Final Award Winners](/competition-summary/2025/)**
+
+<details>
+<summary><h2 style="display: inline; cursor: pointer;">Award Nominations</h2></summary>
 
 <div class="awards-box">
 
-The following nominees have been selected for this year's awards:
+**The following nominees were selected for this year's awards**
 
 ### Best Cinematography
 
@@ -215,3 +216,4 @@ that were not included in the screening!
 - **...and more!**
 
 </div>
+</details>

@@ -1,0 +1,70 @@
+{{ define "head" }}
+  {{- partial "head.html" . -}}
+  {{- partial "layout/stylesheet.html" "photos" -}}
+  {{- partial "layout/stylesheet.html" "gallery-teaser" -}}
+{{ end }}
+
+{{ define "title" }}
+{{- partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "Params" .Params
+    "ShowSiteTitle" false
+) }}
+{{ end }}
+
+{{ define "main" -}}
+
+<div class="photos-page">
+<div class="photos-content">
+
+{{ .Content }}
+
+{{- /* Get all events with photos */ -}}
+{{- $eventsWithPhotos := slice -}}
+{{- range (.Site.GetPage "/events").Pages -}}
+  {{- if and .Params.galleries (index .Params.galleries "photo") -}}
+    {{- $photoGallery := index .Params.galleries "photo" -}}
+    {{- if and $photoGallery.count (gt $photoGallery.count 0) -}}
+      {{- $eventsWithPhotos = $eventsWithPhotos | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Sort events by date, newest first */ -}}
+{{- $eventsWithPhotos = sort $eventsWithPhotos ".Params.event_start" "desc" -}}
+
+{{- if $eventsWithPhotos -}}
+
+<div class="all-photos-section">
+
+{{- range $eventsWithPhotos -}}
+  {{- $event_slug := path.Base .RelPermalink -}}
+  {{- $photoGallery := index .Params.galleries "photo" -}}
+  
+  {{- partial "cdn-gallery-teaser.html" (dict
+      "eventSlug" $event_slug
+      "galleryId" "photo"
+      "title" (printf "%s Photos" .Title)
+      "previewCount" 6
+      "showCredit" true
+      "Site" $.Site
+  ) -}}
+
+{{- end -}}
+
+</div>
+
+{{- else -}}
+
+<div class="no-photos">
+  <p>No event photos are currently available. Check back soon!</p>
+</div>
+
+{{- end -}}
+
+</div>
+</div>
+
+<script src="{{ "js/gallery-teaser.js" | relURL }}"></script>
+{{ end }}

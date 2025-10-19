@@ -10,6 +10,8 @@
 {{ define "head" }}
   {{- partial "head.html" . -}}
   {{- partial "layout/stylesheet.html" "events" -}}
+  {{- partial "layout/stylesheet.html" "photos" -}}
+  {{- partial "layout/stylesheet.html" "gallery-teaser" -}}
 {{ end }}
 
 {{ define "main" -}}
@@ -154,6 +156,16 @@
   </p>
 </div>
 
+{{- /* Gallery teaser for Best of 2025 Gala */ -}}
+{{- partial "cdn-gallery-teaser.html" (dict
+    "eventSlug" "2025-09-28-best-of-san-diego-screening-and-awards-gala"
+    "galleryId" "photo"
+    "title" "Best of 2025 Gala Photos"
+    "previewCount" 6
+    "showCredit" true
+    "Site" .Site
+) -}}
+
 {{ (.Site.GetPage "/events").Render "coming" -}}
 
 <iframe class="index-video"  frameborder="0"  allowfullscreen
@@ -248,4 +260,6 @@ city winners. Later, <em>select winners are shown at the Cannes Film Festival
 </div>
 
 </div>
+
+<script src="{{ "js/gallery-teaser.js" | relURL }}"></script>
 {{ end }}

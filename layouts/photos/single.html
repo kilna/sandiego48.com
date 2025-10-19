@@ -42,12 +42,11 @@
             {{ $photoGallery := index .Params.galleries "photo" }}
             {{ if and $photoGallery.count (gt $photoGallery.count 0) }}
               {{/* Get CDN base URL */}}
-              {{- $baseURL := $.Site.BaseURL -}}
               {{- $cdnURL := "" -}}
               
-              {{- /* Simple logic: localhost gets /cdn, everything else gets production CDN */ -}}
+              {{- /* Simple logic: development server gets /cdn, everything else gets production CDN */ -}}
               {{- $forceProductionCDN := os.Getenv "HUGO_FORCE_PRODUCTION_CDN" -}}
-              {{- $isLocalhost := and (not $forceProductionCDN) (or (in $baseURL "localhost") (in $baseURL "127.0.0.1")) -}}
+              {{- $isLocalhost := and (not $forceProductionCDN) hugo.IsServer -}}
               
               {{- if $isLocalhost -}}
                 {{- $cdnURL = "/cdn" -}}
@@ -61,7 +60,13 @@
                 {{- $prefix := $config.prefix | default "photo-" -}}
                 {{- $extension := default "jpg" $config.extension -}}
                 {{- $padding := default 3 $config.padding -}}
-                {{- $thumbSize := $config.thumb_size -}}
+                {{- /* Use largest thumbnail size for photos page (last in array) */ -}}
+                {{- $thumbSize := 256 -}}
+                {{- if $config.thumb_sizes -}}
+                  {{- $thumbSize = index $config.thumb_sizes (sub (len $config.thumb_sizes) 1) -}}
+                {{- else if $config.thumb_size -}}
+                  {{- $thumbSize = $config.thumb_size -}}
+                {{- end -}}
                 {{- $thumbSuffix := printf "-%d" $thumbSize -}}
                 {{- $thumbExt := "webp" -}}
                 {{- $pageSlug := path.Base .RelPermalink -}}

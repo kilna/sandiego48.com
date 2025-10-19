@@ -17,13 +17,6 @@ if ! command -v vips &> /dev/null; then
   exit 1
 fi
 
-# Check if parallel is installed
-if ! command -v parallel &> /dev/null; then
-  echo "Error: GNU parallel is not installed. Please install it first."
-  echo "  brew install parallel"
-  exit 1
-fi
-
 # Get the script directory and project root
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
@@ -139,7 +132,7 @@ generate_thumbnails() {
   local image_type="$2"
   local prefix="$3"
   local extension="$4"
-  local thumb_size="$5"
+  local thumb_sizes="$5"
   
   log "Processing directory: $dir_path"
   
@@ -156,13 +149,25 @@ generate_thumbnails() {
   
   log "Found ${#images[@]} images to process"
   
-  # Create a list of all thumbnail generation commands
-  local thumbnail_commands=()
+  # Parse thumb_sizes - could be a single value or array
+  local sizes=()
+  if [[ "$thumb_sizes" =~ ^\[.*\]$ ]]; then
+    # It's an array, parse it
+    local cleaned="${thumb_sizes//[\[\]]/}"
+    IFS=',' read -ra sizes <<< "$cleaned"
+    # Trim whitespace from each size
+    for i in "${!sizes[@]}"; do
+      sizes[$i]=$(echo "${sizes[$i]}" | tr -d ' ')
+    done
+  else
+    # Single value
+    sizes=("$thumb_sizes")
+  fi
   
-  # Build list of commands to execute in parallel
+  log "Thumbnail sizes: ${sizes[*]}"
+  
+  # Build list of commands to execute
   local commands=()
-  local skipped_count=0
-  local generated_count=0
   
   # Process each image to build command list
   for image in "${images[@]}"; do
@@ -171,39 +176,40 @@ generate_thumbnails() {
     
     log "Processing: $(basename "$image")"
     
-    # Generate thumbnail with single size
-    local size="$thumb_size"
-    local suffix="-${size}"
-    local thumb_ext="webp"
-    local quality="95"
-    
-    local thumbs_dir="${dirname}/thumbs"
-    local output_file="${thumbs_dir}/${basename}${suffix}.${thumb_ext}"
-    
-    # Create thumbs directory if it doesn't exist
-    mkdir -p "$thumbs_dir"
-    
-    # Skip if thumbnail already exists and is newer than source (unless --force is used)
-    if [ "$FORCE" = false ] && [ -f "$output_file" ] && [ "$output_file" -nt "$image" ]; then
-      log "  Skipping ${basename}${suffix}.${thumb_ext} (already up to date)"
-      continue
-    fi
-    
-    log "  Generating ${basename}${suffix}.${thumb_ext} (${size}x${size})"
-    
-    # Add command to list for parallel execution
-    local cmd="generate_thumbnail_with_quality \"$image\" \"$output_file\" \"$size\" \"$quality\""
-    commands+=("$cmd")
+    # Generate thumbnails for each size
+    for size in "${sizes[@]}"; do
+      local suffix="-${size}"
+      local thumb_ext="webp"
+      local quality="95"
+      
+      local thumbs_dir="${dirname}/thumbs"
+      local output_file="${thumbs_dir}/${basename}${suffix}.${thumb_ext}"
+      
+      # Create thumbs directory if it doesn't exist
+      mkdir -p "$thumbs_dir"
+      
+      # Skip if thumbnail already exists and is newer than source (unless --force is used)
+      if [ "$FORCE" = false ] && [ -f "$output_file" ] && [ "$output_file" -nt "$image" ]; then
+        log "  Skipping ${basename}${suffix}.${thumb_ext} (already up to date)"
+        continue
+      fi
+      
+      log "  Generating ${basename}${suffix}.${thumb_ext} (${size}x${size})"
+      
+      # Add command to list for parallel execution
+      local temp_png="${output_file%.*}.png"
+      local cmd="vipsthumbnail \"$image\" -s ${size} -o \"$temp_png\" 2>/dev/null && vips webpsave \"$temp_png\" \"$output_file\" -Q $quality 2>/dev/null && rm -f \"$temp_png\""
+      commands+=("$cmd")
+    done
   done
   
-  # Export the function so parallel can use it
-  export -f generate_thumbnail_with_quality
-  
-  # Execute commands in parallel if any exist
+  # Execute commands sequentially
   if [ ${#commands[@]} -gt 0 ]; then
-    log "Executing ${#commands[@]} thumbnail generation commands in parallel"
-    printf '%s\n' "${commands[@]}" | parallel -j+0 --line-buffer --tag
-    log "Parallel thumbnail generation completed"
+    log "Generating ${#commands[@]} thumbnails"
+    for cmd in "${commands[@]}"; do
+      eval "$cmd" || true
+    done
+    log "Thumbnail generation completed"
   else
     log "No thumbnails to generate (all up to date)"
   fi
@@ -266,7 +272,12 @@ main() {
       local name=$(echo "$galleries_config" | yq eval ".${hugo_type}.${gallery_id}.name" -)
       local prefix=$(echo "$galleries_config" | yq eval ".${hugo_type}.${gallery_id}.prefix // \"${gallery_id}-\"" -)
       local extension=$(echo "$galleries_config" | yq eval ".${hugo_type}.${gallery_id}.extension" -)
-      local thumb_size=$(echo "$galleries_config" | yq eval ".${hugo_type}.${gallery_id}.thumb_size" -)
+      
+      # Check for thumb_sizes (array) first, fallback to thumb_size (single value)
+      local thumb_sizes=$(echo "$galleries_config" | yq eval ".${hugo_type}.${gallery_id}.thumb_sizes" -)
+      if [ "$thumb_sizes" = "null" ] || [ -z "$thumb_sizes" ]; then
+        thumb_sizes=$(echo "$galleries_config" | yq eval ".${hugo_type}.${gallery_id}.thumb_size" -)
+      fi
       
       log "  Gallery: $name"
       log "  Prefix: $prefix"
@@ -274,8 +285,8 @@ main() {
       
       # Process each content item directory (slug-based subdirectories)
       while IFS= read -r -d '' content_dir; do
-        generate_thumbnails "$content_dir" "$hugo_type" "$prefix" "$extension" "$thumb_size"
-      done < <(find "$type_dir" -type d -mindepth 1 -maxdepth 1 -print0)
+        generate_thumbnails "$content_dir" "$hugo_type" "$prefix" "$extension" "$thumb_sizes"
+      done < <(find "$type_dir" -mindepth 1 -maxdepth 1 -type d -print0)
     done
   done
   

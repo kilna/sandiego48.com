@@ -98,8 +98,12 @@ LINKS 🔗
 ➡️ Event Details:
    {{ .Site.Params.canonical_url }}{{ .RelPermalink }}
 {{- if .Params.facebook_event_url }}
+{{- $event_end := time.AsTime .Params.event_end }}
+{{- $now := now }}
+{{- if $event_end.After $now }}
 👍 RSVP on Facebook:
    {{ .Params.facebook_event_url }}
+{{- end }}
 {{- end -}}
 {{- if .Params.calendarlink_url }}
 🗓 Add To Calendar:

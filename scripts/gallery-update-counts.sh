@@ -48,7 +48,7 @@ update_markdown_file() {
   fi
   
   # Use yq to update the count
-  yq eval -i ".params.galleries.${gallery_id}.count = $count" "$md_file"
+  yq eval -i --front-matter=process ".params.galleries.${gallery_id}.count = $count" "$md_file"
   log "    Updated $md_file: $gallery_id = $count"
 }
 

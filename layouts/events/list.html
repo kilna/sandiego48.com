@@ -7,71 +7,145 @@
 {{- partial "title.html" (dict
     "Title" .Title
     "Site" .Site
-    "ShowSiteTitle" true
-) -}}
+    "Params" .Params
+    "ShowSiteTitle" false
+) }}
 {{ end }}
 
-{{ define "main" }}
-<div class="events">
-{{ .Content }}
+{{ define "main" -}}
+{{- $events := .Pages -}}
+{{- $now := now -}}
 
-{{ $currentYear := now.Year }}
-{{ $now := now }}
-{{ $all := .RegularPagesRecursive }}
-{{ $currentYearEvents := where $all ".Date.Year" $currentYear }}
-{{ $currentYearEvents = sort $currentYearEvents "Date" }}
-{{ $priorYearEvents := where $all ".Date.Year" "<" $currentYear }}
-{{ $priorYearEvents = sort $priorYearEvents "Date" }}
+{{- $currentEvents := slice -}}
+{{- $pastEvents := slice -}}
+{{- $priorYearEvents := slice -}}
 
-{{- $upcoming_events := slice -}}
-{{- $past_events := slice -}}
-
-{{- range $currentYearEvents -}}
-  {{- if .Params.event_end -}}
-    {{- $end_time := time.AsTime .Params.event_end -}}
-    {{- if $end_time.After $now -}}
-      {{- $upcoming_events = $upcoming_events | append . -}}
+{{- range $events -}}
+  {{- $startTime := time.AsTime .Params.event_start -}}
+  {{- $endTime := time.AsTime .Params.event_end -}}
+  {{- $eventYear := $startTime.Year -}}
+  {{- $currentYear := $now.Year -}}
+  
+  {{- if eq $eventYear $currentYear -}}
+    {{- if $endTime.After $now -}}
+      {{- $currentEvents = $currentEvents | append . -}}
     {{- else -}}
-      {{- $past_events = $past_events | append . -}}
+      {{- $pastEvents = $pastEvents | append . -}}
     {{- end -}}
-  {{- else -}}
-    {{- $past_events = $past_events | append . -}}
+  {{- else if lt $eventYear $currentYear -}}
+    {{- $priorYearEvents = $priorYearEvents | append . -}}
   {{- end -}}
 {{- end -}}
 
-{{- if $upcoming_events -}}
-{{- partial "events/display.html" (dict
-    "events" $upcoming_events
-    "title" "Coming Events"
-    "show_countdown" true
-    "show_actions" true
-    "show_visibility" true
-) -}}
+{{- $currentEvents = sort $currentEvents ".Params.event_start" "asc" -}}
+{{- $pastEvents = sort $pastEvents ".Params.event_start" "desc" -}}
+{{- $priorYearEvents = sort $priorYearEvents ".Params.event_start" "desc" -}}
+
+<div class="events">
+
+{{- if $currentEvents -}}
+<h2>Upcoming Events</h2>
+{{- range $currentEvents -}}
+  {{- $startTime := time.AsTime .Params.event_start -}}
+  {{- $endTime := time.AsTime .Params.event_end -}}
+  {{- $startTimeFormatted := $startTime.Format "2006-01-02T15:04:05-07:00" -}}
+  {{- $endTimeFormatted := $endTime.Format "2006-01-02T15:04:05-07:00" -}}
+
+<div class="event-card">
+  {{- partial "components/responsive-img.html" (dict
+      "ctx" .
+      "name" "image"
+      "image_mobile" "image_wide"
+      "image_desktop" "image_square"
+      "resize" "x512"
+  ) -}}
+<div class="content">
+  <div class="header-group">
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    {{- partial "content/event-timespan.html" (dict
+        "start_time" $startTime
+        "end_time" $endTime
+        "plain" false
+    ) -}}
+  </div>
+  {{- if .Summary -}}
+    <p class="summary">{{ .Summary }}</p>
+  {{- end -}}
+</div>
+</div>
+
+
+{{- end -}}
 {{- end -}}
 
-{{- if $past_events -}}
-<br clear="all" />
-<br/>
-{{- $past_events = sort $past_events "Date" "desc" -}}
-{{- partial "events/display.html" (dict
-    "events" $past_events
-    "title" "Recent Events"
-    "show_countdown" false
-    "show_actions" false
-    "show_visibility" false
-) -}}
+{{- if $pastEvents -}}
+<h2>Recent Events</h2>
+{{- range $pastEvents -}}
+  {{- $startTime := time.AsTime .Params.event_start -}}
+  {{- $endTime := time.AsTime .Params.event_end -}}
+  {{- $startTimeFormatted := $startTime.Format "2006-01-02T15:04:05-07:00" -}}
+  {{- $endTimeFormatted := $endTime.Format "2006-01-02T15:04:05-07:00" -}}
+
+<div class="event-card">
+  {{- partial "components/responsive-img.html" (dict
+      "ctx" .
+      "name" "image"
+      "image_mobile" "image_wide"
+      "image_desktop" "image_square"
+      "resize" "x512"
+  ) -}}
+<div class="content">
+  <div class="header-group">
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    {{- partial "content/event-timespan.html" (dict
+        "start_time" $startTime
+        "end_time" $endTime
+        "plain" false
+    ) -}}
+  </div>
+  {{- if .Summary -}}
+    <p class="summary">{{ .Summary }}</p>
+  {{- end -}}
+</div>
+</div>
+
+
+{{- end -}}
 {{- end -}}
 
 {{- if $priorYearEvents -}}
-<br clear="all" />
-<br/>
-{{- partial "events/display.html" (dict
-    "events" $priorYearEvents
-    "title" "Prior Year Events"
-    "show_countdown" false
-    "show_actions" false
-    "show_visibility" false
-) -}}
+<h2>Prior Year Events</h2>
+{{- range $priorYearEvents -}}
+  {{- $startTime := time.AsTime .Params.event_start -}}
+  {{- $endTime := time.AsTime .Params.event_end -}}
+  {{- $startTimeFormatted := $startTime.Format "2006-01-02T15:04:05-07:00" -}}
+  {{- $endTimeFormatted := $endTime.Format "2006-01-02T15:04:05-07:00" -}}
+
+<div class="event-card">
+  {{- partial "components/responsive-img.html" (dict
+      "ctx" .
+      "name" "image"
+      "image_mobile" "image_wide"
+      "image_desktop" "image_square"
+      "resize" "x512"
+  ) -}}
+<div class="content">
+  <div class="header-group">
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    {{- partial "content/event-timespan.html" (dict
+        "start_time" $startTime
+        "end_time" $endTime
+        "plain" false
+    ) -}}
+  </div>
+  {{- if .Summary -}}
+    <p class="summary">{{ .Summary }}</p>
+  {{- end -}}
+</div>
+</div>
+
+
+{{- end -}}
 {{- end -}}
 
 </div>

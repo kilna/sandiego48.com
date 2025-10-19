@@ -48,7 +48,7 @@
     
     {{/* Add CDN gallery if images are available */}}
     {{- if .Params.galleries -}}
-      {{- partial "cdn-gallery.html" (dict "galleryId" "photo" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
+      {{- partial "cdn-gallery.html" (dict "galleryId" "photo" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section "thumb_size" 128) -}}
     {{- end -}}
     
     {{/* Get films for this event using the page slug */}}
@@ -148,11 +148,15 @@
     {{ end -}}
     
     {{ if .Params.facebook_event_url -}}
+    {{ $event_end := time.AsTime .Params.event_end -}}
+    {{ $now := now -}}
+    {{ if $event_end.After $now -}}
     {{- partial "components/button.html" (dict
       "url" .Params.facebook_event_url
       "text" "RSVP to Facebook Event"
       "icon" "facebook"
     ) -}}
+    {{ end -}}
     {{ end -}}
     
     <h3>Schedule</h3>

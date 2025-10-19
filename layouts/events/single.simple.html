@@ -138,9 +138,13 @@ Buy Tickets Now 🎫
   Event Page at SanDiego48.com
 </a><br/>
 {{ if .Params.facebook_event_url }}
+{{ $event_end := time.AsTime .Params.event_end }}
+{{ $now := now }}
+{{ if $event_end.After $now }}
 👍 <a href="{{ .Params.facebook_event_url }}">
   RSVP on Facebook
 </a><br/>
+{{ end }}
 {{ end }}
 </blockquote>
 

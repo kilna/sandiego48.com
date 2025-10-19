@@ -21,12 +21,11 @@
     {{- $imageCount := $galleryData.count -}}
     {{- if and $imageCount (gt $imageCount 0) -}}
       {{- /* Get CDN base URL */ -}}
-      {{- $baseURL := .Site.BaseURL -}}
       {{- $cdnURL := "" -}}
       
-      {{- /* Simple logic: localhost gets /cdn, everything else gets production CDN */ -}}
+      {{- /* Simple logic: development server gets /cdn, everything else gets production CDN */ -}}
       {{- $forceProductionCDN := os.Getenv "HUGO_FORCE_PRODUCTION_CDN" -}}
-      {{- $isLocalhost := and (not $forceProductionCDN) (or (in $baseURL "localhost") (in $baseURL "127.0.0.1")) -}}
+      {{- $isLocalhost := and (not $forceProductionCDN) hugo.IsServer -}}
       
       {{- if $isLocalhost -}}
         {{- $cdnURL = "/cdn" -}}
@@ -66,7 +65,17 @@
         {{- end -}}
         
         {{- /* Get thumbnail configuration */ -}}
-        {{- $thumbSize := $config.thumb_size -}}
+        {{- $thumbSize := 0 -}}
+        {{- /* Check for thumb_sizes (array) first, fallback to thumb_size (single value) */ -}}
+        {{- if $config.thumb_sizes -}}
+          {{- $thumbSize = index $config.thumb_sizes 0 -}}
+        {{- else if $config.thumb_size -}}
+          {{- $thumbSize = $config.thumb_size -}}
+        {{- end -}}
+        {{- /* Allow override of thumb_size via parameter */ -}}
+        {{- if .thumb_size -}}
+          {{- $thumbSize = .thumb_size -}}
+        {{- end -}}
         {{- $thumbSuffix := printf "-%d" $thumbSize -}}
         {{- $thumbExt := "webp" -}}
         
@@ -74,7 +83,7 @@
         {{- $contentType := $pageSection -}}
         
         {{- /* Generate gallery HTML */ -}}
-        <div class="cdn-gallery" data-type="{{ $galleryId }}" style="--thumb-size: {{ $thumbSize }}px;" data-total-images="{{ $imageCount }}">
+        <div class="cdn-gallery" id="gallery-{{ $galleryId }}" data-type="{{ $galleryId }}" style="--thumb-size: {{ $thumbSize }}px;" data-total-images="{{ $imageCount }}">
           <h2>{{ $name }}</h2>
           <div class="gallery-grid" id="gallery-grid-{{ $galleryId }}">
             {{- /* Show first 24 images initially */ -}}
