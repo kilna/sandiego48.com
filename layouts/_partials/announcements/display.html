@@ -1,0 +1,85 @@
+{{- /* 
+  Partial to display announcements
+  
+  Parameters:
+    announcements - collection of announcement pages to display
+    wrapper_class - CSS class for wrapper div (default: "announcement-card")
+    show_date - whether to show the date (default: false)
+    image_size - size to resize images (default: "400x")
+    button_class - class for buttons (default: "medium")
+    use_inline_style - use inline styles instead of CSS classes for home page (default: false)
+*/ -}}
+
+{{- $announcements := .announcements -}}
+{{- $wrapper_class := .wrapper_class | default "announcement-card" -}}
+{{- $show_date := .show_date | default false -}}
+{{- $image_size := .image_size | default "400x" -}}
+{{- $button_class := .button_class | default "medium" -}}
+{{- $use_inline_style := .use_inline_style | default false -}}
+
+{{- range $announcements -}}
+  {{- if $use_inline_style -}}
+    {{- /* Home page inline style version */ -}}
+    <div class="announcement-box" style="margin-bottom: 2rem;">
+      {{- /* Display image if present */ -}}
+      {{- if .Params.image -}}
+        {{- $image := .Resources.Get .Params.image -}}
+        {{- if $image -}}
+          {{- if and $image.MediaType (ne $image.MediaType.SubType "svg") -}}
+            {{- $image = $image.Resize $image_size -}}
+          {{- end -}}
+          <img src="{{ $image.RelPermalink }}" alt="{{ .Title }}" class="announcement-inline-image" 
+               style="height: auto; border-radius: 0.5rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);" />
+        {{- end -}}
+      {{- end -}}
+      
+      <div class="announcement-content-wrapper">
+        <h2 style="margin-bottom: 1rem; color: var(--48-orange); text-shadow: 0.1rem 0.1rem 0.2rem var(--48-black);">
+          {{ .Title }}
+        </h2>
+        
+        {{- if .Summary -}}
+        <p style="margin: 0.5rem 0;">{{ .Summary }}</p>
+        {{- end -}}
+        
+        {{- if .Params.button -}}
+        <p style="margin: 1rem 0 0 0;">
+          {{ partial "components/button.html" (merge .Params.button (dict "class" $button_class)) }}
+        </p>
+        {{- end -}}
+      </div>
+    </div>
+  {{- else -}}
+    {{- /* Announcements list page CSS class version */ -}}
+    <div class="{{ $wrapper_class }}">
+      {{ if .Params.image -}}
+        {{- $image := .Resources.Get .Params.image -}}
+        {{ if $image -}}
+          {{ if and $image.MediaType (ne $image.MediaType.SubType "svg") -}}
+            {{ $image = $image.Resize $image_size -}}
+          {{ end -}}
+          <div class="announcement-image-wrapper">
+            <img src="{{ $image.RelPermalink }}" alt="{{ .Title }}" class="announcement-image" />
+          </div>
+        {{ end -}}
+      {{ end -}}
+      <div class="content">
+        <div class="header-group">
+          <h3>{{ .Title }}</h3>
+          {{- if $show_date -}}
+            <p class="date">{{ .Date.Format "January 2, 2006" }}</p>
+          {{- end -}}
+        </div>
+        {{- if .Summary -}}
+          <p class="summary">{{ .Summary }}</p>
+        {{- end -}}
+        {{- if .Params.button -}}
+          <p class="button-wrapper">
+            {{- partial "components/button.html" (merge .Params.button (dict "class" $button_class)) -}}
+          </p>
+        {{- end -}}
+      </div>
+    </div>
+  {{- end -}}
+{{- end -}}
+

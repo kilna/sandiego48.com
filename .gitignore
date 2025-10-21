@@ -14,7 +14,10 @@ hugo_stats.json
 # Project-specific directories
 external/
 cdn/
-static/images/ # Generated from assets/images by the Makefile
+# Link to /cdn - doesn't need to be committed
+/static/cdn
+# Generated from assets/images by the Makefile
+static/images/
 
 # macOS
 .DS_Store

@@ -10,6 +10,7 @@
   - title: Optional custom title (defaults to gallery name)
   - previewCount: Number of images to show (default 12)
   - showCredit: Whether to show photographer credit (default true)
+  - id: Optional HTML id attribute for the section (for anchor links)
 */}}
 
 {{- $eventSlug := .eventSlug -}}
@@ -17,6 +18,7 @@
 {{- $previewCount := .previewCount | default 12 -}}
 {{- $showCredit := .showCredit | default true -}}
 {{- $customTitle := .title -}}
+{{- $htmlId := .id -}}
 
 {{- if not $eventSlug -}}
   {{- errorf "cdn-gallery-teaser partial requires eventSlug parameter" -}}
@@ -84,7 +86,8 @@
             {{- $credit = $config -}}
           {{- end -}}
           
-          <div class="cdn-gallery-teaser" 
+          <div class="cdn-gallery-teaser"
+               {{- if $htmlId }} id="{{ $htmlId }}"{{ end }}
                style="--thumb-size: {{ $thumbSize }}px;"
                data-preview-count="{{ $previewCount }}"
                data-total-images="{{ $imageCount }}"
@@ -120,7 +123,7 @@
               {{- if gt $imageCount $previewCount -}}
                 <div class="view-all-container">
                   {{ partial "components/button.html" (dict
-                      "url" $eventPage.RelPermalink
+                      "url" (printf "%s#gallery-%s" $eventPage.RelPermalink $galleryId)
                       "class" "medium highlight glow"
                       "text" (printf "View All %d Photos" $imageCount)
                       "icon" "camera"
@@ -129,7 +132,7 @@
               {{- else -}}
                 <div class="view-all-container">
                   {{ partial "components/button.html" (dict
-                      "url" $eventPage.RelPermalink
+                      "url" (printf "%s#gallery-%s" $eventPage.RelPermalink $galleryId)
                       "class" "medium highlight glow"
                       "text" "View Event Details"
                       "icon" "arrow-right"

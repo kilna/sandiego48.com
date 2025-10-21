@@ -6,6 +6,7 @@
 {{- $image_style := "display: block; width: 80%; height: auto; border-radius: 0.5em; max-width: 100% !important; margin: 0 auto;" -}}
 {{- $common_button_style := "text-decoration: none; border-radius: 0.3em; text-align: center; margin: 0.3em auto; display: inline-block; max-width: 100% !important; line-height: 1.2;" -}}
 {{- $big_button_style := printf "%s %s" $common_button_style "display: block; width: 90%; background: #6b2c91; color: white; border: 0.1em outset #6b2c91; padding: 0.3em; font-size: 1.5em; line-height: 1.2;" -}}
+{{- $announcement_button_style := printf "%s %s" $common_button_style "display: block; width: 80%; background: #6b2c91; color: white; padding: 0.4em; margin: 0.3em auto; border: 0.1em outset #6b2c91; font-size: 1.2em; line-height: 1.2;" -}}
 {{- $event_button_style  := printf "%s %s" $common_button_style "display: inline-block; background: #f4a424; color: black; padding: 0.3em; margin: 0.1em; border: 0.1em outset #f4a424; line-height: 1.2;" -}}
 {{- $event_button_style2 := printf "%s %s" $common_button_style "display: inline-block; background: #6b2c91; color: white; padding: 0.3em; margin: 0.1em; border: 0.1em outset #6b2c91; line-height: 1.2;" -}}
 {{- $event_title_style := "display: block; font-weight: bold; color: #6B2C91 !important; margin: 0.3em auto; text-decoration: none; font-size: 1.5em; max-width: 100% !important; line-height: 1.2;" -}}
@@ -30,6 +31,11 @@
   {{- end -}}
 {{- end -}}
 {{- $sortedEvents := sort $futureEvents ".Params.event_start" "asc" -}}
+{{- /* Get featured announcements */ -}}
+{{- $announcements := where .Site.Pages "Section" "announcements" -}}
+{{- $publishedAnnouncements := where $announcements "Draft" false -}}
+{{- $featuredAnnouncements := where $publishedAnnouncements "Params.featured" true -}}
+{{- $sortedAnnouncements := sort $featuredAnnouncements "Date" "desc" -}}
 {{- range first 3 $sortedEvents }}
 <hr/>{{- /* */ -}}
 <p style="{{ $p_center_style | safeCSS }}">{{- /* */ -}}
@@ -74,6 +80,33 @@
   <a href="{{ .Site.BaseURL }}{{ .RelPermalink }}" style="{{ $event_button_style2 | safeCSS }}">{{- /* */ -}}
     More Details ➡️{{- /* */ -}}
   </a>{{- /* */ -}}
+</p>
+{{- end }}
+{{- range $sortedAnnouncements }}
+<hr/>{{- /* */ -}}
+<p style="{{ $p_center_style | safeCSS }}">{{- /* */ -}}
+{{- $announcement := . -}}
+{{- /* Display image if present */ -}}
+{{- if .Params.image -}}
+  {{- $displayImage := .Resources.Get .Params.image -}}
+  {{- if $displayImage -}}
+    {{- $resizedImage := $displayImage.Resize "800x" -}}
+    <a href="{{ .Site.BaseURL }}{{ .RelPermalink }}" style="{{ $a_image_style | safeCSS }}">{{- /* */ -}}
+      <img src="{{ .Site.BaseURL }}{{ $resizedImage.RelPermalink }}" alt="{{ .Title }}" style="{{ $image_style | safeCSS }}">{{- /* */ -}}
+    </a>
+  {{- end -}}
+{{- end -}}
+<a href="{{ .Site.BaseURL }}{{ .RelPermalink }}" style="{{ $event_title_style | safeCSS }}">{{ .Title }}</a>
+</p>{{- /* */ -}}
+{{- if .Summary -}}
+  <p style="{{ $p_center_style | safeCSS }}">{{ .Summary }}</p>
+{{- end -}}
+<p style="{{ $p_center_style | safeCSS }}">
+  {{- if .Params.button -}}
+    <a href="{{ if hasPrefix .Params.button.url "http" }}{{ .Params.button.url }}{{ else }}{{ .Site.BaseURL }}{{ .Params.button.url }}{{ end }}" style="{{ $announcement_button_style | safeCSS }}">{{- /* */ -}}
+      {{ .Params.button.text | default "Learn More" }} {{ .Params.button.emoji | default "➡️" }}{{- /* */ -}}
+    </a>{{- /* */ -}}
+  {{- end -}}
 </p>
 {{- end }}
 <hr/>{{- /* */ -}}

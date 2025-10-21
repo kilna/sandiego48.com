@@ -104,16 +104,17 @@ gallery-update-counts: install-tools
 gallery-audit: install-tools
 	./scripts/gallery-audit.sh
 
-preview: copy-images cleanup-dev-cdn
-	rm -rf public
-	HUGO_BASEURL=https://dev.sandiego48.com hugo --forceSyncStatic --cleanDestinationDir
+preview: copy-images cleanup-dev-cdn build-clean
 	script -q /dev/null \
-	  bash -c "wrangler pages deploy ./public --commit-dirty=true" \
+	  bash -c "wrangler pages deploy ./public --project-name=$$CLOUDFLARE_PAGES_PROJECT --branch=preview --commit-dirty=true" \
 		| ./scripts/open-preview.sh
 
 dash:
-	@echo "Opening Cloudflare Pages dashboard at $$CLOUDFLARE_PAGES_DASHBOARD_URL"
 	open $$CLOUDFLARE_PAGES_DASHBOARD_URL
+
+cleanup-deployments:
+	@export $$(cat .env | xargs) && \
+	  ./scripts/cleanup-deployments.sh sandiego48-com --yes
 
 help:
 	@echo "Available targets:"
@@ -127,6 +128,8 @@ help:
 	@echo "  deploy        - Build and deploy via git (requires clean working copy)"
 	@echo "  preview       - Deploy to Cloudflare Pages preview and open in browser"
 	@echo "  push          - Commit and push to origin"
+	@echo "  dash          - Open Cloudflare Pages dashboard"
+	@echo "  cleanup-deployments - Clean up old deployments (keep last 10 production, delete all preview)"
 	@echo "  cdn           - Upload to CDN (includes gallery processing)"
 	@echo "  cdn-force     - Force CDN upload with gallery regeneration"
 	@echo "  cdn-download  - Download from CDN"

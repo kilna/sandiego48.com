@@ -10,8 +10,7 @@
 {{ define "head" }}
   {{- partial "head.html" . -}}
   {{- partial "layout/stylesheet.html" "events" -}}
-  {{- partial "layout/stylesheet.html" "photos" -}}
-  {{- partial "layout/stylesheet.html" "gallery-teaser" -}}
+  {{- partial "layout/stylesheet.html" "announcements" -}}
 {{ end }}
 
 {{ define "main" -}}
@@ -68,6 +67,7 @@
   overflow: auto;
 }
 
+
 .index p {
   line-height: 1.25em;
   margin: 0.5em 0;
@@ -89,6 +89,7 @@
 .index .index-box h2 {
   color: var(--48-purple-dark);
 }
+
 
 .index-elements {
   background: linear-gradient(
@@ -143,27 +144,16 @@
 
 <div class="index">
 
-<div class="index-box" style="background: linear-gradient(135deg, var(--48-purple) 0%, var(--48-purple-light) 50%, var(--48-purple) 100%); border-color: var(--48-purple-light); margin-bottom: 2rem;">
-  <h2 style="text-align: center; margin: 0;">🏆 Award Winners Announced!</h2>
-  <p style="text-align: center; margin: 0;">
-    <span style="color: var(--48-white);">Check out this year's winners from the Best of 2025 Screening & Awards Gala</span><br/>
-    {{ partial "components/button.html" (dict
-        "url" "/competition-summary/2025"
-        "class" "medium glow pulse"
-        "text" "View Winners"
-        "icon" "trophy"
-    ) }}
-  </p>
-</div>
-
-{{- /* Gallery teaser for Best of 2025 Gala */ -}}
-{{- partial "cdn-gallery-teaser.html" (dict
-    "eventSlug" "2025-09-28-best-of-san-diego-screening-and-awards-gala"
-    "galleryId" "photo"
-    "title" "Best of 2025 Gala Photos"
-    "previewCount" 6
-    "showCredit" true
-    "Site" .Site
+{{- /* Display featured announcements */ -}}
+{{- $announcements := where .Site.RegularPages "Section" "announcements" -}}
+{{- $published := where $announcements "Draft" false -}}
+{{- $featured := where $published "Params.featured" true -}}
+{{- $sorted := sort $featured "Date" "desc" -}}
+{{- partial "announcements/display.html" (dict
+    "announcements" $sorted
+    "image_size" "600x"
+    "button_class" "medium"
+    "use_inline_style" true
 ) -}}
 
 {{ (.Site.GetPage "/events").Render "coming" -}}
@@ -261,5 +251,4 @@ city winners. Later, <em>select winners are shown at the Cannes Film Festival
 
 </div>
 
-<script src="{{ "js/gallery-teaser.js" | relURL }}"></script>
 {{ end }}

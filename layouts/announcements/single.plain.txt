@@ -1,0 +1,21 @@
+{{ partial "layout/plaintext.txt" (.Title | htmlUnescape) | upper }}
+——————————
+
+{{ partial "layout/plaintext.txt" .Summary }}
+
+{{ if .Params.button -}}
+➡️ {{ .Params.button.text | default "Learn More" }}:
+   {{ if hasPrefix .Params.button.url "http" }}{{ .Params.button.url }}{{ else }}{{ .Site.Params.canonical_url }}{{ .Params.button.url }}{{ end }}
+
+{{ end -}}
+LINKS 🔗
+
+➡️ Announcement Details:
+   {{ .Site.Params.canonical_url }}{{ .RelPermalink }}
+
+FIND OR FOLLOW US ONLINE ❤️
+
+{{ partial "layout/online.txt" . }}
+
+🧠 Learn more at {{ .Site.Params.canonical_url }}
+

@@ -1,0 +1,54 @@
+{{ define "head" }}
+  {{- partial "head.html" . -}}
+  {{- partial "layout/stylesheet.html" "announcements" -}}
+{{ end }}
+
+{{ define "title" }}
+{{- partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "Params" .Params
+    "ShowSiteTitle" false
+) }}
+{{ end }}
+
+{{ define "main" -}}
+{{- $announcements := .Pages -}}
+
+{{- $featuredAnnouncements := where $announcements "Params.featured" true -}}
+{{- $otherAnnouncements := where $announcements "Params.featured" "!=" true -}}
+
+{{- $featuredAnnouncements = sort $featuredAnnouncements "Date" "desc" -}}
+{{- $otherAnnouncements = sort $otherAnnouncements "Date" "desc" -}}
+
+<div class="announcements">
+
+{{- if $featuredAnnouncements -}}
+<h2>Featured Announcements</h2>
+{{- partial "announcements/display.html" (dict
+    "announcements" $featuredAnnouncements
+    "show_date" true
+    "image_size" "400x"
+    "button_class" "medium"
+) -}}
+{{- end -}}
+
+{{- if $otherAnnouncements -}}
+<h2>Other Announcements</h2>
+{{- partial "announcements/display.html" (dict
+    "announcements" $otherAnnouncements
+    "show_date" true
+    "image_size" "400x"
+    "button_class" "medium"
+) -}}
+{{- end -}}
+
+{{- if and (not $featuredAnnouncements) (not $otherAnnouncements) -}}
+<p>No announcements available.</p>
+{{- end -}}
+
+</div>
+
+
+{{ end }}
+

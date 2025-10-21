@@ -193,13 +193,6 @@ menus:
     params:
       target: _self
       icon: trophy
-  - identifier: events
-    weight: 3
-    name: Events
-    url: /events
-    params:
-      target: _self
-      icon: calendar
   - identifier: photos
     weight: 7
     name: Event Photos
@@ -255,6 +248,13 @@ menus:
     params:
       target: _self
       icon: team
+  - identifier: events
+    weight: 38
+    name: Events
+    url: /events
+    params:
+      target: _self
+      icon: calendar
   - identifier: find-us-online
     weight: 40
     name: Find Us Online
