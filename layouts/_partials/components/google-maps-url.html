@@ -10,8 +10,7 @@
 {{- $address := .address -}}
 
 {{- if $map_url -}}
-  {{- $map_url -}}
+  {{- $map_url | safeURL -}}
 {{- else if $address -}}
-  {{- $encoded_address := $address | replaceRE " " "%20" -}}
-  {{- printf "https://www.google.com/maps?q=%s" $encoded_address | safeURL -}}
+  {{- printf "https://www.google.com/maps/search/?api=1&query=%s" ($address | urlquery) | safeURL -}}
 {{- end -}}

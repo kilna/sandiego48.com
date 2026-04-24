@@ -18,6 +18,8 @@
 {{- $actionIcon := .Params.action_icon -}}
 {{- $actionHeading := .Params.action_heading -}}
 {{- $actionBody := .Params.action_body -}}
+{{- $calendarGoogleUrl := partial "events/calendar-data.html" (dict "page" . "field" "google_url") | htmlUnescape -}}
+{{- $calendarIcsUrl := partial "events/calendar-data.html" (dict "page" . "field" "ics_url") -}}
 {{- if and (not $actionText) .Params.tickets_url -}}
   {{- $actionText = "Buy Tickets" -}}
 {{- end -}}
@@ -223,12 +225,16 @@
       "end_time" $end_time
       ) }}
     {{ end }}
-    {{ if .Params.calendarlink_url -}}
-      {{- partial "components/button.html" (dict
-        "url" .Params.calendarlink_url
-        "text" "Add to Calendar"
-        "icon" "calendar"
-      ) -}}
+    {{ if or $calendarGoogleUrl $calendarIcsUrl -}}
+    <h3>Add to Calendar</h3>
+    {{- partial "components/button-list.html" (dict
+      "class" "links"
+      "show_text" true
+      "buttons" (slice
+        (dict "text" "Google Calendar" "url" $calendarGoogleUrl "icon" "calendar")
+        (dict "text" "Apple / Outlook (.ics)" "url" $calendarIcsUrl "icon" "calendar" "target" "_self")
+      )
+    ) -}}
     {{ end -}}
     
     <h3>Location</h3>

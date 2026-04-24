@@ -1,6 +1,9 @@
 {{ partial "layout/plaintext.txt" (.Title | htmlUnescape) | upper }}
 ——————————
 
+{{- $calendarGoogleUrl := partial "events/calendar-data.html" (dict "page" . "field" "google_url") | htmlUnescape -}}
+{{- $calendarIcsPermalink := partial "events/calendar-data.html" (dict "page" . "field" "ics_permalink") -}}
+
 {{ partial "layout/plaintext.txt" .Summary }}
 
 {{ if .Params.tickets_url }}
@@ -105,9 +108,13 @@ LINKS 🔗
    {{ .Params.facebook_event_url }}
 {{- end }}
 {{- end -}}
-{{- if .Params.calendarlink_url }}
-🗓 Add To Calendar:
-   {{ .Params.calendarlink_url }}
+{{- with $calendarGoogleUrl }}
+🗓 Google Calendar:
+   {{ . }}
+{{- end }}
+{{- with $calendarIcsPermalink }}
+🗓 Apple / Outlook (.ics):
+   {{ . }}
 {{- end }}
 
 FIND OR FOLLOW US ONLINE ❤️

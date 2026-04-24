@@ -40,6 +40,7 @@
 <hr/>{{- /* */ -}}
 <p style="{{ $p_center_style | safeCSS }}">{{- /* */ -}}
 {{- $event := . -}}
+{{- $calendarIcsPermalink := partial "events/calendar-data.html" (dict "page" $event "field" "ics_permalink") -}}
 {{- $displayImage := .Resources.GetMatch .Params.image -}}
 {{- if $displayImage -}}
   {{- $resizedImage := $displayImage.Resize "800x" -}}
@@ -66,7 +67,7 @@
       Facebook RSVP ✅{{- /* */ -}}
     </a>{{- /* */ -}}
   {{- end -}}
-  {{- with .Params.calendarlink_url -}}
+  {{- with $calendarIcsPermalink -}}
     <a href="{{ . }}" style="{{ $event_button_style | safeCSS }}">{{- /* */ -}}
       Add to Calendar 📅{{- /* */ -}}
     </a>{{- /* */ -}}

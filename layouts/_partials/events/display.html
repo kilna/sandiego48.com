@@ -7,6 +7,7 @@
     wrapper_class - optional CSS class for wrapper div
     show_countdown - whether to show countdown instead of event timespan
     show_actions - whether to show CTA buttons
+    show_calendar_action - whether to show the calendar CTA
     show_visibility - whether to add visible-from/visible-to classes
 */ -}}
 
@@ -14,6 +15,7 @@
 {{- $title := .title | default "" -}}
 {{- $show_countdown := .show_countdown | default false -}}
 {{- $show_actions := .show_actions | default false -}}
+{{- $show_calendar_action := .show_calendar_action | default true -}}
 {{- $show_visibility := .show_visibility | default false -}}
 {{- $wrapper_class := .wrapper_class | default "" -}}
 
@@ -54,6 +56,7 @@
   {{- range $events -}}
     {{- $event := . -}}
     {{- $link := $event.RelPermalink -}}
+    {{- $calendarIcsUrl := partial "events/calendar-data.html" (dict "page" $event "field" "ics_url") -}}
     {{- $start_time := time.AsTime .Params.event_start -}}
     {{- $end_time := time.AsTime .Params.event_end -}}
     {{- $start_time_formatted := $start_time.Format "2006-01-02T15:04:05-07:00" -}}
@@ -152,13 +155,16 @@
       {{- $actionIcon = "ticket" -}}
     {{- end -}}
     <div class="actions">
-      {{- with .Params.calendarlink_url -}}
+      {{- if $show_calendar_action -}}
+      {{- with $calendarIcsUrl -}}
         {{- partial "components/button.html" (dict
             "text" "Add to Calendar"
             "url" .
             "icon" "calendar"
             "class" "right"
+            "target" "_self"
         ) -}}
+      {{- end -}}
       {{- end -}}
       {{- $map_url := partial "components/google-maps-url.html" (dict
           "map_url" .Params.location_map_url

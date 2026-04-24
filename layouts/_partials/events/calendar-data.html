@@ -1,0 +1,47 @@
+{{- $page := .page -}}
+{{- $field := .field | default "ics_url" -}}
+{{- if $page.Params.event_start -}}
+
+{{- $start := time.AsTime $page.Params.event_start -}}
+{{- $end := $start -}}
+{{- with $page.Params.event_end -}}
+  {{- $end = time.AsTime . -}}
+{{- end -}}
+
+{{- $locationParts := slice -}}
+{{- with $page.Params.location_name -}}
+  {{- $locationParts = $locationParts | append (. | plainify | htmlUnescape | strings.TrimSpace) -}}
+{{- end -}}
+{{- with $page.Params.location_address -}}
+  {{- $locationParts = $locationParts | append (. | plainify | htmlUnescape | strings.TrimSpace) -}}
+{{- end -}}
+{{- $location := delimit $locationParts ", " -}}
+
+{{- $detailsParts := slice -}}
+{{- with ($page.Summary | plainify | htmlUnescape | strings.TrimSpace) -}}
+  {{- $detailsParts = $detailsParts | append . -}}
+{{- end -}}
+{{- $detailsParts = $detailsParts | append (printf "More details: %s" $page.Permalink) -}}
+{{- $details := delimit $detailsParts "\n\n" -}}
+
+{{- $slug := path.Base (strings.TrimSuffix "/" $page.RelPermalink) -}}
+{{- $uid := printf "%s-%s@sandiego48.com" $slug ($start.UTC.Format "20060102T150405Z") -}}
+{{- $dtstamp := now.UTC.Format "20060102T150405Z" -}}
+{{- $googleDates := printf "%s/%s" ($start.UTC.Format "20060102T150405Z") ($end.UTC.Format "20060102T150405Z") -}}
+{{- $googleUrl := printf "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%s&dates=%s&details=%s&location=%s" ($page.Title | urlquery) $googleDates ($details | urlquery) ($location | urlquery) -}}
+
+{{- $icsContent := printf "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//San Diego 48 Hour Film Project//EN\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:%s\r\nDTSTAMP:%s\r\nDTSTART:%s\r\nDTEND:%s\r\nSUMMARY:%s\r\nDESCRIPTION:%s\r\nLOCATION:%s\r\nURL:%s\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n" $uid $dtstamp ($start.UTC.Format "20060102T150405Z") ($end.UTC.Format "20060102T150405Z") (partial "events/ical-escape.html" $page.Title) (partial "events/ical-escape.html" $details) (partial "events/ical-escape.html" $location) $page.Permalink -}}
+{{- $ics := resources.FromString (printf "calendar/%s.ics" $slug) $icsContent -}}
+
+{{- if eq $field "google_url" -}}
+  {{- $googleUrl -}}
+{{- else if eq $field "ics_permalink" -}}
+  {{- $ics.Permalink -}}
+{{- else if eq $field "location" -}}
+  {{- $location -}}
+{{- else if eq $field "details" -}}
+  {{- $details -}}
+{{- else -}}
+  {{- $ics.RelPermalink -}}
+{{- end -}}
+{{- end -}}
