@@ -2,7 +2,7 @@
 title: AMC Theatres
 params:
   featured: true
-  current: true
+  current: false
   image: amc-square.png
   image_wide: amc.png
   partner_type: sponsor

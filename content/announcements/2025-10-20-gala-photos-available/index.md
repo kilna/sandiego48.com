@@ -8,7 +8,7 @@ date: 2025-10-20T12:00:00-07:00
 publishDate: 2025-10-20T12:00:00-07:00
 draft: false
 params:
-  featured: true
+  featured: false
   image: 2025-gala-photos.png
   button:
     text: "View Photos"

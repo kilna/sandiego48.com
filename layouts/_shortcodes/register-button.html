@@ -1,8 +1,13 @@
-{{- if lt now (time "2025-08-15T00:00:00-07:00") -}}
-{{- partial "components/button.html" (dict
-    "url" "/go/register"
-    "text" "Register Your Team"
-    "icon" "register"
-    "class" "right wide"
-) -}}
+{{- with .Site.Params.registration -}}
+  {{- $registrationStart := time .early.start -}}
+  {{- $registrationEnd := time .late.end -}}
+  {{- if and (ge now $registrationStart) (lt now $registrationEnd) -}}
+    {{- partial "components/button.html" (dict
+        "url" "/go/register"
+        "target" "_self"
+        "text" "Register Your Team"
+        "icon" "register"
+        "class" "right wide"
+    ) -}}
+  {{- end -}}
 {{- end -}}

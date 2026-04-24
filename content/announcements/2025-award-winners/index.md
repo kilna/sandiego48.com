@@ -8,7 +8,7 @@ date: 2025-09-29T12:00:00-07:00
 publishDate: 2025-09-29T12:00:00-07:00
 draft: false
 params:
-  featured: true
+  featured: false
   button:
     text: "View Winners"
     url: "/competition-summary/2025"

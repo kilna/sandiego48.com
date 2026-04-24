@@ -1,3 +1,16 @@
-{{- if lt now (time "2025-08-15T00:00:00-07:00") -}}
-{{- .Page.Scratch.Get "registration_fees_text" -}}
+{{- if lt now (time "2026-08-28T19:00:00-07:00") -}}
+  {{- $feesText := .Page.Scratch.Get "registration_fees_text" -}}
+  {{- if not $feesText -}}
+    {{- with .Site.Params.registration -}}
+      {{- $feesText = printf "Early registration begins %s at $%d per team until %s, then $%d for regular registration until %s, and $%d for late registration up until start of the competition on %s."
+        (dateFormat "January 2" (time .early.start))
+        .early.price
+        (dateFormat "January 2" (time .regular.start))
+        .regular.price
+        (dateFormat "January 2" (time .regular.end))
+        .late.price
+        (dateFormat "January 2" (time .late.end)) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $feesText -}}
 {{- end -}}

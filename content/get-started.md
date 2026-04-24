@@ -90,7 +90,7 @@ description: "Learn how to get involved in the San Diego 48 Hour Film Project - 
     <p>There are several ways actors <strong>of all levels of experience</strong>
       can find casting, and see their talents on the big screen.</p>
     <ul>
-      <li class="visible-to-2025-07-20T17:00:00-07:00"><a href="/events">Come to our open auditions July 20th</a>
+      <li>Come to our open auditions to be held in July or August,
         to meet directors and get cast</li>
       <li>Post your headshot and experience on our <a href="{{< facebook-group-url >}}">Facebook group</a>
         to help teams find you!</li>

@@ -116,18 +116,30 @@ params:
         thumb_size: 256
   registration:
     early:
-      start: "2025-05-01T00:00:00-07:00"
-      end:  "2025-07-23T23:59:59-07:00"
+      start: "2026-06-08T00:00:00-07:00"
+      end: "2026-08-04T23:59:59-07:00"
       price: 158
     regular:
-      start: "2025-07-22T00:00:00-07:00"
-      end:  "2025-08-05T23:59:59-07:00"
+      start: "2026-08-05T00:00:00-07:00"
+      end: "2026-08-17T23:59:59-07:00"
       price: 178
     late:
-      start: "2025-08-05T00:00:00-07:00"
-      end:  "2025-08-15T00:00:00-07:00"
+      start: "2026-08-18T00:00:00-07:00"
+      end: "2026-08-28T19:00:00-07:00"
       price: 198
-  countdowns: []
+  countdowns:
+    - default: "Not long"
+      suffix: "until registration opens on June 8"
+      date: "2026-06-08T00:00:00-07:00"
+    - default: "Not long"
+      suffix: "to Kickoff on August 28"
+      date: "2026-08-28T19:00:00-07:00"
+    #- default: "Not long"
+    #  prefix: "Registration opens June 8."
+    #  suffix: "until the 2026 competition kickoff at 7pm on August 28..."
+    #  date: "2026-08-28T19:00:00-07:00"
+    #  visible_from: "2026-06-08T00:00:00-07:00"
+    # Archive of prior countdown examples:
     # - default: "Not long"
     #   suffix: "until the Best of 2025..."
     #   date: "2025-09-28T16:00:00-07:00"
@@ -136,32 +148,6 @@ params:
     #     url: /go/tickets
     #     icon: ticket
     #     icon_position: right
-    #- default: "Not long"
-    #  suffix: "until this year's competition..."
-    #  date: "2025-08-15T19:00:00-07:00"
-    #  button:
-    #    text: "Register Your Team Now!"
-    #    url: /go/register
-    #    icon: register
-    #    icon_position: right
-    #- default: "Not long"
-    #  suffix: "left for early bird registration..."
-    #  date: "2025-07-22T23:59:59-07:00"
-    #  button_prefix: "Prices go up soon!"
-    #  button:
-    #    text: "Register Your Team Now!"
-    #    url: /go/register
-    #    icon: register
-    #    icon_position: right
-    #- default: "Not long"
-    #  suffix: "until late registration..."
-    #  date: "2025-08-05T23:59:59-07:00"
-    #  button_prefix: "Prices increase soon!"
-    #  button:
-    #    text: "Register Your Team Now!"
-    #    url: /go/register
-    #    icon: register
-    #    icon_position: right
 outputs:
   page: ["HTML", "plain", "simple"]
   home: ["HTML"]
@@ -186,20 +172,42 @@ mediaTypes:
     suffixes: ["txt"]
 menus:
   main:
-  - identifier: winners
+  - identifier: about
     weight: 1
-    name: Winners
-    url: /competition-summary/2025
+    name: About
+    url: /#about
     params:
       target: _self
-      icon: trophy
-  - identifier: photos
-    weight: 7
-    name: Event Photos
-    url: /photos/
+      icon: question
+  - identifier: get-started
+    weight: 2
+    name: Get Started
+    url: /#get-started
     params:
       target: _self
-      icon: camera
+      icon: star
+  - identifier: events
+    weight: 3
+    name: Events
+    url: /events
+    params:
+      target: _self
+      icon: calendar
+  # Archive of post-competition seasonal links for reuse:
+  # - identifier: winners
+  #   weight: 4
+  #   name: Winners
+  #   url: /competition-summary/2025
+  #   params:
+  #     target: _self
+  #     icon: trophy
+  # - identifier: photos
+  #   weight: 7
+  #   name: Event Photos
+  #   url: /photos/
+  #   params:
+  #     target: _self
+  #     icon: camera
   - identifier: films
     weight: 10
     name: Films
@@ -220,20 +228,6 @@ menus:
     name: Subscribe to Newsletter
     url: /go/newsletter
   footer:
-  - identifier: about
-    weight: 20
-    name: About
-    url: /#about
-    params:
-      target: _self
-      icon: question
-  - identifier: get-started
-    weight: 30
-    name: Get Started
-    url: /get-started
-    params:
-      target: _self
-      icon: star
   - identifier: people
     weight: 35
     name: SD 48 Talent
@@ -248,13 +242,6 @@ menus:
     params:
       target: _self
       icon: team
-  - identifier: events
-    weight: 38
-    name: Events
-    url: /events
-    params:
-      target: _self
-      icon: calendar
   - identifier: find-us-online
     weight: 40
     name: Find Us Online

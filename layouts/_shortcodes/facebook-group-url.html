@@ -1,1 +1,7 @@
-{{- .Page.Scratch.Get "facebook_group_url" -}}
+{{- $facebookGroupUrl := .Page.Scratch.Get "facebook_group_url" -}}
+{{- if not $facebookGroupUrl -}}
+  {{- with .Site.Params.facebook_group -}}
+    {{- $facebookGroupUrl = printf "https://facebook.com/groups/%s" . -}}
+  {{- end -}}
+{{- end -}}
+{{- $facebookGroupUrl -}}

@@ -19,7 +19,7 @@ endif
 install-tools:
 ifeq ($(CF_PAGES),1)
 	./scripts/tool-plugins.sh
-	cp .tool-versions.full .tool-versions
+	cp .tool-versions.cloudflare .tool-versions
 	asdf install
 endif
 
