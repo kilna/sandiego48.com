@@ -114,12 +114,14 @@
 {{ range .Params.schedule }}
   <div style="margin-bottom: 1rem;">
     {{ if .name }}<strong>{{ .name }}</strong><br/>{{ end }}
-    {{ $start_time := time.AsTime .start }}
-    {{ if .end }}
-      {{ $end_time := time.AsTime .end }}
-      {{ $start_time.Format "3:04pm" }} - {{ $end_time.Format "3:04pm" }}
-    {{ else }}
-      {{ $start_time.Format "3:04pm" }}
+    {{ if .start }}
+      {{ $start_time := time.AsTime .start }}
+      {{ if .end }}
+        {{ $end_time := time.AsTime .end }}
+        {{ $start_time.Format "3:04pm" }} - {{ $end_time.Format "3:04pm" }}
+      {{ else }}
+        {{ $start_time.Format "3:04pm" }}
+      {{ end }}
     {{ end }}
     {{ if .details }}<br/><em>{{ .details }}</em>{{ end }}
   </div>

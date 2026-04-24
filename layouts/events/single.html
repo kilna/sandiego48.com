@@ -200,15 +200,17 @@
           <div class="schedule-item">
             <div class="schedule-content">
               <div class="schedule-name">{{ .name }}</div>
-              {{ $start_time := time.AsTime .start }}
-              <div class="schedule-time">
-                {{ if .end }}
-                  {{ $end_time := time.AsTime .end }}
-                  {{ $start_time.Format "3:04pm" }} - {{ $end_time.Format "3:04pm" }}
-                {{ else }}
-                  {{ $start_time.Format "3:04pm" }}
-                {{ end }}
-              </div>
+              {{ if .start }}
+                {{ $start_time := time.AsTime .start }}
+                <div class="schedule-time">
+                  {{ if .end }}
+                    {{ $end_time := time.AsTime .end }}
+                    {{ $start_time.Format "3:04pm" }} - {{ $end_time.Format "3:04pm" }}
+                  {{ else }}
+                    {{ $start_time.Format "3:04pm" }}
+                  {{ end }}
+                </div>
+              {{ end }}
               {{ if .details }}
                 <div class="schedule-details">{{ .details }}</div>
               {{ end }}

@@ -56,14 +56,12 @@ params:
   location_address: 7061 Clairemont Mesa Blvd, San Diego, CA 92111
   schedule:
     - start: 2026-05-11T17:30:00-07:00
-      end: 2026-05-11T19:00:00-07:00
-      name: Networking and SD Media Pros Matters
+      end: 2026-05-11T20:30:00-07:00
+    - name: Networking and SD Media Pros Matters
       details: >
         Arrive early, meet fellow attendees, find out about what's new with SD Media Pros
         and get settled in before the main program begins.
-    - start: 2026-05-11T19:00:00-07:00
-      end: 2026-05-11T20:30:00-07:00
-      name: 48 and Beyond Presentation
+    - name: The 48 and Beyond Presentation
       details: >
         Raven and Kilna break down the 48 Hour Film Project process, team
         building, workflow strategy, and how these skills translate to work
