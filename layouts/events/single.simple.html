@@ -14,6 +14,11 @@
 </div>
 
 <div style="background-color: #fff; margin: 0; padding: 30px;">
+{{- $actionUrl := or .Params.action_url .Params.tickets_url -}}
+{{- $actionText := .Params.action_text -}}
+{{- if and (not $actionText) .Params.tickets_url -}}
+  {{- $actionText = "Buy Tickets Now 🎫" -}}
+{{- end -}}
 
 <div>{{ .Summary | markdownify }}</div>
 
@@ -73,9 +78,9 @@
 </ul>
 {{ end }}
 
-{{ if .Params.tickets_url }}
+{{ if $actionUrl }}
 <a href="{{ .Site.Params.canonical_url }}{{ .RelPermalink }}" style="display: block; margin: 1rem 0; font-size: 1.5rem;">
-Buy Tickets Now 🎫
+{{ $actionText }}
 </a>
 {{ end }}
 

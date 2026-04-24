@@ -18,6 +18,33 @@
   color: var(--48-purple);
 }
 
+.event-details-box {
+  background: var(--48-white);
+  color: var(--48-black);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  margin: 1rem 0 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.event-details-box h2 {
+  margin-top: 0;
+  color: var(--48-black);
+}
+
+.event-details-box ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.event-details-box li + li {
+  margin-top: 0.5rem;
+}
+
+.event-details-box a {
+  color: var(--48-purple);
+}
+
 .events {
   padding: 0;
 }
