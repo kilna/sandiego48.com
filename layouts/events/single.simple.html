@@ -111,6 +111,21 @@
 {{ if .Params.schedule }}
 <h3>Schedule 📅</h3>
 <blockquote>
+  {{ if .Params.event_start }}
+    {{ $schedule_start_time := time.AsTime .Params.event_start }}
+    {{ $schedule_end_time := $schedule_start_time }}
+    {{ if .Params.event_end }}
+      {{ $schedule_end_time = time.AsTime .Params.event_end }}
+    {{ end }}
+    {{- partial "content/event-timespan.html" (
+      dict
+        "start_time" $schedule_start_time
+        "end_time" $schedule_end_time
+        "plain" true
+        "show_day_of_week" true
+        "separate_date_and_time" true
+    ) -}}<br/><div style="margin: 1rem 0; border-bottom: 1px solid var(--48-lighten);"></div>
+  {{ end }}
 {{ range .Params.schedule }}
   <div style="margin-bottom: 1rem;">
     {{ if .name }}<strong>{{ .name }}</strong><br/>{{ end }}

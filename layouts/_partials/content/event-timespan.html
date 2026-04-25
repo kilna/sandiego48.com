@@ -4,46 +4,75 @@
     "start_time" $start_time
     "end_time" $end_time
     "plain" $plain
+    "show_day_of_week" $show_day_of_week
+    "separate_date_and_time" $separate_date_and_time
 ) }}
   
   Parameters:
   - start_time: (required) Start time object
   - end_time: (required) End time object
   - plain: (optional) Boolean for plain text output, defaults to true
+  - show_day_of_week: (optional) Boolean, defaults to true
+  - separate_date_and_time: (optional) Boolean, defaults to false
 */}}
 
 {{- $start_time := .start_time -}}
 {{- $end_time := .end_time -}}
 {{- $plain := default true .plain -}}
+{{- $show_day_of_week := default true .show_day_of_week -}}
+{{- $separate_date_and_time := default false .separate_date_and_time -}}
 
 {{- $same_day := compare.Eq $start_time.Day $end_time.Day -}}
 
 {{- $start_hour_format := cond (eq $start_time.Minute 0) "3pm" "3:04pm" -}}
 {{- $end_hour_format := cond (eq $end_time.Minute 0) "3pm" "3:04pm" -}}
 
-{{- $start_format := printf "%s %s" "Monday, January 2, 2006" $start_hour_format -}}
+{{- $date_format := cond $show_day_of_week "Monday, January 2, 2006" "January 2, 2006" -}}
+{{- $time_range := printf "%s - %s" (time.Format $start_hour_format $start_time) (time.Format $end_hour_format $end_time) -}}
+{{- $start_format := printf "%s %s" $date_format $start_hour_format -}}
 {{- $end_format := cond $same_day
                    $end_hour_format
-                   (printf "%s %s" "Monday, January 2, 2006" $end_hour_format)
+                   (printf "%s %s" $date_format $end_hour_format)
 -}}
 
 {{- if $plain -}}
 
-  {{- time.Format $start_format $start_time }} - {{ if not $same_day }}
+  {{- if and $separate_date_and_time $same_day -}}
+    {{- time.Format $date_format $start_time -}}<br/>
+    {{- $time_range -}}
+  {{- else -}}
+    {{- time.Format $start_format $start_time }} - {{ if not $same_day }}
 {{ end }}{{ time.Format $end_format $end_time -}}
+  {{- end -}}
 
 {{- else -}}
 
-  <div class="timespan">
-    {{- "" -}}
-    <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $start_time }}">
-      {{- time.Format $start_format $start_time -}}
-    </time>
-    {{- if $same_day }} - {{ else }} - <br/>{{ end -}}
-    <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $end_time }}">
-      {{- time.Format $end_format $end_time -}}
-    </time>
-    {{- "" -}}
-  </div>
+  {{- if and $separate_date_and_time $same_day -}}
+    <div class="timespan">
+      <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $start_time }}">
+        {{- time.Format $date_format $start_time -}}
+      </time>
+      <br/>
+      <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $start_time }}">
+        {{- time.Format $start_hour_format $start_time -}}
+      </time>
+      -
+      <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $end_time }}">
+        {{- time.Format $end_hour_format $end_time -}}
+      </time>
+    </div>
+  {{- else -}}
+    <div class="timespan">
+      {{- "" -}}
+      <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $start_time }}">
+        {{- time.Format $start_format $start_time -}}
+      </time>
+      {{- if $same_day }} - {{ else }} - <br/>{{ end -}}
+      <time datetime="{{ time.Format "2006-01-02T15:04:05Z07:00" $end_time }}">
+        {{- time.Format $end_format $end_time -}}
+      </time>
+      {{- "" -}}
+    </div>
+  {{- end -}}
 
 {{- end -}}

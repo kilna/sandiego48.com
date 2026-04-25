@@ -195,6 +195,21 @@
     <h3>Schedule</h3>
     {{ if .Params.schedule }}
       {{/* Detailed schedule */}}
+      {{ if .Params.event_start }}
+        {{ $schedule_start_time := time.AsTime .Params.event_start }}
+        {{ $schedule_end_time := $schedule_start_time }}
+        {{ if .Params.event_end }}
+          {{ $schedule_end_time = time.AsTime .Params.event_end }}
+        {{ end }}
+        {{ partial "content/event-timespan.html" (dict
+          "start_time" $schedule_start_time
+          "end_time" $schedule_end_time
+          "plain" false
+          "show_day_of_week" true
+          "separate_date_and_time" true
+        ) }}
+        <div class="schedule-divider"></div>
+      {{ end }}
       <div class="detailed-schedule">
         {{ range .Params.schedule }}
           <div class="schedule-item">
@@ -385,6 +400,11 @@
 /* Detailed schedule styling */
 .detailed-schedule {
   margin: 0;
+}
+
+.schedule-divider {
+  margin: 1rem 0;
+  border-bottom: 1px solid var(--48-lighten);
 }
 
 .schedule-item {
