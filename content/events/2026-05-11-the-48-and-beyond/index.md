@@ -13,6 +13,7 @@ aliases:
   - /events/2026-05-11-beyond-the-48-sd-media-pros/
 params:
   image: flyer.jpg
+  image_square: square.png
   action_url: https://sdmediapros.wildapricot.org/event-6647097
   action_text: Register to Attend
   action_icon: register
