@@ -54,6 +54,7 @@ params:
   location_url: https://elijahsrestaurant.com/
   location_image: location.jpg
   location_address: 7061 Clairemont Mesa Blvd, San Diego, CA 92111
+  facebook_event_url: https://www.facebook.com/events/1488387619445832/
   schedule:
     - name: Networking and SD Media Pros Matters
       details: >
