@@ -127,8 +127,8 @@
 
 .group-tag {
   display: inline-block;
-  background: var(--48-purple-light);
-  color: var(--48-purple-nearblack);
+  background: var(--48-navy-light);
+  color: var(--48-navy-nearblack);
   padding: 0.25rem 0.75rem;
   border-radius: 15px;
   font-size: 0.8rem;
@@ -231,7 +231,7 @@
 }
 
 .film-nominations h2 {
-  color: var(--48-purple);
+  color: var(--48-navy);
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
   font-weight: 600;

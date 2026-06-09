@@ -48,7 +48,7 @@ params:
   description: "San Diego 48 Hour Film Project - Make a film in 48 hours!"
   canonical_url: https://sandiego48.com
   author: "Kilna, Anthony"
-  header_bg: header_bg.jpg
+  header_bg: header_bg_sunset7.jpg
   logo: logo_trans_glow.png
   #
   banner:
@@ -137,7 +137,7 @@ params:
       suffix: "until registration opens on June 8"
       date: "2026-06-08T00:00:00-07:00"
     - default: "Not long"
-      suffix: "to Kickoff on August 28"
+      suffix: "to Competition Kickoff"
       date: "2026-08-28T19:00:00-07:00"
     #- default: "Not long"
     #  prefix: "Registration opens June 8."

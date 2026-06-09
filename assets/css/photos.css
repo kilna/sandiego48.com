@@ -7,14 +7,14 @@
 }
 
 .photos-content h1 {
-  color: var(--48-purple);
+  color: var(--48-navy);
   text-align: center;
   margin-bottom: 2rem;
 }
 
 .photos-content h2 {
-  color: var(--48-purple);
-  border-bottom: 2px solid var(--48-purple);
+  color: var(--48-navy);
+  border-bottom: 2px solid var(--48-navy);
   padding-bottom: 0.5rem;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
@@ -34,11 +34,11 @@
   padding: 2rem;
   background: #f8f9fa;
   border-radius: 8px;
-  border-left: 4px solid var(--48-purple);
+  border-left: 4px solid var(--48-navy);
 }
 
 .event-gallery-section h3 {
-  color: var(--48-purple);
+  color: var(--48-navy);
   margin: 0 0 1rem 0;
   display: flex;
   align-items: center;
@@ -99,7 +99,7 @@
 
 .view-full-gallery .button:hover {
   background: var(--48-yellow);
-  color: var(--48-purple);
+  color: var(--48-navy);
 }
 
 /* No Photos State */

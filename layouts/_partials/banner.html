@@ -33,7 +33,7 @@
       {{- if or $resizedDesktop $imgDesktop -}}
       <source media="(min-width: 769px)" srcset="{{ (or $resizedDesktop $imgDesktop).RelPermalink }}"/>
       {{- end -}}
-      <img src="{{ (or (and $resizedDesktop $resizedDesktop.RelPermalink) (and $imgDesktop $imgDesktop.RelPermalink) $image) }}" alt="{{ $alt }}" loading="lazy" style="max-width: 100%; height: auto;"/>
+      <img src="{{ (or (and $resizedDesktop $resizedDesktop.RelPermalink) (and $imgDesktop $imgDesktop.RelPermalink) $image) }}" alt="{{ $alt }}" loading="lazy" style="max-width: 100%; height: auto; border-radius: 0.75rem;"/>
     </picture>
   </a>
 </div>

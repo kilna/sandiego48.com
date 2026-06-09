@@ -1,4 +1,4 @@
-{{- $bg := resources.Get (printf "images/%s" .Site.Params.header_bg) -}}
+{{- $bg := resources.Get (printf "images/%s" .Site.Params.header_bg) | fingerprint -}}
 <style>
 header.title {
   display: flex;
@@ -16,7 +16,7 @@ header.title {
     ),
     url('{{ $bg.RelPermalink }}');
   background-size: cover;
-  background-position: center 81%;
+  background-position: center 72%;
   background-repeat: no-repeat;
   background-color: var(--48-purple-dark);
   border-radius: 0px;
@@ -83,6 +83,7 @@ header.title div.socials a:hover img {
 }
 
 header.title h1 {
+  color: var(--48-purple);
   display: flex;
   flex-direction: column;
   align-items: center;
