@@ -51,6 +51,11 @@ params:
   header_bg: header_bg.jpg
   logo: logo_trans_glow.png
   #
+  banner:
+    image: images/2026-registration-open-banner.png
+    image_mobile: images/2026-registration-open-vertical.png
+    url: /go/register
+    alt: "2026 Registration Is Open - Sign Up Your Team Now!"
   #banner:
   #  image: images/tickets-banner.png
   #  image_mobile: images/tickets-banner-fat.png
@@ -208,13 +213,21 @@ menus:
   #   params:
   #     target: _self
   #     icon: camera
-  - identifier: films
-    weight: 10
-    name: Films
-    url: /films
+  #- identifier: films
+  #  weight: 10
+  #  name: Films
+  #  url: /films
+  #  params:
+  #    target: _self
+  #    icon: film
+  - identifier: register
+    weight: 20
+    name: Sign Up Your Team
+    url: /go/register
     params:
       target: _self
-      icon: film
+      class: "glow pulse"
+      icon: register
   #- identifier: tickets
   #  weight: 20
   #  name: Get Tickets
