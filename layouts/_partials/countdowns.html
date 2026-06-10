@@ -31,17 +31,17 @@ div.countdown {
 }
 
 @keyframes countdown-button-highlight {
-  0%   { background-color: var(--48-orange); }
-  30%  { background-color: var(--48-purple-light); }
-  70% { background-color: var(--48-orange); }
-  100% { background-color: var(--48-orange); }
+  0%   { background: var(--48-orange-gradient); }
+  30%  { background: linear-gradient(135deg, var(--48-purple-light) 0%, var(--48-purple-light) 100%); }
+  70%  { background: var(--48-orange-gradient); }
+  100% { background: var(--48-orange-gradient); }
 }
 
 div.countdown a.button {
   padding: 0.125em 0.25em;
   font-size: 0.8em;
   color: var(--48-black);
-  background-color: var(--48-orange);
+  background: var(--48-orange-gradient);
   animation-name: countdown-button-highlight;
   animation-duration: 3s;
   animation-iteration-count: infinite;

@@ -87,13 +87,7 @@
   text-align: center;
   margin: 0 auto;
   padding: 0.25rem;
-  background-color: var(--48-orange);
-  background: linear-gradient(
-    135deg,
-    var(--48-orange-dark) 0%,
-    var(--48-orange) 50%,
-    var(--48-orange-dark) 100%
-  );
+  background: var(--48-orange-gradient-dark);
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
@@ -103,13 +97,7 @@
   gap: 1rem;
   padding: 0.75rem 1.5em;
   border-top: 0.125rem solid var(--48-darken);
-  background-color: var(--48-orange-light);
-  background: linear-gradient(
-    135deg,
-    var(--48-orange) 0%,
-    var(--48-orange-light) 50%,
-    var(--48-orange) 100%
-  );
+  background: var(--48-orange-gradient);
 }
 
 
@@ -341,7 +329,7 @@
 .event-card .actions a.button {
   margin: 0;
   color: var(--48-black);
-  background-color: var(--48-orange);
+  background: var(--48-orange-gradient);
   border-color: var(--48-darken);
   --icon-color: var(--48-purple);
   opacity: 0.6;
@@ -387,7 +375,7 @@
   font-size: 0.9em;
   font-weight: 100;
   letter-spacing: 0.03em;
-  background-color: var(--48-orange-dark);
+  background: var(--48-orange-gradient-dark);
   padding: 0.2em;
   border-radius: 0.25em;
   color: var(--48-white);

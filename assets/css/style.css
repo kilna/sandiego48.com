@@ -4,7 +4,7 @@
   --48-white:             #ffffff;
   --48-trans:             #00000000;
   --48-nearwhite:         #f0f0f0;
-  --48-yellow:            #f2a83a;
+  --48-yellow:            #f0b030;
   --48-orange:            #e56f32;
   --48-orange-trans-less: #e56f3240;
   --48-orange-trans:      #e56f3280;
@@ -13,6 +13,24 @@
   --48-orange-dark:       #a34a1a;
   --48-orange-light:      #f5c084;
   --48-orange-nearwhite:  #f7e6d2;
+  --48-orange-gradient: linear-gradient(
+    135deg,
+    var(--48-orange-light) 0%,
+    var(--48-orange) 50%,
+    var(--48-orange-light) 100%
+  );
+  --48-orange-gradient-flex: linear-gradient(
+    95deg,
+    var(--48-orange) 0%,
+    var(--48-orange-light) 50%,
+    var(--48-orange) 100%
+  );
+  --48-orange-gradient-dark: linear-gradient(
+    135deg,
+    var(--48-orange-dark) 0%,
+    var(--48-orange) 50%,
+    var(--48-orange-dark) 100%
+  );
   --48-navy:              #092d48;
   --48-navy-trans-less:   #07223740;
   --48-navy-trans:        #07223780;
@@ -287,6 +305,7 @@ a.button {
   border-radius: 0.25em;
   background-color: var(--48-purple);
   color: var(--48-white);
+  --icon-color: var(--48-yellow);
   text-decoration: none !important;
   font-weight: 400;
   white-space: normal;
@@ -306,7 +325,7 @@ a.button.social {
   border: none !important;
   background-color: var(--48-white);
   color: var(--48-black);
-  --icon-color: var(--48-orange);
+  --icon-color: var(--48-yellow);
   --icon-hover-color: var(--48-purple);
 }
 
@@ -389,7 +408,7 @@ a.button.wide {
 
 a.button .icon {
   display: inline-block;
-  color: var(--icon-color, var(--48-orange));
+  color: var(--icon-color, var(--48-yellow));
 }
 
 a:hover.button .icon, a:active.button .icon {
@@ -984,7 +1003,7 @@ main > * {
 
 .notice {
   display: block;
-  background: var(--48-orange);
+  background: var(--48-orange-gradient);
   color: black;
   padding: 1rem;
   border-radius: 0.5rem;

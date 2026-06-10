@@ -46,7 +46,7 @@
 }
 
 .photo-count {
-  background: var(--48-orange);
+  background: var(--48-orange-gradient);
   color: white !important;
   border: 2px solid var(--48-orange-dark);
   padding: 0.2rem 0.5rem;
