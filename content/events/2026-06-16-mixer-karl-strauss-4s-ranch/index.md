@@ -39,7 +39,7 @@ params:
     The 48 Hour Film Project is the longest running and most popular timed
     filmmaking competition. Amateur and professional teams around the world make
     movies over a weekend, which are later given a premier in a real theater.
-    San Diego's 2026 competition weekend begins at 7pm on Friday, August 28th.
+    San Diego's 2026 competition weekend begins Friday, August 28th.
 ---
 Come join us for our first Mixer / Meet & Greet event of 2026 at Karl Strauss
 Brewing Company in 4S Ranch, just west of Rancho Bernardo.
