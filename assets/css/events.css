@@ -87,7 +87,7 @@
   text-align: center;
   margin: 0 auto;
   padding: 0.25rem;
-  background: var(--48-orange-gradient-dark);
+  background-color: var(--48-purple);
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
@@ -375,11 +375,11 @@
   font-size: 0.9em;
   font-weight: 100;
   letter-spacing: 0.03em;
-  background: var(--48-orange-gradient-dark);
+  background-color: var(--48-purple);
   padding: 0.2em;
   border-radius: 0.25em;
   color: var(--48-white);
-  --clock-color: var(--48-orange);
+  --clock-color: var(--48-yellow);
   border: 0.125em solid var(--48-black);
   box-shadow: inset 0 0 0.5em var(--48-black);
 }
