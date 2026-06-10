@@ -32,6 +32,7 @@ params:
   location_links: []
   location_address: 10448 Reserve Dr., San Diego, CA 92127
   location_map_url: https://maps.app.goo.gl/MEbb4VjjThrdko6J9
+  facebook_event_url: https://www.facebook.com/events/1048313017623302/
   org_info: |
     ### About the 48 Hour Film Project
 
