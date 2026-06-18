@@ -31,6 +31,7 @@ params:
   location_links: []
   location_address: 1370 Frazee Rd, San Diego, CA 92108
   location_map_url: https://maps.app.goo.gl/CL4Qzp6fdcA21dBS6
+  facebook_event_url: https://www.facebook.com/events/990883403575351/
   org_info: |
     ### About the 48 Hour Film Project
 
