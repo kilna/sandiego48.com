@@ -17,9 +17,10 @@ params:
   action_url: https://sdmediapros.wildapricot.org/event-6738374
   action_text: Register to Attend
   action_icon: register
-  action_heading: Ready to Register with SD Media Pros?
+  action_heading: Optional Registration with SD Media Pros
   action_body: |
-    Reserve your spot through SD Media Pros so we can have a name tag ready.
+    Walk-ins are welcome — registration is not required. If you register through
+    SD Media Pros, we'll have a professional printed name badge ready for you.
     Free for members and non-members; no-host bar.
 
   event_start: 2026-07-07T18:00:00-07:00
@@ -66,7 +67,7 @@ params:
   notes:
     - Free for SD Media Pros members and non-members; no-host bar.
     - Students are welcome; you must be 21 or older to purchase and consume alcohol.
-    - Please register so we can have a name tag ready for you.
+    - Registration is optional; walk-ins welcome. Register in advance for a professional printed name badge.
   org_info: |
     ### About the 48 Hour Film Project
 
