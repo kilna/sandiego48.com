@@ -64,6 +64,7 @@ params:
   location_links: []
   location_address: 2816 Historic Decatur Road, San Diego, CA 92106
   location_map_url: https://maps.app.goo.gl/dtuCtYKXuYDkUvcC6
+  facebook_event_url: https://www.facebook.com/events/27276281915327334/
   notes:
     - Free for SD Media Pros members and non-members; no-host bar.
     - Students are welcome; you must be 21 or older to purchase and consume alcohol.
