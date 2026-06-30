@@ -70,41 +70,18 @@
     
     <h2 id="socials">Follow Us On Social Media</h2>
     <div class="button-list">
-      {{- partial "components/button.html" (dict
-            "if" .Site.Params.facebook
-            "url" (printf "https://facebook.com/%s" .Site.Params.facebook)
-            "text" (printf "Facebook @%s" .Site.Params.facebook)
-            "class" "wide big left"
-      ) -}}
-      {{- partial "components/button.html" (dict
-            "if" .Site.Params.instagram
-            "url" (printf "https://instagram.com/%s" .Site.Params.instagram)
-            "text" (printf "Instagram @%s" .Site.Params.instagram)
-            "class" "wide big left"
-      ) -}}
-      {{- partial "components/button.html" (dict
-            "if" .Site.Params.threads
-            "url" (printf "https://threads.net/@%s" .Site.Params.threads)
-            "text" (printf "Threads @%s" .Site.Params.threads)
-            "class" "wide big left"
-      ) -}}
-      {{- partial "components/button.html" (dict
-            "if" .Site.Params.twitter
-            "url" (printf "https://twitter.com/%s" .Site.Params.twitter)
-            "text" (printf "Twitter @%s" .Site.Params.twitter)
-            "class" "wide big left"
-      ) -}}
-      {{- partial "components/button.html" (dict
-            "if" .Site.Params.youtube
-            "url" (printf "https://youtube.com/@%s" .Site.Params.youtube)
-            "text" (printf "YouTube @%s" .Site.Params.youtube)
-            "class" "wide big left"
-      ) -}}
-      {{- partial "components/button.html" (dict
-            "if" .Site.Params.tiktok
-            "url" (printf "https://tiktok.com/@%s" .Site.Params.tiktok)
-            "text" (printf "TikTok @%s" .Site.Params.tiktok)
-            "class" "wide big left"
+      {{- partial "components/common-buttons.html" (dict
+            "Site" .Site
+            "Page" .
+            "class" "button-list"
+            "button_class" "wide big left"
+            "enable_home" false
+            "enable_newsletter" false
+            "enable_socials" true
+            "enable_community" false
+            "enable_contact" false
+            "show_text" true
+            "collapse" false
       ) -}}
     </div>
 

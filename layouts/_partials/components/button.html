@@ -28,6 +28,8 @@
   {{- $getIconFromUrl = "twitter" -}}
 {{- else if strings.Contains $url "twitter.com" -}}
   {{- $getIconFromUrl = "twitter" -}}
+{{- else if strings.Contains $url "linkedin.com" -}}
+  {{- $getIconFromUrl = "linkedin-logo" -}}
 {{- else if strings.Contains $url "youtube.com" -}}
   {{- $getIconFromUrl = "youtube" -}}
 {{- else if strings.Contains $url "tiktok.com" -}}
@@ -61,25 +63,25 @@
   {{- $icon = $getIconFromUrl -}}
 {{- end -}}
 
+{{- /* Fallback: preserve icon defaults for known social text labels */ -}}
+{{- if and (eq $icon "none") (strings.Contains (strings.ToLower $text) "linkedin") -}}
+  {{- $icon = "linkedin-logo" -}}
+{{- end -}}
+
 {{- /* Set fallback icon for icon-only buttons */ -}}
 {{- if and (eq $icon "none") (not $show_text) -}}
   {{- $icon = "globe" -}}
 {{- end -}}
 
-{{- /* Function to render an icon */ -}}
-{{- define "renderIcon" -}}
-  {{- if ne .icon "none" -}}
-    {{- partial "components/icon.html" (dict
-        "icon" .icon
-        "alt" .alt
-        "title" .title
-    ) -}}
-  {{- end -}}
-{{- end -}}
-
 <a href="{{ $url | safeURL }}" target="{{ $target }}" class="{{ $class }}">
   {{- /* Always render in this order: icon, text, icon2 */ -}}
-  {{- template "renderIcon" (dict "icon" $icon "alt" $alt "title" $title) -}}
+  {{- if ne $icon "none" -}}
+    {{- partial "components/icon.html" (dict
+        "icon" $icon
+        "alt" $alt
+        "title" $title
+    ) -}}
+  {{- end -}}
   
   {{- if and $show_text $collapse -}}
     <span class="reveal">{{- .text -}}</span>
@@ -87,7 +89,11 @@
     <span>{{- .text -}}</span>
   {{- end -}}
   
-  {{- if $icon2 -}}
-    {{- template "renderIcon" (dict "icon" $icon2 "alt" $alt "title" $title) -}}
+  {{- if and $icon2 (ne $icon2 "none") -}}
+    {{- partial "components/icon.html" (dict
+        "icon" $icon2
+        "alt" $alt
+        "title" $title
+    ) -}}
   {{- end -}}
 </a>

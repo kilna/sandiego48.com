@@ -6,6 +6,9 @@
 {{- with .twitter -}}
 {{- $.Scratch.Set "twitter_url" (printf "https://twitter.com/%s" .) -}}
 {{- end -}}
+{{- with .linkedin -}}
+{{- $.Scratch.Set "linkedin_url" (printf "https://linkedin.com/company/%s" .) -}}
+{{- end -}}
 {{- with .instagram -}}
 {{- $.Scratch.Set "instagram_url" (printf "https://instagram.com/%s" .) -}}
 {{- end -}}
