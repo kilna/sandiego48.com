@@ -30,6 +30,14 @@ div.countdown {
   font-size: 2em;
 }
 
+.countdowns div.countdown-small {
+  margin-top: 0.25em;
+}
+
+.countdowns div.countdown-small .countdown {
+  font-size: 1em;
+}
+
 @keyframes countdown-button-highlight {
   0%   { background: var(--48-orange-gradient); }
   30%  { background: linear-gradient(135deg, var(--48-purple-light) 0%, var(--48-purple-light) 100%); }
@@ -58,6 +66,17 @@ div.countdown a.button {
 {{ range .Site.Params.countdowns -}}
 {{ partial "components/countdown.html" . -}}
 {{ end -}}
+{{- with .Site.Params.registration.early -}}
+<div class="countdown-small">
+  {{- partial "components/countdown.html" (dict
+      "date" .end
+      "visible_from" .start
+      "visible_to" .end
+      "default" "Not long"
+      "suffix" "until early bird discount registration ends"
+  ) -}}
+</div>
+{{- end -}}
 {{ if .Site.Params.banner -}}
 {{ partial "banner.html" . -}}
 {{ end -}}
