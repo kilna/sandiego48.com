@@ -19,6 +19,8 @@ Follow Us
   "instagram" "📸"
   "threads" "🧵"
   "twitter" "🐦"
+  "linkedin" "💼"
+  "reddit" "🤖"
   "youtube" "📺"
   "tiktok" "📱"
 -}}
@@ -33,6 +35,12 @@ Follow Us
 {{- end -}}
 {{- if .twitter -}}
   {{- $socials = $socials | append (dict "platform" "twitter" "id" (partial "layout/plaintext.txt" .twitter) "emoji" (index $emojis "twitter")) -}}
+{{- end -}}
+{{- if .linkedin -}}
+  {{- $socials = $socials | append (dict "platform" "linkedin" "id" (partial "layout/plaintext.txt" .linkedin) "emoji" (index $emojis "linkedin")) -}}
+{{- end -}}
+{{- if .reddit -}}
+  {{- $socials = $socials | append (dict "platform" "reddit" "id" (partial "layout/plaintext.txt" .reddit) "emoji" (index $emojis "reddit")) -}}
 {{- end -}}
 {{- if .youtube -}}
   {{- $socials = $socials | append (dict "platform" "youtube" "id" (partial "layout/plaintext.txt" .youtube) "emoji" (index $emojis "youtube")) -}}
@@ -64,5 +72,15 @@ Join the Community
 {{ if .facebook_group -}}
 👥 Facebook Group
    https://facebook.com/groups/{{ partial "layout/plaintext.txt" .facebook_group }}
+{{ end -}}
+
+{{ if .linkedin -}}
+💼 LinkedIn
+   https://linkedin.com/company/{{ partial "layout/plaintext.txt" .linkedin }}
+{{ end -}}
+
+{{ if .reddit -}}
+🤖 Reddit
+   https://reddit.com/user/{{ partial "layout/plaintext.txt" .reddit }}
 {{ end -}}
 {{- end -}}
