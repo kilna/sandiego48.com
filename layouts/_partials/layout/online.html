@@ -64,6 +64,12 @@
     </a>
   {{- end -}}
 
+  {{- if .reddit -}}
+    <a href="https://reddit.com/user/{{ .reddit }}" target="_blank" style="{{ $link_style }}">
+    &#129302; Reddit
+    </a>
+  {{- end -}}
+
   {{- if .youtube -}}
     <a href="https://youtube.com/{{ .youtube }}" target="_blank" style="{{ $link_style }}">
     &#128250; YouTube

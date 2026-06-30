@@ -21,6 +21,9 @@
 {{- with .youtube -}}
 {{- $.Scratch.Set "youtube_url" (printf "https://youtube.com/@%s" .) -}}
 {{- end -}}
+{{- with .reddit -}}
+{{- $.Scratch.Set "reddit_url" (printf "https://reddit.com/user/%s" .) -}}
+{{- end -}}
 {{- with .facebook_group -}}
 {{- $.Scratch.Set "facebook_group_url" (printf "https://facebook.com/groups/%s" .) -}}
 {{- end -}}

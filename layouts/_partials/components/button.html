@@ -34,6 +34,8 @@
   {{- $getIconFromUrl = "youtube" -}}
 {{- else if strings.Contains $url "tiktok.com" -}}
   {{- $getIconFromUrl = "tiktok" -}}
+{{- else if strings.Contains $url "reddit.com" -}}
+  {{- $getIconFromUrl = "reddit" -}}
 {{- else if strings.Contains $url "maps.google.com" -}}
   {{- $getIconFromUrl = "location" -}}
 {{- else if strings.Contains $url "maps.app.goo.gl" -}}

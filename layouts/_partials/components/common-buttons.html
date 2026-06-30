@@ -103,6 +103,15 @@
     "show_text" $show_text
   ) -}}
 {{- end -}}
+{{- if and $enable_socials .reddit -}}
+  {{- $buttons = $buttons | append (dict
+    "enable" true
+    "url" ($page.Scratch.Get "reddit_url")
+    "icon" "reddit"
+    "text" (printf "Reddit u/%s" .reddit)
+    "show_text" $show_text
+  ) -}}
+{{- end -}}
 {{- if and $enable_socials .youtube -}}
   {{- $buttons = $buttons | append (dict
     "enable" true
