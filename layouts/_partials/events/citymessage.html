@@ -1,0 +1,39 @@
+{{- /*
+  Plain HTML event blocks for the city message embed (matches 48hourfilm.com/sandiego).
+
+  Parameters:
+    events - collection of event pages to display
+*/ -}}
+
+{{- $events := .events -}}
+{{- if not $events -}}{{- return -}}{{- end -}}
+
+{{- range $events -}}
+{{- $event := . -}}
+{{- $start_time := .Params.event_start -}}
+{{- $end_time := .Params.event_end | default $start_time -}}
+{{- $startTime := time $start_time -}}
+{{- $endTime := time $end_time -}}
+{{- $calendarGoogleUrl := partial "events/calendar-data.html" (dict "page" $event "field" "google_url") | htmlUnescape -}}
+{{- $calendarIcsUrl := partial "events/calendar-data.html" (dict "page" $event "field" "ics_permalink") -}}
+{{- $map_url := partial "components/google-maps-url.html" (dict "map_url" .Params.location_map_url "address" .Params.location_address) -}}
+<p><br><strong>{{ .Title }}</strong><br><em>{{- partial "content/event-timespan.html" (dict "start_time" $startTime "end_time" $endTime "plain" true) -}}</em></p>
+{{- if .Summary -}}
+<p>{{ .Summary }}</p>
+{{- end -}}
+<p>
+  {{- with .Params.facebook_event_url -}}
+  <a target="_blank" rel="noopener noreferrer nofollow" href="{{ . }}">Facebook RSVP</a> ✅{{- "   " -}}
+  {{- end -}}
+  {{- with $map_url -}}
+  <a target="_blank" rel="noopener noreferrer nofollow" href="{{ . }}">Map</a> 📍{{- "  " -}}
+  {{- end -}}
+  <a target="_blank" rel="noopener noreferrer nofollow" href="{{ .Permalink }}">More Details</a> ➡️
+</p>
+<p>Add to Calendar 📅{{- "  " -}}
+  {{- with $calendarGoogleUrl -}}
+  <a target="_blank" rel="noopener noreferrer nofollow" href="{{ . }}">Google Calendar</a>
+  {{- end -}}
+  |   <a target="_blank" rel="noopener noreferrer nofollow" href="{{ $calendarIcsUrl }}">Apple / Outlook (.ics)</a>
+</p>
+{{- end -}}
