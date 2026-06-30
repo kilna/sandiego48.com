@@ -29,7 +29,7 @@
 {{- else if strings.Contains $url "twitter.com" -}}
   {{- $getIconFromUrl = "twitter" -}}
 {{- else if strings.Contains $url "linkedin.com" -}}
-  {{- $getIconFromUrl = "linkedin-logo" -}}
+  {{- $getIconFromUrl = "linkedin" -}}
 {{- else if strings.Contains $url "youtube.com" -}}
   {{- $getIconFromUrl = "youtube" -}}
 {{- else if strings.Contains $url "tiktok.com" -}}
@@ -67,7 +67,7 @@
 
 {{- /* Fallback: preserve icon defaults for known social text labels */ -}}
 {{- if and (eq $icon "none") (strings.Contains (strings.ToLower $text) "linkedin") -}}
-  {{- $icon = "linkedin-logo" -}}
+  {{- $icon = "linkedin" -}}
 {{- end -}}
 
 {{- /* Set fallback icon for icon-only buttons */ -}}
