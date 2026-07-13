@@ -71,6 +71,15 @@
   margin: 0 auto 1em auto;
 }
 
+.event-content h3 {
+  font-size: 1.25em;
+  font-weight: 500;
+}
+
+.event-content h3 strong {
+  font-weight: 700;
+}
+
 .timespan {
   color: var(--48-darken-more);
   padding-top: 0.5rem 0;

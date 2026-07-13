@@ -55,7 +55,11 @@
 .infoblock h3 {
   background-color: var(--48-lighten);
   padding: 0.5rem;
-  margin: 2em 0 0.5rem 0;
+  margin: 0.25em -1rem 0.5rem -1rem !important;
+}
+
+.infoblock > h3:first-of-type {
+  margin-top: 0.75em !important;
 }
 
 .infoblock h4 {

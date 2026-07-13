@@ -1,41 +1,54 @@
 {{/*
-  Renders a configurable banner image link.
-  Uses .Site.Params.banner.home / .Site.Params.banner.other
-  Expected keys: image, url, alt
+  Renders configurable banner image link(s).
+  Params.banner may be a single map or a list of maps.
+  Expected keys per banner: image, url, alt
+  Optional: image_mobile, visible_from, visible_to
 */}}
 
 {{- $site := .Site -}}
 {{- $cfg := $site.Params.banner -}}
 {{- if not $cfg -}}
-  {{- /* nothing to render */ -}}
   {{- return -}}
 {{- end -}}
 
-{{- $image := $cfg.image -}}
-{{- $imageMobile := $cfg.image_mobile | default $image -}}
-{{- $url := $cfg.url | default "/" -}}
-{{- $alt := $cfg.alt | default "" -}}
-
-{{- if not $image -}}
-  {{- return -}}
+{{- $banners := slice -}}
+{{- if reflect.IsSlice $cfg -}}
+  {{- $banners = $cfg -}}
+{{- else -}}
+  {{- $banners = slice $cfg -}}
 {{- end -}}
 
-<div class="site-banner" style="margin: 0 auto; padding: 0.5rem 0; text-align: center; max-width: min(70rem, 90vw); min-width: 60vw;">
-  {{- $imgDesktop := resources.Get $image -}}
-  {{- $imgMobile := resources.Get $imageMobile -}}
-  {{- $resizedDesktop := cond $imgDesktop ($imgDesktop.Fit "1600x400") nil -}}
-  {{- $resizedMobile := cond $imgMobile ($imgMobile.Fit "900x1600") nil -}}
-  <a href="{{ $url }}" class="banner-link">
-    <picture>
-      {{- if or $resizedMobile $imgMobile -}}
-      <source media="(max-width: 768px)" srcset="{{ (or $resizedMobile $imgMobile).RelPermalink }}"/>
-      {{- end -}}
-      {{- if or $resizedDesktop $imgDesktop -}}
-      <source media="(min-width: 769px)" srcset="{{ (or $resizedDesktop $imgDesktop).RelPermalink }}"/>
-      {{- end -}}
-      <img src="{{ (or (and $resizedDesktop $resizedDesktop.RelPermalink) (and $imgDesktop $imgDesktop.RelPermalink) $image) }}" alt="{{ $alt }}" loading="lazy" style="max-width: 100%; height: auto; border-radius: 0.75rem;"/>
-    </picture>
-  </a>
-</div>
+{{- range $banners -}}
+  {{- $image := .image -}}
+  {{- if not $image -}}
+    {{- continue -}}
+  {{- end -}}
+  {{- $imageMobile := .image_mobile | default $image -}}
+  {{- $url := .url | default "/" -}}
+  {{- $alt := .alt | default "" -}}
+  {{- $visibilityClass := "" -}}
+  {{- with .visible_from -}}
+    {{- $visibilityClass = printf "%s visible-from-%s" $visibilityClass . -}}
+  {{- end -}}
+  {{- with .visible_to -}}
+    {{- $visibilityClass = printf "%s visible-to-%s" $visibilityClass . -}}
+  {{- end -}}
 
-
+  <div class="site-banner{{ $visibilityClass }}" style="margin: 0 auto; padding: 0.5rem 0; text-align: center; max-width: min(70rem, 90vw); min-width: 60vw;">
+    {{- $imgDesktop := resources.Get $image -}}
+    {{- $imgMobile := resources.Get $imageMobile -}}
+    {{- $resizedDesktop := cond $imgDesktop ($imgDesktop.Fit "1600x400") nil -}}
+    {{- $resizedMobile := cond $imgMobile ($imgMobile.Fit "900x1600") nil -}}
+    <a href="{{ $url }}" class="banner-link">
+      <picture>
+        {{- if or $resizedMobile $imgMobile -}}
+        <source media="(max-width: 768px)" srcset="{{ (or $resizedMobile $imgMobile).RelPermalink }}"/>
+        {{- end -}}
+        {{- if or $resizedDesktop $imgDesktop -}}
+        <source media="(min-width: 769px)" srcset="{{ (or $resizedDesktop $imgDesktop).RelPermalink }}"/>
+        {{- end -}}
+        <img src="{{ (or (and $resizedDesktop $resizedDesktop.RelPermalink) (and $imgDesktop $imgDesktop.RelPermalink) $image) }}" alt="{{ $alt }}" loading="lazy" style="max-width: 100%; height: auto; border-radius: 0.75rem;"/>
+      </picture>
+    </a>
+  </div>
+{{- end -}}

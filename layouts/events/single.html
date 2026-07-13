@@ -175,7 +175,7 @@
       "icon" $actionIcon
     ) -}}
     {{ with $actionBody -}}
-      <p class="action-body">{{ . }}</p>
+      <div class="action-body">{{ . | markdownify }}</div>
     {{ end -}}
     </div>
     {{ end -}}
@@ -227,7 +227,7 @@
                 </div>
               {{ end }}
               {{ if .details }}
-                <div class="schedule-details">{{ .details }}</div>
+                <div class="schedule-details">{{ .details | markdownify }}</div>
               {{ end }}
             </div>
           </div>
@@ -397,6 +397,14 @@
   line-height: 1.4;
 }
 
+.action-body > p {
+  margin: 0 0 0.75em 0;
+}
+
+.action-body > p:last-child {
+  margin-bottom: 0;
+}
+
 /* Detailed schedule styling */
 .detailed-schedule {
   margin: 0;
@@ -441,6 +449,18 @@
   color: var(--48-darken-more);
   line-height: 1.4;
 }
+
+.schedule-details > p {
+  margin: 0 0 0.5em 0;
+}
+
+.schedule-details > p:last-child {
+  margin-bottom: 0;
+}
+
+.schedule-details a {
+  color: var(--48-navy);
+}
 </style>
 
 {{/* Add big action button at end like homepage if available */}}
@@ -450,7 +470,7 @@
 <hr/>
 <div style="text-align: center; margin: 2rem 0;">
   {{ with $actionHeading }}<h2>{{ . }}</h2>{{ end }}
-  {{ with $actionBody }}<p>{{ . }}</p>{{ end }}
+  {{ with $actionBody }}<div class="action-body">{{ . | markdownify }}</div>{{ end }}
   {{ partial "components/button.html" (dict
       "url" $actionUrl
       "class" "huge highlight glow pulse wide right"

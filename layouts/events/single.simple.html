@@ -138,7 +138,7 @@
         {{ $start_time.Format "3:04pm" }}
       {{ end }}
     {{ end }}
-    {{ if .details }}<br/><em>{{ .details }}</em>{{ end }}
+    {{ if .details }}<br/><em>{{ .details | markdownify }}</em>{{ end }}
   </div>
 {{ end }}
 </blockquote>
