@@ -115,7 +115,7 @@ be successful participating in the 48 Hour Film Project.
 Screening blocks repeat at the times listed. 
 
 
-You can also download a [printable schedule](https://drive.google.com/file/d/1GM6huKSBkVngk5JBDegsKSa7VN4C57UQ/view?usp=sharing).
+You can also download a [printable schedule](filmcon-2026-festival-program.pdf).
 
 ### **Darkness** • Horror and Thriller Shorts
 **11:00 AM–11:30 AM** • repeated at **2:00 PM–2:30 PM**
@@ -170,7 +170,7 @@ You can also download a [printable schedule](https://drive.google.com/file/d/1GM
 **1:35 PM–2:00 PM** • repeated at **4:35 PM–5:00 PM**
 
 - **Koala** by Kilna Companies • In the apocalypse, the last man's only friend is plush and abusive
-- **The Mad Doctor** by Michael Shane Bowles of IntelleXual Entertainment & RSVP Films • A self-guided ghost tour fan separates fact from fiction by summoning a madman
+- **The Mad Doctor of the Intercontinental Hotel** by Michael Shane Bowles of IntelleXual Entertainment & RSVP Films • A self-guided ghost tour fan separates fact from fiction by summoning a madman
 - **Jordan Hates Showcase** by Jordan Does Productions • Jordan Hates Flying, Jordan Hate Car Karaoke, A Christmas for the Holidays
 - **Piñata Teaser** by Michael Shane Bowles of IntelleXual Entertainment & RSVP Films • A teaser for the coming short film Piñata
 
