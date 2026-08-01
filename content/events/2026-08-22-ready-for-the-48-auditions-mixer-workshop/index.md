@@ -22,8 +22,8 @@ params:
       url: https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8
       icon: register
       body: >
-        1-5pm • $5 recommended donation (choose $0 if you need). Pick
-        Auditioning Actor, Casting Team Member, or General Admission.
+        1-5pm • $5+ recommended donation (choose $0 if you need). Register as
+        Auditioning Actor or Not Auditioning (casting, support, or curious).
     - text: Get Workshop Tickets
       url: https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8
       icon: ticket
@@ -57,7 +57,7 @@ params:
         and a short monologue. Teams looking to cast talent should come ready to
         take notes and make contacts.
         [Register](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8)
-        with an optional $5 recommended donation.
+        with a $5+ recommended donation.
     - start: 2026-08-22T15:30:00-07:00
       end: 2026-08-22T17:00:00-07:00
       name: Find / Form a Team Mixer
@@ -76,7 +76,7 @@ params:
   notes:
     - All-day event • Saturday, August 22, 2026 • 1pm-8pm at Spark Studio Soundstage.
     - Come for one session or stay for all three.
-    - "Auditions & Mixer (1-5pm): [register on Tixtree](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8) - $5 recommended donation; $0 is fine."
+    - "Auditions & Mixer (1-5pm): [register on Tixtree](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8) - $5+ recommended donation; $0 is fine. Choose Auditioning Actor or Not Auditioning."
     - "Win The Weekend Workshop (5-8pm): [get tickets on Tixtree](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8) - $25 advance / $35 day-of."
     - "Refunds: 20% cancellation charge; no cancellations within 48 hours of the event."
   org_info: |
@@ -102,8 +102,9 @@ If you're casting, come ready to take notes, ask questions, and meet actors who
 fit the kinds of films you want to make.
 
 [Register for Auditions & Mixer](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8)
-- $5 recommended donation (choose $0 if you need). Pick **Auditioning Actor**,
-**Casting Team Member**, or **General Admission**.
+- $5+ recommended donation (choose $0 if you need). Pick **Auditioning Actor**
+or **Not Auditioning** (casting team member, actor support / guardian, or
+anyone curious about the 48).
 
 ## Find / Form a Team Mixer • 3:30-5pm
 
