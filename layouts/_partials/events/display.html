@@ -145,14 +145,24 @@
   {{- end -}}
 
   {{- if $show_actions -}}
-    {{- $actionUrl := or .Params.action_url .Params.tickets_url -}}
-    {{- $actionText := .Params.action_text -}}
-    {{- $actionIcon := .Params.action_icon -}}
-    {{- if and (not $actionText) .Params.tickets_url -}}
-      {{- $actionText = "Get Tickets" -}}
-    {{- end -}}
-    {{- if and (not $actionIcon) .Params.tickets_url -}}
-      {{- $actionIcon = "ticket" -}}
+    {{- $actions := .Params.actions -}}
+    {{- if not $actions -}}
+      {{- $actionUrl := or .Params.action_url .Params.tickets_url -}}
+      {{- $actionText := .Params.action_text -}}
+      {{- $actionIcon := .Params.action_icon -}}
+      {{- if and (not $actionText) .Params.tickets_url -}}
+        {{- $actionText = "Get Tickets" -}}
+      {{- end -}}
+      {{- if and (not $actionIcon) .Params.tickets_url -}}
+        {{- $actionIcon = "ticket" -}}
+      {{- end -}}
+      {{- if $actionUrl -}}
+        {{- $actions = slice (dict
+          "url" $actionUrl
+          "text" $actionText
+          "icon" $actionIcon
+        ) -}}
+      {{- end -}}
     {{- end -}}
     <div class="actions">
       {{- if $show_calendar_action -}}
@@ -186,13 +196,12 @@
             "class" "right"
         ) -}}
       {{- end -}}
-      {{- with $actionUrl -}}
+      {{- range $actions -}}
         {{- partial "components/button.html" (dict
-            "text" $actionText
-            "url" .
-            "icon" $actionIcon
-            "class" "right glow"
-            "target" "_blank"
+            "text" .text
+            "url" .url
+            "icon" .icon
+            "class" "right"
         ) -}}
       {{- end -}}
       {{- partial "components/button.html" (dict

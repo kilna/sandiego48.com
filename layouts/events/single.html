@@ -13,25 +13,38 @@
 {{ end }}
 
 {{ define "main" }}
-{{- $actionUrl := or .Params.action_url .Params.tickets_url -}}
-{{- $actionText := .Params.action_text -}}
-{{- $actionIcon := .Params.action_icon -}}
 {{- $actionHeading := .Params.action_heading -}}
 {{- $actionBody := .Params.action_body -}}
 {{- $calendarGoogleUrl := partial "events/calendar-data.html" (dict "page" . "field" "google_url") | htmlUnescape -}}
 {{- $calendarIcsUrl := partial "events/calendar-data.html" (dict "page" . "field" "ics_url") -}}
-{{- if and (not $actionText) .Params.tickets_url -}}
-  {{- $actionText = "Buy Tickets" -}}
+{{- $actions := .Params.actions -}}
+{{- if not $actions -}}
+  {{- $actionUrl := or .Params.action_url .Params.tickets_url -}}
+  {{- $actionText := .Params.action_text -}}
+  {{- $actionIcon := .Params.action_icon -}}
+  {{- if and (not $actionText) .Params.tickets_url -}}
+    {{- $actionText = "Buy Tickets" -}}
+  {{- end -}}
+  {{- if and (not $actionIcon) .Params.tickets_url -}}
+    {{- $actionIcon = "ticket" -}}
+  {{- end -}}
+  {{- if and (not $actionHeading) .Params.tickets_url -}}
+    {{- $actionHeading = "Ready to Get Your Tickets?" -}}
+  {{- end -}}
+  {{- if and (not $actionBody) .Params.tickets_url -}}
+    {{- $actionBody = "Don't miss out on this amazing event! Get your tickets now." -}}
+  {{- end -}}
+  {{- if $actionUrl -}}
+    {{- $actions = slice (dict
+      "url" $actionUrl
+      "text" $actionText
+      "icon" $actionIcon
+    ) -}}
+  {{- else -}}
+    {{- $actions = slice -}}
+  {{- end -}}
 {{- end -}}
-{{- if and (not $actionIcon) .Params.tickets_url -}}
-  {{- $actionIcon = "ticket" -}}
-{{- end -}}
-{{- if and (not $actionHeading) .Params.tickets_url -}}
-  {{- $actionHeading = "Ready to Get Your Tickets?" -}}
-{{- end -}}
-{{- if and (not $actionBody) .Params.tickets_url -}}
-  {{- $actionBody = "Don't miss out on this amazing event! Get your tickets now." -}}
-{{- end -}}
+{{- $hasActions := gt (len $actions) 0 -}}
 <div class="event">
 
   <div class="event-content">
@@ -46,7 +59,7 @@
         ) -}}
   
     {{/* Add countdown timer below image if an action is available */}}
-    {{ if $actionUrl }}
+    {{ if $hasActions }}
     {{ $start_time := time.AsTime .Params.event_start -}}
     {{ $end_time := time.AsTime .Params.event_end -}}
     {{ $start_time_formatted := $start_time.Format "2006-01-02T15:04:05-07:00" -}}
@@ -166,14 +179,19 @@
   </div>
 
   <div class="infoblock">
-    {{ if $actionUrl -}}
+    {{ if $hasActions -}}
     {{ $event_end := time.AsTime .Params.event_end -}}
-    <div class="visible-to-{{ $event_end.Format "2006-01-02T15:04:05-07:00" }} desktop-only">
-    {{- partial "components/button.html" (dict
-      "url" $actionUrl
-      "text" $actionText
-      "icon" $actionIcon
-    ) -}}
+    <div class="visible-to-{{ $event_end.Format "2006-01-02T15:04:05-07:00" }} desktop-only actions">
+    {{- range $actions -}}
+      {{- partial "components/button.html" (dict
+        "url" .url
+        "text" .text
+        "icon" .icon
+      ) -}}
+      {{ with .body -}}
+        <div class="action-body">{{ . | markdownify }}</div>
+      {{ end -}}
+    {{- end -}}
     {{ with $actionBody -}}
       <div class="action-body">{{ . | markdownify }}</div>
     {{ end -}}
@@ -383,11 +401,27 @@
 /* Make infobox action and link buttons full-width with heading-sized text */
 .infoblock > .button,
 .infoblock .desktop-only > .button,
+.infoblock .actions > .button,
 .infoblock .links .button {
   width: 100% !important;
   font-size: 1.2em !important;
   text-align: center;
   margin: 0.5rem 0;
+}
+
+.event-actions-footer .button {
+  width: 100%;
+  max-width: 28rem;
+  margin: 0.5rem auto;
+  display: inline-flex;
+}
+
+.event-actions-footer .action-item {
+  margin: 1rem 0;
+}
+
+.event-actions-footer .action-item .action-body {
+  margin-top: 0.35rem;
 }
 
 .infoblock .action-body {
@@ -463,21 +497,26 @@
 }
 </style>
 
-{{/* Add big action button at end like homepage if available */}}
-{{ if $actionUrl }}
+{{/* Add big action button(s) at end like homepage if available */}}
+{{ if $hasActions }}
 {{ $event_end := time.AsTime .Params.event_end -}}
 <div class="visible-to-{{ $event_end.Format "2006-01-02T15:04:05-07:00" }}">
 <hr/>
-<div style="text-align: center; margin: 2rem 0;">
+<div class="event-actions-footer" style="text-align: center; margin: 2rem 0;">
   {{ with $actionHeading }}<h2>{{ . }}</h2>{{ end }}
   {{ with $actionBody }}<div class="action-body">{{ . | markdownify }}</div>{{ end }}
-  {{ partial "components/button.html" (dict
-      "url" $actionUrl
-      "class" "huge highlight glow pulse wide right"
-      "text" $actionText
-      "icon" $actionIcon
-      "target" "_blank"
-  ) }}
+  {{- range $actions -}}
+  <div class="action-item">
+    {{ partial "components/button.html" (dict
+        "url" .url
+        "class" "huge highlight glow pulse wide right"
+        "text" .text
+        "icon" .icon
+        "target" "_blank"
+    ) }}
+    {{ with .body }}<div class="action-body">{{ . | markdownify }}</div>{{ end }}
+  </div>
+  {{- end -}}
 </div>
 </div>
 {{ end }}
