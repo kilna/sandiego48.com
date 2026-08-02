@@ -49,6 +49,7 @@ params:
   location_links: []
   location_address: 8283 Ronson Rd, San Diego, CA 92111
   location_map_url: https://maps.app.goo.gl/XjEki9B6YzDrFBtf6
+  facebook_event_url: https://www.facebook.com/events/1776017480486478/
   schedule:
     - start: 2026-08-22T13:00:00-07:00
       end: 2026-08-22T15:00:00-07:00
