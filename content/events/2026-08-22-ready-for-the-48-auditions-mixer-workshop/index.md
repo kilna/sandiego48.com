@@ -4,8 +4,8 @@ layout: events
 type: events
 summary: >
   An all-day prep event at Spark Studio Soundstage • open auditions, a find/form
-  a team mixer, and a Win The Weekend workshop • get cast, find collaborators,
-  and gear up before competition weekend.
+  a team mixer, and a Win The Weekend workshop covering rules, teams, weekend
+  workflow, and skills beyond the 48.
 date: 2026-08-01T15:00:00-07:00
 publishDate: 2026-08-01T15:00:00-07:00
 draft: false
@@ -28,7 +28,8 @@ params:
       url: https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8
       icon: ticket
       body: >
-        5-8pm • $25 in advance; $35 day-of.
+        5-8pm • Rules, teams, weekend workflow, and skills that carry beyond
+        the 48 • $25 in advance; $35 day-of.
 
   event_start: 2026-08-22T13:00:00-07:00
   event_end: 2026-08-22T20:00:00-07:00
@@ -69,14 +70,16 @@ params:
       end: 2026-08-22T20:00:00-07:00
       name: Win The Weekend Workshop
       details: >
-        Learn what it takes to write, shoot, and edit a short film in 48 hours -
-        and how to set your team up to win.
+        Full coaching session with Kilna & Raven: how the 48 works and the
+        rules, how to build a great team, how to prep and run the weekend from
+        kickoff to upload, plus a team-forming activity and how 48 skills
+        transfer to real production.
         [Tickets](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8)
         are $25 in advance ($35 day-of).
   notes:
     - All-day event • Saturday, August 22, 2026 • 1pm-8pm at Spark Studio Soundstage.
     - Come for one session or stay for all three.
-    - "Auditions & Mixer (1-5pm): [register on Tixtree](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8) - $5+ recommended donation; $0 is fine. Choose Auditioning Actor or Not Auditioning."
+    - "Auditions & Mixer (1-5pm): [register on Tixtree](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8) - $5 recommended donation; $0 is fine. Choose Auditioning Actor or Not Auditioning."
     - "Win The Weekend Workshop (5-8pm): [get tickets on Tixtree](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8) - $25 advance / $35 day-of."
     - "Refunds: 20% cancellation charge; no cancellations within 48 hours of the event."
   org_info: |
@@ -87,8 +90,9 @@ params:
     movies over a weekend, which are later given a premier in a real theater.
     San Diego's 2026 competition weekend begins Friday, August 28th.
 ---
-Ready For The 48 is our all-day prep day at Spark Studio Soundstage in Kearny
-Mesa - open auditions, a find/form a team mixer, and a Win The Weekend workshop
+Ready For The 48 is our all-day event at Spark Studio Soundstage in Kearny
+Mesa to help you prepare for the competition on the following weekend. 
+Open auditions, a find/form a team mixer, and a Win The Weekend workshop
 - one week before competition kickoff.
 
 [Register for auditions & the mixer, or get workshop tickets on Tixtree](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8).
@@ -99,24 +103,42 @@ If you're acting talent, bring headshots if you have them, your contact info,
 and a short monologue that shows what you can do. All skill levels welcome.
 
 If you're casting, come ready to take notes, ask questions, and meet actors who
-fit the kinds of films you want to make.
+fit the kinds of films you want to make at the mixer afterward.
 
 [Register for Auditions & Mixer](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8)
-- $5+ recommended donation (choose $0 if you need). Pick **Auditioning Actor**
-or **Not Auditioning** (casting team member, actor support / guardian, or
-anyone curious about the 48).
+- $5 recommended donation (choose $0 if you need, $10 if you want to give the 48 some much needed extra support). 
+- Pick **Register as Auditioning Actor** and you will be sent a form to be added to the auditions
+- Choose **Register as Not Auditioning** If you are a casting team member, actor support / guardian, or anyone curious about the 48.
 
 ## Find / Form a Team Mixer • 3:30-5pm
 
-Looking for a writer, DP, editor, producer, or just a crew to join? This is the
-room for matching up before the weekend. Included with your Auditions & Mixer
-registration.
+Looking for an actor, writer, DP, editor, producer, or just a crew to join?
+This is the room for matching up before the weekend. Included with your
+Auditions & Mixer registration.
 
 ## Win The Weekend Workshop • 5-8pm
 
-A practical session for team participants and team leaders on how the 48 works
-and how to give your team the best shot at a strong film (and awards) when the
-clock starts.
+Presented by **Kilna Anthony** and **Chrissy Raven Kilna** - the full *48 and
+Beyond* coaching session for team leaders and participants. Expect ~2-2.5 hours
+of material, plus time for a team-forming activity and Q&A.
+
+### What you'll cover
+
+- **Structure & rules** - how the competition works, the season from signup to
+  screening, required elements (genre, character, prop, and line), and the
+  rules that keep films eligible - including what you can and can't do before
+  kickoff
+- **Building a great team** - core roles, team size and vibe, casting and
+  commitment, role clarity, and the culture of teams that actually finish
+- **Workflow strategy** - time management (the clock comes first; don't steal
+  from post), what you can prep before kickoff, drills, and the weekend spine
+  from Friday kickoff through Sunday upload
+- **Winning approahes** - the techniques and approaches that result in awards
+- **Beyond the 48** - how deadline pressure, scope control, communication, and
+  finishing translate into real-world production skills
+
+Whether you're leading a team or joining one, this is the practical playbook
+for sticking the landing when the clock starts Friday, August 28 at 7pm.
 
 [Get Workshop Tickets](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8)
 - $25 in advance; price increases to $35 day-of.
