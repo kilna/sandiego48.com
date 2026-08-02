@@ -38,6 +38,7 @@ params:
   location_links: []
   location_address: 3052 El Cajon Blvd, Ste 102, San Diego, CA 92104
   location_map_url: https://www.google.com/maps/search/?api=1&query=Barley+and+Sword+Brewing+Company,+3052+El+Cajon+Blvd+Ste+102,+San+Diego,+CA+92104
+  facebook_event_url: https://www.facebook.com/events/1267173512048605/
   notes:
     - Attendance is free; no-host bar.
     - "Food truck: [NoMambres](https://no-mambres.square.site) — Asian fusion tacos and rice bowls."
