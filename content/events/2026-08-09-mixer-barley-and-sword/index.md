@@ -38,7 +38,8 @@ params:
   location_address: 3052 El Cajon Blvd, Ste 102, San Diego, CA 92104
   location_map_url: https://www.google.com/maps/search/?api=1&query=Barley+and+Sword+Brewing+Company,+3052+El+Cajon+Blvd+Ste+102,+San+Diego,+CA+92104
   notes:
-    - Attendance is free; no-host bar / food trucks.
+    - Attendance is free; no-host bar.
+    - "Food truck: [NoMambres](https://no-mambres.square.site) — Asian fusion tacos and rice bowls."
     - Plan to arrive early — parking in North Park can be tight.
   org_info: |
     ### About the 48 Hour Film Project
@@ -60,3 +61,6 @@ Even if you're only curious about film-making, we'd love to see you from 1-4pm
 on Sunday, August 9th at
 [Barley & Sword](https://www.barleyandsword.com/).
 Attendance is free — plan to get there early for parking.
+
+[NoMambres](https://no-mambres.square.site) will be on site with Asian fusion
+tacos and rice bowls.
