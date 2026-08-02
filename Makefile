@@ -15,12 +15,14 @@ endif
 
 .PHONY: build build-clean server server-cdn server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit tool-plugins setup-dev-cdn cleanup-dev-cdn push deploy preview dash help
 
-# Auto-install tools when running on Cloudflare Pages
+# Ensure .tool-versions exists (local uses .dev; Cloudflare Pages uses .cloudflare)
 install-tools:
 ifeq ($(CF_PAGES),1)
 	./scripts/tool-plugins.sh
 	cp .tool-versions.cloudflare .tool-versions
 	asdf install
+else
+	@if [ ! -f .tool-versions ]; then cp .tool-versions.dev .tool-versions; fi
 endif
 
 copy-images: install-tools

@@ -324,8 +324,8 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: stretch;
-  gap: 0.125rem;
+  align-items: center;
+  gap: 0.35rem;
   margin-top: 0.5rem;
   padding: 0.5rem;
   border-top: 1px solid var(--48-darken);
@@ -333,6 +333,29 @@
   min-height: 0;
   width: 100%;
   max-width: 100%;
+}
+
+.event-card .actions-headed,
+.event-card .actions-nav {
+  margin-top: 0;
+  border-top: none;
+  padding-top: 0;
+}
+
+.event-card .actions-headed {
+  flex-wrap: wrap;
+}
+
+.event-card .actions-headed .actions-label {
+  font-size: 0.9em;
+  font-weight: 200;
+  white-space: nowrap;
+  color: var(--48-black);
+}
+
+.event-card .actions-headed .actions-arrow {
+  font-weight: 400;
+  margin-left: 0.15em;
 }
 
 .event-card .actions a.button {
@@ -357,6 +380,10 @@
   font-size: 0.9em;
 }
 
+.event-card .actions-headed a.button {
+  flex: 1 1 8rem;
+}
+
 .event-card .actions a.button:hover {
   opacity: 1;
 }
@@ -371,10 +398,32 @@
     flex-wrap: wrap;
     font-size: 0.9em;
   }
+
+  /* Arrow only makes sense when buttons sit beside the heading */
+  .event-card .actions-headed .actions-arrow {
+    display: none;
+  }
   
   .event-card .actions a.button {
     width: 90%;
     margin: 0 auto;
+  }
+
+  .event-card .actions-headed a.button {
+    flex: 0 1 auto;
+    width: 90%;
+  }
+
+  .event-card .actions-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem;
+  }
+
+  .event-card .actions-nav a.button {
+    width: auto;
+    margin: 0;
   }
 }
 

@@ -14,6 +14,8 @@ params:
   featured: false
   event_start: 
   event_end: 
+  # Show "Add to Calendar" on the Coming Events list
+  add_to_calendar: false
   # Partner information (if partnering with another organization)
   partner_name: 
   partner_details: >

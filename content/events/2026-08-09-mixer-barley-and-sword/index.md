@@ -16,6 +16,7 @@ params:
 
   event_start: 2026-08-09T13:00:00-07:00
   event_end: 2026-08-09T16:00:00-07:00
+  add_to_calendar: true
   location_name: Barley & Sword Brewing Company
   location_details: >
     A dog and kid friendly North Park taproom with traditional European-style

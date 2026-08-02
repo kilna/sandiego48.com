@@ -7,7 +7,8 @@
     wrapper_class - optional CSS class for wrapper div
     show_countdown - whether to show countdown instead of event timespan
     show_actions - whether to show CTA buttons
-    show_calendar_action - whether to show the calendar CTA
+    show_calendar_action - whether the layout allows the calendar CTA
+      (events still opt in via params.add_to_calendar)
     show_visibility - whether to add visible-from/visible-to classes
 */ -}}
 
@@ -56,6 +57,7 @@
   {{- range $events -}}
     {{- $event := . -}}
     {{- $link := $event.RelPermalink -}}
+    {{- $calendarGoogleUrl := partial "events/calendar-data.html" (dict "page" $event "field" "google_url") | htmlUnescape -}}
     {{- $calendarIcsUrl := partial "events/calendar-data.html" (dict "page" $event "field" "ics_url") -}}
     {{- $start_time := time.AsTime .Params.event_start -}}
     {{- $end_time := time.AsTime .Params.event_end -}}
@@ -164,18 +166,44 @@
         ) -}}
       {{- end -}}
     {{- end -}}
-    <div class="actions">
-      {{- if $show_calendar_action -}}
+    {{- if $actions -}}
+    <div class="actions actions-headed actions-cta">
+      {{- with .Params.action_heading -}}
+      <span class="actions-label">{{ . }} <span class="actions-arrow" aria-hidden="true">→</span></span>
+      {{- end -}}
+      {{- range $actions -}}
+        {{- partial "components/button.html" (dict
+            "text" .text
+            "url" .url
+            "icon" .icon
+            "class" "right"
+        ) -}}
+      {{- end -}}
+    </div>
+    {{- end -}}
+    {{- if and $show_calendar_action .Params.add_to_calendar (or $calendarGoogleUrl $calendarIcsUrl) -}}
+    <div class="actions actions-headed actions-calendar">
+      <span class="actions-label">Add to Calendar <span class="actions-arrow" aria-hidden="true">→</span></span>
+      {{- with $calendarGoogleUrl -}}
+        {{- partial "components/button.html" (dict
+            "text" "Google"
+            "url" .
+            "icon" "calendar"
+            "class" "right"
+        ) -}}
+      {{- end -}}
       {{- with $calendarIcsUrl -}}
         {{- partial "components/button.html" (dict
-            "text" "Add to Calendar"
+            "text" "Apple / Outlook"
             "url" .
             "icon" "calendar"
             "class" "right"
             "target" "_self"
         ) -}}
       {{- end -}}
-      {{- end -}}
+    </div>
+    {{- end -}}
+    <div class="actions actions-nav">
       {{- $map_url := partial "components/google-maps-url.html" (dict
           "map_url" .Params.location_map_url
           "address" .Params.location_address
@@ -193,14 +221,6 @@
             "text" "Facebook RSVP"
             "url" .
             "icon" "facebook"
-            "class" "right"
-        ) -}}
-      {{- end -}}
-      {{- range $actions -}}
-        {{- partial "components/button.html" (dict
-            "text" .text
-            "url" .url
-            "icon" .icon
             "class" "right"
         ) -}}
       {{- end -}}
