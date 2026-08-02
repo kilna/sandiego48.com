@@ -128,12 +128,12 @@ of material, plus time for a team-forming activity and Q&A.
   screening, required elements (genre, character, prop, and line), and the
   rules that keep films eligible - including what you can and can't do before
   kickoff
-- **Building a great team** - core roles, team size and vibe, casting and
+- **Building team cohesion** - core roles, team size and vibe, casting and
   commitment, role clarity, and the culture of teams that actually finish
 - **Workflow strategy** - time management (the clock comes first; don't steal
   from post), what you can prep before kickoff, drills, and the weekend spine
   from Friday kickoff through Sunday upload
-- **Winning approahes** - the techniques and approaches that result in awards
+- **Winning approaches** - additional techniques and approaches that combine with the team building and workflow that result in awards
 - **Beyond the 48** - how deadline pressure, scope control, communication, and
   finishing translate into real-world production skills
 
