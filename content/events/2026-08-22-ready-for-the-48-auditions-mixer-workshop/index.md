@@ -3,9 +3,9 @@ title: Ready For The 48 - Auditions, Mixer & Workshop
 layout: events
 type: events
 summary: >
-  An all-day prep event at Spark Studio Soundstage • open auditions, a find/form
+  An all-day prep event at Spark Studio Soundstage; open auditions, a find/form
   a team mixer, and a Win The Weekend workshop covering rules, teams, weekend
-  workflow, and skills beyond the 48.
+  workflow, and how to win at the 48.
 date: 2026-08-01T15:00:00-07:00
 publishDate: 2026-08-01T15:00:00-07:00
 draft: false
@@ -13,7 +13,6 @@ params:
   image: 2026-ready-for-the-48-post.png
   image_wide: 2026-ready-for-the-48-horizontal.png
   image_square: 2026-ready-for-the-48-square.png
-
   tickets_url: https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8
   tixtree_event: ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8
   action_heading: Ready for the 48?
@@ -28,9 +27,8 @@ params:
       url: https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8
       icon: ticket
       body: >
-        5-8pm • Rules, teams, weekend workflow, and skills that carry beyond
-        the 48 • $25 in advance; $35 day-of.
-
+        5-8pm - Rules, teams, weekend workflow, and skills that carry beyond
+        the 48 - $25 in advance; $35 day-of.
   event_start: 2026-08-22T13:00:00-07:00
   event_end: 2026-08-22T20:00:00-07:00
   location_name: Spark Studio Soundstage
@@ -78,7 +76,6 @@ params:
         [Tickets](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8)
         are $25 in advance ($35 day-of).
   notes:
-    - All-day event • Saturday, August 22, 2026 • 1pm-8pm at Spark Studio Soundstage.
     - Come for one session or stay for all three.
     - "Auditions & Mixer (1-5pm): [register on Tixtree](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8) - $5 recommended donation; $0 is fine. Choose Auditioning Actor or Not Auditioning."
     - "Win The Weekend Workshop (5-8pm): [get tickets on Tixtree](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8) - $25 advance / $35 day-of."
@@ -109,7 +106,7 @@ fit the kinds of films you want to make at the mixer afterward.
 [Register for Auditions & Mixer](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8)
 - $5 recommended donation (choose $0 if you need, $10 if you want to give the 48 some much needed extra support). 
 - Pick **Register as Auditioning Actor** and you will be sent a form to be added to the auditions
-- Choose **Register as Not Auditioning** If you are a casting team member, actor support / guardian, or anyone curious about the 48.
+- Choose **Register as Not Auditioning** If you are a team leader, casting team member, actor support / guardian, or anyone curious about the 48.
 
 ## Find / Form a Team Mixer • 3:30-5pm
 
