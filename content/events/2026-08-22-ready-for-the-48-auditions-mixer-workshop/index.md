@@ -91,7 +91,7 @@ params:
 Ready For The 48 is our all-day event at Spark Studio Soundstage in Kearny
 Mesa to help you prepare for the competition on the following weekend. 
 Open auditions, a find/form a team mixer, and a Win The Weekend workshop
-- one week before competition kickoff.
+one week before competition kickoff.
 
 [Register for auditions & the mixer, or get workshop tickets on Tixtree](https://www.tixtree.com/e/ready-for-the-48-auditions-mixer-workshop-day-626d36d199a8).
 
