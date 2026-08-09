@@ -14,6 +14,11 @@
 </div>
 
 <div style="background-color: #fff; margin: 0; padding: 30px;">
+{{ with (.Resources.Get .Params.image) -}}
+  {{ with .Resize "600x q80" -}}
+  <img src="{{ .Permalink }}" alt="{{ $.Title }}" style="margin: 0 0 1rem 0; border-radius: 0.5rem; max-width: 100%; height: auto;"/>
+  {{ end -}}
+{{ end -}}
 {{- $actions := .Params.actions -}}
 {{- $actionUrl := or .Params.action_url .Params.tickets_url -}}
 {{- $actionText := .Params.action_text -}}
@@ -192,16 +197,6 @@
 <h3>Find or Follow Us Online ❤️</h3>
 
 {{ partial "layout/online.html" . }}
-
-<br/>
-<br/>
-
-{{ with (.Resources.Get .Params.image) -}}
-  {{ with .Resize "600x q80" -}}
-  {{/* <img src="data:{{ .MediaType }};base64,{{ .Content | base64Encode }}" alt="{{ $.Title }}" style="margin: 1rem 0; border-radius: 0.5rem; max-width: 100%; height: auto;"/> */}}
-  <img src="{{ .Permalink }}" alt="{{ $.Title }}" style="margin: 1rem 0; border-radius: 0.5rem; max-width: 100%; height: auto;"/>
-  {{ end -}}
-{{ end -}}
 
 </div>
 
