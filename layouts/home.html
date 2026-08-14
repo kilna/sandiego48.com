@@ -51,14 +51,14 @@
 
 .index-box {
   display: block;
-  background: var(--48-orange-gradient);
+  background: var(--48-orange-halftone);
   border: 0.25rem solid var(--48-orange);
   padding: 0.5rem 1rem;
   margin: 0.5em 0 1em 0;
   border-radius: 0.5rem;
   font-weight: 400;
   box-shadow: 0.5rem 0.5rem 0.5rem 0 var(--48-darken-more);
-  overflow: auto;
+  overflow: hidden;
 }
 
 
@@ -86,7 +86,7 @@
 
 
 .index-elements {
-  background: var(--48-orange-gradient);
+  background: var(--48-orange-halftone);
   border: 0.25rem solid var(--48-orange);
 }
 
@@ -99,13 +99,13 @@
 
 .index-flex-boxes > div {
   flex: 1 1 300px;
-  background: var(--48-orange-gradient-flex);
+  background: var(--48-orange-halftone-flex);
   border: 0.1rem solid var(--48-purple);
   padding: 0.5em 1em;
   border-radius: 0.5rem;
   font-weight: 400;
   box-shadow: 0.5rem 0.5rem 0.5rem 0 var(--48-darken-more);
-  overflow: auto;
+  overflow: hidden;
 }
 
 /* Force left alignment for narrow paragraphs */
@@ -227,7 +227,7 @@ city winners. Later, <em>select winners are shown at the Cannes Film Festival
     "text" "Join Our Facebook Group"
     "icon" "group"
 ) }}
-<div class="bordered center" style="background: var(--48-orange-gradient);">
+<div class="bordered center orange-halftone" style="background: var(--48-orange-halftone);">
 <p>If you're on social media, make sure to connect with us!</p>
 {{ partial "components/common-buttons.html" (dict
     "button_class" "social"

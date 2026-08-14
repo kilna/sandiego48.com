@@ -31,6 +31,17 @@
     var(--48-orange) 50%,
     var(--48-orange-dark) 100%
   );
+  --48-halftone-dot: rgb(196 90 35 / 0.05);
+  --48-halftone-dot-size: 0.7rem;
+  --48-halftone-spacing: 2.15rem;
+  --48-halftone-angle: 30deg;
+  --48-orange-halftone: linear-gradient(
+    135deg,
+    var(--48-orange-nearwhite) 0%,
+    var(--48-yellow) 32%,
+    var(--48-orange) 100%
+  );
+  --48-orange-halftone-flex: var(--48-orange-halftone);
   --48-navy:              #092d48;
   --48-navy-trans-less:   #07223740;
   --48-navy-trans:        #07223780;
@@ -57,6 +68,43 @@
   --48-lighten-most:      #ffffffa0;
   --clock-color:          #bb00ff;
   --league-spartan-offset: 0.07em;
+}
+
+
+.orange-halftone,
+.index-box,
+.index-flex-boxes > div,
+.event-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.orange-halftone::before,
+.index-box::before,
+.index-flex-boxes > div::before,
+.event-card::before {
+  content: "";
+  position: absolute;
+  inset: -85%;
+  background-image: radial-gradient(
+    circle,
+    var(--48-halftone-dot) var(--48-halftone-dot-size),
+    transparent calc(var(--48-halftone-dot-size) + 1px)
+  );
+  background-size: var(--48-halftone-spacing) var(--48-halftone-spacing);
+  transform: rotate(var(--48-halftone-angle));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orange-halftone > *,
+.index-box > *,
+.index-flex-boxes > div > *,
+.event-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 

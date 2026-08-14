@@ -13,13 +13,13 @@ description: "Learn how to get involved in the San Diego 48 Hour Film Project - 
 
 .index-flex-boxes > div {
   flex: 1 1 300px;
-  background: var(--48-orange-gradient-flex);
+  background: var(--48-orange-halftone-flex);
   border: 0.1rem solid var(--48-purple);
   padding: 0.5em 1em;
   border-radius: 0.5rem;
   font-weight: 400;
   box-shadow: 0.5rem 0.5rem 0.5rem 0 var(--48-darken-more);
-  overflow: auto;
+  overflow: hidden;
 }
 
 .index-flex-boxes > div h3 {
