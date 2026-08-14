@@ -51,19 +51,12 @@ params:
   header_bg: header_bg_sunset7.jpg
   logo: logo_trans_glow.png
   #
-  # Temporary FilmCon banner through the end of Film & Fan Day; registration
-  # banner returns automatically afterward via visible-from / visible-to.
-  banner:
-    - image: images/2026-filmcon-horizontal.png
-      image_mobile: images/2026-filmcon-square.png
-      url: /events/2026-07-17-filmcon/
-      alt: "San Diego 48 at FilmCon San Diego - July 16-17"
-      visible_to: "2026-07-17T17:00:00-07:00"
-    - image: images/2026-registration-open-banner.png
-      image_mobile: images/2026-registration-open-vertical.png
-      url: /go/register
-      alt: "2026 Registration Is Open - Sign Up Your Team Now!"
-      visible_from: "2026-07-17T17:00:00-07:00"
+  # Site-wide banner above the homepage content. Comment out to hide.
+  #banner:
+  #  image: images/2026-registration-open-banner.png
+  #  image_mobile: images/2026-registration-open-vertical.png
+  #  url: /go/register
+  #  alt: "2026 Registration Is Open - Sign Up Your Team Now!"
   #banner:
   #  image: images/tickets-banner.png
   #  image_mobile: images/tickets-banner-fat.png

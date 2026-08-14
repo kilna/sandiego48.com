@@ -16,6 +16,7 @@ WHEN  ⏳ {{ with partial "content/event-timespan.html" (
                 "start_time" (time.AsTime .Params.event_start)
                 "end_time" (time.AsTime .Params.event_end)
                 "plain" true
+                "date_only" .Params.date_only
         ) -}}
         {{ . | replaceRE "\n" "\n        " | strings.TrimLeft " \t\n" }}
         {{- end }}

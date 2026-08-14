@@ -70,6 +70,7 @@
           "date" $start_time_formatted
           "end_date" $end_time_formatted
           "prefix_date" true
+          "date_only" .Params.date_only
           "default" "Loading..."
           "visible_to" $start_time_formatted
       ) -}}
@@ -77,6 +78,14 @@
     {{ end }}
 
     {{ .Content }}
+
+    {{ $child_events := sort .RegularPages ".Params.event_start" "asc" }}
+    {{ if $child_events }}
+      {{- partial "events/display.html" (dict
+          "events" $child_events
+          "title" "Screenings"
+      ) -}}
+    {{ end }}
 
     {{ if .Params.notes }}
     <div class="event-details-box">
@@ -225,6 +234,7 @@
           "plain" false
           "show_day_of_week" true
           "separate_date_and_time" true
+          "date_only" .Params.date_only
         ) }}
         <div class="schedule-divider"></div>
       {{ end }}
@@ -258,6 +268,7 @@
       {{ partial "content/event-timespan.html" (dict
       "start_time" $start_time
       "end_time" $end_time
+      "date_only" .Params.date_only
       ) }}
     {{ end }}
     {{ if or $calendarGoogleUrl $calendarIcsUrl -}}

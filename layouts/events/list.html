@@ -21,6 +21,7 @@
 {{- $priorYearEvents := slice -}}
 
 {{- range $events -}}
+  {{- if and .Params.event_start .Params.event_end -}}
   {{- $startTime := time.AsTime .Params.event_start -}}
   {{- $endTime := time.AsTime .Params.event_end -}}
   {{- $currentYear := $now.Year -}}
@@ -31,6 +32,7 @@
     {{- $priorYearEvents = $priorYearEvents | append . -}}
   {{- else -}}
     {{- $pastEvents = $pastEvents | append . -}}
+  {{- end -}}
   {{- end -}}
 {{- end -}}
 
@@ -44,8 +46,6 @@
 {{- partial "events/display.html" (dict
     "events" $upcomingEvents
     "title" "Upcoming Events"
-    "show_countdown" false
-    "show_actions" false
     "show_visibility" false
 ) -}}
 {{- end -}}
@@ -54,8 +54,6 @@
 {{- partial "events/display.html" (dict
     "events" $pastEvents
     "title" "Recent Events"
-    "show_countdown" false
-    "show_actions" false
     "show_visibility" false
 ) -}}
 {{- end -}}
@@ -64,8 +62,6 @@
 {{- partial "events/display.html" (dict
     "events" $priorYearEvents
     "title" "Prior Year Events"
-    "show_countdown" false
-    "show_actions" false
     "show_visibility" false
 ) -}}
 {{- end -}}

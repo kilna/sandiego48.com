@@ -274,12 +274,12 @@
   }
 
   .event-card .actions {
-    text-align: center;
-    margin-top: 1rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid var(--48-orange-dark);
+    text-align: right;
+    margin-top: 0.75rem;
+    padding-top: 0;
+    border-top: none;
     width: 100%;
-    justify-content: center;
+    justify-content: flex-end;
     flex-wrap: wrap;
   }
 }
@@ -299,7 +299,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .event-card .content:not(:has(.actions)) .summary {
@@ -323,12 +323,12 @@
 .event-card .actions {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: 0.35rem;
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  border-top: 1px solid var(--48-darken);
+  margin-top: 0.75rem;
+  padding: 0;
+  border-top: none;
   flex-wrap: nowrap;
   min-height: 0;
   width: 100%;
@@ -337,7 +337,7 @@
 
 .event-card .actions-headed,
 .event-card .actions-nav {
-  margin-top: 0;
+  margin-top: 0.75rem;
   border-top: none;
   padding-top: 0;
 }
@@ -364,20 +364,21 @@
   background: var(--48-orange-gradient);
   border-color: var(--48-darken);
   --icon-color: var(--48-purple);
-  opacity: 0.6;
+  opacity: 0.85;
   flex: 0 1 auto;
   min-width: 0;
   max-width: none;
-  white-space: normal;
+  white-space: nowrap;
   text-align: center;
   justify-content: center;
   height: auto;
-  align-self: stretch;
+  align-self: center;
   overflow: hidden;
-  padding: 0.25em 0.5em;
+  padding: 0.35em 0.75em;
   word-wrap: break-word;
   hyphens: auto;
-  font-size: 0.9em;
+  font-size: 1.1em;
+  font-weight: 600;
 }
 
 .event-card .actions-headed a.button {
@@ -391,10 +392,10 @@
 @media (max-width: 768px) {
   .event-card .actions {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     gap: 0.125rem;
     width: 100%;
-    justify-content: center;
+    justify-content: flex-end;
     flex-wrap: wrap;
     font-size: 0.9em;
   }
@@ -417,13 +418,15 @@
   .event-card .actions-nav {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 0.35rem;
   }
 
   .event-card .actions-nav a.button {
     width: auto;
     margin: 0;
+    font-size: 1.05em;
+    padding: 0.35em 0.7em;
   }
 }
 

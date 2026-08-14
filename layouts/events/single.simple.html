@@ -111,6 +111,7 @@
       "start_time" (time.AsTime .Params.event_start)
       "end_time" (time.AsTime .Params.event_end)
       "plain" true
+      "date_only" .Params.date_only
     ) -}}<br/>
     {{ with $calendarGoogleUrl }}
     <a href="{{ . }}">
@@ -140,6 +141,7 @@
         "plain" true
         "show_day_of_week" true
         "separate_date_and_time" true
+        "date_only" .Params.date_only
     ) -}}<br/><div style="margin: 1rem 0; border-bottom: 1px solid var(--48-lighten);"></div>
   {{ end }}
 {{ range .Params.schedule }}

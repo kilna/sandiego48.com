@@ -17,7 +17,7 @@
 {{- $calendarGoogleUrl := partial "events/calendar-data.html" (dict "page" $event "field" "google_url") | htmlUnescape -}}
 {{- $calendarIcsUrl := partial "events/calendar-data.html" (dict "page" $event "field" "ics_permalink") -}}
 {{- $map_url := partial "components/google-maps-url.html" (dict "map_url" .Params.location_map_url "address" .Params.location_address) -}}
-<p><br><strong>{{ .Title }}</strong><br><em>{{- partial "content/event-timespan.html" (dict "start_time" $startTime "end_time" $endTime "plain" true) -}}</em></p>
+<p><br><strong>{{ .Title }}</strong><br><em>{{- partial "content/event-timespan.html" (dict "start_time" $startTime "end_time" $endTime "plain" true "date_only" .Params.date_only) -}}</em></p>
 {{- if .Summary -}}
 <p>{{ .Summary }}</p>
 {{- end -}}
