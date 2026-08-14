@@ -16,7 +16,7 @@ header.title {
     ),
     url('{{ $bg.RelPermalink }}');
   background-size: cover;
-  background-position: center 72%;
+  background-position: center 81%;
   background-repeat: no-repeat;
   background-color: var(--48-purple-dark);
   border-radius: 0px;
@@ -166,8 +166,8 @@ header.title h1 div.subtitle {
 <div class="subtitle">{{ .Site.Title }}</div>
 {{- end -}}
 {{ .Title | default .Site.Title }}
-{{- if isset .Params "subtitle" -}}
-<div class="subtitle">{{ .Params.subtitle | replaceRE "\n" "<br>" | safeHTML }}</div>
+{{- with .Params.subtitle -}}
+<div class="subtitle">{{ . | replaceRE "\n" "<br>" | safeHTML }}</div>
 {{- end -}}
 </h1>
 </div>

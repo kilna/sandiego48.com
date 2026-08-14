@@ -48,7 +48,7 @@ params:
   description: "San Diego 48 Hour Film Project - Make a film in 48 hours!"
   canonical_url: https://sandiego48.com
   author: "Kilna, Anthony"
-  header_bg: header_bg_sunset7.jpg
+  header_bg: header_bg.jpg
   logo: logo_trans_glow.png
   #
   # Site-wide banner above the homepage content. Comment out to hide.

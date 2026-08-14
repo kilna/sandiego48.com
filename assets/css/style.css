@@ -32,6 +32,7 @@
     var(--48-orange-dark) 100%
   );
   --48-halftone-dot: rgb(196 90 35 / 0.05);
+  --48-halftone-dot-on-dark: rgb(255 228 196 / 0.12);
   --48-halftone-dot-size: 0.7rem;
   --48-halftone-spacing: 2.15rem;
   --48-halftone-angle: 30deg;
@@ -74,7 +75,9 @@
 .orange-halftone,
 .index-box,
 .index-flex-boxes > div,
-.event-card {
+.event-card,
+.infoblock,
+header.title {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -83,7 +86,9 @@
 .orange-halftone::before,
 .index-box::before,
 .index-flex-boxes > div::before,
-.event-card::before {
+.event-card::before,
+.infoblock::before,
+header.title::before {
   content: "";
   position: absolute;
   inset: -85%;
@@ -99,10 +104,21 @@
   z-index: 0;
 }
 
+header.title::before {
+  background-image: radial-gradient(
+    circle,
+    var(--48-halftone-dot-on-dark) var(--48-halftone-dot-size),
+    transparent calc(var(--48-halftone-dot-size) + 1px)
+  );
+  mix-blend-mode: soft-light;
+}
+
 .orange-halftone > *,
 .index-box > *,
 .index-flex-boxes > div > *,
-.event-card > * {
+.event-card > *,
+.infoblock > *,
+header.title > * {
   position: relative;
   z-index: 1;
 }
