@@ -1,5 +1,0 @@
----
-title: Announcements
-layout: announcements
----
-

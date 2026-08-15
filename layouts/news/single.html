@@ -1,0 +1,24 @@
+{{ define "head" }}
+  {{- partial "head.html" . -}}
+  {{- partial "layout/stylesheet.html" "news" -}}
+{{ end }}
+
+{{ define "title" }}
+{{- partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "Params" .Params
+    "ShowSiteTitle" true
+) -}}
+{{ end }}
+
+{{ define "main" }}
+<div class="news-single">
+  {{- partial "news/display.html" (dict
+      "items" (slice .)
+      "show_summary" false
+      "show_body" true
+      "button_class" "large"
+  ) -}}
+</div>
+{{ end }}

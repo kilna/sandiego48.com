@@ -1,13 +1,13 @@
 {{- $now := now -}}
 {{- /* Top-level event pages only: leaf events plus nested series sections.
       Child screenings under a series stay off the homepage until you visit
-      the parent. */ -}}
+      the parent. featured: false keeps an event on /events but off this list. */ -}}
 {{- $eventsSection := .Site.GetPage "/events" -}}
 {{- $all_events := $eventsSection.Pages -}}
 {{- $upcoming_events := slice -}}
 
 {{- range $all_events -}}
-  {{- if .Params.event_end -}}
+  {{- if and .Params.event_end (or (not (isset .Params "featured")) .Params.featured) -}}
     {{- $end_time := time.AsTime .Params.event_end -}}
     {{- if $end_time.After $now -}}
       {{- $upcoming_events = $upcoming_events | append . -}}

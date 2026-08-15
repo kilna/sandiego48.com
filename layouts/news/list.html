@@ -1,0 +1,50 @@
+{{ define "head" }}
+  {{- partial "head.html" . -}}
+  {{- partial "layout/stylesheet.html" "news" -}}
+{{ end }}
+
+{{ define "title" }}
+{{- partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "Params" .Params
+    "ShowSiteTitle" false
+) }}
+{{ end }}
+
+{{ define "main" -}}
+{{- $news := .RegularPagesRecursive -}}
+{{- $featuredNews := where $news "Params.featured" true -}}
+{{- $regularNews := where $news "Params.featured" "!=" true -}}
+
+{{- $featuredNews = sort $featuredNews "Date" "desc" -}}
+{{- $regularNews = sort $regularNews "Date" "desc" -}}
+
+<div class="news">
+  {{ .Content }}
+
+  {{- if $featuredNews -}}
+  <h2>Featured News</h2>
+  {{- partial "news/display.html" (dict
+      "items" $featuredNews
+      "show_summary" true
+      "show_body" false
+      "button_class" "medium"
+  ) -}}
+  {{- end -}}
+
+  {{- if $regularNews -}}
+  <h2>Latest News</h2>
+  {{- partial "news/display.html" (dict
+      "items" $regularNews
+      "show_summary" true
+      "show_body" false
+      "button_class" "medium"
+  ) -}}
+  {{- end -}}
+
+  {{- if and (not $featuredNews) (not $regularNews) -}}
+  <p>No news items yet.</p>
+  {{- end -}}
+</div>
+{{ end }}

@@ -11,6 +11,7 @@ params:
   image: flyer.png
   image_square: flyer-square.png
   image_wide: flyer-horizontal.png
+  # false = on /events only; omit or true = also on homepage Coming Events
   featured: false
   event_start: 
   event_end: 

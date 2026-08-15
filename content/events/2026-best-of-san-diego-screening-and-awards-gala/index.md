@@ -8,8 +8,9 @@ summary: >
   Purple carpet 5-6pm; screening and awards 6-9pm.
 date: 2026-08-14T12:00:00-07:00
 publishDate: 2026-08-14T12:00:00-07:00
-draft: true
+draft: false
 params:
+  featured: false
   add_to_calendar: true
   screening_group: Best of 2026
   event_start: 2026-10-11T17:00:00-07:00

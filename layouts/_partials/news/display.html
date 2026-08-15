@@ -1,0 +1,79 @@
+{{- /*
+  Partial to display news items.
+
+  Parameters:
+    items - collection of news pages to display
+    show_summary - whether to show the summary
+    show_body - whether to show the full body content
+    button_class - class for buttons (default: "medium")
+*/ -}}
+
+{{- $items := .items -}}
+{{- $show_summary := .show_summary | default true -}}
+{{- $show_body := .show_body | default false -}}
+{{- $button_class := .button_class | default "medium" -}}
+
+{{- range $items -}}
+  {{- $page := . -}}
+  <article class="news-card news-kind-{{ .Params.kind | default "article" | urlize }}">
+    <header class="news-header">
+      {{- with $page.Params.image -}}
+        {{- $image := $page.Resources.Get . -}}
+        {{- if $image -}}
+          <div class="news-image-wrapper">
+            <img class="news-image" src="{{ $image.RelPermalink }}" alt="{{ $page.Title }}" />
+          </div>
+        {{- end -}}
+      {{- end -}}
+      <h3>{{ .Title }}</h3>
+      <div class="news-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+        {{- with .Params.kind_label -}}
+          <span class="news-badge">{{ . }}</span>
+        {{- end -}}
+        {{- with .Params.source_name -}}
+          <span class="news-source">{{ . }}</span>
+        {{- end -}}
+      </div>
+    </header>
+
+    {{- with $page.Params.external_url -}}
+      <p class="news-source-note">
+        Original coverage:
+        <a href="{{ . }}" target="_blank" rel="noopener noreferrer nofollow">{{ $page.Params.source_name | default . }}</a>
+      </p>
+    {{- end -}}
+
+    {{- if and $show_summary .Summary -}}
+      <div class="news-summary">{{ .Summary }}</div>
+    {{- end -}}
+
+    {{- if $show_body -}}
+      <div class="news-body">{{ .Content }}</div>
+    {{- end -}}
+
+    <div class="news-actions">
+      {{- with $page.Params.button -}}
+        {{- partial "components/button.html" (merge . (dict "class" $button_class)) -}}
+      {{- else -}}
+        {{- if $page.Params.external_url -}}
+          {{- partial "components/button.html" (dict
+              "url" $page.Params.external_url
+              "text" "Read the original"
+              "icon" "globe"
+              "class" $button_class
+              "target" "_blank"
+          ) -}}
+        {{- else if not $show_body -}}
+          {{- partial "components/button.html" (dict
+              "url" $page.RelPermalink
+              "text" "Read more"
+              "icon" "info"
+              "class" $button_class
+              "target" "_self"
+          ) -}}
+        {{- end -}}
+      {{- end -}}
+    </div>
+  </article>
+{{- end -}}

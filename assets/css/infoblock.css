@@ -3,7 +3,7 @@
   flex-direction: column;
   padding: 1rem;
   text-align: left;
-  background: var(--48-orange-gradient);
+  background: var(--48-orange-halftone);
   border: 0.125rem solid var(--48-darken);
   border-radius: 0.5rem;
   width: 100%;

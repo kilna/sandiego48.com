@@ -126,6 +126,7 @@
 .event-card img {
   width: 100%;
   height: auto;
+  box-shadow: 0.25rem 0.25rem 0.5rem 0 var(--48-darken-more);
 }
 
 /* Film Posters in Events */

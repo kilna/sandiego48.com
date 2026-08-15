@@ -201,6 +201,13 @@ menus:
     params:
       target: _self
       icon: calendar
+  - identifier: news
+    weight: 4
+    name: News
+    url: /news
+    params:
+      target: _self
+      icon: newsletter
   # Archive of post-competition seasonal links for reuse:
   # - identifier: winners
   #   weight: 4

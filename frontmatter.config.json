@@ -18,6 +18,14 @@
       "path": "content/citymessage"
     },
     {
+      "title": "News",
+      "path": "content/news"
+    },
+    {
+      "title": "Announcements",
+      "path": "content/news/announcements"
+    },
+    {
       "title": "Press",
       "path": "content/press"
     }
@@ -79,6 +87,31 @@
         "",
         "${8:Partner content goes here}"
       ]
+    },
+    {
+      "name": "News",
+      "description": "News page template",
+      "body": [
+        "---",
+        "title: ${1:News Item Title}",
+        "layout: news",
+        "type: news",
+        "summary: >",
+        "  ${2:Short summary for the item}",
+        "date: ${3:2025-01-01T00:00:00-08:00}",
+        "publishDate: ${3:2025-01-01T00:00:00-08:00}",
+        "draft: false",
+        "params:",
+        "  kind: ${4:article}",
+        "  kind_label: ${5:Article}",
+        "  featured: false",
+        "  source_name: ${6:}",
+        "  source_url: ${7:}",
+        "  external_url: ${8:}",
+        "---",
+        "",
+        "${9:Write the article body here.}"
+      ]
     }
   ]
-} 
+}

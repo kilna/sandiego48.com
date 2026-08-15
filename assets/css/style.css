@@ -5,6 +5,7 @@
   --48-trans:             #00000000;
   --48-nearwhite:         #f0f0f0;
   --48-yellow:            #f0b030;
+  --48-pink:              #ff53e5;
   --48-orange:            #e56f32;
   --48-orange-trans-less: #e56f3240;
   --48-orange-trans:      #e56f3280;
@@ -31,15 +32,15 @@
     var(--48-orange) 50%,
     var(--48-orange-dark) 100%
   );
-  --48-halftone-dot: rgb(196 90 35 / 0.05);
+  --48-halftone-dot: rgb(196 90 35 / 0.08);
   --48-halftone-dot-on-dark: rgb(255 228 196 / 0.12);
   --48-halftone-dot-size: 0.7rem;
   --48-halftone-spacing: 2.15rem;
   --48-halftone-angle: 30deg;
   --48-orange-halftone: linear-gradient(
     135deg,
-    var(--48-orange-nearwhite) 0%,
-    var(--48-yellow) 32%,
+    var(--48-pink) 0%,
+    var(--48-yellow) 50%,
     var(--48-orange) 100%
   );
   --48-orange-halftone-flex: var(--48-orange-halftone);
