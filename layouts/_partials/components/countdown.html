@@ -10,7 +10,7 @@
   ) -}}
 {{- end -}}
 
-<div class="countdown{{ if isset . "visible_from" }} visible-from-{{ .visible_from }}{{ end }} visible-to-{{ .visible_to | default .date }}">
+<div class="countdown{{ with .class }} {{ . }}{{ end }}{{ if isset . "visible_from" }} visible-from-{{ .visible_from }}{{ end }} visible-to-{{ .visible_to | default .date }}">
 {{ if $timespan_text -}}
 <span class="countdown-prefix">{{ $timespan_text }}</span>
 {{- end -}}
