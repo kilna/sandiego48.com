@@ -88,8 +88,9 @@ signed form as long as they're in focus and show the complete page.
 
 ### Download everything from your dashboard
 
-- **Tech Specs** — the technical specification document covering file formats,
-  codecs, resolution, and delivery. Read it, then send it to your editor.
+- **Tech Specs** — download HQ's technical specification from your dashboard
+  and send it to your editor. The San Diego requirements are also listed
+  [below](#tech-specs).
 - **Title card templates** — select your team, then your project, and you'll
   see the download buttons. Build your own if you prefer, as long as the
   timing and information match.
@@ -146,8 +147,10 @@ editing, sound design, and rendering.
 
 You **may** organize your crew, organize your cast, secure and test your
 equipment, and scout and secure locations. You can also do dry runs and
-experiments to make sure your gear and your people are ready — just don't
-create anything you intend to use in the film.
+experiments to make sure your gear and your people are ready — including a
+[practice export](#tech-specs) so you already know your editing suite can
+hit 24p and the 2 GB limit. Just don't create anything you intend to use
+in the film.
 
 ### Send a representative to kickoff
 
@@ -260,13 +263,17 @@ Disclosure Form. When in doubt, don't use it.
 
 ### Length, slates, and credits
 
-Your film must be **at least 4 minutes and no more than 7 minutes**, not
-counting the required slates or the end credits.
+The start of the file is **17 seconds of required slates**, then the film,
+then optional end credits. With a max-length film and a full minute of
+credits, the whole file is **8 minutes 17 seconds**.
 
-Your film starts with these required slates:
+Your film itself must be **at least 4 minutes and no more than 7 minutes**.
+Opening credits count as part of that 7 minutes. End credits do not.
+
+**Required slates**, in this order:
 
 1. **5 seconds of black**
-2. **5 seconds** of a title card with your team name, film title, genre, city,
+2. **5 seconds** of a title card with your team name, title, genre(s), city,
    and date
 3. **5 seconds** of a title card reading *"This film was made for the 48 Hour
    Film Project 2026. www.48hourfilm.com"*
@@ -284,10 +291,9 @@ your work.
 or sound design — until after the 2 seconds of black. If you do put music
 under the slates, it may be cut off.
 
-**End credits** are capped at 60 seconds and don't count toward the 7 minutes,
-so a film can run 8 minutes total. Bloopers and behind-the-scenes footage are
-fine within that 60 seconds. Your end credits must include the words *"This
-film was made for the 48 Hour Film Project. www.48hourfilm.com"*.
+**End credits** are capped at 60 seconds. Bloopers and behind-the-scenes
+footage are fine within that minute. Your end credits must include the words
+*"This film was made for the 48 Hour Film Project. www.48hourfilm.com"*.
 
 **Opening credits**, if you use them, are part of the film and count against
 the 7 minutes. If they include anything beyond the title, they must also
@@ -295,6 +301,9 @@ include the text *"a 48 Hour Film Project"*.
 
 If your film isn't in English, you must upload an `.srt` subtitle file by the
 7:30pm deadline.
+
+Encode settings (codec, frame rate, audio, file size) are in
+[Tech specs](#tech-specs).
 
 ### Don't release your film early
 
@@ -318,6 +327,53 @@ the film drop off box, the system fingerprints it — that can take a couple of
 minutes, so don't cut it close. Once you have an on-time checksum, you're on
 time.
 
+### Tech specs
+
+Encode to these specs before you drop off. A file that will not play on 48HFP
+or theater equipment may be disqualified. Send this section to your editor
+Friday night.
+
+We **highly recommend a test encode** in your editing suite before the
+weekend — with dummy footage, not anything you plan to use in the film — so
+you already know 24p, Rec.709, and the 2 GB cap work on your machine.
+
+- **Container:** MP4, H.264 or H.265 (MP4 will be one or the other). Variable
+  or constant bitrate is fine for video.
+- **Resolution:** 4K or lower. Maximum 4096 × 2160. Minimum 1920 × 786.
+  Strong preference for theater-native sizes:
+  - 1920 × 1080
+  - 1998 × 1080
+  - 2048 × 1080
+  - 2048 × 858
+  - 3840 × 2160
+  - 3996 × 2160
+  - 4096 × 1716
+  - 4096 × 2160
+- **Picture:** Square pixels, Rec.709 (ITU-R BT.709) color space, 2.4 gamma,
+  4:2:0 chroma subsampling. These are usually the MP4 defaults. Very dark
+  images can be hard to see in some theaters, so expose for the screen, not
+  just the monitor.
+- **Frame rate:** **24p constant** frame rate. **Not 23.976.** This is often
+  *not* the default in your NLE, and it is what cinema screens display best.
+  The wrong frame rate can cause sync and display oddities. Use constant
+  frame rate, not variable.
+- **Audio:** 16-bit, 48 kHz, stereo or 5.1 surround, AAC (the MP4 default).
+  Use **constant** bitrate for audio, not variable. Mix preference: dialogue
+  at **-9 dB average**, max peak **-3 dB**. Uneven or peaking audio may be
+  modified to protect the playback equipment.
+- **File size:** **2 GB maximum** — a hard limit on 48hourfilm.com. For a
+  max-length 48 film that means a target video bitrate **under 34 Mbps**.
+  Upload on **wired ethernet** if you can; wifi is the backup, a phone
+  hotspot is last resort.
+
+Running time and the required 17 seconds of slates are in
+[Length, slates, and credits](#length-slates-and-credits). Total file length
+with proper slates, a 7 minute film, and a full minute of credits is
+**8 minutes 17 seconds**.
+
+HQ's Tech Specs PDF on your dashboard may have additional render notes. Use
+this page as the San Diego delivery list.
+
 ### Set yourself up to succeed
 
 - **Be logged in and sitting on the Film Upload page at 7pm.** If you know your
@@ -326,13 +382,8 @@ time.
 - **Use Chrome or Firefox. Do not use Safari** — it has known problems with the
   uploader.
 - **Watch your film start to finish before you drop it off.** Confirm the
-  render actually plays all the way through.
-- Check your file against the Tech Specs. **Maximum file size is 2GB.** A film
-  that doesn't conform to the submission requirements, or that can't be played
-  on 48HFP equipment, may be disqualified.
-- Keep your sound levels relatively even. Films with peaking audio may be
-  modified to protect the playback equipment. If your film is very dark, it may
-  be hard to see in some theaters.
+  render actually plays all the way through, and that it matches the
+  [tech specs](#tech-specs) above.
 - **Don't let your computer sleep or start a screensaver during the upload.**
   This is the single most common cause of a stalled upload.
 - **Keep the exact file you uploaded and do not change it.** If anything goes
@@ -355,8 +406,8 @@ Work through these in order:
 3. **Refresh the browser and upload the SAME file again.** Do not re-render, do
    not re-export, do not rename it. The identical file is what preserves your
    original drop off time.
-4. **Get on a stable internet connection.** Wired beats wifi, and wifi beats a
-   phone hotspot.
+4. **Get on a stable internet connection.** Wired ethernet first; wifi next;
+   phone hotspot last.
 
 Two situations that look like failures but aren't:
 
