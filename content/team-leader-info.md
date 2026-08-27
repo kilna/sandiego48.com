@@ -115,10 +115,11 @@ Read them before the weekend, not during it. There is no substitute for this.
 
 {{< button url="https://www.48hourfilm.com/filmmaking-rules" text="Filmmaking Rules" icon="film" class="wide big left" >}}
 {{< button url="https://www.48hourfilm.com/competition-rules" text="Competition Rules" icon="info" class="wide big left" >}}
-{{< button url="https://www.48hourfilm.com/judging-and-prizes/48hfp" text="Judging and Prizes" icon="trophy" class="wide big left" >}}
 
 Pay particular attention to the **AI rules**, which have been updated. See
 [Using AI in your film](#using-ai-in-your-film) below.
+
+### Know What Wins
 
 A panel of industry professionals judges the films. **Best Film** is scored
 as:
@@ -126,6 +127,8 @@ as:
 - **Artistic merit** (story, creativity, entertainment) — 45%
 - **Technical merit** — 30%
 - **Adherence to the assignment** — 25%
+
+{{< button url="https://www.48hourfilm.com/judging-and-prizes/48hfp" text="Full Judging Criteria" icon="trophy" class="wide big left" >}}
 
 Other awards typically include Best Directing, Best Writing, acting awards,
 and Best Use of the required elements. The Audience Award is voted at the
@@ -148,7 +151,7 @@ create anything you intend to use in the film.
 
 ### Send a representative to kickoff
 
-Every team must have someone at the kickoff event. If you can't be there
+Every team **must** have someone at the kickoff event. If you can't be there
 yourself, send someone you trust, and make sure your agreement is uploaded
 before they arrive.
 
@@ -163,13 +166,11 @@ schedule.
 <div class="notice check-in">
 🎬 Arrive between <strong>4 and 4:30pm</strong>. You must be checked in by
 <strong>5pm</strong>.
-<span class="sub">If you are not checked in by 5pm, you may miss the genre
-spin. Your Team Leader Agreement needs to already be uploaded when you check
-in.</span>
+<span class="sub">If you are not checked in by 5pm, you may miss the <b>Wheel of Genres</b> for your group; if so you may end up losing time by picking genres after 7pm. Your Team Leader Agreement needs to already be uploaded when you check in.</span>
 </div>
 
 - Once all teams are checked in, teams spin for their
-  [genres](https://www.48hourfilm.com/genres) on the wheel of genres. Your
+  [genres](https://www.48hourfilm.com/genres) on the Wheel of Genres. Your
   film must be in at least one of the genres you spin for. You're welcome to
   combine it with other genres, but it has to be clear to the judges that your
   film is in its assigned genre.
@@ -281,7 +282,7 @@ your work.
 
 **Keep the slates silent.** Do not start your film's audio — music, dialogue,
 or sound design — until after the 2 seconds of black. If you do put music
-under the slates, HQ counts that audio toward your 7 minute maximum.
+under the slates, it may be cut off.
 
 **End credits** are capped at 60 seconds and don't count toward the 7 minutes,
 so a film can run 8 minutes total. Bloopers and behind-the-scenes footage are
