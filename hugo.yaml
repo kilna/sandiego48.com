@@ -223,6 +223,13 @@ menus:
     params:
       target: _self
       icon: newsletter
+  - identifier: team-leaders-info
+    weight: 5
+    name: Team Leader Info
+    url: /team-leaders-info
+    params:
+      target: _self
+      icon: clap-board
   # Archive of post-competition seasonal links for reuse:
   # - identifier: winners
   #   weight: 4

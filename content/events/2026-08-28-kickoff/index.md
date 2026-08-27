@@ -65,6 +65,7 @@ params:
   notes:
     - Team leaders must be checked in by 5pm.
     - Complete your team leader agreement on the 48hourfilm dashboard before you arrive.
+    - "Read the [Team Leader Info](/team-leaders-info/) page before the weekend."
     - Don't have a team yet? Come anyway — actors, crew, and helpers often find a team at kickoff.
   org_info: |
     ### About the 48 Hour Film Project
