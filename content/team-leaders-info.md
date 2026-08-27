@@ -23,7 +23,30 @@ description: "Everything a San Diego 48 Hour Film Project team leader needs to k
 .event-promo:hover img {
   transform: scale(1.02);
 }
+
+.notice.read-now {
+  font-size: 1.3em;
+  line-height: 1.4;
+  padding: 1.5rem;
+  border: 0.2rem solid var(--48-purple);
+  margin-top: 0;
+}
+
+.notice.read-now .sub {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.8em;
+  font-weight: 500;
+}
 </style>
+
+<div class="notice read-now">
+🎬 Read this entire page <em>now</em>, before the weekend starts.
+<span class="sub">Once the clock is running you will be tired, rushed, and
+making decisions at 3am. That is the worst possible time to discover a rule,
+a form, or a deadline you didn't know about. Twenty minutes today will save
+you an hour — and maybe your eligibility — later.</span>
+</div>
 
 You signed up a team. Congratulations, you're a team leader! This page walks
 through everything you're responsible for: what to have ready before kickoff,
