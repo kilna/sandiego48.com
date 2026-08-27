@@ -115,9 +115,25 @@ Read them before the weekend, not during it. There is no substitute for this.
 
 {{< button url="https://www.48hourfilm.com/filmmaking-rules" text="Filmmaking Rules" icon="film" class="wide big left" >}}
 {{< button url="https://www.48hourfilm.com/competition-rules" text="Competition Rules" icon="info" class="wide big left" >}}
+{{< button url="https://www.48hourfilm.com/judging-and-prizes/48hfp" text="Judging and Prizes" icon="trophy" class="wide big left" >}}
 
 Pay particular attention to the **AI rules**, which have been updated. See
 [Using AI in your film](#using-ai-in-your-film) below.
+
+A panel of industry professionals judges the films. **Best Film** is scored
+as:
+
+- **Artistic merit** (story, creativity, entertainment) — 45%
+- **Technical merit** — 30%
+- **Adherence to the assignment** — 25%
+
+Other awards typically include Best Directing, Best Writing, acting awards,
+and Best Use of the required elements. The Audience Award is voted at the
+premiere screenings, and **late films are still eligible for it**.
+
+The Best Film winner screens at Filmapalooza, the official 48HFP awards
+weekend, and receives a trophy there. Full details are on
+[48hourfilm.com/judging-and-prizes](https://www.48hourfilm.com/judging-and-prizes/48hfp).
 
 ### Know what you can and can't do in advance
 
