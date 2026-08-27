@@ -32,11 +32,19 @@ description: "Everything a San Diego 48 Hour Film Project team leader needs to k
   margin-top: 0;
 }
 
-.notice.read-now .sub {
+.notice.read-now .sub,
+.notice.check-in .sub {
   display: block;
   margin-top: 0.6rem;
   font-size: 0.8em;
   font-weight: 500;
+}
+
+.notice.check-in {
+  font-size: 1.25em;
+  line-height: 1.35;
+  padding: 1.5rem;
+  border: 0.2rem solid var(--48-purple);
 }
 </style>
 
@@ -82,8 +90,9 @@ signed form as long as they're in focus and show the complete page.
 
 - **Tech Specs** — the technical specification document covering file formats,
   codecs, resolution, and delivery. Read it, then send it to your editor.
-- **Title card templates and the animated 48HFP bumper** — select your team,
-  then your project, and you'll see the download buttons.
+- **Title card templates** — select your team, then your project, and you'll
+  see the download buttons. Build your own if you prefer, as long as the
+  timing and information match.
 - **Release forms** — Waiver and Release, Location Release, Music Release,
   Materials Release, and the Certification Statement. All of these are also
   available at [48hourfilm.com/documents](https://www.48hourfilm.com/documents).
@@ -135,8 +144,14 @@ schedule.
 
 {{< event-image event="/events/2026-08-28-kickoff" >}}
 
-- **Arrive between 4 and 4:30pm. You must be checked in by 5pm.** Your Team
-  Leader Agreement needs to already be uploaded when you check in.
+<div class="notice check-in">
+🎬 Arrive between <strong>4 and 4:30pm</strong>. You must be checked in by
+<strong>5pm</strong>.
+<span class="sub">If you are not checked in by 5pm, you may miss the genre
+spin. Your Team Leader Agreement needs to already be uploaded when you check
+in.</span>
+</div>
+
 - Once all teams are checked in, teams spin for their
   [genres](https://www.48hourfilm.com/genres) on the wheel of genres. Your
   film must be in at least one of the genres you spin for. You're welcome to
@@ -237,13 +252,20 @@ Your film starts with these required slates:
 2. **5 seconds** of a title card with your team name, film title, genre, city,
    and date
 3. **5 seconds** of a title card reading *"This film was made for the 48 Hour
-   Film Project 2026. www.48hourfilm.com"* — **or** the animated 48HFP bumper
-   (6 seconds)
+   Film Project 2026. www.48hourfilm.com"*
 4. **2 seconds of black**
 
-Then your film begins. Templates and the bumper are on your dashboard; you can
-build your own as long as the timing and information are identical. Any music
-you place under these slates counts toward your 7 minute maximum.
+Then your film begins. Title card templates are on your dashboard; you can
+build your own as long as the timing and information are identical.
+
+In San Diego we prefer you **do not use the animated 48HFP bumper**. Use the
+static title card instead. The bumper is allowed by HQ, but it reads as an
+ad at the start of every film, and we would rather the screening open on
+your work.
+
+**Keep the slates silent.** Do not start your film's audio — music, dialogue,
+or sound design — until after the 2 seconds of black. If you do put music
+under the slates, HQ counts that audio toward your 7 minute maximum.
 
 **End credits** are capped at 60 seconds and don't count toward the 7 minutes,
 so a film can run 8 minutes total. Bloopers and behind-the-scenes footage are

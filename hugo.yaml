@@ -223,10 +223,10 @@ menus:
     params:
       target: _self
       icon: newsletter
-  - identifier: team-leaders-info
+  - identifier: team-leader-info
     weight: 5
     name: Team Leader Info
-    url: /team-leaders-info
+    url: /team-leader-info
     params:
       target: _self
       icon: clap-board
