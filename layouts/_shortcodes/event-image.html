@@ -1,0 +1,36 @@
+{{- /*
+  Renders another page's promo image, linked back to that page. Lets a
+  standalone content page show event artwork without duplicating the image
+  into its own bundle.
+
+  Usage: {{< event-image event="/events/2026-08-28-kickoff" >}}
+
+  event         path to the page holding the image (required)
+  image         front matter field for the base image (default image_wide)
+  mobile        front matter field used below 768px (default: none)
+  resize        Hugo resize spec for the base image (default 1600x)
+  resize_mobile resize spec for the mobile image (defaults to resize)
+  alt           alt text (defaults to the linked page's title)
+  class         extra classes on the img
+  wrap          class on the wrapping link (default event-promo)
+*/ -}}
+{{- $path := .Get "event" -}}
+{{- if not $path -}}
+  {{- errorf "event-image: the %q parameter is required (in %s)" "event" .Position -}}
+{{- end -}}
+{{- $page := site.GetPage $path -}}
+{{- if not $page -}}
+  {{- errorf "event-image: no page found at %q (in %s)" $path .Position -}}
+{{- end -}}
+{{- $resize := .Get "resize" | default "1600x" -}}
+{{- partial "components/responsive-img.html" (dict
+    "ctx" $page
+    "name" "image"
+    "image" (.Get "image" | default "image_wide")
+    "image_mobile" (.Get "mobile" | default "")
+    "resize" $resize
+    "resize_mobile" (.Get "resize_mobile" | default $resize)
+    "alt" (.Get "alt" | default $page.Title)
+    "class" (.Get "class" | default "")
+    "wrap_class" (.Get "wrap" | default "event-promo")
+) -}}

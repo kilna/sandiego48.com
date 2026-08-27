@@ -3,6 +3,28 @@ title: "Team Leader Info"
 description: "Everything a San Diego 48 Hour Film Project team leader needs to know - what to do before kickoff, what happens at kickoff, how to survive the weekend, and how to submit your film and paperwork on time."
 ---
 
+<style>
+/* Width is governed by the main > * rule, which pins direct children of main
+   to 60vw; these images line up with the notice boxes rather than the text. */
+.event-promo {
+  display: block;
+  margin: 1.5rem auto;
+}
+
+.event-promo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0.25rem 0.25rem 0.5rem 0 var(--48-darken-more);
+  transition: transform 0.3s ease;
+}
+
+.event-promo:hover img {
+  transform: scale(1.02);
+}
+</style>
+
 You signed up a team. Congratulations, you're a team leader! This page walks
 through everything you're responsible for: what to have ready before kickoff,
 what happens at the kickoff event, the rules you need to keep in mind during
@@ -12,7 +34,7 @@ Almost everything you do as a team leader happens on your team dashboard at
 [48hourfilm.com](https://www.48hourfilm.com/login). Log in and poke around
 before the weekend so you're not learning the interface at 7pm on Sunday.
 
-{{< button url="https://www.48hourfilm.com/login" text="Log Into Your Team Dashboard" icon="register" class="wide big left" >}}
+{{< button url="https://www.48hourfilm.com/dash/team" text="Log Into Your Team Dashboard" icon="register" class="wide big left" >}}
 
 <div class="notice">
 🎬 Two deadlines matter more than anything else: your Team Leader Agreement
@@ -87,6 +109,8 @@ before they arrive.
 Kickoff is **Friday, August 28th** — see the
 [kickoff event page](/events/2026-08-28-kickoff/) for the venue, map, and full
 schedule.
+
+{{< event-image event="/events/2026-08-28-kickoff" >}}
 
 - **Arrive between 4 and 4:30pm. You must be checked in by 5pm.** Your Team
   Leader Agreement needs to already be uploaded when you check in.
@@ -327,6 +351,8 @@ Blank forms and a full checklist live at
 ## The Wrap Party
 
 You just made a movie in 48 hours. Come celebrate it.
+
+{{< event-image event="/events/2026-08-30-wrap-party" >}}
 
 As soon as your film is uploaded, head over and join us — no ticket, no cover,
 just show up. Bring your whole team, and bring the cast and crew who only saw
