@@ -128,9 +128,6 @@ description: "Learn how to get involved in the San Diego 48 Hour Film Project - 
     <p>If you've already registered to run a team, <em>Congratulations!</em></p>
     <p><strong>You should absolutely make sure to...</strong></p>
     <ul>
-      <li>Read our <a href="/team-leader-info/">Team Leader Info</a> page for
-        everything you need before kickoff, during the weekend, and at
-        drop-off</li>
       <li>Post your team's crew and cast needs on our
         <a href="{{< facebook-group-url >}}">Facebook group</a> to help people find you!</li>
       <li>Our mixer <a href="/events">events</a> are a great way to meet
