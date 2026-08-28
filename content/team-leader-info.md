@@ -53,7 +53,7 @@ description: "Everything a San Diego 48 Hour Film Project team leader needs to k
 <span class="sub">Once the clock is running you will be tired, rushed, and
 making decisions at 3am. That is the worst possible time to discover a rule,
 a form, or a deadline you didn't know about. Twenty minutes today will save
-you an hour — and maybe your eligibility — later.</span>
+you an hour, and maybe your eligibility, later.</span>
 </div>
 
 You signed up a team. Congratulations, you're a team leader! This page walks
@@ -80,7 +80,7 @@ must be uploaded <em>before kickoff starts</em>, and your film upload must
 This is the one piece of paperwork with a deadline *before* the competition
 starts. Download the Team Leader Agreement from your dashboard under
 **Pre Production → Pre Kickoff Paperwork**, sign it, and upload it before the
-kickoff event begins. **Upload all three pages** — partial forms don't count.
+kickoff event begins. **Upload all three pages**. Partial forms don't count.
 A team may not participate without it.
 
 Written and digital signatures are both accepted, and so are photos of a
@@ -88,26 +88,26 @@ signed form as long as they're in focus and show the complete page.
 
 ### Download everything from your dashboard
 
-- **Tech Specs** — download HQ's technical specification from your dashboard
+- **Tech Specs:** download HQ's technical specification from your dashboard
   and send it to your editor. The San Diego requirements are also listed
   [below](#tech-specs).
-- **Title card templates** — select your team, then your project, and you'll
+- **Title card templates:** select your team, then your project, and you'll
   see the download buttons. Build your own if you prefer, as long as the
   timing and information match.
-- **Release forms** — Waiver and Release, Location Release, Music Release,
+- **Release forms:** Waiver and Release, Location Release, Music Release,
   Materials Release, and the Certification Statement. All of these are also
   available at [48hourfilm.com/documents](https://www.48hourfilm.com/documents).
 
 ### Print and pre-fill your release forms
 
 Print a **Waiver and Release Form for every single person** who will touch your
-film — cast, crew, the poster designer, the caterer, everyone. Each person
+film: cast, crew, the poster designer, the caterer, everyone. Each person
 signs their own form, and each form is two pages, so upload both. Get them
 signed *before* filming starts. This form is what protects you as team leader
 if someone gets hurt on set.
 
 If you already know your locations, get Location Releases signed ahead of time
-too. The person who signs is whoever owns or is responsible for the location —
+too. The person who signs is whoever owns or is responsible for the location:
 your friend who rents the apartment, or the restaurant owner.
 
 ### Read the rules
@@ -125,9 +125,9 @@ Pay particular attention to the **AI rules**, which have been updated. See
 A panel of industry professionals judges the films. **Best Film** is scored
 as:
 
-- **Artistic merit** (story, creativity, entertainment) — 45%
-- **Technical merit** — 30%
-- **Adherence to the assignment** — 25%
+- **Artistic merit** (story, creativity, entertainment): 45%
+- **Technical merit:** 30%
+- **Adherence to the assignment:** 25%
 
 {{< button url="https://www.48hourfilm.com/judging-and-prizes/48hfp" text="Full Judging Criteria" icon="trophy" class="wide big left" >}}
 
@@ -147,7 +147,7 @@ editing, sound design, and rendering.
 
 You **may** organize your crew, organize your cast, secure and test your
 equipment, and scout and secure locations. You can also do dry runs and
-experiments to make sure your gear and your people are ready — including a
+experiments to make sure your gear and your people are ready, including a
 [practice export](#tech-specs) so you already know your editing suite can
 hit 24p and the 2 GB limit. Just don't create anything you intend to use
 in the film.
@@ -160,7 +160,7 @@ before they arrive.
 
 ## At Kickoff
 
-Kickoff is **Friday, August 28th** — see the
+Kickoff is **Friday, August 28th**. See the
 [kickoff event page](/events/2026-08-28-kickoff/) for the venue, map, and full
 schedule.
 
@@ -183,7 +183,7 @@ schedule.
   begin by 7:30pm Sunday.
 
 Write your assignments down as soon as you get them, and photograph the sheet.
-Text them to your whole team before you leave the building — you do not want to
+Text them to your whole team before you leave the building. You do not want to
 be arguing at 2am about whether the prop was a "mug" or a "cup".
 
 ## During the Weekend
@@ -193,18 +193,18 @@ be arguing at 2am about whether the prop was a "mug" or a "cup".
 All four of these have to be in the film, before the end credits and within
 the official running time:
 
-- **Genre** — at least one of the genres you spun for.
-- **Character** — must be seen on screen, and it must be clear who they are,
+- **Genre:** at least one of the genres you spun for.
+- **Character:** must be seen on screen, and it must be clear who they are,
   either directly or by context. The name doesn't have to be spoken or shown.
   They can appear in full, in part, or in a photograph or other representation.
-- **Prop** — must be seen on screen. A picture of the prop is acceptable.
-- **Line of dialogue** — must be used **verbatim**. It can be spoken, sung, or
+- **Prop:** must be seen on screen. A picture of the prop is acceptable.
+- **Line of dialogue:** must be used **verbatim**. It can be spoken, sung, or
   written, in any language, but if it isn't obviously the required line you
   need to provide a translation.
 
 ### Footage rules
 
-Every frame of your film must contain **core footage** — footage shot or
+Every frame of your film must contain **core footage**: footage shot or
 created during the official filmmaking weekend. Animation, titles, and special
 effects count as core footage if you made them during the weekend.
 
@@ -216,7 +216,7 @@ previously submitted 48HFP film. You can't use Generative AI to create
 supporting footage.
 
 Still photos are permitted as core footage even if they weren't created during
-the weekend — but a sequence of stills used to create the illusion of motion
+the weekend, but a sequence of stills used to create the illusion of motion
 counts as supporting footage, not core.
 
 Anything you didn't create needs a **Materials Release**.
@@ -235,7 +235,7 @@ Prompt-based generative features are prohibited even inside otherwise-approved
 apps.
 
 Any AI use must be legal in your jurisdiction, limited to material you hold the
-rights to, and **disclosed on your Wrap Up Form — list every AI tool you
+rights to, and **disclosed on your Wrap Up Form: list every AI tool you
 used**. If you used AI or effects, you also need to complete the AI and Effects
 Disclosure Form. When in doubt, don't use it.
 
@@ -257,8 +257,8 @@ Disclosure Form. When in doubt, don't use it.
   original composition, regardless of fair use arguments.
 - **Safety is your responsibility.** Keep a safe set. Films that result in the
   death or mutilation of an animal may be disqualified.
-- Using SAG-AFTRA actors? There's a streamlined process and extra paperwork —
-  see the SAG-AFTRA section at the bottom of
+- Using SAG-AFTRA actors? There's a streamlined process and extra paperwork.
+  See the SAG-AFTRA section at the bottom of
   [48hourfilm.com/documents](https://www.48hourfilm.com/documents).
 
 ### Length, slates, and credits
@@ -287,8 +287,8 @@ static title card instead. The bumper is allowed by HQ, but it reads as an
 ad at the start of every film, and we would rather the screening open on
 your work.
 
-**Keep the slates silent.** Do not start your film's audio — music, dialogue,
-or sound design — until after the 2 seconds of black. If you do put music
+**Keep the slates silent.** Do not start your film's audio (music, dialogue,
+or sound design) until after the 2 seconds of black. If you do put music
 under the slates, it may be cut off.
 
 **End credits** are capped at 60 seconds. Bloopers and behind-the-scenes
@@ -308,7 +308,7 @@ Encode settings (codec, frame rate, audio, file size) are in
 ### Don't release your film early
 
 You may not distribute your film in any way before its official 48HFP premiere
-screening — no uploading it anywhere, no showing it to anyone outside your
+screening: no uploading it anywhere, no showing it to anyone outside your
 team. Make a poster and a trailer instead and share those. Trailers should be
 no longer than 48 seconds.
 
@@ -323,7 +323,7 @@ at <strong>7pm</strong>.
 </div>
 
 The clock that matters is your **checksum**. As soon as you drag your file into
-the film drop off box, the system fingerprints it — that can take a couple of
+the film drop off box, the system fingerprints it. That can take a couple of
 minutes, so don't cut it close. Once you have an on-time checksum, you're on
 time.
 
@@ -334,7 +334,7 @@ or theater equipment may be disqualified. Send this section to your editor
 Friday night.
 
 We **highly recommend a test encode** in your editing suite before the
-weekend — with dummy footage, not anything you plan to use in the film — so
+weekend, with dummy footage (not anything you plan to use in the film), so
 you already know 24p, Rec.709, and the 2 GB cap work on your machine.
 
 - **Container:** MP4, H.264 or H.265 (MP4 will be one or the other). Variable
@@ -361,7 +361,7 @@ you already know 24p, Rec.709, and the 2 GB cap work on your machine.
   Use **constant** bitrate for audio, not variable. Mix preference: dialogue
   at **-9 dB average**, max peak **-3 dB**. Uneven or peaking audio may be
   modified to protect the playback equipment.
-- **File size:** **2 GB maximum** — a hard limit on 48hourfilm.com. For a
+- **File size:** **2 GB maximum**, a hard limit on 48hourfilm.com. For a
   max-length 48 film that means a target video bitrate **under 34 Mbps**.
   Upload on **wired ethernet** if you can; wifi is the backup, a phone
   hotspot is last resort.
@@ -379,7 +379,7 @@ this page as the San Diego delivery list.
 - **Be logged in and sitting on the Film Upload page at 7pm.** If you know your
   final title, fill it in ahead of time so the only remaining step is dropping
   the file in.
-- **Use Chrome or Firefox. Do not use Safari** — it has known problems with the
+- **Use Chrome or Firefox. Do not use Safari.** It has known problems with the
   uploader.
 - **Watch your film start to finish before you drop it off.** Confirm the
   render actually plays all the way through, and that it matches the
@@ -437,24 +437,24 @@ dashboard. Your film will not be screened until we have your signed releases.
 
 Uploaded under **Production → Paperwork & Additional Content**:
 
-- **Waiver and Release Form** — one per cast and crew member, both pages of
+- **Waiver and Release Form:** one per cast and crew member, both pages of
   each.
-- **Certification Statement** — one per team. Your signature certifying that
+- **Certification Statement:** one per team. Your signature certifying that
   all creative work took place during the official competition period.
-- **Music Release Form** — one per song or composer. Skip it if you used no
+- **Music Release Form:** one per song or composer. Skip it if you used no
   music at all.
-- **Materials Release Form** — one per source. Covers sound effects,
+- **Materials Release Form:** one per source. Covers sound effects,
   photographs, stock footage used in post-production effects, video filters,
   and similar. Materials from the same source can share one form, but each
   source needs its own form, signed by whoever holds the account at that
   third-party source.
-- **Location Release Form** — one per location.
+- **Location Release Form:** one per location.
 
 Filled in online on your dashboard:
 
-- **Team Roster** — under **Pre Production → Team Roster**. This is where we
+- **Team Roster:** under **Pre Production → Team Roster**. This is where we
   get names from if you win an award, so get it right.
-- **Wrap Up Form** — under **Production → Do the Wrap Up**. This is where you
+- **Wrap Up Form:** under **Production → Do the Wrap Up**. This is where you
   give us your logline and tagline, tell us about your weekend, and disclose
   any AI use.
 
@@ -467,11 +467,11 @@ You just made a movie in 48 hours. Come celebrate it.
 
 {{< event-image event="/events/2026-08-30-wrap-party" >}}
 
-As soon as your film is uploaded, head over and join us — no ticket, no cover,
+As soon as your film is uploaded, head over and join us. No ticket, no cover,
 just show up. Bring your whole team, and bring the cast and crew who only saw
 their own piece of the weekend and haven't seen how it all came together.
 
-- **When:** Sunday, August 30th, 7pm to 10pm — right as drop off closes.
+- **When:** Sunday, August 30th, 7pm to 10pm, right as drop off closes.
 - **Where:** BJ's Brewhouse at Hazard Center, 1370 Frazee Rd, San Diego, CA
   92108, in Mission Valley.
 - **Cost:** Food and drink are no-host, so bring a card. There's no charge to
@@ -487,7 +487,7 @@ A few practical notes:
 
 - **You don't have to wait until you're completely done.** Your film needs to
   be uploaded, but your paperwork isn't due until midnight. Plenty of team
-  leaders finish their Wrap Up Form and roster from a booth — bring a laptop
+  leaders finish their Wrap Up Form and roster from a booth. Bring a laptop
   or a charged phone if you still have forms outstanding.
 - **Don't screen your film for anyone.** The
   [no early distribution rule](#dont-release-your-film-early) still applies
@@ -506,7 +506,7 @@ disqualified.
 
 1. Your film is submitted **on time**.
 2. Your film meets the **minimum and maximum length** requirements.
-3. Your film includes the **required elements** — character, prop, and line of
+3. Your film includes the **required elements**: character, prop, and line of
    dialogue.
 4. Your film is in **at least one of its assigned genres**.
 5. Your **production documents** are submitted on time.
@@ -539,10 +539,10 @@ last-minute cast, crew, and gear.
 
 ## Also Worth a Look
 
-- [Kickoff event details](/events/2026-08-28-kickoff/) — venue, map, and schedule
-- [Wrap party](/events/2026-08-30-wrap-party/) — where to find us Sunday night
-- [All upcoming events](/events) — mixers, workshops, auditions, and screenings
-- [How to participate](/get-started/) — for finding cast, crew, and volunteers
+- [Kickoff event details](/events/2026-08-28-kickoff/): venue, map, and schedule
+- [Wrap party](/events/2026-08-30-wrap-party/): where to find us Sunday night
+- [All upcoming events](/events): mixers, workshops, auditions, and screenings
+- [How to participate](/get-started/): for finding cast, crew, and volunteers
 - [Team leader premiere tickets](/go/team-tickets/)
 
 Be careful. Have fun!
