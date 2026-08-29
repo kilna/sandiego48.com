@@ -47,6 +47,10 @@ params:
   location_links: []
   location_address: 8283 Ronson Rd, San Diego, CA 92111
   location_map_url: https://maps.app.goo.gl/XjEki9B6YzDrFBtf6
+  galleries:
+    photo:
+      count: 152
+      credit: Photos by Jon Medel
   schedule:
     - start: 2026-08-28T16:30:00-07:00
       end: 2026-08-28T17:00:00-07:00
