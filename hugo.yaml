@@ -135,23 +135,32 @@ params:
       start: "2026-08-27T00:00:00-07:00"
       end: "2026-08-28T19:00:00-07:00"
       price: 198
-  countdowns:
+  countdowns: []
+    # - default: "Not long"
+    #   prefix: "Drop Off"
+    #   suffix: "Sunday by 7:30pm to be on time"
+    #   date: "2026-08-30T19:30:00-07:00"
+    #   button:
+    #     text: "Team Dashboard"
+    #     url: https://www.48hourfilm.com/dash/team
+    #     icon: register
+    #     icon_position: right
+    #- default: "Not long"
+    #  suffix: "to Competition Kickoff"
+    #  date: "2026-08-28T19:00:00-07:00"
+    #- default: "Not long"
+    #  suffix: "until $20 late sign-up increase"
+    #  date: "2026-08-26T23:59:59-07:00"
+    #  visible_from: "2026-07-22T00:00:00-07:00"
+    #  class: small
+    #  button:
+    #    text: "Register Now!"
+    #    url: /go/register
+    #    icon: register
+    #    icon_position: right
     #- default: "Not long"
     #  suffix: "until registration opens on June 8"
     #  date: "2026-06-08T00:00:00-07:00"
-    - default: "Not long"
-      suffix: "to Competition Kickoff"
-      date: "2026-08-28T19:00:00-07:00"
-    - default: "Not long"
-      suffix: "until $20 late sign-up increase"
-      date: "2026-08-26T23:59:59-07:00"
-      visible_from: "2026-07-22T00:00:00-07:00"
-      class: small
-      button:
-        text: "Register Now!"
-        url: /go/register
-        icon: register
-        icon_position: right
     #- default: "Not long"
     #  suffix: "until early bird discount registration ends"
     #  date: "2026-07-21T23:59:59-07:00"

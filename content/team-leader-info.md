@@ -190,6 +190,15 @@ be arguing at 2am about whether the prop was a "mug" or a "cup".
 
 ### Your required elements
 
+<div class="notice">
+<strong>2026 San Diego required elements</strong>
+<ul>
+<li><strong>Character:</strong> Andrea or Andre Voss — Tour Guide</li>
+<li><strong>Line:</strong> “I won't do that again.” OR “I will not do that again.”</li>
+<li><strong>Prop:</strong> a Towel</li>
+</ul>
+</div>
+
 All four of these have to be in the film, before the end credits and within
 the official running time:
 

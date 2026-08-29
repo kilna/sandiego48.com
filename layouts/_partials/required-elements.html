@@ -1,0 +1,141 @@
+<style>
+.required-elements-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em 0.75em 1.1em;
+  background: radial-gradient(
+    ellipse at bottom,
+    var(--48-purple-dark) 0%,
+    var(--48-black) 100%
+  );
+}
+
+.required-elements {
+  width: min(70rem, 94vw);
+  background: var(--48-orange-halftone);
+  border: 0.25rem solid var(--48-orange);
+  padding: 0.5rem 1rem 0.85rem;
+  border-radius: 0.5rem;
+  box-shadow: 0.5rem 0.5rem 0.5rem 0 var(--48-darken-more);
+  overflow: hidden;
+}
+
+.required-elements h2 {
+  color: var(--48-navy-dark);
+  margin: 0.15em 0 0.35em;
+  text-align: center;
+}
+
+.required-elements > p {
+  text-align: center;
+  margin: 0.35em 0;
+  line-height: 1.25em;
+}
+
+.required-elements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75em;
+  margin: 0.6em 0 0.75em;
+}
+
+.required-element {
+  background: var(--48-purple);
+  color: var(--48-white);
+  border-radius: 0.5rem;
+  padding: 0.75em 0.85em 0.9em;
+  text-align: center;
+  box-shadow: 0.25rem 0.25rem 0.5rem 0 var(--48-darken-more);
+}
+
+.required-element .label {
+  display: block;
+  color: var(--48-yellow);
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.35em;
+}
+
+.required-element .value {
+  display: block;
+  font-size: 1.05em;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.required-elements-dropoff {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.4em 0.6em;
+  background: var(--48-purple);
+  color: var(--48-white);
+  border-radius: 0.5rem;
+  padding: 0.75em 1em;
+  text-align: center;
+  box-shadow: 0.25rem 0.25rem 0.5rem 0 var(--48-darken-more);
+  --clock-color: var(--48-yellow);
+}
+
+.required-elements-dropoff .countdown {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.35em;
+  color: var(--48-white);
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+.required-elements-dropoff .countdown-prefix,
+.required-elements-dropoff .countdown-suffix {
+  color: var(--48-yellow);
+}
+
+@media all and (max-width: 768px) {
+  .required-elements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .required-elements-dropoff .countdown {
+    font-size: 1.05em;
+  }
+}
+</style>
+
+<div class="required-elements-banner visible-to-2026-08-30T19:30:00-07:00">
+<div class="required-elements index-box">
+<h2 id="elements">2026 Required Elements</h2>
+<p>Every team must include these in the film, before the end credits and within
+the official running time:</p>
+<div class="required-elements-grid">
+  <div class="required-element">
+    <span class="label">Character</span>
+    <span class="value">Andrea or Andre Voss<br/>Tour Guide</span>
+  </div>
+  <div class="required-element">
+    <span class="label">Line</span>
+    <span class="value">&ldquo;I won&rsquo;t do that again.&rdquo;<br/>OR<br/>&ldquo;I will not do that again.&rdquo;</span>
+  </div>
+  <div class="required-element">
+    <span class="label">Prop</span>
+    <span class="value">a Towel</span>
+  </div>
+</div>
+<div class="required-elements-dropoff">
+{{- partial "components/countdown.html" (dict
+    "default" "Not long"
+    "prefix" "Drop Off"
+    "suffix" "Sunday by 7:30pm to be on time"
+    "date" "2026-08-30T19:30:00-07:00"
+) -}}
+</div>
+</div>
+</div>

@@ -85,11 +85,6 @@
 }
 
 
-.index-elements {
-  background: var(--48-orange-halftone);
-  border: 0.25rem solid var(--48-orange);
-}
-
 .index-flex-boxes {
   display: flex;
   flex-wrap: wrap;
@@ -162,30 +157,14 @@ teams of <em>all skill levels, ages and demographics</em>, in over a hundred
 cities across the globe, compete to make a short film in just two days. Amateur
 and professional teams around the world make movies over a weekend, which are
 later given a premier in a real theater. <strong>San Diego's 2026 competition
-weekend begins at 7pm on Friday, August 28th.</strong></p>
+weekend is underway &mdash; films are due Sunday, August 30th by 7:30pm
+to be on time.</strong></p>
 
-<div class="index-box index-elements">
+<div class="index-box">
 <p>The weekend of the competition begins with each team assigned a <strong>random
-movie genre</strong> by chance.</p>
-<p>Each year, all teams must also include a required character, line of dialog,
-and prop. In 2025, those were:</p>
-<ul>
-<li>
-  A character name and occupation</br>
-  <i>Last year's was <b>Kim or Kevin Kolliver, Hotel Employee</b></i>
-</li>
-<li>
-  A line of dialog<br/>
-  <i>Last year's was <b>"I know it's hard, but you have to try"</b><br/>
-  ...or <b>"I know it is hard, but you have to try"</b></i>
-</li>
-<li>
-  A prop<br/>
-  <i>Last year's was <b>a slice of pizza</b>... yum!</i>
-</li>
-</ul>
-<p style="text-align: right;"><em>...and they only found out when the competition
-started!</em></p>
+movie genre</strong> by chance, plus a required character, line of dialog, and
+prop. This year's elements are posted
+<a href="#elements">at the top of the page</a>.</p>
 </div>
 
 <p><em>Completed movies are given a Hollywood-style premiere</em> in a
@@ -227,12 +206,21 @@ city winners. Later, <em>select winners are shown at the Cannes Film Festival
     "text" "Join Our Facebook Group"
     "icon" "group"
 ) }}
+<p>Prefer Discord? Join our server to chat with other San Diego 48 filmmakers
+  in real time.</p>
+{{ partial "components/button.html" (dict
+    "url" (.Scratch.Get "discord_url")
+    "class" "huge wide right"
+    "text" "Join Our Discord Server"
+    "icon" "discord"
+) }}
 <div class="bordered center orange-halftone" style="background: var(--48-orange-halftone);">
 <p>If you're on social media, make sure to connect with us!</p>
 {{ partial "components/common-buttons.html" (dict
     "button_class" "social"
     "show_text" true
     "collapse" true
+    "enable_community" false
     "Site" .Site
     "Page" .
 ) }}

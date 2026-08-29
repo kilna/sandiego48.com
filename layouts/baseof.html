@@ -11,7 +11,12 @@
 {{- partial "vars.html" . -}}
 
 {{- block "banner" . -}}
-{{ partial "countdowns.html" . -}}
+{{ partial "required-elements.html" . -}}
+{{- with .Site.Params.countdowns -}}
+{{- if gt (len .) 0 -}}
+{{ partial "countdowns.html" $ -}}
+{{- end -}}
+{{- end -}}
 {{- end -}}
   
 {{- block "title" . -}}
