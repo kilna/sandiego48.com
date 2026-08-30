@@ -1,6 +1,6 @@
 ---
 title: "Team Leader Info"
-description: "Everything a San Diego 48 Hour Film Project team leader needs to know - what to do before kickoff, what happens at kickoff, how to survive the weekend, and how to submit your film and paperwork on time."
+description: "Sunday drop-off for San Diego 48 Hour Film Project team leaders: how to submit your film on time, tech specs, paperwork due by midnight, and the wrap party."
 ---
 
 <style>
@@ -23,155 +23,25 @@ description: "Everything a San Diego 48 Hour Film Project team leader needs to k
 .event-promo:hover img {
   transform: scale(1.02);
 }
-
-.notice.check-in .sub {
-  display: block;
-  margin-top: 0.6rem;
-  font-size: 0.8em;
-  font-weight: 500;
-}
-
-.notice.check-in {
-  font-size: 1.25em;
-  line-height: 1.35;
-  padding: 1.5rem;
-  border: 0.2rem solid var(--48-purple);
-}
 </style>
 
-You signed up a team. Congratulations, you're a team leader! This page walks
-through everything you're responsible for: what to have ready before kickoff,
-what happens at the kickoff event, the rules you need to keep in mind during
-the weekend, and how to get your film and paperwork submitted on time.
+It's Sunday. The clock stops at **7pm**, and your film upload must
+**begin** by **7:30pm**. This page is everything you still need: required
+elements, how to encode and drop off, paperwork due by midnight, and where
+to find us at the wrap party.
 
-Almost everything you do as a team leader happens on your team dashboard at
-[48hourfilm.com](https://www.48hourfilm.com/login). Log in and poke around
-before the weekend so you're not learning the interface at 7pm on Sunday.
+Film drop off and paperwork both happen on your team dashboard at
+[48hourfilm.com](https://www.48hourfilm.com/login).
 
 {{< button url="https://www.48hourfilm.com/dash/team" text="Log Into Your Team Dashboard" icon="register" class="wide big left" >}}
 
 <div class="notice">
-🎬 Two deadlines matter more than anything else: your Team Leader Agreement
-must be uploaded <em>before kickoff starts</em>, and your film upload must
-<em>begin</em> by 7:30pm on Sunday.
+🎬 Your upload must have <strong>started</strong> by <strong>7:30pm on
+Sunday</strong> to be on time and eligible for awards. Aim to be dropping off
+at <strong>7pm</strong>.
 </div>
 
-## Before Kickoff
-
-### Sign and upload your Team Leader Agreement
-
-This is the one piece of paperwork with a deadline *before* the competition
-starts. Download the Team Leader Agreement from your dashboard under
-**Pre Production → Pre Kickoff Paperwork**, sign it, and upload it before the
-kickoff event begins. **Upload all three pages**. Partial forms don't count.
-A team may not participate without it.
-
-Written and digital signatures are both accepted, and so are photos of a
-signed form as long as they're in focus and show the complete page.
-
-### Download everything from your dashboard
-
-- **Tech Specs:** download HQ's technical specification from your dashboard
-  and send it to your editor. The San Diego requirements are also listed
-  [below](#tech-specs).
-- **Title card templates:** select your team, then your project, and you'll
-  see the download buttons. Build your own if you prefer, as long as the
-  timing and information match.
-- **Release forms:** Waiver and Release, Location Release, Music Release,
-  Materials Release, and the Certification Statement. All of these are also
-  available at [48hourfilm.com/documents](https://www.48hourfilm.com/documents).
-
-### Print and pre-fill your release forms
-
-Print a **Waiver and Release Form for every single person** who will touch your
-film: cast, crew, the poster designer, the caterer, everyone. Each person
-signs their own form, and each form is two pages, so upload both. Get them
-signed *before* filming starts. This form is what protects you as team leader
-if someone gets hurt on set.
-
-If you already know your locations, get Location Releases signed ahead of time
-too. The person who signs is whoever owns or is responsible for the location:
-your friend who rents the apartment, or the restaurant owner.
-
-### Read the rules
-
-Read them before the weekend, not during it. There is no substitute for this.
-
-{{< button url="https://www.48hourfilm.com/filmmaking-rules" text="Filmmaking Rules" icon="film" class="wide big left" >}}
-{{< button url="https://www.48hourfilm.com/competition-rules" text="Competition Rules" icon="info" class="wide big left" >}}
-
-Pay particular attention to the **AI rules**, which have been updated. See
-[Using AI in your film](#using-ai-in-your-film) below.
-
-### Know What Wins
-
-A panel of industry professionals judges the films. **Best Film** is scored
-as:
-
-- **Artistic merit** (story, creativity, entertainment): 45%
-- **Technical merit:** 30%
-- **Adherence to the assignment:** 25%
-
-{{< button url="https://www.48hourfilm.com/judging-and-prizes/48hfp" text="Full Judging Criteria" icon="trophy" class="wide big left" >}}
-
-Other awards typically include Best Directing, Best Writing, acting awards,
-and Best Use of the required elements. The Audience Award is voted at the
-premiere screenings, and **late films are still eligible for it**.
-
-The Best Film winner screens at Filmapalooza, the official 48HFP awards
-weekend, and receives a trophy there. Full details are on
-[48hourfilm.com/judging-and-prizes](https://www.48hourfilm.com/judging-and-prizes/48hfp).
-
-### Know what you can and can't do in advance
-
-You may **not** do any creative work before the clock starts. That includes
-writing the script, casting, rehearsing, costume and set design, shooting,
-editing, sound design, and rendering.
-
-You **may** organize your crew, organize your cast, secure and test your
-equipment, and scout and secure locations. You can also do dry runs and
-experiments to make sure your gear and your people are ready, including a
-[practice export](#tech-specs) so you already know your editing suite can
-hit 24p and the 2 GB limit. Just don't create anything you intend to use
-in the film.
-
-### Send a representative to kickoff
-
-Every team **must** have someone at the kickoff event. If you can't be there
-yourself, send someone you trust, and make sure your agreement is uploaded
-before they arrive.
-
-## At Kickoff
-
-Kickoff is **Friday, August 28th**. See the
-[kickoff event page](/events/2026-08-28-kickoff/) for the venue, map, and full
-schedule.
-
-{{< event-image event="/events/2026-08-28-kickoff" >}}
-
-<div class="notice check-in">
-🎬 Arrive between <strong>4 and 4:30pm</strong>. You must be checked in by
-<strong>5pm</strong>.
-<span class="sub">If you are not checked in by 5pm, you may miss the <b>Wheel of Genres</b> for your group; if so you may end up losing time by picking genres after 7pm. Your Team Leader Agreement needs to already be uploaded when you check in.</span>
-</div>
-
-- Once all teams are checked in, teams spin for their
-  [genres](https://www.48hourfilm.com/genres) on the Wheel of Genres. Your
-  film must be in at least one of the genres you spin for. You're welcome to
-  combine it with other genres, but it has to be clear to the judges that your
-  film is in its assigned genre.
-- Leading up to 7pm, teams receive their three other required elements: a
-  **character** (name and occupation), a **prop**, and a **line of dialogue**.
-- **The clock starts at 7pm Friday and stops at 7pm Sunday.** Your upload must
-  begin by 7:30pm Sunday.
-
-Write your assignments down as soon as you get them, and photograph the sheet.
-Text them to your whole team before you leave the building. You do not want to
-be arguing at 2am about whether the prop was a "mug" or a "cup".
-
-## During the Weekend
-
-### Your required elements
+## Required Elements
 
 <div class="notice">
 <strong>2026 San Diego required elements</strong>
@@ -194,7 +64,7 @@ the official running time:
   written, in any language, but if it isn't obviously the required line you
   need to provide a translation.
 
-### Footage rules
+## Footage, AI, and Rights
 
 Every frame of your film must contain **core footage**: footage shot or
 created during the official filmmaking weekend. Animation, titles, and special
@@ -253,7 +123,7 @@ Disclosure Form. When in doubt, don't use it.
   See the SAG-AFTRA section at the bottom of
   [48hourfilm.com/documents](https://www.48hourfilm.com/documents).
 
-### Length, slates, and credits
+## Length, Slates, and Credits
 
 The start of the file is **17 seconds of required slates**, then the film,
 then optional end credits. With a max-length film and a full minute of
@@ -322,12 +192,7 @@ time.
 ### Tech specs
 
 Encode to these specs before you drop off. A file that will not play on 48HFP
-or theater equipment may be disqualified. Send this section to your editor
-Friday night.
-
-We **highly recommend a test encode** in your editing suite before the
-weekend, with dummy footage (not anything you plan to use in the film), so
-you already know 24p, Rec.709, and the 2 GB cap work on your machine.
+or theater equipment may be disqualified.
 
 - **Container:** MP4, H.264 or H.265 (MP4 will be one or the other). Variable
   or constant bitrate is fine for video.
@@ -507,7 +372,7 @@ disqualified.
 The Audience Award, Best Poster, and Best Trailer are not subject to these
 requirements.
 
-## Getting Help During the Weekend
+## Getting Help
 
 <div class="notice">
 🎬 <strong>Do not email info@48hourfilm.com during the competition weekend.</strong>
@@ -531,10 +396,8 @@ last-minute cast, crew, and gear.
 
 ## Also Worth a Look
 
-- [Kickoff event details](/events/2026-08-28-kickoff/): venue, map, and schedule
-- [Wrap party](/events/2026-08-30-wrap-party/): where to find us Sunday night
+- [Wrap party](/events/2026-08-30-wrap-party/): where to find us tonight
 - [All upcoming events](/events): mixers, workshops, auditions, and screenings
-- [How to participate](/get-started/): for finding cast, crew, and volunteers
 - [Team leader premiere tickets](/go/team-tickets/)
 
 Be careful. Have fun!
