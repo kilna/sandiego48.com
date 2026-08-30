@@ -2,7 +2,7 @@
 title: Group B Premiere Screening
 type: events
 summary: >
-  A Hollywood-style premiere of this year's San Diego 48 Hour Film Project films. Film titles will be added after the competition weekend.
+  A Hollywood-style premiere of this year's San Diego 48 Hour Film Project films. Drawn genres are listed below; film titles will be added after drop-off.
 date: 2026-09-21T21:00:00-07:00
 publishDate: 2026-08-29T22:00:00-07:00
 draft: false
@@ -24,28 +24,27 @@ params:
   schedule:
     - start: 2026-09-21T21:00:00-07:00
       name: Ticket Check-in and Purple Carpet
-      details: Have your TixTree QR code ready; film titles and ticket details are pending review.
+      details: Have your TixTree QR code ready; ticket details are pending review.
     - start: 2026-09-21T21:00:00-07:00
       end: 2026-09-21T23:59:59-07:00
       name: Films Screened
   notes:
-    - Film titles and TixTree ticket details are pending review and will be added after competition weekend.
+    - Film titles and TixTree ticket details will be added after drop-off.
     - Tickets will be sold in advance. There will be no on-site ticket sales.
     - Bring your style! You are coming to a film premiere — dress to impress.
 ---
-Step onto the purple carpet, then head into a theater packed with filmmakers, friends, and fans. Film titles are intentionally marked as pending until teams submit their completed films.
+Step onto the purple carpet, then head into a theater packed with filmmakers, friends, and fans. Drawn genres are listed with each team; film titles will be added after drop-off.
 
 ## Screening Group B
 
-- Axiomatic Twist — film title TBD
-- Cimitoro Productions — film title TBD
-- Dirty Mike and the Boys Productions — film title TBD
-- Golden Hour Collective — film title TBD
-- Jake Byrd Productions — film title TBD
-- Liminal Films Studio — film title TBD
-- Metal Pixel Foundry — film title TBD
-- Monkey's on the Bed — film title TBD
-- More Than Perfect — film title TBD
-- Night Owls — film title TBD
-- No Umbrella Studios — film title TBD
-- Salucita Films — film title TBD
+- Axiomatic Twist — Mockumentary + Family Film
+- Cimitoro Productions — Action / Adventure + Single Room Movie
+- Dirty Mike and the Boys Productions — Sports Film / Game Film + Road Movie
+- Golden Hour Collective — Musical + Romantic Comedy
+- Jake Byrd Productions — Drama + Utopian or Dystopian
+- Metal Pixel Foundry — Fantasy + Moral Dilemma
+- Monkey's on the Bed — Thriller / Suspense + Workplace Film
+- More Than Perfect — Dark Comedy + Vacation / Holiday Film
+- Night Owls — Film de Femme + Food Film
+- No Umbrella Studios — Film Noir + Inspirational Film
+- Salucita Films — Comedy + Heist

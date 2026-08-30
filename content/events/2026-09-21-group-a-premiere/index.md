@@ -2,7 +2,7 @@
 title: Group A Premiere Screening
 type: events
 summary: >
-  A Hollywood-style premiere of this year's San Diego 48 Hour Film Project films. Film titles will be added after the competition weekend.
+  A Hollywood-style premiere of this year's San Diego 48 Hour Film Project films. Drawn genres are listed below; film titles will be added after drop-off.
 date: 2026-09-21T18:00:00-07:00
 publishDate: 2026-08-29T22:00:00-07:00
 draft: false
@@ -24,28 +24,28 @@ params:
   schedule:
     - start: 2026-09-21T18:00:00-07:00
       name: Ticket Check-in and Purple Carpet
-      details: Have your TixTree QR code ready; film titles and ticket details are pending review.
+      details: Have your TixTree QR code ready; ticket details are pending review.
     - start: 2026-09-21T18:00:00-07:00
       end: 2026-09-21T21:00:00-07:00
       name: Films Screened
   notes:
-    - Film titles and TixTree ticket details are pending review and will be added after competition weekend.
+    - Film titles and TixTree ticket details will be added after drop-off.
     - Tickets will be sold in advance. There will be no on-site ticket sales.
     - Bring your style! You are coming to a film premiere — dress to impress.
 ---
-Step onto the purple carpet, then head into a theater packed with filmmakers, friends, and fans. Film titles are intentionally marked as pending until teams submit their completed films.
+Step onto the purple carpet, then head into a theater packed with filmmakers, friends, and fans. Drawn genres are listed with each team; film titles will be added after drop-off.
 
 ## Screening Group A
 
-- The 2880 Minute Movie Makers — film title TBD
-- Almost Good Films X Jabronie Pictures — film title TBD
-- And Company! Productions — film title TBD
-- Carlling Productions — film title TBD
-- Crab Factory — film title TBD
-- House of Kirby — film title TBD
-- iBuddy Productions — film title TBD
-- IntelleXual Entertainment — film title TBD
-- Made by MHADE — film title TBD
-- Neuro Spice Brigade — film title TBD
-- Steele Canyon Studios — film title TBD
-- Team Roller Pictures — film title TBD
+- The 2880 Minute Movie Makers — Drama + Workplace Film
+- Almost Good Films X Jabronie Pictures — Film de Femme + Silent Film
+- And Company! Productions — Film Noir + Single Room Movie
+- Carlling Productions — Family Film + Horror
+- Crab Factory — Dark Comedy + Vacation / Holiday Film
+- House of Kirby — Road Movie + Buddy Film
+- iBuddy Productions — Fish Out of Water + Moral Dilemma
+- IntelleXual Entertainment — Thriller / Suspense + Utopian or Dystopian
+- Made by MHADE — Sci Fi + Misunderstanding
+- Neuro Spice Brigade — Fantasy + Food Film
+- Steele Canyon Studios — Mockumentary + Revenge
+- Team Roller Pictures — Romantic Comedy + Romance

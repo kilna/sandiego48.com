@@ -2,7 +2,7 @@
 title: Group C Premiere Screening
 type: events
 summary: >
-  A Hollywood-style premiere of this year's San Diego 48 Hour Film Project films. Film titles will be added after the competition weekend.
+  A Hollywood-style premiere of this year's San Diego 48 Hour Film Project films. Drawn genres are listed below; film titles will be added after drop-off.
 date: 2026-09-22T18:00:00-07:00
 publishDate: 2026-08-29T22:00:00-07:00
 draft: false
@@ -24,29 +24,29 @@ params:
   schedule:
     - start: 2026-09-22T18:00:00-07:00
       name: Ticket Check-in and Purple Carpet
-      details: Have your TixTree QR code ready; film titles and ticket details are pending review.
+      details: Have your TixTree QR code ready; ticket details are pending review.
     - start: 2026-09-22T18:00:00-07:00
       end: 2026-09-22T21:00:00-07:00
       name: Films Screened
   notes:
-    - Film titles and TixTree ticket details are pending review and will be added after competition weekend.
+    - Film titles and TixTree ticket details will be added after drop-off.
     - Tickets will be sold in advance. There will be no on-site ticket sales.
     - Bring your style! You are coming to a film premiere — dress to impress.
 ---
-Step onto the purple carpet, then head into a theater packed with filmmakers, friends, and fans. Film titles are intentionally marked as pending until teams submit their completed films.
+Step onto the purple carpet, then head into a theater packed with filmmakers, friends, and fans. Drawn genres are listed with each team; film titles will be added after drop-off.
 
 ## Screening Group C
 
-- All Kinds of Shoot — film title TBD
-- All Of Us Productions — film title TBD
-- Argos Productions — film title TBD
-- blackhat media — film title TBD
-- DAMPT Productions — film title TBD
-- Dog Jaw Productions — film title TBD
-- Film Fanatic Friends — film title TBD
-- Film Logic Studios — film title TBD
-- Light Effects Film — film title TBD
-- Lime Street Entertainment — film title TBD
-- Skyfall Productions — film title TBD
-- Socks and Hoses — film title TBD
-- Tiny Hippo Films — film title TBD
+- All Kinds of Shoot — Mockumentary + Misunderstanding
+- All Of Us Productions — Thriller / Suspense + Moral Dilemma
+- Argos Productions — Road Movie + Family Film
+- blackhat media — Action / Adventure + Food Film
+- DAMPT Productions — Comedy + Revenge
+- Dog Jaw Productions — Fish Out of Water + Single Room Movie
+- Film Fanatic Friends — Fantasy + Inspirational Film
+- Film Logic Studios — Buddy Film + Dark Comedy
+- Light Effects Film — Horror + Workplace Film
+- Lime Street Entertainment — Film de Femme + Sports Film / Game Film
+- Skyfall Productions — Drama + Silent Film
+- Socks and Hoses — Film Noir + Heist
+- Tiny Hippo Films — Sci Fi + Vacation / Holiday Film

@@ -2,7 +2,7 @@
 title: Group D Premiere Screening
 type: events
 summary: >
-  A Hollywood-style premiere of this year's San Diego 48 Hour Film Project films. Film titles will be added after the competition weekend.
+  A Hollywood-style premiere of this year's San Diego 48 Hour Film Project films. Drawn genres are listed below; film titles will be added after drop-off.
 date: 2026-09-22T21:00:00-07:00
 publishDate: 2026-08-29T22:00:00-07:00
 draft: false
@@ -24,28 +24,29 @@ params:
   schedule:
     - start: 2026-09-22T21:00:00-07:00
       name: Ticket Check-in and Purple Carpet
-      details: Have your TixTree QR code ready; film titles and ticket details are pending review.
+      details: Have your TixTree QR code ready; ticket details are pending review.
     - start: 2026-09-22T21:00:00-07:00
       end: 2026-09-22T23:59:59-07:00
       name: Films Screened
   notes:
-    - Film titles and TixTree ticket details are pending review and will be added after competition weekend.
+    - Film titles and TixTree ticket details will be added after drop-off.
     - Tickets will be sold in advance. There will be no on-site ticket sales.
     - Bring your style! You are coming to a film premiere — dress to impress.
 ---
-Step onto the purple carpet, then head into a theater packed with filmmakers, friends, and fans. Film titles are intentionally marked as pending until teams submit their completed films.
+Step onto the purple carpet, then head into a theater packed with filmmakers, friends, and fans. Drawn genres are listed with each team; film titles will be added after drop-off.
 
 ## Screening Group D
 
-- Alchemist Lions — film title TBD
-- Bad Betsy Returns — film title TBD
-- Bitter Dose Productions — film title TBD
-- Breakfast for Dinner — film title TBD
-- Digital Lemonade Stand — film title TBD
-- Ecliptic Entertainment — film title TBD
-- Goon Squad — film title TBD
-- Maxchroma — film title TBD
-- Pseudo Rational — film title TBD
-- Seym Productions — film title TBD
-- The Syndicate — film title TBD
-- To Be Determined — film title TBD
+- Alchemist Lions — Fantasy + Single Room Movie
+- Bad Betsy Returns — Mockumentary + Inspirational Film
+- Bitter Dose Productions — Road Movie + Romantic Comedy
+- Breakfast for Dinner — Fish Out of Water + Workplace Film
+- Digital Lemonade Stand — Drama + Sports Film / Game Film
+- Ecliptic Entertainment — Film de Femme + Revenge
+- Goon Squad — Thriller / Suspense + Family Film
+- Liminal Films Studio — Fish Out of Water + Silent Film
+- Maxchroma — Horror + Vacation / Holiday Film
+- Pseudo Rational — Dark Comedy + Moral Dilemma
+- Seym Productions — Sci Fi + Utopian or Dystopian
+- The Syndicate — Musical + Food Film
+- To Be Determined — Film Noir + Buddy Film
