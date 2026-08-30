@@ -12,6 +12,7 @@ publishDate: 2026-08-14T12:00:00-07:00
 draft: false
 params:
   subtype: screening-series
+  featured: false
   date_only: true
   add_to_calendar: true
   event_start: 2026-09-21T00:00:00-07:00

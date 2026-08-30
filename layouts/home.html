@@ -85,26 +85,8 @@
 }
 
 
-.index-flex-boxes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  margin: 1em 0;
-}
-
-.index-flex-boxes > div {
-  flex: 1 1 300px;
-  background: var(--48-orange-halftone-flex);
-  border: 0.1rem solid var(--48-purple);
-  padding: 0.5em 1em;
-  border-radius: 0.5rem;
-  font-weight: 400;
-  box-shadow: 0.5rem 0.5rem 0.5rem 0 var(--48-darken-more);
-  overflow: hidden;
-}
-
 /* Force left alignment for narrow paragraphs */
-.index, .index-flex-boxes > div, .index-box {
+.index, .index-box {
   container-type: inline-size;
 }
 
@@ -180,13 +162,6 @@ city winners. Later, <em>select winners are shown at the Cannes Film Festival
 (yes, <strong>that</strong> Cannes) Short Film Corner</em>.</p>
 
 <hr class="clear"/>
-{{ with .Site.GetPage "/get-started" -}}
-<section id="get-started">
-  {{ .Content }}
-</section>
-{{- end }}
-
-<hr/>
 <h2>Get Connected, Stay In The Loop!</h2>
 <p>Join our newsletter to get the latest news and updates about the 48! We
   announce all coming events, special promotions, and anything else 48-related

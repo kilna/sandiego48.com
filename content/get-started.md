@@ -56,8 +56,6 @@ description: "Learn how to get involved in the San Diego 48 Hour Film Project - 
 
 <div class="index">
 
-<h1>How to Participate in the San Diego 48</h1>
-
 <div class="index-flex-boxes">
   <div>
     <h3>Could you be a Team Leader?</h3>

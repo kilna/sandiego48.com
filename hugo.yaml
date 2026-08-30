@@ -211,13 +211,6 @@ menus:
     params:
       target: _self
       icon: question
-  - identifier: get-started
-    weight: 2
-    name: Get Started
-    url: /#get-started
-    params:
-      target: _self
-      icon: star
   - identifier: events
     weight: 3
     name: Events
@@ -225,13 +218,6 @@ menus:
     params:
       target: _self
       icon: calendar
-  - identifier: news
-    weight: 4
-    name: News
-    url: /news
-    params:
-      target: _self
-      icon: newsletter
   # Team Leader Info is email-only; keep the page live but off the public menu.
   # - identifier: team-leader-info
   #   weight: 5
@@ -262,14 +248,15 @@ menus:
   #  params:
   #    target: _self
   #    icon: film
-  - identifier: register
-    weight: 20
-    name: Sign Up Your Team
-    url: /go/register
-    params:
-      target: _self
-      class: "glow pulse"
-      icon: register
+  # Registration is closed for the current cycle; keep the go link live.
+  # - identifier: register
+  #   weight: 20
+  #   name: Sign Up Your Team
+  #   url: /go/register
+  #   params:
+  #     target: _self
+  #     class: "glow pulse"
+  #     icon: register
   #- identifier: tickets
   #  weight: 20
   #  name: Get Tickets
@@ -283,6 +270,20 @@ menus:
     name: Subscribe to Newsletter
     url: /go/newsletter
   footer:
+  - identifier: news
+    weight: 30
+    name: News
+    url: /news
+    params:
+      target: _self
+      icon: newsletter
+  - identifier: get-started
+    weight: 32
+    name: Get Started
+    url: /get-started
+    params:
+      target: _self
+      icon: star
   - identifier: people
     weight: 35
     name: SD 48 Talent
