@@ -37,15 +37,15 @@ Step onto the purple carpet, then head into a theater packed with filmmakers, fr
 
 ## Screening Group E
 
-- Cacti — Film de Femme + Sports Film / Game Film
-- Cane Toad Productions — Musical + Family Film
-- Crazy Turtles — Sci Fi + Silent Film
-- Fade In — Film Noir + Food Film
-- Fri-yay Films — Mockumentary + Vacation / Holiday Film
-- Next Sunday A.D. — Horror + Single Room Movie
-- Night Shift — Thriller / Suspense + Workplace Film
-- Praxis Studios — Action / Adventure + Revenge
-- Rorbach with Clark — Romance + Romantic Comedy
-- Sera — Fantasy + Moral Dilemma
-- Seriously Ridiculous — Road Movie + Heist
-- state of flux — Comedy + Utopian or Dystopian
+- Cacti — Film de Femme and/or Sports Film / Game Film
+- Cane Toad Productions — Musical and/or Family Film
+- Crazy Turtles — Sci Fi and/or Silent Film
+- Fade In — Film Noir and/or Food Film
+- Fri-yay Films — Mockumentary and/or Vacation / Holiday Film
+- Next Sunday A.D. — Horror and/or Single Room Movie
+- Night Shift — Thriller / Suspense and/or Workplace Film
+- Praxis Studios — Action / Adventure and/or Revenge
+- Rorbach with Clark — Romance and/or Romantic Comedy
+- Sera — Fantasy and/or Moral Dilemma
+- Seriously Ridiculous — Road Movie and/or Heist
+- state of flux — Comedy and/or Utopian or Dystopian

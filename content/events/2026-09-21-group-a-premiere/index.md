@@ -37,15 +37,15 @@ Step onto the purple carpet, then head into a theater packed with filmmakers, fr
 
 ## Screening Group A
 
-- The 2880 Minute Movie Makers — Drama + Workplace Film
-- Almost Good Films X Jabronie Pictures — Film de Femme + Silent Film
-- And Company! Productions — Film Noir + Single Room Movie
-- Carlling Productions — Family Film + Horror
-- Crab Factory — Dark Comedy + Vacation / Holiday Film
-- House of Kirby — Road Movie + Buddy Film
-- iBuddy Productions — Fish Out of Water + Moral Dilemma
-- IntelleXual Entertainment — Thriller / Suspense + Utopian or Dystopian
-- Made by MHADE — Sci Fi + Misunderstanding
-- Neuro Spice Brigade — Fantasy + Food Film
-- Steele Canyon Studios — Mockumentary + Revenge
-- Team Roller Pictures — Romantic Comedy + Romance
+- The 2880 Minute Movie Makers — Drama and/or Workplace Film
+- Almost Good Films X Jabronie Pictures — Film de Femme and/or Silent Film
+- And Company! Productions — Film Noir and/or Single Room Movie
+- Carlling Productions — Family Film and/or Horror
+- Crab Factory — Dark Comedy and/or Vacation / Holiday Film
+- House of Kirby — Road Movie and/or Buddy Film
+- iBuddy Productions — Fish Out of Water and/or Moral Dilemma
+- IntelleXual Entertainment — Thriller / Suspense and/or Utopian or Dystopian
+- Made by MHADE — Sci Fi and/or Misunderstanding
+- Neuro Spice Brigade — Fantasy and/or Food Film
+- Steele Canyon Studios — Mockumentary and/or Revenge
+- Team Roller Pictures — Romantic Comedy and/or Romance

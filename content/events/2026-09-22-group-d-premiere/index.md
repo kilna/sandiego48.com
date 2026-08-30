@@ -37,16 +37,16 @@ Step onto the purple carpet, then head into a theater packed with filmmakers, fr
 
 ## Screening Group D
 
-- Alchemist Lions — Fantasy + Single Room Movie
-- Bad Betsy Returns — Mockumentary + Inspirational Film
-- Bitter Dose Productions — Road Movie + Romantic Comedy
-- Breakfast for Dinner — Fish Out of Water + Workplace Film
-- Digital Lemonade Stand — Drama + Sports Film / Game Film
-- Ecliptic Entertainment — Film de Femme + Revenge
-- Goon Squad — Thriller / Suspense + Family Film
-- Liminal Films Studio — Fish Out of Water + Silent Film
-- Maxchroma — Horror + Vacation / Holiday Film
-- Pseudo Rational — Dark Comedy + Moral Dilemma
-- Seym Productions — Sci Fi + Utopian or Dystopian
-- The Syndicate — Musical + Food Film
-- To Be Determined — Film Noir + Buddy Film
+- Alchemist Lions — Fantasy and/or Single Room Movie
+- Bad Betsy Returns — Mockumentary and/or Inspirational Film
+- Bitter Dose Productions — Road Movie and/or Romantic Comedy
+- Breakfast for Dinner — Fish Out of Water and/or Workplace Film
+- Digital Lemonade Stand — Drama and/or Sports Film / Game Film
+- Ecliptic Entertainment — Film de Femme and/or Revenge
+- Goon Squad — Thriller / Suspense and/or Family Film
+- Liminal Films Studio — Fish Out of Water and/or Silent Film
+- Maxchroma — Horror and/or Vacation / Holiday Film
+- Pseudo Rational — Dark Comedy and/or Moral Dilemma
+- Seym Productions — Sci Fi and/or Utopian or Dystopian
+- The Syndicate — Musical and/or Food Film
+- To Be Determined — Film Noir and/or Buddy Film

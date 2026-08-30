@@ -37,16 +37,16 @@ Step onto the purple carpet, then head into a theater packed with filmmakers, fr
 
 ## Screening Group C
 
-- All Kinds of Shoot — Mockumentary + Misunderstanding
-- All Of Us Productions — Thriller / Suspense + Moral Dilemma
-- Argos Productions — Road Movie + Family Film
-- blackhat media — Action / Adventure + Food Film
-- DAMPT Productions — Comedy + Revenge
-- Dog Jaw Productions — Fish Out of Water + Single Room Movie
-- Film Fanatic Friends — Fantasy + Inspirational Film
-- Film Logic Studios — Buddy Film + Dark Comedy
-- Light Effects Film — Horror + Workplace Film
-- Lime Street Entertainment — Film de Femme + Sports Film / Game Film
-- Skyfall Productions — Drama + Silent Film
-- Socks and Hoses — Film Noir + Heist
-- Tiny Hippo Films — Sci Fi + Vacation / Holiday Film
+- All Kinds of Shoot — Mockumentary and/or Misunderstanding
+- All Of Us Productions — Thriller / Suspense and/or Moral Dilemma
+- Argos Productions — Road Movie and/or Family Film
+- blackhat media — Action / Adventure and/or Food Film
+- DAMPT Productions — Comedy and/or Revenge
+- Dog Jaw Productions — Fish Out of Water and/or Single Room Movie
+- Film Fanatic Friends — Fantasy and/or Inspirational Film
+- Film Logic Studios — Buddy Film and/or Dark Comedy
+- Light Effects Film — Horror and/or Workplace Film
+- Lime Street Entertainment — Film de Femme and/or Sports Film / Game Film
+- Skyfall Productions — Drama and/or Silent Film
+- Socks and Hoses — Film Noir and/or Heist
+- Tiny Hippo Films — Sci Fi and/or Vacation / Holiday Film

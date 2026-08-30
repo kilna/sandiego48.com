@@ -37,14 +37,14 @@ Step onto the purple carpet, then head into a theater packed with filmmakers, fr
 
 ## Screening Group B
 
-- Axiomatic Twist — Mockumentary + Family Film
-- Cimitoro Productions — Action / Adventure + Single Room Movie
-- Dirty Mike and the Boys Productions — Sports Film / Game Film + Road Movie
-- Golden Hour Collective — Musical + Romantic Comedy
-- Jake Byrd Productions — Drama + Utopian or Dystopian
-- Metal Pixel Foundry — Fantasy + Moral Dilemma
-- Monkey's on the Bed — Thriller / Suspense + Workplace Film
-- More Than Perfect — Dark Comedy + Vacation / Holiday Film
-- Night Owls — Film de Femme + Food Film
-- No Umbrella Studios — Film Noir + Inspirational Film
-- Salucita Films — Comedy + Heist
+- Axiomatic Twist — Mockumentary and/or Family Film
+- Cimitoro Productions — Action / Adventure and/or Single Room Movie
+- Dirty Mike and the Boys Productions — Sports Film / Game Film and/or Road Movie
+- Golden Hour Collective — Musical and/or Romantic Comedy
+- Jake Byrd Productions — Drama and/or Utopian or Dystopian
+- Metal Pixel Foundry — Fantasy and/or Moral Dilemma
+- Monkey's on the Bed — Thriller / Suspense and/or Workplace Film
+- More Than Perfect — Dark Comedy and/or Vacation / Holiday Film
+- Night Owls — Film de Femme and/or Food Film
+- No Umbrella Studios — Film Noir and/or Inspirational Film
+- Salucita Films — Comedy and/or Heist
