@@ -23,6 +23,13 @@ description: "Sunday drop-off for San Diego 48 Hour Film Project team leaders: h
 .event-promo:hover img {
   transform: scale(1.02);
 }
+
+.event-promo.buttons img {
+  width: auto;
+  max-width: min(100%, 22rem);
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>
 
 It's Sunday. The clock stops at **7pm**, and your film upload must
@@ -324,15 +331,21 @@ You just made a movie in 48 hours. Come celebrate it.
 
 {{< event-image event="/events/2026-08-30-wrap-party" >}}
 
-As soon as your film is uploaded, head over and join us. No ticket, no cover,
-just show up. Bring your whole team, and bring the cast and crew who only saw
-their own piece of the weekend and haven't seen how it all came together.
+We'll be at BJ's from **6pm onward**. No ticket, no cover, just show up. Bring
+your whole team, and bring the cast and crew who only saw their own piece of
+the weekend and haven't seen how it all came together.
 
-- **When:** Sunday, August 30th, 7pm to 10pm, right as drop off closes.
+Show up and get a free **I MADE A MOVIE!** button.
+
+<a class="event-promo buttons" href="/events/2026-08-30-wrap-party/">
+<img src="/events/2026-08-30-wrap-party/i-made-a-movie-buttons.jpg" alt="A pile of I MADE A MOVIE pinback buttons from the San Diego 48 Hour Film Project">
+</a>
+
+- **When:** Sunday, August 30th, from 6pm onward
 - **Where:** BJ's Brewhouse at Hazard Center, 1370 Frazee Rd, San Diego, CA
   92108, in Mission Valley.
 - **Cost:** Food and drink are no-host, so bring a card. There's no charge to
-  attend.
+  attend. The button is free.
 
 This is the best part of the weekend for a lot of people. It's where teams
 trade war stories about the location that fell through at midnight, the actor

@@ -13,7 +13,7 @@ params:
   image_wide: 2026-wrap-party-horizontal.png
   image_square: 2026-wrap-party-square.png
   add_to_calendar: true
-  event_start: 2026-08-30T19:00:00-07:00
+  event_start: 2026-08-30T18:00:00-07:00
   event_end: 2026-08-30T22:00:00-07:00
   location_name: BJ's Brewhouse Hazard Center
   location_details: A family-friendly restaurant and brewery in Mission Valley
@@ -31,7 +31,8 @@ params:
   location_address: 1370 Frazee Rd, San Diego, CA 92108
   location_map_url: https://maps.app.goo.gl/CL4Qzp6fdcA21dBS6
   notes:
-    - Come when you've submitted your film — online dropoff must be in by 7:30pm to be on time / eligible.
+    - We'll be there from 6pm onward. Come when you've submitted your film — online dropoff must be in by 7:30pm to be on time / eligible.
+    - Show up and grab a free I MADE A MOVIE! button.
     - Food and drink are no-host.
   org_info: |
     ### About the 48 Hour Film Project
@@ -42,8 +43,12 @@ params:
     San Diego's 2026 competition weekend is August 28-30th.
 ---
 Celebrate the completion of your film with your team, and tell war stories to
-your fellow filmmakers over food and drink. Join us when you've submitted your
-film on Sunday, August 30th.
+your fellow filmmakers over food and drink. We'll be at BJ's from **6pm
+onward** on Sunday, August 30th.
+
+Show up and grab a free **I MADE A MOVIE!** button.
+
+<img src="i-made-a-movie-buttons.jpg" alt="A pile of I MADE A MOVIE pinback buttons from the San Diego 48 Hour Film Project" style="display:block;max-width:min(100%,22rem);height:auto;margin:1.5rem auto;border-radius:0.5rem">
 
 Online dropoff is due by 7:30pm to be on time and eligible — then come raise a
 glass.
