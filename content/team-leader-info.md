@@ -329,8 +329,6 @@ Blank forms and a full checklist live at
 
 You just made a movie in 48 hours. Come celebrate it.
 
-{{< event-image event="/events/2026-08-30-wrap-party" >}}
-
 We'll be at BJ's from **6pm onward**. No ticket, no cover, just show up. Bring
 your whole team, and bring the cast and crew who only saw their own piece of
 the weekend and haven't seen how it all came together.
