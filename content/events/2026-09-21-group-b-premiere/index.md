@@ -40,7 +40,7 @@ Step onto the purple carpet, then head into a theater packed with filmmakers, fr
 - **Culpa** by Cimitoro Productions — Action / Adventure and/or Single Room Movie
 - **Curios and Other Curiosities** by Metal Pixel Foundry — Fantasy and/or Moral Dilemma
 - **Don't Look Away** by Axiomatic Twist — Mockumentary and/or Family Film
-- **Halfway House a Go-Go** by Light Effects Film — Horror and/or Workplace Film
+- **Halfway House A Go-Go** by Light Effects Film — Horror and/or Workplace Film
 - **Hide and Seeking Closure** by Dirty Mike and the Boys Productions — Sports Film / Game Film and/or Road Movie
 - **Last Shot** by No Umbrella Studios — Film Noir and/or Inspirational Film
 - **Midnight Session** by Jake Byrd Productions — Drama and/or Utopian or Dystopian

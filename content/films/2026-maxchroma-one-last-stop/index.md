@@ -17,5 +17,7 @@ screening_groups:
   - "group-d"
 screening_events:
   - "2026-09-22-group-d-premiere"
+aliases:
+  - /films/2026-maxchroma-one-more-stop/
 ---
 Haunted by the accidental fall that took his granddaughter's life, a grieving man struggles to let go of the past and the guilt that keeps pulling him down.

@@ -1,5 +1,5 @@
 ---
-title: "Halfway House a Go-Go"
+title: "Halfway House A Go-Go"
 date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
@@ -13,5 +13,7 @@ screening_groups:
   - "group-b"
 screening_events:
   - "2026-09-21-group-b-premiere"
+aliases:
+  - /films/2026-light-effects-light/
 ---
 Rambunctious Blue Haired lady enters a unique fully staffed Group Home.
