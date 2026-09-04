@@ -16,8 +16,8 @@ params:
   image_square: 2026-gala-square.png
   add_to_calendar: true
   screening_group: Best of 2026
-  event_start: 2026-10-11T17:00:00-07:00
-  event_end: 2026-10-11T21:00:00-07:00
+  event_start: 2026-10-10T17:00:00-07:00
+  event_end: 2026-10-10T21:00:00-07:00
   location_name: The Grand | Ritz Theater
   location_details: >
     A historic 1937 theater in downtown Escondido, fully restored with modern
@@ -32,20 +32,19 @@ params:
   location_address: 301 E. Grand Avenue, Escondido, CA 92025
   location_map_url: https://www.google.com/maps/search/The+Grand+Ritz+Theater+301+E+Grand+Avenue+Escondido
   schedule:
-    - start: 2026-10-11T17:00:00-07:00
-      end: 2026-10-11T18:00:00-07:00
+    - start: 2026-10-10T17:00:00-07:00
+      end: 2026-10-10T18:00:00-07:00
       name: Purple Carpet
       details: >
         Strut your style on our purple carpet and have professional photos
         taken at our Hollywood style step-and-repeat.
-    - start: 2026-10-11T18:00:00-07:00
-      end: 2026-10-11T21:00:00-07:00
+    - start: 2026-10-10T18:00:00-07:00
+      end: 2026-10-10T21:00:00-07:00
       name: Best of San Diego Films and Awards
       details: >
         Featured best films from this year's San Diego competition, plus
         awards from the entire catalog of this year's films.
   notes:
-    - Date is pending confirmation — 5-9pm once the calendar day is locked.
     - Tickets will be sold in advance. There will be no on-site ticket sales.
     - Bring your style! You're coming to a film premiere — dress to impress.
     - "By purchasing a ticket or attending the event, the attendee agrees to the [Attendee Terms](/attendee-terms/)"
