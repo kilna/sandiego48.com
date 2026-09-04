@@ -10,6 +10,13 @@ params:
   synopsis: "Two childhood best friends, Sylive and Isablle embark on a journey of wedding planning, but shame, secrets, and fear of the future brings them to the end of the road quicker than they think."
   order: 999
   genre: "Road Movie / Buddy Film"
+  galleries:
+    poster:
+      count: 2
+    still:
+      count: 3
+    bts:
+      count: 8
 screening_groups:
   - "group-a"
 screening_events:

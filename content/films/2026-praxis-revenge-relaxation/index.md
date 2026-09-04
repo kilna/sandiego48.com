@@ -10,6 +10,13 @@ params:
   synopsis: "Revenge is the best kind of relaxation."
   order: 999
   genre: "Action / Adventure / Revenge"
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 5
+    bts:
+      count: 1
 screening_groups:
   - "group-c"
 screening_events:

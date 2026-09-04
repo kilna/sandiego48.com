@@ -10,6 +10,9 @@ params:
   synopsis: "A wanna-be gangster discovers he's actually a nice guy when his first shakedown turns into a kidnapping."
   order: 999
   genre: "Dark Comedy / Vacation / Holiday Film"
+  galleries:
+    poster:
+      count: 1
 screening_groups:
   - "group-a"
 screening_events:

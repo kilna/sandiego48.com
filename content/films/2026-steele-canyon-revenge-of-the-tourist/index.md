@@ -10,6 +10,15 @@ params:
   synopsis: "When an inept but well-intentioned tour guide ruins a tour for the wrong client, she decide to book another tour and plot her revenge."
   order: 999
   genre: "Mockumentary / Revenge"
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 3
+    bts:
+      count: 4
+    group:
+      count: 1
 screening_groups:
   - "group-a"
 screening_events:

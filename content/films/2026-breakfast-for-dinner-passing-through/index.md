@@ -10,6 +10,13 @@ params:
   synopsis: "Along the lonely highway to Area 51, a tight-knit family of disguised extraterrestrials serves up pie and coffee to alien hunters, UFO believers, and eccentric road-trippers-none of whom realize they're ordering lunch from the real deal."
   order: 999
   genre: "Fish Out of Water / Workplace Film"
+  galleries:
+    poster:
+      count: 2
+    still:
+      count: 2
+    bts:
+      count: 2
 screening_groups:
   - "group-b"
 screening_events:

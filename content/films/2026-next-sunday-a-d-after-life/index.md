@@ -10,6 +10,11 @@ params:
   synopsis: "Two strangers meet in the afterlife and it is not what they expected."
   order: 999
   genre: "Horror / Single Room Movie"
+  galleries:
+    poster:
+      count: 2
+    still:
+      count: 3
 screening_groups:
   - "group-c"
 screening_events:

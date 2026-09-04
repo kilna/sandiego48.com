@@ -10,6 +10,9 @@ params:
   synopsis: "When a woman is attacked by her classmates, she and her cousin decide to take matters into their own hands."
   order: 999
   genre: "Film de Femme / Revenge"
+  galleries:
+    poster:
+      count: 2
 screening_groups:
   - "group-d"
 screening_events:

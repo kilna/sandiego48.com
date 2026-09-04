@@ -10,6 +10,9 @@ params:
   synopsis: "Trained killers Sky and Dion explore the world of modern dating in this dark and twisted rom-com."
   order: 999
   genre: "Musical / Romantic Comedy"
+  galleries:
+    poster:
+      count: 1
 screening_groups:
   - "group-d"
 screening_events:

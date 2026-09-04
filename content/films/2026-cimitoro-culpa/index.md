@@ -10,6 +10,11 @@ params:
   synopsis: "One mistake. One guilt. One voice."
   order: 999
   genre: "Action / Adventure / Single Room Movie"
+  galleries:
+    poster:
+      count: 2
+    still:
+      count: 3
 screening_groups:
   - "group-b"
 screening_events:

@@ -10,6 +10,15 @@ params:
   synopsis: "What next?"
   order: 999
   genre: "Action / Adventure / Food Film"
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 3
+    bts:
+      count: 3
+    group:
+      count: 1
 screening_groups:
   - "group-c"
 screening_events:

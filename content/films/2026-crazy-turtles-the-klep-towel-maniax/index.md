@@ -10,6 +10,13 @@ params:
   synopsis: "Two thieves attempting to rob a museum encounter trouble along the way against a flamboyant tour guide."
   order: 999
   genre: "Sci Fi / Silent Film"
+  galleries:
+    poster:
+      count: 4
+    still:
+      count: 2
+    bts:
+      count: 4
 screening_groups:
   - "group-c"
 screening_events:

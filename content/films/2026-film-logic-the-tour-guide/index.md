@@ -10,6 +10,15 @@ params:
   synopsis: "Two friends hire an aspiring actor as their tour guide to a haunted manor."
   order: 999
   genre: "Buddy Film / Dark Comedy"
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 3
+    bts:
+      count: 4
+    group:
+      count: 1
 screening_groups:
   - "group-c"
 screening_events:

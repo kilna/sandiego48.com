@@ -10,6 +10,9 @@ params:
   synopsis: "Two strangers tour the Hide and Seek museum in southern California, one with a hope to find something that was lost."
   order: 999
   genre: "Sports Film / Game Film / Road Movie"
+  galleries:
+    poster:
+      count: 1
 screening_groups:
   - "group-b"
 screening_events:

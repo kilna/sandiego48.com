@@ -10,6 +10,9 @@ params:
   synopsis: "Andrea Voss is a very curious girl. She must be stopped."
   order: 999
   genre: "Sci Fi / Misunderstanding"
+  galleries:
+    poster:
+      count: 3
 screening_groups:
   - "group-a"
 screening_events:

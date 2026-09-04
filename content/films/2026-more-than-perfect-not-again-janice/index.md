@@ -10,6 +10,9 @@ params:
   synopsis: "A married couple are sent on a nightmare vacation by their daughter, who conspires with her lover to kill them.  But when the tour guide Andre Voss begins to have second thoughts, Janice must decide what's more important - killing her parents or killing Andre."
   order: 999
   genre: "Dark Comedy / Vacation / Holiday Film"
+  galleries:
+    poster:
+      count: 1
 screening_groups:
   - "group-b"
 screening_events:

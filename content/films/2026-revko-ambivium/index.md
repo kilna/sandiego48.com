@@ -9,6 +9,9 @@ params:
   synopsis: "Andre guiding others even though he may feel lost in his own life."
   order: 999
   genre: "Fish Out of Water / Inspirational Film"
+  galleries:
+    still:
+      count: 3
 screening_groups:
   - "group-d"
 screening_events:

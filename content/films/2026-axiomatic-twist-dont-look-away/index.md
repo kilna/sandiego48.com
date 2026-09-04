@@ -9,6 +9,9 @@ params:
   synopsis: "After the tragic disappearance of her brother, Nicole Corcoran investigates the rash of disappearances in Sanctuary, California which ultimately leads her to the Belvedere Murder House."
   order: 999
   genre: "Mockumentary / Family Film"
+  galleries:
+    bts:
+      count: 9
 screening_groups:
   - "group-b"
 screening_events:

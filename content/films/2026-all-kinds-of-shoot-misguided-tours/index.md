@@ -10,6 +10,11 @@ params:
   synopsis: "Paranormal researchers go straight to the source. Or do they?"
   order: 999
   genre: "Mockumentary / Misunderstanding"
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 3
 screening_groups:
   - "group-c"
 screening_events:

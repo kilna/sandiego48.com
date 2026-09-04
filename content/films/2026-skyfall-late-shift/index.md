@@ -10,6 +10,13 @@ params:
   synopsis: "He's late for work again, and if he doesn't hurry, it might be the last time!"
   order: 999
   genre: "Drama / Silent Film"
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 3
+    group:
+      count: 1
 screening_groups:
   - "group-d"
 screening_events:

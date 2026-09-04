@@ -10,6 +10,15 @@ params:
   synopsis: "A young couple are seeking refuge in the apocalypse. Can they find it at KFER, The Ferret? Or is this radio station not what it's jingle would lead you to believe?"
   order: 999
   genre: "Thriller / Suspense / Utopian or Dystopian"
+  galleries:
+    poster:
+      count: 3
+    still:
+      count: 3
+    bts:
+      count: 8
+    group:
+      count: 1
 screening_groups:
   - "group-a"
 screening_events:

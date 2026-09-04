@@ -10,6 +10,15 @@ params:
   synopsis: "Vacation so real, you never want to leave!"
   order: 999
   genre: "Sci Fi / Vacation / Holiday Film"
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 3
+    bts:
+      count: 7
+    group:
+      count: 1
 screening_groups:
   - "group-d"
 screening_events:

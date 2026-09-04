@@ -10,6 +10,9 @@ params:
   synopsis: "Two freeloading friends crack eggs over an easy afternoon breakfast as their host’s last shred of patience is cracking right along with them."
   order: 999
   genre: "Film de Femme / Food Film"
+  galleries:
+    poster:
+      count: 1
 screening_groups:
   - "group-b"
 screening_events:

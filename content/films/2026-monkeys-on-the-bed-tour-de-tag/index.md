@@ -10,6 +10,11 @@ params:
   synopsis: "When a broke tour guide is reassigned to remove graffiti threatening his livelihood, his pursuit of an elusive tagger spirals into a dangerous night-time that forces him to chose between revenge and saving the person destroying his world."
   order: 999
   genre: "Thriller / Suspense / Workplace Film"
+  galleries:
+    poster:
+      count: 1
+    group:
+      count: 1
 screening_groups:
   - "group-b"
 screening_events:

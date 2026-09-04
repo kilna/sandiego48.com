@@ -10,6 +10,9 @@ params:
   synopsis: "A man with good purpose but desperate measures realizes what he's really been missing"
   order: 999
   genre: "Dark Comedy / Moral Dilemma"
+  galleries:
+    poster:
+      count: 1
 screening_groups:
   - "group-d"
 screening_events:

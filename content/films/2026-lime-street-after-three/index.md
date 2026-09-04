@@ -10,6 +10,13 @@ params:
   synopsis: "What stared as an open house tour turns into one scary game."
   order: 999
   genre: "Film de Femme / Sports Film / Game Film"
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 3
+    bts:
+      count: 8
 screening_groups:
   - "group-c"
 screening_events:

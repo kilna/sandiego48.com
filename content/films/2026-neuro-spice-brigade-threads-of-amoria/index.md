@@ -10,6 +10,11 @@ params:
   synopsis: "An egotistical influencer is accidentally transported to a bizarre fantasy kingdom that forces her to confront her greatest enemy: basic human decency."
   order: 999
   genre: "Fantasy / Food Film"
+  galleries:
+    poster:
+      count: 1
+    bts:
+      count: 5
 screening_groups:
   - "group-a"
 screening_events:
