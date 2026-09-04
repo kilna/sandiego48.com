@@ -16,6 +16,7 @@ Project event, attendees agree to the following:
 
 ## Liability Release
 
+
 - Participation is at your own risk. Cine Diego LLC, its partners, and venues
   are not responsible for personal injury, lost/stolen items, or other damages.
 
@@ -31,6 +32,9 @@ Tickets & Entry
   Tickets may, solely at Cine Diego LLC's option, be refunded minus a 20% fee
   up to 2 days before the event.
 - Entry is subject to venue capacity and policies.
+- Some events will be over-booked to ensure capacity, any seating is
+  first-come-first-served and if there are no seats left, we will issue a
+  refund to the purchaser.
 
 ## Privacy
 
@@ -48,11 +52,12 @@ Tickets & Entry
 - Marketing communication will be limited to information related to the
   San Diego 48 Hour Film Project, direct sponsors, and associated events.
   Attendees may unsubscribe from automated contact lists at any time. Attending
-  a subsequent event may result in re-addition to these lists, requiring a new unsubscribe request.
+  a subsequent event may result in re-addition to these lists, requiring a new
+  unsubscribe request.
 
 ## Films & Content
 
 - For screening events, films screened may include adult language, themes, or
   imagery. Viewer discretion is advised.
 - Opinions expressed in films are those of the filmmakers and do not necessarily
-  reflect Cine Diego LLC.
+  reflect Cine Diego LLC. or The 48 Hour Film Project
