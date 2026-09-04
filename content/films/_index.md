@@ -3,9 +3,12 @@ title: Films
 type: films
 layout: list
 summary: >
-  Browse all films from the 2025 San Diego 48 Hour Film Project. Each film was created in just 48 hours by local filmmakers.
+  Browse films from the San Diego 48 Hour Film Project. Each film was created
+  in just 48 hours by local filmmakers.
 ---
 
-# 2025 Films
+# Films
 
-Browse all the amazing films created during the 2025 San Diego 48 Hour Film Project. Each film was written, shot, edited, and scored in just 48 hours by talented local filmmakers.
+Browse the films created during the San Diego 48 Hour Film Project. Each film
+was written, shot, edited, and scored in just 48 hours by local filmmakers.
+The 2026 films premiere September 21-22 at UltraStar Cinemas Mission Valley.

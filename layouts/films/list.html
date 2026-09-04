@@ -14,30 +14,52 @@
 {{ define "main" }}
 {{ .Content }}
 
+{{ $all_films := where .Site.RegularPages "Section" "films" }}
+{{ $all_films = where $all_films "Params.team" "ne" nil }}
 
+{{ $current_year := 0 }}
+{{ $years := slice }}
+{{ range $all_films }}
+  {{ $year := .Params.year }}
+  {{ if $year }}
+    {{ $years = $years | append $year }}
+    {{ if gt $year $current_year }}
+      {{ $current_year = $year }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ $years = $years | uniq }}
+
+{{ $display_year := $current_year }}
+{{ with .Params.year }}
+  {{ $display_year = . }}
+{{ end }}
+
+{{ $films := where $all_films "Params.year" $display_year }}
+{{ $films = sort $films "Title" }}
+{{ $sorted_films := slice }}
+{{ range $films }}
+  {{ $title := .Title }}
+  {{ if hasPrefix $title "The " }}
+    {{ $title = substr $title 4 }}
+  {{ end }}
+  {{ $title = replace $title "\"" "" }}
+  {{ $title = replace $title "'" "" }}
+  {{ $sorted_films = $sorted_films | append (dict "page" . "sort_title" $title) }}
+{{ end }}
+{{ $sorted_films = sort $sorted_films "sort_title" }}
+
+{{ if not .Params.year }}
+  <h2 class="film-year-heading" id="year-{{ $display_year }}">{{ $display_year }}</h2>
+{{ end }}
 
 <div class="people-grid">
-  {{/* Sort films alphabetically by title, ignoring "The" prefix */}}
-  {{ $films := .Data.Pages }}
-  {{ $films = sort $films "Title" }}
-  {{ $sorted_films := slice }}
-  {{ range $films }}
-    {{ $title := .Title }}
-    {{ if hasPrefix $title "The " }}
-      {{ $title = substr $title 4 }}
-    {{ end }}
-    {{/* Remove quotes for sorting purposes */}}
-    {{ $title = replace $title "\"" "" }}
-    {{ $title = replace $title "'" "" }}
-    {{ $sorted_films = $sorted_films | append (dict "page" . "sort_title" $title) }}
-  {{ end }}
-  {{ $sorted_films = sort $sorted_films "sort_title" }}
   {{ range $sorted_films }}
     {{ $film := .page }}
-          <article class="film-card">
-        <div class="film-poster">
-          <a href="{{ $film.RelPermalink }}" class="film-poster-link">
-                    {{ $film_image := "" }}
+    <article class="film-card">
+      <div class="film-poster">
+        <a href="{{ $film.RelPermalink }}" class="film-poster-link">
+          {{ $film_image := "" }}
           {{ if $film.Params.image }}
             {{ $film_image = $film.Resources.Get $film.Params.image }}
           {{ end }}
@@ -60,34 +82,63 @@
           </div>
         {{ end }}
       </div>
-                      <div class="film-info">
-          <h3 class="film-title"><a href="{{ $film.RelPermalink }}">{{ $film.Title }}</a></h3>
-          <p class="film-team">by <a href="{{ $film.RelPermalink }}">{{ $film.Params.team }}</a></p>
-          {{ if $film.Params.best_of_2025 }}
-            <a href="/events/2025-09-28-best-of-san-diego-screening-and-awards-gala/" class="best-of-2025-badge">
-              <span class="best-of-2025-text">Best of 2025 Selection</span>
-            </a>
-          {{ end }}
-          {{ if $film.Params.screening_groups }}
-            <div class="film-groups">
-              {{ range $film.Params.screening_groups }}
-                {{ $groupName := . }}
-                {{ if eq . "group-a" }}{{ $groupName = "Group A" }}{{ end }}
-                {{ if eq . "group-b" }}{{ $groupName = "Group B" }}{{ end }}
-                {{ if eq . "group-c" }}{{ $groupName = "Group C" }}{{ end }}
-                {{ if eq . "group-d" }}{{ $groupName = "Group D" }}{{ end }}
-                <span class="group-tag">{{ $groupName }}</span>
-              {{ end }}
-            </div>
-          {{ end }}
-          {{ if $film.Params.logline }}
-            <p class="film-logline">{{ $film.Params.logline }}</p>
-          {{ end }}
-        </div>
+      <div class="film-info">
+        <h3 class="film-title"><a href="{{ $film.RelPermalink }}">{{ $film.Title }}</a></h3>
+        <p class="film-team">by <a href="{{ $film.RelPermalink }}">{{ $film.Params.team }}</a></p>
+        {{ if $film.Params.best_of_2025 }}
+          <a href="/events/2025-09-28-best-of-san-diego-screening-and-awards-gala/" class="best-of-2025-badge">
+            <span class="best-of-2025-text">Best of 2025 Selection</span>
+          </a>
+        {{ end }}
+        {{ if $film.Params.screening_groups }}
+          <div class="film-groups">
+            {{ range $film.Params.screening_groups }}
+              {{ $groupName := . }}
+              {{ if eq . "group-a" }}{{ $groupName = "Group A" }}{{ end }}
+              {{ if eq . "group-b" }}{{ $groupName = "Group B" }}{{ end }}
+              {{ if eq . "group-c" }}{{ $groupName = "Group C" }}{{ end }}
+              {{ if eq . "group-d" }}{{ $groupName = "Group D" }}{{ end }}
+              {{ if eq . "group-e" }}{{ $groupName = "Group E" }}{{ end }}
+              <span class="group-tag">{{ $groupName }}</span>
+            {{ end }}
+          </div>
+        {{ end }}
+        {{ if $film.Params.logline }}
+          <p class="film-logline">{{ $film.Params.logline }}</p>
+        {{ end }}
+      </div>
     </article>
   {{ end }}
 </div>
 
-
+{{ $other_years := slice }}
+{{ range sort $years "value" "desc" }}
+  {{ if ne . $display_year }}
+    {{ $other_years = $other_years | append . }}
+  {{ end }}
+{{ end }}
+{{ if $other_years }}
+  <div class="film-previous-years">
+    <h2>{{ if eq $display_year $current_year }}Previous Years{{ else }}Other Years{{ end }}</h2>
+    <div class="button-list">
+      {{ range $other_years }}
+        {{ $year := . }}
+        {{ $url := printf "/films/%v/" $year }}
+        {{ if eq $year $current_year }}
+          {{ $url = "/films/" }}
+        {{ end }}
+        {{ if or (eq $year $current_year) ($.Site.GetPage (printf "/films/%v" $year)) }}
+          {{ partial "components/button.html" (dict
+              "text" (printf "%v Films" $year)
+              "url" $url
+              "icon" "film"
+              "target" "_self"
+              "class" "wide glow"
+          ) }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+{{ end }}
 
 {{ end }}

@@ -1,4 +1,39 @@
 /* Film Card Styling */
+.film-year-heading {
+  text-align: center;
+  margin: 2.5rem 0 0;
+}
+
+.film-year-heading:first-of-type {
+  margin-top: 1.5rem;
+}
+
+.film-year-heading + .people-grid {
+  margin-top: 1rem;
+}
+
+.film-previous-years {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 3rem 0 2rem;
+}
+
+.film-previous-years h2 {
+  margin-bottom: 0.75rem;
+  width: 100%;
+}
+
+.film-previous-years .button-list {
+  width: auto;
+  justify-content: center;
+}
+
+.film-previous-years .button-list a.button.wide {
+  width: auto;
+}
+
 .film-card {
   background: transparent;
   border-radius: 12px;

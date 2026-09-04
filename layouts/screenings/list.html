@@ -1,0 +1,65 @@
+{{ define "head" }}
+  {{- partial "head.html" . -}}
+  {{- partial "layout/stylesheet.html" "events" -}}
+{{ end }}
+
+{{ define "title" }}
+{{- partial "title.html" (dict
+    "Title" .Title
+    "Site" .Site
+    "Params" .Params
+    "ShowSiteTitle" false
+) }}
+{{ end }}
+
+{{ define "main" -}}
+{{- $now := now -}}
+{{- $events_section := .Site.GetPage "/events" -}}
+{{- $upcoming := slice -}}
+
+{{- range $events_section.RegularPagesRecursive -}}
+  {{- if and .Params.event_start .Params.event_end -}}
+    {{- $end_time := time.AsTime .Params.event_end -}}
+    {{- if $end_time.After $now -}}
+      {{- $subtype := .Params.subtype | default "" -}}
+      {{- $title_l := strings.ToLower .Title -}}
+      {{- $is_screening := or
+          (eq $subtype "screening")
+          (ne (.Params.screening_group | default "") "")
+          (strings.Contains $title_l "screening")
+          (strings.Contains $title_l "gala")
+      -}}
+      {{- if $is_screening -}}
+        {{- $upcoming = $upcoming | append . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $upcoming = sort $upcoming ".Params.event_start" "asc" -}}
+
+<div class="events screenings">
+{{ .Content }}
+
+{{- if $upcoming -}}
+{{- partial "events/display.html" (dict
+    "events" $upcoming
+    "title" "Upcoming Screenings"
+    "show_visibility" false
+) -}}
+{{- else -}}
+<p>There are no upcoming screenings right now.</p>
+{{- end -}}
+
+<div class="screenings-archive">
+  <p>Want to see prior screenings, mixers, and the full calendar?</p>
+  {{- partial "components/button.html" (dict
+      "text" "See all events"
+      "url" "/events/"
+      "icon" "calendar"
+      "target" "_self"
+      "class" "wide glow"
+  ) -}}
+</div>
+</div>
+{{ end }}

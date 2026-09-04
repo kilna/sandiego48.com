@@ -49,6 +49,15 @@
   padding: 0;
 }
 
+.screenings-archive {
+  text-align: center;
+  margin: 2.5rem 0 1.5rem;
+}
+
+.screenings-archive p {
+  margin-bottom: 0.75rem;
+}
+
 .event {
   display: grid;
   grid-template-columns: 1fr 33%;
@@ -458,9 +467,41 @@
   margin: 0.5rem 0 0 0;
 }
 
+.event-card .featured-film-posters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.6rem 0 0.15rem;
+}
+
+.event-card a.featured-film-poster {
+  flex: 0 0 auto;
+  display: block;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.event-card a.featured-film-poster img {
+  width: auto;
+  height: 5.75rem;
+  max-width: none;
+  object-fit: contain;
+  border-radius: 0.2rem;
+  box-shadow: 0.15rem 0.15rem 0.35rem 0 var(--48-darken-more);
+  transition: transform 0.2s ease;
+}
+
+.event-card a.featured-film-poster:hover img {
+  transform: scale(1.06);
+}
+
 @media (max-width: 768px) {
   .event-card .featured-films {
     font-size: 0.85em;
+  }
+
+  .event-card a.featured-film-poster img {
+    height: 4.75rem;
   }
 }
 

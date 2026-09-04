@@ -11,10 +11,11 @@
 {{- partial "vars.html" . -}}
 
 {{- block "banner" . -}}
-{{ partial "required-elements.html" . -}}
+{{- if not (and (eq .Section "films") (eq .Kind "page")) -}}
 {{- with .Site.Params.countdowns -}}
 {{- if gt (len .) 0 -}}
 {{ partial "countdowns.html" $ -}}
+{{- end -}}
 {{- end -}}
 {{- end -}}
 {{- end -}}

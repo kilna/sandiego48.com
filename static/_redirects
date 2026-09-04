@@ -10,3 +10,7 @@
 # Additional redirects for other directory renames
 /films/hipponymous-r3n3gad3s /films/hippononymous-r3n3gad3s 301
 /films/k-concern-tango-of-the-unseen /films/k-concern-tango-for-the-unseen 301
+
+# 2026 premieres are Groups A-D only; Wednesday Group E was cancelled.
+/events/2026-09-23-group-e-premiere / 301
+/events/2026-09-23-group-e-premiere/ / 301

@@ -1,6 +1,7 @@
 {{ define "head" }}
   {{- partial "head.html" . -}}
   {{- partial "layout/stylesheet.html" "film" -}}
+  {{- partial "layout/stylesheet.html" "events" -}}
   {{- partial "layout/stylesheet.html" "style" -}}
   <style>
     /* Film-specific styles */
@@ -69,6 +70,27 @@
     .film-meta dd {
       margin: 0;
       color: black;
+    }
+
+    .film-meta a {
+      color: var(--48-navy);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+
+    .film-meta a:hover {
+      color: var(--48-orange);
+    }
+
+    .film-single .event-list {
+      margin-top: 2.5rem;
+    }
+
+    .film-single .event-list h2 {
+      padding: 0.5rem 1rem;
+      font-size: 1.25rem;
+      line-height: 1.35;
     }
     
     .film-logline {
@@ -207,7 +229,28 @@
         {{ end }}
         {{ if .Params.screening_groups }}
           <dt>Screening Group:</dt>
-          <dd>{{ range .Params.screening_groups }}{{ strings.TrimPrefix "group-" . | strings.Title }}{{ end }}</dd>
+          <dd>
+            {{- $event_slugs := .Params.screening_events -}}
+            {{- range $i, $group := .Params.screening_groups -}}
+              {{- if $i }}, {{ end -}}
+              {{- $label := printf "Group %s" (strings.TrimPrefix "group-" $group | strings.Title) -}}
+              {{- $event_slug := "" -}}
+              {{- if gt (len $event_slugs) $i -}}
+                {{- $event_slug = index $event_slugs $i -}}
+              {{- else if gt (len $event_slugs) 0 -}}
+                {{- $event_slug = index $event_slugs 0 -}}
+              {{- end -}}
+              {{- $event_page := "" -}}
+              {{- if $event_slug -}}
+                {{- $event_page = $.Site.GetPage (printf "events/%s" $event_slug) -}}
+              {{- end -}}
+              {{- if $event_page -}}
+                <a href="{{ $event_page.RelPermalink }}">{{ $label }}</a>
+              {{- else -}}
+                {{ $label }}
+              {{- end -}}
+            {{- end -}}
+          </dd>
         {{ end }}
       </dl>
       
@@ -286,6 +329,26 @@
   {{- partial "cdn-gallery.html" (dict "galleryId" "still" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
   {{- partial "cdn-gallery.html" (dict "galleryId" "bts" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
   {{- partial "cdn-gallery.html" (dict "galleryId" "group" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
+
+  {{- $screening_event_pages := slice -}}
+  {{- range .Params.screening_events -}}
+    {{- with $.Site.GetPage (printf "events/%s" .) -}}
+      {{- if .Params.event_start -}}
+        {{- $screening_event_pages = $screening_event_pages | append . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if $screening_event_pages -}}
+    {{- range $screening_event_pages -}}
+      {{- $start := time.AsTime .Params.event_start -}}
+      {{- $date := $start.Format "Monday, January 2, 2006" -}}
+      {{- $heading := printf "See %s in theaters %s" $.Title $date -}}
+      {{- partial "events/display.html" (dict
+          "events" (slice .)
+          "title" $heading
+      ) -}}
+    {{- end -}}
+  {{- end -}}
 </div>
 
 <script src="{{ "js/gallery-lightbox.js" | relURL }}"></script>

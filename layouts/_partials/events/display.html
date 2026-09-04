@@ -44,7 +44,7 @@
 
 <div class="{{ $container_class }}{{ $visibility_class }}">
   {{- if $title -}}
-<h2 id="events">{{ $title }}</h2>
+<h2 class="card-heading" id="events">{{ $title }}</h2>
   {{- end -}}
 
   {{- range $events -}}
@@ -134,6 +134,29 @@
   {{- end -}}
 
   {{- if $films -}}
+    {{- $poster_films := slice -}}
+    {{- range $films -}}
+      {{- $film := . -}}
+      {{- if $film.Params.image -}}
+        {{- with $film.Resources.Get $film.Params.image -}}
+          {{- $poster_films = $poster_films | append $film -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if $poster_films -}}
+    <div class="featured-film-posters">
+      {{- range $poster_films -}}
+        {{- $film := . -}}
+        {{- $film_image := $film.Resources.Get $film.Params.image -}}
+        {{- if and $film_image.MediaType (ne $film_image.MediaType.SubType "svg") -}}
+          {{- $film_image = $film_image.Fit "120x180" -}}
+        {{- end -}}
+        <a href="{{ $film.RelPermalink }}" class="featured-film-poster" title="{{ $film.Title }}">
+          <img src="{{ $film_image.RelPermalink }}" alt="{{ $film.Title }} poster" />
+        </a>
+      {{- end -}}
+    </div>
+    {{- end -}}
     <p class="featured-films"><strong>Featured Films</strong>
     {{- range $index, $film := $films }}{{ if $index }} • {{ else }} • {{ end }}<em><a href="{{ $film.RelPermalink }}">{{ $film.Title }}</a></em>{{ end }}
     </p>
