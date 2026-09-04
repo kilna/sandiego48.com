@@ -321,11 +321,7 @@
     </div>
   </div>
   
-  {{/* Add CDN galleries in specific order for films */}}
-  {{- /* Only show poster gallery if there's more than one poster */ -}}
-  {{- if and .Params.galleries.poster (gt .Params.galleries.poster.count 1) -}}
-    {{- partial "cdn-gallery.html" (dict "galleryId" "poster" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
-  {{- end -}}
+  {{/* Poster gallery is omitted: the page poster is already the most recent. */}}
   {{- partial "cdn-gallery.html" (dict "galleryId" "still" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
   {{- partial "cdn-gallery.html" (dict "galleryId" "bts" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
   {{- partial "cdn-gallery.html" (dict "galleryId" "group" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
@@ -342,7 +338,7 @@
     {{- range $screening_event_pages -}}
       {{- $start := time.AsTime .Params.event_start -}}
       {{- $date := $start.Format "Monday, January 2, 2006" -}}
-      {{- $heading := printf "See %s in theaters %s" $.Title $date -}}
+      {{- $heading := printf "See %s premiere %s" $.Title $date -}}
       {{- partial "events/display.html" (dict
           "events" (slice .)
           "title" $heading
