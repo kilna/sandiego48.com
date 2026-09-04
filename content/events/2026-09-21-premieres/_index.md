@@ -32,14 +32,14 @@ params:
   schedule:
     - name: Monday, September 21
       details: >
-        Group A screening at 6pm (ticketing and purple carpet from 5pm) and
-        Group B screening at 9pm (ticketing and purple carpet from 8pm).
+        Group A screening at 6pm (purple carpet / ticket check-in 5-6pm) and
+        Group B screening at 9pm (purple carpet / ticket check-in 7:30-9pm).
     - name: Tuesday, September 22
       details: >
-        Group C screening at 6pm (ticketing and purple carpet from 5pm) and
-        Group D screening at 9pm (ticketing and purple carpet from 8pm).
+        Group C screening at 6pm (purple carpet / ticket check-in 5-6pm) and
+        Group D screening at 9pm (purple carpet / ticket check-in 7:30-9pm).
   notes:
-    - Tickets will be sold in advance. There will be no on-site ticket sales.
+    - You must purchase a ticket online before the event, and have your emailed QR code ready. There will be no on-site ticket sales.
     - Bring your style! You're coming to a film premiere — dress to impress.
   org_info: |
     ### About the 48 Hour Film Project
@@ -61,8 +61,9 @@ cascade:
 ---
 Step onto the purple carpet and have professional photos taken at our Hollywood
 style step-and-repeat before heading into a theater packed with filmmakers,
-friends, and fans. Ticket check-in and purple carpet begin **one hour before
-each screening**.
+friends, and fans. Early premieres have purple carpet / ticket check-in
+**5-6pm** and screen **6-8:30pm**. Late premieres have purple carpet / ticket
+check-in **7:30-9pm** and screen **9-11pm**.
 
 This year's premieres run **Monday and Tuesday, September 21-22** at
 [UltraStar Cinemas Mission Valley](https://ultrastarmovies.com/ultrastar-movies/)

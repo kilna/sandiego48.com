@@ -3,7 +3,7 @@ title: Group B Premiere Screening
 type: events
 summary: >
   A Hollywood-style premiere of this year's San Diego 48 Hour Film Project films.
-date: 2026-09-21T20:00:00-07:00
+date: 2026-09-21T19:30:00-07:00
 publishDate: 2026-08-29T22:00:00-07:00
 draft: false
 params:
@@ -12,8 +12,10 @@ params:
   image_wide: 2026-premieres-b-horiz.png
   image_square: 2026-premieres-b-square.png
   add_to_calendar: true
-  event_start: 2026-09-21T20:00:00-07:00
-  event_end: 2026-09-21T23:59:59-07:00
+  event_start: 2026-09-21T19:30:00-07:00
+  event_end: 2026-09-21T23:00:00-07:00
+  tixtree_event: group-b-san-diego-48-hour-film-project-2026-2884226c7d46
+  tickets_url: https://www.tixtree.com/e/group-b-san-diego-48-hour-film-project-2026-2884226c7d46
   screening_group: B
   location_name: UltraStar Cinemas Mission Valley
   location_details: >
@@ -22,18 +24,18 @@ params:
   location_address: 7510 Hazard Center Drive #100, San Diego, CA 92108
   location_map_url: https://www.google.com/maps/search/UltraStar+Cinemas+Mission+Valley+7510+Hazard+Center+Drive+San+Diego
   schedule:
-    - start: 2026-09-21T20:00:00-07:00
+    - start: 2026-09-21T19:30:00-07:00
       end: 2026-09-21T21:00:00-07:00
-      name: Ticket Check-in and Purple Carpet
-      details: Have your TixTree QR code ready; ticket details are pending review.
+      name: Purple Carpet / Ticket Check-In
+      details: Have your TixTree QR code ready (it will be in your email after purchase). There will be no on-site ticket sales.
     - start: 2026-09-21T21:00:00-07:00
-      end: 2026-09-21T23:59:59-07:00
-      name: Films Screened
+      end: 2026-09-21T23:00:00-07:00
+      name: Premiere Screening
   notes:
-    - Tickets will be sold in advance. There will be no on-site ticket sales.
+    - You must purchase a ticket online before the event, and have your emailed QR code ready. There will be no on-site ticket sales.
     - Bring your style! You are coming to a film premiere — dress to impress.
 ---
-Step onto the purple carpet, then head into a theater packed with filmmakers, friends, and fans. Ticket check-in and purple carpet begin **one hour before the screening**. Each film screens once, with live Audience Choice voting at the end of the night.
+Step onto the purple carpet, then head into a theater packed with filmmakers, friends, and fans. Purple carpet / ticket check-in is **7:30-9pm**, and the premiere screening is **9-11pm**. Each film screens once, with live Audience Choice voting at the end of the night.
 
 ## Screening Group B
 
