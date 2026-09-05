@@ -467,9 +467,16 @@
   margin: 0.5rem 0 0 0;
 }
 
+.event-card .featured-film-title {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .event-card .featured-film-posters {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 0.4rem;
   margin: 0.6rem 0 0.15rem;
 }
@@ -483,7 +490,7 @@
 
 .event-card a.featured-film-poster img {
   width: auto;
-  height: 5.75rem;
+  height: 8.625rem;
   max-width: none;
   object-fit: contain;
   border-radius: 0.2rem;
@@ -501,7 +508,7 @@
   }
 
   .event-card a.featured-film-poster img {
-    height: 4.75rem;
+    height: 7.125rem;
   }
 }
 

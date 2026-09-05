@@ -1,21 +1,10 @@
-# Redirects for old film URLs to new slug-based URLs
-# Format: from_path to_path status_code
-
 /films/the-2880-minute-movie-makers-i-plead-the-fifth /films/2880-minute-movie-makers-i-plead-the-fifth 301
 /films/the-filmigos-fire-in-my-heart /films/filmigos-fire-in-my-heart 301
 /films/the-k-concern-tango-of-the-unseen /films/k-concern-tango-of-the-unseen 301
 /films/the-super-pas-dystopian-cowboys /films/super-pas-dystopian-cowboys 301
 /films/the-underdogs-crimson-hour /films/underdogs-crimson-hour 301
-
-# Additional redirects for other directory renames
 /films/hipponymous-r3n3gad3s /films/hippononymous-r3n3gad3s 301
 /films/k-concern-tango-of-the-unseen /films/k-concern-tango-for-the-unseen 301
-
-# 2026 premieres are Groups A-D only; Wednesday Group E was cancelled.
-/events/2026-09-23-group-e-premiere / 301
-/events/2026-09-23-group-e-premiere/ / 301
-
-# 2026 film title/slug changes after drop-off
 /films/2026-maxchroma-one-more-stop /films/2026-maxchroma-one-last-stop 301
 /films/2026-maxchroma-one-more-stop/ /films/2026-maxchroma-one-last-stop/ 301
 /films/2026-light-effects-light /films/2026-light-effects-halfway-house-a-go-go 301

@@ -149,7 +149,7 @@
         {{- $film := . -}}
         {{- $film_image := $film.Resources.Get $film.Params.image -}}
         {{- if and $film_image.MediaType (ne $film_image.MediaType.SubType "svg") -}}
-          {{- $film_image = $film_image.Fit "120x180" -}}
+          {{- $film_image = $film_image.Fit "180x270" -}}
         {{- end -}}
         <a href="{{ $film.RelPermalink }}" class="featured-film-poster" title="{{ $film.Title }}">
           <img src="{{ $film_image.RelPermalink }}" alt="{{ $film.Title }} poster" />
@@ -158,7 +158,9 @@
     </div>
     {{- end -}}
     <p class="featured-films"><strong>Featured Films</strong>
-    {{- range $index, $film := $films }}{{ if $index }} • {{ else }} • {{ end }}<em><a href="{{ $film.RelPermalink }}">{{ $film.Title }}</a></em>{{ end }}
+    {{- range $films -}}
+      <span class="featured-film-title"> • <em><a href="{{ .RelPermalink }}">{{ .Title }}</a></em></span>
+    {{- end -}}
     </p>
   {{- end -}}
 
