@@ -51,6 +51,26 @@
 <p>There are no upcoming screenings right now.</p>
 {{- end -}}
 
+{{- $all_access_url := "https://www.tixtree.com/e/all-events-pass-san-diego-48-hour-film-project-2026-881fb5fd7271" -}}
+{{- $all_access_image := resources.Get "images/t-shirt-included.png" -}}
+<div class="all-access-ad">
+  <a href="{{ $all_access_url }}" class="all-access-ad-image" target="_blank" rel="noopener">
+    {{- if $all_access_image -}}
+    <img src="{{ $all_access_image.RelPermalink }}" alt="All Access includes a Sleep is for the Week T-shirt" width="{{ $all_access_image.Width }}" height="{{ $all_access_image.Height }}" />
+    {{- end -}}
+  </a>
+  <div class="all-access-ad-copy">
+    <h2>All Access Pass</h2>
+    <p>See every 2026 premiere screening — Groups A through D on September 21–22 — plus the Best of San Diego Screening and Awards Gala on October 10. Every pass includes a black “Sleep is for the Week” T-shirt.</p>
+    {{- partial "components/button.html" (dict
+        "text" "Get All Access"
+        "url" $all_access_url
+        "icon" "ticket"
+        "class" "wide glow pulse"
+    ) -}}
+  </div>
+</div>
+
 <div class="screenings-archive">
   <p>Want to see prior screenings, mixers, and the full calendar?</p>
   {{- partial "components/button.html" (dict

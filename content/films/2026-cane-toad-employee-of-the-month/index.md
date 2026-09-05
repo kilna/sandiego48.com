@@ -9,6 +9,9 @@ params:
   synopsis: "Emily Hamilton is excited for her first day of work, but while touring the office and meeting her new co-workers, she starts to get an ominous and sinister vibe."
   order: 999
   genre: "Musical / Family Film"
+  galleries:
+    still:
+      count: 3
 screening_groups:
   - "group-c"
 screening_events:

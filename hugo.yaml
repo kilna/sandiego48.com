@@ -57,11 +57,11 @@ params:
   #  image_mobile: images/2026-registration-open-vertical.png
   #  url: /go/register
   #  alt: "2026 Registration Is Open - Sign Up Your Team Now!"
-  #banner:
-  #  image: images/tickets-banner.png
-  #  image_mobile: images/tickets-banner-fat.png
-  #  url: /go/tickets
-  #  alt: "Tickets On Sale Now!"
+  banner:
+    image: images/tickets-banner.png
+    image_mobile: images/tickets-banner-fat.png
+    url: /screenings/
+    alt: "Tickets On Sale Now!"
   facebook: sd48hfp
   twitter: sd48hfp
   linkedin: sd48hfp
@@ -140,11 +140,6 @@ params:
       suffix: "until the 2026 Premieres"
       date: "2026-09-21T17:00:00-07:00"
       visible_to: "2026-09-22T23:59:59-07:00"
-      button:
-        text: "See Screenings"
-        url: /screenings/
-        icon: ticket
-        icon_position: right
     # Archive of prior countdown examples:
     # - default: "Not long"
     #   prefix: "Drop Off"

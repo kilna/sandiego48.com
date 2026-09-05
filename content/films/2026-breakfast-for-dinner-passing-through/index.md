@@ -14,9 +14,9 @@ params:
     poster:
       count: 2
     still:
-      count: 2
+      count: 5
     bts:
-      count: 2
+      count: 10
 screening_groups:
   - "group-b"
 screening_events:

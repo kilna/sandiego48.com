@@ -17,6 +17,7 @@ DOWNLOAD_DIR = PROJECT / "download"
 FILMS_DIR = SITE / "content" / "films"
 
 PLACEHOLDER_TITLES = {"", "untitled", "n/a", "none", "no film title"}
+SKIP_TEAMS = {"dampt"}
 IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".tif", ".tiff"}
 EVENT_BY_GROUP = {
   "A": "2026-09-21-group-a-premiere",
@@ -103,6 +104,10 @@ def convert_poster(src: Path, dest: Path) -> bool:
 
 
 def write_film_page(row: dict) -> dict | None:
+  team_slug = (row.get("team_slug") or row.get("slug") or "").strip().lower()
+  if team_slug in SKIP_TEAMS:
+    print(f"  skip {team_slug}: not screening")
+    return None
   status = (row.get("film_status") or "").strip().lower()
   dropoff = (row.get("film_dropoff_status") or "").strip().lower()
   if status in {"disqualified", "rejected"} or dropoff in {"disqualified", "rejected"}:

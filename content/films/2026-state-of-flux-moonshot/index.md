@@ -1,5 +1,6 @@
 ---
 title: "Moonshot"
+image: poster.jpg
 date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
@@ -9,6 +10,11 @@ params:
   synopsis: "Future generations patiently wait for Earth’s surface to habitable"
   order: 999
   genre: "Comedy / Utopian or Dystopian"
+  galleries:
+    poster:
+      count: 2
+    still:
+      count: 10
 screening_groups:
   - "group-c"
 screening_events:

@@ -165,6 +165,14 @@
   {{- end -}}
 
     <div class="actions actions-nav">
+      {{- with $event.Params.tickets_url -}}
+      {{- partial "components/button.html" (dict
+          "text" "Buy Tickets"
+          "url" .
+          "icon" "ticket"
+          "class" "right pulse glow highlight primary"
+      ) -}}
+      {{- end -}}
       {{- partial "components/button.html" (dict
           "text" "More Details"
           "url" $link
