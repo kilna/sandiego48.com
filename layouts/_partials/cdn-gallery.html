@@ -1,9 +1,12 @@
 {{/*
   CDN Gallery Partial
-  
+
   Displays a specific gallery of images from the CDN.
   Takes a gallery ID parameter to show a specific gallery type.
-  
+
+  Film stills also append generated thumbs (params.galleries.thumb.numbers)
+  after filmmaker-submitted stills, as one "Film Stills" list.
+
   CDN URL resolution:
   - If BASEURL contains localhost or 127.0.0.1: use params.cdn.localhost
   - If params.cdn.<baseurl> exists: use that value
@@ -17,146 +20,201 @@
 
 {{- if .Params.galleries -}}
   {{- $galleryData := index .Params.galleries $galleryId -}}
-  {{- if $galleryData -}}
-    {{- $imageCount := $galleryData.count -}}
-    {{- if and $imageCount (gt $imageCount 0) -}}
-      {{- /* Get CDN base URL */ -}}
+
+  {{- /* Find the gallery configuration by ID across all Hugo types */ -}}
+  {{- $config := "" -}}
+  {{- range $hugoType, $galleries := $.Site.Params.galleries -}}
+    {{- if index $galleries $galleryId -}}
+      {{- $config = index $galleries $galleryId -}}
+      {{- break -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if and (eq $galleryId "still") (not $config) -}}
+    {{- $config = index $.Site.Params.galleries.films "still" -}}
+  {{- end -}}
+
+  {{- if $config -}}
+    {{- $prefix := $config.prefix | default (printf "%s-" $galleryId) -}}
+    {{- $extension := default "jpg" $config.extension -}}
+    {{- $name := $config.name -}}
+    {{- $padding := default 3 $config.padding -}}
+
+    {{- $files := slice -}}
+    {{- if eq $galleryId "still" -}}
+      {{- $stillCount := 0 -}}
+      {{- if $galleryData -}}
+        {{- $stillCount = $galleryData.count | default 0 -}}
+      {{- end -}}
+      {{- if and $stillCount (gt $stillCount 0) -}}
+        {{- range $i := seq 1 $stillCount -}}
+          {{- $paddedNum := printf "%0*d" $padding $i -}}
+          {{- $files = $files | append (printf "%s%s.%s" $prefix $paddedNum $extension) -}}
+        {{- end -}}
+      {{- end -}}
+      {{- $thumbData := index .Params.galleries "thumb" -}}
+      {{- $thumbConfig := index $.Site.Params.galleries.films "thumb" -}}
+      {{- $thumbPrefix := "thumb-" -}}
+      {{- $thumbPad := 3 -}}
+      {{- $thumbExt := "jpg" -}}
+      {{- if $thumbConfig -}}
+        {{- $thumbPrefix = $thumbConfig.prefix | default "thumb-" -}}
+        {{- $thumbPad = $thumbConfig.padding | default 3 -}}
+        {{- $thumbExt = $thumbConfig.extension | default "jpg" -}}
+      {{- end -}}
+      {{- if $thumbData -}}
+        {{- range $thumbData.numbers -}}
+          {{- $paddedNum := printf "%0*d" $thumbPad (int .) -}}
+          {{- $files = $files | append (printf "%s%s.%s" $thumbPrefix $paddedNum $thumbExt) -}}
+        {{- end -}}
+      {{- end -}}
+    {{- else if and $galleryData $galleryData.count (gt $galleryData.count 0) -}}
+      {{- range $i := seq 1 $galleryData.count -}}
+        {{- $paddedNum := printf "%0*d" $padding $i -}}
+        {{- $files = $files | append (printf "%s%s.%s" $prefix $paddedNum $extension) -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- $imageCount := len $files -}}
+    {{- if gt $imageCount 0 -}}
       {{- $cdnURL := "" -}}
-      
-      {{- /* Simple logic: development server gets /cdn, everything else gets production CDN */ -}}
       {{- $forceProductionCDN := os.Getenv "HUGO_FORCE_PRODUCTION_CDN" -}}
       {{- $isLocalhost := and (not $forceProductionCDN) hugo.IsServer -}}
-      
       {{- if $isLocalhost -}}
         {{- $cdnURL = "/cdn" -}}
       {{- else -}}
         {{- $cdnURL = .Site.Params.cdn.default -}}
       {{- end -}}
-      
-      {{- /* Capture the page context */ -}}
+
       {{- $pageSlug := path.Base .RelPermalink -}}
       {{- $pageSection := .Section -}}
-      
-      {{- /* Find the gallery configuration by ID across all Hugo types */ -}}
-      {{- $config := "" -}}
-      {{- range $hugoType, $galleries := $.Site.Params.galleries -}}
-        {{- if index $galleries $galleryId -}}
-          {{- $config = index $galleries $galleryId -}}
-          {{- break -}}
-        {{- end -}}
+
+      {{- $credit := "" -}}
+      {{- if and $galleryData $galleryData.credit -}}
+        {{- $credit = $galleryData -}}
       {{- end -}}
-      
-      {{- if $config -}}
-        {{- $prefix := $config.prefix | default (printf "%s-" $galleryId) -}}
-        {{- $extension := default "jpg" $config.extension -}}
-        {{- $name := $config.name -}}
-        {{- $padding := default 3 $config.padding -}}
-        
-        {{- /* Check for event-specific photographer credit, fall back to global config */ -}}
-        {{- $credit := "" -}}
-        {{- if .Params.galleries -}}
-          {{- $eventGallery := index .Params.galleries $galleryId -}}
-          {{- if and $eventGallery $eventGallery.credit -}}
-            {{- $credit = $eventGallery -}}
+      {{- if not $credit -}}
+        {{- $credit = $config -}}
+      {{- end -}}
+
+      {{- $thumbSize := 0 -}}
+      {{- if $config.thumb_sizes -}}
+        {{- $thumbSize = index $config.thumb_sizes 0 -}}
+      {{- else if $config.thumb_size -}}
+        {{- $thumbSize = $config.thumb_size -}}
+      {{- end -}}
+      {{- if .thumb_size -}}
+        {{- $thumbSize = .thumb_size -}}
+      {{- end -}}
+      {{- $thumbSuffix := printf "-%d" $thumbSize -}}
+      {{- $thumbExt := "webp" -}}
+      {{- $contentType := $pageSection -}}
+      {{- $contentPath := printf "%s/%s" $contentType $pageSlug -}}
+      {{- $filesAttr := delimit $files "," -}}
+
+      <div class="cdn-gallery" id="gallery-{{ $galleryId }}" data-type="{{ $galleryId }}" style="--thumb-size: {{ $thumbSize }}px;" data-total-images="{{ $imageCount }}" data-files="{{ $filesAttr }}">
+        <h2>{{ $name }}</h2>
+        <div class="gallery-grid" id="gallery-grid-{{ $galleryId }}">
+          {{- $initialCount := 24 -}}
+          {{- if lt $imageCount $initialCount -}}
+            {{- $initialCount = $imageCount -}}
           {{- end -}}
-        {{- end -}}
-        {{- if not $credit -}}
-          {{- $credit = $config -}}
-        {{- end -}}
-        
-        {{- /* Get thumbnail configuration */ -}}
-        {{- $thumbSize := 0 -}}
-        {{- /* Check for thumb_sizes (array) first, fallback to thumb_size (single value) */ -}}
-        {{- if $config.thumb_sizes -}}
-          {{- $thumbSize = index $config.thumb_sizes 0 -}}
-        {{- else if $config.thumb_size -}}
-          {{- $thumbSize = $config.thumb_size -}}
-        {{- end -}}
-        {{- /* Allow override of thumb_size via parameter */ -}}
-        {{- if .thumb_size -}}
-          {{- $thumbSize = .thumb_size -}}
-        {{- end -}}
-        {{- $thumbSuffix := printf "-%d" $thumbSize -}}
-        {{- $thumbExt := "webp" -}}
-        
-        {{- /* Get content type from captured page section */ -}}
-        {{- $contentType := $pageSection -}}
-        
-        {{- /* Generate gallery HTML */ -}}
-        <div class="cdn-gallery" id="gallery-{{ $galleryId }}" data-type="{{ $galleryId }}" style="--thumb-size: {{ $thumbSize }}px;" data-total-images="{{ $imageCount }}">
-          <h2>{{ $name }}</h2>
-          <div class="gallery-grid" id="gallery-grid-{{ $galleryId }}">
-            {{- /* Show first 24 images initially */ -}}
-            {{- $initialCount := 24 -}}
-            {{- if lt $imageCount $initialCount -}}
-              {{- $initialCount = $imageCount -}}
-            {{- end -}}
-            {{- range $i := (seq 1 $initialCount) -}}
-              {{- $paddedNum := printf "%0*d" $padding $i -}}
-              {{- $imageName := printf "%s%s.%s" $prefix $paddedNum $extension -}}
-              {{- $thumbName := printf "%s%s%s.%s" $prefix $paddedNum $thumbSuffix $thumbExt -}}
-              {{- $contentPath := printf "%s/%s" $contentType $pageSlug -}}
-              {{- $imageURL := printf "%s/%s/%s" $cdnURL $contentPath $imageName -}}
-              {{- $thumbURL := printf "%s/%s/thumbs/%s" $cdnURL $contentPath $thumbName -}}
-              
-              <div class="gallery-item">
-                <a href="{{ $imageURL }}" 
-                   class="gallery-link" 
-                   data-gallery="{{ $galleryId }}-gallery" 
-                   data-index="{{ $i }}"
-                   data-title="{{ $name }} {{ $i }}">
-                  <img src="{{ $thumbURL }}" 
-                       alt="{{ $name }} {{ $i }}" 
-                       loading="lazy">
-                </a>
-              </div>
-            {{- end -}}
-          </div>
-          
-          {{- /* Load More Button - only show if there are more images */ -}}
-          {{- if gt $imageCount $initialCount -}}
-            <div class="gallery-load-more-container">
-              <button class="gallery-load-more-btn" 
-                      data-gallery="{{ $galleryId }}" 
-                      data-loaded="{{ $initialCount }}" 
-                      data-total="{{ $imageCount }}"
-                      data-cdn-url="{{ $cdnURL }}"
-                      data-content-path="{{ $contentType }}/{{ $pageSlug }}"
-                      data-prefix="{{ $prefix }}"
-                      data-extension="{{ $extension }}"
-                      data-thumb-suffix="{{ $thumbSuffix }}"
-                      data-thumb-ext="{{ $thumbExt }}"
-                      data-padding="{{ $padding }}"
-                      data-name="{{ $name }}">
-                <span class="load-more-text">
-                  + Load More Photos 
-                  <span class="load-more-count">({{ sub $imageCount $initialCount }} more)</span>
-                </span>
-                <span class="load-more-loading" style="display: none;">
-                  <svg class="loading-spinner" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z">
-                      <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" from="0 12 12" to="360 12 12"/>
-                    </path>
-                  </svg>
-                  Loading...
-                </span>
-              </button>
+          {{- $visible := first $initialCount $files -}}
+          {{- range $idx, $imageName := $visible -}}
+            {{- $i := add $idx 1 -}}
+            {{- $stem := strings.TrimSuffix (path.Ext $imageName) $imageName -}}
+            {{- $thumbName := printf "%s%s.%s" $stem $thumbSuffix $thumbExt -}}
+            {{- $imageURL := printf "%s/%s/%s" $cdnURL $contentPath $imageName -}}
+            {{- $thumbURL := printf "%s/%s/thumbs/%s" $cdnURL $contentPath $thumbName -}}
+
+            <div class="gallery-item">
+              <a href="{{ $imageURL }}"
+                 class="gallery-link"
+                 data-gallery="{{ $galleryId }}-gallery"
+                 data-index="{{ $i }}"
+                 data-title="{{ $name }} {{ $i }}">
+                <img src="{{ $thumbURL }}"
+                     alt="{{ $name }} {{ $i }}"
+                     loading="lazy">
+              </a>
             </div>
           {{- end -}}
-          
-          {{- /* Photographer credit below load more button */ -}}
-          {{- if $credit.credit -}}
-            <div class="photographer-credit-top">
-              {{- /* Alternate photo location */ -}}
-              {{- if $credit.alternate -}}
-                <p>
-                  {{- if $credit.alternate_url -}}
-                    <a href="{{ $credit.alternate_url }}"><strong>{{ $credit.alternate }}</strong></a>
-                  {{- else -}}
-                    <strong>{{ $credit.alternate }}</strong>
-                  {{- end -}}
-                </p>
+        </div>
+
+        {{- if gt $imageCount $initialCount -}}
+          <div class="gallery-load-more-container">
+            <button class="gallery-load-more-btn"
+                    data-gallery="{{ $galleryId }}"
+                    data-loaded="{{ $initialCount }}"
+                    data-total="{{ $imageCount }}"
+                    data-cdn-url="{{ $cdnURL }}"
+                    data-content-path="{{ $contentType }}/{{ $pageSlug }}"
+                    data-prefix="{{ $prefix }}"
+                    data-extension="{{ $extension }}"
+                    data-thumb-suffix="{{ $thumbSuffix }}"
+                    data-thumb-ext="{{ $thumbExt }}"
+                    data-padding="{{ $padding }}"
+                    data-name="{{ $name }}"
+                    data-files="{{ $filesAttr }}">
+              <span class="load-more-text">
+                + Load More Photos
+                <span class="load-more-count">({{ sub $imageCount $initialCount }} more)</span>
+              </span>
+              <span class="load-more-loading" style="display: none;">
+                <svg class="loading-spinner" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z">
+                    <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" from="0 12 12" to="360 12 12"/>
+                  </path>
+                </svg>
+                Loading...
+              </span>
+            </button>
+          </div>
+        {{- end -}}
+
+        {{- if $credit.credit -}}
+          <div class="photographer-credit-top">
+            {{- if $credit.alternate -}}
+              <p>
+                {{- if $credit.alternate_url -}}
+                  <a href="{{ $credit.alternate_url }}"><strong>{{ $credit.alternate }}</strong></a>
+                {{- else -}}
+                  <strong>{{ $credit.alternate }}</strong>
+                {{- end -}}
+              </p>
+            {{- end -}}
+            <p>
+              {{- if $credit.credit_url -}}
+                <a href="{{ $credit.credit_url }}" target="_blank" rel="noopener">{{ $credit.credit }}</a>
+              {{- else -}}
+                {{ $credit.credit }}
               {{- end -}}
+            </p>
+          </div>
+        {{- end -}}
+      </div>
+
+      <div class="lightbox" id="lightbox-{{ $galleryId }}-gallery">
+        <div class="lightbox-content">
+          <button class="lightbox-close" onclick="closeLightbox('{{ $galleryId }}-gallery')">&times;</button>
+          <button class="lightbox-nav lightbox-prev" onclick="previousImage('{{ $galleryId }}-gallery')">
+            <span class="nav-arrow">‹</span>
+            <img class="nav-thumbnail nav-thumb-prev" src="" alt="" style="display: none;">
+          </button>
+          <img class="lightbox-image" src="" alt="">
+          <button class="lightbox-nav lightbox-next" onclick="nextImage('{{ $galleryId }}-gallery')">
+            <span class="nav-arrow">›</span>
+            <img class="nav-thumbnail nav-thumb-next" src="" alt="" style="display: none;">
+          </button>
+          <button class="lightbox-download" onclick="downloadImage('{{ $galleryId }}-gallery')" title="Download image">
+            <svg class="download-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+            </svg>
+          </button>
+          <div class="lightbox-counter">
+            <span class="lightbox-current">1</span> / <span class="lightbox-total">{{ $imageCount }}</span>
+          </div>
+          {{- if $credit.credit -}}
+            <div class="photographer-credit-lightbox">
               <p>
                 {{- if $credit.credit_url -}}
                   <a href="{{ $credit.credit_url }}" target="_blank" rel="noopener">{{ $credit.credit }}</a>
@@ -167,43 +225,7 @@
             </div>
           {{- end -}}
         </div>
-        
-        {{- /* Lightbox HTML */ -}}
-        <div class="lightbox" id="lightbox-{{ $galleryId }}-gallery">
-          <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox('{{ $galleryId }}-gallery')">&times;</button>
-            <button class="lightbox-nav lightbox-prev" onclick="previousImage('{{ $galleryId }}-gallery')">
-              <span class="nav-arrow">‹</span>
-              <img class="nav-thumbnail nav-thumb-prev" src="" alt="" style="display: none;">
-            </button>
-            <img class="lightbox-image" src="" alt="">
-            <button class="lightbox-nav lightbox-next" onclick="nextImage('{{ $galleryId }}-gallery')">
-              <span class="nav-arrow">›</span>
-              <img class="nav-thumbnail nav-thumb-next" src="" alt="" style="display: none;">
-            </button>
-            <button class="lightbox-download" onclick="downloadImage('{{ $galleryId }}-gallery')" title="Download image">
-              <svg class="download-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-              </svg>
-            </button>
-            <div class="lightbox-counter">
-              <span class="lightbox-current">1</span> / <span class="lightbox-total">{{ $imageCount }}</span>
-            </div>
-            {{- /* Photographer credit at bottom of lightbox */ -}}
-            {{- if $credit.credit -}}
-              <div class="photographer-credit-lightbox">
-                <p>
-                  {{- if $credit.credit_url -}}
-                    <a href="{{ $credit.credit_url }}" target="_blank" rel="noopener">{{ $credit.credit }}</a>
-                  {{- else -}}
-                    {{ $credit.credit }}
-                  {{- end -}}
-                </p>
-              </div>
-            {{- end -}}
-          </div>
-        </div>
-      {{- end -}}
+      </div>
     {{- end -}}
   {{- end -}}
 {{- end -}}

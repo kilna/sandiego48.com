@@ -68,22 +68,27 @@ function handleHashOnLoad() {
       }
     });
     
-    // If not found in loaded links, try to extract index from hash and generate URL
+    // If not found in loaded links, resolve from the file list or sequential pattern
     if (!found) {
-      const match = hash.match(/^(.+?)(\d+)\.(.+)$/);
-      if (match) {
-        const prefix = match[1];
-        const index = parseInt(match[2]);
-        const extension = match[3];
-        
-        // Check if this matches our gallery pattern
-        const loadMoreBtn = gallery.querySelector('.gallery-load-more-btn');
-        if (loadMoreBtn) {
-          const galleryPrefix = loadMoreBtn.dataset.prefix;
-          const galleryExtension = loadMoreBtn.dataset.extension;
-          
-          if (prefix === galleryPrefix && extension === galleryExtension) {
-            openLightbox(galleryType + '-gallery', index, hash);
+      const files = getGalleryFileList(gallery);
+      if (files) {
+        const fileIndex = files.indexOf(hash);
+        if (fileIndex >= 0) {
+          openLightbox(galleryType + '-gallery', fileIndex + 1, hash);
+        }
+      } else {
+        const match = hash.match(/^(.+?)(\d+)\.(.+)$/);
+        if (match) {
+          const prefix = match[1];
+          const index = parseInt(match[2]);
+          const extension = match[3];
+          const loadMoreBtn = gallery.querySelector('.gallery-load-more-btn');
+          if (loadMoreBtn) {
+            const galleryPrefix = loadMoreBtn.dataset.prefix;
+            const galleryExtension = loadMoreBtn.dataset.extension;
+            if (prefix === galleryPrefix && extension === galleryExtension) {
+              openLightbox(galleryType + '-gallery', index, hash);
+            }
           }
         }
       }
@@ -234,6 +239,37 @@ function preloadAdjacentImages(links, currentIndex) {
   }
 }
 
+function getGalleryFileList(gallery) {
+  const raw = gallery && gallery.dataset ? gallery.dataset.files : '';
+  if (!raw) {
+    return null;
+  }
+  return raw.split(',').map(function(name) { return name.trim(); }).filter(Boolean);
+}
+
+function galleryAssetBase(gallery, kind) {
+  const links = gallery.querySelectorAll('.gallery-link');
+  if (kind === 'image' && links.length > 0) {
+    return links[0].href.replace(/\/[^/]+$/, '');
+  }
+  if (kind === 'thumb' && links.length > 0) {
+    const img = links[0].querySelector('img');
+    if (img && img.src) {
+      return img.src.replace(/\/[^/]+$/, '');
+    }
+  }
+  const loadMoreBtn = gallery.querySelector('.gallery-load-more-btn');
+  if (loadMoreBtn) {
+    const cdnUrl = loadMoreBtn.dataset.cdnUrl;
+    const contentPath = loadMoreBtn.dataset.contentPath;
+    if (kind === 'thumb') {
+      return `${cdnUrl}/${contentPath}/thumbs`;
+    }
+    return `${cdnUrl}/${contentPath}`;
+  }
+  return '';
+}
+
 // Generate image URL dynamically based on gallery configuration
 function generateImageUrl(gallery, index) {
   const galleryData = gallery.dataset;
@@ -241,6 +277,13 @@ function generateImageUrl(gallery, index) {
   
   if (index < 1 || index > totalImages) {
     return '';
+  }
+
+  const files = getGalleryFileList(gallery);
+  if (files) {
+    const imageName = files[index - 1];
+    const baseUrl = galleryAssetBase(gallery, 'image');
+    return imageName && baseUrl ? `${baseUrl}/${imageName}` : '';
   }
   
   // Get gallery configuration from the first existing link (if any)
@@ -285,6 +328,20 @@ function generateThumbnailUrl(gallery, index) {
   
   if (index < 1 || index > totalImages) {
     return '';
+  }
+
+  const files = getGalleryFileList(gallery);
+  if (files) {
+    const imageName = files[index - 1];
+    if (!imageName) {
+      return '';
+    }
+    const stem = imageName.replace(/\.[^.]+$/, '');
+    const loadMoreBtn = gallery.querySelector('.gallery-load-more-btn');
+    const thumbSuffix = (loadMoreBtn && loadMoreBtn.dataset.thumbSuffix) || '-200';
+    const thumbExt = (loadMoreBtn && loadMoreBtn.dataset.thumbExt) || 'webp';
+    const baseUrl = galleryAssetBase(gallery, 'thumb');
+    return baseUrl ? `${baseUrl}/${stem}${thumbSuffix}.${thumbExt}` : '';
   }
   
   // Get gallery configuration from the first existing link (if any)
@@ -470,6 +527,10 @@ function loadMoreImages(button) {
   const thumbExt = button.dataset.thumbExt;
   const padding = parseInt(button.dataset.padding);
   const name = button.dataset.name;
+  const files = (button.dataset.files || '')
+    .split(',')
+    .map(function(item) { return item.trim(); })
+    .filter(Boolean);
   
   // Calculate how many images to load
   const nextBatch = Math.min(currentLoaded + loadAmount, totalImages);
@@ -482,8 +543,13 @@ function loadMoreImages(button) {
   
   for (let i = currentLoaded + 1; i <= nextBatch; i++) {
     const paddedNum = i.toString().padStart(padding, '0');
-    const imageName = `${prefix}${paddedNum}.${extension}`;
-    const thumbName = `${prefix}${paddedNum}${thumbSuffix}.${thumbExt}`;
+    const imageName = files.length
+      ? files[i - 1]
+      : `${prefix}${paddedNum}.${extension}`;
+    const stem = imageName.replace(/\.[^.]+$/, '');
+    const thumbName = files.length
+      ? `${stem}${thumbSuffix}.${thumbExt}`
+      : `${prefix}${paddedNum}${thumbSuffix}.${thumbExt}`;
     const imageURL = `${cdnUrl}/${contentPath}/${imageName}`;
     const thumbURL = `${cdnUrl}/${contentPath}/thumbs/${thumbName}`;
     

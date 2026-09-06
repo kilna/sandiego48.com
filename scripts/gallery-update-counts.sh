@@ -120,6 +120,20 @@ for hugo_type in events films people; do
       
       # Count images in the CDN directory
       image_count=$(count_images_in_film_dir "$cdn_subdir" "$prefix" "$extension")
+
+      if [ "$gallery_id" = "thumb" ]; then
+        if [ "$image_count" -gt 0 ]; then
+          numbers=$(find "$cdn_subdir" -maxdepth 1 -name "${prefix}*.${extension}" -type f \
+            | sed -E "s/.*${prefix}0*([0-9]+)\\.${extension}$/\\1/" \
+            | sort -n | paste -sd, -)
+          yq eval -i --front-matter=process ".params.galleries.thumb.numbers = [${numbers}]" "$md_file"
+          log "    Updated $md_file: thumb numbers = [${numbers}]"
+        elif grep -q "^    thumb:" "$md_file" 2>/dev/null; then
+          yq eval -i --front-matter=process "del(.params.galleries.thumb)" "$md_file"
+          log "    Removed empty thumb gallery from $md_file"
+        fi
+        continue
+      fi
       
       if [ "$image_count" -gt 0 ]; then
         log "    Found $image_count images in $slug"

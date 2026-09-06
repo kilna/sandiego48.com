@@ -59,6 +59,33 @@ for hugo_type in "events" "films" "people"; do
         frontmatter_count=0
       fi
       
+      # Generated thumbs use a numbers list (gaps allowed), not sequential count
+      if [ "$gallery_id" = "thumb" ]; then
+        numbers=$(yq eval ".params.galleries.thumb.numbers // [] | join(\",\")" "$md_file" 2>/dev/null || echo "")
+        numbers=$(echo "$numbers" | tr -d '\n\r' | xargs)
+        if [ "$numbers" = "null" ] || [ -z "$numbers" ]; then
+          continue
+        fi
+        actual_cdn_path="$CDN_ROOT/$cdn_type_dir/$slug"
+        if [ ! -d "$actual_cdn_path" ]; then
+          echo "❌ MISSING DIRECTORY: $actual_cdn_path"
+          total_mismatches=$((total_mismatches + 1))
+          continue
+        fi
+        expected_files=$(find "$actual_cdn_path" -maxdepth 1 -name "${prefix}*.${expected_extension}" -type f | wc -l | tr -d ' ')
+        listed=$(echo "$numbers" | awk -F, '{print NF}')
+        if [ "$listed" != "$expected_files" ]; then
+          echo "❌ COUNT MISMATCH in $slug:"
+          echo "   Gallery: thumb"
+          echo "   Frontmatter numbers: $listed ($numbers)"
+          echo "   Actual files: $expected_files"
+          total_mismatches=$((total_mismatches + 1))
+        else
+          echo "  ✅ thumb: $expected_files files (matches numbers list)"
+        fi
+        continue
+      fi
+
       # Skip if no images expected
       if [ "$frontmatter_count" -eq 0 ]; then
         continue
@@ -72,7 +99,7 @@ for hugo_type in "events" "films" "people"; do
         total_mismatches=$((total_mismatches + 1))
         continue
       fi
-      
+
       # Count actual files with expected extension
       expected_files=0
       if [ -d "$actual_cdn_path" ]; then

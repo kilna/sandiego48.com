@@ -13,6 +13,8 @@ params:
   galleries:
     poster:
       count: 1
+    still:
+      count: 3
     bts:
       count: 5
 screening_groups:

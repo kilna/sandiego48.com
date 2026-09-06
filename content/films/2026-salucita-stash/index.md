@@ -12,7 +12,7 @@ params:
   genre: "Comedy / Heist"
   galleries:
     poster:
-      count: 1
+      count: 2
     still:
       count: 3
 screening_groups:

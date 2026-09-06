@@ -64,6 +64,16 @@ function handleHashOnLoad() {
         openLightbox(galleryType + '-gallery', index, imageName);
       }
     });
+    const files = (gallery.dataset.files || '')
+      .split(',')
+      .map(function(name) { return name.trim(); })
+      .filter(Boolean);
+    if (files.length) {
+      const fileIndex = files.indexOf(hash);
+      if (fileIndex >= 0) {
+        openLightbox(galleryType + '-gallery', fileIndex + 1, hash);
+      }
+    }
   });
 }
 
@@ -274,6 +284,10 @@ function loadMoreImages(button) {
   const thumbExt = button.dataset.thumbExt;
   const padding = parseInt(button.dataset.padding);
   const name = button.dataset.name;
+  const files = (button.dataset.files || '')
+    .split(',')
+    .map(function(item) { return item.trim(); })
+    .filter(Boolean);
   
   // Calculate how many images to load
   const nextBatch = Math.min(currentLoaded + loadAmount, totalImages);
@@ -286,8 +300,13 @@ function loadMoreImages(button) {
   
   for (let i = currentLoaded + 1; i <= nextBatch; i++) {
     const paddedNum = i.toString().padStart(padding, '0');
-    const imageName = `${prefix}${paddedNum}.${extension}`;
-    const thumbName = `${prefix}${paddedNum}${thumbSuffix}.${thumbExt}`;
+    const imageName = files.length
+      ? files[i - 1]
+      : `${prefix}${paddedNum}.${extension}`;
+    const stem = imageName.replace(/\.[^.]+$/, '');
+    const thumbName = files.length
+      ? `${stem}${thumbSuffix}.${thumbExt}`
+      : `${prefix}${paddedNum}${thumbSuffix}.${thumbExt}`;
     const imageURL = `${cdnUrl}/${contentPath}/${imageName}`;
     const thumbURL = `${cdnUrl}/${contentPath}/thumbs/${thumbName}`;
     

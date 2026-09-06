@@ -105,6 +105,12 @@ params:
         padding: 3
         extension: "jpg"
         thumb_size: 200
+      thumb:
+        name: "Film Stills"
+        prefix: "thumb-"
+        padding: 3
+        extension: "jpg"
+        thumb_size: 200
       bts:
         name: "Behind the Scenes"
         padding: 3

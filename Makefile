@@ -13,7 +13,7 @@ else
 	export HUGO_BASEURL=http://localhost:$(SERVER_PORT)
 endif
 
-.PHONY: build build-clean server server-cdn server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit tool-plugins setup-dev-cdn cleanup-dev-cdn push deploy preview dash help
+.PHONY: build build-clean server server-cdn server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit tool-plugins setup-dev-cdn cleanup-dev-cdn push deploy preview dash import-2026 help
 
 # Ensure .tool-versions exists (local uses .dev; Cloudflare Pages uses .cloudflare)
 install-tools:
@@ -106,6 +106,9 @@ gallery-update-counts: install-tools
 gallery-audit: install-tools
 	./scripts/gallery-audit.sh
 
+import-2026:
+	python3 scripts/import-2026-media.py
+
 preview: copy-images cleanup-dev-cdn build-clean
 	script -q /dev/null \
 	  bash -c "wrangler pages deploy ./public --project-name=$$CLOUDFLARE_PAGES_PROJECT --branch=preview --commit-dirty=true" \
@@ -137,5 +140,6 @@ help:
 	@echo "  cdn-download  - Download from CDN"
 	@echo "  gallery-thumbs- Generate gallery thumbnails"
 	@echo "  gallery-audit - Audit gallery images"
+	@echo "  import-2026   - Import 2026 NAS posters/stills/BTS/thumbs into CDN"
 	@echo "  icons         - Download/refresh SVG icons from icons.yaml"
 	@echo "  help          - Show this help message"
