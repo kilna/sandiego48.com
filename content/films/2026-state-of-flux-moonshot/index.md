@@ -15,6 +15,8 @@ params:
       count: 2
     still:
       count: 10
+    bts:
+      count: 8
 screening_groups:
   - "group-c"
 screening_events:

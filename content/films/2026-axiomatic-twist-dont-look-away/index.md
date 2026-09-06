@@ -10,6 +10,8 @@ params:
   order: 999
   genre: "Mockumentary / Family Film"
   galleries:
+    still:
+      count: 3
     bts:
       count: 9
 screening_groups:

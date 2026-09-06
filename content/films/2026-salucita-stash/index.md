@@ -1,5 +1,6 @@
 ---
 title: "STASH"
+image: poster.jpg
 date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
@@ -9,6 +10,11 @@ params:
   synopsis: "A down-on-his-luck tour guide encounters an unexpected fortune while on the job"
   order: 999
   genre: "Comedy / Heist"
+  galleries:
+    poster:
+      count: 1
+    still:
+      count: 3
 screening_groups:
   - "group-b"
 screening_events:

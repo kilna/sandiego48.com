@@ -12,7 +12,7 @@ params:
   genre: "Horror / Single Room Movie"
   galleries:
     poster:
-      count: 2
+      count: 4
     still:
       count: 3
 screening_groups:
