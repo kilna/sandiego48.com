@@ -1,5 +1,6 @@
 ---
 title: "Reserved"
+image: poster.jpg
 date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
@@ -9,6 +10,9 @@ params:
   synopsis: "A movie fan tries to convince others that cinema is more than just entertainment, it bears witness to the human experience."
   order: 999
   genre: "Mockumentary / Inspirational Film"
+  galleries:
+    poster:
+      count: 2
 screening_groups:
   - "group-d"
 screening_events:

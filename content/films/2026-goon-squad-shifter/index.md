@@ -1,5 +1,6 @@
 ---
 title: "Shifter"
+image: poster.jpg
 date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
@@ -9,6 +10,9 @@ params:
   synopsis: "A wanted criminal breaks into an unknown persons house."
   order: 999
   genre: "Thriller / Suspense / Family Film"
+  galleries:
+    poster:
+      count: 1
 screening_groups:
   - "group-d"
 screening_events:

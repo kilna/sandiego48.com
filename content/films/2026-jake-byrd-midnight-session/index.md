@@ -1,5 +1,6 @@
 ---
 title: "Midnight Session"
+image: poster.jpg
 date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
@@ -9,6 +10,9 @@ params:
   synopsis: ""
   order: 999
   genre: "Drama / Utopian or Dystopian"
+  galleries:
+    poster:
+      count: 1
 screening_groups:
   - "group-b"
 screening_events:

@@ -1,5 +1,6 @@
 ---
 title: "Last Shot"
+image: poster.jpg
 date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
@@ -9,6 +10,9 @@ params:
   synopsis: "A man misses two cues, one that costs him everything and another that rather than the hero of his own story he's the villain of everyone else's."
   order: 999
   genre: "Film Noir / Inspirational Film"
+  galleries:
+    poster:
+      count: 1
 screening_groups:
   - "group-b"
 screening_events:

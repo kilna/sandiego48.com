@@ -1,5 +1,6 @@
 ---
 title: "Don't Look Away"
+image: poster.jpg
 date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
@@ -10,6 +11,8 @@ params:
   order: 999
   genre: "Mockumentary / Family Film"
   galleries:
+    poster:
+      count: 1
     still:
       count: 3
     bts:
