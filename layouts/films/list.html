@@ -85,6 +85,9 @@
       </div>
       <div class="film-info">
         <h3 class="film-title"><a href="{{ $film.RelPermalink }}">{{ $film.Title }}</a></h3>
+        {{ if $film.Params.logline }}
+          <p class="film-logline">{{ $film.Params.logline }}</p>
+        {{ end }}
         <p class="film-team">by <a href="{{ $film.RelPermalink }}">{{ $film.Params.team }}</a></p>
         {{ if $film.Params.best_of_2025 }}
           <a href="/events/2025-09-28-best-of-san-diego-screening-and-awards-gala/" class="best-of-2025-badge">
@@ -107,9 +110,6 @@
               <span class="group-tag">{{ $groupName }}</span>
             {{ end }}
           </div>
-        {{ end }}
-        {{ if $film.Params.logline }}
-          <p class="film-logline">{{ $film.Params.logline }}</p>
         {{ end }}
         {{- partial "components/button.html" (dict
             "text" "More info"

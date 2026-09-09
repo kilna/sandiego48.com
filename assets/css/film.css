@@ -117,6 +117,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  gap: 0.35rem;
 }
 
 .film-card .film-info a.button {
@@ -132,6 +133,11 @@
   margin: 0 0 0.5rem 0;
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+.film-card .film-info h3 {
+  margin: 0 !important;
+  line-height: 1.2;
 }
 
 .film-info h3 a {
@@ -176,11 +182,22 @@
   color: black;
 }
 
+.film-card .film-team {
+  font-style: italic;
+  margin: 0 !important;
+  line-height: 1.3;
+}
+
 .film-card .film-logline {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 700;
   color: var(--48-orange-nearblack);
-  line-height: 1.4;
-  margin: 0.5rem 0 0 0;
+  line-height: 1.3;
+  margin: 0 !important;
+}
+
+.film-card .film-groups {
+  margin: 0.15rem 0 0;
 }
 
 /* Film Groups */

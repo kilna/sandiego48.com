@@ -167,14 +167,14 @@
           </div>
           <div class="film-info">
             <h3 class="film-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            {{ if .Params.logline }}
+              <p class="film-logline">{{ .Params.logline }}</p>
+            {{ end }}
             <p class="film-team">by <a href="{{ .RelPermalink }}">{{ .Params.team }}</a></p>
             {{ with strings.TrimSpace (.Params.genre | default "") }}
               <div class="film-groups">
                 <span class="genre-tag">{{ . }}</span>
               </div>
-            {{ end }}
-            {{ if .Params.logline }}
-              <p class="film-logline">{{ .Params.logline }}</p>
             {{ end }}
             {{ if .Params.synopsis }}
               <div class="film-synopsis">{{ .Params.synopsis | markdownify }}</div>
