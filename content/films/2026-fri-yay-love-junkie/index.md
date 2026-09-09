@@ -9,7 +9,7 @@ params:
   logline: "Love Unscripted"
   synopsis: "Documentarians capture the life of a chronically hopeless romantic, uncovering the extents at which she’d go to find “The One”"
   order: 999
-  genre: "Mockumentary / Vacation / Holiday Film"
+  genre: "Mockumentary"
   galleries:
     poster:
       count: 1

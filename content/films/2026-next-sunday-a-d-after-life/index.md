@@ -9,7 +9,7 @@ params:
   logline: "The Afterlife Can Be a Bloody Good Time"
   synopsis: "Two strangers meet in the afterlife and it is not what they expected."
   order: 999
-  genre: "Horror / Single Room Movie"
+  genre: "Horror + Single Room Movie"
   galleries:
     poster:
       count: 4

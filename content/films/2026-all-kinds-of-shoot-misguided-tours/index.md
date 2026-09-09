@@ -11,7 +11,7 @@ params:
   logline: "A cryptid comedy"
   synopsis: "Paranormal researchers go straight to the source. Or do they?"
   order: 999
-  genre: "Mockumentary / Misunderstanding"
+  genre: "Mockumentary OR Misunderstanding"
   galleries:
     poster:
       count: 1

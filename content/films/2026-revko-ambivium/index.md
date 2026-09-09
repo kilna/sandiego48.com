@@ -9,7 +9,7 @@ params:
   logline: "Guiding while lost"
   synopsis: "Andre guiding others even though he may feel lost in his own life."
   order: 999
-  genre: "Fish Out of Water / Inspirational Film"
+  genre: "Fish Out of Water + Inspirational Film"
   galleries:
     poster:
       count: 1

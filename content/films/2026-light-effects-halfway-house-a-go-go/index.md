@@ -9,7 +9,7 @@ params:
   logline: "Towels galore at this group home!"
   synopsis: "Rambunctious Blue Haired lady enters a unique fully staffed Group Home."
   order: 999
-  genre: "Horror / Workplace Film"
+  genre: "Workplace Film"
   galleries:
     poster:
       count: 1

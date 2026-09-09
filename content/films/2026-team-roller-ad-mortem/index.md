@@ -11,7 +11,7 @@ params:
   logline: ""
   synopsis: ""
   order: 999
-  genre: "Romantic Comedy / Romance"
+  genre: "Romance"
   galleries:
     poster:
       count: 1

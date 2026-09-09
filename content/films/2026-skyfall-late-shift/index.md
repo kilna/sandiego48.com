@@ -9,7 +9,7 @@ params:
   logline: "No Time for Games"
   synopsis: "He's late for work again, and if he doesn't hurry, it might be the last time!"
   order: 999
-  genre: "Drama / Silent Film"
+  genre: "Silent Film"
   galleries:
     poster:
       count: 1

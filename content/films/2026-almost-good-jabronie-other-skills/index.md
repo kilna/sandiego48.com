@@ -11,7 +11,7 @@ params:
   logline: "Her skills are unheard of"
   synopsis: "A former female assassin tries out a new career... as a female assassin?"
   order: 999
-  genre: "Film de Femme / Silent Film"
+  genre: "Film de Femme + Silent Film"
   galleries:
     poster:
       count: 1

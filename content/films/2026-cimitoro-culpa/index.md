@@ -11,7 +11,7 @@ params:
   logline: "One good man."
   synopsis: "One mistake. One guilt. One voice."
   order: 999
-  genre: "Action / Adventure / Single Room Movie"
+  genre: "Single Room Movie"
   galleries:
     poster:
       count: 2

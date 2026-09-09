@@ -11,7 +11,7 @@ params:
   logline: "What next?"
   synopsis: "What next?"
   order: 999
-  genre: "Action / Adventure / Food Film"
+  genre: "Action / Adventure"
   galleries:
     poster:
       count: 1

@@ -11,7 +11,7 @@ params:
   logline: "4 Girls, 3 Words, 2 Genres, 1 Scary Game"
   synopsis: "What started as an open house tour turns into one scary game."
   order: 999
-  genre: "Film de Femme / Sports Film / Game Film"
+  genre: "Film de Femme + Sports Film / Game Film"
   galleries:
     poster:
       count: 1

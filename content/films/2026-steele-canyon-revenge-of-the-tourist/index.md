@@ -9,7 +9,7 @@ params:
   logline: "You never know who's following you"
   synopsis: "When an inept but well-intentioned tour guide ruins a tour for the wrong client, she decide to book another tour and plot her revenge."
   order: 999
-  genre: "Mockumentary / Revenge"
+  genre: "Mockumentary + Revenge"
   galleries:
     poster:
       count: 1

@@ -11,7 +11,7 @@ params:
   logline: "A look in the mirror"
   synopsis: "A wanted criminal breaks into an unknown persons house."
   order: 999
-  genre: "Thriller / Suspense / Family Film"
+  genre: "Thriller / Suspense OR Family Film"
   galleries:
     poster:
       count: 1

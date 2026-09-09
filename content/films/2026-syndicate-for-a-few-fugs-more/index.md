@@ -9,7 +9,7 @@ params:
   logline: "Showcasing El Cajon, the city of whatever the fuck"
   synopsis: "A small peek into the lives of El Cajon residents...with food."
   order: 999
-  genre: "Musical / Food Film"
+  genre: "Musical + Food Film"
   galleries:
     poster:
       count: 1

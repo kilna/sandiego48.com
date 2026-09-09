@@ -11,7 +11,7 @@ params:
   logline: "Mystery hung out to dry?"
   synopsis: "A detective falls prey to the deception of a lost towel."
   order: 999
-  genre: "Film Noir / Food Film"
+  genre: "Film Noir"
   galleries:
     poster:
       count: 1

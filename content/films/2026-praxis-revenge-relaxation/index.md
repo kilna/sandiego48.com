@@ -9,7 +9,7 @@ params:
   logline: "N/A"
   synopsis: "Revenge is the best kind of relaxation."
   order: 999
-  genre: "Action / Adventure / Revenge"
+  genre: "Revenge"
   galleries:
     poster:
       count: 1

@@ -9,7 +9,7 @@ params:
   logline: "Movie are magic"
   synopsis: "A movie fan tries to convince others that cinema is more than just entertainment, it bears witness to the human experience."
   order: 999
-  genre: "Mockumentary / Inspirational Film"
+  genre: "Inspirational Film"
   galleries:
     poster:
       count: 2

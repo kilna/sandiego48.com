@@ -9,7 +9,7 @@ params:
   logline: ""
   synopsis: ""
   order: 999
-  genre: "Film de Femme / Sports Film / Game Film"
+  genre: "Game Film"
   galleries:
     poster:
       count: 1

@@ -11,7 +11,7 @@ params:
   logline: "I’m a rocket surgeon"
   synopsis: "Lonely guy finds his courage"
   order: 999
-  genre: "Romance / Romantic Comedy"
+  genre: "Romantic Comedy"
   galleries:
     poster:
       count: 1

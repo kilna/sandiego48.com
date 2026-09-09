@@ -11,7 +11,7 @@ params:
   logline: "She's got a brand new job...but will it be her last?"
   synopsis: "Emily Hamilton is excited for her first day of work, but while touring the office and meeting her new co-workers, she starts to get an ominous and sinister vibe."
   order: 999
-  genre: "Musical / Family Film"
+  genre: "Musical"
   galleries:
     poster:
       count: 2

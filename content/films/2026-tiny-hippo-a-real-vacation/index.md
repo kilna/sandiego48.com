@@ -9,7 +9,7 @@ params:
   logline: "Unlimited funds? Unlimited upgrades"
   synopsis: "Vacation so real, you never want to leave!"
   order: 999
-  genre: "Sci Fi / Vacation / Holiday Film"
+  genre: "Sci Fi + Vacation / Holiday Film"
   galleries:
     poster:
       count: 1

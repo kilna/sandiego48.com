@@ -11,7 +11,7 @@ params:
   logline: "No Coffee. No Filter."
   synopsis: "One Morning without Coffee is a moral dilemma story about a troubled marriage, with Angelina an angel without filters forces Andre Voss to confront the one decision he can no longer avoid: stay in his marriage or run away."
   order: 999
-  genre: "Thriller / Suspense / Moral Dilemma"
+  genre: "Moral Dilemma"
   galleries:
     poster:
       count: 1

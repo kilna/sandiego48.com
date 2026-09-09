@@ -11,7 +11,7 @@ params:
   logline: "It’s time to come home"
   synopsis: "Future generations patiently wait for Earth’s surface to habitable"
   order: 999
-  genre: "Comedy / Utopian or Dystopian"
+  genre: "Utopian or Dystopian"
   galleries:
     poster:
       count: 2

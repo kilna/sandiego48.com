@@ -11,7 +11,7 @@ params:
   logline: "Use Your Time Wisely..."
   synopsis: "A mischievous young witch learns that her magical abilities have the power to heal."
   order: 999
-  genre: "Fantasy / Moral Dilemma"
+  genre: "Fantasy"
   galleries:
     poster:
       count: 1

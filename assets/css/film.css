@@ -49,6 +49,7 @@
   flex-direction: column;
   min-width: 0;
   max-width: 100%;
+  height: 100%;
   box-sizing: border-box;
 }
 
@@ -113,6 +114,18 @@
   padding: 1.5rem;
   min-width: 0;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.film-card .film-info a.button {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.film-card .film-info > *:has(+ a.button) {
+  margin-bottom: 0.75rem;
 }
 
 .film-info h3 {
@@ -173,19 +186,34 @@
 /* Film Groups */
 .film-groups {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: center;
   gap: 0.5rem;
   margin: 0.75rem 0;
 }
 
-.group-tag {
+.group-tag,
+.genre-tag {
   display: inline-block;
-  background: var(--48-navy-light);
-  color: var(--48-navy-nearblack);
   padding: 0.25rem 0.75rem;
   border-radius: 15px;
   font-size: 0.8rem;
   font-weight: 500;
+  line-height: 1.3;
+}
+
+.group-tag {
+  flex: 0 0 auto;
+  background: var(--48-navy-light);
+  color: var(--48-navy-nearblack);
+}
+
+.genre-tag {
+  flex: 0 1 auto;
+  min-width: 0;
+  background: color-mix(in srgb, var(--48-pink) 42%, white);
+  color: var(--48-navy-nearblack);
+  overflow-wrap: break-word;
 }
 
 /* Best of 2025 Star Indicator */
@@ -325,6 +353,11 @@
     min-width: 0;
     min-height: min-content;
     padding: 0.75rem 1rem;
+  }
+
+  .film-card .film-info a.button {
+    align-self: flex-start;
+    font-size: 0.9rem;
   }
 
   .film-card .film-info h3 {

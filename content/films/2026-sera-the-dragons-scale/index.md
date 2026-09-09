@@ -9,7 +9,7 @@ params:
   logline: "Knight in the journey to prove love"
   synopsis: "Knight has a chance to prove love and gain respect"
   order: 999
-  genre: "Fantasy / Moral Dilemma"
+  genre: "Fantasy"
   galleries:
     poster:
       count: 1

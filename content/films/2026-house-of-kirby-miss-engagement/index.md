@@ -9,7 +9,7 @@ params:
   logline: "Even friendship misses the point."
   synopsis: "Two childhood best friends, Sylive and Isablle embark on a journey of wedding planning, but shame, secrets, and fear of the future brings them to the end of the road quicker than they think."
   order: 999
-  genre: "Road Movie / Buddy Film"
+  genre: "Buddy Film"
   galleries:
     poster:
       count: 2

@@ -11,7 +11,7 @@ params:
   logline: "Revenge is served cold"
   synopsis: "When a woman is attacked by her classmates, she and her cousin decide to take matters into their own hands."
   order: 999
-  genre: "Film de Femme / Revenge"
+  genre: "Film de Femme + Revenge"
   galleries:
     poster:
       count: 2

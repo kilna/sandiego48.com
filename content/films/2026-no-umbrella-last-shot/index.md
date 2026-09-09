@@ -11,7 +11,7 @@ params:
   logline: "It only takes one miss"
   synopsis: "A man misses two cues, one that costs him everything and another that rather than the hero of his own story he's the villain of everyone else's."
   order: 999
-  genre: "Film Noir / Inspirational Film"
+  genre: "Film Noir"
   galleries:
     poster:
       count: 1

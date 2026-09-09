@@ -11,7 +11,7 @@ params:
   logline: "Every Confession Has a Price"
   synopsis: "A man at the end of his rope receives a confession which at first he believes to be a lifeline but in reality is something else entirely."
   order: 999
-  genre: "Drama / Workplace Film"
+  genre: "Drama"
   galleries:
     poster:
       count: 1

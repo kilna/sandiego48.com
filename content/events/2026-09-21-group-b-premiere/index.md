@@ -36,19 +36,3 @@ params:
     - Bring your style! You are coming to a film premiere — dress to impress.
 ---
 Step onto the purple carpet, then head into a theater packed with filmmakers, friends, and fans. Purple carpet / ticket check-in is **7:30-9pm**, and the premiere screening is **9-11pm**. Each film screens once, with live Audience Choice voting at the end of the night.
-
-## Screening Group B
-
-- **Culpa** by Cimitoro Productions — Action / Adventure and/or Single Room Movie
-- **Curios and Other Curiosities** by Metal Pixel Foundry — Fantasy and/or Moral Dilemma
-- **Don't Look Away** by Axiomatic Twist — Mockumentary and/or Family Film
-- **Halfway House A Go-Go** by Light Effects Film — Horror and/or Workplace Film
-- **Hide and Seeking Closure** by Dirty Mike and the Boys Productions — Sports Film / Game Film and/or Road Movie
-- **Last Shot** by No Umbrella Studios — Film Noir and/or Inspirational Film
-- **Midnight Session** by Jake Byrd Productions — Drama and/or Utopian or Dystopian
-- **Not Again Janice!** by More Than Perfect — Dark Comedy and/or Vacation / Holiday Film
-- **Passing Through** by Breakfast For Dinner! — Fish Out of Water and/or Workplace Film
-- **STASH** by Salucita Films — Comedy and/or Heist
-- **Tour de Tag** by Monkey's On The Bed — Thriller / Suspense and/or Workplace Film
-- **The Towel of Treachery** by Fade In — Film Noir and/or Food Film
-- **Two Bad Eggs** by Night Owls — Film de Femme and/or Food Film

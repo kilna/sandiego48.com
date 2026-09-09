@@ -9,7 +9,7 @@ params:
   logline: "Stealing from thieves is a risky game."
   synopsis: "The world took everything from Nessa, she’s gonna steal it back."
   order: 999
-  genre: "Film Noir / Heist"
+  genre: "Heist"
   galleries:
     poster:
       count: 1

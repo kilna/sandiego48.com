@@ -9,7 +9,7 @@ params:
   logline: "Who do you think you are?"
   synopsis: "Andrea Voss is a very curious girl. She must be stopped."
   order: 999
-  genre: "Sci Fi / Misunderstanding"
+  genre: "Sci Fi"
   galleries:
     poster:
       count: 3

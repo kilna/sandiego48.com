@@ -9,7 +9,7 @@ params:
   logline: "Office tours are hell"
   synopsis: "A down-on-his-luck tour guide encounters an unexpected fortune while on the job"
   order: 999
-  genre: "Comedy / Heist"
+  genre: "Comedy + Heist"
   galleries:
     poster:
       count: 3

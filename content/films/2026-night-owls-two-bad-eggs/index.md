@@ -9,7 +9,7 @@ params:
   logline: "Over easy. Under employed."
   synopsis: "Two freeloading friends crack eggs over an easy afternoon breakfast as their host’s last shred of patience is cracking right along with them."
   order: 999
-  genre: "Film de Femme / Food Film"
+  genre: "Food Film"
   galleries:
     poster:
       count: 1

@@ -191,20 +191,9 @@ def patch_event_page(group: str, films: list[dict]) -> None:
   event = EVENT_BY_GROUP[group]
   path = SITE / "content" / "events" / event / "index.md"
   text = path.read_text(encoding="utf-8")
-  films = sorted(films, key=lambda f: sort_title(f["title"]))
-  lines = [f"## Screening Group {group}", ""]
-  for film in films:
-    item = f"- **{film['title']}** by {film['team']}"
-    g1, g2 = film.get("genre_1") or "", film.get("genre_2") or ""
-    if g1 and g2:
-      item += f" — {g1} and/or {g2}"
-    elif film["genre"]:
-      item += f" — {film['genre']}"
-    lines.append(item)
-  block = "\n".join(lines) + "\n"
   text = re.sub(
-    r"## Screening Group [A-E]\n\n(?:- .+\n)+",
-    block,
+    r"\n## Screening Group [A-E]\n\n(?:- .+\n)+",
+    "\n",
     text,
     count=1,
   )

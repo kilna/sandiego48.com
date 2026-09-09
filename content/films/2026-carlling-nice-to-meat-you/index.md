@@ -9,7 +9,7 @@ params:
   logline: "We'd like to have YOU for dinner!"
   synopsis: "After his car breaks down, a stranded man accepts a stranger's hospitality only to realize there is something meaty going on inside this house."
   order: 999
-  genre: "Family Film / Horror"
+  genre: "Horror"
   galleries:
     poster:
       count: 1

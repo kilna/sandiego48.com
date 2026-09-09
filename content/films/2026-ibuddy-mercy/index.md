@@ -11,7 +11,7 @@ params:
   logline: "Keep Driving"
   synopsis: "After four friends hit something on a dark road and agree to keep driving, the only passenger who saw a man lying there must decide under a cop's flashlight whether to give up the driver or uphold her sister's lie."
   order: 999
-  genre: "Fish Out of Water / Moral Dilemma"
+  genre: "Moral Dilemma"
   galleries:
     poster:
       count: 1

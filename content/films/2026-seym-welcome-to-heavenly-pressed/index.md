@@ -9,7 +9,7 @@ params:
   logline: "Ascension within Reach"
   synopsis: "A training video for new members of Heavenly Pressed Industries, preparing members to harvest members for their HIVE."
   order: 999
-  genre: "Sci Fi / Utopian or Dystopian"
+  genre: "Utopian or Dystopian"
   galleries:
     poster:
       count: 1

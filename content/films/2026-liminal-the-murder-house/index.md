@@ -9,7 +9,7 @@ params:
   logline: "Not every haunting belongs to the living"
   synopsis: "Haunting a house, while being haunted by a lie that kept her trapped in misery."
   order: 999
-  genre: "Fish Out of Water / Silent Film"
+  genre: "Silent Film"
   galleries:
     poster:
       count: 2

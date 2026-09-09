@@ -9,7 +9,7 @@ params:
   logline: "Is it love? Or predatory obsession?"
   synopsis: "A well-meaning family attempts to stage an intervention for their sister, a hopeless romantic who is convinced she’s tamed the ultimate bad boy."
   order: 999
-  genre: "Fish Out of Water / Single Room Movie"
+  genre: "Fish Out of Water"
   galleries:
     poster:
       count: 2

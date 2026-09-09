@@ -11,7 +11,7 @@ params:
   logline: "A father. A daughter. And the trail they are on together."
   synopsis: "While hiking to the perfect spot, A father imparts wisdom to his daughter on how to find happiness."
   order: 999
-  genre: "Drama / Sports Film / Game Film"
+  genre: "Drama"
   galleries:
     poster:
       count: 1

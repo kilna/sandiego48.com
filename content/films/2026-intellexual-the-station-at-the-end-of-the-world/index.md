@@ -11,7 +11,7 @@ params:
   logline: "The Station, bringing people together for dinner at the end of the world."
   synopsis: "A young couple are seeking refuge in the apocalypse. Can they find it at KFER, The Ferret? Or is this radio station not what it's jingle would lead you to believe?"
   order: 999
-  genre: "Thriller / Suspense / Utopian or Dystopian"
+  genre: "Thriller / Suspense + Utopian or Dystopian"
   galleries:
     poster:
       count: 3

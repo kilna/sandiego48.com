@@ -11,7 +11,7 @@ params:
   logline: "A Pseudo Love Story"
   synopsis: "A man with good purpose but desperate measures realizes what he's really been missing"
   order: 999
-  genre: "Dark Comedy / Moral Dilemma"
+  genre: "Dark Comedy + Moral Dilemma"
   galleries:
     poster:
       count: 1

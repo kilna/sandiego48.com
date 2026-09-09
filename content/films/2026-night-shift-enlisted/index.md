@@ -9,7 +9,7 @@ params:
   logline: "Welcome to the workforce!"
   synopsis: "A germaphobic tourist finds an audio tour that leads him to a dark secret."
   order: 999
-  genre: "Thriller / Suspense / Workplace Film"
+  genre: "Workplace Film"
   galleries:
     poster:
       count: 1

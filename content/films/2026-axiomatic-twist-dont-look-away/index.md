@@ -11,7 +11,7 @@ params:
   logline: "This is a ghost story"
   synopsis: "After the tragic disappearance of her brother, Nicole Corcoran investigates the rash of disappearances in Sanctuary, California which ultimately leads her to the Belvedere Murder House."
   order: 999
-  genre: "Mockumentary / Family Film"
+  genre: "Mockumentary"
   galleries:
     poster:
       count: 1

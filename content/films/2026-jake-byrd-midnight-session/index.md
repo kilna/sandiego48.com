@@ -11,7 +11,7 @@ params:
   logline: ""
   synopsis: ""
   order: 999
-  genre: "Drama / Utopian or Dystopian"
+  genre: "Utopian or Dystopian"
   galleries:
     poster:
       count: 1

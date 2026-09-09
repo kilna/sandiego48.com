@@ -9,7 +9,7 @@ params:
   logline: "I find you, you no find me."
   synopsis: "Two strangers tour the Hide and Seek museum in southern California, one with a hope to find something that was lost."
   order: 999
-  genre: "Sports Film / Game Film / Road Movie"
+  genre: "Game Film"
   galleries:
     poster:
       count: 1

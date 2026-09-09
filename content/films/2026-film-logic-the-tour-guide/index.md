@@ -11,7 +11,7 @@ params:
   logline: "Some tours take you places you never expected."
   synopsis: "Two friends hire an aspiring actor as their tour guide to a haunted manor."
   order: 999
-  genre: "Buddy Film / Dark Comedy"
+  genre: "Dark Comedy"
   galleries:
     poster:
       count: 1

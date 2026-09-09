@@ -1,6 +1,7 @@
 {{ define "head" }}
   {{- partial "head.html" . -}}
   {{- partial "layout/stylesheet.html" "events" -}}
+  {{- partial "layout/stylesheet.html" "film" -}}
   {{- partial "layout/stylesheet.html" "infoblock" -}}
 {{ end }}
 
@@ -143,7 +144,7 @@
       <h2>Featured Films</h2>
       <div class="films-grid">
         {{ range $films }}
-        <div class="film-item" data-order="{{ .Params.order | default 999 }}">
+        <div class="film-item orange-halftone" data-order="{{ .Params.order | default 999 }}">
           <div class="film-poster-container">
             <a href="{{ .RelPermalink }}" class="film-poster-link">
               {{ $film_image := "" }}
@@ -166,13 +167,24 @@
           </div>
           <div class="film-info">
             <h3 class="film-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-            <p class="film-team"><em>by <a href="{{ .RelPermalink }}">{{ .Params.team }}</a></em></p>
+            <p class="film-team">by <a href="{{ .RelPermalink }}">{{ .Params.team }}</a></p>
+            {{ with strings.TrimSpace (.Params.genre | default "") }}
+              <div class="film-groups">
+                <span class="genre-tag">{{ . }}</span>
+              </div>
+            {{ end }}
             {{ if .Params.logline }}
-              <p class="film-logline"><strong>{{ .Params.logline }}</strong></p>
+              <p class="film-logline">{{ .Params.logline }}</p>
             {{ end }}
             {{ if .Params.synopsis }}
               <div class="film-synopsis">{{ .Params.synopsis | markdownify }}</div>
             {{ end }}
+            {{- partial "components/button.html" (dict
+                "text" "More info"
+                "url" .RelPermalink
+                "icon" "info"
+                "target" "_self"
+            ) -}}
           </div>
         </div>
         {{ end }}
