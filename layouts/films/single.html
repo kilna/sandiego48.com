@@ -53,6 +53,36 @@
       margin: 0 0 1.5rem 0;
       font-weight: 500;
     }
+
+    .film-team:has(+ .film-prior) {
+      margin-bottom: 0.35rem;
+    }
+
+    .film-prior {
+      font-size: 1.05rem;
+      line-height: 1.5;
+      color: var(--48-navy);
+      margin: 0 0 1.5rem 0;
+    }
+
+    .film-prior p {
+      margin: 0;
+    }
+
+    .film-prior a {
+      color: var(--48-orange);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+
+    .film-prior a:hover {
+      color: var(--48-navy);
+    }
+
+    .film-prior em {
+      font-style: italic;
+    }
     
     .film-meta {
       display: grid;
@@ -110,8 +140,8 @@
     }
     
     .film-synopsis {
-      font-size: 1.1rem;
-      line-height: 1.7;
+      font-size: 1.5rem;
+      line-height: 1.65;
       color: black;
       margin-bottom: 2rem;
     }
@@ -222,7 +252,10 @@
     <div class="film-info">
       <h1 class="film-title">{{ .Title }}</h1>
       <p class="film-team">by {{ .Params.team }}</p>
-      
+      {{ with .Params.prior }}
+        <div class="film-prior">{{ . | markdownify }}</div>
+      {{ end }}
+
       <dl class="film-meta">
         {{ if .Params.year }}
           <dt>Year:</dt>

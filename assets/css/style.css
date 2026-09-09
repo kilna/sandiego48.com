@@ -1,19 +1,17 @@
 :root {
-  /* Sunset skyline palette, sampled from header bg and 2026 CTA images */
+  /* 2026 graphics palette. Derived steps keep prior lightness; unused tokens omitted. */
   --48-black:             #000000;
   --48-white:             #ffffff;
-  --48-trans:             #00000000;
   --48-nearwhite:         #f0f0f0;
-  --48-yellow:            #f0b030;
-  --48-pink:              #ff53e5;
+  --48-gold:              #fbac2e;
+  --48-yellow:            #ffc929;
+  --48-pink:              #ff26d2;
   --48-orange:            #e56f32;
   --48-orange-trans-less: #e56f3240;
   --48-orange-trans:      #e56f3280;
-  --48-orange-trans-more: #e56f32c0;
   --48-orange-nearblack:  #3f1f0c;
   --48-orange-dark:       #a34a1a;
   --48-orange-light:      #f5c084;
-  --48-orange-nearwhite:  #f7e6d2;
   --48-orange-gradient: linear-gradient(
     135deg,
     var(--48-orange-light) 0%,
@@ -26,12 +24,6 @@
     var(--48-orange-light) 50%,
     var(--48-orange) 100%
   );
-  --48-orange-gradient-dark: linear-gradient(
-    135deg,
-    var(--48-orange-dark) 0%,
-    var(--48-orange) 50%,
-    var(--48-orange-dark) 100%
-  );
   --48-halftone-dot: rgb(196 90 35 / 0.08);
   --48-halftone-dot-on-dark: rgb(255 228 196 / 0.12);
   --48-halftone-dot-size: 0.7rem;
@@ -43,32 +35,24 @@
     var(--48-yellow) 50%,
     var(--48-orange) 100%
   );
-  --48-orange-halftone-flex: var(--48-orange-halftone);
   --48-navy:              #092d48;
-  --48-navy-trans-less:   #07223740;
-  --48-navy-trans:        #07223780;
-  --48-navy-trans-more:   #072237c0;
   --48-navy-nearblack:    #041524;
   --48-navy-dark:         #06223a;
   --48-navy-light:        #8fc3d9;
   --48-navy-bright:       #2a9fd4;
   --48-navy-nearwhite:    #d9edf5;
-  --48-purple:            #571c6d;
-  --48-purple-trans-less: #30103040;
-  --48-purple-trans:      #30103080;
-  --48-purple-trans-more: #301030c0;
-  --48-purple-nearblack:  #2a0e34;
-  --48-purple-dark:       #421552;
-  --48-purple-light:      #be90cf;
+  --48-purple:            #602376;
+  --48-purple-trans:      #3d194980;
+  --48-purple-dark:       #3d1949;
+  --48-purple-light:      #8f2eb5;
   --48-purple-bright:     #bb00ff;
-  --48-purple-nearwhite:  #dfa9f2;
+  --48-purple-nearwhite:  #dab0eb;
   --48-darken:            #00000040;
   --48-darken-more:       #00000070;
   --48-darken-most:       #000000a0;
   --48-lighten:           #ffffff40;
   --48-lighten-more:      #ffffff70;
-  --48-lighten-most:      #ffffffa0;
-  --clock-color:          #bb00ff;
+  --clock-color:          var(--48-purple-bright);
   --league-spartan-offset: 0.07em;
 }
 
@@ -370,7 +354,7 @@ a.button {
   border-radius: 0.25em;
   background-color: var(--48-purple);
   color: var(--48-white);
-  --icon-color: var(--48-yellow);
+  --icon-color: var(--48-gold);
   text-decoration: none !important;
   font-weight: 400;
   white-space: normal;
@@ -390,7 +374,7 @@ a.button.social {
   border: none !important;
   background-color: var(--48-white);
   color: var(--48-black);
-  --icon-color: var(--48-yellow);
+  --icon-color: var(--48-gold);
   --icon-hover-color: var(--48-purple);
 }
 
@@ -473,7 +457,7 @@ a.button.wide {
 
 a.button .icon {
   display: inline-block;
-  color: var(--icon-color, var(--48-yellow));
+  color: var(--icon-color, var(--48-gold));
 }
 
 a:hover.button .icon, a:active.button .icon {

@@ -6,6 +6,8 @@ draft: false
 params:
   year: 2026
   team: "Film Logic Studios"
+  prior: >
+    Returning after 2024's *The Great Saltine*, a Best Film Second Runner-Up that also won Best Musical Score.
   logline: "Some tours take you places you never expected."
   synopsis: "Two friends hire an aspiring actor as their tour guide to a haunted manor."
   order: 999

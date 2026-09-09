@@ -6,6 +6,8 @@ draft: false
 params:
   year: 2026
   team: "All Of Us Productions"
+  prior: >
+    From the team that brought you [*The San Diego Hotel*](/films/2025-all-of-us-productions-the-san-diego-hotel/).
   logline: "No Coffee. No Filter."
   synopsis: "One Morning without Coffee is a moral dilemma story about a troubled marriage, with Angelina an angel without filters forces Andre Voss to confront the one decision he can no longer avoid: stay in his marriage or run away."
   order: 999

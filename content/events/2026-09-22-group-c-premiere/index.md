@@ -2,7 +2,7 @@
 title: Group C Premiere Screening
 type: events
 summary: >
-  A Hollywood-style premiere of this year's San Diego 48 Hour Film Project films.
+  The Hollywood-style premiere of a selection of this year's films.
 date: 2026-09-22T17:00:00-07:00
 publishDate: 2026-08-29T22:00:00-07:00
 draft: false

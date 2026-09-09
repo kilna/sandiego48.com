@@ -3,9 +3,8 @@ title: 2026 Competition Weekend Kickoff at Spark Studio
 layout: events
 type: events
 summary: >
-  The official kickoff for the 2026 San Diego 48 Hour Film Project. Teams
-  gather at Spark Studio Soundstage to check in, pick genres, receive their
-  required elements, and start the 48-hour clock at 7pm.
+  The official kickoff for the 2026 San Diego 48 Hour Film Project. Teams gather at Spark Studio Soundstage to check in, pick genres, receive their required elements, and start the 48-hour clock at 7pm.
+
 date: 2026-08-14T12:00:00-07:00
 publishDate: 2026-08-14T12:00:00-07:00
 draft: false
@@ -18,10 +17,8 @@ params:
   event_end: 2026-08-28T19:00:00-07:00
   partner_name: Spark Studio Soundstage
   partner_details: >
-    A full-featured media production suite featuring a versatile 3,000 sq ft
-    double-walled, sound-insulated TV studio in the former XETV-6 broadcast
-    campus. The studio is fully equipped with a 12' green cyclorama, LED video
-    wall, fog machine, pro-level AV gear and club lighting.
+    A full-featured media production suite featuring a versatile 3,000 sq ft double-walled, sound-insulated TV studio in the former XETV-6 broadcast campus. The studio is fully equipped with a 12' green cyclorama, LED video wall, fog machine, pro-level AV gear and club lighting.
+
   partner_url: https://www.sparkstudiosoundstage.com/
   partner_logo: venue.png
   partner_socials:
@@ -56,16 +53,14 @@ params:
       end: 2026-08-28T17:00:00-07:00
       name: Team Leader Check-In
       details: >
-        Team leaders should arrive around 4:30pm and must be checked in by
-        5pm. Team leader agreements must be scanned, signed, and uploaded to
-        the [48hourfilm](https://48hourfilm.com) dashboard before you check in.
+        Team leaders should arrive around 4:30pm and must be checked in by 5pm. Team leader agreements must be scanned, signed, and uploaded to the [48hourfilm](https://48hourfilm.com) dashboard before you check in.
+
     - start: 2026-08-28T17:00:00-07:00
       end: 2026-08-28T19:00:00-07:00
       name: Genre Draw and Required Elements
       details: >
-        After check-in, teams pick their [random genres](https://www.48hourfilm.com/genres)
-        on the wheel of genres, then receive a random prop, character name and
-        occupation, and line of dialog. The clock starts at 7pm.
+        After check-in, teams pick their [random genres](https://www.48hourfilm.com/genres) on the wheel of genres, then receive a random prop, character name and occupation, and line of dialog. The clock starts at 7pm.
+
   notes:
     - Team leaders must be checked in by 5pm.
     - Complete your team leader agreement on the 48hourfilm dashboard before you arrive.

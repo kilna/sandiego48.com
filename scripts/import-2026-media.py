@@ -4,6 +4,7 @@
 Source (sd48hfp-2026):
 
   download/<team>/<team>-{poster,still,bts,group-picture}-N.ext
+  posters/<team>.ext                  # operator poster v0; HQ poster-1+ overrides
   thumb/<team>/<team>-thumb-N.jpg
 
 Destination:
@@ -11,6 +12,11 @@ Destination:
   content/films/2026-<team>-<film>/poster.jpg
   cdn/films/2026-<team>-<film>/{poster,still,bts,group}-NNN.jpg
   cdn/films/2026-<team>-<film>/thumb-NNN.jpg
+
+Operator posters in posters/<team>.ext are treated as version 0. The film
+page image uses the highest-numbered poster, so a dashboard upload
+(<team>-poster-1+) replaces v0. v0 is omitted from the poster gallery once
+an HQ poster exists.
 
 Filmmaker stills/BTS/group/poster are compacted to sequential 001..N.
 Generated thumbs keep their source numbers so culled gaps survive:
@@ -38,12 +44,14 @@ from __future__ import annotations
 
 import argparse
 import re
+import shutil
 import subprocess
 from pathlib import Path
 
 SITE = Path("/Users/kilna/Code/48hfp/sandiego48.com")
 NAS = Path("/Users/kilna/NAS/project/sd48hfp-2026")
 DOWNLOAD = NAS / "download"
+POSTERS = NAS / "posters"
 THUMB = NAS / "thumb"
 CONTENT = SITE / "content" / "films"
 CDN = SITE / "cdn" / "films"
@@ -90,6 +98,11 @@ def team_slugs() -> list[str]:
     for path in root.iterdir():
       if path.is_dir() and path.name not in {"thumb", "thumbs", "poster-thumb"}:
         slugs.add(path.name)
+  if POSTERS.is_dir():
+    for path in POSTERS.iterdir():
+      if path.is_file() and not path.name.startswith("._"):
+        if path.suffix.lower() in IMAGE_EXTS:
+          slugs.add(path.stem)
   if TEAMS_CSV.exists():
     with TEAMS_CSV.open(encoding="utf-8") as handle:
       next(handle, None)
@@ -112,8 +125,40 @@ def film_dir_for_team(team: str, film_dirs: list[Path]) -> Path | None:
   return matches[0]
 
 
+def operator_poster_v0(team: str) -> Path | None:
+  """Return posters/<team>.ext, the operator fallback (version 0)."""
+  if not POSTERS.is_dir():
+    return None
+  matches: list[Path] = []
+  for path in POSTERS.iterdir():
+    if not path.is_file() or path.name.startswith("._"):
+      continue
+    if path.suffix.lower() not in IMAGE_EXTS:
+      continue
+    if path.stem.lower() == team.lower():
+      matches.append(path)
+  if not matches:
+    return None
+  matches.sort(key=lambda path: path.stat().st_mtime)
+  return matches[-1]
+
+
+def copy_poster_v0(team: str, src: Path, dry_run: bool) -> Path:
+  """Place operator posters in download as <team>-poster-0 so HQ v1+ wins."""
+  dest_dir = DOWNLOAD / team
+  dest = dest_dir / f"{team}-poster-0{src.suffix.lower()}"
+  if dest.exists() and dest.stat().st_mtime >= src.stat().st_mtime - 1:
+    return dest
+  dest_dir.mkdir(parents=True, exist_ok=True)
+  if not dry_run:
+    shutil.copy2(src, dest)
+  return dest
+
+
 def collect_kinds(src_dir: Path) -> dict[str, list[tuple[int, Path]]]:
   by_kind: dict[str, list[tuple[int, Path]]] = {}
+  if not src_dir.is_dir():
+    return by_kind
   for path in src_dir.iterdir():
     if not path.is_file() or path.name.startswith("._"):
       continue
@@ -250,9 +295,19 @@ def import_team(
     "cdn": [], "poster": [], "thumbs": [], "removed": [],
   }
   by_kind = collect_kinds(src_dir)
+  v0 = operator_poster_v0(team)
+  posters = list(by_kind.get("poster") or [])
+  if v0:
+    dest_v0 = copy_poster_v0(team, v0, dry_run)
+    posters = [item for item in posters if item[0] != 0]
+    posters.append((0, dest_v0 if dest_v0.exists() else v0))
+  posters.sort()
+  if posters:
+    by_kind["poster"] = posters
+  elif "poster" in by_kind:
+    del by_kind["poster"]
   counts: dict[str, int] = {}
 
-  posters = by_kind.get("poster") or []
   if posters:
     _n, poster_src = posters[-1]
     dest = film_dir / "poster.jpg"
@@ -263,7 +318,11 @@ def import_team(
     else:
       set_image_line(index, dry_run)
 
-  for kind, items in by_kind.items():
+  gallery_kinds = dict(by_kind)
+  hq_posters = [item for item in posters if item[0] >= 1]
+  if hq_posters:
+    gallery_kinds["poster"] = hq_posters
+  for kind, items in gallery_kinds.items():
     counts[kind] = len(items)
     cdn_dir.mkdir(parents=True, exist_ok=True)
     for i, (_n, src) in enumerate(items, start=1):

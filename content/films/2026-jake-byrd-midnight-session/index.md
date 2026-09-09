@@ -6,6 +6,8 @@ draft: false
 params:
   year: 2026
   team: "Jake Byrd Productions"
+  prior: >
+    From the team that brought you [*Plastic & Porcelain*](/films/2025-jake-byrd-productions-plastic-porcelain/), winner of Best Costume Design.
   logline: ""
   synopsis: ""
   order: 999

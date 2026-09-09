@@ -6,6 +6,8 @@ draft: false
 params:
   year: 2026
   team: "Cimitoro Productions"
+  prior: >
+    From the team that brought you 2024's *Crooked Mile*, which won Best Poster.
   logline: "One good man."
   synopsis: "One mistake. One guilt. One voice."
   order: 999

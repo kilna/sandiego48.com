@@ -6,6 +6,8 @@ draft: false
 params:
   year: 2026
   team: "Digital Lemonade Stand"
+  prior: >
+    Last year they made [*Chef Quest*](/films/2025-digital-lemonade-stand-chef-quest/), which won Best Visual Effects. In 2024's *Getaway*, Sean Danahy took Best Actor in a Male Supporting Role.
   logline: "A father. A daughter. And the trail they are on together."
   synopsis: "While hiking to the perfect spot, A father imparts wisdom to his daughter on how to find happiness."
   order: 999

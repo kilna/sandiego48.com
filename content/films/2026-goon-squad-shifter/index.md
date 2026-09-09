@@ -6,6 +6,8 @@ draft: false
 params:
   year: 2026
   team: "Goon Squad"
+  prior: >
+    From the filmmakers who made [*Signs of Life*](/films/2025-goon-squad-signs-of-life/), a Best of 2025 selection that won Best Cinematography.
   logline: "A look in the mirror"
   synopsis: "A wanted criminal breaks into an unknown persons house."
   order: 999

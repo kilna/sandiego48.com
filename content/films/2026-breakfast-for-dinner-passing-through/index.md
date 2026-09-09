@@ -6,6 +6,8 @@ draft: false
 params:
   year: 2026
   team: "Breakfast For Dinner!"
+  prior: >
+    You may remember last year's [*Extra Toppings*](/films/2025-breakfast-for-dinner-extra-toppings/), a Group A Audience Choice Second Runner-Up.
   logline: "Everyone is a long way from home"
   synopsis: "Along the lonely highway to Area 51, a tight-knit family of disguised extraterrestrials serves up pie and coffee to alien hunters, UFO believers, and eccentric road-trippers-none of whom realize they're ordering lunch from the real deal."
   order: 999

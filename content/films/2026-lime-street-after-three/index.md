@@ -6,6 +6,8 @@ draft: false
 params:
   year: 2026
   team: "Lime Street Entertainment"
+  prior: >
+    From the team that brought you [*The "Good" Sister*](/films/2025-lime-street-entertainment-the-good-sister/).
   logline: "4 Girls, 3 Words, 2 Genres, 1 Scary Game"
   synopsis: "What started as an open house tour turns into one scary game."
   order: 999

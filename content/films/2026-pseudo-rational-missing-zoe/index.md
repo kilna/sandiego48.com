@@ -6,6 +6,8 @@ draft: false
 params:
   year: 2026
   team: "Pseudo Rational"
+  prior: >
+    The team that made [*The Parting Inn*](/films/2025-pseudo-rational-the-parting-inn/) returns.
   logline: "A Pseudo Love Story"
   synopsis: "A man with good purpose but desperate measures realizes what he's really been missing"
   order: 999

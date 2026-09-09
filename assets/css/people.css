@@ -9,7 +9,7 @@
 
 .filter-btn {
   background: var(--48-purple-light);
-  color: var(--48-purple-nearblack);
+  color: var(--48-white);
   border: 2px solid var(--48-purple);
   padding: 0.5rem 1rem;
   border-radius: 25px;
@@ -28,7 +28,7 @@
 .filter-btn.active {
   background: var(--48-purple);
   color: var(--48-white);
-  box-shadow: 0 4px 12px rgba(87, 28, 109, 0.3);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--48-purple) 30%, transparent);
 }
 
 .filter-count {
@@ -51,6 +51,12 @@
 
 .people-section-header:first-of-type {
   margin-top: 2rem;
+}
+
+.people-list {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .people-grid {
@@ -176,7 +182,7 @@
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
   background: var(--48-purple-light);
-  color: var(--48-purple-nearblack);
+  color: var(--48-white);
   border: 2px solid var(--48-purple);
   border-radius: 8px;
   text-decoration: none;
@@ -188,7 +194,7 @@
   background: var(--48-purple);
   color: var(--48-white);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(87, 28, 109, 0.3);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--48-purple) 30%, transparent);
 }
 
 .resume-icon {

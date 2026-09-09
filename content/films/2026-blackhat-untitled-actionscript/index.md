@@ -6,6 +6,8 @@ draft: false
 params:
   year: 2026
   team: "blackhat media"
+  prior: >
+    Returning after [*Fata Morgana*](/films/2025-blackhat-media-fata-morgana/). In 2024 their film *Wild* won Best Cinematography and Best Production Design.
   logline: "What next?"
   synopsis: "What next?"
   order: 999

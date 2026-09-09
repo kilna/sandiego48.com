@@ -547,7 +547,7 @@
 
 .event-card a.featured-film-poster img {
   width: auto;
-  height: 8.625rem;
+  height: 7.5rem;
   max-width: none;
   object-fit: contain;
   border-radius: 0.2rem;
@@ -565,7 +565,7 @@
   }
 
   .event-card a.featured-film-poster img {
-    height: 7.125rem;
+    height: 6.25rem;
   }
 }
 
