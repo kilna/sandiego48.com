@@ -12,6 +12,7 @@
 {{ end }}
 
 {{ define "main" }}
+<div class="films-list">
 {{ .Content }}
 
 {{ $all_films := where .Site.RegularPages "Section" "films" }}
@@ -141,4 +142,5 @@
   </div>
 {{ end }}
 
+</div>
 {{ end }}
