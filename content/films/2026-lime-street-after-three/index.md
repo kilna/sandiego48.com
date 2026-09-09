@@ -17,6 +17,8 @@ params:
       count: 3
     bts:
       count: 8
+    thumb:
+      numbers: [8, 10, 16, 23, 28]
 screening_groups:
   - "group-c"
 screening_events:

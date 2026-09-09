@@ -1,5 +1,6 @@
 ---
 title: "Rocket Surgeon"
+image: poster.jpg
 date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
@@ -9,6 +10,11 @@ params:
   synopsis: "Lonely guy finds his courage"
   order: 999
   genre: "Romance / Romantic Comedy"
+  galleries:
+    poster:
+      count: 1
+    thumb:
+      numbers: [6, 10, 11, 17, 19]
 screening_groups:
   - "group-c"
 screening_events:

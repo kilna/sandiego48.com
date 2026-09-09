@@ -1,5 +1,6 @@
 ---
 title: "For a Few Fugs More"
+image: poster.jpg
 date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
@@ -9,6 +10,11 @@ params:
   synopsis: "A small peek into the lives of El Cajon residents...with food."
   order: 999
   genre: "Musical / Food Film"
+  galleries:
+    poster:
+      count: 1
+    thumb:
+      numbers: [5, 13, 18, 29, 31]
 screening_groups:
   - "group-d"
 screening_events:

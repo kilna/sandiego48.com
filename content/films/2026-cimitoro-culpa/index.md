@@ -15,6 +15,8 @@ params:
       count: 2
     still:
       count: 3
+    thumb:
+      numbers: [10, 17, 33, 37, 40]
 screening_groups:
   - "group-b"
 screening_events:

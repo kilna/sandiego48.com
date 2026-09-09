@@ -1,5 +1,6 @@
 ---
 title: "Halfway House A Go-Go"
+image: poster.jpg
 date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
@@ -9,6 +10,11 @@ params:
   synopsis: "Rambunctious Blue Haired lady enters a unique fully staffed Group Home."
   order: 999
   genre: "Horror / Workplace Film"
+  galleries:
+    poster:
+      count: 1
+    thumb:
+      numbers: [11, 15, 20, 31, 39]
 screening_groups:
   - "group-b"
 screening_events:

@@ -1,5 +1,6 @@
 ---
 title: "The Dragons Scale"
+image: poster.jpg
 date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
@@ -9,6 +10,11 @@ params:
   synopsis: "Knight has a chance to prove love and gain respect"
   order: 999
   genre: "Fantasy / Moral Dilemma"
+  galleries:
+    poster:
+      count: 1
+    thumb:
+      numbers: [7, 16, 18, 32, 38]
 screening_groups:
   - "group-d"
 screening_events:

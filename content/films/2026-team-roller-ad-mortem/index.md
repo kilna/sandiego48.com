@@ -13,6 +13,8 @@ params:
   galleries:
     poster:
       count: 1
+    thumb:
+      numbers: [4, 5, 8, 11, 16]
 screening_groups:
   - "group-a"
 screening_events:

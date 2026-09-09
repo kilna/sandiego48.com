@@ -1,5 +1,6 @@
 ---
 title: "Charlie"
+image: poster.jpg
 date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
@@ -9,6 +10,11 @@ params:
   synopsis: "A man at the end of his rope receives a confession which at first he believes to be a lifeline but in reality is something else entirely."
   order: 999
   genre: "Drama / Workplace Film"
+  galleries:
+    poster:
+      count: 1
+    thumb:
+      numbers: [6, 19, 29, 37, 41]
 screening_groups:
   - "group-a"
 screening_events:

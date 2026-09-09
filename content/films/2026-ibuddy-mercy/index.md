@@ -19,6 +19,8 @@ params:
       count: 7
     group:
       count: 1
+    thumb:
+      numbers: [9, 14, 21, 23, 36]
 screening_groups:
   - "group-a"
 screening_events:
