@@ -41,9 +41,8 @@
 }
 
 .film-card {
-  background: transparent;
+  background: var(--48-orange-halftone);
   border-radius: 12px;
-  overflow: visible;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
   display: flex;
@@ -164,9 +163,9 @@
   color: black;
 }
 
-.film-logline {
+.film-card .film-logline {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--48-orange-nearblack);
   line-height: 1.4;
   margin: 0.5rem 0 0 0;
 }
@@ -193,7 +192,7 @@
 .best-of-2025-star {
   position: absolute;
   bottom: -50px;
-  right: -20px;
+  right: 0;
   width: 120px;
   height: 120px;
   display: flex;
@@ -303,7 +302,6 @@
   .film-card {
     flex-direction: row;
     align-items: center;
-    overflow: visible;
     margin-bottom: 0;
   }
 

@@ -133,10 +133,9 @@
       font-weight: bold;
       color: black;
       margin: 0 0 1.5rem 0;
-      padding: 1rem;
-      background: var(--48-orange-light);
-      border-radius: 8px;
-      border-left: 4px solid var(--48-orange);
+      padding: 1rem 1.25rem;
+      background: var(--48-orange-halftone);
+      border-radius: 0.5rem;
     }
     
     .film-synopsis {
@@ -150,9 +149,8 @@
     .tickets-section {
       margin-top: 2rem;
       padding: 1.5rem;
-      background: var(--48-orange-light);
-      border-radius: 12px;
-      border-left: 4px solid var(--48-orange);
+      background: var(--48-orange-halftone);
+      border-radius: 0.5rem;
       text-align: center;
     }
     
@@ -304,7 +302,7 @@
       {{ end }}
       
       {{ if .Params.logline }}
-        <p class="film-logline">{{ .Params.logline }}</p>
+        <p class="film-logline"><span>{{ .Params.logline }}</span></p>
       {{ end }}
       
       {{ if .Params.synopsis }}

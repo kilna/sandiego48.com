@@ -62,7 +62,10 @@
 .index-flex-boxes > div,
 .event-card,
 .infoblock,
-header.title {
+header.title,
+.film-card,
+.film-single .film-logline,
+.film-single .tickets-section {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -73,7 +76,10 @@ header.title {
 .index-flex-boxes > div::before,
 .event-card::before,
 .infoblock::before,
-header.title::before {
+header.title::before,
+.film-card::before,
+.film-single .film-logline::before,
+.film-single .tickets-section::before {
   content: "";
   position: absolute;
   inset: -85%;
@@ -103,7 +109,10 @@ header.title::before {
 .index-flex-boxes > div > *,
 .event-card > *,
 .infoblock > *,
-header.title > * {
+header.title > *,
+.film-card > *,
+.film-single .film-logline > *,
+.film-single .tickets-section > * {
   position: relative;
   z-index: 1;
 }
