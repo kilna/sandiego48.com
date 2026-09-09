@@ -44,7 +44,7 @@
 
 <div class="{{ $container_class }}{{ $visibility_class }}">
   {{- if $title -}}
-<h2 class="card-heading" id="events">{{ $title }}</h2>
+<h2 class="card-heading" id="events">{{ $title | safeHTML }}</h2>
   {{- end -}}
 
   {{- range $events -}}

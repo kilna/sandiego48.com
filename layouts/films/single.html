@@ -88,9 +88,14 @@
     }
 
     .film-single .event-list h2 {
-      padding: 0.5rem 1rem;
-      font-size: 1.25rem;
-      line-height: 1.35;
+      padding: 1rem 2rem;
+      font-size: 2em;
+      line-height: 1.2;
+    }
+
+    .film-single .event-list h2 em {
+      font-style: italic;
+      font-weight: inherit;
     }
     
     .film-logline {
@@ -336,9 +341,7 @@
   {{- end -}}
   {{- if $screening_event_pages -}}
     {{- range $screening_event_pages -}}
-      {{- $start := time.AsTime .Params.event_start -}}
-      {{- $date := $start.Format "Monday, January 2, 2006" -}}
-      {{- $heading := printf "See %s premiere %s" $.Title $date -}}
+      {{- $heading := printf "See <em>%s</em>" (htmlEscape $.Title) -}}
       {{- partial "events/display.html" (dict
           "events" (slice .)
           "title" $heading

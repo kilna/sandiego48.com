@@ -156,10 +156,14 @@
 
 .event-list h2 {
   text-align: center;
-  margin: 0 auto;
-  padding: 0.25rem;
+  margin: 0 auto !important;
+  padding: 0.5rem;
   background-color: var(--48-purple);
   border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.event-list h2 + .event-card {
+  border-top: none;
 }
 
 .event-card {
