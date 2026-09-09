@@ -13,28 +13,28 @@
       align-items: start;
     }
     
-    .film-poster-container {
-      position: relative;
+    .film-header-poster {
       width: 300px;
-      height: 450px;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      margin-top: 31px;
+    }
+
+    .film-header-poster.cdn-gallery {
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+      clear: none;
+      overflow: visible;
+    }
+
+    .film-header-poster .gallery-link {
+      display: block;
       cursor: pointer;
-      transition: transform 0.3s ease;
-      padding: 1rem;
-      box-sizing: border-box;
     }
-    
-    .film-poster-container:hover {
-      transform: scale(1.02);
-    }
-    
-    .film-poster {
+
+    .film-header-poster img {
+      display: block;
       width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
+      height: auto;
     }
     
     .film-info {
@@ -90,6 +90,7 @@
       gap: 0.5rem 1rem;
       margin-bottom: 2rem;
       font-size: 1.1rem;
+      text-align: left;
     }
     
     .film-meta dt {
@@ -204,11 +205,24 @@
     @media (max-width: 768px) {
       .film-header {
         grid-template-columns: 1fr;
+        justify-items: center;
         text-align: center;
       }
+
+      .film-info {
+        width: 100%;
+        justify-self: stretch;
+      }
       
-      .film-poster-container {
+      .film-header-poster,
+      .film-header-poster.cdn-gallery {
         margin: 0 auto;
+        max-width: 100%;
+      }
+
+      .film-meta {
+        text-align: left;
+        justify-self: stretch;
       }
       
     }
@@ -226,26 +240,30 @@
 {{ define "main" }}
 <div class="film-single">
   <div class="film-header">
-    <div class="film-poster-container" onclick="openModal('{{ .Params.image }}', '{{ .Title }}')">
-      {{ if .Params.image }}
-        {{ $poster := .Resources.Get .Params.image }}
-        {{ if $poster }}
-          <img src="{{ $poster.RelPermalink }}" alt="{{ .Title }} poster" class="film-poster" />
-        {{ else }}
-          {{ $placeholder := resources.Get "images/placeholder-poster.png" }}
-          {{ with $placeholder }}
-            {{ $thumb := .Fit "300x450" }}
-            <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} poster (placeholder)" class="film-poster" />
-          {{ end }}
-        {{ end }}
-      {{ else }}
-        {{ $placeholder := resources.Get "images/placeholder-poster.png" }}
-        {{ with $placeholder }}
-          {{ $thumb := .Fit "300x450" }}
-          <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} poster" class="film-poster placeholder-image" />
-        {{ end }}
+    {{ $poster := false }}
+    {{ if .Params.image }}
+      {{ $poster = .Resources.Get .Params.image }}
+    {{ end }}
+    {{ if $poster }}
+    <div class="film-header-poster cdn-gallery" id="gallery-page-poster" data-type="page-poster" data-total-images="1" data-files="{{ $poster.Name }}">
+      <a href="{{ $poster.RelPermalink }}"
+         class="gallery-link"
+         data-gallery="page-poster-gallery"
+         data-index="1"
+         data-title="{{ .Title }} poster"
+         aria-label="View {{ .Title }} poster full size">
+        <img src="{{ $poster.RelPermalink }}" alt="{{ .Title }} poster" />
+      </a>
+    </div>
+    {{ else }}
+    <div class="film-header-poster">
+      {{ $placeholder := resources.Get "images/placeholder-poster.png" }}
+      {{ with $placeholder }}
+        {{ $thumb := .Fit "300x450" }}
+        <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }} poster (placeholder)" class="placeholder-image" />
       {{ end }}
     </div>
+    {{ end }}
     
     <div class="film-info">
       <h1 class="film-title">{{ .Title }}</h1>
@@ -264,7 +282,7 @@
           <dd>{{ .Params.genre }}</dd>
         {{ end }}
         {{ if .Params.screening_groups }}
-          <dt>Screening Group:</dt>
+          <dt>Premiere Screening:</dt>
           <dd>
             {{- $event_slugs := .Params.screening_events -}}
             {{- range $i, $group := .Params.screening_groups -}}
@@ -357,6 +375,31 @@
     </div>
   </div>
   
+  {{ if $poster }}
+  <div class="lightbox" id="lightbox-page-poster-gallery">
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox('page-poster-gallery')">&times;</button>
+      <button class="lightbox-nav lightbox-prev" onclick="previousImage('page-poster-gallery')">
+        <span class="nav-arrow">‹</span>
+        <img class="nav-thumbnail nav-thumb-prev" src="" alt="" style="display: none;">
+      </button>
+      <img class="lightbox-image" src="" alt="">
+      <button class="lightbox-nav lightbox-next" onclick="nextImage('page-poster-gallery')">
+        <span class="nav-arrow">›</span>
+        <img class="nav-thumbnail nav-thumb-next" src="" alt="" style="display: none;">
+      </button>
+      <button class="lightbox-download" onclick="downloadImage('page-poster-gallery')" title="Download image">
+        <svg class="download-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+        </svg>
+      </button>
+      <div class="lightbox-counter">
+        <span class="lightbox-current">1</span> / <span class="lightbox-total">1</span>
+      </div>
+    </div>
+  </div>
+  {{ end }}
+
   {{/* Poster gallery is omitted: the page poster is already the most recent. */}}
   {{- partial "cdn-gallery.html" (dict "galleryId" "still" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
   {{- partial "cdn-gallery.html" (dict "galleryId" "bts" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
