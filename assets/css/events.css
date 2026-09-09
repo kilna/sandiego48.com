@@ -520,6 +520,11 @@
 
 /* Featured Films styling */
 .event-card .featured-films {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.45em;
+  row-gap: 0.15em;
   font-size: 0.9em;
   margin: 0.5rem 0 0 0;
 }
@@ -527,6 +532,11 @@
 .event-card .featured-film-title {
   display: inline-block;
   white-space: nowrap;
+}
+
+.event-card .featured-film-title::before {
+  content: "•";
+  margin-right: 0.35em;
 }
 
 .event-card .featured-film-posters {
