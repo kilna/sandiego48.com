@@ -8,8 +8,10 @@ params:
   team: "Salucita Films"
   logline: "Office tours are hell"
   synopsis: "A down-on-his-luck tour guide encounters an unexpected fortune while on the job"
-  order: 999
+  order: 6
   genre: "Comedy + Heist"
+  warnings:
+    - "Language"
   galleries:
     poster:
       count: 3

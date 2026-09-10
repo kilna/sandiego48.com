@@ -94,23 +94,7 @@
             <span class="best-of-2025-text">Best of 2025 Selection</span>
           </a>
         {{ end }}
-        {{ $genre := strings.TrimSpace ($film.Params.genre | default "") }}
-        {{ if or $genre $film.Params.screening_groups }}
-          <div class="film-groups">
-            {{ with $genre }}
-              <span class="genre-tag">{{ . }}</span>
-            {{ end }}
-            {{ range $film.Params.screening_groups }}
-              {{ $groupName := . }}
-              {{ if eq . "group-a" }}{{ $groupName = "Group A" }}{{ end }}
-              {{ if eq . "group-b" }}{{ $groupName = "Group B" }}{{ end }}
-              {{ if eq . "group-c" }}{{ $groupName = "Group C" }}{{ end }}
-              {{ if eq . "group-d" }}{{ $groupName = "Group D" }}{{ end }}
-              {{ if eq . "group-e" }}{{ $groupName = "Group E" }}{{ end }}
-              <span class="group-tag">{{ $groupName }}</span>
-            {{ end }}
-          </div>
-        {{ end }}
+        {{ partial "film-tags.html" (dict "page" $film) }}
         {{- partial "components/button.html" (dict
             "text" "More info"
             "url" $film.RelPermalink

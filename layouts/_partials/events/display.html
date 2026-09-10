@@ -117,20 +117,7 @@
     {{- end -}}
     {{- $films = $ordered_films -}}
   {{- else -}}
-    {{- $films = sort $films "Title" -}}
-    {{- $sorted_films := slice -}}
-    {{- range $films -}}
-      {{- $title := .Title -}}
-      {{- if hasPrefix $title "The " -}}
-        {{- $title = substr $title 4 -}}
-      {{- end -}}
-      {{- $sorted_films = $sorted_films | append (dict "page" . "sort_title" $title) -}}
-    {{- end -}}
-    {{- $sorted_films = sort $sorted_films "sort_title" -}}
-    {{- $films = slice -}}
-    {{- range $sorted_films -}}
-      {{- $films = $films | append .page -}}
-    {{- end -}}
+    {{- $films = sort $films "Params.order" "asc" -}}
   {{- end -}}
 
   {{- if $films -}}

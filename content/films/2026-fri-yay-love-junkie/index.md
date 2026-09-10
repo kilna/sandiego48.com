@@ -8,8 +8,10 @@ params:
   team: "Fri-yay Films"
   logline: "Love Unscripted"
   synopsis: "Documentarians capture the life of a chronically hopeless romantic, uncovering the extents at which she’d go to find “The One”"
-  order: 999
+  order: 7
   genre: "Mockumentary"
+  warnings:
+    - "Language"
   galleries:
     poster:
       count: 1

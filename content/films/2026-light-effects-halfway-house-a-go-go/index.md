@@ -8,8 +8,10 @@ params:
   team: "Light Effects Film"
   logline: "Towels galore at this group home!"
   synopsis: "Rambunctious Blue Haired lady enters a unique fully staffed Group Home."
-  order: 999
+  order: 9
   genre: "Workplace Film"
+  warnings:
+    - "Adult Themes"
   galleries:
     poster:
       count: 1

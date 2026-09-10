@@ -8,7 +8,7 @@ params:
   team: "Seym Productions"
   logline: "Ascension within Reach"
   synopsis: "A training video for new members of Heavenly Pressed Industries, preparing members to harvest members for their HIVE."
-  order: 999
+  order: 5
   genre: "Utopian or Dystopian"
   galleries:
     poster:

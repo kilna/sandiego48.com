@@ -8,7 +8,7 @@ params:
   team: "Revko"
   logline: "Guiding while lost"
   synopsis: "Andre guiding others even though he may feel lost in his own life."
-  order: 999
+  order: 10
   genre: "Fish Out of Water + Inspirational Film"
   galleries:
     poster:

@@ -10,7 +10,7 @@ params:
     From the team that brought you [*The South Mission Inn*](/films/2025-rorbach-with-clark-the-south-mission-inn/), a Best of 2025 selection, Group C Audience Choice winner, and overall Audience Choice Second Runner-Up.
   logline: "I’m a rocket surgeon"
   synopsis: "Lonely guy finds his courage"
-  order: 999
+  order: 4
   genre: "Romantic Comedy"
   galleries:
     poster:

@@ -10,7 +10,7 @@ params:
     Returning after [*A Slice of Deception*](/films/2025-fade-in-a-slice-of-deception/), Group D's Audience Choice Second Runner-Up.
   logline: "Mystery hung out to dry?"
   synopsis: "A detective falls prey to the deception of a lost towel."
-  order: 999
+  order: 4
   genre: "Film Noir"
   galleries:
     poster:

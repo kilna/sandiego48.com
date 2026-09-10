@@ -8,7 +8,7 @@ params:
   team: "Tiny Hippo Productions"
   logline: "Unlimited funds? Unlimited upgrades"
   synopsis: "Vacation so real, you never want to leave!"
-  order: 999
+  order: 9
   genre: "Sci Fi + Vacation / Holiday Film"
   galleries:
     poster:

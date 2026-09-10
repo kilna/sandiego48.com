@@ -8,8 +8,10 @@ params:
   team: "Golden Hour Collective"
   logline: "What's your body count?"
   synopsis: "Trained killers Sky and Dion explore the world of modern dating in this dark and twisted rom-com."
-  order: 999
+  order: 12
   genre: "Romantic Comedy"
+  warnings:
+    - "Violence"
   galleries:
     poster:
       count: 1

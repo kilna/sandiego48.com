@@ -8,7 +8,7 @@ params:
   team: "Next Sunday A.D."
   logline: "The Afterlife Can Be a Bloody Good Time"
   synopsis: "Two strangers meet in the afterlife and it is not what they expected."
-  order: 999
+  order: 9
   genre: "Horror + Single Room Movie"
   galleries:
     poster:

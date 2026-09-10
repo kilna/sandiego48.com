@@ -8,7 +8,7 @@ params:
   team: "Sera"
   logline: "Knight in the journey to prove love"
   synopsis: "Knight has a chance to prove love and gain respect"
-  order: 999
+  order: 4
   genre: "Fantasy"
   galleries:
     poster:

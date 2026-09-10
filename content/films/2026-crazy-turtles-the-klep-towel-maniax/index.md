@@ -8,8 +8,10 @@ params:
   team: "Crazy Turtles"
   logline: "Three heads are better than one."
   synopsis: "Two thieves attempting to rob a museum encounter trouble along the way against a flamboyant tour guide."
-  order: 999
+  order: 6
   genre: "Silent Film"
+  warnings:
+    - "Sexual Content"
   galleries:
     poster:
       count: 4

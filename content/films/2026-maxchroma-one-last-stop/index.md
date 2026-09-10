@@ -8,8 +8,10 @@ params:
   team: "maxchroma"
   logline: "\"Some falls never end.\""
   synopsis: "Haunted by the accidental fall that took his granddaughter's life, a grieving man struggles to let go of the past and the guilt that keeps pulling him down."
-  order: 999
+  order: 14
   genre: "Horror"
+  warnings:
+    - "Violence"
   galleries:
     poster:
       count: 1

@@ -109,7 +109,7 @@
     {{ $all_films := where .Site.Pages "Section" "films" }}
     {{ $films := where $all_films "Params.screening_events" "intersect" (slice $event_slug) }}
     
-    {{/* Use custom film order if specified, otherwise sort alphabetically by title (ignoring "The") */}}
+    {{/* Use custom film_order if specified, otherwise screening order from each film. */}}
     {{ if .Params.film_order }}
       {{ $ordered_films := slice }}
       {{ range .Params.film_order }}
@@ -122,21 +122,7 @@
       {{ end }}
       {{ $films = $ordered_films }}
     {{ else }}
-      {{/* Sort alphabetically by title, ignoring "The" prefix */}}
-      {{ $films = sort $films "Title" }}
-      {{ $sorted_films := slice }}
-      {{ range $films }}
-        {{ $title := .Title }}
-        {{ if hasPrefix $title "The " }}
-          {{ $title = substr $title 4 }}
-        {{ end }}
-        {{ $sorted_films = $sorted_films | append (dict "page" . "sort_title" $title) }}
-      {{ end }}
-      {{ $sorted_films = sort $sorted_films "sort_title" }}
-      {{ $films = slice }}
-      {{ range $sorted_films }}
-        {{ $films = $films | append .page }}
-      {{ end }}
+      {{ $films = sort $films "Params.order" "asc" }}
     {{ end }}
     
     {{ if $films }}
@@ -171,11 +157,7 @@
               <p class="film-logline">{{ .Params.logline }}</p>
             {{ end }}
             <p class="film-team">by <a href="{{ .RelPermalink }}">{{ .Params.team }}</a></p>
-            {{ with strings.TrimSpace (.Params.genre | default "") }}
-              <div class="film-groups">
-                <span class="genre-tag">{{ . }}</span>
-              </div>
-            {{ end }}
+            {{ partial "film-tags.html" (dict "page" . "show_groups" false) }}
             {{ if .Params.synopsis }}
               <div class="film-synopsis">{{ .Params.synopsis | markdownify }}</div>
             {{ end }}

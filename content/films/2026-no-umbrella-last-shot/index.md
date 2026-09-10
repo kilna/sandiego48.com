@@ -10,8 +10,10 @@ params:
     You may remember [*WondRFULL*](/films/2025-no-umbrella-studios-wondrfull/), Best Film Second Runner-Up and a Best of 2025 selection.
   logline: "It only takes one miss"
   synopsis: "A man misses two cues, one that costs him everything and another that rather than the hero of his own story he's the villain of everyone else's."
-  order: 999
+  order: 7
   genre: "Film Noir"
+  warnings:
+    - "Language"
   galleries:
     poster:
       count: 1

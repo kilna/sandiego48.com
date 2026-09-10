@@ -10,8 +10,10 @@ params:
     From the team that brought you 2024's *Crooked Mile*, which won Best Poster.
   logline: "One good man."
   synopsis: "One mistake. One guilt. One voice."
-  order: 999
+  order: 13
   genre: "Single Room Movie"
+  warnings:
+    - "Violence"
   galleries:
     poster:
       count: 2

@@ -8,7 +8,7 @@ params:
   team: "Dog Jaw Productions"
   logline: "Is it love? Or predatory obsession?"
   synopsis: "A well-meaning family attempts to stage an intervention for their sister, a hopeless romantic who is convinced she’s tamed the ultimate bad boy."
-  order: 999
+  order: 14
   genre: "Fish Out of Water"
   galleries:
     poster:

@@ -8,8 +8,11 @@ params:
   team: "Crab Factory"
   logline: "You never know how plans can go..."
   synopsis: "A wanna-be gangster discovers he's actually a nice guy when his first shakedown turns into a kidnapping."
-  order: 999
+  order: 6
   genre: "Dark Comedy"
+  warnings:
+    - "Language"
+    - "Violence"
   galleries:
     poster:
       count: 1

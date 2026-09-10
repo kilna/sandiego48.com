@@ -10,8 +10,10 @@ params:
     From the filmmakers who made [*Signs of Life*](/films/2025-goon-squad-signs-of-life/), a Best of 2025 selection that won Best Cinematography.
   logline: "A look in the mirror"
   synopsis: "A wanted criminal breaks into an unknown persons house."
-  order: 999
+  order: 15
   genre: "Thriller / Suspense OR Family Film"
+  warnings:
+    - "Violence"
   galleries:
     poster:
       count: 1

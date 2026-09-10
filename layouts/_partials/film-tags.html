@@ -1,0 +1,70 @@
+{{- /*
+  Genre, screening-group, and content-warning chiclets.
+
+  page         - film page
+  show_genre   - default true
+  show_groups  - default true
+  show_warnings - default true
+*/ -}}
+{{- $page := .page -}}
+{{- $show_genre := true -}}
+{{- if isset . "show_genre" -}}
+  {{- $show_genre = .show_genre -}}
+{{- end -}}
+{{- $show_groups := true -}}
+{{- if isset . "show_groups" -}}
+  {{- $show_groups = .show_groups -}}
+{{- end -}}
+{{- $show_warnings := true -}}
+{{- if isset . "show_warnings" -}}
+  {{- $show_warnings = .show_warnings -}}
+{{- end -}}
+
+{{- $genre := "" -}}
+{{- if $show_genre -}}
+  {{- $genre = strings.TrimSpace ($page.Params.genre | default "") -}}
+{{- end -}}
+
+{{- $warnings := slice -}}
+{{- if $show_warnings -}}
+  {{- with $page.Params.warnings -}}
+    {{- if reflect.IsSlice . -}}
+      {{- range . -}}
+        {{- with strings.TrimSpace (printf "%s" .) -}}
+          {{- $warnings = $warnings | append . -}}
+        {{- end -}}
+      {{- end -}}
+    {{- else -}}
+      {{- range split . "," -}}
+        {{- with strings.TrimSpace . -}}
+          {{- $warnings = $warnings | append . -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $groups := slice -}}
+{{- if and $show_groups $page.Params.screening_groups -}}
+  {{- $groups = $page.Params.screening_groups -}}
+{{- end -}}
+
+{{- if or $genre $groups $warnings -}}
+          <div class="film-groups">
+            {{- with $genre }}
+              <span class="genre-tag">{{ . }}</span>
+            {{- end }}
+            {{- range $groups }}
+              {{- $groupName := . -}}
+              {{- if eq . "group-a" }}{{ $groupName = "Group A" }}{{ end -}}
+              {{- if eq . "group-b" }}{{ $groupName = "Group B" }}{{ end -}}
+              {{- if eq . "group-c" }}{{ $groupName = "Group C" }}{{ end -}}
+              {{- if eq . "group-d" }}{{ $groupName = "Group D" }}{{ end -}}
+              {{- if eq . "group-e" }}{{ $groupName = "Group E" }}{{ end -}}
+              <span class="group-tag">{{ $groupName }}</span>
+            {{- end }}
+            {{- range $warnings }}
+              <span class="warning-tag">{{ . }}</span>
+            {{- end }}
+          </div>
+{{- end -}}

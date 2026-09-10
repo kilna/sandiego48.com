@@ -8,8 +8,11 @@ params:
   team: "The Syndicate"
   logline: "Showcasing El Cajon, the city of whatever the fuck"
   synopsis: "A small peek into the lives of El Cajon residents...with food."
-  order: 999
+  order: 6
   genre: "Musical + Food Film"
+  warnings:
+    - "Language"
+    - "Adult Themes"
   galleries:
     poster:
       count: 1

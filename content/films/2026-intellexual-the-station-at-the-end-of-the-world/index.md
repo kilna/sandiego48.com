@@ -10,8 +10,10 @@ params:
     From the team that brought you 2024's *Rolling for Rizz*, a Best Film Second Runner-Up (tied) and Audience Choice Second Runner-Up — plus Best Editing, Best Ensemble Cast, and more.
   logline: "The Station, bringing people together for dinner at the end of the world."
   synopsis: "A young couple are seeking refuge in the apocalypse. Can they find it at KFER, The Ferret? Or is this radio station not what it's jingle would lead you to believe?"
-  order: 999
+  order: 8
   genre: "Thriller / Suspense + Utopian or Dystopian"
+  warnings:
+    - "Violence"
   galleries:
     poster:
       count: 3

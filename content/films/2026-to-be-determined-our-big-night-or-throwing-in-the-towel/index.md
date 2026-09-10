@@ -8,7 +8,7 @@ params:
   team: "To Be Determined"
   logline: "Not all shadows are equally dark...."
   synopsis: "When a tour guide unexpectedly stumbels onto a crime scene, she becomes the prime suspect. But is she as guilt-free as she seems? And who is that man in the shadows she frequents?"
-  order: 999
+  order: 8
   genre: "Film Noir"
   galleries:
     poster:

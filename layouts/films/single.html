@@ -103,6 +103,11 @@
       color: black;
     }
 
+    .film-meta .film-groups {
+      margin: 0;
+      flex-wrap: wrap;
+    }
+
     .film-meta a {
       color: var(--48-navy);
       font-weight: 600;
@@ -280,6 +285,16 @@
         {{ if .Params.genre }}
           <dt>Genre:</dt>
           <dd>{{ .Params.genre }}</dd>
+        {{ end }}
+        {{ with .Params.warnings }}
+          <dt>Warnings:</dt>
+          <dd>
+            {{ partial "film-tags.html" (dict
+                "page" $
+                "show_genre" false
+                "show_groups" false
+            ) }}
+          </dd>
         {{ end }}
         {{ if .Params.screening_groups }}
           <dt>Premiere Screening:</dt>

@@ -10,8 +10,10 @@ params:
     Returning after [*Granulated*](/films/2025-metal-pixel-foundry-granulated/), which took home Group A's Team Spirit award.
   logline: "Use Your Time Wisely..."
   synopsis: "A mischievous young witch learns that her magical abilities have the power to heal."
-  order: 999
+  order: 1
   genre: "Fantasy"
+  warnings:
+    - "Language"
   galleries:
     poster:
       count: 1

@@ -10,7 +10,7 @@ params:
     The same team behind [*Neon Judas*](/films/2025-axiomatic-twist-neon-judas/) is back.
   logline: "This is a ghost story"
   synopsis: "After the tragic disappearance of her brother, Nicole Corcoran investigates the rash of disappearances in Sanctuary, California which ultimately leads her to the Belvedere Murder House."
-  order: 999
+  order: 2
   genre: "Mockumentary"
   galleries:
     poster:

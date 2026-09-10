@@ -203,14 +203,15 @@
 /* Film Groups */
 .film-groups {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
   margin: 0.75rem 0;
 }
 
 .group-tag,
-.genre-tag {
+.genre-tag,
+.warning-tag {
   display: inline-block;
   padding: 0.25rem 0.75rem;
   border-radius: 15px;
@@ -231,6 +232,12 @@
   background: color-mix(in srgb, var(--48-pink) 42%, white);
   color: var(--48-navy-nearblack);
   overflow-wrap: break-word;
+}
+
+.warning-tag {
+  flex: 0 0 auto;
+  background: color-mix(in srgb, var(--48-gold) 72%, white);
+  color: var(--48-navy-nearblack);
 }
 
 /* Best of 2025 Star Indicator */

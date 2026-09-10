@@ -10,7 +10,7 @@ params:
     Jabronie Pictures and Almost Good Films were behind last year's [*Divide and Concierge*](/films/2025-jabronie-pictures-divide-and-concierge/) (Best Trailer and Best Stunt Choreography). In 2024 they made *Le Shift*, which also won Best Stunt Choreography, plus Best Sound Design.
   logline: "Her skills are unheard of"
   synopsis: "A former female assassin tries out a new career... as a female assassin?"
-  order: 999
+  order: 2
   genre: "Film de Femme + Silent Film"
   galleries:
     poster:

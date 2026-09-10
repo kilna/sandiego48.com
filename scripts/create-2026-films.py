@@ -82,6 +82,24 @@ def genre_text(row: dict) -> str:
   return g1 or g2
 
 
+def parse_warnings(raw: str) -> list[str]:
+  return [part.strip() for part in (raw or "").split(",") if part.strip()]
+
+
+def parse_order(raw: str) -> int:
+  raw = (raw or "").strip()
+  if raw.isdigit():
+    return int(raw)
+  return 999
+
+
+def warnings_block(warnings: list[str]) -> str:
+  if not warnings:
+    return ""
+  items = "\n".join(f"    - {q(w)}" for w in warnings)
+  return f"  warnings:\n{items}\n"
+
+
 def find_poster(slug: str, team_slug: str) -> Path | None:
   candidates = []
   for path in PREMIERE_DIR.iterdir():
@@ -145,6 +163,12 @@ def write_film_page(row: dict) -> dict | None:
   logline = (row.get("film_logline") or "").strip()
   synopsis = (row.get("film_synopsis") or "").strip()
   genre = genre_text(row)
+  warnings = row.get("_warnings")
+  if warnings is None:
+    warnings = parse_warnings(row.get("warnings") or "")
+  order = row.get("_order")
+  if order is None:
+    order = parse_order(row.get("order") or "")
   body = synopsis or logline or f"{title} by {team}."
 
   page = f"""---
@@ -156,9 +180,9 @@ params:
   team: {q(team)}
   logline: {q(logline)}
   synopsis: {q(synopsis)}
-  order: 999
+  order: {order}
   genre: {q(genre)}
-screening_groups:
+{warnings_block(warnings)}screening_groups:
   - "group-{group.lower()}"
 screening_events:
   - "{event}"
@@ -233,6 +257,8 @@ def main() -> int:
         team_info[slug] = {
           "group": (row.get("group") or "").strip().upper(),
           "title": (row.get("film") or "").strip(),
+          "warnings": parse_warnings(row.get("warnings") or ""),
+          "order": parse_order(row.get("order") or ""),
         }
 
   with CSV_PATH.open(newline="", encoding="utf-8") as f:
@@ -248,6 +274,10 @@ def main() -> int:
     if info.get("title"):
       row["film_title"] = info["title"]
       row["_preserve_title"] = True
+    if "warnings" in info:
+      row["_warnings"] = info["warnings"]
+    if "order" in info:
+      row["_order"] = info["order"]
     result = write_film_page(row)
     if result:
       created.append(result)

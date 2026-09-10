@@ -10,8 +10,10 @@ params:
     Last year they made [*I Plead The Fifth*](/films/2025-2880-minute-movie-makers-i-plead-the-fifth/), Group A's Audience Choice Runner-Up. Their 2024 film *Hot Dawg* was Best Poster Runner-Up.
   logline: "Every Confession Has a Price"
   synopsis: "A man at the end of his rope receives a confession which at first he believes to be a lifeline but in reality is something else entirely."
-  order: 999
+  order: 12
   genre: "Drama"
+  warnings:
+    - "Adult Themes"
   galleries:
     poster:
       count: 1

@@ -8,8 +8,10 @@ params:
   team: "Praxis Studios"
   logline: "N/A"
   synopsis: "Revenge is the best kind of relaxation."
-  order: 999
+  order: 10
   genre: "Revenge"
+  warnings:
+    - "Language"
   galleries:
     poster:
       count: 1

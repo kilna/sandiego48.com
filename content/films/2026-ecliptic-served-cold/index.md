@@ -10,7 +10,7 @@ params:
     A new 48 from the team behind [*The Kollivers*](/films/2025-ecliptic-entertainment-the-kollivers/). Killian Hough received a Supporting Actor Honorable Mention for 2024's *Brie*.
   logline: "Revenge is served cold"
   synopsis: "When a woman is attacked by her classmates, she and her cousin decide to take matters into their own hands."
-  order: 999
+  order: 11
   genre: "Film de Femme + Revenge"
   galleries:
     poster:

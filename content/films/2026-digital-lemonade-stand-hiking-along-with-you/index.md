@@ -10,7 +10,7 @@ params:
     Last year they made [*Chef Quest*](/films/2025-digital-lemonade-stand-chef-quest/), which won Best Visual Effects. In 2024's *Getaway*, Sean Danahy took Best Actor in a Male Supporting Role.
   logline: "A father. A daughter. And the trail they are on together."
   synopsis: "While hiking to the perfect spot, A father imparts wisdom to his daughter on how to find happiness."
-  order: 999
+  order: 3
   genre: "Drama"
   galleries:
     poster:

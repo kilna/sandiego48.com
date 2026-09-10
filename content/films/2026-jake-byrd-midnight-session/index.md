@@ -10,8 +10,10 @@ params:
     From the team that brought you [*Plastic & Porcelain*](/films/2025-jake-byrd-productions-plastic-porcelain/), winner of Best Costume Design.
   logline: ""
   synopsis: ""
-  order: 999
+  order: 12
   genre: "Utopian or Dystopian"
+  warnings:
+    - "Violence"
   galleries:
     poster:
       count: 1

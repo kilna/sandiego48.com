@@ -8,8 +8,10 @@ params:
   team: "Socks and Hoses"
   logline: "Stealing from thieves is a risky game."
   synopsis: "The world took everything from Nessa, she’s gonna steal it back."
-  order: 999
+  order: 12
   genre: "Heist"
+  warnings:
+    - "Language"
   galleries:
     poster:
       count: 1

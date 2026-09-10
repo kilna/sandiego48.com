@@ -8,7 +8,7 @@ params:
   team: "Neuro Spice Brigade"
   logline: "She found the path to humility, but \"towel\" she get there?"
   synopsis: "An egotistical influencer is accidentally transported to a bizarre fantasy kingdom that forces her to confront her greatest enemy: basic human decency."
-  order: 999
+  order: 13
   genre: "Fantasy"
   galleries:
     poster:

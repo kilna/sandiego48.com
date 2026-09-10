@@ -8,8 +8,10 @@ params:
   team: "More Than Perfect"
   logline: "Meet Your Tour Guide (/ Son-In-Law)"
   synopsis: "A married couple are sent on a nightmare vacation by their daughter, who conspires with her lover to kill them.  But when the tour guide Andre Voss begins to have second thoughts, Janice must decide what's more important - killing her parents or killing Andre."
-  order: 999
+  order: 10
   genre: "Dark Comedy + Vacation / Holiday Film"
+  warnings:
+    - "Language"
   galleries:
     poster:
       count: 1

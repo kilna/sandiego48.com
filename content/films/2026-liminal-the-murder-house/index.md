@@ -8,7 +8,7 @@ params:
   team: "Liminal Film Studio"
   logline: "Not every haunting belongs to the living"
   synopsis: "Haunting a house, while being haunted by a lie that kept her trapped in misery."
-  order: 999
+  order: 13
   genre: "Silent Film"
   galleries:
     poster:

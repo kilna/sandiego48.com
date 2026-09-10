@@ -8,7 +8,7 @@ params:
   team: "Steele Canyon Studios"
   logline: "You never know who's following you"
   synopsis: "When an inept but well-intentioned tour guide ruins a tour for the wrong client, she decide to book another tour and plot her revenge."
-  order: 999
+  order: 11
   genre: "Mockumentary + Revenge"
   galleries:
     poster:
