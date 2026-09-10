@@ -11,7 +11,7 @@ params:
   logline: "A look in the mirror"
   synopsis: "A wanted criminal breaks into an unknown persons house."
   order: 15
-  genre: "Thriller / Suspense OR Family Film"
+  genre: "Thriller / Suspense"
   warnings:
     - "Violence"
   galleries:

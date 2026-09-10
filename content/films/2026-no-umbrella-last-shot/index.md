@@ -16,6 +16,10 @@ params:
     - "Language"
   galleries:
     poster:
+      count: 2
+    bts:
+      count: 5
+    group:
       count: 1
     thumb:
       numbers: [6, 14, 22, 30, 33]
