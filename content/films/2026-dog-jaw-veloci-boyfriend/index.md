@@ -12,7 +12,7 @@ params:
   genre: "Fish Out of Water"
   galleries:
     poster:
-      count: 2
+      count: 3
     thumb:
       numbers: [11, 19, 24, 30, 37]
 screening_groups:

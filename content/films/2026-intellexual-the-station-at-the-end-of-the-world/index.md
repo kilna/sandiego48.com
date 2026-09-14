@@ -16,7 +16,7 @@ params:
     - "Violence"
   galleries:
     poster:
-      count: 3
+      count: 4
     still:
       count: 3
     bts:

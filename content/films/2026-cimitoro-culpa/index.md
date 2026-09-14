@@ -19,6 +19,8 @@ params:
       count: 2
     still:
       count: 3
+    bts:
+      count: 8
     thumb:
       numbers: [10, 17, 33, 37, 40]
 screening_groups:

@@ -18,7 +18,7 @@ params:
     poster:
       count: 1
     thumb:
-      numbers: [6, 19, 29, 37, 41]
+      numbers: [1, 6, 29, 37, 41]
 screening_groups:
   - "group-a"
 screening_events:

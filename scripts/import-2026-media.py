@@ -4,7 +4,7 @@
 Source (sd48hfp-2026):
 
   download/<team>/<team>-{poster,still,bts,group-picture}-N.ext
-  posters/<team>.ext                  # operator poster v0; HQ poster-1+ overrides
+  placeholder-posters/<team>.ext      # fallback poster v0; HQ poster-1+ overrides
   thumb/<team>/<team>-thumb-N.jpg
 
 Destination:
@@ -13,10 +13,10 @@ Destination:
   cdn/films/2026-<team>-<film>/{poster,still,bts,group}-NNN.jpg
   cdn/films/2026-<team>-<film>/thumb-NNN.jpg
 
-Operator posters in posters/<team>.ext are treated as version 0. The film
-page image uses the highest-numbered poster, so a dashboard upload
-(<team>-poster-1+) replaces v0. v0 is omitted from the poster gallery once
-an HQ poster exists.
+Placeholder posters in placeholder-posters/<team>.ext are treated as
+version 0. The film page image uses the highest-numbered poster, so a
+dashboard upload (<team>-poster-1+) replaces v0. v0 is omitted from the
+poster gallery once an HQ poster exists.
 
 Filmmaker stills/BTS/group/poster are compacted to sequential 001..N.
 Generated thumbs keep their source numbers so culled gaps survive:
@@ -51,7 +51,7 @@ from pathlib import Path
 SITE = Path("/Users/kilna/Code/48hfp/sandiego48.com")
 NAS = Path("/Users/kilna/NAS/project/sd48hfp-2026")
 DOWNLOAD = NAS / "download"
-POSTERS = NAS / "posters"
+POSTERS = NAS / "placeholder-posters"
 THUMB = NAS / "thumb"
 CONTENT = SITE / "content" / "films"
 CDN = SITE / "cdn" / "films"
@@ -126,7 +126,7 @@ def film_dir_for_team(team: str, film_dirs: list[Path]) -> Path | None:
 
 
 def operator_poster_v0(team: str) -> Path | None:
-  """Return posters/<team>.ext, the operator fallback (version 0)."""
+  """Return placeholder-posters/<team>.ext, the fallback poster (version 0)."""
   if not POSTERS.is_dir():
     return None
   matches: list[Path] = []
@@ -144,7 +144,7 @@ def operator_poster_v0(team: str) -> Path | None:
 
 
 def copy_poster_v0(team: str, src: Path, dry_run: bool) -> Path:
-  """Place operator posters in download as <team>-poster-0 so HQ v1+ wins."""
+  """Place placeholder posters in download as <team>-poster-0 so HQ v1+ wins."""
   dest_dir = DOWNLOAD / team
   dest = dest_dir / f"{team}-poster-0{src.suffix.lower()}"
   if dest.exists() and dest.stat().st_mtime >= src.stat().st_mtime - 1:
