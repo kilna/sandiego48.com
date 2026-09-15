@@ -10,7 +10,9 @@ else
 	export HUGO_BASEURL=https://$(CF_PAGES_BRANCH).sandiego48.com
 endif
 else
+ifndef HUGO_BASEURL
 	export HUGO_BASEURL=http://localhost:$(SERVER_PORT)
+endif
 endif
 
 .PHONY: build build-clean server server-cdn server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit tool-plugins setup-dev-cdn cleanup-dev-cdn push deploy preview dash import-2026 help
@@ -109,6 +111,19 @@ gallery-audit: install-tools
 import-2026:
 	python3 scripts/import-2026-media.py
 
+deploy:
+	@if [ -n "$$(git status --porcelain)" ]; then \
+	  echo "Error: Working directory is not clean. Commit or stash first." >&2; \
+	  git status --short >&2; \
+	  exit 1; \
+	fi
+	git push
+	@echo "Pushed main. GitHub Actions will build and deploy to Cloudflare Pages."
+	@open "https://github.com/kilna/sandiego48.com/actions/workflows/deploy-cloudflare.yml" || true
+
+push:
+	git push
+
 preview: copy-images cleanup-dev-cdn build-clean
 	script -q /dev/null \
 	  bash -c "wrangler pages deploy ./public --project-name=$$CLOUDFLARE_PAGES_PROJECT --branch=preview --commit-dirty=true" \
@@ -130,9 +145,9 @@ help:
 	@echo "  server-clean  - Start server with clean build"
 	@echo "  server-slow   - Start server with fast render disabled"
 	@echo "  server-verbose- Start server with debug logging"
-	@echo "  deploy        - Build and deploy via git (requires clean working copy)"
+	@echo "  deploy        - Push main so GitHub Actions can deploy (requires clean working copy)"
 	@echo "  preview       - Deploy to Cloudflare Pages preview and open in browser"
-	@echo "  push          - Commit and push to origin"
+	@echo "  push          - Push the current branch to origin"
 	@echo "  dash          - Open Cloudflare Pages dashboard"
 	@echo "  cleanup-deployments - Clean up old deployments (keep last 10 production, delete all preview)"
 	@echo "  cdn           - Upload to CDN (includes gallery processing)"

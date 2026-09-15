@@ -57,10 +57,18 @@ This project uses asdf for tool version management. The following tools are mana
 The project includes a `wrangler.toml` file for Cloudflare Pages deployment configuration. This file defines:
 
 - Project name: `sandiego48-com`
+- Account ID: `046e8f301fab8b218d3f51110cc7034f`
 - Build output directory: `public/`
-- Environment configurations for production and preview
 
-The `.envrc` file automatically reads the project name from `wrangler.toml` to set the appropriate environment variables.
+Production deploys are GitHub Actions on push to `main`: Hugo builds the site, then Wrangler uploads `public/` to Pages. Do not use a Cloudflare deploy hook for this; the old hook URL is gone and the Action now fails if credentials are missing.
+
+Required GitHub Actions secret:
+
+- `CLOUDFLARE_API_TOKEN` — Cloudflare API token with **Account / Cloudflare Pages / Edit** (Workers template is fine)
+
+Create a token at https://dash.cloudflare.com/046e8f301fab8b218d3f51110cc7034f/api-tokens and add it under the repo **Settings > Secrets and variables > Actions**. Local `wrangler` / `make preview` also need a valid token in the environment (`CLOUDFLARE_API_TOKEN`) or `wrangler login`.
+
+The `.envrc` file reads the project name from `wrangler.toml` for local dashboard links.
 
 ## Makefile Targets
 

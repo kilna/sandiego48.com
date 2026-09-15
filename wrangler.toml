@@ -1,3 +1,4 @@
 name = "sandiego48-com"
+account_id = "046e8f301fab8b218d3f51110cc7034f"
 compatibility_date = "2024-01-01"
 pages_build_output_dir = "public/"
