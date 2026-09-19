@@ -55,3 +55,4 @@ jobs:
           accountId: "046e8f301fab8b218d3f51110cc7034f"
           command: pages deploy public --project-name=sandiego48-com --branch=main
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          wranglerVersion: "4"

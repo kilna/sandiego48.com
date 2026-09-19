@@ -57,8 +57,8 @@ This project uses asdf for tool version management. The following tools are mana
 The project includes a `wrangler.toml` file for Cloudflare Pages deployment configuration. This file defines:
 
 - Project name: `sandiego48-com`
-- Account ID: `046e8f301fab8b218d3f51110cc7034f`
 - Build output directory: `public/`
+- Account ID (GitHub Action `accountId`, not `wrangler.toml`): `046e8f301fab8b218d3f51110cc7034f`
 
 Production deploys are GitHub Actions on push to `main`: Hugo builds the site, then Wrangler uploads `public/` to Pages. Do not use a Cloudflare deploy hook for this; the old hook URL is gone and the Action now fails if credentials are missing.
 
