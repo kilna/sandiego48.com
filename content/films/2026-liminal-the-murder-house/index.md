@@ -5,7 +5,7 @@ date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
   year: 2026
-  team: "Liminal Film Studio"
+  team: "Liminal Films Studio"
   logline: "Not every haunting belongs to the living"
   synopsis: "Haunting a house, while being haunted by a lie that kept her trapped in misery."
   order: 13

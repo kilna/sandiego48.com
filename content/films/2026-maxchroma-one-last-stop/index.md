@@ -5,7 +5,7 @@ date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
   year: 2026
-  team: "maxchroma"
+  team: "Maxchroma"
   logline: "\"Some falls never end.\""
   synopsis: "Haunted by the accidental fall that took his granddaughter's life, a grieving man struggles to let go of the past and the guilt that keeps pulling him down."
   order: 14

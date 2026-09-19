@@ -5,7 +5,7 @@ date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
   year: 2026
-  team: "Tiny Hippo Productions"
+  team: "Tiny Hippo Films"
   logline: "Unlimited funds? Unlimited upgrades"
   synopsis: "Vacation so real, you never want to leave!"
   order: 9

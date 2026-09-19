@@ -5,7 +5,7 @@ date: 2026-08-30T19:00:00-07:00
 draft: false
 params:
   year: 2026
-  team: "Breakfast For Dinner!"
+  team: "Breakfast for Dinner"
   prior: >
     You may remember last year's [*Extra Toppings*](/films/2025-breakfast-for-dinner-extra-toppings/), a Group A Audience Choice Second Runner-Up.
   logline: "Everyone is a long way from home"
