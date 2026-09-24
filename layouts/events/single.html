@@ -153,20 +153,28 @@
           </div>
           <div class="film-info">
             <h3 class="film-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-            {{ if .Params.logline }}
-              <p class="film-logline">{{ .Params.logline }}</p>
-            {{ end }}
+            {{ partial "film-logline.html" (dict "page" .) }}
             <p class="film-team">by <a href="{{ .RelPermalink }}">{{ .Params.team }}</a></p>
             {{ partial "film-tags.html" (dict "page" . "show_groups" false) }}
             {{ if .Params.synopsis }}
               <div class="film-synopsis">{{ .Params.synopsis | markdownify }}</div>
             {{ end }}
-            {{- partial "components/button.html" (dict
-                "text" "More info"
-                "url" .RelPermalink
-                "icon" "info"
-                "target" "_self"
-            ) -}}
+            <div class="film-item-actions">
+              {{ if .Params.trailer }}
+                {{- partial "components/button.html" (dict
+                    "text" "See Trailer"
+                    "url" (printf "%s#trailer" .RelPermalink)
+                    "icon" "movie-camera"
+                    "target" "_self"
+                ) -}}
+              {{ end }}
+              {{- partial "components/button.html" (dict
+                  "text" "More info"
+                  "url" .RelPermalink
+                  "icon" "info"
+                  "target" "_self"
+              ) -}}
+            </div>
           </div>
         </div>
         {{ end }}

@@ -12,6 +12,7 @@ params:
   synopsis: "What started as an open house tour turns into one scary game."
   order: 8
   genre: "Film de Femme + Sports Film / Game Film"
+  trailer: trailer.mp4
   galleries:
     poster:
       count: 1

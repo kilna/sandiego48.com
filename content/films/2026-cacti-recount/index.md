@@ -10,6 +10,7 @@ params:
   synopsis: ""
   order: 5
   genre: "Game Film"
+  trailer: trailer.mp4
   galleries:
     poster:
       count: 1

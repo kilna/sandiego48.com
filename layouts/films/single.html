@@ -231,6 +231,33 @@
       }
       
     }
+
+    .film-trailer {
+      margin: 0 0 2.5rem 0;
+      clear: both;
+      scroll-margin-top: 1.5rem;
+    }
+
+    .film-trailer h2 {
+      margin: 0 0 1rem 0;
+      color: var(--48-navy);
+    }
+
+    .film-trailer-frame {
+      width: 100%;
+      max-width: 960px;
+      background: #000;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+
+    .film-trailer-frame video {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+      background: #000;
+    }
   </style>
 {{ end }}
 
@@ -334,9 +361,7 @@
         </div>
       {{ end }}
       
-      {{ if .Params.logline }}
-        <p class="film-logline"><span>{{ .Params.logline }}</span></p>
-      {{ end }}
+      {{ partial "film-logline.html" (dict "page" . "wrap_span" true) }}
       
       {{ if .Params.synopsis }}
         <div class="film-synopsis">{{ .Params.synopsis | markdownify }}</div>
@@ -416,6 +441,7 @@
   {{ end }}
 
   {{/* Poster gallery is omitted: the page poster is already the most recent. */}}
+  {{- partial "film-trailer.html" . -}}
   {{- partial "cdn-gallery.html" (dict "galleryId" "still" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
   {{- partial "cdn-gallery.html" (dict "galleryId" "bts" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}
   {{- partial "cdn-gallery.html" (dict "galleryId" "group" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section) -}}

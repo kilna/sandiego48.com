@@ -319,13 +319,21 @@
   margin: 0.4rem 0 0;
 }
 
-.film-item .film-info > *:has(+ a.button) {
+.film-item .film-info > *:has(+ .film-item-actions) {
   margin-bottom: 0.75rem;
 }
 
-.film-item .film-info a.button {
+.film-item-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
   margin-top: auto;
   align-self: flex-start;
+}
+
+.film-item .film-info a.button {
+  margin-top: 0;
+  align-self: auto;
 }
 
 @media (max-width: 768px) {
@@ -340,8 +348,9 @@
     height: 225px;
   }
 
-  .film-item .film-info a.button {
+  .film-item-actions {
     align-self: center;
+    justify-content: center;
   }
 }
 

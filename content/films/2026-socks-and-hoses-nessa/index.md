@@ -12,6 +12,7 @@ params:
   genre: "Heist"
   warnings:
     - "Language"
+  trailer: trailer.mp4
   galleries:
     poster:
       count: 1

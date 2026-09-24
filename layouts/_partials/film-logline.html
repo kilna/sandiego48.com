@@ -1,0 +1,13 @@
+{{- /*
+  Render a film logline, skipping empty or placeholder values like N/A.
+
+  page      - film page
+  wrap_span - wrap the text in <span> (film single page)
+*/ -}}
+{{- $page := .page -}}
+{{- $raw := strings.TrimSpace ($page.Params.logline | default "") -}}
+{{- $key := $raw | lower -}}
+{{- $skip := slice "n/a" "n.a." "n.a" "na" "none" "tbd" "-" -}}
+{{- if and $raw (not (in $skip $key)) -}}
+  <p class="film-logline">{{ if .wrap_span }}<span>{{ $raw }}</span>{{ else }}{{ $raw }}{{ end }}</p>
+{{- end -}}

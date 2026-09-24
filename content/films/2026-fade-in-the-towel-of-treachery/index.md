@@ -12,6 +12,7 @@ params:
   synopsis: "A detective falls prey to the deception of a lost towel."
   order: 4
   genre: "Film Noir"
+  trailer: trailer.mp4
   galleries:
     poster:
       count: 1

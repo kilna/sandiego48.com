@@ -10,6 +10,7 @@ params:
   synopsis: "Haunting a house, while being haunted by a lie that kept her trapped in misery."
   order: 13
   genre: "Silent Film"
+  trailer: trailer.mp4
   galleries:
     poster:
       count: 2

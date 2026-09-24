@@ -1,0 +1,20 @@
+{{ if .Params.trailer }}
+  {{- $forceProductionCDN := os.Getenv "HUGO_FORCE_PRODUCTION_CDN" -}}
+  {{- $isLocalhost := and (not $forceProductionCDN) hugo.IsServer -}}
+  {{- $cdnURL := "/cdn" -}}
+  {{- if not $isLocalhost -}}
+    {{- $cdnURL = .Site.Params.cdn.default -}}
+  {{- end -}}
+  {{- $pageSlug := path.Base .RelPermalink -}}
+  {{- $videoURL := printf "%s/%s/%s/%s" $cdnURL .Section $pageSlug .Params.trailer -}}
+  {{- $posterURL := printf "%s/%s/%s/trailer-poster.jpg" $cdnURL .Section $pageSlug -}}
+  <section class="film-trailer" id="trailer">
+    <h2>Trailer</h2>
+    <div class="film-trailer-frame">
+      <video controls playsinline preload="metadata" poster="{{ $posterURL }}">
+        <source src="{{ $videoURL }}" type="video/mp4">
+        <a href="{{ $videoURL }}">Download the trailer for {{ .Title }}</a>
+      </video>
+    </div>
+  </section>
+{{ end }}

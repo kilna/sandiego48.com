@@ -155,6 +155,6 @@ help:
 	@echo "  cdn-download  - Download from CDN"
 	@echo "  gallery-thumbs- Generate gallery thumbnails"
 	@echo "  gallery-audit - Audit gallery images"
-	@echo "  import-2026   - Import 2026 NAS posters/stills/BTS/thumbs into CDN"
+	@echo "  import-2026   - Import 2026 NAS posters/stills/BTS/thumbs/trailers into CDN"
 	@echo "  icons         - Download/refresh SVG icons from icons.yaml"
 	@echo "  help          - Show this help message"

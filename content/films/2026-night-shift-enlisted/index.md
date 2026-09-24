@@ -10,6 +10,7 @@ params:
   synopsis: "A germaphobic tourist finds an audio tour that leads him to a dark secret."
   order: 11
   genre: "Workplace Film"
+  trailer: trailer.mp4
   galleries:
     poster:
       count: 1

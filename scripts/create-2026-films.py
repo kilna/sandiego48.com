@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Create 2026 film pages from sd48hfp-2026 films.csv, premiere files, and downloads.
 
-For posters, stills, BTS, group photos, and generated thumbs after pages
-exist, use scripts/import-2026-media.py. Generated thumbs live in
-thumb/<team>/<team>-thumb-<#>.jpg.
+For posters, stills, BTS, group photos, generated thumbs, and trailers
+after pages exist, use scripts/import-2026-media.py. Generated thumbs live
+in thumb/<team>/<team>-thumb-<#>.jpg. Trailers become CDN trailer.mp4.
 """
 
 from __future__ import annotations

@@ -14,6 +14,7 @@ params:
   genre: "Thriller / Suspense + Utopian or Dystopian"
   warnings:
     - "Violence"
+  trailer: trailer.mp4
   galleries:
     poster:
       count: 4

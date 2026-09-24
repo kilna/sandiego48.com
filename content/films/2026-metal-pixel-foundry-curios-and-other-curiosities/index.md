@@ -14,6 +14,7 @@ params:
   genre: "Fantasy"
   warnings:
     - "Language"
+  trailer: trailer.mp4
   galleries:
     poster:
       count: 2

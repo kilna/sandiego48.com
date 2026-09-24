@@ -10,6 +10,7 @@ params:
   synopsis: "A movie fan tries to convince others that cinema is more than just entertainment, it bears witness to the human experience."
   order: 2
   genre: "Inspirational Film"
+  trailer: trailer.mp4
   galleries:
     poster:
       count: 2

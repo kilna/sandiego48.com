@@ -12,6 +12,7 @@ params:
   synopsis: "A former female assassin tries out a new career... as a female assassin?"
   order: 2
   genre: "Film de Femme + Silent Film"
+  trailer: trailer.mp4
   galleries:
     poster:
       count: 1

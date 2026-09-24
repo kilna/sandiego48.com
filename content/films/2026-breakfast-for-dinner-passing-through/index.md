@@ -14,6 +14,7 @@ params:
   genre: "Fish Out of Water + Workplace Film"
   warnings:
     - "Language"
+  trailer: trailer.mp4
   galleries:
     poster:
       count: 2

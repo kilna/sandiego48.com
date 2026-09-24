@@ -12,6 +12,7 @@ params:
   genre: "Revenge"
   warnings:
     - "Language"
+  trailer: trailer.mp4
   galleries:
     poster:
       count: 1

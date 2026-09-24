@@ -12,6 +12,7 @@ params:
   genre: "Romantic Comedy"
   warnings:
     - "Violence"
+  trailer: trailer.mp4
   galleries:
     poster:
       count: 1

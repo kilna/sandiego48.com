@@ -10,6 +10,7 @@ params:
   synopsis: "Two strangers meet in the afterlife and it is not what they expected."
   order: 9
   genre: "Horror + Single Room Movie"
+  trailer: trailer.mp4
   galleries:
     poster:
       count: 4
