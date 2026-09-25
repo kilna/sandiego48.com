@@ -14,7 +14,7 @@ params:
     - "Language"
   galleries:
     poster:
-      count: 1
+      count: 2
     thumb:
       numbers: [19, 20, 23, 33, 42]
 screening_groups:

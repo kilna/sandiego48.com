@@ -19,7 +19,9 @@ Destination:
 Placeholder posters in placeholder-posters/<team>.ext are treated as
 version 0. An HQ dashboard upload (<team>-poster-1+) always replaces a
 placeholder on the film page and in the poster gallery, even if the HQ
-file's timestamp is older than the already-imported v0. v0 is omitted
+file's timestamp is older than the already-imported v0. Same fitted
+size is not enough — a placeholder with the same aspect ratio scales
+to the same pixel size — so the pictures are compared. v0 is omitted
 from the poster gallery once an HQ poster exists.
 
 Filmmaker stills/BTS/group/poster are compacted to sequential 001..N.
@@ -104,53 +106,52 @@ def needs_update(src: Path, dest: Path) -> bool:
   return src.stat().st_mtime > dest.stat().st_mtime + 1
 
 
-def pixel_size(path: Path) -> tuple[int, int] | None:
+SAME_PICTURE_EDGE = 16
+# Mean absolute difference of a 16x16 thumbnail. A fresh sips JPEG of the
+# same picture stays under ~6; a different poster is tens of levels apart.
+SAME_PICTURE_MAX_MAD = 12.0
+
+
+def thumbnail_pixels(path: Path, edge: int = SAME_PICTURE_EDGE) -> bytes | None:
   result = subprocess.run(
-    ["sips", "-g", "pixelWidth", "-g", "pixelHeight", str(path)],
+    [
+      "vips", "thumbnail", str(path), ".ppm",
+      str(edge), "--height", str(edge), "--size", "force",
+    ],
     capture_output=True,
-    text=True,
   )
-  if result.returncode != 0:
+  if result.returncode != 0 or not result.stdout.startswith(b"P6"):
     return None
-  width = height = None
-  for line in result.stdout.splitlines():
-    if "pixelWidth:" in line:
-      width = int(line.split(":")[-1])
-    elif "pixelHeight:" in line:
-      height = int(line.split(":")[-1])
-  if width is None or height is None:
+  parts = result.stdout.split(b"\n", 3)
+  if len(parts) < 4 or not parts[3]:
     return None
-  return width, height
+  return parts[3]
 
 
-def fitted_size(width: int, height: int, max_edge: int = 1920) -> tuple[int, int]:
-  long_edge = max(width, height)
-  if long_edge <= max_edge:
-    return width, height
-  scale = max_edge / long_edge
-  return int(round(width * scale)), int(round(height * scale))
-
-
-def dest_matches_converted_source(src: Path, dest: Path) -> bool:
-  """True when dest looks like sips -Z 1920 of src, not a leftover placeholder."""
-  if not dest.exists():
+def same_picture(src: Path, dest: Path) -> bool:
+  """True when dest is already a conversion of src, not just the same aspect."""
+  src_px = thumbnail_pixels(src)
+  dest_px = thumbnail_pixels(dest)
+  if not src_px or not dest_px or len(src_px) != len(dest_px):
     return False
-  src_size = pixel_size(src)
-  dest_size = pixel_size(dest)
-  if not src_size or not dest_size:
-    return False
-  expected = fitted_size(*src_size)
-  return (
-    abs(dest_size[0] - expected[0]) <= 2
-    and abs(dest_size[1] - expected[1]) <= 2
-  )
+  total = sum(abs(a - b) for a, b in zip(src_px, dest_px))
+  return (total / len(src_px)) <= SAME_PICTURE_MAX_MAD
 
 
 def needs_poster_convert(src: Path, dest: Path) -> bool:
-  """HQ posters replace placeholders even when the HQ mtime is older."""
+  """HQ posters replace placeholders even when the HQ mtime is older.
+
+  A newer source file always wins. An older HQ file still replaces dest
+  when the published picture is different — a placeholder with the same
+  aspect ratio scales to the same pixel size, so size alone cannot decide.
+  Skip when dest is already this picture, even if the fitted size differs
+  by a few pixels from sips -Z 1920.
+  """
+  if not dest.exists():
+    return True
   if needs_update(src, dest):
     return True
-  return not dest_matches_converted_source(src, dest)
+  return not same_picture(src, dest)
 
 
 def team_slugs() -> list[str]:

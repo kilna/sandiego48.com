@@ -18,6 +18,8 @@ params:
       count: 3
     still:
       count: 3
+    group:
+      count: 1
 screening_groups:
   - "group-b"
 screening_events:
