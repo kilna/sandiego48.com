@@ -13,5 +13,6 @@ params:
   galleries:
     photo:
       count: 990
+      credit: "Photos by Jonathan Medel"
 ---
 Purple carpet photos from both premiere screenings on Monday, September 21, 2026.

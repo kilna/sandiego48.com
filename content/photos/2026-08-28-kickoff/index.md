@@ -12,5 +12,5 @@ params:
   galleries:
     photo:
       count: 152
-      credit: Photos by Jon Medel
+      credit: "Photos by Jonathan Medel"
 ---
