@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const thumbExt = teaser.dataset.thumbExt;
     const padding = parseInt(teaser.dataset.padding);
     const galleryName = teaser.dataset.galleryName;
-    const eventUrl = teaser.dataset.eventUrl;
+    const galleryUrl = teaser.dataset.galleryUrl;
     const grid = teaser.querySelector('.gallery-grid-teaser');
     
     // Create initial empty slots
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const item = document.createElement('div');
       item.className = 'gallery-item';
       item.innerHTML = `
-        <a href="${eventUrl}#gallery-photo" class="gallery-teaser-link">
+        <a href="${galleryUrl}" class="gallery-teaser-link">
           <img src="" alt="${galleryName}" loading="eager">
         </a>
       `;

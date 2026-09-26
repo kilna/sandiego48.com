@@ -15,7 +15,7 @@ ifndef HUGO_BASEURL
 endif
 endif
 
-.PHONY: build build-clean server server-cdn server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit tool-plugins setup-dev-cdn cleanup-dev-cdn push deploy preview dash import-2026 help
+.PHONY: build build-clean server server-cdn server-slow server-verbose open-wait copy-images cdn cdn-force cdn-download gallery-thumbs gallery-update-counts gallery-audit import-event-photos tool-plugins setup-dev-cdn cleanup-dev-cdn push deploy preview dash import-2026 help
 
 # Ensure .tool-versions exists (local uses .dev; Cloudflare Pages uses .cloudflare)
 install-tools:
@@ -111,6 +111,13 @@ gallery-audit: install-tools
 import-2026:
 	python3 scripts/import-2026-media.py
 
+import-event-photos:
+	@if [ -z "$(SRC)" ] || [ -z "$(SLUG)" ]; then \
+	  echo "Usage: make import-event-photos SRC=<dir> SLUG=<photos-slug>" >&2; \
+	  exit 1; \
+	fi
+	./scripts/import-event-photos.sh "$(SRC)" "$(SLUG)"
+
 deploy:
 	@if [ -n "$$(git status --porcelain)" ]; then \
 	  echo "Error: Working directory is not clean. Commit or stash first." >&2; \
@@ -156,5 +163,6 @@ help:
 	@echo "  gallery-thumbs- Generate gallery thumbnails"
 	@echo "  gallery-audit - Audit gallery images"
 	@echo "  import-2026   - Import 2026 NAS posters/stills/BTS/thumbs/trailers into CDN"
+	@echo "  import-event-photos SRC=<dir> SLUG=<slug> - Resize/number event photos into cdn/photos/<slug>/"
 	@echo "  icons         - Download/refresh SVG icons from icons.yaml"
 	@echo "  help          - Show this help message"

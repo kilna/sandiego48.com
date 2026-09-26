@@ -20,6 +20,27 @@
   margin-bottom: 1.5rem;
 }
 
+/* Single gallery page */
+.photos-date {
+  text-align: center;
+  font-weight: bold;
+  color: var(--48-darken-more);
+  margin: 0 0 1rem 0;
+}
+
+.photos-events {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0 2rem 0;
+}
+
+.photos-back {
+  text-align: center;
+  margin-top: 2rem;
+}
+
 /* Event Photos Section */
 .all-photos-section {
   margin-top: 3rem;

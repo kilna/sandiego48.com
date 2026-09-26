@@ -3,6 +3,7 @@
   {{- partial "layout/stylesheet.html" "events" -}}
   {{- partial "layout/stylesheet.html" "film" -}}
   {{- partial "layout/stylesheet.html" "infoblock" -}}
+  {{- partial "layout/stylesheet.html" "gallery-teaser" -}}
 {{ end }}
 
 {{ define "title" }}
@@ -99,13 +100,21 @@
     </div>
     {{ end }}
     
-    {{/* Add CDN gallery if images are available */}}
-    {{- if .Params.galleries -}}
-      {{- partial "cdn-gallery.html" (dict "galleryId" "photo" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section "thumb_size" 128) -}}
+    {{ $event_slug := path.Base .RelPermalink }}
+
+    {{- $photoGalleries := where (where site.RegularPages "Section" "photos") "Params.events" "intersect" (slice $event_slug) -}}
+    {{- range $photoGalleries.ByDate -}}
+      {{- partial "cdn-gallery-teaser.html" (dict
+          "page" .
+          "galleryId" "photo"
+          "previewCount" 6
+      ) -}}
     {{- end -}}
+    {{- if $photoGalleries }}
+    <script src="{{ "js/gallery-teaser.js" | relURL }}"></script>
+    {{- end }}
     
     {{/* Get films for this event using the page slug */}}
-    {{ $event_slug := path.Base .RelPermalink }}
     {{ $all_films := where .Site.Pages "Section" "films" }}
     {{ $films := where $all_films "Params.screening_events" "intersect" (slice $event_slug) }}
     
@@ -533,7 +542,5 @@
 </div>
 </div>
 {{ end }}
-
-<script src="{{ "js/gallery-lightbox.js" | relURL }}"></script>
 
 {{ end }}

@@ -1,7 +1,5 @@
 {{ define "head" }}
   {{- partial "head.html" . -}}
-  {{- partial "layout/stylesheet.html" "events" -}}
-  {{- partial "layout/stylesheet.html" "infoblock" -}}
   {{- partial "layout/stylesheet.html" "photos" -}}
 {{ end }}
 
@@ -14,142 +12,35 @@
 {{ end }}
 
 {{ define "main" }}
+{{- $eventSlugs := .Params.events | default slice -}}
+{{- $events := slice -}}
+{{- range where site.Pages "Section" "events" -}}
+  {{- if in $eventSlugs (path.Base .RelPermalink) -}}
+    {{- $events = $events | append . -}}
+  {{- end -}}
+{{- end -}}
 <div class="photos-page">
   <div class="photos-content">
+    <p class="photos-date">{{ .Date.Format "Monday, January 2, 2006" }}</p>
+
     {{ .Content }}
-    
-    {{/* Get all events with photo galleries */}}
-    {{ $eventsWithPhotos := slice }}
-    {{ range where .Site.Pages "Section" "events" }}
-      {{ if and .Params.galleries (index .Params.galleries "photo") }}
-        {{ $photoGallery := index .Params.galleries "photo" }}
-        {{ if and $photoGallery.count (gt $photoGallery.count 0) }}
-          {{ $eventsWithPhotos = $eventsWithPhotos | append . }}
-        {{ end }}
-      {{ end }}
-    {{ end }}
-    
-    {{/* Sort events by date (newest first) */}}
-    {{ $eventsWithPhotos = sort $eventsWithPhotos "Date" "desc" }}
-    
-    {{ if $eventsWithPhotos }}
-      {{/* Show photos from all events */}}
-      <div class="all-photos-section">
-        
-        {{/* Create a combined gallery showing photos from all events */}}
-        <div class="combined-gallery">
-          {{ range $eventsWithPhotos }}
-            {{ $photoGallery := index .Params.galleries "photo" }}
-            {{ if and $photoGallery.count (gt $photoGallery.count 0) }}
-              {{/* Get CDN base URL */}}
-              {{- $cdnURL := "" -}}
-              
-              {{- /* Simple logic: development server gets /cdn, everything else gets production CDN */ -}}
-              {{- $forceProductionCDN := os.Getenv "HUGO_FORCE_PRODUCTION_CDN" -}}
-              {{- $isLocalhost := and (not $forceProductionCDN) hugo.IsServer -}}
-              
-              {{- if $isLocalhost -}}
-                {{- $cdnURL = "/cdn" -}}
-              {{- else -}}
-                {{- $cdnURL = $.Site.Params.cdn.default -}}
-              {{- end -}}
-              
-              {{/* Get gallery configuration */}}
-              {{- $config := index $.Site.Params.galleries.events "photo" -}}
-              {{- if $config -}}
-                {{- $prefix := $config.prefix | default "photo-" -}}
-                {{- $extension := default "jpg" $config.extension -}}
-                {{- $padding := default 3 $config.padding -}}
-                {{- /* Use largest thumbnail size for photos page (last in array) */ -}}
-                {{- $thumbSize := 256 -}}
-                {{- if $config.thumb_sizes -}}
-                  {{- $thumbSize = index $config.thumb_sizes (sub (len $config.thumb_sizes) 1) -}}
-                {{- else if $config.thumb_size -}}
-                  {{- $thumbSize = $config.thumb_size -}}
-                {{- end -}}
-                {{- $thumbSuffix := printf "-%d" $thumbSize -}}
-                {{- $thumbExt := "webp" -}}
-                {{- $pageSlug := path.Base .RelPermalink -}}
-                {{- $eventTitle := .Title -}}
-                {{- $eventRelPermalink := .RelPermalink -}}
-                
-                {{/* Show first 6 photos from each event */}}
-                {{- $photosToShow := 6 -}}
-                {{- if lt $photoGallery.count $photosToShow -}}
-                  {{- $photosToShow = $photoGallery.count -}}
-                {{- end -}}
-                
-                <div class="event-gallery-section" style="--thumb-size: {{ $thumbSize }}px;">
-                  <h3>{{ $eventTitle }} <span class="photo-count">({{ $photoGallery.count }} photos)</span></h3>
-                  <div class="event-gallery-grid">
-                    {{- range $i := (seq 1 $photosToShow) -}}
-                      {{- $paddedNum := printf "%0*d" $padding $i -}}
-                      {{- $imageName := printf "%s%s.%s" $prefix $paddedNum $extension -}}
-                      {{- $thumbName := printf "%s%s%s.%s" $prefix $paddedNum $thumbSuffix $thumbExt -}}
-                      {{- $contentPath := printf "events/%s" $pageSlug -}}
-                      {{- $imageURL := printf "%s/%s/%s" $cdnURL $contentPath $imageName -}}
-                      {{- $thumbURL := printf "%s/%s/thumbs/%s" $cdnURL $contentPath $thumbName -}}
-                      
-                      <div class="gallery-item">
-                        <a href="{{ $eventRelPermalink }}#{{ $imageName }}" 
-                           class="gallery-link" 
-                           data-gallery="photo-gallery" 
-                           data-index="{{ $i }}"
-                           data-title="{{ $eventTitle }} - Photo {{ $i }}">
-                          <img src="{{ $thumbURL }}" 
-                               alt="{{ $eventTitle }} - Photo {{ $i }}" 
-                               loading="lazy">
-                        </a>
-                      </div>
-                    {{- end -}}
-                  </div>
-                  
-                  {{/* Show link to full gallery if there are more photos */}}
-                  {{- if gt $photoGallery.count $photosToShow -}}
-                    {{- $firstImageName := printf "%s%s.%s" $prefix (printf "%0*d" $padding 1) $extension -}}
-                    <div class="view-full-gallery">
-                      <a href="{{ $eventRelPermalink }}#{{ $firstImageName }}" class="button">
-                        View All {{ $photoGallery.count }} Photos from {{ $eventTitle }}
-                      </a>
-                    </div>
-                  {{- end -}}
-                </div>
-              {{- end -}}
-            {{- end -}}
-          {{- end -}}
-        </div>
-      </div>
-    {{ else }}
-      <div class="no-photos">
-        <p>No event photos are currently available. Check back after our next event!</p>
-      </div>
-    {{ end }}
-  </div>
-</div>
 
-{{/* Lightbox for combined gallery */}}
-<div class="lightbox" id="lightbox-all-events-gallery">
-  <div class="lightbox-content">
-    <button class="lightbox-close" onclick="closeLightbox('all-events-gallery')">&times;</button>
-    <button class="lightbox-nav lightbox-prev" onclick="previousImage('all-events-gallery')">
-      <span class="nav-arrow">‹</span>
-      <img class="nav-thumbnail nav-thumb-prev" src="" alt="" style="display: none;">
-    </button>
-    <img class="lightbox-image" src="" alt="">
-    <button class="lightbox-nav lightbox-next" onclick="nextImage('all-events-gallery')">
-      <span class="nav-arrow">›</span>
-      <img class="nav-thumbnail nav-thumb-next" src="" alt="" style="display: none;">
-    </button>
-    <button class="lightbox-download" onclick="downloadImage('all-events-gallery')" title="Download image">
-      <svg class="download-icon" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-      </svg>
-    </button>
-    <div class="lightbox-counter">
-      <span class="lightbox-current">1</span> / <span class="lightbox-total">1</span>
+    {{- with $events }}
+    <div class="photos-events">
+      {{- range sort . "Params.event_start" "asc" -}}
+        {{- partial "components/button.html" (dict
+            "url" .RelPermalink
+            "text" .Title
+            "icon" "ticket"
+            "target" "_self"
+        ) -}}
+      {{- end -}}
     </div>
+    {{- end }}
+
+    {{- partial "cdn-gallery.html" (dict "galleryId" "photo" "Params" .Params "Site" .Site "RelPermalink" .RelPermalink "Section" .Section "thumb_size" 128) -}}
+
+    <p class="photos-back"><a href="{{ "/photos/" | relURL }}">&larr; All event photos</a></p>
   </div>
 </div>
-
-
 {{ end }}

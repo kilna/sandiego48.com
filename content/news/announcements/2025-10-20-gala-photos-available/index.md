@@ -16,7 +16,7 @@ params:
   image: 2025-gala-photos.png
   button:
     text: "View Photos"
-    url: "/events/2025-09-28-best-of-san-diego-screening-and-awards-gala/#gallery-photo"
+    url: "/photos/2025-09-28-best-of-san-diego-screening-and-awards-gala/"
     icon: "camera"
     emoji: "📸"
 ---

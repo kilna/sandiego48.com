@@ -148,11 +148,11 @@ main() {
     fi
   done
   
-  # Process events
-  log "Processing events..."
-  for event_dir in "$CDN_ROOT/events"/*/; do
-    if [ -d "$event_dir" ]; then
-      process_directory "$event_dir" "events" "$DRY_RUN"
+  # Process event photo galleries
+  log "Processing photos..."
+  for photos_dir in "$CDN_ROOT/photos"/*/; do
+    if [ -d "$photos_dir" ]; then
+      process_directory "$photos_dir" "photos" "$DRY_RUN"
     fi
   done
   

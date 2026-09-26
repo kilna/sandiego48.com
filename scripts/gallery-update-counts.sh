@@ -65,8 +65,8 @@ if [ "$galleries_config" = "null" ] || [ -z "$galleries_config" ]; then
   exit 1
 fi
 
-# Process each Hugo type (events, films, people)
-for hugo_type in events films people; do
+# Process each Hugo type configured under params.galleries
+for hugo_type in $(echo "$galleries_config" | yq eval 'keys | .[]'); do
   log "Processing Hugo type: $hugo_type"
   
   # Get galleries for this type

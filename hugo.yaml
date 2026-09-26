@@ -83,17 +83,13 @@ params:
   cdn:
     default: https://cdn.sandiego48.com
   galleries:
-    events:
+    photos:
       photo:
         name: "Event Photos"
         prefix: "photo-"
         padding: 3
         extension: "jpg"
         thumb_sizes: [128, 256]
-        credit: "Photos courtesy of Photographer Name"
-        credit_url: "https://photographer-website.com"
-        alternate: "Can't find your picture? Check other events!"
-        alternate_url: "/events/"
     films:
       poster:
         name: "Posters"
@@ -244,13 +240,13 @@ menus:
   #   params:
   #     target: _self
   #     icon: trophy
-  # - identifier: photos
-  #   weight: 7
-  #   name: Event Photos
-  #   url: /photos/
-  #   params:
-  #     target: _self
-  #     icon: camera
+  - identifier: photos
+    weight: 7
+    name: Event Photos
+    url: /photos/
+    params:
+      target: _self
+      icon: camera
   - identifier: films
     weight: 10
     name: Films

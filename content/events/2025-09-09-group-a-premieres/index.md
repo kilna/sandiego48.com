@@ -58,12 +58,5 @@ params:
   org_info: |
     ### About the 48 Hour Film Project
     The 48 Hour Film Project is the longest running and most popular timed filmmaking competition. Teams have just 48 hours to write, shoot, edit and score a short film. All films are screened in a real theater and compete for awards and recognition.
-  galleries:
-    photo:
-      count: 273
-      credit: "Photos courtesy of Casey Cousins / Event Master Photo"
-      credit_url: "https://www.instagram.com/event_master_photo/"
-      alternate: "Can't find your picture? I might be in Group B which was the same night!"
-      alternate_url: "/events/2025-09-09-group-b-premieres/"
 ---
 Step onto the red carpet... no, purple carpet! ...and have professional photos taken at our Hollywood style step-and-repeat before heading into a theater packed with filmmakers, friends, and fans. Entry is by advance purchase only through TixTree (QR code required at the door). Each screening ends with live voting for the Audience Choice Award, with winners and runners-up announced on the spot.

@@ -28,8 +28,8 @@ total_mismatches=0
 total_extension_errors=0
 total_files_checked=0
 
-# Iterate over Hugo content types (events, films, people)
-for hugo_type in "events" "films" "people"; do
+# Iterate over Hugo content types configured under params.galleries
+for hugo_type in $(yq eval '.params.galleries | keys | .[]' "$HUGO_CONFIG"); do
   # Get all gallery IDs for the current Hugo type
   gallery_ids=$(yq eval ".params.galleries.${hugo_type} | keys | .[]" "$HUGO_CONFIG" 2>/dev/null || true)
   

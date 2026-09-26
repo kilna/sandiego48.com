@@ -55,13 +55,6 @@ params:
   notes:
     - You must purchase a ticket online before the event, and have your emailed QR code ready. There will be no on-site ticket sales.
     - Bring your style! You're coming to a film premiere, be sure to dress to impress.
-  galleries:
-    photo:
-      count: 257
-      credit: "Photos courtesy of Casey Cousins / Event Master Photo"
-      credit_url: "https://www.instagram.com/event_master_photo/"
-      alternate: "Can't find your picture? I might be in Group A which was the same night!"
-      alternate_url: "/events/2025-09-09-group-a-premieres/"
   org_info: |
     ### About the 48 Hour Film Project
     The 48 Hour Film Project is the longest running and most popular timed filmmaking competition. Teams have just 48 hours to write, shoot, edit and score a short film. All films are screened in a real theater and compete for awards and recognition.

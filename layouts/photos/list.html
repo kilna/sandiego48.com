@@ -20,39 +20,30 @@
 
 {{ .Content }}
 
-{{- /* Get all events with photos */ -}}
-{{- $eventsWithPhotos := slice -}}
-{{- range (.Site.GetPage "/events").Pages -}}
-  {{- if and .Params.galleries (index .Params.galleries "photo") -}}
-    {{- $photoGallery := index .Params.galleries "photo" -}}
-    {{- if and $photoGallery.count (gt $photoGallery.count 0) -}}
-      {{- $eventsWithPhotos = $eventsWithPhotos | append . -}}
+{{- $galleries := slice -}}
+{{- range .RegularPages.ByDate.Reverse -}}
+  {{- $count := 0 -}}
+  {{- with .Params.galleries -}}
+    {{- with .photo -}}
+      {{- $count = .count | default 0 -}}
     {{- end -}}
+  {{- end -}}
+  {{- if gt $count 0 -}}
+    {{- $galleries = $galleries | append . -}}
   {{- end -}}
 {{- end -}}
 
-{{- /* Sort events by date, newest first */ -}}
-{{- $eventsWithPhotos = sort $eventsWithPhotos ".Params.event_start" "desc" -}}
-
-{{- if $eventsWithPhotos -}}
+{{- if $galleries -}}
 
 <div class="all-photos-section">
-
-{{- range $eventsWithPhotos -}}
-  {{- $event_slug := path.Base .RelPermalink -}}
-  {{- $photoGallery := index .Params.galleries "photo" -}}
-  
+{{- range $galleries -}}
   {{- partial "cdn-gallery-teaser.html" (dict
-      "eventSlug" $event_slug
+      "page" .
       "galleryId" "photo"
-      "title" (printf "%s Photos" .Title)
       "previewCount" 6
       "showCredit" true
-      "Site" $.Site
   ) -}}
-
 {{- end -}}
-
 </div>
 
 {{- else -}}
