@@ -12,6 +12,6 @@ params:
   galleries:
     photo:
       count: 152
-      credit: "Photos by Jonathan Medel"
+      credit: "Photos by Jon Medel"
       credit_url: "https://jonmedel.com/"
 ---
