@@ -13,4 +13,5 @@ params:
     photo:
       count: 152
       credit: "Photos by Jonathan Medel"
+      credit_url: "https://jonmedel.com/"
 ---
