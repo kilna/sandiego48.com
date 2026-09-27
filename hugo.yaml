@@ -139,10 +139,18 @@ params:
       price: 198
   countdowns:
     - default: "Not long"
-      suffix: "until the 2026 Premieres"
-      date: "2026-09-21T17:00:00-07:00"
-      visible_to: "2026-09-22T23:59:59-07:00"
+      suffix: "until the Awards Gala"
+      date: "2026-10-10T17:00:00-07:00"
+      button:
+        text: "Buy Tickets!"
+        url: /events/2026-best-of-san-diego-screening-and-awards-gala/
+        target: _self
+        icon: ticket
     # Archive of prior countdown examples:
+    # - default: "Not long"
+    #   suffix: "until the 2026 Premieres"
+    #   date: "2026-09-21T17:00:00-07:00"
+    #   visible_to: "2026-09-22T23:59:59-07:00"
     # - default: "Not long"
     #   prefix: "Drop Off"
     #   suffix: "Sunday by 7:30pm to be on time"
