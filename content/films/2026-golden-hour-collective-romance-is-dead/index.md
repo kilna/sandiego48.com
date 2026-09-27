@@ -22,5 +22,7 @@ screening_groups:
   - "group-d"
 screening_events:
   - "2026-09-22-group-d-premiere"
+  - "2026-best-of-san-diego-screening-and-awards-gala"
+best_of_2026: true
 ---
 Trained killers Sky and Dion explore the world of modern dating in this dark and twisted rom-com.

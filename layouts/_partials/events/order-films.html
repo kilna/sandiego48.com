@@ -1,0 +1,43 @@
+{{- /*
+  Order an event's films.
+
+  page   event page
+  films  film pages already filtered to this event
+
+  film_order wins when a screening order is set.
+  film_sort: title lists by film name, ignoring a leading "The ".
+  Otherwise films stay in premiere order (Params.order).
+*/ -}}
+{{- $page := .page -}}
+{{- $films := .films -}}
+{{- if $page.Params.film_order -}}
+  {{- $ordered := slice -}}
+  {{- range $page.Params.film_order -}}
+    {{- $film_slug := . -}}
+    {{- range $films -}}
+      {{- if eq (path.Base .RelPermalink) $film_slug -}}
+        {{- $ordered = $ordered | append . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $films = $ordered -}}
+{{- else if eq $page.Params.film_sort "title" -}}
+  {{- $sorted := slice -}}
+  {{- range $films -}}
+    {{- $title := .Title -}}
+    {{- if hasPrefix $title "The " -}}
+      {{- $title = substr $title 4 -}}
+    {{- end -}}
+    {{- $title = replace $title "\"" "" -}}
+    {{- $title = replace $title "'" "" -}}
+    {{- $sorted = $sorted | append (dict "page" . "sort_title" $title) -}}
+  {{- end -}}
+  {{- $sorted = sort $sorted "sort_title" -}}
+  {{- $films = slice -}}
+  {{- range $sorted -}}
+    {{- $films = $films | append .page -}}
+  {{- end -}}
+{{- else -}}
+  {{- $films = sort $films "Params.order" "asc" -}}
+{{- end -}}
+{{- return $films -}}

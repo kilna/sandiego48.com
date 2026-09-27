@@ -30,5 +30,7 @@ screening_groups:
   - "group-a"
 screening_events:
   - "2026-09-21-group-a-premiere"
+  - "2026-best-of-san-diego-screening-and-awards-gala"
+best_of_2026: true
 ---
 A young couple are seeking refuge in the apocalypse. Can they find it at KFER, The Ferret? Or is this radio station not what it's jingle would lead you to believe?

@@ -23,5 +23,7 @@ screening_groups:
   - "group-a"
 screening_events:
   - "2026-09-21-group-a-premiere"
+  - "2026-best-of-san-diego-screening-and-awards-gala"
+best_of_2026: true
 ---
 A man at the end of his rope receives a confession which at first he believes to be a lifeline but in reality is something else entirely.

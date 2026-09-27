@@ -105,20 +105,7 @@
   {{- $all_films := where .Site.RegularPages "Section" "films" -}}
   {{- $films := where $all_films "Params.screening_events" "intersect" (slice $event_slug) -}}
 
-  {{- if .Params.film_order -}}
-    {{- $ordered_films := slice -}}
-    {{- range .Params.film_order -}}
-      {{- $film_slug := . -}}
-      {{- range $films -}}
-        {{- if eq (path.Base .RelPermalink) $film_slug -}}
-          {{- $ordered_films = $ordered_films | append . -}}
-        {{- end -}}
-      {{- end -}}
-    {{- end -}}
-    {{- $films = $ordered_films -}}
-  {{- else -}}
-    {{- $films = sort $films "Params.order" "asc" -}}
-  {{- end -}}
+  {{- $films = partial "events/order-films.html" (dict "page" . "films" $films) -}}
 
   {{- if $films -}}
     {{- $poster_films := slice -}}

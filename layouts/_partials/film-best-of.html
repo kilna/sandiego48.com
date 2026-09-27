@@ -1,0 +1,23 @@
+{{- /*
+  Best-of selection for a film page.
+
+  Returns false, or a dict:
+    year  - 2025, 2026, ...
+    label - "Best of 2026 Selection"
+    page  - gala event page
+*/ -}}
+{{- $year := 0 -}}
+{{- $page := false -}}
+{{- if .Params.best_of_2026 -}}
+  {{- $year = 2026 -}}
+  {{- $page = site.GetPage "events/2026-best-of-san-diego-screening-and-awards-gala" -}}
+{{- else if .Params.best_of_2025 -}}
+  {{- $year = 2025 -}}
+  {{- $page = site.GetPage "events/2025-09-28-best-of-san-diego-screening-and-awards-gala" -}}
+{{- end -}}
+{{- $result := false -}}
+{{- if and $year $page -}}
+  {{- $label := printf "Best of %d Selection" $year -}}
+  {{- $result = dict "year" $year "label" $label "page" $page -}}
+{{- end -}}
+{{- return $result -}}

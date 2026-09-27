@@ -19,5 +19,7 @@ screening_groups:
   - "group-c"
 screening_events:
   - "2026-09-22-group-c-premiere"
+  - "2026-best-of-san-diego-screening-and-awards-gala"
+best_of_2026: true
 ---
 He knows the way, just not where they're going.

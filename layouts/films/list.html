@@ -77,8 +77,9 @@
             {{ end }}
           {{ end }}
         </a>
-        {{ if $film.Params.best_of_2025 }}
-          <div class="best-of-2025-star" title="Best of 2025 Selection">
+        {{- $bestOf := partial "film-best-of.html" $film -}}
+        {{ if and $bestOf $bestOf.page }}
+          <div class="best-of-2025-star" title="{{ $bestOf.label }}">
             {{ partial "components/icon.html" (dict "icon" "star") }}
           </div>
         {{ end }}
@@ -87,9 +88,9 @@
         <h3 class="film-title"><a href="{{ $film.RelPermalink }}">{{ $film.Title }}</a></h3>
         {{ partial "film-logline.html" (dict "page" $film) }}
         <p class="film-team">by <a href="{{ $film.RelPermalink }}">{{ $film.Params.team }}</a></p>
-        {{ if $film.Params.best_of_2025 }}
-          <a href="/events/2025-09-28-best-of-san-diego-screening-and-awards-gala/" class="best-of-2025-badge">
-            <span class="best-of-2025-text">Best of 2025 Selection</span>
+        {{ if and $bestOf $bestOf.page }}
+          <a href="{{ $bestOf.page.RelPermalink }}" class="best-of-2025-badge">
+            <span class="best-of-2025-text">{{ $bestOf.label }}</span>
           </a>
         {{ end }}
         {{ partial "film-tags.html" (dict "page" $film) }}

@@ -23,5 +23,7 @@ screening_groups:
   - "group-a"
 screening_events:
   - "2026-09-21-group-a-premiere"
+  - "2026-best-of-san-diego-screening-and-awards-gala"
+best_of_2026: true
 ---
 An egotistical influencer is accidentally transported to a bizarre fantasy kingdom that forces her to confront her greatest enemy: basic human decency.

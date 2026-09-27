@@ -26,5 +26,7 @@ screening_groups:
   - "group-b"
 screening_events:
   - "2026-09-21-group-b-premiere"
+  - "2026-best-of-san-diego-screening-and-awards-gala"
+best_of_2026: true
 ---
 One mistake. One guilt. One voice.

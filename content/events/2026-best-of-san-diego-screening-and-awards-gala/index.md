@@ -16,6 +16,7 @@ params:
   image_square: 2026-gala-square.png
   add_to_calendar: true
   screening_group: Best of 2026
+  film_sort: title
   tixtree_event: 2026-best-of-san-diego-screening-and-awards-gala-de894188f447
   tickets_url: https://www.tixtree.com/e/2026-best-of-san-diego-screening-and-awards-gala-de894188f447
   event_start: 2026-10-10T17:00:00-07:00

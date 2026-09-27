@@ -19,5 +19,7 @@ screening_groups:
   - "group-a"
 screening_events:
   - "2026-09-21-group-a-premiere"
+  - "2026-best-of-san-diego-screening-and-awards-gala"
+best_of_2026: true
 ---
 After his car breaks down, a stranded man accepts a stranger's hospitality only to realize there is something meaty going on inside this house.

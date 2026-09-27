@@ -350,16 +350,17 @@
         {{ end }}
       </dl>
       
-      {{ if .Params.best_of_2025 }}
+      {{- $bestOf := partial "film-best-of.html" . -}}
+      {{- if and $bestOf $bestOf.page -}}
         <div class="best-of-2025-badge-container">
-          <div class="best-of-2025-star" title="Best of 2025 Selection">
+          <div class="best-of-2025-star" title="{{ $bestOf.label }}">
             {{ partial "components/icon.html" (dict "icon" "star") }}
           </div>
-          <a href="/events/2025-09-28-best-of-san-diego-screening-and-awards-gala/" class="best-of-2025-badge">
-            <span class="best-of-2025-text">Best of 2025 Selection</span>
+          <a href="{{ $bestOf.page.RelPermalink }}" class="best-of-2025-badge">
+            <span class="best-of-2025-text">{{ $bestOf.label }}</span>
           </a>
         </div>
-      {{ end }}
+      {{- end -}}
       
       {{ partial "film-logline.html" (dict "page" . "wrap_span" true) }}
       
@@ -382,13 +383,9 @@
       {{/* Get Tickets Button - For best-of selections, prioritize gala; otherwise find premiere screening */}}
       {{ $event_page := "" }}
       {{ $button_text := "Get Tickets for Premiere" }}
-      {{ if .Params.best_of_2025 }}
-        {{/* For best-of selections, link to the gala */}}
-        {{ $gala_page := $.Site.GetPage "events/2025-09-28-best-of-san-diego-screening-and-awards-gala" }}
-        {{ if and $gala_page $gala_page.Params.tickets_url }}
-          {{ $event_page = $gala_page }}
-          {{ $button_text = "Get Tickets for Gala" }}
-        {{ end }}
+      {{ if and $bestOf $bestOf.page $bestOf.page.Params.tickets_url }}
+        {{ $event_page = $bestOf.page }}
+        {{ $button_text = "Get Tickets for Gala" }}
       {{ else if .Params.screening_events }}
         {{/* For regular films, use premiere screening */}}
         {{ $premiere_event := index .Params.screening_events 0 }}
