@@ -43,7 +43,9 @@ n=$last
 while IFS= read -r f; do
   n=$((n + 1))
   printf '%s\t%s/photo-%03d.jpg\n' "$f" "$dest" "$n" >> "$plan"
-done < <(find "$src" -maxdepth 1 -type f -iregex '.*\.\(jpe?g\|png\|tiff?\|heic\)$' | LC_ALL=C sort)
+done < <(find "$src" -maxdepth 1 -type f \( \
+  -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.tif' -o -iname '*.tiff' -o -iname '*.heic' \
+\) | LC_ALL=C sort)
 
 count=$(wc -l < "$plan" | tr -d ' ')
 if [ "$count" -eq 0 ]; then
