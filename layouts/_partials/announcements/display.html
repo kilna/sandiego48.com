@@ -20,17 +20,27 @@
 {{- range $announcements -}}
   {{- if $use_inline_style -}}
     {{- /* Home page inline style version */ -}}
-    <div class="announcement-box" style="margin-bottom: 2rem;">
-      {{- /* Display image if present */ -}}
-      {{- if .Params.image -}}
-        {{- $image := .Resources.Get .Params.image -}}
-        {{- if $image -}}
-          {{- if and $image.MediaType (ne $image.MediaType.SubType "svg") -}}
-            {{- $image = $image.Resize $image_size -}}
-          {{- end -}}
-          <img src="{{ $image.RelPermalink }}" alt="{{ .Title }}" class="announcement-inline-image" 
-               style="height: auto; border-radius: 0.5rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);" />
+    <div class="announcement-box">
+      {{- $wideName := or .Params.image_wide .Params.image -}}
+      {{- $midName := or .Params.image_post $wideName -}}
+      {{- $narrowName := or .Params.image_square .Params.image_post .Params.image -}}
+      {{- $wideSrc := partial "announcements/resized-src.html" (dict "ctx" . "name" $wideName "size" $image_size) -}}
+      {{- $midSrc := partial "announcements/resized-src.html" (dict "ctx" . "name" $midName "size" "1200x") -}}
+      {{- $narrowSrc := partial "announcements/resized-src.html" (dict "ctx" . "name" $narrowName "size" "1000x") -}}
+      {{- $imgSrc := or $wideSrc $midSrc $narrowSrc -}}
+      {{- if $imgSrc -}}
+        {{- $href := .RelPermalink -}}
+        {{- with .Params.button.url -}}
+          {{- $href = . -}}
         {{- end -}}
+        <a href="{{ $href }}" class="announcement-image-link">
+          <picture>
+            {{- with $wideSrc -}}<source media="(min-width: 1024px)" srcset="{{ . }}">{{- end -}}
+            {{- with $midSrc -}}<source media="(min-width: 769px)" srcset="{{ . }}">{{- end -}}
+            {{- with $narrowSrc -}}<source media="(max-width: 768px)" srcset="{{ . }}">{{- end -}}
+            <img src="{{ $imgSrc }}" alt="{{ .Title }}" class="announcement-inline-image" />
+          </picture>
+        </a>
       {{- end -}}
       
       <div class="announcement-content-wrapper">

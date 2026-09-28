@@ -96,6 +96,18 @@
         {{- $credit = $config -}}
       {{- end -}}
 
+      {{- $ctaConfig := false -}}
+      {{- if $galleryData -}}
+        {{- $ctaRef := index $galleryData "cta" -}}
+        {{- if $ctaRef -}}
+          {{- if reflect.IsMap $ctaRef -}}
+            {{- $ctaConfig = $ctaRef -}}
+          {{- else -}}
+            {{- $ctaConfig = index site.Params.ctas $ctaRef -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+
       {{- $thumbSize := 0 -}}
       {{- if $config.thumb_sizes -}}
         {{- $thumbSize = index $config.thumb_sizes 0 -}}
@@ -114,7 +126,7 @@
       <div class="cdn-gallery" id="gallery-{{ $galleryId }}" data-type="{{ $galleryId }}" style="--thumb-size: {{ $thumbSize }}px;" data-total-images="{{ $imageCount }}" data-files="{{ $filesAttr }}">
         <h2>{{ $name }}</h2>
         <div class="gallery-grid" id="gallery-grid-{{ $galleryId }}">
-          {{- $initialCount := 24 -}}
+          {{- $initialCount := 100 -}}
           {{- if lt $imageCount $initialCount -}}
             {{- $initialCount = $imageCount -}}
           {{- end -}}
@@ -191,6 +203,10 @@
             </p>
           </div>
         {{- end -}}
+
+        {{- if $ctaConfig -}}
+          {{- partial "gallery-cta.html" (dict "cta" $ctaConfig "variant" "page") -}}
+        {{- end -}}
       </div>
 
       <div class="lightbox" id="lightbox-{{ $galleryId }}-gallery">
@@ -201,6 +217,9 @@
             <img class="nav-thumbnail nav-thumb-prev" src="" alt="" style="display: none;">
           </button>
           <img class="lightbox-image" src="" alt="">
+          {{- if $ctaConfig -}}
+            {{- partial "gallery-cta.html" (dict "cta" $ctaConfig "variant" "lightbox") -}}
+          {{- end -}}
           <button class="lightbox-nav lightbox-next" onclick="nextImage('{{ $galleryId }}-gallery')">
             <span class="nav-arrow">›</span>
             <img class="nav-thumbnail nav-thumb-next" src="" alt="" style="display: none;">

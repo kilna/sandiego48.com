@@ -15,5 +15,6 @@ params:
       count: 224
       credit: "Photos by Angel Castro"
       credit_url: "https://linktr.ee/ancastro56"
+      cta: gala-2026
 ---
 Purple carpet photos from both premiere screenings on Tuesday, September 22, 2026.

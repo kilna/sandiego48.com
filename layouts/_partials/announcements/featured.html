@@ -1,0 +1,10 @@
+{{- /*
+  Featured announcements for the home page and city message.
+
+  Includes legacy pages in the announcements section and news items
+  with kind: announcement. Returns a date-descending page collection.
+*/ -}}
+
+{{- $legacy := where (where (where site.RegularPages "Section" "announcements") "Draft" false) "Params.featured" true -}}
+{{- $news := where (where (where (where site.RegularPages "Section" "news") "Draft" false) "Params.kind" "announcement") "Params.featured" true -}}
+{{- return (sort (union $legacy $news) "Date" "desc") -}}

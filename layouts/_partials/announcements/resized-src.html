@@ -1,0 +1,23 @@
+{{- /*
+  Resize a page-bundle image and print its permalink.
+  Prints nothing when the resource is missing.
+
+  Parameters:
+    ctx - page that owns the resource
+    name - resource filename
+    size - Hugo resize spec (default: 800x)
+*/ -}}
+{{- $page := .ctx -}}
+{{- $name := .name -}}
+{{- $size := .size | default "800x" -}}
+{{- if $name -}}
+  {{- with $page.Resources.Get $name -}}
+    {{- $image := . -}}
+    {{- if and .MediaType (ne .MediaType.SubType "svg") -}}
+      {{- with .Resize $size -}}
+        {{- $image = . -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $image.RelPermalink -}}
+  {{- end -}}
+{{- end -}}

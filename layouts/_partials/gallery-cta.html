@@ -1,0 +1,69 @@
+{{- /*
+  Gallery call-to-action card.
+
+  Parameters:
+    cta - map from site.Params.ctas (or an inline map with the same fields)
+    variant - "page" (under the grid) or "lightbox" (frame after the last photo)
+
+  Expires at the linked event's event_end. A built page hides the card in the
+  browser at that time; a later build omits it.
+*/ -}}
+
+{{- $cta := .cta -}}
+{{- $variant := .variant | default "page" -}}
+{{- if not $cta -}}{{- return -}}{{- end -}}
+
+{{- $event := false -}}
+{{- with $cta.event -}}
+  {{- $event = site.GetPage (printf "events/%s" .) -}}
+{{- end -}}
+{{- if not $event -}}{{- return -}}{{- end -}}
+{{- if not $event.Params.event_end -}}{{- return -}}{{- end -}}
+
+{{- $end := time.AsTime $event.Params.event_end -}}
+{{- $until := $end.Format "2006-01-02T15:04:05-07:00" -}}
+{{- if $end.Before now -}}{{- return -}}{{- end -}}
+
+{{- $title := $cta.title | default $event.Title -}}
+{{- $summary := $cta.summary | default "" -}}
+{{- $url := $event.Params.tickets_url | default $event.RelPermalink -}}
+{{- $button := $cta.button | default "Buy Tickets" -}}
+{{- $imageName := $event.Params.image_wide | default $event.Params.image -}}
+{{- $image := $event.Resources.Get $imageName -}}
+{{- if and $image $image.MediaType (ne $image.MediaType.SubType "svg") -}}
+  {{- with $image.Resize "1200x" -}}
+    {{- $image = . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if eq $variant "lightbox" -}}
+<a class="lightbox-cta" hidden data-until="{{ $until }}" href="{{ $url }}"{{ if hasPrefix $url "http" }} target="_blank" rel="noopener noreferrer"{{ end }} aria-label="{{ $button }}: {{ $title }}">
+  {{- if $image -}}
+  <img src="{{ $image.RelPermalink }}" alt="{{ $title }}">
+  {{- end -}}
+</a>
+{{- else -}}
+<aside class="gallery-cta visible-to-{{ $until }}">
+  {{- if $image -}}
+  <a class="gallery-cta-media" href="{{ $url }}"{{ if hasPrefix $url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+    <img src="{{ $image.RelPermalink }}" alt="{{ $title }}">
+  </a>
+  {{- end -}}
+  <div class="gallery-cta-copy">
+    <h2>{{ $title }}</h2>
+    {{- with $summary -}}
+    <p>{{ . }}</p>
+    {{- end -}}
+    <p class="gallery-cta-actions">
+      {{- partial "components/button.html" (dict
+          "url" $url
+          "text" $button
+          "icon" "ticket"
+          "class" "medium"
+          "target" (cond (hasPrefix $url "http") "_blank" "_self")
+      ) -}}
+      <a class="gallery-cta-details" href="{{ $event.RelPermalink }}">Event details</a>
+    </p>
+  </div>
+</aside>
+{{- end -}}

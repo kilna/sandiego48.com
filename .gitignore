@@ -1,3 +1,6 @@
+# Local asdf pins; CI copies .tool-versions.cloudflare
+.tool-versions
+
 # Hugo
 public/
 resources/

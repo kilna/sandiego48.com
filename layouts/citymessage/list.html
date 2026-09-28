@@ -19,10 +19,7 @@
 {{- end -}}
 {{- $sortedEvents := sort $futureEvents ".Params.event_start" "asc" -}}
 
-{{- $announcements := where .Site.Pages "Section" "announcements" -}}
-{{- $publishedAnnouncements := where $announcements "Draft" false -}}
-{{- $featuredAnnouncements := where $publishedAnnouncements "Params.featured" true -}}
-{{- $sortedAnnouncements := sort $featuredAnnouncements "Date" "desc" -}}
+{{- $sortedAnnouncements := partial "announcements/featured.html" . -}}
 
 {{- partial "events/citymessage.html" (dict "events" (first 3 $sortedEvents)) -}}
 {{- partial "announcements/citymessage.html" (dict "announcements" $sortedAnnouncements) -}}

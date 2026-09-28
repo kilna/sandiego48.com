@@ -265,7 +265,7 @@ function loadMoreImages(button) {
   const galleryId = button.dataset.gallery;
   const currentLoaded = parseInt(button.dataset.loaded);
   const totalImages = parseInt(button.dataset.total);
-  const loadAmount = 24; // Load 24 more images at a time
+  const loadAmount = 100;
   
   // Show loading state
   const loadMoreText = button.querySelector('.load-more-text');

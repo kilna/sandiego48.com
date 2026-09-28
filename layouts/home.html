@@ -104,14 +104,9 @@
 
 <div class="index">
 
-{{- /* Display featured announcements */ -}}
-{{- $announcements := where .Site.RegularPages "Section" "announcements" -}}
-{{- $published := where $announcements "Draft" false -}}
-{{- $featured := where $published "Params.featured" true -}}
-{{- $sorted := sort $featured "Date" "desc" -}}
 {{- partial "announcements/display.html" (dict
-    "announcements" $sorted
-    "image_size" "600x"
+    "announcements" (partial "announcements/featured.html" .)
+    "image_size" "1600x"
     "button_class" "medium"
     "use_inline_style" true
 ) -}}

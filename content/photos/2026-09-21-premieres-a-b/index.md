@@ -15,5 +15,6 @@ params:
       count: 990
       credit: "Photos by Jon Medel"
       credit_url: "https://jonmedel.com/"
+      cta: gala-2026
 ---
 Purple carpet photos from both premiere screenings on Monday, September 21, 2026.

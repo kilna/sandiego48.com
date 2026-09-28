@@ -80,6 +80,13 @@ params:
   copyright: Cine Diego LLC
   copyright_url: https://cinediego.com
   facebook_app_id: 25372891222294566
+  # Named ads a photo gallery can point at with galleries.<id>.cta.
+  # Expiry comes from the linked event's event_end.
+  ctas:
+    gala-2026:
+      event: 2026-best-of-san-diego-screening-and-awards-gala
+      title: See the best of these films again.
+      summary: Saturday, October 10 at The Grand in Escondido. Purple carpet at 5pm.
   cdn:
     default: https://cdn.sandiego48.com
   galleries:
@@ -139,8 +146,8 @@ params:
       price: 198
   countdowns:
     - default: "Not long"
-      suffix: "until the Awards Gala"
-      date: "2026-10-10T17:00:00-07:00"
+      suffix: "until the 48 Best Of"
+      date: "2026-10-10T18:00:00-07:00"
       button:
         text: "Buy Tickets!"
         url: /events/2026-best-of-san-diego-screening-and-awards-gala/

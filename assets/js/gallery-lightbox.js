@@ -116,9 +116,41 @@ function openLightbox(galleryId, index, imageName) {
   document.body.style.overflow = 'hidden';
 }
 
+function lightboxCtaLive(lightbox) {
+  const cta = lightbox && lightbox.querySelector('.lightbox-cta');
+  if (!cta) return false;
+  const until = Date.parse(cta.dataset.until || '');
+  if (!until) return true;
+  return Date.now() < until;
+}
+
+function hideLightboxCta(lightbox) {
+  if (!lightbox) return;
+  const cta = lightbox.querySelector('.lightbox-cta');
+  const photo = lightbox.querySelector('.lightbox-image');
+  if (cta) cta.hidden = true;
+  if (photo) photo.hidden = false;
+  lightbox.classList.remove('showing-cta');
+}
+
+function showLightboxCta(lightbox) {
+  if (!lightboxCtaLive(lightbox)) return false;
+  const cta = lightbox.querySelector('.lightbox-cta');
+  const photo = lightbox.querySelector('.lightbox-image');
+  if (photo) photo.hidden = true;
+  if (cta) cta.hidden = false;
+  lightbox.classList.add('showing-cta');
+  const prevButton = lightbox.querySelector('.lightbox-prev');
+  const nextButton = lightbox.querySelector('.lightbox-next');
+  if (prevButton) prevButton.style.display = 'block';
+  if (nextButton) nextButton.style.display = 'none';
+  return true;
+}
+
 function closeLightbox(galleryId) {
   const lightbox = document.getElementById('lightbox-' + galleryId);
   if (lightbox) {
+    hideLightboxCta(lightbox);
     lightbox.classList.remove('active');
     document.body.style.overflow = '';
     
@@ -145,7 +177,16 @@ function previousImage(galleryId) {
   const gallery = document.querySelector(`[data-type="${galleryId.replace('-gallery', '')}"]`);
   const currentIndex = parseInt(lightbox.querySelector('.lightbox-current').textContent);
   const totalImages = parseInt(lightbox.querySelector('.lightbox-total').textContent);
-  
+
+  if (lightbox.classList.contains('showing-cta')) {
+    hideLightboxCta(lightbox);
+    const prevButton = lightbox.querySelector('.lightbox-prev');
+    const nextButton = lightbox.querySelector('.lightbox-next');
+    if (prevButton) prevButton.style.display = currentIndex > 1 ? 'block' : 'none';
+    if (nextButton) nextButton.style.display = lightboxCtaLive(lightbox) ? 'block' : 'none';
+    return;
+  }
+
   // Don't loop - stay at first image if already there
   if (currentIndex <= 1) return;
   
@@ -163,9 +204,14 @@ function nextImage(galleryId) {
   const gallery = document.querySelector(`[data-type="${galleryId.replace('-gallery', '')}"]`);
   const currentIndex = parseInt(lightbox.querySelector('.lightbox-current').textContent);
   const totalImages = parseInt(lightbox.querySelector('.lightbox-total').textContent);
-  
-  // Don't loop - stay at last image if already there
-  if (currentIndex >= totalImages) return;
+
+  if (lightbox.classList.contains('showing-cta')) return;
+
+  // Past the last photo, the next frame is the gallery CTA while it is live.
+  if (currentIndex >= totalImages) {
+    showLightboxCta(lightbox);
+    return;
+  }
   
   const newIndex = currentIndex + 1;
   const imageUrl = generateImageUrl(gallery, newIndex);
@@ -197,6 +243,8 @@ function setLightboxImage(lightbox, links, index) {
   const totalCounter = lightbox.querySelector('.lightbox-total');
   const prevButton = lightbox.querySelector('.lightbox-prev');
   const nextButton = lightbox.querySelector('.lightbox-next');
+
+  hideLightboxCta(lightbox);
   
   // Update image
   lightboxImage.src = imageUrl;
@@ -211,7 +259,7 @@ function setLightboxImage(lightbox, links, index) {
     prevButton.style.display = index > 1 ? 'block' : 'none';
   }
   if (nextButton) {
-    nextButton.style.display = index < totalImages ? 'block' : 'none';
+    nextButton.style.display = (index < totalImages || lightboxCtaLive(lightbox)) ? 'block' : 'none';
   }
   
   // Update navigation thumbnails
@@ -434,6 +482,8 @@ function setLightboxImageDynamic(lightbox, index, imageUrl, totalImages) {
   const totalCounter = lightbox.querySelector('.lightbox-total');
   const prevButton = lightbox.querySelector('.lightbox-prev');
   const nextButton = lightbox.querySelector('.lightbox-next');
+
+  hideLightboxCta(lightbox);
   
   // Update image
   lightboxImage.src = imageUrl;
@@ -448,7 +498,7 @@ function setLightboxImageDynamic(lightbox, index, imageUrl, totalImages) {
     prevButton.style.display = index > 1 ? 'block' : 'none';
   }
   if (nextButton) {
-    nextButton.style.display = index < totalImages ? 'block' : 'none';
+    nextButton.style.display = (index < totalImages || lightboxCtaLive(lightbox)) ? 'block' : 'none';
   }
   
   // Update navigation thumbnails
@@ -508,7 +558,7 @@ function loadMoreImages(button) {
   const galleryId = button.dataset.gallery;
   const currentLoaded = parseInt(button.dataset.loaded);
   const totalImages = parseInt(button.dataset.total);
-  const loadAmount = 24; // Load 24 more images at a time
+  const loadAmount = 100;
   
   // Show loading state
   const loadMoreText = button.querySelector('.load-more-text');

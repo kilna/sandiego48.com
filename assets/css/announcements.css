@@ -1,6 +1,8 @@
 /* Announcement boxes */
 .announcement-box {
-  display: flex; /* Use flexbox for layout */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   width: 100%;
   background: linear-gradient(
     135deg,
@@ -9,13 +11,12 @@
     var(--48-purple-light) 100%
   );
   border: 0.25rem solid var(--48-purple);
-  padding: 0.5rem 1rem;
+  padding: 0;
   margin: 0.5em 0 1em 0;
   border-radius: 0.5rem;
   font-weight: 400;
   box-shadow: 0.5rem 0.5rem 0.5rem 0 var(--48-darken-more);
-  overflow: auto;
-  align-items: center; /* Vertically center content */
+  overflow: hidden;
 }
 
 /* Announcement box headings: gold text on purple background */
@@ -90,35 +91,26 @@
   }
 }
 
-/* Inline images on home page (responsive) */
+/* Home page announcement image fills the top of the card. */
+.announcement-box .announcement-image-link,
+.announcement-box picture {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
 .announcement-inline-image {
-  width: 20%; /* 20% of announcement-box width */
-  flex-shrink: 0; /* Don't shrink */
-  margin-right: 1.5rem;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
 }
 
 /* Wrapper for announcement content */
 .announcement-content-wrapper {
-  flex: 1; /* Take remaining space */
+  flex: none;
   text-align: center;
-}
-
-@media (max-width: 1024px) {
-  .announcement-inline-image {
-    width: 30%;
-  }
-}
-
-@media (max-width: 768px) {
-  .announcement-box {
-    flex-direction: column; /* Stack vertically on mobile */
-    text-align: center;
-  }
-  
-  .announcement-inline-image {
-    width: 85%;
-    margin: 0 auto 1rem auto;
-  }
+  padding: 0.75rem 1rem 1rem;
 }
 
 .announcement-card .announcement-image {

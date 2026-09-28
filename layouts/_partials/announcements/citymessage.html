@@ -9,11 +9,16 @@
 {{- if not $announcements -}}{{- return -}}{{- end -}}
 
 {{- range $announcements -}}
+{{- $page := . -}}
 <p><br><strong>{{ .Title }}</strong></p>
 {{- if .Summary -}}
 <p>{{ .Summary }}</p>
 {{- end -}}
 {{- with .Params.button -}}
-<p><a target="_blank" rel="noopener noreferrer nofollow" href="{{ if hasPrefix .url "http" }}{{ .url }}{{ else }}{{ $.Site.BaseURL | strings.TrimSuffix "/" }}{{ .url }}{{ end }}">{{ .text | default "Learn More" }}</a> {{ .emoji | default "➡️" }}</p>
+{{- $href := .url -}}
+{{- if and $href (not (hasPrefix $href "http")) -}}
+  {{- $href = printf "%s%s" (strings.TrimSuffix "/" $page.Site.BaseURL) $href -}}
+{{- end -}}
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="{{ $href }}">{{ .text | default "Learn More" }}</a> {{ .emoji | default "➡️" }}</p>
 {{- end -}}
 {{- end -}}
