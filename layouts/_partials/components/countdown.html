@@ -10,7 +10,11 @@
   ) -}}
 {{- end -}}
 
+{{- $link := .url | default "" -}}
 <div class="countdown{{ with .class }} {{ . }}{{ end }}{{ if isset . "visible_from" }} visible-from-{{ .visible_from }}{{ end }} visible-to-{{ .visible_to | default .date }}">
+{{- if $link -}}
+<a class="countdown-link" href="{{ $link }}"{{ if hasPrefix $link "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+{{- end -}}
 {{ if $timespan_text -}}
 <span class="countdown-prefix">{{ $timespan_text }}</span>
 {{- end -}}
@@ -23,6 +27,9 @@
 {{ if isset . "suffix" -}}
 <span class="countdown-suffix">{{ .suffix }}</span>
 {{- end }}
+{{- if $link -}}
+</a>
+{{- end -}}
 {{ if isset . "button" -}}
 {{- if isset . "button_prefix" -}}
 <span class="countdown-button-prefix">{{ .button_prefix }}</span>

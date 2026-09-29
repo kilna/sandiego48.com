@@ -148,10 +148,11 @@ params:
     - default: "Not long"
       suffix: "until the 48 Best Of"
       date: "2026-10-10T18:00:00-07:00"
+      url: https://www.tixtree.com/e/2026-best-of-san-diego-screening-and-awards-gala-de894188f447
       button:
         text: "Buy Tickets!"
-        url: /events/2026-best-of-san-diego-screening-and-awards-gala/
-        target: _self
+        url: https://www.tixtree.com/e/2026-best-of-san-diego-screening-and-awards-gala-de894188f447
+        target: _blank
         icon: ticket
     # Archive of prior countdown examples:
     # - default: "Not long"
