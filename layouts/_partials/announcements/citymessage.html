@@ -11,7 +11,10 @@
 {{- range $announcements -}}
 {{- $page := . -}}
 <p><br><strong>{{ .Title }}</strong></p>
-{{- if .Summary -}}
+{{- if .Content -}}
+{{- $base := strings.TrimSuffix "/" .Site.BaseURL -}}
+{{- replace .Content "href=\"/" (printf "href=\"%s/" $base) | safeHTML -}}
+{{- else if .Summary -}}
 <p>{{ .Summary }}</p>
 {{- end -}}
 {{- with .Params.button -}}

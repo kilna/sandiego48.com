@@ -104,14 +104,14 @@
 
 <div class="index">
 
+{{ (.Site.GetPage "/events").Render "coming" -}}
+
 {{- partial "announcements/display.html" (dict
     "announcements" (partial "announcements/featured.html" .)
     "image_size" "1600x"
     "button_class" "medium"
     "use_inline_style" true
 ) -}}
-
-{{ (.Site.GetPage "/events").Render "coming" -}}
 
 <iframe class="index-video"  frameborder="0"  allowfullscreen
   referrerpolicy="strict-origin-when-cross-origin"

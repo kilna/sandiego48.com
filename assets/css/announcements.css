@@ -106,6 +106,59 @@
   margin: 0;
 }
 
+.announcement-body {
+  text-align: left;
+  margin: 0.25rem auto 0.5rem;
+  max-width: 62rem;
+  font-size: 0.82em;
+  line-height: 1.35;
+}
+
+.announcement-box .announcement-body,
+.announcement-box .announcement-body p,
+.announcement-box .announcement-body li,
+.announcement-box .announcement-body strong {
+  color: var(--48-white);
+  text-shadow: none;
+}
+
+.announcement-box .announcement-body h3 {
+  color: var(--48-orange);
+  text-align: left;
+  text-shadow: 0.1rem 0.1rem 0.2rem var(--48-black);
+}
+
+.announcement-box .announcement-body a,
+.announcement-box .announcement-body a em {
+  color: var(--48-white);
+  text-shadow: none;
+  text-decoration-color: var(--48-white);
+}
+
+.announcement-box .announcement-body li::marker {
+  color: var(--48-gold);
+}
+
+@media (min-width: 900px) {
+  .announcement-body {
+    column-count: 2;
+    column-gap: 2.5rem;
+  }
+
+  .announcement-body > p {
+    column-span: all;
+  }
+
+  .announcement-body h3,
+  .announcement-body ul {
+    break-inside: avoid;
+  }
+
+  .announcement-body h3 {
+    break-after: avoid;
+  }
+}
+
 /* Wrapper for announcement content */
 .announcement-content-wrapper {
   flex: none;

@@ -10,7 +10,7 @@ draft: false
 params:
   kind: announcement
   kind_label: Announcement
-  featured: true
+  featured: false
   image: event-photos-horiz.png
   image_wide: event-photos-horiz.png
   image_post: event-photos-post.png

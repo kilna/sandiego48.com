@@ -48,7 +48,9 @@
           {{ .Title }}
         </h2>
         
-        {{- if .Summary -}}
+        {{- if .Content -}}
+        <div class="announcement-body">{{ .Content }}</div>
+        {{- else if .Summary -}}
         <p style="margin: 0.5rem 0;">{{ .Summary }}</p>
         {{- end -}}
         
