@@ -89,4 +89,4 @@ Nominees for this year's trophy awards are in. Winners will be announced October
 - **Brad Verrier** for [*The Station at the End of the World*](/films/2026-intellexual-the-station-at-the-end-of-the-world/) by IntelleXual Entertainment
 - **Victor J. Maldonado** for [*After Life*](/films/2026-next-sunday-a-d-after-life/) by Next Sunday A.D.
 - **Steve Adams** for [*Last Shot*](/films/2026-no-umbrella-last-shot/) by No Umbrella Studios
-- **Bruno Joaquim** for [*The Murder House*](/films/2026-liminal-the-murder-house/) by Liminal Films Studio
+- **W. Aaron Rice** for [*The Murder House*](/films/2026-liminal-the-murder-house/) by Liminal Films Studio
