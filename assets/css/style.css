@@ -635,15 +635,15 @@ main > * {
  */
 
 @font-face {
-  font-family: 'DSEG7Classic';
-  src: url('/fonts/DSEG7ClassicMini-BoldItalic.ttf') format('truetype');
+  font-family: '48HFP-Countdown';
+  src: url('/fonts/48HFP-Countdown.ttf') format('truetype');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
 }
 
 .clock {
-  font-family: 'DSEG7Classic', monospace;
+  font-family: '48HFP-Countdown', monospace;
   font-size: 0.85em;
   transform: translateY(0.1em);
   display: inline-block;
