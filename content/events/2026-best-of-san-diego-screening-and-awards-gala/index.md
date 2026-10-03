@@ -82,3 +82,7 @@ entire catalog of this year's films.
 **Purple carpet / ticket check-in 5-6pm**, then the premiere screening **6-8:30pm**, at
 [The Grand | Ritz Theater](https://www.thegrandescondido.org/) in downtown
 Escondido.
+
+## Award Nominations
+
+{{< page-content path="news/announcements/2026-09-30-trophy-award-nominees" >}}

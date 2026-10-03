@@ -99,6 +99,32 @@
   color: var(--48-navy-dark);
 }
 
+.news-body .nominee-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.news-body .nominee-card {
+  background: var(--48-navy-nearwhite);
+  border: 0.15rem solid var(--48-purple);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem 0.85rem;
+}
+
+.news-body .nominee-card h3 {
+  margin: 0 0 0.4rem 0 !important;
+}
+
+.news-body .nominee-card ul {
+  margin: 0;
+}
+
+.news-body .nominee-card li:last-child {
+  margin-bottom: 0;
+}
+
 .news-actions {
   display: flex;
   flex-wrap: wrap;

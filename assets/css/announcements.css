@@ -139,23 +139,42 @@
   color: var(--48-gold);
 }
 
+.announcement-box .nominee-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+.announcement-box .nominee-card {
+  background: color-mix(in srgb, var(--48-purple-dark) 78%, black);
+  border: 0.125rem solid var(--48-gold);
+  border-radius: 0.5rem;
+  padding: 0.65rem 0.85rem 0.5rem;
+  text-align: left;
+}
+
+.announcement-box .nominee-card h3 {
+  margin: 0 0 0.35rem 0 !important;
+  font-size: 1.25em;
+}
+
+.announcement-box .nominee-card .nominee-emoji {
+  text-shadow: none;
+}
+
+.announcement-box .nominee-card ul {
+  margin: 0;
+}
+
+.announcement-box .nominee-card li:last-child {
+  margin-bottom: 0.15rem;
+}
+
 @media (min-width: 900px) {
-  .announcement-body {
-    column-count: 2;
-    column-gap: 2.5rem;
-  }
-
-  .announcement-body > p {
-    column-span: all;
-  }
-
-  .announcement-body h3,
-  .announcement-body ul {
-    break-inside: avoid;
-  }
-
-  .announcement-body h3 {
-    break-after: avoid;
+  .announcement-box .nominee-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
   }
 }
 

@@ -1,5 +1,5 @@
 ---
-title: "🏆 Trophy Award Nominees"
+title: "San Diego 2026 Nominees"
 layout: news
 type: news
 summary: >
@@ -21,8 +21,9 @@ params:
 
 Nominees for this year's trophy awards are in. Winners will be announced October 10 at the Best of San Diego Screening and Awards Gala.
 
-### Best Directing
+<div class="nominee-cards">
 
+{{< nominee-card title="Best Directing" emoji="🎬" >}}
 - **Andres Honold** for [*Before or After*](/films/2026-argos-before-or-after/) by Argos Productions
 - **Jonathan Stellmach & Carlo Fiorillo** for [*Untitled_ActionScript*](/films/2026-blackhat-untitled-actionscript/) by blackhat media
 - **Carl Eduardo Ling** for [*Nice to Meat You*](/films/2026-carlling-nice-to-meat-you/) by Carlling Productions
@@ -30,9 +31,9 @@ Nominees for this year's trophy awards are in. Winners will be announced October
 - **Grayson Joralemon** for [*Shifter*](/films/2026-goon-squad-shifter/) by Goon Squad
 - **Mark Anthony Gadia** for [*Other Skills*](/films/2026-almost-good-jabronie-other-skills/) by Almost Good Films X Jabronie Pictures
 - **Nathaniel Niell** for [*After Life*](/films/2026-next-sunday-a-d-after-life/) by Next Sunday A.D.
+{{< /nominee-card >}}
 
-### Best Screenwriting
-
+{{< nominee-card title="Best Screenwriting" emoji="✍️" >}}
 - **Andres Honold** for [*Before or After*](/films/2026-argos-before-or-after/) by Argos Productions
 - **Jonathan Stellmach & Carlo Fiorillo** for [*Untitled_ActionScript*](/films/2026-blackhat-untitled-actionscript/) by blackhat media
 - **Miles Lobavich & Zaky Lozuk** for [*Nice to Meat You*](/films/2026-carlling-nice-to-meat-you/) by Carlling Productions
@@ -40,9 +41,9 @@ Nominees for this year's trophy awards are in. Winners will be announced October
 - **Grayson Joralemon & Josh Sims** for [*Shifter*](/films/2026-goon-squad-shifter/) by Goon Squad
 - **Alexander Petit** for [*Charlie*](/films/2026-2880-minute-movie-makers-charlie/) by The 2880 Minute Movie Makers
 - **Zachary Colton** for [*The Tour Guide*](/films/2026-film-logic-the-tour-guide/) by Film Logic Studios
+{{< /nominee-card >}}
 
-### Best Actor
-
+{{< nominee-card title="Best Actor" emoji="🎭" >}}
 - **Don Loper** for [*Before or After*](/films/2026-argos-before-or-after/) by Argos Productions
 - **Thomas Van Briggle** for [*Nice to Meat You*](/films/2026-carlling-nice-to-meat-you/) by Carlling Productions
 - **Anthony Hamm** for [*Culpa*](/films/2026-cimitoro-culpa/) by Cimitoro Productions
@@ -50,9 +51,9 @@ Nominees for this year's trophy awards are in. Winners will be announced October
 - **Harry Kakatsakis** for [*After Life*](/films/2026-next-sunday-a-d-after-life/) by Next Sunday A.D.
 - **Alexander Petit** for [*Charlie*](/films/2026-2880-minute-movie-makers-charlie/) by The 2880 Minute Movie Makers
 - **Parker Heath** for [*The Tour Guide*](/films/2026-film-logic-the-tour-guide/) by Film Logic Studios
+{{< /nominee-card >}}
 
-### Best Actress
-
+{{< nominee-card title="Best Actress" emoji="🎭" >}}
 - **Hope Dagdagan** for [*Other Skills*](/films/2026-almost-good-jabronie-other-skills/) by Almost Good Films X Jabronie Pictures
 - **Sarah Duntley** for [*Before or After*](/films/2026-argos-before-or-after/) by Argos Productions
 - **Diane Sargent** for [*Veloci-boyfriend*](/films/2026-dog-jaw-veloci-boyfriend/) by Dog Jaw Productions
@@ -60,9 +61,9 @@ Nominees for this year's trophy awards are in. Winners will be announced October
 - **Bianca Nialani** for [*Miss Engagement*](/films/2026-house-of-kirby-miss-engagement/) by House of Kirby
 - **Angel L Hivoina** for [*Threads of Amoria*](/films/2026-neuro-spice-brigade-threads-of-amoria/) by Neuro Spice Brigade
 - **Abi Yates** for [*After Life*](/films/2026-next-sunday-a-d-after-life/) by Next Sunday A.D.
+{{< /nominee-card >}}
 
-### Best Cinematography
-
+{{< nominee-card title="Best Cinematography" emoji="🎥" >}}
 - **Cheryl Andaya** for [*Misguided Tours*](/films/2026-all-kinds-of-shoot-misguided-tours/) by All Kinds of Shoot
 - **Ryan Alva** for [*Before or After*](/films/2026-argos-before-or-after/) by Argos Productions
 - **Carlo Fiorillo** for [*Untitled_ActionScript*](/films/2026-blackhat-untitled-actionscript/) by blackhat media
@@ -70,9 +71,9 @@ Nominees for this year's trophy awards are in. Winners will be announced October
 - **Drew Floyd** for [*Hiking Along (With You)*](/films/2026-digital-lemonade-stand-hiking-along-with-you/) by Digital Lemonade Stand
 - **Grayson Joralemon** for [*Shifter*](/films/2026-goon-squad-shifter/) by Goon Squad
 - **Jake Segraves** for [*Moonshot*](/films/2026-state-of-flux-moonshot/) by state of flux
+{{< /nominee-card >}}
 
-### Best Editing
-
+{{< nominee-card title="Best Editing" emoji="🎞️" >}}
 - **Matthew Dominguez** for [*Other Skills*](/films/2026-almost-good-jabronie-other-skills/) by Almost Good Films X Jabronie Pictures
 - **John Dandridge** for [*Before or After*](/films/2026-argos-before-or-after/) by Argos Productions
 - **Carlo Fiorillo** for [*Untitled_ActionScript*](/films/2026-blackhat-untitled-actionscript/) by blackhat media
@@ -80,9 +81,9 @@ Nominees for this year's trophy awards are in. Winners will be announced October
 - **Mauricio Navarro** for [*Culpa*](/films/2026-cimitoro-culpa/) by Cimitoro Productions
 - **Grayson Joralemon** for [*Shifter*](/films/2026-goon-squad-shifter/) by Goon Squad
 - **Nathaniel Niell** for [*After Life*](/films/2026-next-sunday-a-d-after-life/) by Next Sunday A.D.
+{{< /nominee-card >}}
 
-### Best Musical Score
-
+{{< nominee-card title="Best Musical Score" emoji="🎵" >}}
 - **Nikko Nobleza** for [*Other Skills*](/films/2026-almost-good-jabronie-other-skills/) by Almost Good Films X Jabronie Pictures
 - **Can Karacadagli** for [*Before or After*](/films/2026-argos-before-or-after/) by Argos Productions
 - **Asher Marc** for [*Nice to Meat You*](/films/2026-carlling-nice-to-meat-you/) by Carlling Productions
@@ -90,3 +91,6 @@ Nominees for this year's trophy awards are in. Winners will be announced October
 - **Victor J. Maldonado** for [*After Life*](/films/2026-next-sunday-a-d-after-life/) by Next Sunday A.D.
 - **Steve Adams** for [*Last Shot*](/films/2026-no-umbrella-last-shot/) by No Umbrella Studios
 - **W. Aaron Rice** for [*The Murder House*](/films/2026-liminal-the-murder-house/) by Liminal Films Studio
+{{< /nominee-card >}}
+
+</div>

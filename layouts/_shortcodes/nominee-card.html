@@ -1,0 +1,4 @@
+<div class="nominee-card">
+  <h3 id="{{ .Get "title" | urlize }}">{{ .Get "title" }} <span class="nominee-emoji" aria-hidden="true">{{ .Get "emoji" }}</span></h3>
+  {{ .Inner | markdownify }}
+</div>

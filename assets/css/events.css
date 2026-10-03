@@ -623,9 +623,48 @@
   }
 }
 
-/* Nominee Lists Styling */
-.nominee-list {
-  margin: 1rem 0;
+/* Trophy nominees embedded from the announcement */
+.event-content .nominee-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.event-content .nominee-card {
+  background: var(--48-navy-nearwhite);
+  border: 0.15rem solid var(--48-purple);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem 0.85rem;
+}
+
+.event-content .nominee-card h3 {
+  margin: 0 0 0.4rem 0 !important;
+  color: var(--48-navy-dark);
+  font-size: 1.15em;
+  font-weight: 700;
+  text-shadow: none;
+}
+
+.event-content .nominee-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.9em;
+  line-height: 1.35;
+}
+
+.event-content .nominee-card li + li {
+  margin-top: 0.35rem;
+}
+
+.event-content .nominee-card li:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 1100px) {
+  .event-content .nominee-cards {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 

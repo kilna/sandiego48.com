@@ -1,0 +1,14 @@
+{{- /*
+  Embeds another page's rendered content without copying it.
+
+  Usage: {{< page-content path="news/announcements/2026-09-30-trophy-award-nominees" >}}
+*/ -}}
+{{- $path := .Get "path" | default (.Get 0) -}}
+{{- if not $path -}}
+  {{- errorf "page-content: the %q parameter is required (in %s)" "path" .Position -}}
+{{- end -}}
+{{- $page := site.GetPage $path -}}
+{{- if not $page -}}
+  {{- errorf "page-content: no page found at %q (in %s)" $path .Position -}}
+{{- end -}}
+{{- $page.Content -}}
