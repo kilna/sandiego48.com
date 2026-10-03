@@ -1,0 +1,29 @@
+{{- /*
+  Award categories for a film, read from the trophy-nominee announcement
+  so the list stays in one place.
+
+  Returns a slice of dicts: id, title
+*/ -}}
+{{- $key := "awardNominationsByFilm" -}}
+{{- $lookup := site.Store.Get $key -}}
+{{- if not $lookup -}}
+  {{- $lookup = dict -}}
+  {{- with site.GetPage "news/announcements/2026-09-30-trophy-award-nominees" -}}
+    {{- range split .Content `<div class="nominee-card">` -}}
+      {{- $titleMatch := findRESubmatch `<h3 id="([^"]+)">([^<]+)` . 1 -}}
+      {{- if $titleMatch -}}
+        {{- $id := index (index $titleMatch 0) 1 -}}
+        {{- $title := index (index $titleMatch 0) 2 | strings.TrimSpace -}}
+        {{- range findRESubmatch `href="([^"]+)"` . -}}
+          {{- $href := index . 1 -}}
+          {{- if hasPrefix $href "/films/" -}}
+            {{- $existing := index $lookup $href | default slice -}}
+            {{- $lookup = merge $lookup (dict $href ($existing | append (dict "id" $id "title" $title))) -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- site.Store.Set $key $lookup -}}
+{{- end -}}
+{{- return index $lookup .RelPermalink | default slice -}}

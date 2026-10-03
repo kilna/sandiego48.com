@@ -529,4 +529,22 @@
 </div>
 {{ end }}
 
+<script>
+document.querySelectorAll(".nominations").forEach((block) => {
+  const body = block.querySelector(".nominations-body");
+  const button = block.querySelector(".nominations-more");
+  if (!body || !button) return;
+  if (body.scrollHeight <= body.clientHeight + 8) {
+    block.classList.add("is-open");
+    button.hidden = true;
+    return;
+  }
+  button.addEventListener("click", () => {
+    const open = block.classList.toggle("is-open");
+    button.setAttribute("aria-expanded", open ? "true" : "false");
+    button.textContent = open ? "Show less" : "Show more";
+  });
+});
+</script>
+
 {{ end }}

@@ -1,10 +1,11 @@
 {{- /*
-  Genre, screening-group, and content-warning chiclets.
+  Genre, screening-group, content-warning, and award-nomination chiclets.
 
-  page         - film page
-  show_genre   - default true
-  show_groups  - default true
-  show_warnings - default true
+  page              - film page
+  show_genre        - default true
+  show_groups       - default true
+  show_warnings     - default true
+  show_nominations  - default true
 */ -}}
 {{- $page := .page -}}
 {{- $show_genre := true -}}
@@ -18,6 +19,10 @@
 {{- $show_warnings := true -}}
 {{- if isset . "show_warnings" -}}
   {{- $show_warnings = .show_warnings -}}
+{{- end -}}
+{{- $show_nominations := true -}}
+{{- if isset . "show_nominations" -}}
+  {{- $show_nominations = .show_nominations -}}
 {{- end -}}
 
 {{- $genre := "" -}}
@@ -49,7 +54,12 @@
   {{- $groups = $page.Params.screening_groups -}}
 {{- end -}}
 
-{{- if or $genre $groups $warnings -}}
+{{- $nominations := slice -}}
+{{- if $show_nominations -}}
+  {{- $nominations = partial "film-award-nominations.html" $page -}}
+{{- end -}}
+
+{{- if or $genre $groups $warnings $nominations -}}
           <div class="film-groups">
             {{- with $genre }}
               <span class="genre-tag">{{ . }}</span>
@@ -65,6 +75,9 @@
             {{- end }}
             {{- range $warnings }}
               <span class="warning-tag">{{ . }}</span>
+            {{- end }}
+            {{- range $nominations }}
+              <span class="nomination-tag">{{ .title }} Nominee</span>
             {{- end }}
           </div>
 {{- end -}}

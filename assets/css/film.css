@@ -211,7 +211,8 @@
 
 .group-tag,
 .genre-tag,
-.warning-tag {
+.warning-tag,
+.nomination-tag {
   display: inline-block;
   padding: 0.25rem 0.75rem;
   border-radius: 15px;
@@ -237,6 +238,12 @@
 .warning-tag {
   flex: 0 0 auto;
   background: color-mix(in srgb, var(--48-gold) 72%, white);
+  color: var(--48-navy-nearblack);
+}
+
+.nomination-tag {
+  flex: 0 0 auto;
+  background: color-mix(in srgb, var(--48-purple) 28%, white);
   color: var(--48-navy-nearblack);
 }
 

@@ -342,10 +342,28 @@
     align-items: center;
     text-align: center;
   }
-  
+
   .film-poster-container {
+    align-self: center;
     width: 150px;
     height: 225px;
+  }
+
+  .film-info {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .film-item .film-title,
+  .film-item .film-logline,
+  .film-item .film-team,
+  .film-item .film-synopsis {
+    text-align: center;
+  }
+
+  .film-item .film-groups {
+    justify-content: center;
   }
 
   .film-item-actions {
@@ -624,6 +642,51 @@
 }
 
 /* Trophy nominees embedded from the announcement */
+.event-content .nominations {
+  margin: 1.25rem 0 1.5rem;
+}
+
+.event-content .nominations:not(.is-open) .nominations-body {
+  max-height: 24rem;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 5rem), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 5rem), transparent);
+}
+
+.event-content .nominations-more-wrap {
+  text-align: center;
+  margin: 0.75rem 0 0;
+}
+
+.event-content .nominations:not(.is-open) .nominations-more-wrap {
+  position: relative;
+  z-index: 1;
+  margin-top: -2.75rem;
+}
+
+button.nominations-more {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.4em 1em;
+  border: 0.02em solid var(--48-orange);
+  border-radius: 0.25em;
+  background-color: var(--48-purple);
+  color: var(--48-white);
+}
+
+button.nominations-more:hover,
+button.nominations-more:active {
+  color: var(--48-black);
+  background-color: var(--48-white);
+  border-color: var(--48-purple-trans);
+}
+
 .event-content .nominee-cards {
   display: grid;
   grid-template-columns: 1fr;

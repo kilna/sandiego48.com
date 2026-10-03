@@ -19,7 +19,35 @@ params:
     target: "_self"
 ---
 
-Nominees for this year's trophy awards are in. Winners will be announced October 10 at the Best of San Diego Screening and Awards Gala.
+<style>
+.duanie-intro {
+  display: flow-root;
+}
+img.duanie {
+  float: left;
+  height: 8em;
+  width: auto;
+  margin: 0.1rem 0.75rem 0.25rem 0;
+  border-radius: 0.2rem;
+}
+img.star-trophy {
+  float: right;
+  height: 6em;
+  width: auto;
+  margin: 0.1rem 0 0.25rem 0.75rem;
+  border-radius: 0.2rem;
+}
+</style>
+
+<div class="duanie-intro">
+<img class="duanie" src="/news/announcements/2026-09-30-trophy-award-nominees/duanie.png" alt="The Duanie trophy statue">
+<img class="star-trophy" src="/news/announcements/2026-09-30-trophy-award-nominees/star_trophy.png" alt="A star trophy">
+<p>Nominees for this year's "Duanie" statue awards are in. Winners will be
+announced October 10 at the Best of San Diego Screening and Awards Gala. In
+addition to the nominated awards, dozens of star trophy awards will be given
+to films. For examples of last year's awards, see the
+<a href="/competition-summary/2025/">2025 Competition Summary</a></p>
+</div>
 
 <div class="nominee-cards">
 

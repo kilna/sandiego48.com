@@ -67,22 +67,31 @@ params:
     - You must purchase a ticket online before the event, and have your emailed QR code ready. There will be no on-site ticket sales.
     - Bring your style! You're coming to a film premiere — dress to impress.
     - "By purchasing a ticket or attending the event, the attendee agrees to the [Attendee Terms](/attendee-terms/)"
-  org_info: |
-    ### About the 48 Hour Film Project
-
-    The 48 Hour Film Project is the longest running and most popular timed
-    filmmaking competition. Teams have just 48 hours to write, shoot, edit and
-    score a short film. All films are screened in a real theater and compete
-    for awards and recognition.
 ---
-This screening will consist of a dozen or more featured best films from the
-San Diego competition, and filmmakers will be given dozens of awards from the
-entire catalog of this year's films.
+The 48 Hour Film Project is the longest running and most popular timed
+filmmaking competition. Teams have just 48 hours to write, shoot, edit and
+score a short film. The competitors do not know what kind of movie they're going
+to make when they start; randomly assigned genres, a prop, a line, and a
+character must be integrated into their film.  
+
+This screening will consist of **15 featured best films** from the San Diego
+2026 competition, and filmmakers will be given dozens of awards from the
+entire catalog of this year's films. Attendees will vote electronically for
+**Audience Choice Film** and **Audience Choice Poster**, and the results will
+be tabulated in real time and awarded at the event.
 
 **Purple carpet / ticket check-in 5-6pm**, then the premiere screening **6-8:30pm**, at
 [The Grand | Ritz Theater](https://www.thegrandescondido.org/) in downtown
 Escondido.
 
-## Award Nominations
+<section class="nominations">
+<h2 id="award-nominations">Award Nominations</h2>
+<div class="nominations-body" id="award-nominations-body">
 
 {{< page-content path="news/announcements/2026-09-30-trophy-award-nominees" >}}
+
+</div>
+<p class="nominations-more-wrap">
+<button type="button" class="nominations-more" aria-expanded="false" aria-controls="award-nominations-body">Show more</button>
+</p>
+</section>
