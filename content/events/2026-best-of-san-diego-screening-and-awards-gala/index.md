@@ -17,21 +17,21 @@ params:
   add_to_calendar: true
   screening_group: Best of 2026
   film_order:
-    - film-logic-the-tour-guide
-    - next-sunday-a-d-after-life
-    - cimitoro-culpa
-    - carlling-nice-to-meat-you
-    - argos-before-or-after
-    - 2880-minute-movie-makers-charlie
-    - golden-hour-collective-romance-is-dead
-    - dog-jaw-veloci-boyfriend
-    - neuro-spice-brigade-threads-of-amoria
-    - goon-squad-shifter
-    - digital-lemonade-stand-hiking-along-with-you
-    - almost-good-jabronie-other-skills
-    - all-kinds-of-shoot-misguided-tours
-    - intellexual-the-station-at-the-end-of-the-world
-    - blackhat-untitled-actionscript
+    - 2026-film-logic-the-tour-guide
+    - 2026-next-sunday-a-d-after-life
+    - 2026-cimitoro-culpa
+    - 2026-carlling-nice-to-meat-you
+    - 2026-argos-before-or-after
+    - 2026-2880-minute-movie-makers-charlie
+    - 2026-golden-hour-collective-romance-is-dead
+    - 2026-dog-jaw-veloci-boyfriend
+    - 2026-neuro-spice-brigade-threads-of-amoria
+    - 2026-goon-squad-shifter
+    - 2026-digital-lemonade-stand-hiking-along-with-you
+    - 2026-almost-good-jabronie-other-skills
+    - 2026-all-kinds-of-shoot-misguided-tours
+    - 2026-intellexual-the-station-at-the-end-of-the-world
+    - 2026-blackhat-untitled-actionscript
   tixtree_event: 2026-best-of-san-diego-screening-and-awards-gala-de894188f447
   tickets_url: https://www.tixtree.com/e/2026-best-of-san-diego-screening-and-awards-gala-de894188f447
   event_start: 2026-10-10T17:00:00-07:00
