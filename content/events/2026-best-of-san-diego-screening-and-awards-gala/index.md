@@ -34,6 +34,7 @@ params:
     - 2026-blackhat-untitled-actionscript
   tixtree_event: 2026-best-of-san-diego-screening-and-awards-gala-de894188f447
   tickets_url: https://www.tixtree.com/e/2026-best-of-san-diego-screening-and-awards-gala-de894188f447
+  facebook_event_url: https://www.facebook.com/events/1313061030811027/
   event_start: 2026-10-10T17:00:00-07:00
   event_end: 2026-10-10T20:30:00-07:00
   location_name: The Grand | Ritz Theater
