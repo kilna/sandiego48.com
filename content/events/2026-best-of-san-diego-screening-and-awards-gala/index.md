@@ -16,7 +16,22 @@ params:
   image_square: 2026-gala-square.png
   add_to_calendar: true
   screening_group: Best of 2026
-  film_sort: title
+  film_order:
+    - film-logic-the-tour-guide
+    - next-sunday-a-d-after-life
+    - cimitoro-culpa
+    - carlling-nice-to-meat-you
+    - argos-before-or-after
+    - 2880-minute-movie-makers-charlie
+    - golden-hour-collective-romance-is-dead
+    - dog-jaw-veloci-boyfriend
+    - neuro-spice-brigade-threads-of-amoria
+    - goon-squad-shifter
+    - digital-lemonade-stand-hiking-along-with-you
+    - almost-good-jabronie-other-skills
+    - all-kinds-of-shoot-misguided-tours
+    - intellexual-the-station-at-the-end-of-the-world
+    - blackhat-untitled-actionscript
   tixtree_event: 2026-best-of-san-diego-screening-and-awards-gala-de894188f447
   tickets_url: https://www.tixtree.com/e/2026-best-of-san-diego-screening-and-awards-gala-de894188f447
   event_start: 2026-10-10T17:00:00-07:00
